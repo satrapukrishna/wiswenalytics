@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Protech | Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+<style type="text/css">
+  .panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.dropdown-menu li {
+    margin: 5px 0 !important;
+    padding: 8px;
+    font-size: 15px;
+    list-style: none;
+}
+.dropdown-menu li .fa{
+  margin-right: 6px;
+}
+.dropdown .fa{
+  font-size: 18px;
+    margin-left: 2px;
+}
+.info-box{
+    padding: 16px;
+}
+.info-box-icon{
+    height: 56px !important;
+    width: 57px !important;
+    font-size: 24px !important;
+    line-height: 53px !important;
+}
+.info-box-content{
+  margin-left: 60px;
+}
+.info-box-text{
+    color: #73818f!important;
+    font-weight: 600;
+}
+</style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+<div class="wrapper">
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="../../index2.html" class="logo">
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><b>P</b>T</span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg"><b>Pro</b>Tech</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- Notifications: style can be found in dropdown.less -->
+          <li class="dropdown notifications-menu">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-bell-o"></i>
+              <span class="label label-warning">10</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="header">You have 10 notifications</li>
+              <li>
+                <!-- inner menu: contains the actual data -->
+                <ul class="menu">
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the
+                      page and may cause design problems
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-users text-red"></i> 5 new members joined
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-user text-red"></i> You changed your username
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li class="footer"><a href="#">View all</a></li>
+            </ul>
+          </li>
+          <li class="dropdown user user-menu" style="width: 200px;">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+              <span class="hidden-xs">Sunil Manohar</span>
+            </a>
+            <ul class="dropdown-menu" style="width: 200px !important;">
+              <!-- Menu Footer-->
+               <li><i class="fa fa-user" aria-hidden="true"></i>Profile</li>
+              <li><i class="fa fa-cog" aria-hidden="true"></i>Settings</li>
+              <li><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</li>
+            </ul>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>Dashboard</span>
+            <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
+          </ul>
+        </li>
+        
+        <li class="treeview active">
+          <a href="#">
+            <i class="fa fa-table"></i> <span>Reports</span>
+            <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="active"><a href="data.html"><i class="fa fa-circle-o"></i>Daily report</a></li>
+             <!-- <li class="active"><a href="deatilReport.html"><i class="fa fa-circle-o"></i>Detail Report</a></li> -->
+             <li class="active"><a href="graphReport.html"><i class="fa fa-circle-o"></i>Detail Graph</a></li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1 style="    width: 62% !important;
+    float: left;">
+      Dashboard
+      </h1>
+      <input list="area" name="area" placeholder="Select Area" style="border-radius: 3px;height: 27px;border: 1px solid #ccc;padding-left: 6px;">
+      <datalist id="area">
+        <option value="Madhapur">
+        <option value="Kothaguda">
+        <option value="Miyapur">
+        <option value="Manikonda">
+        <option value="Kondapur">
+      </datalist>
+      <ol class="breadcrumb">
+        <li><a href="#" style="color: #3c8dbc;font-size: 13px;"></i> Day Report</a></li>
+        <li><a href="#">Week Report</a></li>
+        <li class="active">Month Report</li>
+      </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua" style="background-color: #63c2de!important;"><i class="fa fa-database" aria-hidden="true"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">LPG</span>
+              <span class="info-box-number">100</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-green" style="background-color: #4dbd74 !important;"><i class="fa fa-hourglass-half" aria-hidden="true"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">HVAC Filter</span>
+              <span class="info-box-number">10</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-yellow"><i class="fa fa-flask" aria-hidden="true"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Fuel</span>
+              <span class="info-box-number">13</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+        <div class="col-md-3 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-red" style="background-color: #f86c6b !important;"><i class="fa fa-hourglass" aria-hidden="true"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">Fuel 2</span>
+              <span class="info-box-number">93</span>
+            </div>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <!-- /.col -->
+      
+        <div class="col-xs-12">
+          <div class="box">
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div>
+                <label style="margin-right: 10px;">Select Date</label>
+                 <input type="date"  style="border-radius: 3px;height: 27px;border: 1px solid #ccc">
+              </div>
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Meter Name</th>
+                  <th>Total Consumption</th>
+                  <th>AVG Consumption</th>
+                  <th>Highest Consumption At</th>
+                   <th>Lowest Consumption At</th>
+                   <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th>1</th>
+                  <td style="color: #63c2de;font-size: 14px;font-weight: bold;">LPG</td>
+                  <td>20.3 Kg</td>
+                  <td>0.83 kg</td>
+                  <td>12:00 to 1:00 PM</td>
+                  <td>6:00 t0 7:00AM</td>
+                  <td><a href="#" data-toggle="tooltip" data-placement="top" title="Show Graph"><i class="fa fa-bar-chart" aria-hidden="true" style="margin-right: 10px;"></i></a> <a href="#" data-toggle="tooltip" onclick ="showLPGReport()" data-placement="top" title="More Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                </tr>
+         <tr>
+                  <th>2</th>
+                  <td>HVAC</td>
+                  <td>10.3 Kg</td>
+                  <td>1.83 kg</td>
+                  <td>3:00 to 4:00 PM</td>
+                  <td>5:00 t0 6:00AM</td>
+                  <td><a href="#" data-toggle="tooltip" data-placement="top" title="Show Graph"><i class="fa fa-bar-chart" aria-hidden="true" style="margin-right: 10px;"></i></a> <a href="#" data-toggle="tooltip" data-placement="top" title="More Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                  <th>3</th>
+                  <td style="color: #4dbd74 !important;font-size: 14px;font-weight: bold;">HVAC Filter</td>
+                  <td>20.3 Kg</td>
+                  <td>0.83 kg</td>
+                  <td>12:00 to 1:00 PM</td>
+                  <td>6:00 t0 7:00AM</td>
+                  <td><a href="#" data-toggle="tooltip" data-placement="top" title="Show Graph"><i class="fa fa-bar-chart" aria-hidden="true" style="margin-right: 10px;"></i></a> <a href="#" data-toggle="tooltip" data-placement="top" title="More   Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <td>Fuel 1</td>
+                  <td>20.19 Ltr</td>
+                  <td>2.83 Ltr</td>
+                  <td>3:00 to 4:00 PM</td>
+                  <td>6:00 t0 7:00AM</td>
+                  <td><a href="#" data-toggle="tooltip" data-placement="top" title="Show Graph"><i class="fa fa-bar-chart" aria-hidden="true" style="margin-right: 10px;"></i></a> <a href="#" data-toggle="tooltip" data-placement="top" title="More   Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                </tr>
+                 <tr>
+                  <th>5</th>
+                  <td style="color: #f86c6b !important;font-size: 14px;font-weight: bold;">Fuel 2</td>
+                  <td>20.19 Ltr</td>
+                  <td>2.83 Ltr</td>
+                  <td>3:00 to 4:00 PM</td>
+                  <td>6:00 t0 7:00AM</td>
+                  <td><a href="#" data-toggle="tooltip" data-placement="top" title="Show Graph"><i class="fa fa-bar-chart" aria-hidden="true" style="margin-right: 10px;"></i></a> <a href="#" data-toggle="tooltip" data-placement="top" title="More   Details"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                </tr>
+              </table>
+            </div>
+                             <div class="panel-group" id="accordion" style="margin-top: 10px;display: none;">
+  <div class="panel panel-default">
+    <div class="panel-heading" style="display: inline-flex;
+    width: 100%;background-color: #f4f4f4;
+    color: #333;">
+      <h4 class="panel-title" style="width: 20%;
+    float: left;">
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" style="line-height: 27px;">
+         LPG Report
+       </a>
+       </h4>
+       <div style="width: 80%;
+    float: right;padding-left: 25px;">
+                <label style="width: 100px;">Select Meter</label>
+                <select style="width: 15%;">
+                  <option>LPG1</option>
+                  <option>LPG2</option>
+                  <option>LPG3</option>
+                </select>
+                <label style="width: 90px;">Select Date</label>
+                 <input type="date"  style="border-radius: 3px;height: 27px;border: 1px solid #ccc">
+            <button type="button" class="btn btn-info" style="width: 100px;height: 30px;margin-left: 10px;line-height: 17px;background-color: #269abc;border-color:#269abc ">Filter</button>
+              </div>
+      
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in">
+      <div class="panel-body">
+       <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>S.No</th>
+                  <th>Time</th>
+                  <th>Consumption(in Ltrs)</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                  <th>1</th>
+                  <td>00:00 to 01:00PM</td>
+                  <td>0.4Kgs</td>
+                </tr>
+                 <tr>
+                  <th>2</th>
+                  <td>03:00 to 04:00 Pm</td>
+                  <td>0.24Kgs</td>
+                </tr>
+               <tr>
+                  <th>3</th>
+                  <td>05:00 to 06:07 Am</td>
+                  <td>0.45Kgs</td>
+                </tr>
+                <tr>
+                  <th>4</th>
+                  <td>07:00 to 08:20 Am</td>
+                  <td>0.23Kgs</td>
+                </tr>
+               <tr>
+                  <th>5</th>
+                  <td>09:00 to 10:00 Am</td>
+                  <td>1.4Kgs</td>
+                </tr>
+               <tr>
+                  <th>6</th>
+                  <td>11:00 to 01:00 Pm</td>
+                  <td>0.4Kgs</td>
+                </tr>
+              </table>
+      </div>
+    </div>
+  </div>
+</div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+   <strong>Copyright &copy; 2018<a href="">Protech</a>.</strong> All rights
+    reserved.
+  </footer>
+
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="../../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- DataTables -->
+<script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../../dist/js/demo.js"></script>
+<!-- page script -->
+<script>
+  $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+   
+   function showLPGReport() {
+      var x = document.getElementById("accordion");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+    } else {
+        x.style.display = "none";
+    }
+   }
+
+
+
+  // $(function () {
+  //   $('#example1').DataTable()
+  //   $('#example2').DataTable({
+  //     'paging'      : true,
+  //     'lengthChange': false,
+  //     'searching'   : false,
+  //     'ordering'    : true,
+  //     'info'        : true,
+  //     'autoWidth'   : false
+  //   })
+  // })
+</script>
+</body>
+</html>

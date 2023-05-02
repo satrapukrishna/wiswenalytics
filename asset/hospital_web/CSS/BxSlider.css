@@ -1,0 +1,263 @@
+/** VARIABLES
+===================================*/
+/** RESET AND LAYOUT
+===================================*/
+.bx-wrapper {
+  position: relative;
+  padding: 0;
+  *zoom: 1;
+  -ms-touch-action: pan-y;
+  touch-action: pan-y;
+}
+.bx-wrapper img {
+  max-width: 100%;
+  display: block;
+}
+.bxslider {
+  margin: 0;
+  padding: 0;
+}
+ul.bxslider {
+  list-style: none;
+}
+.bx-viewport {
+  /*fix other elements on the page moving (on Chrome)*/
+  -webkit-transform: translatez(0);
+}
+/** THEME
+===================================*/
+.bx-wrapper {
+  
+}
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+  position: absolute;
+  bottom: -30px;
+  width: 100%;
+}
+/* LOADER */
+.bx-wrapper .bx-loading {
+  min-height: 50px;
+  background: url('../Images/Loading.svg') center center no-repeat #ffffff;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+}
+/* PAGER */
+.bx-wrapper .bx-pager {
+  text-align: center;
+  font-size: .85em;
+  font-family: Arial;
+  font-weight: bold;
+  color: #666;
+  padding-top: 20px;
+}
+.bx-wrapper .bx-pager.bx-default-pager a {
+  background: #CCCCCC;
+  text-indent: -9999px;
+  display: block;
+  width: 7px;
+  height: 7px;
+  margin: 0 2px;
+  outline: 0;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+.bx-wrapper .bx-pager.bx-default-pager a:hover,
+.bx-wrapper .bx-pager.bx-default-pager a.active,
+.bx-wrapper .bx-pager.bx-default-pager a:focus {
+  background: #0078BA;
+  transition: 0.3s;
+}
+.bx-wrapper .bx-pager-item,
+.bx-wrapper .bx-controls-auto .bx-controls-auto-item {
+  display: inline-block;
+  vertical-align: bottom;
+  *zoom: 1;
+  *display: inline;
+}
+.bx-wrapper .bx-pager-item {
+  font-size: 0;
+  line-height: 0;
+}
+/* DIRECTION CONTROLS (NEXT / PREV) */
+    .bx-wrapper .bx-prev {
+        left: 0;
+        background: transparent url('../Images/AppIcon-Arrow-LgtBlue.svg') no-repeat center center;
+        transform: rotate(90deg);
+        background-size: 14px;
+        opacity: 0.9;
+        transition: 0.3s;
+    }
+.bx-wrapper .bx-prev:hover,
+.bx-wrapper .bx-prev:focus {
+  opacity: 1;
+  transition: 0.3s;
+}
+    .bx-wrapper .bx-next {
+        right: 0;
+        background: transparent url('../Images/AppIcon-Arrow-LgtBlue.svg') no-repeat center center;
+        transform: rotate(270deg);
+        background-size: 14px;
+        transition: 0.3s;
+        opacity: 0.9;
+    }
+.bx-wrapper .bx-next:hover,
+.bx-wrapper .bx-next:focus {
+    opacity: 1;
+  transition: 0.3s;
+  
+}
+.bx-wrapper .bx-controls-direction a {
+  position: absolute;
+  bottom: -40px;
+  margin-top: -16px;
+  outline: 0;
+  width: 30px;
+  height: 30px;
+  text-indent: -9999px;
+  overflow: hidden;
+  z-index: 98;
+  border-radius: 100%;
+}
+.bx-wrapper .bx-controls-direction a.disabled {
+  display: none;
+}
+/* AUTO CONTROLS (START / STOP) */
+.bx-wrapper .bx-controls-auto {
+  text-align: center;
+}
+.bx-wrapper .bx-controls-auto .bx-start {
+  display: block;
+  text-indent: -9999px;
+  width: 10px;
+  height: 11px;
+  outline: 0;
+  background: url('../Images/Slider/controls.png') -86px -11px no-repeat;
+  margin: 0 3px;
+}
+.bx-wrapper .bx-controls-auto .bx-start:hover,
+.bx-wrapper .bx-controls-auto .bx-start.active,
+.bx-wrapper .bx-controls-auto .bx-start:focus {
+  background-position: -86px 0;
+}
+.bx-wrapper .bx-controls-auto .bx-stop {
+  display: block;
+  text-indent: -9999px;
+  width: 9px;
+  height: 11px;
+  outline: 0;
+  background: url('../Images/Slider/controls.png') -86px -44px no-repeat;
+  margin: 0 3px;
+}
+.bx-wrapper .bx-controls-auto .bx-stop:hover,
+.bx-wrapper .bx-controls-auto .bx-stop.active,
+.bx-wrapper .bx-controls-auto .bx-stop:focus {
+  background-position: -86px -33px;
+}
+/* PAGER WITH AUTO-CONTROLS HYBRID LAYOUT */
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-pager {
+  text-align: left;
+  width: 80%;
+}
+.bx-wrapper .bx-controls.bx-has-controls-auto.bx-has-pager .bx-controls-auto {
+  right: 0;
+  width: 35px;
+}
+/* IMAGE CAPTIONS */
+.bx-wrapper .bx-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #666;
+  background: rgba(80, 80, 80, 0.75);
+  width: 100%;
+}
+.bx-wrapper .bx-caption span {
+  color: #fff;
+  font-family: Arial;
+  display: block;
+  font-size: .85em;
+  padding: 10px;
+}
+
+
+div.DshbrdFtrSldrHldr .bx-wrapper .bx-pager, div.DshbrdFtrSldrHldr .bx-wrapper .bx-controls-auto {
+  padding-top: 0;
+}
+
+div.StffDptAttnd div.AttdnDashSlider > div {
+    width: 150px!important;
+}
+
+div.StffDptAttnd div.bx-wrapper {
+    max-width: 100%!important;
+}
+
+
+div.PrptyFtrsDshbrd  div.LdrshpTmDashSlider > div {
+    width: 150px!important;
+}
+
+div.PrptyFtrsDshbrd  div.bx-wrapper {
+    max-width: 100%!important;
+}
+
+
+div.DshHvr .bx-wrapper .bx-pager, div.DshHvr .bx-wrapper .bx-controls-auto {
+  padding-top: 0;
+  bottom: -18px;
+}
+
+div.DshHvr .bx-wrapper .bx-controls-direction a {
+  bottom: -30px;
+}
+
+div.Flipper .bx-wrapper .bx-pager, div.Flipper .bx-wrapper .bx-controls-auto {
+  padding-top: 0;
+  bottom: -13px;
+}
+
+div.Flipper .bx-wrapper .bx-controls-direction a {
+  bottom: -22px;
+}
+
+/*div.Flipper .bx-wrapper .bx-next {
+  right: -15px;
+  background: #fff url('../Images/AppIcon-Arrow-LgtBlue.svg') no-repeat center center;
+  background-size: 14px;
+  box-shadow: 2px 4px 2px rgba(0,0,0,0.1);
+}
+
+div.Flipper .bx-wrapper .bx-prev {
+  left: -15px;
+  background: #fff url(../Images/AppIcon-Arrow-LgtBlue.svg) no-repeat center center;
+  transform: rotate(90deg);
+  background-size: 14px;
+  box-shadow: -2px 4px 2px rgba(0,0,0,0.1);
+}*/
+
+div.FlpIssueSlider > div {
+  width: 150px!important;
+}
+
+
+div.HvrDtlsHldr .bx-wrapper .bx-controls-direction a {
+  bottom: calc(50% - 10px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+div.HvrDtlsHldr .bx-wrapper .bx-next {
+  background: #fff url(../Images/AppIcon-Arrow-LgtBlue.svg) no-repeat center center;
+  right: -20px;
+}
+
+div.HvrDtlsHldr .bx-wrapper .bx-prev {
+  background: #fff url(../Images/AppIcon-Arrow-LgtBlue.svg) no-repeat center center;
+  left: -20px;
+}

@@ -1,0 +1,627 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanitation - Washroom Details</title>
+    <link rel="shortcut icon" type="image/png" href="Images/ClientIcon.png" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="CSS/StyleSheet.css?ver=1" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+    <link href="CSS/BxSlider.css?ver=1" rel="stylesheet" />
+    <script src="Scripts/BxSlider.js"></script>
+    <script src="Scripts/SliderScript.js"></script>
+    <script src="Scripts/Script.js"></script>
+</head>
+<body>
+    <div class="AppMenu">
+        <span class="AppMenuBtn">
+            <span class="BtnTxt">Menu</span>
+        </span>
+        <ul class="MenuList">
+            <li>
+                <a href="Dashboard.html" class="AppMenuLnk Map">
+                    <span class="LnkTxt">Map</span>
+                </a>
+            </li>
+            <li>
+                <a href="HospitalSelection.html" class="AppMenuLnk Dshbrd">
+                    <span class="LnkTxt">Dashboard</span>
+                </a>
+            </li>
+        </ul>
+        <div class="MenuAccrdn">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <span class="AppMenuAccrdnLnk EnggSltns Actv">
+                            <span class="LnkTxt">Engineering Solutions</span>
+                        </span>
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul class="MenuList">
+                            <li>
+                                <a href="Engineering.html" class="AppMenuLnk Engnrng">
+                                    <span class="LnkTxt">BMS</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Machinery.html" class="AppMenuLnk Mchnry">
+                                    <span class="LnkTxt">Machinery</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Resources.html" class="AppMenuLnk Rsrcs">
+                                    <span class="LnkTxt">Resources</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Sanitation.html" class="AppMenuLnk Snttn Actv">
+                                    <span class="LnkTxt">Sanitation</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <span class="AppMenuAccrdnLnk FldOprtns">
+                            <span class="LnkTxt">Field Operations</span>
+                        </span>
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul class="MenuList">
+                            <li>
+                                <a href="RepairMaintenance.html" class="AppMenuLnk ReprMntnnc">
+                                    <span class="LnkTxt">Repairs & Maintenance</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="InventoryManagement.html" class="AppMenuLnk InvntryMngmnt">
+                                    <span class="LnkTxt">Inventory Management</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Checklist.html" class="AppMenuLnk Chcklsts">
+                                    <span class="LnkTxt">Checklists</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="PPM.html" class="AppMenuLnk PPM">
+                                    <span class="LnkTxt">PPM</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Attendence.html" class="AppMenuLnk Attndnc">
+                                    <span class="LnkTxt">Attendance</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="BedsOccupancy.html" class="AppMenuLnk BdsOccpncy">
+                                    <span class="LnkTxt">Beds & Occupancy</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="ManpowerUtilization.html" class="AppMenuLnk MnpwrUtlztn">
+                                    <span class="LnkTxt">Manpower Utilization</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="BillingSoftware.html" class="AppMenuLnk BllngSftwr">
+                                    <span class="LnkTxt">Billing Software</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="ComplaintFeedback.html" class="AppMenuLnk CmplntsFdbck">
+                                    <span class="LnkTxt">Complaints & Feedback</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <span class="AppMenuAccrdnLnk ExtrMls">
+                            <span class="LnkTxt">Extra Mile</span>
+                        </span>
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul class="MenuList">
+                            <li>
+                                <a href="Audits.html" class="AppMenuLnk Adts">
+                                    <span class="LnkTxt">Audits</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Benchmarking.html" class="AppMenuLnk Bnchmrkng">
+                                    <span class="LnkTxt">Benchmarking</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Recommendations.html" class="AppMenuLnk Rcmmndtns">
+                                    <span class="LnkTxt">Recommendations</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Comparisions.html" class="AppMenuLnk Cmprsns">
+                                    <span class="LnkTxt">Comparisions</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="CarbonFootprint.html" class="AppMenuLnk CrbnFtprnt">
+                                    <span class="LnkTxt">Carbon Footprint</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="Plans.html" class="AppMenuLnk Plns">
+                                    <span class="LnkTxt">Plans</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <span class="LstUpdtTxt">Version:<span class="DtlTxt">v3.0.20</span></span>
+        <span class="Cprght">Powered by<a href="#" class="LnkTxt">WIS</a></span>
+    </div>
+    <div class="AppHeader">
+        <div class="ContainerLeft">
+            <div class="AppClientLogo">
+                <img src="Images/ClientLogo.png" class="ClientLogo" />
+            </div>
+        </div>
+        <div class="ContainerRight">
+            <div class="AppUsrLnks">
+                <ul class="PrflHdrLnk">
+                    <li>
+                        <div class="PrfHldr">
+                            <img src="Images/UserImg.jpg" class="UserImg" />
+                            <span class="UsrNme">Radhika K.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="Notifications.html" class="HdrIcoLnk Ntfctns Updts"></a>
+                    </li>
+                    <li>
+                        <a href="Settings.html" class="HdrIcoLnk Sttngs"></a>
+                    </li>
+                    <li>
+                        <a href="Login.html" class="HdrIcoLnk Lgout"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="AppSbHdr">
+        <div class="ContainerLeft">
+            <div class="PrprtyPnl">
+                <div class="PrptyDrpDwn">
+                    <span class="PrptyNm">FirstMedic Banjara</span>
+                    <div class="DrpDwnHldr">
+                        <ul class="DrpDwnLst">
+                            <li>
+                                <a href="HospitalSelection.html" class="InnrPrptyNm">FirstMedic Banjara</a>
+                                <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
+                            </li>
+                            <li>
+                                <a href="HospitalSelection.html" class="InnrPrptyNm">FirstMedic Banjara</a>
+                                <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
+                            </li>
+                            <li>
+                                <a href="HospitalSelection.html" class="InnrPrptyNm">FirstMedic Banjara</a>
+                                <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
+                            </li>
+                            <li>
+                                <a href="HospitalSelection.html" class="InnrPrptyNm">FirstMedic Banjara</a>
+                                <span class="InnrPrptyAddrs">Road No. 12, Banjara Hills, Hyderabad, Telangana.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ContainerRight">
+            <div class="PrprtyPnl">
+                <div class="PrprtyBscDtlsHldr">
+                    <ul class="PrprtyBscDtlsLst">
+                        <li class="IcHldr Estblshd">
+                            <span class="BscDtlTxt">2005</span>
+                            <span class="BscDtlTtl">Established</span>
+                        </li>
+                        <li class="IcHldr Twrs">
+                            <span class="BscDtlTxt">03</span>
+                            <span class="BscDtlTtl">Blocks/ Towers</span>
+                        </li>
+                        <li class="IcHldr Bds">
+                            <span class="BscDtlTxt">300</span>
+                            <span class="BscDtlTtl">Beds</span>
+                        </li>
+                        <li class="IcHldr Ntfctns">
+                            <span class="BscDtlTxt">5</span>
+                            <span class="BscDtlTtl">New Notifications</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="PrptyMpLnkHldr">
+                    <ul class="PrprtyBscDtlsLst RgtLnk">
+                        <li class="IcHldr MpVw">
+                            <a href="Dashboard.html" class="BscDtlLnk">Map View</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="OthrCtyDrpDwnHldr">
+                    <div class="CtyDrpDwn">
+                        <span class="DrpdwnTxt">All 16 Locations</span>
+                        <div class="DrpDwnHldr">
+                            <a href="Dashboard.html" class="MpVwLnk">Map View</a>
+                            <div class="accordion" id="accordionFlushCExample">
+                                <div class="accordion-item">
+                                    <span class="accordion-header" id="flush-headingCOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCOne" aria-expanded="false" aria-controls="flush-collapseCOne">
+                                            <span class="CtyNme Lctn">Chennai</span>
+                                            <!--<span class="SbDtls Icn Hsptl"><span class="Val">03</span></span>
+                                <span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
+                                            <span class="SbDtls Icn Ntfctns"><span class="Val">0</span></span>
+                                        </button>
+                                    </span>
+                                    <div id="flush-collapseCOne" class="accordion-collapse collapse" aria-labelledby="flush-headingCOne" data-bs-parent="#accordionFlushCExample">
+                                        <div class="accordion-body">
+                                            <ul class="HsptlLst">
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <span class="accordion-header" id="flush-headingCTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCTwo" aria-expanded="false" aria-controls="flush-collapseCTwo">
+                                            <span class="CtyNme Lctn">Delhi</span>
+                                            <!--<span class="SbDtls Icn Hsptl"><span class="Val">03</span></span>
+                                <span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
+                                            <span class="SbDtls Icn Ntfctns"><span class="Val">5</span></span>
+                                        </button>
+                                    </span>
+                                    <div id="flush-collapseCTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingCTwo" data-bs-parent="#accordionFlushCExample">
+                                        <div class="accordion-body">
+                                            <ul class="HsptlLst">
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">3</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">2</span></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <span class="accordion-header" id="flush-headingCThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCThree" aria-expanded="false" aria-controls="flush-collapseCThree">
+                                            <span class="CtyNme Lctn">Hyderabad</span>
+                                            <!--<span class="SbDtls Icn Hsptl"><span class="Val">03</span></span>
+                                <span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
+                                            <span class="SbDtls Icn Ntfctns"><span class="Val">1</span></span>
+                                        </button>
+                                    </span>
+                                    <div id="flush-collapseCThree" class="accordion-collapse collapse" aria-labelledby="flush-headingCThree" data-bs-parent="#accordionFlushCExample">
+                                        <div class="accordion-body">
+                                            <ul class="HsptlLst">
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">1</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <span class="accordion-header" id="flush-headingCFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCFour" aria-expanded="false" aria-controls="flush-headingCFour">
+                                            <span class="CtyNme Lctn">Kolkata</span>
+                                            <!--<span class="SbDtls Icn Hsptl"><span class="Val">03</span></span>
+                                <span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
+                                            <span class="SbDtls Icn Ntfctns"><span class="Val">3</span></span>
+                                        </button>
+                                    </span>
+                                    <div id="flush-collapseCFour" class="accordion-collapse collapse" aria-labelledby="flush-headingCFour" data-bs-parent="#accordionFlushCExample">
+                                        <div class="accordion-body">
+                                            <ul class="HsptlLst">
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">2</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">1</span></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <span class="accordion-header" id="flush-headingCFive">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseCFive" aria-expanded="false" aria-controls="flush-headingCFour">
+                                            <span class="CtyNme Lctn">Mumbai</span>
+                                            <!--<span class="SbDtls Icn Hsptl"><span class="Val">03</span></span>
+                                <span class="SbDtls Icn HsptlBds"><span class="Val">970</span></span>-->
+                                            <span class="SbDtls Icn Ntfctns"><span class="Val">0</span></span>
+                                        </button>
+                                    </span>
+                                    <div id="flush-collapseCFive" class="accordion-collapse collapse" aria-labelledby="flush-headingCFive" data-bs-parent="#accordionFlushCExample">
+                                        <div class="accordion-body">
+                                            <ul class="HsptlLst">
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="HospitalSelection.html" class="HsptlLnk">FirstMedic Banajara<span class="Ntfctns"><span class="Val">0</span></span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="AppFllContainer">
+        <div class="ContainerLeft">
+            <span class="SctnTtl Snttn">Sanitation</span>
+            <div class="SctnInnerLnks">
+                <ul class="InnrLnksHldr">
+                    <li>
+                        <a href="Sanitation-Washroom.html" class="LnkTxt Wshrm Icn Actv">Washroom</a>
+                    </li>
+                    <li>
+                        <a href="Sanitation-WasteManagement.html" class="LnkTxt WstMngmnt Icn">Waste Management</a>
+                    </li>
+                    <li>
+                        <a href="Sanitation-PestControl.html" class="LnkTxt PstCntrl Icn">Pest Control</a>
+                    </li>
+                    <li>
+                        <a href="Sanitation-FacadeCleaning.html" class="LnkTxt FcdeClnng Icn">Facade Cleaning</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ContainerRight">
+            <div class="SctnDtlsTtlHldr">
+                <div class="BrcmnbHldr">
+                    <ul class="DtlsBrdCrmb">
+                        <li>
+                            <a href="Sanitation.html" class="BrdCrmLnk">All Sanitations</a>
+                        </li>
+                        <li>
+                            <a href="Sanitation.html" class="BrdCrmLnk">Washroom</a>
+                        </li>
+                        <li>
+                            <span class="PgTtl">Tower 01</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="InnrPgBgHldr">
+                <span class="WshrmFllDtlsTtl">Washroom #101 (Male)</span>
+                <div class="WshrmFllsDshDtls MnlAlrt">
+                    <div class="SchdlDtls ">
+                        <ul class="FllLst">
+                            <li>
+                                <div class="WshrmDtlsTxtHldr Ico Schdl">
+                                    <span class="TxtTtl">Next Scheduled Cleaning (Auto)</span>
+                                    <span class="TxtDtl">08:45 PM (K. Prashanth)</span>
+                                </div>
+                            </li>
+                            <li class="FllDtl">
+                                <div class="WshrmDtlsTxtHldr Ico Prrty">
+                                    <span class="TxtTtl">Priority</span>
+                                    <span class="TxtDtl">Normal</span>
+                                </div>
+                            </li>
+                            <li class="FllDtl Ico">
+                                <div class="WshrmDtlsTxtHldr Ico Clng">
+                                </div>
+                            </li>
+                            <li class="FllDtl Ico">
+                                <div class="WshrmDtlsTxtHldr Ico TltRll">
+                                </div>
+                            </li>
+                            <li class="FllDtl Ico">
+                                <div class="WshrmDtlsTxtHldr Ico PprRll">
+                                </div>
+                            </li>
+                            <li class="FllDtl Ico">
+                                <div class="WshrmDtlsTxtHldr Ico Spbr">
+                                </div>
+                            </li>
+                            <li class="FllDtl Ico">
+                                <div class="WshrmDtlsTxtHldr Ico RmFrshnr">
+                                </div>
+                            </li>
+                            <li class="FllDtl Ico">
+                                <div class="WshrmDtlsTxtHldr Ico ThrshBg">
+                                </div>
+                            </li>
+                            <li class="FllDtl Ico">
+                                <div class="WshrmDtlsTxtHldr Ico WtCtn">
+                                </div>
+                            </li>
+                            <li class="FllDtl">
+                                <div class="WshrmDtlsTxtHldr Ico Fdbck">
+                                    <span class="TxtTtl">Feedbacks</span>
+                                    <span class="TxtDtl">Consumables has not been refilled.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="ClngDtls">
+                        <div class="WshrmDtlsTxtHldr Ico Clng">
+                            <span class="TxtTtl">Cleaning last done at 07:56 pm</span>
+                            <span class="TxtDtl">07:45 PM (M. Raju)</span>
+                        </div>
+                    </div>
+                    <div class="CnsmblsDtls">
+                        <div class="WshrmDtlsTxtHldr Ico Cnsmbls">
+                            <span class="TxtTtl">Consumables last refilled at</span>
+                            <span class="TxtDtl">07:56 PM</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="WshrmFllsNumbDtls">
+                    <div class="DrpdwnHldr">
+                        <select class="form-select DrpDwn" aria-label="Default select example">
+                            <option value="1">Last Week</option>
+                            <option value="2">Last Month</option>
+                            <option value="3">Last Year</option>
+                          </select>
+                    </div>
+                    <div class="NumbDtlsHldr">
+                        <span class="ValTxt">122</span>
+                        <span class="ValTtl">Todays Footfall</span>
+                    </div>
+                    <div class="NumbDtlsHldr">
+                        <span class="ValTxt">119</span>
+                        <span class="ValTtl">Average Footfall</span>
+                    </div>
+                    <div class="NumbDtlsHldr">
+                        <span class="ValTxt">1214</span>
+                        <span class="ValTtl">User’s Feedback</span>
+                    </div>
+                    <div class="NumbDtlsHldr">
+                        <span class="ValTxt">80%</span>
+                        <span class="ValTtl">Positive User Feedback</span>
+                    </div>
+                    <div class="NumbDtlsHldr">
+                        <span class="ValTxt">12%</span>
+                        <span class="ValTtl">Negative User Feedback</span>
+                    </div>
+                    <div class="NumbDtlsHldr">
+                        <span class="ValTxt">3.5/<span class="AvgSml">5</span></span>
+                        <span class="ValTtl">Avg. User Feedback</span>
+                    </div>
+                </div>
+                <div class="TableHldr Hstry">
+                    <div class="SrchFltrDv ChckLst">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <span class="InnrTtl">History</span>
+                                    <span class="InnrTxt">01-01-2021 to 13-01-2021</span>
+                                </div>
+                                <div class="col-md-2">
+                                    <select class="form-select DrpDwn" aria-label="Default select example">
+                                        <option selected="">Consumables</option>
+                                        <option value="1">Cleaning</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control InptBx Clndr" id="Text1" value="From Date">
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" class="form-control InptBx Clndr" id="staticEmail" value="To Date">
+                                </div>
+                                <div class="col-md-4 BttnHldr">
+                                    <button type="button" onclick="location.href='AttendenceCustomDate.html'" class="btn btn-primary SbmtBtn">Submit</button>
+                                    <button type="button" class="btn btn-primary FnctnBtn Prnt">Print</button>
+                                    <button type="button" class="btn btn-primary FnctnBtn Dwnld">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="AppDataTbl">
+                        <tbody><tr class="Hdr">
+                            <th>
+                                <span class="DataTtl">Date</span>
+                            </th>
+                            <th>
+                                <span class="DataTtl">Hand Towels</span>
+                            </th>
+                            <th>
+                                <span class="DataTtl">Toilet Paper</span>
+                            </th>
+                            <th>
+                                <span class="DataTtl">Soap</span>
+                            </th>
+                            <th>
+                                <span class="DataTtl">Room Freshner</span>
+                            </th>
+                            <th>
+                                <span class="DataTtl">Trash Bin Covers</span>
+                            </th>
+                            <th>
+                                <span class="DataTtl">Footfall</span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="DataTxt">01-01-2021</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">72 (~3 Avg./ hr)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">410 (~32 Avg.)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">535 (~41 Avg.)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">26 (~2 Avg.)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">26 (~2 Avg.)</span>
+                            </td>
+                            <td>
+                                <span class="DataTxt">2471 (~190 Avg.)</span>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

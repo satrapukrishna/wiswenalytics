@@ -1,0 +1,2443 @@
+﻿body {
+    padding: 0;
+    margin: 0;
+}
+
+div.WtrMngtDshHldr {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    min-height: calc(100% - 40px);
+    position: relative;
+}
+
+    div.WtrMngtDshHldr span.TtlTxt {
+        display: block;
+        font: 800 18px/100% 'Open Sans';
+        color: #367FA8;
+        padding: 20px 15px;
+    }
+
+        div.WtrMngtDshHldr span.TtlTxt.Brdr {
+            border-bottom: 1px solid #ddd;
+        }
+
+        div.WtrMngtDshHldr span.TtlTxt .TtlBtn {
+            box-sizing: border-box;
+            background: #fff;
+            border: 2px solid #367fa8;
+            color: #367fa8;
+            padding: 10px 20px;
+            font: 700 13px/100% 'Open Sans';
+            border-radius: 5px;
+            margin: 0 0 0 10px;
+
+        }
+
+div.WtrMngtSrchSctn {
+    background: #fbfbfb;
+    border-top: 1px solid #e9e9e9;
+    border-bottom: 1px solid #e9e9e9;
+    padding: 15px 10px;
+}
+
+    div.WtrMngtSrchSctn ul.SrchBx {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+        div.WtrMngtSrchSctn ul.SrchBx li {
+            box-sizing: border-box;
+            padding: 0 10px 0 5px;
+        }
+
+            div.WtrMngtSrchSctn ul.SrchBx li span.SrchTxtTtl {
+                display: block;
+                font: 500 12px/100% 'Open Sans';
+                padding: 5px 0 0 0;
+            }
+
+            div.WtrMngtSrchSctn ul.SrchBx li span.SrchOnlyTxtTtl {
+                display: block;
+                font: 600 13px/100% 'Open Sans';
+                padding: 15px 0 0 0;
+            }
+
+            div.WtrMngtSrchSctn ul.SrchBx li span.SrchTxt {
+                display: block;
+                font: 600 12px/100% 'Open Sans';
+                padding: 5px 0 0 0;
+            }
+
+            div.WtrMngtSrchSctn ul.SrchBx li .Inpt {
+                display: block;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+                font: 500 12px/100% 'Open Sans';
+                color: #666;
+                padding: 10px 20px 10px 8px;
+                box-sizing: border-box;
+                transition: 0.3s;
+            }
+
+                div.WtrMngtSrchSctn ul.SrchBx li .Inpt.Clndr {
+                    background: #fff url(../Images/calendar.svg) no-repeat right 10px center;
+                    background-size: 16px;
+                }
+
+                div.WtrMngtSrchSctn ul.SrchBx li .Inpt:focus {
+                    outline: 0px solid #367fa8;
+                    border-color: #367fa8;
+                    transition: 0.3s;
+                }
+
+            div.WtrMngtSrchSctn ul.SrchBx li .InptBtn {
+                display: block;
+                border: none;
+                border-radius: 5px;
+                background: #367fa8 url(../Images/arrow-right.svg) no-repeat right 15px center;
+                color: #fff;
+                height: 100%;
+                font: 600 12px/100% 'Open Sans';
+                padding: 10px 45px 10px 15px;
+                margin: 0 0 0 0;
+                box-sizing: border-box;
+                text-align: center;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                div.WtrMngtSrchSctn ul.SrchBx li .InptBtn:hover {
+                    background: #367fa8 url(../Images/arrow-right.svg) no-repeat right 10px center;
+                    transition: 0.3s;
+                }
+
+        div.WtrMngtSrchSctn ul.SrchBx.WtrFlow li {
+            width: 13%;
+        }
+
+            div.WtrMngtSrchSctn ul.SrchBx.WtrFlow li.BtnHldr {
+                width: 11%;
+            }
+
+        div.WtrMngtSrchSctn ul.SrchBx.CnsmptnRprt li {
+            width: 12.66%;
+        }
+
+            div.WtrMngtSrchSctn ul.SrchBx.CnsmptnRprt li.BtnHldr {
+                width: 8%;
+            }
+
+        div.WtrMngtSrchSctn ul.SrchBx.RnngHrs li {
+            width: 15%;
+        }
+
+            div.WtrMngtSrchSctn ul.SrchBx.RnngHrs li.BtnHldr {
+                width: 12.5%;
+            }
+
+        div.WtrMngtSrchSctn ul.SrchBx.FlowMtr li {
+            width: 13%;
+        }
+
+            div.WtrMngtSrchSctn ul.SrchBx.FlowMtr li.BtnHldr {
+                width: 11%;
+            }
+
+        div.WtrMngtSrchSctn ul.SrchBx.CnsmptnFlwRprt li {
+            width: 12%;
+        }
+
+            div.WtrMngtSrchSctn ul.SrchBx.CnsmptnFlwRprt li.BtnHldr {
+                width: 8%;
+            }
+
+        div.WtrMngtSrchSctn ul.SrchBx.FlGrphRprt li {
+            width: 12%;
+        }
+
+            div.WtrMngtSrchSctn ul.SrchBx.FlGrphRprt li.BtnHldr {
+                width: 8%;
+            }
+
+
+div.WtrMngtDtlsHldr {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+    div.WtrMngtDtlsHldr div.WtrLnDtls {
+        border: 1px solid #ddd;
+        margin: 0 20px 0 0;
+        border-radius: 5px;
+    }
+
+        div.WtrMngtDtlsHldr div.WtrLnDtls span.LnName {
+            display: block;
+            padding: 15px 20px 15px 40px;
+            font: 600 13px/100% 'Open Sans';
+            color: #444;
+            border-bottom: 1px solid #ddd;
+        }
+
+            div.WtrMngtDtlsHldr div.WtrLnDtls span.LnName.MunWtrLn {
+                background: transparent url(../Images/MncplWtrLn.png) no-repeat left 10px center;
+                background-size: 20px;
+            }
+
+            div.WtrMngtDtlsHldr div.WtrLnDtls span.LnName.TnkrWtrLn {
+                background: transparent url(../Images/TnkrWtrLn.png) no-repeat left 10px center;
+                background-size: 20px;
+            }
+
+    div.WtrMngtDtlsHldr div.InnrDtlsMnDv {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        margin: 0 10px;
+        padding: 10px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+        div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr {
+            width: 50%;
+            box-sizing: border-box;
+            padding: 0 10px;
+            position: relative;
+        }
+
+            div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr:first-child {
+                padding-left: 0;
+            }
+
+                div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr:first-child:after {
+                    content: '';
+                    position: absolute;
+                    width: 1px;
+                    height: 100%;
+                    background: #ddd;
+                    right: 0;
+                    top: 0;
+                }
+
+            div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr span.DtlsTxt {
+                display: block;
+                font: 800 15px/100% 'Open Sans';
+                color: #444;
+                padding: 0 10px 3px 0;
+            }
+
+            div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr span.DtlsTxtTtl {
+                display: block;
+                font: 500 12px/120% 'Open Sans';
+                color: #444;
+                padding: 0 10px 0 0;
+            }
+
+            div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr img.ImgHldr {
+                display: inline-block;
+                vertical-align: top;
+                width: 100%;
+                max-width: 30px;
+            }
+
+            div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr a.TxtLnk {
+                display: inline-block;
+                vertical-align: top;
+                font: 600 12px/100% 'Open Sans';
+                color: #367FA8;
+                text-decoration: none;
+                padding: 10px 10px 0 10px;
+            }
+
+            div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr span.DtlsTxtVrfctn {
+                display: block;
+                font: 600 12px/100% 'Open Sans';
+                color: #666;
+                padding: 10px 10px 10px 30px;
+            }
+
+                div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr span.DtlsTxtVrfctn.NtVrd {
+                    background: transparent url(../Images/WtrNtVrfd.png) no-repeat left center;
+                    background-size: 20px;
+                }
+
+                div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr span.DtlsTxtVrfctn.YsVrd {
+                    background: transparent url(../Images/WtrYsVrfd.png) no-repeat left center;
+                    background-size: 20px;
+                }
+
+            div.WtrMngtDtlsHldr div.InnrDtlsMnDv div.TxtDtlsHldr .VrEdBtn {
+                display: block;
+                border: none;
+                border-radius: 5px;
+                background: #367fa8;
+                color: #fff;
+                width: 100%;
+                height: 100%;
+                font: 500 12px/100% 'Open Sans';
+                padding: 10px 15px 10px 15px;
+                text-align: center;
+                box-sizing: border-box;
+                text-align: center;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+        div.WtrMngtDtlsHldr div.InnrDtlsMnDv.BtnHldr {
+            border-bottom: none;
+        }
+
+            div.WtrMngtDtlsHldr div.InnrDtlsMnDv.BtnHldr div.TxtDtlsHldr:first-child:after {
+                display: none;
+            }
+
+    div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+        div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.TnksDlts {
+            padding: 10px 20px;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+            div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.TnksDlts:after {
+                content: '';
+                position: absolute;
+                width: 1px;
+                height: calc(100% - 40px);
+                background: #ddd;
+                right: 0;
+                top: 20px;
+            }
+
+            div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.TnksDlts span.TnkNme {
+                display: block;
+                width: 100%;
+                box-sizing: border-box;
+                padding: 15px 20px 15px 35px;
+                font: 600 13px/100% 'Open Sans';
+                color: #444;
+                border-bottom: 1px solid #ddd;
+            }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.TnksDlts span.TnkNme.WtrSmpTnk {
+                    background: transparent url(../Images/WtrSmpTnk.png) no-repeat left 5px center;
+                    background-size: 20px;
+                }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.TnksDlts span.TnkNme.OvrhdTnk {
+                    background: transparent url(../Images/OvrhdTnks.png) no-repeat left 5px center;
+                    background-size: 20px;
+                }
+
+            div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.TnksDlts div.WtrLvlHldr {
+                width: 25%;
+                box-sizing: border-box;
+                padding: 10px;
+            }
+
+        div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.InnrDtlsMnDv {
+            margin: 0;
+        }
+
+        div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.TnksDlts div.WtrTnkTxtDtlsHldr {
+            width: 75%;
+            padding: 10px 0;
+        }
+
+        div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts {
+            padding: 15px;
+            background: #f9f9f9;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 4px 4px;
+            width: 100%;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+            div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts div.FtrDtls {
+                border-right: 1px solid #ddd;
+                margin: 0 20px 0 0;
+                box-sizing: border-box;
+                padding: 15px 15px 15px 30px;
+            }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts div.FtrDtls span.FtrDtlsTxt {
+                    display: block;
+                    font: 800 15px/100% 'Open Sans';
+                }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts div.FtrDtls span.FtrDtlsTtl {
+                    display: block;
+                    font: 600 12px/120% 'Open Sans';
+                    padding-top: 3px;
+                }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts div.FtrDtls.WtrTnk {
+                    background: transparent url(../Images/SmpTnkOvrHdTnk.png) no-repeat left top 10px;
+                    background-size: 20px;
+                }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts div.FtrDtls.TnkrLn {
+                    background: transparent url(../Images/TnkrWtrLn.png) no-repeat left top 10px;
+                    background-size: 20px;
+                }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts div.FtrDtls.WtrLvl {
+                    background: transparent url(../Images/WtrMtrDshbrd.png) no-repeat left top 10px;
+                    background-size: 20px;
+                }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts div.FtrDtls.Cnsmd {
+                    background: transparent url(../Images/WtrCnsmdTtl.png) no-repeat left top 10px;
+                    background-size: 20px;
+                }
+
+                div.WtrMngtDtlsHldr div.WtrTnksDtlsHldr div.OvrallFllDlts div.FtrDtls.AvgCnsmd {
+                    background: transparent url(../Images/WtrCnsmdAvg.png) no-repeat left top 10px;
+                    background-size: 20px;
+                }
+
+div.PpUpMnHldr {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.3);
+    overflow-y: auto;
+}
+
+    div.PpUpMnHldr div.PpUpDtlsHldr {
+        position: absolute;
+        left: calc(50% - 300px);
+        top: 30px;
+        background: #FFFFFF;
+        box-shadow: 0px 5px 14px rgba(0, 0, 0, 0.14);
+        border-radius: 10px;
+        width: 600px;
+        box-sizing: border-box;
+        padding: 20px;
+    }
+
+        div.PpUpMnHldr div.PpUpDtlsHldr div.TtlHdrDv {
+            border-bottom: 1px solid #ddd;
+            padding: 0 0 10px 0;
+            position: relative;
+        }
+
+            div.PpUpMnHldr div.PpUpDtlsHldr div.TtlHdrDv span.MtrLnNme {
+                display: block;
+                font: 800 16px/100% 'Open Sans';
+                color: #367FA8;
+                padding: 0 30px 0 0;
+            }
+
+            div.PpUpMnHldr div.PpUpDtlsHldr div.TtlHdrDv span.MtrLnDtls {
+                display: block;
+                font: 600 12px/100% 'Open Sans';
+                color: #444;
+                padding: 6px 0 0 0;
+            }
+
+            div.PpUpMnHldr div.PpUpDtlsHldr div.TtlHdrDv span.MtrClsBtn {
+                position: absolute;
+                cursor: pointer;
+                width: 30px;
+                height: 30px;
+                background: transparent url(../Images/MtrClsBtn.svg) no-repeat center center;
+                background-size: 16px;
+                right: 0;
+                top: 0;
+            }
+
+        div.PpUpMnHldr div.PpUpDtlsHldr div.DtlsHdrDv {
+            border-bottom: 1px solid #ddd;
+            padding: 5px 0;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+            div.PpUpMnHldr div.PpUpDtlsHldr div.DtlsHdrDv div.DtlsTxtDv {
+                width: 50%;
+                box-sizing: border-box;
+                padding: 5px 10px;
+            }
+
+                div.PpUpMnHldr div.PpUpDtlsHldr div.DtlsHdrDv div.DtlsTxtDv span.RdnsTxt {
+                    display: block;
+                    font: 600 13px/100% 'Open Sans';
+                    color: #444;
+                    padding-top: 3px;
+                }
+
+                div.PpUpMnHldr div.PpUpDtlsHldr div.DtlsHdrDv div.DtlsTxtDv span.RdnsTxtTtl {
+                    display: block;
+                    font: 600 12px/100% 'Open Sans';
+                    color: #666;
+                }
+
+                div.PpUpMnHldr div.PpUpDtlsHldr div.DtlsHdrDv div.DtlsTxtDv .MtrInpt {
+                    display: block;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    font: 500 12px/100% 'Open Sans';
+                    color: #666;
+                    padding: 10px 20px 10px 8px;
+                    margin: 5px 0 0 0;
+                    box-sizing: border-box;
+                    transition: 0.3s;
+                }
+
+                    div.PpUpMnHldr div.PpUpDtlsHldr div.DtlsHdrDv div.DtlsTxtDv .MtrInpt:focus {
+                        outline: 0px solid #367fa8;
+                        border-color: #367fa8;
+                        transition: 0.3s;
+                    }
+
+        div.PpUpMnHldr div.PpUpDtlsHldr div.MtrImgHldr {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+            div.PpUpMnHldr div.PpUpDtlsHldr div.MtrImgHldr div.DvImgHldr {
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+                div.PpUpMnHldr div.PpUpDtlsHldr div.MtrImgHldr div.DvImgHldr.Hlf {
+                    width: 50%;
+                }
+
+                div.PpUpMnHldr div.PpUpDtlsHldr div.MtrImgHldr div.DvImgHldr img.MtrImg {
+                    width: 100%;
+                }
+
+        div.PpUpMnHldr div.PpUpDtlsHldr div.MtrBtnHldr {
+            border-top: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+
+            div.PpUpMnHldr div.PpUpDtlsHldr div.MtrBtnHldr .SveBtn {
+                display: inline-block;
+                border: none;
+                border-radius: 5px;
+                background: #367fa8;
+                color: #fff;
+                height: 100%;
+                font: 600 13px/100% 'Open Sans';
+                padding: 15px 25px;
+                text-align: center;
+                box-sizing: border-box;
+                text-align: center;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*liquid tank code starts*/
+div.LiquidTank {
+    position: relative;
+    width: 150px;
+    height: 170px;
+    border-radius: 50px/20px;
+    background-color: rgba(160, 160, 160, 0.2);
+}
+
+    div.LiquidTank:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 150px;
+        height: 30px;
+        border-radius: 250px/55px;
+        background-color: rgba(160, 160, 160, 0.2);
+        content: '';
+    }
+
+    div.LiquidTank:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 150px;
+        height: 30px;
+        border-radius: 250px/55px;
+        background-color: rgba(160, 160, 160, 0.2);
+        content: '';
+    }
+
+    div.LiquidTank div.Liquid {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 150px;
+        height: 0px;
+        border-radius: 50px/20px;
+        transition: 0.3s linear;
+    }
+
+        div.LiquidTank div.Liquid:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 150px;
+            height: 30px;
+            border-radius: 250px/55px;
+            content: '';
+        }
+
+        div.LiquidTank div.Liquid:after {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 150px;
+            height: 30px;
+            border-radius: 250px/55px;
+            content: '';
+        }
+
+
+
+
+    div.LiquidTank.Smll, div.LiquidTank.Smll:before, div.LiquidTank.Smll:after, div.LiquidTank.Smll div.Liquid, div.LiquidTank.Smll div.Liquid:before, div.LiquidTank.Smll div.Liquid:after {
+        width: 32px;
+    }
+
+        div.LiquidTank.Smll:before, div.LiquidTank.Smll:after {
+            height: 15px;
+            border-radius: 60px/25px;
+            top: 6px;
+        }
+
+.Liquid.l-52 {
+    top: 42px;
+}
+
+div.LiquidTank.Smll div.Liquid {
+    border-radius: 50px/20px;
+    background-color: rgba(0, 220, 95, 0.5);
+}
+
+    div.LiquidTank.Smll div.Liquid:before, div.LiquidTank.Smll div.Liquid:after {
+        height: 15px;
+        border-radius: 60px/25px;
+    }
+
+    /*Liquid percentage code starts*/
+    /*First 100 to 90 starts*/
+    div.LiquidTank div.Liquid.l-100, div.LiquidTank.Smll div.Liquid.l-100 {
+        height: 200px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-100:before, div.LiquidTank.Smll div.Liquid.l-100:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-100:after, div.LiquidTank.Smll div.Liquid.l-100:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-99, div.LiquidTank.Smll div.Liquid.l-99 {
+        height: 198px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-99:before, div.LiquidTank.Smll div.Liquid.l-99:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-99:after, div.LiquidTank.Smll div.Liquid.l-99:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-98, div.LiquidTank.Smll div.Liquid.l-98 {
+        height: 196px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-98:before, div.LiquidTank.Smll div.Liquid.l-98:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-98:after, div.LiquidTank.Smll div.Liquid.l-98:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-97, div.LiquidTank.Smll div.Liquid.l-97 {
+        height: 194px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-97:before, div.LiquidTank.Smll div.Liquid.l-97:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-97:after, div.LiquidTank.Smll div.Liquid.l-97:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-96, div.LiquidTank.Smll div.Liquid.l-96 {
+        height: 192px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-96:before, div.LiquidTank.Smll div.Liquid.l-96:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-96:after, div.LiquidTank.Smll div.Liquid.l-96:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-95, div.LiquidTank.Smll div.Liquid.l-95 {
+        height: 190px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-95:before, div.LiquidTank.Smll div.Liquid.l-95:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-95:after, div.LiquidTank.Smll div.Liquid.l-95:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-94, div.LiquidTank.Smll div.Liquid.l-94 {
+        height: 188px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-94:before, div.LiquidTank.Smll div.Liquid.l-94:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-94:after, div.LiquidTank.Smll div.Liquid.l-94:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-93, div.LiquidTank.Smll div.Liquid.l-93 {
+        height: 186px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-93:before, div.LiquidTank.Smll div.Liquid.l-93:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-93:after, div.LiquidTank.Smll div.Liquid.l-93:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-92, div.LiquidTank.Smll div.Liquid.l-92 {
+        height: 184px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-92:before, div.LiquidTank.Smll div.Liquid.l-92:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-92:after, div.LiquidTank.Smll div.Liquid.l-92:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-91, div.LiquidTank.Smll div.Liquid.l-91 {
+        height: 182px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-91:before, div.LiquidTank.Smll div.Liquid.l-91:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-91:after, div.LiquidTank.Smll div.Liquid.l-91:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-90, div.LiquidTank.Smll div.Liquid.l-90 {
+        height: 180px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-90:before, div.LiquidTank.Smll div.Liquid.l-90:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-90:after, div.LiquidTank.Smll div.Liquid.l-90:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    /* percentage from 100 to 90 code ends*/
+    /* percentage from 90 to 80 code starts*/
+
+    div.LiquidTank div.Liquid.l-89, div.LiquidTank.Smll div.Liquid.l-89 {
+        height: 178px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-89:before, div.LiquidTank.Smll div.Liquid.l-89:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-89:after, div.LiquidTank.Smll div.Liquid.l-89:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-88, div.LiquidTank.Smll div.Liquid.l-88 {
+        height: 176px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-88:before, div.LiquidTank.Smll div.Liquid.l-88:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-88:after, div.LiquidTank.Smll div.Liquid.l-88:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-87, div.LiquidTank.Smll div.Liquid.l-87 {
+        height: 174px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-87:before, div.LiquidTank.Smll div.Liquid.l-87:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-87:after, div.LiquidTank.Smll div.Liquid.l-87:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-86, div.LiquidTank.Smll div.Liquid.l-86 {
+        height: 172px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-86:before, div.LiquidTank.Smll div.Liquid.l-86:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-86:after, div.LiquidTank.Smll div.Liquid.l-86:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-85, div.LiquidTank.Smll div.Liquid.l-85 {
+        height: 170px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-85:before, div.LiquidTank.Smll div.Liquid.l-85:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-85:after, div.LiquidTank.Smll div.Liquid.l-85:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-84, div.LiquidTank.Smll div.Liquid.l-84 {
+        height: 168px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-84:before, div.LiquidTank.Smll div.Liquid.l-84:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-84:after, div.LiquidTank.Smll div.Liquid.l-84:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-83, div.LiquidTank.Smll div.Liquid.l-83 {
+        height: 166px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-83:before, div.LiquidTank.Smll div.Liquid.l-83:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-83:after, div.LiquidTank.Smll div.Liquid.l-83:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-82, div.LiquidTank.Smll div.Liquid.l-82 {
+        height: 164px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-82:before, div.LiquidTank.Smll div.Liquid.l-82:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-82:after, div.LiquidTank.Smll div.Liquid.l-82:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-81, div.LiquidTank.Smll div.Liquid.l-81 {
+        height: 162px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-81:before, div.LiquidTank.Smll div.Liquid.l-81:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-81:after, div.LiquidTank.Smll div.Liquid.l-81:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+
+    div.LiquidTank div.Liquid.l-80, div.LiquidTank.Smll div.Liquid.l-80 {
+        height: 160px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-80:before, div.LiquidTank.Smll div.Liquid.l-80:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-80:after, div.LiquidTank.Smll div.Liquid.l-80:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    /* percentage from 90 to 80 code ends*/
+    /* percentage from 80 to 70 code starts*/
+
+    div.LiquidTank div.Liquid.l-79, div.LiquidTank.Smll div.Liquid.l-79 {
+        height: 158px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-79:before, div.LiquidTank.Smll div.Liquid.l-79:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-79:after, div.LiquidTank.Smll div.Liquid.l-79:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-78, div.LiquidTank.Smll div.Liquid.l-78 {
+        height: 156px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-78:before, div.LiquidTank.Smll div.Liquid.l-78:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-78:after, div.LiquidTank.Smll div.Liquid.l-78:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-77, div.LiquidTank.Smll div.Liquid.l-77 {
+        height: 154px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-77:before, div.LiquidTank.Smll div.Liquid.l-77:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-77:after, div.LiquidTank.Smll div.Liquid.l-77:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-76, div.LiquidTank.Smll div.Liquid.l-76 {
+        height: 152px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-76:before, div.LiquidTank.Smll div.Liquid.l-76:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-76:after, div.LiquidTank.Smll div.Liquid.l-76:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-75, div.LiquidTank.Smll div.Liquid.l-75 {
+        height: 150px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-75:before, div.LiquidTank.Smll div.Liquid.l-75:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-75:after, div.LiquidTank.Smll div.Liquid.l-75:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-74, div.LiquidTank.Smll div.Liquid.l-74 {
+        height: 148px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-74:before, div.LiquidTank.Smll div.Liquid.l-74:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-74:after, div.LiquidTank.Smll div.Liquid.l-74:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-73, div.LiquidTank.Smll div.Liquid.l-73 {
+        height: 146px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-73:before, div.LiquidTank.Smll div.Liquid.l-73:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-73:after, div.LiquidTank.Smll div.Liquid.l-73:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-72, div.LiquidTank.Smll div.Liquid.l-72 {
+        height: 144px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-72:before, div.LiquidTank.Smll div.Liquid.l-72:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-72:after, div.LiquidTank.Smll div.Liquid.l-72:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-71, div.LiquidTank.Smll div.Liquid.l-71 {
+        height: 142px;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-71:before, div.LiquidTank.Smll div.Liquid.l-71:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-71:after, div.LiquidTank.Smll div.Liquid.l-71:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+
+    div.LiquidTank div.Liquid.l-70, div.LiquidTank.Smll div.Liquid.l-70 {
+        height: 240px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+    div.LiquidTank div.Liquid.l-70, div.LiquidTank.Smll div.Liquid.l-80 {
+        height: 153px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-70:before, div.LiquidTank.Smll div.Liquid.l-70:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-70:after, div.LiquidTank.Smll div.Liquid.l-70:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    /* percentage from 80 to 70 code ends*/
+    /* percentage from 70 to 60 code starts*/
+
+    div.LiquidTank div.Liquid.l-69, div.LiquidTank.Smll div.Liquid.l-69 {
+        height: 138px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-69:before, div.LiquidTank.Smll div.Liquid.l-69:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-69:after, div.LiquidTank.Smll div.Liquid.l-69:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-68, div.LiquidTank.Smll div.Liquid.l-68 {
+        height: 136px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-68:before, div.LiquidTank.Smll div.Liquid.l-68:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-68:after, div.LiquidTank.Smll div.Liquid.l-68:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-67, div.LiquidTank.Smll div.Liquid.l-67 {
+        height: 134px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-67:before, div.LiquidTank.Smll div.Liquid.l-67:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-67:after, div.LiquidTank.Smll div.Liquid.l-67:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-66, div.LiquidTank.Smll div.Liquid.l-66 {
+        height: 132px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-66:before, div.LiquidTank.Smll div.Liquid.l-66:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-66:after, div.LiquidTank.Smll div.Liquid.l-66:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-65, div.LiquidTank.Smll div.Liquid.l-65 {
+        height: 130px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-65:before, div.LiquidTank.Smll div.Liquid.l-65:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-65:after, div.LiquidTank.Smll div.Liquid.l-65:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-64, div.LiquidTank.Smll div.Liquid.l-64 {
+        height: 128px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-64:before, div.LiquidTank.Smll div.Liquid.l-64:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-64:after, div.LiquidTank.Smll div.Liquid.l-64:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-63, div.LiquidTank.Smll div.Liquid.l-63 {
+        height: 126px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-63:before, div.LiquidTank.Smll div.Liquid.l-63:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-63:after, div.LiquidTank.Smll div.Liquid.l-63:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-62, div.LiquidTank.Smll div.Liquid.l-62 {
+        height: 124px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-62:before, div.LiquidTank.Smll div.Liquid.l-62:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-62:after, div.LiquidTank.Smll div.Liquid.l-62:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+    div.LiquidTank div.Liquid.l-61, div.LiquidTank.Smll div.Liquid.l-61 {
+        height: 122px;
+        transition: 0.3s;
+        background-color: rgba(0, 220, 95, 0.7);
+    }
+
+        div.LiquidTank div.Liquid.l-61:before, div.LiquidTank.Smll div.Liquid.l-61:before {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+        div.LiquidTank div.Liquid.l-61:after, div.LiquidTank.Smll div.Liquid.l-61:after {
+            background-color: rgba(0, 220, 95, 0.7);
+        }
+
+
+    div.LiquidTank div.Liquid.l-60, div.LiquidTank.Smll div.Liquid.l-60 {
+        height: 120px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-60:before, div.LiquidTank.Smll div.Liquid.l-60:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-60:after, div.LiquidTank.Smll div.Liquid.l-60:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    /* percentage from 70 to 60 code ends */
+    /* percentage from 60 to 50 code starts*/
+
+    div.LiquidTank div.Liquid.l-59, div.LiquidTank.Smll div.Liquid.l-59 {
+        height: 118px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-59:before, div.LiquidTank.Smll div.Liquid.l-59:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-59:after, div.LiquidTank.Smll div.Liquid.l-59:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-58, div.LiquidTank.Smll div.Liquid.l-58 {
+        height: 116px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-58:before, div.LiquidTank.Smll div.Liquid.l-58:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-58:after, div.LiquidTank.Smll div.Liquid.l-58:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-57, div.LiquidTank.Smll div.Liquid.l-57 {
+        height: 114px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-57:before, div.LiquidTank.Smll div.Liquid.l-57:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-57:after, div.LiquidTank.Smll div.Liquid.l-57:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-56, div.LiquidTank.Smll div.Liquid.l-56 {
+        height: 112px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-56:before, div.LiquidTank.Smll div.Liquid.l-56:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-56:after, div.LiquidTank.Smll div.Liquid.l-56:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-55, div.LiquidTank.Smll div.Liquid.l-55 {
+        height: 110px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-55:before, div.LiquidTank.Smll div.Liquid.l-55:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-55:after, div.LiquidTank.Smll div.Liquid.l-55:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-54, div.LiquidTank.Smll div.Liquid.l-54 {
+        height: 108px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-54:before, div.LiquidTank.Smll div.Liquid.l-54:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-54:after, div.LiquidTank.Smll div.Liquid.l-54:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-53, div.LiquidTank.Smll div.Liquid.l-53 {
+        height: 106px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-53:before, div.LiquidTank.Smll div.Liquid.l-53:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-53:after, div.LiquidTank.Smll div.Liquid.l-53:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-52, div.LiquidTank.Smll div.Liquid.l-52 {
+        height: 104px;
+        transition: 0.3s;
+        background-color: rgba(122, 210, 160, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-52:before, div.LiquidTank.Smll div.Liquid.l-52:before {
+            background-color: rgba(97, 203, 143, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-52:after, div.LiquidTank.Smll div.Liquid.l-52:after {
+            background-color: rgba(97, 203, 143, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-51, div.LiquidTank.Smll div.Liquid.l-51 {
+        height: 102px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-51:before, div.LiquidTank.Smll div.Liquid.l-51:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-51:after, div.LiquidTank.Smll div.Liquid.l-51:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    /* percentage from 60 to 50 code ends*/
+    /* percentage from 50 to 40 code starts*/
+
+    div.LiquidTank div.Liquid.l-50, div.LiquidTank.Smll div.Liquid.l-50 {
+        height: 100px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-50:before, div.LiquidTank.Smll div.Liquid.l-50:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-50:after, div.LiquidTank.Smll div.Liquid.l-50:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-49, div.LiquidTank.Smll div.Liquid.l-49 {
+        height: 98px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-49:before, div.LiquidTank.Smll div.Liquid.l-49:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-49:after, div.LiquidTank.Smll div.Liquid.l-49:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-48, div.LiquidTank.Smll div.Liquid.l-48 {
+        height: 96px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-48:before, div.LiquidTank.Smll div.Liquid.l-48:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-48:after, div.LiquidTank.Smll div.Liquid.l-48:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-47, div.LiquidTank.Smll div.Liquid.l-47 {
+        height: 94px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-47:before, div.LiquidTank.Smll div.Liquid.l-47:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-47:after, div.LiquidTank.Smll div.Liquid.l-47:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-46, div.LiquidTank.Smll div.Liquid.l-46 {
+        height: 92px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-46:before, div.LiquidTank.Smll div.Liquid.l-46:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-46:after, div.LiquidTank.Smll div.Liquid.l-46:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-45, div.LiquidTank.Smll div.Liquid.l-45 {
+        height: 90px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-45:before, div.LiquidTank.Smll div.Liquid.l-45:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-45:after, div.LiquidTank.Smll div.Liquid.l-45:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-44, div.LiquidTank.Smll div.Liquid.l-44 {
+        height: 88px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-44:before, div.LiquidTank.Smll div.Liquid.l-44:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-44:after, div.LiquidTank.Smll div.Liquid.l-44:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-43, div.LiquidTank.Smll div.Liquid.l-43 {
+        height: 86px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-43:before, div.LiquidTank.Smll div.Liquid.l-43:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-43:after, div.LiquidTank.Smll div.Liquid.l-43:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-42, div.LiquidTank.Smll div.Liquid.l-42 {
+        height: 84px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-42:before, div.LiquidTank.Smll div.Liquid.l-42:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-42:after, div.LiquidTank.Smll div.Liquid.l-42:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-41, div.LiquidTank.Smll div.Liquid.l-41 {
+        height: 82px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-41:before, div.LiquidTank.Smll div.Liquid.l-41:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-41:after, div.LiquidTank.Smll div.Liquid.l-41:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+
+    div.LiquidTank div.Liquid.l-40, div.LiquidTank.Smll div.Liquid.l-40 {
+        height: 80px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-40:before, div.LiquidTank.Smll div.Liquid.l-40:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-40:after, div.LiquidTank.Smll div.Liquid.l-40:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    /* percentage from 50 to 40 code ends*/
+    /* percentage from 40 to 30 code starts*/
+
+    div.LiquidTank div.Liquid.l-39, div.LiquidTank.Smll div.Liquid.l-39 {
+        height: 78px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-39:before, div.LiquidTank.Smll div.Liquid.l-39:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-39:after, div.LiquidTank.Smll div.Liquid.l-39:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-38, div.LiquidTank.Smll div.Liquid.l-38 {
+        height: 76px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-38:before, div.LiquidTank.Smll div.Liquid.l-38:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-38:after, div.LiquidTank.Smll div.Liquid.l-38:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-37, div.LiquidTank.Smll div.Liquid.l-37 {
+        height: 74px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-37:before, div.LiquidTank.Smll div.Liquid.l-37:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-37:after, div.LiquidTank.Smll div.Liquid.l-37:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-36, div.LiquidTank.Smll div.Liquid.l-36 {
+        height: 72px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-36:before, div.LiquidTank.Smll div.Liquid.l-36:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-36:after, div.LiquidTank.Smll div.Liquid.l-36:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-35, div.LiquidTank.Smll div.Liquid.l-35 {
+        height: 76px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-35:before, div.LiquidTank.Smll div.Liquid.l-35:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-35:after, div.LiquidTank.Smll div.Liquid.l-35:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-34, div.LiquidTank.Smll div.Liquid.l-34 {
+        height: 68px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-34:before, div.LiquidTank.Smll div.Liquid.l-34:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-34:after, div.LiquidTank.Smll div.Liquid.l-34:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-33, div.LiquidTank.Smll div.Liquid.l-33 {
+        height: 66px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-33:before, div.LiquidTank.Smll div.Liquid.l-33:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-33:after, div.LiquidTank.Smll div.Liquid.l-33:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-32, div.LiquidTank.Smll div.Liquid.l-32 {
+        height: 64px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-32:before, div.LiquidTank.Smll div.Liquid.l-32:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-32:after, div.LiquidTank.Smll div.Liquid.l-32:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+    div.LiquidTank div.Liquid.l-31, div.LiquidTank.Smll div.Liquid.l-31 {
+        height: 62px;
+        transition: 0.3s;
+        background-color: rgba(240, 190, 18, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-31:before, div.LiquidTank.Smll div.Liquid.l-31:before {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+        div.LiquidTank div.Liquid.l-31:after, div.LiquidTank.Smll div.Liquid.l-31:after {
+            background-color: rgba(240, 190, 18, 0.8);
+        }
+
+
+    div.LiquidTank div.Liquid.l-30, div.LiquidTank.Smll div.Liquid.l-30 {
+        height: 60px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-30:before, div.LiquidTank.Smll div.Liquid.l-30:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-30:after, div.LiquidTank.Smll div.Liquid.l-30:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    /* percentage from 40 to 30 code ends*/
+    /* percentage from 30 to 20 code starts*/
+
+    div.LiquidTank div.Liquid.l-29, div.LiquidTank.Smll div.Liquid.l-29 {
+        height: 58px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-29:before, div.LiquidTank.Smll div.Liquid.l-29:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-29:after, div.LiquidTank.Smll div.Liquid.l-29:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-28, div.LiquidTank.Smll div.Liquid.l-28 {
+        height: 56px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-28:before, div.LiquidTank.Smll div.Liquid.l-28:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-28:after, div.LiquidTank.Smll div.Liquid.l-28:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-27, div.LiquidTank.Smll div.Liquid.l-27 {
+        height: 54px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-27:before, div.LiquidTank.Smll div.Liquid.l-27:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-27:after, div.LiquidTank.Smll div.Liquid.l-27:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-26, div.LiquidTank.Smll div.Liquid.l-26 {
+        height: 52px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-26:before, div.LiquidTank.Smll div.Liquid.l-26:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-26:after, div.LiquidTank.Smll div.Liquid.l-26:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-25, div.LiquidTank.Smll div.Liquid.l-25 {
+        height: 50px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-25:before, div.LiquidTank.Smll div.Liquid.l-25:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-25:after, div.LiquidTank.Smll div.Liquid.l-25:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-24, div.LiquidTank.Smll div.Liquid.l-24 {
+        height: 48px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-24:before, div.LiquidTank.Smll div.Liquid.l-24:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-24:after, div.LiquidTank.Smll div.Liquid.l-24:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-23, div.LiquidTank.Smll div.Liquid.l-23 {
+        height: 46px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-23:before, div.LiquidTank.Smll div.Liquid.l-23:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-23:after, div.LiquidTank.Smll div.Liquid.l-23:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-22, div.LiquidTank.Smll div.Liquid.l-22 {
+        height: 44px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-22:before, div.LiquidTank.Smll div.Liquid.l-22:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-22:after, div.LiquidTank.Smll div.Liquid.l-22:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-21, div.LiquidTank.Smll div.Liquid.l-21 {
+        height: 42px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-21:before, div.LiquidTank.Smll div.Liquid.l-21:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-21:after, div.LiquidTank.Smll div.Liquid.l-21:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-20, div.LiquidTank.Smll div.Liquid.l-20 {
+        height: 40px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-20:before, div.LiquidTank.Smll div.Liquid.l-20:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-20:after, div.LiquidTank.Smll div.Liquid.l-20:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    /* percentage from 30 to 20 code ends*/
+    /* percentage from 20 to 10 code starts*/
+
+    div.LiquidTank div.Liquid.l-19, div.LiquidTank.Smll div.Liquid.l-19 {
+        height: 38px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-19:before, div.LiquidTank.Smll div.Liquid.l-19:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-19:after, div.LiquidTank.Smll div.Liquid.l-19:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-18, div.LiquidTank.Smll div.Liquid.l-18 {
+        height: 36px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-18:before, div.LiquidTank.Smll div.Liquid.l-18:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-18:after, div.LiquidTank.Smll div.Liquid.l-18:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-17, div.LiquidTank.Smll div.Liquid.l-17 {
+        height: 34px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-17:before, div.LiquidTank.Smll div.Liquid.l-17:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-17:after, div.LiquidTank.Smll div.Liquid.l-17:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-16, div.LiquidTank.Smll div.Liquid.l-16 {
+        height: 32px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-16:before, div.LiquidTank.Smll div.Liquid.l-16:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-16:after, div.LiquidTank.Smll div.Liquid.l-16:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-15, div.LiquidTank.Smll div.Liquid.l-15 {
+        height: 30px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-15:before, div.LiquidTank.Smll div.Liquid.l-15:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-15:after, div.LiquidTank.Smll div.Liquid.l-15:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-14, div.LiquidTank.Smll div.Liquid.l-14 {
+        height: 28px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-14:before, div.LiquidTank.Smll div.Liquid.l-14:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-14:after, div.LiquidTank.Smll div.Liquid.l-14:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-13, div.LiquidTank.Smll div.Liquid.l-13 {
+        height: 26px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-13:before, div.LiquidTank.Smll div.Liquid.l-13:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-13:after, div.LiquidTank.Smll div.Liquid.l-13:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-12, div.LiquidTank.Smll div.Liquid.l-12 {
+        height: 24px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-12:before, div.LiquidTank.Smll div.Liquid.l-12:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-12:after, div.LiquidTank.Smll div.Liquid.l-12:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-11, div.LiquidTank.Smll div.Liquid.l-11 {
+        height: 22px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.8);
+    }
+
+        div.LiquidTank div.Liquid.l-11:before, div.LiquidTank.Smll div.Liquid.l-11:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-11:after, div.LiquidTank.Smll div.Liquid.l-11:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+
+
+    div.LiquidTank div.Liquid.l-10, div.LiquidTank.Smll div.Liquid.l-10 {
+        height: 20px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-10:before, div.LiquidTank.Smll div.Liquid.l-10:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-10:after, div.LiquidTank.Smll div.Liquid.l-10:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    /* percentage from 20 to 10 code ends*/
+    /* percentage from 10 to 0 code starts*/
+
+    div.LiquidTank div.Liquid.l-9, div.LiquidTank.Smll div.Liquid.l-9 {
+        height: 18px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-9:before, div.LiquidTank.Smll div.Liquid.l-9:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-9:after, div.LiquidTank.Smll div.Liquid.l-9:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-8, div.LiquidTank.Smll div.Liquid.l-8 {
+        height: 16px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-8:before, div.LiquidTank.Smll div.Liquid.l-8:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-8:after, div.LiquidTank.Smll div.Liquid.l-8:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-7, div.LiquidTank.Smll div.Liquid.l-7 {
+        height: 14px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-7:before, div.LiquidTank.Smll div.Liquid.l-7:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-7:after, div.LiquidTank.Smll div.Liquid.l-7:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-6, div.LiquidTank.Smll div.Liquid.l-6 {
+        height: 12px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-6:before, div.LiquidTank.Smll div.Liquid.l-6:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-6:after, div.LiquidTank.Smll div.Liquid.l-6:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-5, div.LiquidTank.Smll div.Liquid.l-5 {
+        height: 10px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-5:before, div.LiquidTank.Smll div.Liquid.l-5:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-5:after, div.LiquidTank.Smll div.Liquid.l-5:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-4, div.LiquidTank.Smll div.Liquid.l-4 {
+        height: 8px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-4:before, div.LiquidTank.Smll div.Liquid.l-4:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-4:after, div.LiquidTank.Smll div.Liquid.l-4:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-3, div.LiquidTank.Smll div.Liquid.l-3 {
+        height: 6px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-3:before, div.LiquidTank.Smll div.Liquid.l-3:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-3:after, div.LiquidTank.Smll div.Liquid.l-3:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-2, div.LiquidTank.Smll div.Liquid.l-2 {
+        height: 4px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-2:before, div.LiquidTank.Smll div.Liquid.l-2:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-2:after, div.LiquidTank.Smll div.Liquid.l-2:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+    div.LiquidTank div.Liquid.l-1, div.LiquidTank.Smll div.Liquid.l-1 {
+        height: 2px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 0.5);
+    }
+
+        div.LiquidTank div.Liquid.l-1:before, div.LiquidTank.Smll div.Liquid.l-1:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-1:after, div.LiquidTank.Smll div.Liquid.l-1:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+
+    div.LiquidTank div.Liquid.l-0, div.LiquidTank.Smll div.Liquid.l-0 {
+        height: 0px;
+        transition: 0.3s;
+        background-color: rgba(184, 0, 0, 1);
+    }
+
+        div.LiquidTank div.Liquid.l-0:before, div.LiquidTank.Smll div.Liquid.l-0:before {
+            background-color: rgba(184, 0, 0, 0.3);
+        }
+
+        div.LiquidTank div.Liquid.l-0:after, div.LiquidTank.Smll div.Liquid.l-0:after {
+            background-color: rgba(184, 0, 0, 0.2);
+        }
+
+/* percentage from 10 to 0 code end*/
+
+div.LiquidTank.Smll span.LiquidStatus {
+    position: absolute;
+    font: 300 38px 'Open Sans';
+    right: -135px;
+    top: 35%;
+    font-size: 45px;
+    padding-right: 35px;
+    color: #52c785;
+}
+
+div.LiquidTank.Smll div.Liquid.Low {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 32px;
+    height: 75px;
+    border-radius: 50px/20px;
+    transition: 0.3s linear;
+    background: rgba(209,98,98,0.8);
+}
+
+    div.LiquidTank.Smll div.Liquid.Low:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 32px;
+        height: 15px;
+        border-radius: 250px/55px;
+        content: '';
+        background: rgba(209,98,98,1);
+    }
+
+    div.LiquidTank.Smll div.Liquid.Low:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 32px;
+        height: 15px;
+        border-radius: 250px/55px;
+        content: '';
+        background: rgba(209,98,98,0.9);
+    }
+
+div.LiquidTank.Smll div.Liquid.Medium {
+    position: absolute;
+    left: 0;
+    bottom: 61px;
+    width: 32px;
+    height: 76px;
+    border-radius: 50px/20px;
+    transition: 0.3s linear;
+    background: rgba(259,153,0,0.8);
+}
+
+    div.LiquidTank.Smll div.Liquid.Medium:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 32px;
+        height: 15px;
+        border-radius: 250px/55px;
+        content: '';
+        background: rgba(259,153,0,1);
+    }
+
+    div.LiquidTank.Smll div.Liquid.Medium:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 32px;
+        height: 15px;
+        border-radius: 250px/55px;
+        content: '';
+        background: rgba(259,153,0,0.9);
+    }
+
+div.LiquidTank.Smll div.Liquid.High {
+    position: absolute;
+    left: 0;
+    bottom: 122px;
+    width: 32px;
+    height: 145px;
+    border-radius: 50px/20px;
+    transition: 0.3s linear;
+    background: rgba(0,160,70,0.8);
+}
+
+    div.LiquidTank.Smll div.Liquid.High:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 32px;
+        height: 15px;
+        border-radius: 250px/55px;
+        content: '';
+        background: rgba(0,160,70,1);
+    }
+
+    div.LiquidTank.Smll div.Liquid.High:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 32px;
+        height: 15px;
+        border-radius: 250px/55px;
+        content: '';
+        background: rgba(0,160,70,0.9);
+    }
+
+div.LiquidTank.Smll span.LowTxt {
+    position: absolute;
+    right: -36px;
+    top: 155px;
+    color: rgba(209,98,98,0.8);
+}
+
+div.LiquidTank.Smll span.MedTxt {
+    position: absolute;
+    right: -60px;
+    top: 95px;
+    color: rgba(259,153,0,1);
+}
+
+div.LiquidTank.Smll span.HghTxt {
+    position: absolute;
+    right: -40px;
+    top: 30px;
+    color: rgba(0,160,70,1);
+}
+
+
+
+div.SttngsMnDv {
+    padding: 10px;
+}
+
+    div.SttngsMnDv table.SttngsDtlsTbl {
+        width: 100%;
+        border-spacing: 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+
+        div.SttngsMnDv table.SttngsDtlsTbl th, div.SttngsMnDv table.SttngsDtlsTbl td {
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+            font: 500 13px/100% 'Open Sans';
+            color: #555;
+            border-top: 1px solid #eee;
+            border-left: 1px solid #eee;
+        }
+
+            div.SttngsMnDv table.SttngsDtlsTbl th:first-child, div.SttngsMnDv table.SttngsDtlsTbl td:first-child {
+                border-left: none;
+            }
+
+        div.SttngsMnDv table.SttngsDtlsTbl th {
+            background: #f9f9f9;
+            border-top: none;
+            border-left-color: #e1e1e1;
+            font-weight: 600;
+            color: #444;
+        }
+
+            div.SttngsMnDv table.SttngsDtlsTbl th:first-child {
+                border-radius: 4px 0 0 0;
+            }
+
+            div.SttngsMnDv table.SttngsDtlsTbl th:last-child {
+                border-radius: 0 4px 0 0;
+            }
+
+        div.SttngsMnDv table.SttngsDtlsTbl a.LnkTxt {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            color: #367fa8;
+        }
+
+        div.SttngsMnDv table.SttngsDtlsTbl a.LnkTxt:hover {
+                text-decoration: underline;
+            }
+
+
+    div.SttngsMnDv div.FrmMnDv {
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+        div.SttngsMnDv div.FrmMnDv.Hghlght {
+            background: #f9f9f9;
+        }
+
+        div.SttngsMnDv div.FrmMnDv span.FrmTxtTtl {
+            display: block;
+            width: 100%;
+            font: 600 13px/100% 'Open Sans';
+            color: #367FA8;
+            padding: 15px 10px 0  10px;
+            box-sizing: border-box;
+        }
+
+        div.SttngsMnDv div.FrmMnDv div.FldHldr {
+            border-bottom: 1px solid #eee;
+            padding: 15px 10px;
+            box-sizing: border-box;
+        }
+
+        div.SttngsMnDv div.FrmMnDv.Hghlght div.FldHldr {
+            border-color: #ddd;
+        }
+
+        div.SttngsMnDv div.FrmMnDv div.FldHldr span.FrmTxt {
+            display: block;
+            font: 500 13px/100% 'Open Sans';
+            padding: 0 0 10px 0;
+        }
+
+            div.SttngsMnDv div.FrmMnDv div.FldHldr .Inpt {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                box-sizing: border-box;
+                font: 500 13px/100% 'Open Sans';
+                color: #666;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+                div.SttngsMnDv div.FrmMnDv div.FldHldr .Inpt:active, div.SttngsMnDv div.FrmMnDv div.FldHldr .Inpt:focus {
+                    outline-color: #367FA8;
+                }
+
+
+            div.SttngsMnDv div.FrmMnDv div.FldHldr.Fll {
+                width: 100%;
+            }
+
+        div.SttngsMnDv div.FrmMnDv div.FldHldr.Hlf {
+            width: 50%;
+        }
+
+        div.SttngsMnDv div.FrmMnDv div.FldHldr.Qtr {
+            width: 25%;
+        }
+
+        div.SttngsMnDv div.FrmMnDv div.FldHldr.ThrdQtr {
+            width: 75%;
+        }
+
+        div.SttngsMnDv div.FrmMnDv div.FldHldr.OnThrd {
+            width: 33.33%;
+        }
+
+
+            
+
+
+
+            div.SttngsMnDv div.FrmMnDv div.FldHldr .InptBtn {
+                display: block;
+                border: none;
+                border-radius: 5px;
+                background: #367fa8 url(../Images/arrow-right.svg) no-repeat right 15px center;
+                color: #fff;
+                height: 100%;
+                font: 600 12px/100% 'Open Sans';
+                padding: 15px 45px 15px 15px;
+                margin: 0 0 0 0;
+                box-sizing: border-box;
+                text-align: center;
+                cursor: pointer;
+                transition: 0.3s;
+            }
+
+                div.SttngsMnDv div.FrmMnDv div.FldHldr .InptBtn:hover {
+                    background: #367fa8 url(../Images/arrow-right.svg) no-repeat right 10px center;
+                    transition: 0.3s;
+                }

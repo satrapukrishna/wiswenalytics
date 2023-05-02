@@ -1,0 +1,206 @@
+.table-responsive {
+    background: #fff;
+    padding: 10px;
+    margin-left: 0px !important;
+}
+/*div.DshbordCntr div.CntntHldr div.CntntDtls {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        border-bottom: 2px solid #b9dcdb;
+    }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls.Hdr {
+            border-bottom: none;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls > div {
+            box-sizing: border-box;
+            padding: 15px 10px 10px 10px;
+            border-bottom: 1px solid #b9dcdb;
+            border-left: 1px solid #b9dcdb;
+        }
+div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr {
+            background: #e1f0f0;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Frst {
+            width: 20%;
+            border-left: none;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Scnd {
+            width: 80%;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding: 0;
+            border-bottom: none;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Dtls {
+            width: 16%;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Scnd div.Dtls {
+            width: 20%;
+            box-sizing: border-box;
+            padding: 15px 10px 10px 10px;
+            border-left: 1px solid #b9dcdb;
+            border-bottom: 1px solid #b9dcdb;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr span.MnTtl {
+            display: block;
+            color: #07716f;
+            font: 600 16px 'Open Sans';
+            text-align: center;
+            padding: 20px 0 0 0;
+        }
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr img.HdrImg {
+            display: block;
+            margin: 0 auto;
+            width: 50px;
+            height: 50px;
+        }
+
+            div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr img.HdrImg.RFID {
+                background: transparent url(../Images/RFID.png) no-repeat center center;
+                background-size: 100%;
+            }
+
+            div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr img.HdrImg.Stink {
+                background: transparent url(../Images/Stink.png) no-repeat center center;
+                background-size: 100%;
+            }
+            div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr img.HdrImg.WaterLevel {
+                background: transparent url(../Images/Water.png) no-repeat center center;
+                background-size: 100%;
+            }
+
+            div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr img.HdrImg.Footfall {
+                background: transparent url(../Images/Footfall.png) no-repeat center center;
+                background-size: 100%;
+            }
+
+            div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr img.HdrImg.Feedback {
+                background: transparent url(../Images/Feedback.png) no-repeat center center;
+                background-size: 100%;
+            }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Hdr span.HdrTtl {
+            display: block;
+            color: #02918d;
+            font-weight: 600;
+            text-align: center;
+            padding: 5px 0 0 0;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Frst span.Txt {
+            display: block;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Frst span.TlNm {
+            color: #444;
+            font-size: 15px;
+            padding-bottom: 5px;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div.Frst span.Bld {
+            font-weight: 600;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr {
+            padding: 2px;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr span.Txt {
+                box-sizing: border-box;
+                vertical-align: top;
+            }
+
+            div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr span.TxtHghlgt {
+                font: 400 28px/100% 'Open Sans';
+                box-sizing: border-box;
+                vertical-align: top;
+            }
+
+            div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr input.Btn {
+                background: #07716f;
+                color: #fff;
+                font: 'acceptble';
+                padding: 8px 0;
+                font: 400 11px 'Open Sans';
+                cursor: pointer;
+                border: none;
+                width: 100%;
+                border-radius: 3px;
+            }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr input.Btngreen {
+                background: #67b777;
+                color: #fff;
+                padding: 8px 0;
+                font: 400 11px 'Open Sans';
+                cursor: pointer;
+                border: none;
+                width: 100%;
+                border-radius: 3px;
+            }
+            div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr input.Btnyellow {
+                background: #d6ce68;
+                color: #fff;
+                padding: 8px 0;
+                font: 400 11px 'Open Sans';
+                cursor: pointer;
+                border: none;
+                width: 100%;
+                border-radius: 3px;
+            }
+        div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr input.Btnred {
+                background: #ca5555;
+                color: #fff;
+                padding: 8px 0;
+                font: 400 11px 'Open Sans';
+                cursor: pointer;
+                border: none;
+                width: 100%;
+                border-radius: 3px;
+            }
+             div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr input.Btngreenl {
+                background: #67b777;
+                color: #fff;
+                padding: 8px 0;
+                font: 400 11px 'Open Sans';
+                cursor: pointer;
+                border: none;
+                width: 100%;
+                border-radius: 3px;
+            }
+
+        div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr input.Btnyellowl {
+                background: #d6ce68;
+                color: #fff;
+                padding: 8px 0;
+                font: 400 11px 'Open Sans';
+                cursor: pointer;
+                border: none;
+                width: 100%;
+                border-radius: 3px;
+            }
+            div.DshbordCntr div.CntntHldr div.CntntDtls div div.Hldr input.Btnredl {
+                background: #ca5555;
+                color: #fff;
+                padding: 8px 0;
+                font: 400 11px 'Open Sans';
+                cursor: pointer;
+                border: none;
+                width: 100%;
+                border-radius: 3px;
+            }*/

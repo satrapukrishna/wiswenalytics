@@ -1,0 +1,316 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+body{
+  
+  margin: 0px;
+  padding: 0px;
+  font-size: 14px !important;
+  
+}
+.dropdown-menu li{
+  margin: 5px 0 !important;
+    padding: 8px;
+    font-size: 15px;
+    list-style: none;
+}
+.dropdown-menu li .fa{
+  margin-right: 6px;
+}
+h1{
+  color: rgb(234, 245, 252);
+}
+.navbar-nav>.user-menu>.dropdown-menu{
+  width: 166px !important;
+}
+.cssanimation, .cssanimation span {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+.cssanimation span { display: inline-block }
+
+.leFadeInLeft span { animation-name: leFadeInLeft }
+@keyframes leFadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+    to { opacity: 1 }
+}
+.meter-first{
+  
+    padding: 15px !important;
+    background: #fff;
+}
+.meter-first h3{
+  margin-top: 0px;
+    margin-bottom: 10px;
+}
+.hello{
+  
+}
+.hello div{
+    color: #98a6ad !important;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+.value{
+  display: inline-flex;
+  margin-bottom: 8px;
+}
+.value div{
+  width: 120px;
+    /*color: #98a6ad !important;*/
+    color: #fff !important;
+    font-size: 14px;
+}
+.value span{
+  /*color: #797979 !important;*/
+  color: #fff !important;
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 5px;
+    width: 120px;
+}
+.b-value{
+  display: inline-flex;
+  margin-bottom: 11px;
+}
+.b-value div{
+  width: 152px;
+    /*color: #98a6ad !important;
+    color: #696969 !important;*/
+    font-size: 12px;
+    color: #fff;
+    font-weight: 500;
+}
+.b-value span{
+ /* color: #797979 !important;*/
+  color: #fff;
+    font-weight: 500;
+    font-size: 15px;
+    /*margin-right: 5px;*/
+    width: 150px;;
+}
+.b-time {
+  margin-bottom: 8px;
+}
+.b-time span{
+  font-size: 15px;
+  padding-right: 3px;
+  /*color: #797979 !important*/
+  color: #fff;
+  font-weight: 500;
+}
+.pipe{
+  padding: 0 4px;
+   /*border-right: 2px solid #d4d1d1;*/
+}
+.sp-colo{
+  color: #05f9f9 !important;
+}
+.gold{
+color: gold !important;
+}
+.orag{
+  color: #f3420e !important;
+}
+.col-md-2{
+    width: 11.666667%;
+}
+#chartContainer a{
+  display: none !important;
+}
+small {
+    font-size: 75%;
+}
+.main-card{
+  text-align: left;
+   background: linear-gradient(60deg,#ffa726,#fb8c00);
+    border-radius: 2px;
+    padding: 15px;
+        margin-right: 15px;
+        cursor: pointer;
+        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0,.4);
+        margin-bottom: 5px;
+        
+}
+.main-card:hover{
+  transform: translateY(-4px);
+}
+.main-card1{
+  text-align: left;
+   background: linear-gradient(60deg,#66bb6a,#43a047);
+    border-radius: 2px;
+    padding: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(76,175,80,.4);
+    margin-bottom: 5px;       
+}
+.main-card1:hover{
+  transform: translateY(-4px);
+}
+.main-card2{
+  text-align: left;
+  /* background: linear-gradient(60deg,#ef5350,#e53935);*/
+   background:linear-gradient(60deg,#e87876,#df7a77ed);
+    border-radius: 2px;
+    padding: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(244,67,54,.4);
+    margin-bottom: 5px;
+}
+.main-card2:hover{
+  transform: translateY(-4px);
+}
+.main-card3{
+  text-align: left;
+   /*background: linear-gradient(60deg,#ef5350,#e53935);*/
+   background:linear-gradient(60deg,#26c6da,#00acc1);
+    border-radius: 2px;
+    padding: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    /*box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(0,188,212,.4);*/
+    box-shadow:0 0 5px 0 rgba(43,43,43,0.1), 0 11px 6px -7px rgba(43,43,43,0.1)
+    margin-bottom: 5px;
+}
+.main-card3:hover{
+  transform: translateY(-4px);
+}
+.main-card ,.main-card1, .main-card2 , .main-card3 h3{
+  color: #fff;
+}
+.boil-card1{
+   text-align: left;
+   background: #2c3b41;
+    border-radius: 2px;
+    padding: 15px;
+    margin-right: 15px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14);
+    margin-bottom: 5px;
+    height: 300px !important;   
+}
+.boil-card1:hover{
+  transform: translateY(-4px);
+}
+.boil-card1 h3{
+  margin: 0 0 10px 0px!important;
+  color: rgb(234, 245, 252);
+}
+
+.meter{
+    padding: 4px;
+}
+.value1{
+  
+}
+.value1 div{
+  /*color: #98a6ad !important;*/
+  color: rgb(234, 245, 252) !important;
+    font-size: 15px;
+    line-height: 35px;
+    font-weight: 700;
+}
+.value2{
+     text-align: left;
+}
+.value2 div{
+  /*color: #797979 !important;*/
+  color: #fff !important;
+    font-weight: 600;
+    font-size: 20px;
+    margin-right: 5px;
+    line-height: 35px;
+    
+}
+.col-md-1{
+width: 11.333333%;
+}
+.horizotal::-webkit-scrollbar{
+height: 7px !important;
+}
+.horizotal::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius:5px !important;
+  background-color: rgb(234, 245, 252) !important;
+}
+.horizotal::-webkit-scrollbar-thumb{
+border-radius:5px !important;
+background-color:#727475  !important;
+
+}
+.col-md-4{
+width: 38% !important;
+}
+.col-md-12{
+      
+}
+.sp-count{
+  width: 100px !important;
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
+
+
+
+/*@media quries starts here*/
+
+/* Portrait and Landscape */
+@media only screen 
+  and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) { 
+  .main-sidebar{
+    padding-top: 100px;
+  }
+  h3{
+    margin-top: 0px;
+    margin-bottom: 10px;
+  }
+  .col-md-3{
+    width: 0px !important;
+  }
+  .col-3{
+    width: 18% !important;
+    float: left;
+    padding: 0 0px;
+  }
+  .col-md-12{
+    width: 120% !important
+  }
+  .boil-card1{
+    height: 250px !important;
+  }
+  .messages-menu{
+     margin: 0px !important;
+  }
+  
+
+
+}
+
+/* (1366x768) WXGA Display */
+@media  screen and (max-width: 1366px) {
+    .col-md-3{
+      text-align: left !important;
+    }
+    .col-md-7{
+      width: 73.5% !important;
+    }
+    .b-time{
+      display: flex;
+    }
+    .boil-card1{
+      height: 305px;
+    }
+    .col-lg-7{
+  width: 54.5%;
+}
+    
+}

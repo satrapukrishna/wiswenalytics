@@ -1,0 +1,1840 @@
+@font-face {
+    font-family: 'FA-Icon';
+    font-style: normal;
+    font-weight: 400;
+    font-display: auto;
+    src: url("Fonts/fa-solid-900.eot");
+    src: url("Fonts/fa-solid-900.eot?#iefix") format("embedded-opentype"), url("Fonts/fa-solid-900.woff2") format("woff2"), url("Fonts/fa-solid-900.woff") format("woff"), url("Fonts/fa-solid-900.ttf") format("truetype"), url("Fonts/fa-solid-900.svg#fontawesome") format("svg");
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font: 400 12px 'Open Sans';
+    color: #666;
+}
+
+div.DshMnCtnr {
+    position: relative;
+}
+
+    div.DshMnCtnr div.DshBrdLnk {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 15%;
+        height: 100%;
+        background-color: #222d31;
+        transition: 0.3s;
+    }
+
+        div.DshMnCtnr div.DshBrdLnk div.BrndHldr {
+            height: 50px;
+            background-color: #367fa8;
+        }
+
+            div.DshMnCtnr div.DshBrdLnk div.BrndHldr span.BrndNm {
+                display: block;
+                color: #fff;
+                padding: 12px 0 0 0;
+                font: 800 18px 'Open Sans';
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+        div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr {
+            overflow-y: auto;
+            height: 100%;
+        }
+
+            div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+                div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li {
+                    display: block;
+                    border-bottom: 1px solid #3f5056;
+                }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk {
+                        display: block;
+                        padding: 20px 40px 20px 40px;
+                        font: 600 13px 'Open Sans';
+                        color: #fff;
+                        text-decoration: none;
+                        position: relative;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl {
+                        background-color: #3f5056;
+                        margin: 0;
+                        position: relative;
+                        padding: 0 10px;
+                    }
+
+                        div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl.Hide {
+                            display: none;
+                        }
+
+                        div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl:before {
+                            content: '';
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            top: 0;
+                            left: 10px;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 10px solid #222d31;
+                        }
+
+                        div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl li a.Lnk {
+                            border-bottom: 1px solid #607177;
+                        }
+
+                        div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl li:last-child a.Lnk {
+                            border-bottom: none;
+                        }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk:before {
+                        content: '';
+                        position: absolute;
+                        width: 20px;
+                        height: 20px;
+                        top: 20px;
+                        left: 10px;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Dshbrd:before {
+                        background: transparent url(../Images/Dashboard-W.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.WtrTnk:before {
+                        background: transparent url(../Images/Water-Tank-W.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.FlwMtr:before {
+                        background: transparent url(../Images/Flow-Meter-W.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.DGSt:before {
+                        background: transparent url(../Images/DG-Set-W.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.EnrgMtr:before {
+                        background: transparent url(../Images/Electric-Meter-W.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.FrPmp:before {
+                        background: transparent url(../Images/Fire-Pump-W.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.LPGCnn:before {
+                        background: transparent url(../Images/LPG-W.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Arr:after {
+                        font-family: 'FA-Icon';
+                        content: '\f107';
+                        position: absolute;
+                        right: 20px;
+                        top: 22px;
+                        font-size: 16px;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Slct:after {
+                        font-family: 'FA-Icon';
+                        content: '\f106';
+                        position: absolute;
+                        right: 20px;
+                        top: 22px;
+                        font-size: 16px;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Actv:after {
+                        font-family: 'FA-Icon';
+                        content: '\f105';
+                        position: absolute;
+                        right: 20px;
+                        top: 22px;
+                        font-size: 16px;
+                    }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl li ul.ThrdLvl {
+                        background: #516369;
+                        margin: 0;
+                        padding: 0;
+                        position: relative;
+                    }
+
+                        div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl li ul.ThrdLvl:before {
+                            content: '';
+                            position: absolute;
+                            width: 0;
+                            height: 0;
+                            top: 0;
+                            left: 10px;
+                            border-left: 10px solid transparent;
+                            border-right: 10px solid transparent;
+                            border-top: 10px solid #82949a;
+                        }
+
+                    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl.NoIcon a.Lnk {
+                        padding: 20px 40px 20px 10px;
+                    }
+
+                        div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li ul.ScndLvl.NoIcon a.Lnk:before {
+                            display: none;
+                        }
+
+    div.DshMnCtnr div.DshBrdHdr {
+        position: fixed;
+        left: 15%;
+        top: 0;
+        width: 85%;
+        height: 50px;
+        background-color: #3c8dbc;
+        transition: 0.3s;
+    }
+
+        div.DshMnCtnr div.DshBrdHdr ul.HdrLstng {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-align: right;
+        }
+
+            div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li {
+                display: inline-block;
+                vertical-align: top;
+                position: relative;
+            }
+
+                div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li.MenuHldr, div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li.BrndHldr {
+                    float: left;
+                    display: none;
+                }
+
+                    div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li.MenuHldr span.MenuTggle {
+                        display: block;
+                        width: 50px;
+                        height: 50px;
+                        background: transparent url(../Images/MenuTggl-W.png) no-repeat center center;
+                        background-size: 40%;
+                        cursor: pointer;
+                    }
+
+                    div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li.BrndHldr span.BrndNm {
+                        display: block;
+                        color: #fff;
+                        padding: 12px 0 0 0;
+                        font: 800 18px 'Open Sans';
+                        text-align: center;
+                        text-transform: uppercase;
+                    }
+
+                div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li span.UsrDtls {
+                    display: block;
+                    padding: 16px 20px 0 20px;
+                    color: #fff;
+                }
+
+                    div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li span.UsrDtls:before {
+                        display: inline-block;
+                        content: 'Welcome,';
+                        font: 600 12px 'Open Sans';
+                        padding-right: 3px;
+                    }
+
+                div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li span.Sttngs {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    background: transparent url(../Images/MenuSettings-W.png) no-repeat center center;
+                    background-size: 43%;
+                    cursor: pointer;
+                    position: relative;
+                }
+
+                    div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li span.Sttngs:before {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        width: 1px;
+                        height: 20px;
+                        background-color: #71B0D5;
+                        left: 0;
+                        top: 15px;
+                    }
+
+                div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li span.SgnOt {
+                    display: block;
+                    width: 50px;
+                    height: 50px;
+                    background: transparent url(../Images/MenuLogout-W.png) no-repeat center center;
+                    background-size: 48%;
+                    cursor: pointer;
+                    position: relative;
+                }
+
+                    div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li span.SgnOt:before {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        width: 1px;
+                        height: 20px;
+                        background-color: #71B0D5;
+                        left: 0;
+                        top: 15px;
+                    }
+
+    div.DshMnCtnr div.DshBrdCtnr {
+        position: fixed;
+        left: 15%;
+        top: 50px;
+        height: calc(100% - 50px);
+        width: 85%;
+        overflow-y: auto;
+        background-color: #eee;
+        transition: 0.3s;
+    }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn {
+            padding: 20px 50px 50px 50px;
+            border-bottom: 1px solid #ddd;
+        }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl {
+                position: relative;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl {
+                    display: inline-block;
+                    padding: 20px 0 20px 50px;
+                    font: 800 18px 'Open Sans';
+                    color: #367fa8;
+                    text-transform: uppercase;
+                    position: relative;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl:before {
+                        content: '';
+                        position: absolute;
+                        width: 40px;
+                        height: 40px;
+                        top: 13px;
+                        left: 0;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl.Dshbrd:before {
+                        background: transparent url(../Images/Dashboard-C.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl.WtrTnk:before {
+                        background: transparent url(../Images/Water-Tank-C.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl.FlwMtr:before {
+                        background: transparent url(../Images/Flow-Meter-C.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl.DGSt:before {
+                        background: transparent url(../Images/DG-Set-C.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl.EnrgMtr:before {
+                        background: transparent url(../Images/Electric-Meter-C.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl.FrPmp:before {
+                        background: transparent url(../Images/Fire-Pump-C.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl.LPGCnn:before {
+                        background: transparent url(../Images/LPG-C.png) no-repeat center center;
+                        background-size: cover;
+                    }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVw {
+                    float: right;
+                    background-color: #367fa8;
+                    font: 600 12px 'Open Sans';
+                    color: #fff;
+                    margin: 14px 0 0 0;
+                    padding: 10px 60px 10px 15px;
+                    cursor: pointer;
+                    border-radius: 30px;
+                    position: relative;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVw.Cllps:before {
+                        content: 'Collapse';
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVw.Expnd:before {
+                        content: 'Expand';
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVw:after {
+                        font-family: 'FA-Icon';
+                        content: '\f106';
+                        position: absolute;
+                        right: 15px;
+                        top: 11px;
+                        font-size: 16px;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVw.Expnd:after {
+                        content: '\f107';
+                    }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVwAll {
+                    float: right;
+                    color: #367fa8;
+                    font: 600 12px 'Open Sans';
+                    margin: 14px 10px 0 0;
+                    padding: 8px 60px 8px 15px;
+                    cursor: pointer;
+                    border-radius: 30px;
+                    border: 2px solid #367fa8;
+                    position: relative;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVwAll.Cllps:before {
+                        content: 'Collapse all';
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVwAll.Expnd:before {
+                        content: 'Expand all';
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVwAll:after {
+                        font-family: 'FA-Icon';
+                        content: '\f106';
+                        position: absolute;
+                        right: 15px;
+                        top: 9px;
+                        font-size: 16px;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVwAll.Expnd:after {
+                        content: '\f107';
+                    }
+
+                div .DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl.Innr span.TxtTtl {
+                    font: 600 18px 'Open Sans';
+                    color: #444;
+                    text-transform: none;
+                }
+
+
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr {
+                padding: 20px 15px;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr {
+                    background-color: #fff;
+                    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls span.SctnTtl {
+                        display: block;
+                        padding: 20px;
+                        font: 600 16px 'Open Sans';
+                        color: #444;
+                    }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                background-color: #f9f9f9;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li {
+                    display: block;
+                    border-top: 1px solid #eee;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClLft, div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClRgt {
+                        box-sizing: border-box;
+                        padding: 10px 10px 10px 20px;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClLft {
+                        width: 40%;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClRgt {
+                        width: 60%;
+                        font: 600 12px 'Open Sans';
+                    }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls span.SctnDtlsGrdTblLnk {
+                display: block;
+                background: #eee;
+                border-top: 1px solid #ddd;
+                padding: 10px 20px;
+                font: 600 12px 'Open Sans';
+                border-bottom-left-radius: 6px;
+                border-bottom-right-radius: 6px;
+                cursor: pointer;
+                width: 100%;
+                box-sizing: border-box;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls span.SctnDtlsGrdTblLnk.More:before {
+                    content: 'More details';
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls span.SctnDtlsGrdTblLnk.Less:before {
+                    content: 'Less details';
+                }
+
+            div .DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.WtrTnkLvl {
+                padding: 20px;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.WtrTnkLvl div.TnksHldr {
+                    padding: 20px 0 0 0;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.WtrTnkLvl div.LftHldr {
+                    width: 50%;
+                    margin-left: 10%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.WtrTnkLvl div.RgtHldr {
+                    width: 40%;
+                    position: relative;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.FlwMtrHldr div.FlwMtrImgHldr img.FlwMtr {
+                display: block;
+                background: transparent url(../Images/FlowMeterInnr.png) no-repeat center center;
+                background-size: 100%;
+                width: 250px;
+                height: 200px;
+                margin: 0 auto;
+            }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.FlwMtrHldr ul.SctnDtlsGrdTbl li div.ClLft {
+                width: 40%;
+            }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.FlwMtrHldr ul.SctnDtlsGrdTbl li div.ClRgt {
+                width: 60%;
+            }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr span.SctnTtl {
+                    width: 100%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr div.DGCol-1 {
+                    width: 50%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr div.DGCol-2 {
+                    width: 20%;
+                    margin: 0 2.5%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr div.DGCol-3 {
+                    width: 20%;
+                    margin: 0 2.5%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr div.DGCol-4 {
+                    width: 100%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr ul.SctnDtlsGrdTbl li div.ClLft {
+                    width: 60%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr ul.SctnDtlsGrdTbl li div.ClRgt {
+                    width: 40%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr ul.SctnDtlsGrdTbl li.NoClr {
+                    background: #fff;
+                    border: none;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd {
+                padding: 20px;
+                background: #fff;
+                box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd.EnrgyMtr {
+                    padding: 5px 50px 20px 50px;
+                }
+
+                div .DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd div.SctnDtlsHldr {
+                    padding: 0 20px;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd div.SctnDtlsHldr div.SldrCntnr {
+                        box-shadow: none;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                    }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd ul.SctnDtlsGrdTbl {
+                    border-bottom-left-radius: 6px;
+                    border-bottom-right-radius: 6px;
+                    width: 100%;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.ErgyMtrHldr {
+                    display: -ms-flexbox;
+                    display: flex;
+                    -ms-flex-wrap: wrap;
+                    flex-wrap: wrap;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.ErgyMtrHldr span.SctnTtl {
+                        width: 50%;
+                        box-sizing: border-box;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.ErgyMtrHldr div.ErgyMtrImgHldr {
+                        width: 50%;
+                    }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.ErgyMtrHldr div.ErgyMtrImgHldr img.ErgyMtr {
+                            background: transparent url(../Images/ElectricMeter.png) no-repeat center center;
+                            background-size: contain;
+                            width: 100%;
+                            height: 100px;
+                        }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd {
+                    border-spacing: 0;
+                    table-layout: auto;
+                    width: 100%;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd th {
+                        background-color: #eee;
+                        font: 600 12px 'Open Sans';
+                        color: #444;
+                        padding: 15px 10px;
+                        text-align: left;
+                        border-bottom: 1px solid #ddd;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td {
+                        background-color: #f9f9f9;
+                        padding: 5px 10px;
+                        text-align: left;
+                        vertical-align: middle;
+                        border-bottom: 1px solid #eee;
+                    }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Txt {
+                            display: block;
+                            font: 400 12px 'Open Sans';
+                            padding: 10px;
+                        }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Ttl {
+                            font: 600 12px 'Open Sans';
+                        }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.MblTtl {
+                            display: none;
+                        }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Stts {
+                            display: inline-block;
+                            background-color: #444;
+                            color: #fff;
+                            border-radius: 30px;
+                            padding: 10px 0;
+                            font: 600 12px 'Open Sans';
+                            box-sizing: border-box;
+                            width: 100px;
+                            text-align: center;
+                        }
+
+                            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Stts.On {
+                                background: #e1d200;
+                            }
+
+                                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Stts.On:before {
+                                    content: 'On';
+                                }
+
+                            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Stts.Off {
+                                background: #d16262;
+                            }
+
+                                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Stts.Off:before {
+                                    content: 'Off';
+                                }
+
+                            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Stts.Auto {
+                                background: #52c785;
+                            }
+
+                                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp table.SctnDtlsDualGrd td span.Stts.Auto:before {
+                                    content: 'Auto';
+                                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp div.EnrgyMtrGuge {
+                    width: 33.33%;
+                    box-sizing: border-box;
+                    padding: 10px 30px 10px 30px;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp div.EnrgyMtrGuge span.Ttl {
+                        display: block;
+                        font: 600 16px 'Open Sans';
+                        color: #444;
+                        text-align: center;
+                        padding: 10px 0;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.FrPmp div.EnrgyMtrGuge span.MtrVl {
+                        display: block;
+                        font: 600 16px 'Open Sans';
+                        color: #444;
+                        text-align: center;
+                        padding: 10px 0;
+                    }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.LPGCnn {
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.LPGCnn div.LPGCnnHldr {
+                    width: 33.33%;
+                    padding: 20px;
+                    box-sizing: border-box;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClLft {
+                width: 70%;
+            }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClRgt {
+                width: 30%;
+            }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.LPGCnn div.LPGCnnHldr span.Ttl {
+                display: block;
+                font: 600 16px 'Open Sans';
+                color: #444;
+                text-align: center;
+                padding: 0 0 10px 0;
+            }
+
+
+
+div.LiquidTank {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50px/20px;
+    background-color: rgba(160, 160, 160, 0.2);
+}
+
+    div.LiquidTank:before {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 200px;
+        height: 30px;
+        border-radius: 250px/55px;
+        background-color: rgba(160, 160, 160, 0.2);
+        content: '';
+    }
+
+    div.LiquidTank:after {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 200px;
+        height: 30px;
+        border-radius: 250px/55px;
+        background-color: rgba(160, 160, 160, 0.2);
+        content: '';
+    }
+
+    div.LiquidTank div.Liquid {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 200px;
+        height: 0px;
+        border-radius: 50px/20px;
+        transition: 0.3s linear;
+    }
+
+        div.LiquidTank div.Liquid:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 200px;
+            height: 30px;
+            border-radius: 250px/55px;
+            content: '';
+        }
+
+        div.LiquidTank div.Liquid:after {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 200px;
+            height: 30px;
+            border-radius: 250px/55px;
+            content: '';
+        }
+
+
+
+
+    div.LiquidTank.Smll, div.LiquidTank.Smll:before, div.LiquidTank.Smll:after, div.LiquidTank.Smll div.Liquid, div.LiquidTank.Smll div.Liquid:before, div.LiquidTank.Smll div.Liquid:after {
+        width: 40px;
+    }
+
+        div.LiquidTank.Smll:before, div.LiquidTank.Smll:after {
+            height: 15px;
+            border-radius: 60px/25px;
+        }
+
+        div.LiquidTank.Smll div.Liquid {
+            border-radius: 50px/20px;
+            background-color: rgba(0, 220, 95, 0.5);
+        }
+
+            div.LiquidTank.Smll div.Liquid:before, div.LiquidTank.Smll div.Liquid:after {
+                height: 15px;
+                border-radius: 60px/25px;
+            }
+
+            div.LiquidTank div.Liquid.l-100, div.LiquidTank.Smll div.Liquid.l-100 {
+                height: 200px;
+                transition: 0.3s;
+                background-color: rgba(0, 220, 95, 0.7);
+            }
+
+                div.LiquidTank div.Liquid.l-100:before, div.LiquidTank.Smll div.Liquid.l-100:before {
+                    background-color: rgba(0, 220, 95, 0.7);
+                }
+
+                div.LiquidTank div.Liquid.l-100:after, div.LiquidTank.Smll div.Liquid.l-100:after {
+                    background-color: rgba(0, 220, 95, 0.7);
+                }
+
+
+            div.LiquidTank div.Liquid.l-90, div.LiquidTank.Smll div.Liquid.l-90 {
+                height: 180px;
+                transition: 0.3s;
+                background-color: rgba(0, 220, 95, 0.7);
+            }
+
+                div.LiquidTank div.Liquid.l-90:before, div.LiquidTank.Smll div.Liquid.l-90:before {
+                    background-color: rgba(0, 220, 95, 0.7);
+                }
+
+                div.LiquidTank div.Liquid.l-90:after, div.LiquidTank.Smll div.Liquid.l-90:after {
+                    background-color: rgba(0, 220, 95, 0.7);
+                }
+
+            div.LiquidTank div.Liquid.l-80, div.LiquidTank.Smll div.Liquid.l-80 {
+                height: 160px;
+                background-color: rgba(0, 220, 95, 0.7);
+            }
+
+                div.LiquidTank div.Liquid.l-80:before, div.LiquidTank.Smll div.Liquid.l-80:before {
+                    background-color: rgba(0, 220, 95, 0.7);
+                }
+
+                div.LiquidTank div.Liquid.l-80:after, div.LiquidTank.Smll div.Liquid.l-80:after {
+                    background-color: rgba(0, 220, 95, 0.7);
+                }
+
+            div.LiquidTank div.Liquid.l-70, div.LiquidTank.Smll div.Liquid.l-70 {
+                height: 140px;
+                transition: 0.3s;
+                background-color: rgba(0, 220, 95, 0.7);
+            }
+
+                div.LiquidTank div.Liquid.l-70:before, div.LiquidTank.Smll div.Liquid.l-70:before {
+                    background-color: rgba(0, 220, 95, 0.7);
+                }
+
+                div.LiquidTank div.Liquid.l-70:after, div.LiquidTank.Smll div.Liquid.l-70:after {
+                    background-color: rgba(0, 220, 95, 0.7);
+                }
+
+            div.LiquidTank div.Liquid.l-60, div.LiquidTank.Smll div.Liquid.l-60 {
+                height: 120px;
+                transition: 0.3s;
+                background-color: rgba(240, 190, 18, 0.8);
+            }
+
+                div.LiquidTank div.Liquid.l-60:before, div.LiquidTank.Smll div.Liquid.l-60:before {
+                    background-color: rgba(240, 190, 18, 0.8);
+                }
+
+                div.LiquidTank div.Liquid.l-60:after, div.LiquidTank.Smll div.Liquid.l-60:after {
+                    background-color: rgba(240, 190, 18, 0.8);
+                }
+
+            div.LiquidTank div.Liquid.l-50, div.LiquidTank.Smll div.Liquid.l-50 {
+                height: 100px;
+                transition: 0.3s;
+                background-color: rgba(240, 190, 18, 0.8);
+            }
+
+                div.LiquidTank div.Liquid.l-50:before, div.LiquidTank.Smll div.Liquid.l-50:before {
+                    background-color: rgba(240, 190, 18, 0.8);
+                }
+
+                div.LiquidTank div.Liquid.l-50:after, div.LiquidTank.Smll div.Liquid.l-50:after {
+                    background-color: rgba(240, 190, 18, 0.8);
+                }
+
+            div.LiquidTank div.Liquid.l-40, div.LiquidTank.Smll div.Liquid.l-40 {
+                height: 80px;
+                transition: 0.3s;
+                background-color: rgba(240, 190, 18, 0.8);
+            }
+
+                div.LiquidTank div.Liquid.l-40:before, div.LiquidTank.Smll div.Liquid.l-40:before {
+                    background-color: rgba(240, 190, 18, 0.8);
+                }
+
+                div.LiquidTank div.Liquid.l-40:after, div.LiquidTank.Smll div.Liquid.l-40:after {
+                    background-color: rgba(240, 190, 18, 0.8);
+                }
+
+            div.LiquidTank div.Liquid.l-30, div.LiquidTank.Smll div.Liquid.l-30 {
+                height: 60px;
+                transition: 0.3s;
+                background-color: rgba(184, 0, 0, 0.8);
+            }
+
+                div.LiquidTank div.Liquid.l-30:before, div.LiquidTank.Smll div.Liquid.l-30:before {
+                    background-color: rgba(184, 0, 0, 0.3);
+                }
+
+                div.LiquidTank div.Liquid.l-30:after, div.LiquidTank.Smll div.Liquid.l-30:after {
+                    background-color: rgba(184, 0, 0, 0.2);
+                }
+
+
+
+            div.LiquidTank div.Liquid.l-20, div.LiquidTank.Smll div.Liquid.l-20 {
+                height: 45px;
+                transition: 0.3s;
+                background-color: rgba(184, 0, 0, 0.8);
+            }
+
+                div.LiquidTank div.Liquid.l-20:before, div.LiquidTank.Smll div.Liquid.l-20:before {
+                    background-color: rgba(184, 0, 0, 0.3);
+                }
+
+                div.LiquidTank div.Liquid.l-20:after, div.LiquidTank.Smll div.Liquid.l-20:after {
+                    background-color: rgba(184, 0, 0, 0.2);
+                }
+
+            div.LiquidTank div.Liquid.l-10, div.LiquidTank.Smll div.Liquid.l-10 {
+                height: 35px;
+                transition: 0.3s;
+                background-color: rgba(184, 0, 0, 1);
+            }
+
+                div.LiquidTank div.Liquid.l-10:before, div.LiquidTank.Smll div.Liquid.l-10:before {
+                    background-color: rgba(184, 0, 0, 1);
+                }
+
+                div.LiquidTank div.Liquid.l-10:after, div.LiquidTank.Smll div.Liquid.l-10:after {
+                    background-color: rgba(184, 0, 0, 1);
+                }
+
+            div.LiquidTank div.Liquid.l-0, div.LiquidTank.Smll div.Liquid.l-0 {
+                height: 0px;
+                transition: 0.3s;
+                background-color: rgba(184, 0, 0, 1);
+            }
+
+                div.LiquidTank div.Liquid.l-0:before, div.LiquidTank.Smll div.Liquid.l-0:before {
+                    background-color: rgba(184, 0, 0, 1);
+                    top: -30px;
+                }
+
+                div.LiquidTank div.Liquid.l-0:after, div.LiquidTank.Smll div.Liquid.l-0:after {
+                    background-color: rgba(184, 0, 0, 1);
+                }
+
+        div.LiquidTank.Smll span.LiquidStatus {
+            position: absolute;
+            font: 300 38px 'Open Sans';
+            right: -110px;
+            top: 35%;
+        }
+
+        div.LiquidTank.Smll div.Liquid.Low {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 75px;
+            border-radius: 50px/20px;
+            transition: 0.3s linear;
+            background: rgba(209,98,98,0.8);
+        }
+
+            div.LiquidTank.Smll div.Liquid.Low:before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 40px;
+                height: 15px;
+                border-radius: 250px/55px;
+                content: '';
+                background: rgba(209,98,98,1);
+            }
+
+            div.LiquidTank.Smll div.Liquid.Low:after {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 40px;
+                height: 15px;
+                border-radius: 250px/55px;
+                content: '';
+                background: rgba(209,98,98,0.9);
+            }
+
+        div.LiquidTank.Smll div.Liquid.Medium {
+            position: absolute;
+            left: 0;
+            bottom: 60px;
+            width: 40px;
+            height: 75px;
+            border-radius: 50px/20px;
+            transition: 0.3s linear;
+            background: rgba(259,153,0,0.8);
+        }
+
+            div.LiquidTank.Smll div.Liquid.Medium:before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 40px;
+                height: 15px;
+                border-radius: 250px/55px;
+                content: '';
+                background: rgba(259,153,0,1);
+            }
+
+            div.LiquidTank.Smll div.Liquid.Medium:after {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 40px;
+                height: 15px;
+                border-radius: 250px/55px;
+                content: '';
+                background: rgba(259,153,0,0.9);
+            }
+
+        div.LiquidTank.Smll div.Liquid.High {
+            position: absolute;
+            left: 0;
+            bottom: 120px;
+            width: 40px;
+            height: 75px;
+            border-radius: 50px/20px;
+            transition: 0.3s linear;
+            background: rgba(0,160,70,0.8);
+        }
+
+            div.LiquidTank.Smll div.Liquid.High:before {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 40px;
+                height: 15px;
+                border-radius: 250px/55px;
+                content: '';
+                background: rgba(0,160,70,1);
+            }
+
+            div.LiquidTank.Smll div.Liquid.High:after {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 40px;
+                height: 15px;
+                border-radius: 250px/55px;
+                content: '';
+                background: rgba(0,160,70,0.9);
+            }
+
+        div.LiquidTank.Smll span.LowTxt {
+            position: absolute;
+            right: -36px;
+            top: 155px;
+            color: rgba(209,98,98,0.8);
+        }
+
+        div.LiquidTank.Smll span.MedTxt {
+            position: absolute;
+            right: -60px;
+            top: 95px;
+            color: rgba(259,153,0,1);
+        }
+
+        div.LiquidTank.Smll span.HghTxt {
+            position: absolute;
+            right: -40px;
+            top: 30px;
+            color: rgba(0,160,70,1);
+        }
+
+div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn {
+    padding: 20px;
+}
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        min-height: calc(100% - 40px);
+        position: relative;
+    }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr span.TtlTxt {
+            display: block;
+            font: 800 21px 'Open Sans';
+            text-transform: uppercase;
+            color: #367FA8;
+            padding: 20px;
+        }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr ul.TtlBrdCrmb {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: absolute;
+            top: 15px;
+            right: 10px;
+        }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr ul.TtlBrdCrmb li {
+                display: inline-block;
+                vertical-align: top;
+                position: relative;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr ul.TtlBrdCrmb li:after {
+                    font-family: 'FA-Icon';
+                    color: #367fa8;
+                    content: '\f105';
+                    position: absolute;
+                    right: -5px;
+                    top: 14px;
+                    font-size: 11px;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr ul.TtlBrdCrmb li:last-child:after {
+                    display: none;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr ul.TtlBrdCrmb li a.Lnk {
+                    display: block;
+                    color: #367fa8;
+                    font: 600 12px 'Open Sans';
+                    text-decoration: none;
+                    padding: 10px 15px;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr ul.TtlBrdCrmb li a.Lnk:hover {
+                        text-decoration: underline;
+                    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn {
+        background: #f9f9f9;
+        border-top: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+        padding: 15px;
+    }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+        }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx li {
+                box-sizing: border-box;
+                padding: 0 5px;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx li span.SrchTxtTtl {
+                    display: block;
+                    padding: 5px 0;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx li .Inpt {
+                    display: block;
+                    border: 1px solid #ddd;
+                    border-radius: 5px;
+                    color: #666;
+                    width: 100%;
+                    padding: 10px 8px;
+                    box-sizing: border-box;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx li .Inpt:focus {
+                        outline: 0px solid #367fa8;
+                        border-color: #367fa8;
+                    }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx li .InptBtn {
+                    display: block;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #367fa8;
+                    color: #fff;
+                    font: 600 12px 'Open Sans';
+                    width: 100%;
+                    padding: 10px 15px;
+                    margin: 26px 0 0 0;
+                    box-sizing: border-box;
+                    text-align: center;
+                    cursor: pointer;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.WtrFlow li {
+                width: 13%;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.WtrFlow li.BtnHldr {
+                    width: 11%;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.CnsmptnRprt li {
+                width: 12.66%;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.CnsmptnRprt li.BtnHldr {
+                    width: 8%;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.RnngHrs li {
+                width: 15%;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.RnngHrs li.BtnHldr {
+                    width: 12.5%;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.FlowMtr li {
+                width: 13%;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.FlowMtr li.BtnHldr {
+                    width: 11%;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.CnsmptnFlwRprt li {
+                width: 12%;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.CnsmptnFlwRprt li.BtnHldr {
+                    width: 8%;
+                }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.FlGrphRprt li {
+                width: 12%;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx.FlGrphRprt li.BtnHldr {
+                    width: 8%;
+                }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtGrphHldr {
+        padding: 30px;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        max-width: 600px;
+        box-sizing: border-box;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr {
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr.Hlf {
+                width: 50%;
+            }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr.Qtr {
+                width: 25%;
+            }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr {
+                border-radius: 5px;
+                border: 1px solid #ddd;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr span.RprtTblTtl {
+                    display: block;
+                    padding: 12px 10px;
+                    background-color: #f1f1f1;
+                    font: 600 13px 'Open Sans';
+                    color: #444;
+                    border-top-left-radius: 5px;
+                    border-top-right-radius: 5px;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr table.RprtTbl {
+                    width: 100%;
+                    border-spacing: 0;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr table.RprtTbl th, div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr table.RprtTbl td {
+                        padding: 10px;
+                        text-align: left;
+                        vertical-align: top;
+                        border-top: 1px solid #ddd;
+                        border-left: 1px solid #ddd;
+                    }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr table.RprtTbl th:first-child, div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr table.RprtTbl td:first-child {
+                            border-left: none;
+                        }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr table.RprtTbl th {
+                        font: 600 12px 'Open Sans';
+                        background-color: #f9f9f9;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr table.RprtTbl td {
+                        font: 400 12px 'Open Sans';
+                    }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl {
+                    display: table;
+                    width: 100%;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow {
+                        display: table-row;
+                    }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow div.RprtDvHdr, div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow div.RprtDvCll {
+                            display: table-cell;
+                            padding: 10px;
+                            text-align: left;
+                            vertical-align: top;
+                            border-top: 1px solid #ddd;
+                            border-left: 1px solid #ddd;
+                        }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow div:first-child, div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow div:first-child {
+                            border-left: none;
+                        }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow div.RprtDvHdr {
+                            font: 600 12px 'Open Sans';
+                            background-color: #f9f9f9;
+                        }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow div.RprtDvCll {
+                            font: 400 12px 'Open Sans';
+                        }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow div.Cntr {
+                            text-align: center;
+                        }
+
+                        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr div.RprtDvTbl div.RprtDvRow div.Rght {
+                            text-align: right;
+                        }
+
+
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr.NoTtl div.RprtDvTbl div.RprtDvRow div.RprtDvHdr {
+                    border-top: none;
+                }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr.NoTtl div.RprtDvTbl div.RprtDvRow div.RprtDvHdr:first-child {
+                        border-top-left-radius: 5px;
+                    }
+
+                    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr div.RprtTblHldr.NoTtl div.RprtDvTbl div.RprtDvRow div.RprtDvHdr:last-child {
+                        border-top-right-radius: 5px;
+                    }
+
+
+div.LoginBgHldr {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: transparent url(../Images/PKRLogin-BG.jpg) no-repeat center center;
+    background-size: cover;
+}
+
+    div.LoginBgHldr div.LoginHldr {
+        background-color: #fff;
+        border-radius: 15px;
+        position: relative;
+        width: 550px;
+        padding: 30px;
+        margin: 0 auto;
+        top: 30%;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+        box-sizing: border-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    }
+
+        div.LoginBgHldr div.LoginHldr div.LoginTtlHldr {
+            position: absolute;
+            width: 33%;
+            height: calc(100% + 60px);
+            top: -30px;
+            background: rgb(54,127,168);
+            background: linear-gradient(0deg, rgba(54,127,168,1) 0%, rgba(60,141,188,1) 100%);
+            border-radius: 15px;
+        }
+
+            div.LoginBgHldr div.LoginHldr div.LoginTtlHldr span.LoginTtlNm, div.LoginBgHldr div.LoginHldr div.LoginTtlHldr span.LoginTtlNmee {
+                display: block;
+                color: #fff;
+                font: 800 18px 'Open Sans';
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            div.LoginBgHldr div.LoginHldr div.LoginTtlHldr span.LoginTtlNm {
+                font: 800 50px 'Open Sans';
+                padding-top: 130px;
+            }
+
+            div.LoginBgHldr div.LoginHldr div.LoginTtlHldr span.LoginTtlNmee {
+                font: 600 18px/0% 'Open Sans';
+            }
+
+        div.LoginBgHldr div.LoginHldr div.LoginBx {
+            width: 60%;
+            box-sizing: border-box;
+            position: relative;
+            left: 40%;
+        }
+
+            div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginType {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: -ms-flexbox;
+                display: flex;
+                -ms-flex-wrap: wrap;
+                flex-wrap: wrap;
+            }
+
+                div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginType li {
+                    width: 50%;
+                }
+
+                    div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginType li span.Lnk {
+                        display: block;
+                        padding: 10px 0;
+                        text-align: center;
+                        font: 600 13px 'Open Sans';
+                        color: #367fa8;
+                        border-bottom: 2px solid #ddd;
+                        cursor: pointer;
+                    }
+
+                        div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginType li span.Lnk.Actv {
+                            border-bottom: 2px solid #367fa8;
+                            cursor: default;
+                        }
+
+
+            div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginFlds {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+
+                div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginFlds li {
+                    display: block;
+                    padding: 20px 0 0 0;
+                }
+
+                    div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginFlds li .Inpt {
+                        display: block;
+                        padding: 10px;
+                        font: 600 12px 'Open Sans';
+                        color: #666;
+                        border: 1px solid #ddd;
+                        border-radius: 5px;
+                        box-sizing: border-box;
+                        width: 100%;
+                    }
+
+                    div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginFlds li .InptBtn {
+                        display: block;
+                        border: none;
+                        border-radius: 5px;
+                        background-color: #367fa8;
+                        color: #fff;
+                        font: 600 12px 'Open Sans';
+                        width: 100%;
+                        padding: 10px 15px;
+                        box-sizing: border-box;
+                        text-align: center;
+                        cursor: pointer;
+                    }
+
+                    div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginFlds li span.FrgtPssd {
+                        display: block;
+                        font: 600 12px 'Open Sans';
+                    }
+
+                        div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginFlds li span.FrgtPssd a.Lnk {
+                            display: inline-block;
+                            color: #367fa8;
+                            font-weight: 400;
+                            padding-left: 3px;
+                        }
+
+
+@media only screen and (max-width: 1280px) {
+    div .DshMnCtnr div.DshBrdLnk {
+        width: 20%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr, div.DshMnCtnr div.DshBrdCtnr {
+        left: 20%;
+        width: 80%;
+        transition: 0.3s;
+    }
+}
+
+@media only screen and (max-width: 1170px) {
+
+    div.DshMnCtnr div.DshBrdLnk div.BrndHldr {
+        display: none;
+    }
+
+    div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr:before {
+        content: 'Menu';
+        display: block;
+        background-color: #367fa8;
+        color: #fff;
+        font: 600 18px 'Open Sans';
+        padding: 12px 10px 0 10px;
+        height: 38px;
+        width: 100%;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li.MenuHldr, div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li.BrndHldr {
+        display: block;
+    }
+
+    div.DshMnCtnr div.DshBrdLnk {
+        left: -20%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr, div.DshMnCtnr div.DshBrdCtnr {
+        left: 0;
+        width: 100%;
+    }
+
+    div.DshMnCtnr div.DshBrdLnk.MblActive {
+        left: 0%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr.MblActive, div.DshMnCtnr div.DshBrdCtnr.MblActive {
+        left: 20%;
+        width: 80%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li.MenuHldr span.MenuTggle.MblActive {
+        background: transparent url(../Images/MenuCls-W.png) no-repeat center center;
+        background-size: 40%;
+    }
+}
+
+@media only screen and (max-width: 1023px) {
+    div.DshMnCtnr div.DshBrdLnk {
+        left: -40%;
+        width: 40%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr, div.DshMnCtnr div.DshBrdCtnr {
+        left: 0;
+        width: 100%;
+    }
+
+    div.DshMnCtnr div.DshBrdLnk.MblActive {
+        left: 0%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr.MblActive, div.DshMnCtnr div.DshBrdCtnr.MblActive {
+        left: 40%;
+        width: 100%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtDtlsHldr div.RptDvHldr.Hlf {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    div.DshMnCtnr div.DshBrdHdr ul.HdrLstng li span.UsrDtls {
+        display: none;
+    }
+
+    div.DshMnCtnr div.DshBrdLnk {
+        left: -80%;
+        width: 80%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr, div.DshMnCtnr div.DshBrdCtnr {
+        left: 0;
+        width: 100%;
+    }
+
+    div.DshMnCtnr div.DshBrdLnk.MblActive {
+        left: 0%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdHdr.MblActive, div.DshMnCtnr div.DshBrdCtnr.MblActive {
+        left: 80%;
+        width: 100%;
+        transition: 0.3s;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn {
+        padding: 30px 10px;
+    }
+
+    div.LiquidTank, div.LiquidTank div.Liquid {
+        width: 110px;
+    }
+
+        div.LiquidTank:before, div.LiquidTank:after, div.LiquidTank div.Liquid:before, div.LiquidTank div.Liquid:after {
+            width: 110px;
+            border-radius: 250px/70px;
+        }
+
+        div.LiquidTank.Smll span.LiquidStatus {
+            right: -80px;
+        }
+
+    .bx-wrapper .bx-pager, .bx-wrapper .bx-controls-auto {
+        bottom: -10px;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr {
+        padding: 20px 0px;
+    }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr {
+            border: 1px solid #ddd;
+            box-shadow: none;
+        }
+
+    .bx-wrapper .bx-controls-direction a {
+        top: auto;
+        bottom: -20px;
+    }
+
+    .bx-wrapper .bx-next {
+        right: 0;
+    }
+
+    .bx-wrapper .bx-prev {
+        left: 0;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls.DGGnrtrHldr div.DGCol-1 {
+        width: 100%;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd.EnrgyMtr {
+        padding: 5px 10px 20px 10px;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl.Innr span.TxtTtl, div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.TxtTtl {
+        display: block;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.LPGCnn {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px;
+    }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.LPGCnn div.LPGCnnHldr {
+            width: 100%;
+            padding: 0;
+        }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn {
+        padding: 10px;
+    }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr span.TtlTxt {
+            padding: 15px 10px 0 15px;
+        }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr ul.TtlBrdCrmb {
+            position: inherit;
+        }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn {
+            padding: 10px 15px;
+        }
+
+            div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx li {
+                width: 100% !important;
+                padding: 10px 0;
+            }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx li .Inpt {
+                    padding: 15px 8px;
+                }
+
+                div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.SrchSctn ul.SrchBx li .InptBtn {
+                    margin: 0;
+                    padding: 15px 0;
+                }
+
+        div.DshMnCtnr div.DshBrdCtnr div.DshBrdRprtSctn div.RprtHldr {
+            min-height: calc(100% - 20px);
+        }
+
+    div.LoginBgHldr div.LoginHldr {
+        width: 90%;
+        padding: 40px 20px 20px 20px;
+        top: 10%;
+    }
+
+        div.LoginBgHldr div.LoginHldr div.LoginTtlHldr {
+            position: absolute;
+            width: 85%;
+            text-align: center;
+            border-radius: 45px;
+            top: -35px;
+            height: auto;
+        }
+
+        div.LoginBgHldr div.LoginHldr div.LoginTtlHldr span.LoginTtlNm, div.LoginBgHldr div.LoginHldr div.LoginTtlHldr span.LoginTtlNmee {
+            display: inline-block;
+            vertical-align: top;
+            padding: 20px 0;
+            font: 800 20px 'Open Sans';
+        }
+
+            div.LoginBgHldr div.LoginHldr div.LoginTtlHldr span.LoginTtlNmee {
+                padding-left: 5px;
+            }
+
+            div.LoginBgHldr div.LoginHldr div.LoginBx {
+                width: 100%;
+                left: 0;
+            }
+
+            div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginFlds li .Inpt, div.LoginBgHldr div.LoginHldr div.LoginBx ul.LoginFlds li .InptBtn {
+                padding: 15px 8px;
+            }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVw, div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnTtl span.SctnVwAll {
+        float: none;
+        display: inline-block;
+        margin: 10px 0;
+    }
+
+    div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.WhtBkgrnd.EnrgyMtr div.DshBrdSctnTtl.Innr span.TxtTtl {
+        padding-left: 10px;
+    }
+}
+
+@media only screen and (max-width: 374px) {
+
+    div.LiquidTank.Smll span.LiquidStatus {
+        font-size: 28px;
+        right: -60px;
+    }
+}

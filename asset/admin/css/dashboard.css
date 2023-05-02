@@ -1,0 +1,62 @@
+.box-header>.fa, .box-header>.glyphicon, .box-header>.ion, .box-header .box-title{font-size:30px;margin-bottom:15px;}
+ .box-body{}
+ .widget-user-header{background-color:#367fa9;color:#fff;
+}
+ .main-footer,.box{background-color:#ecf0f5}
+.content{min-height: 100%;}
+.pos-r {
+    position: relative!important;
+}
+.white {
+    background: #fff;
+}
+.text-white {
+    color: #337ab7!important;
+	font-size:30px;}
+.text-gray {
+    color: #363636;
+}
+.testimonial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.separator {
+    width: 14%;
+    height: 3px;
+    margin: 1.2em auto 1em;
+    background: #ffc53a;
+}
+.one-slide {
+  border-radius: 3px;
+  border:#337ab7 1px solid;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  font-size: 1.1rem;
+  height: 430px;
+  margin-bottom:20px!important;
+}
+
+.carousel-controls .control {
+  position: absolute;
+  cursor: pointer;
+  top: 56.4%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  transform: translateY(-50%);
+  c
+}
+.prev {
+  left: -1rem;
+}
+.next {
+  right: -1.775rem;
+}
+.box{
+	box-shadow: none!important;
+}
+.badge{padding:10px 15px!important;}
+.nav>li>a{padding:15px!important;font-size:14px;}

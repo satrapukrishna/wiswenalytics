@@ -1,0 +1,355 @@
+﻿body {
+    margin: 0;
+    padding: 0;
+    font: 400 13px/100% 'Poppins';
+    color: #444;
+}
+
+div.QRDtls-Header {
+    padding: 10px;
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+}
+
+    div.QRDtls-Header:after {
+        content: '';
+        position: absolute;
+        width: calc(100% - 20px);
+        height: 1px;
+        background: #ddd;
+        left: 10px;
+        bottom: 0;
+    }
+
+    div.QRDtls-Header div.LogoHdlr {
+        width: 25%;
+    }
+
+        div.QRDtls-Header div.LogoHdlr img.LogoImg {
+            display: block;
+            width: 40px;
+            height: 20px;
+            background: transparent url(../images/WISIcon-B.png) no-repeat center center;
+            background-size: 40px;
+        }
+
+    div.QRDtls-Header div.BrdCrmbHldr {
+        width: 75%;
+    }
+
+        div.QRDtls-Header div.BrdCrmbHldr ul.BrdCrmbLst {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: right;
+        }
+
+            div.QRDtls-Header div.BrdCrmbHldr ul.BrdCrmbLst li {
+                display: inline-block;
+                vertical-align: top;
+            }
+
+                div.QRDtls-Header div.BrdCrmbHldr ul.BrdCrmbLst li span.SrvcNme {
+                    display: block;
+                    padding: 3px 15px 0 5px;
+                    font: 500 13px/100% 'Poppins';
+                    color: #444;
+                    position: relative;
+                }
+
+                    div.QRDtls-Header div.BrdCrmbHldr ul.BrdCrmbLst li span.SrvcNme:after {
+                        content: '';
+                        position: absolute;
+                        display: block;
+                        width: 10px;
+                        height: 10px;
+                        right: 0;
+                        top: 5px;
+                        background: transparent url(../images/Arrow-Right-B.png) no-repeat center center;
+                        background-size: 10px;
+                    }
+
+                div.QRDtls-Header div.BrdCrmbHldr ul.BrdCrmbLst li span.DviceNme {
+                    display: block;
+                    padding: 3px 5px 0 5px;
+                    font: 600 13px/100% 'Poppins';
+                    color: #222;
+                }
+
+div.QRDtls-DvcDtlsHldr {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+div.QRDtls-DvcDtlsSctn {
+    box-sizing: border-box;
+    width: 50%;
+    padding: 5px 10px;
+}
+
+    div.QRDtls-DvcDtlsSctn span.SctnTtl {
+        display: block;
+        font: 500 13px/100% 'Poppins';
+        color: #555;
+        padding: 0 0 5px 0;
+    }
+
+    div.QRDtls-DvcDtlsSctn span.SctnDtl {
+        display: block;
+        font: 600 15px/100% 'Poppins';
+        color: #222;
+    }
+
+    div.QRDtls-DvcDtlsSctn span.SctnDtlSb {
+        display: block;
+        font: 500 13px/100% 'Poppins';
+        color: #444;
+        padding: 3px 0 0 0;
+    }
+
+
+div.BseDtls {
+    padding: 10px 0;
+}
+
+    div.BseDtls div.QRDtls-DvcDtlsSctn span.SctnDtl {
+        color: #0D78DB;
+        font-size: 17px;
+    }
+
+div.ClntDtls {
+    background: linear-gradient(114.35deg, #F4F4F4 12.3%, #FFFFFF 63.41%);
+    flex-wrap: wrap;
+    padding: 0 10px;
+}
+
+    div.ClntDtls div.QRDtls-DvcDtlsSctn {
+        padding: 15px 10px;
+        position: relative;
+    }
+
+        div.ClntDtls div.QRDtls-DvcDtlsSctn.BB {
+            border-bottom: 1px solid #ddd;
+        }
+
+        div.ClntDtls div.QRDtls-DvcDtlsSctn.BR {
+            padding-left: 0;
+        }
+
+            div.ClntDtls div.QRDtls-DvcDtlsSctn.BR:after {
+                content: '';
+                position: absolute;
+                width: 1px;
+                height: calc(100% - 20px);
+                right: 0;
+                top: 10px;
+                background: #ddd;
+            }
+
+div.QRDtls-Tabs {
+    padding: 0 10px;
+}
+
+div.QRDtls-Tabs div.tabs-menu {
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+    div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item {
+        position: relative;
+        padding: 20px 10px 10px 10px;
+        width: 33.33%;
+        box-sizing: border-box;
+        text-align: left;
+    }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item img.TabTtlImg {
+            display: block;
+            width: 30px;
+            height: 30px;
+            background: #ddd;
+        }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item img.Dcmnts {
+            background: transparent url(../images/Icon-Documents.png) no-repeat center center;
+            background-size: 30px;
+        }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item img.Snsrs {
+            background: transparent url(../images/Icon-Sensors.png) no-repeat center center;
+            background-size: 30px;
+        }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item img.Issus {
+            background: transparent url(../images/Icon-Issues.png) no-repeat center center;
+            background-size: 30px;
+        }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item span.TabTtl {
+            display: block;
+            padding: 10px 0 5px 0;
+            font: 600 14px/100% 'Poppins';
+            color: #444;
+            transition: 0.3s;
+        }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item span.TabTtlSb {
+            display: block;
+            font: 500 12px/100% 'Poppins';
+            color: #666;
+            transition: 0.3s;
+        }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item.active:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            width: 100%;
+            height: 1px;
+            background: #222;
+        }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item.active span.TabTtl {
+            color: #222;
+            transition: 0.3s;
+        }
+
+        div.QRDtls-Tabs div.tabs-menu div.tabs-menu-item.active span.TabTtlSb {
+            color: #444;
+            transition: 0.3s;
+        }
+
+div.QRDtls-Tabs div.tabs div.tab {
+    display: none;
+    padding: 5px 0;
+}
+
+    div.QRDtls-Tabs div.tabs div.tab.current {
+        display: block;
+    }
+
+     div.QRDtls-Tabs div.tabs div.tab span.TxtTtlHldr {
+        display: block;
+        font: 600 15px/100% 'Poppins';
+        color: #222;
+        padding: 10px 0 0 0;
+    }
+
+
+div.DtlsSctnldr {
+    margin: 10px 0 0 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}   
+
+    div.DtlsSctnldr div.TxtDtls {
+        box-sizing: border-box;
+        padding-right: 10px;
+    }
+
+    div.DtlsSctnldr div.TxtDtls span.TtlTxt {
+        display: block;
+        font: 600 15px/100% 'Poppins';
+        color: #222;
+    }
+
+    div.DtlsSctnldr div.TxtDtls span.TtlSbTxt {
+        display: block;
+        font: 500 13px/100% 'Poppins';
+        color: #444;
+        padding: 5px 0 0 0;
+    }
+
+    div.DtlsSctnldr div.LnkDtls {
+        padding-left: 10px;
+        position: relative;
+        box-sizing: border-box;
+        text-align: right;
+    }
+
+        div.DtlsSctnldr div.LnkDtls:before {
+            content: '';
+            position: absolute;
+            width: 1px;
+            height: 100%;
+            left: 0;
+            top: 0;
+            background: #ddd;
+        }
+
+    div.DtlsSctnldr div.LnkDtls a.LnkBtn {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        background: #000;
+        text-decoration: none;
+    }
+
+    div.DtlsSctnldr div.LnkDtls a.PDF {
+        background: transparent url(../images/Icon-PDF.png) no-repeat center center;
+        background-size: 25px;
+    }
+
+    div.DtlsSctnldr div.LnkDtls a.Srvc {
+        background: transparent url(../images/Icon-Service.png) no-repeat center center;
+        background-size: 25px;
+    }
+
+    
+
+    div.DtlsSctnldr div.InnrDtlsDv {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        background: #f9f9f9;
+        margin: 10px 0 0 0;
+    }
+
+        div.DtlsSctnldr div.InnrDtlsDv span.DtlsTxt {
+            display: block;
+            position: relative;
+            font: 500 13px/100% 'Poppins';
+            color: #444;
+            padding: 5px 0;
+        }
+
+        div.DtlsSctnldr div.InnrDtlsDv span.DtlsTxt.Paid {
+            padding-right: 40px;
+        }
+
+            div.DtlsSctnldr div.InnrDtlsDv span.DtlsTxt.Paid:after {
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                right: 5px;
+                top: 2px;
+                background: transparent url(../images/Icon-Paid.png) no-repeat center center;
+                background-size: 20px;
+            }
+
+    
+    div.DtlsSctnldr.Dcmnts div.TxtDtls {
+        width: 85%;
+    }
+
+    div.DtlsSctnldr.Dcmnts div.LnkDtls {
+        width: 15%;
+    }
+
+    div.DtlsSctnldr.Snsrs div.TxtDtls {
+        width: 85%;
+    }
+
+    div.DtlsSctnldr.Snsrs div.LnkDtls {
+        width: 15%;
+    }
+
+
+

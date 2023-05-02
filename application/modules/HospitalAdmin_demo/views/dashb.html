@@ -1,0 +1,150 @@
+
+<script type="text/javascript"
+  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyB2MBysi9kUp0sHhKkOwrAfnGJNgnNnWLQ&sensor=false">
+</script>
+<script type="text/javascript">
+    // var markers = [
+    // {
+    //     "title": 'Aksa Beach',
+    //     "lat": '19.1759668',
+    //     "lng": '72.79504659999998',
+    //     "description": 'Aksa Beach is a popular beach and a vacation spot in Aksa village at Malad, Mumbai.'
+    // },
+    // {
+    //     "title": 'Juhu Beach',
+    //     "lat": '19.0883595',
+    //     "lng": '72.82652380000002',
+    //     "description": 'Juhu Beach is one of favourite tourist attractions situated in Mumbai.'
+    // },
+    // {
+    //     "title": 'Girgaum Beach',
+    //     "lat": '18.9542149',
+    //     "lng": '72.81203529999993',
+    //     "description": 'Girgaum Beach commonly known as just Chaupati is one of the most famous public beaches in Mumbai.'
+    // },
+    // {
+    //     "title": 'Jijamata Udyan',
+    //     "lat": '18.979006',
+    //     "lng": '72.83388300000001',
+    //     "description": 'Jijamata Udyan is situated near Byculla station is famous as Mumbai (Bombay) Zoo.'
+    // },
+    // {
+    //     "title": 'Sanjay Gandhi National Park',
+    //     "lat": '19.2147067',
+    //     "lng": '72.91062020000004',
+    //     "description": 'Sanjay Gandhi National Park is a large protected area in the northern part of Mumbai city.'
+    // }
+    // ];
+    var markers = [
+    {
+        "title": 'Chennai',
+        "lat": '13.0474878',
+        "lng": '80.0689252',
+        "description": 'Chennai.'
+    },
+    {
+        "title": 'Delhi',
+        "lat": '28.6677609',
+        "lng": '77.0817763',
+        "description": 'Delhi.'
+    },
+    {
+        "title": 'Hyderabad',
+        "lat": '17.4121531',
+        "lng": '78.1278513',
+        "description": 'Hyderabad.'
+    },
+    {
+        "title": 'Kolkata',
+        "lat": '22.6757521',
+        "lng": '88.0495361',
+        "description": 'Kolkata.'
+    },
+    {
+        "title": 'Mumbai',
+        "lat": '19.0710761',
+        "lng": '72.878541',
+        "description": 'Mumbai.'
+    }
+    ];
+    var markers_hyd = [
+    {
+        "title": 'Kukatpally',
+        "lat": '17.4892366',
+        "lng": '78.3871933',
+        "description": 'Kukatpally.'
+    },
+    {
+        "title": 'Pragathi Nagar',
+        "lat": '17.5175575',
+        "lng": '78.3943104',
+        "description": 'Pragathi Nagar.'
+    },
+    {
+        "title": 'Kondapur',
+        "lat": '17.5193396',
+        "lng": '78.3871261',
+        "description": 'Kondapur.'
+    }
+    ];
+    window.onload = function () {
+        LoadMap();
+    }
+    function LoadMap() {
+        var mapOptions = {
+            center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+            zoom: 6,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+ 
+        //Create and open InfoWindow.
+        var infoWindow = new google.maps.InfoWindow();
+ 
+        for (var i = 0; i < markers.length; i++) {
+            var data = markers[i];
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+
+                title: data.title
+            });
+ 
+            //Attach click event to the marker.
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                    map.setZoom(12);
+                    map.panTo(this.getPosition());
+                    //infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.description + "</div>");
+                    //infoWindow.open(map, marker);
+                });
+            })(marker, data);
+        }
+
+        for (var i1 = 0; i1 < markers_hyd.length; i1++) {
+            var data = markers_hyd[i1];
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+
+                title: data.title
+            });
+ 
+            //Attach click event to the marker.
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                    map.setZoom(12);
+                    map.panTo(this.getPosition());
+                    infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.description + "</div>");
+                    infoWindow.open(map, marker);
+                });
+            })(marker, data);
+        }
+    }
+</script>
+<div id="dvMap" style="width: 100%; height: 100%">
+</div>

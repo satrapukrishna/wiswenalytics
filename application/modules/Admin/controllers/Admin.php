@@ -73,7 +73,7 @@ class Admin extends MX_Controller {
             $this->load->model('Login_model');
             $res = $this->Login_model->validate_user1($credentials);			
             log_message('INFO', 'Login status ' . $pid . ' ' . $res['status']);
-           // print_r($res);die();
+        //    print_r($res);die();
             if($res['status'] == 'failure') {
                 $data['errmsg'] = 'Invalid Login id or Password.';
                 $this->load->view('login1', $data);

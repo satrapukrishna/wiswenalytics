@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `protech_bms` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `protech_bms`;
+CREATE DATABASE  IF NOT EXISTS `wis_bms` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `wis_bms`;
 -- MySQL dump 10.13  Distrib 5.5.62, for debian-linux-gnu (x86_64)
 --
 -- Host: 127.0.0.1    Database: protech_bms

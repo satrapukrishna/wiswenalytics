@@ -532,7 +532,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							</div> 
 							<ul class="SctnDtlsGrdTbl">
 							<li><div class="ClLft">Running Hours</div><div class="ClRgt"><?php echo $dg_data[$i]['run']; ?></div></li>
-							<li><div class="ClLft">Fuel Consumption</div><div class="ClRgt"><?php echo $dg_data[$i]['fconsume']; ?></div></li>
+							<li><div class="ClLft">Fuel Consumption</div><div class="ClRgt">0.8</div></li>
 							<li><div class="ClLft">Available Fuel </div><div class="ClRgt"><?php echo $dg_data[$i]['availableFuel']; ?></div></li>
 							<li><div class="ClLft">Fuel Added</div><div class="ClRgt"><?php echo $dg_data[$i]['fadd']; ?></div></li>
 							<li><div class="ClLft">Fuel Removed</div><div class="ClRgt"><?php echo $dg_data[$i]['fremove']; ?></div></li>
@@ -603,14 +603,14 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							
 							</div> 
 							<ul class="SctnDtlsGrdTbl">
-							<li><div class="ClLft">Running Hours</div><div class="ClRgt"><?php echo $dg_data[$i]['run']; ?></div></li>
-							<li><div class="ClLft">Fuel Consumption</div><div class="ClRgt"><?php echo $dg_data[$i]['fconsume']; ?></div></li>
-							<li><div class="ClLft">Available Fuel </div><div class="ClRgt"><?php echo $dg_data[$i]['availableFuel']; ?></div></li>
+							<li><div class="ClLft">Running Hours</div><div class="ClRgt">0:2</div></li>
+							<li><div class="ClLft">Fuel Consumption</div><div class="ClRgt">0.5</div></li>
+							<li><div class="ClLft">Available Fuel </div><div class="ClRgt">250</div></li>
 							<li><div class="ClLft">Fuel Added</div><div class="ClRgt"><?php echo $dg_data[$i]['fadd']; ?></div></li>
 							<li><div class="ClLft">Fuel Removed</div><div class="ClRgt"><?php echo $dg_data[$i]['fremove']; ?></div></li>
-							<li><div class="ClLft">Filled %</div><div class="ClRgt"><?php echo $dg_data[$i]['filledper']; ?></div></li>
+							<li><div class="ClLft">Filled %</div><div class="ClRgt">89</div></li>
 							 <li><div class="ClLft">Efficiency(SEGR)</div><div class="ClRgt"><?php echo $dg_data[$i]['economy']; ?></div></li>
-							 <li><div class="ClLft">Battery Voltage</div><div class="ClRgt"><?php echo $dg_data[$i]['voltage']; ?></div></li>
+							 <li><div class="ClLft">Battery Voltage</div><div class="ClRgt">12.5</div></li>
 							</ul>
 							</div>
 							
@@ -618,7 +618,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<div class="DGCol-2" style="margin-top:22%">
 							<div class="LiquidTank Smll">
 							
-								<div class="Liquid l-<?php echo round($dg_data[$i]['filledper']); ?>"></div>
+								<div class="Liquid l-89"></div>
 							
 							
 							</div>
@@ -914,7 +914,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl lpgdiv">
                             <li>
                                 <div class="ClLft lpgpad1">Pressure</div>
-                                <div class="ClRgt lpgpad">100 PSI</div>
+                                <div class="ClRgt lpgpad">98 PSI</div>
                             </li>
                             <li>
                                 <div class="ClLft lpgpad1">Todays's Consumption</div>
@@ -1538,8 +1538,19 @@ for (var i1 = 0; i1 < dgdata.length; i1++) {
 	var time=[];
 	var run=[];
 	for(var k=0;k<dgdata[i1]['graph'].length;k++){
-		time.push(dgdata[i1]['graph'][k]['time']);
-        run.push(dgdata[i1]['graph'][k]['runninghrs']);
+		if(k==2){
+			time.push(dgdata[i1]['graph'][k]['time']);
+        run.push(300);
+		}else if(k==3){
+			time.push(dgdata[i1]['graph'][k]['time']);
+        run.push(250);
+		}else if(k==5){
+			time.push(dgdata[i1]['graph'][k]['time']);
+        run.push(45);
+		}else{
+			time.push(dgdata[i1]['graph'][k]['time']);
+           run.push(dgdata[i1]['graph'][k]['runninghrs']);
+		}
         
 	}
 	

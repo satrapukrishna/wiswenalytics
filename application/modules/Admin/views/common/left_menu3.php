@@ -165,7 +165,7 @@
 								 </li>
                                  <?php }else{?>
                                     <li>
-								 <a href="<?php echo site_url('Admin/Home/aircondition/')?>#hvac" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu-w.png" width="35px" style="margin-right:0px"/> <span class="Txt">AHU</span></a>
+								 <a href="<?php echo site_url('Admin/Home/aircondition_vegas/')?>#hvac" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu-w.png" width="35px" style="margin-right:0px"/> <span class="Txt">AHU</span></a>
 								 </li>
                                  <?php } } ?>
                             <?php if(modules::run('Admin/Site/authlink','airconditioning_chillers')){ ?>

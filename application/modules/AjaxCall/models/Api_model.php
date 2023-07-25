@@ -83,8 +83,13 @@ class Api_model extends CI_Model{
     {
         //print_r($json_client);die();
         foreach ($json_client as $valueclient) {
-            
             $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            $time=$valueclient['ToTime'];
+            $adate = date('Y-m-d H:i:s', strtotime("$newDate $time"));
+            $pdate= date("Y-m-d H:i:s", strtotime("-60 minutes"));           
+            if(strtotime($adate)>strtotime($pdate)){
+            
+            //$newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
                            $appData2=array(
                     'StationId'=>$valueclient['StationId'],
                     'UtilityName'=>$valueclient['UtilityName'],
@@ -114,6 +119,7 @@ class Api_model extends CI_Model{
 
         $this->db->insert('hardware_station_consumption_data_vegaschool_live', $appData2);
         }
+    }
           
         }
 
@@ -2070,37 +2076,34 @@ function getClientToken($client_id){
     }
     function pushDistrictCourtData($json_client)
     {
-        //print_r($json_client);die();
+        // print_r($json_client);die();
         foreach ($json_client as $valueclient) {
             
             $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
             
             $appData2=array(
                 'StationId'=>$valueclient['StationId'],
-                'StationName'=>$valueclient['StationName'],
-                'UtilityName'=>$valueclient['UtilityName'],
-                'UtilityId'=>$valueclient['UtilityId'],
-                'UtilityGroup'=>$valueclient['UtilityGroup'],
-                'LocationName'=>$valueclient['LocationName'],
-                'LocationGroup'=>$valueclient['LocationGroup'],
-                'MeterName'=>$valueclient['MeterName'],
-                'MeterSerial'=>$valueclient['MeterSerial'],
-                'MeterType'=>$valueclient['MeterType'],
-                'LineName'=>$valueclient['LineName'],
-                'LineConnected'=>$valueclient['LineConnected'],
-                'TxnDate'=>$newDate,
-                'TxnTime'=>$valueclient['TxnTime'],
-                'FromTime'=>$valueclient['FromTime'],
-                'ToTime'=>$valueclient['ToTime'],
-                'PrvReading'=>$valueclient['PrvReading'],
-                'CurReading'=>$valueclient['PrvReading'],
-                'Consumption'=>$valueclient['Consumption'],
-                'Multiplier'=>$valueclient['Multiplier'],
-                'UomName'=>$valueclient['UomName'],
-                'UomScale'=>$valueclient['UomScale'],
-                'UomGraph'=>$valueclient['UomGraph']                
+                    'UtilityName'=>$valueclient['UtilityName'],
+                    'LocationName'=>$valueclient['LocationName'],
+                    'LocationGroup'=>$valueclient['LocationGroup'],
+                    'MeterName'=>$valueclient['MeterName'],
+                    'MeterSerial'=>$valueclient['MeterSerial'],
+                    'LineConnected'=>$valueclient['LineConnected'],
+                    'TxnDate'=>$newDate,
+                    'TxnTime'=>$valueclient['TxnTime'],
+                    'FromTime'=>$valueclient['FromTime'],
+                    'ToTime'=>$valueclient['ToTime'],
+                    'PrvReading'=>$valueclient['PrvReading'],
+                    'CurReading'=>$valueclient['PrvReading'],
+                    'Consumption'=>$valueclient['Consumption'],
+                    'Multiplier'=>$valueclient['Multiplier'],
+                    'UomName'=>$valueclient['UomName'],
+                    'UomScale'=>$valueclient['UomScale']                 
             );
+            
             $this->db->insert('hardware_station_consumption_data_district_court', $appData2);
+           
+
           
         }
 
@@ -2115,7 +2118,7 @@ function getClientToken($client_id){
            
     }
     function updateWarangal($table_name){
-        $where = 'UomName="Count" and Consumption > 100 or Consumption<0';
+        $where = 'UomName="Count" and Consumption > 15 or Consumption<0';
         $this->db->where($where);
         $this->db->update($table_name, array('Consumption' => 4));
        

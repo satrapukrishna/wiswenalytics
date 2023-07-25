@@ -951,7 +951,7 @@ From WISIOT";
 		   $message=$data['branch'].':: No water Availability. From WISIOT';
 		  // echo $message."-".$res[0]['TxnTime']."<br>";
 		  $mobile='9959451265';
-		//   $mobile='9959451265,7799399299,9000172555,9000944923';
+		//   $mobile='9959451265,7799399299,9000172555,9000944923,9701999689,8500559853,7680888384,9701999658,9866236713,8297000029';
 		   $msg=array(
 			   'alert_time'=>$res[0]['TxnTime'],
 			   'alert_name'=>$data['branch'],
@@ -1002,7 +1002,7 @@ From WISIOT";
 			if($od_maledata[$i]['CurReading']>250){
 				$tt=$od_maledata[$i]['CurReading'].'ppm '.$od_maledata[$i]['TxnTime'];
 				$message=$data['branch'].':: High Male Odour level alert '.$tt.'.From WISIOT ';
-				$mobile='9959451265,7799399299,9000172555,9000944923';
+				$mobile='9959451265,7799399299,9000172555,9000944923,9701999689,8500559853,7680888384,9701999658,9866236713,8297000029';
 		   $msg=array(
 			   'alert_time'=>$od_maledata[$i]['TxnTime'],
 			   'alert_name'=>$data['branch'],
@@ -1023,7 +1023,7 @@ From WISIOT";
 		for ($i=0; $i < count($od_femaledata); $i++) {
 		 if($od_femaledata[$i]['CurReading']>120){
 			$message=$data['branch'].':: High Female Odour level alert '.$od_femaledata[$i]['CurReading'].'ppm '.$od_femaledata[$i]['TxnTime'].'.From WISIOT ';
-			$mobile='9959451265,7799399299,9000172555,9000944923';
+			$mobile='9959451265,7799399299,9000172555,9000944923,9701999689,8500559853,7680888384,9701999658,9866236713,8297000029';
 		   $msg=array(
 			   'alert_time'=>$od_femaledata[$i]['TxnTime'],
 			   'alert_name'=>$data['branch'],
@@ -1070,7 +1070,7 @@ From WISIOT";
 				if($mt<0){
 					$message=$data['branch'].':: No Footfall in Washroom from Last Two days. From WISIOT';
 		  // echo $message."-".$res[0]['TxnTime']."<br>";
-		  $mobile='9959451265,7799399299,9000172555,9000944923';
+		  $mobile='9959451265,7799399299,9000172555,9000944923,9701999689,8500559853,7680888384,9701999658,9866236713,8297000029';
 		   $msg=array(
 			   'alert_time'=>$res[0]['TxnTime'],
 			   'alert_name'=>$data['branch'],

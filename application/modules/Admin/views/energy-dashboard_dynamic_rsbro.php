@@ -970,7 +970,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					
 					
 					
-				<?php for ($i=0; $i < count($dg_data['chk']); $i++) 
+				<?php /*for ($i=0; $i < count($dg_data['chk']); $i++) 
          				 {
 							  ?>
 
@@ -1040,7 +1040,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					
-					<?php   } ?> 
+					<?php   } */?> 
 					
 					
 
@@ -1899,68 +1899,68 @@ for (var i1 = 0; i1 < wisdgdata.length; i1++) {
 });
 
 	}
-	var dgdata=<?php echo json_encode($dg_data['chk']); ?>;
-for (var i1 = 0; i1 < dgdata.length; i1++) {
-	var cnt_dg='chkdg'+i1;
-	var meter=dgdata[i1]["dgname"];
+// 	var dgdata=<?php //echo json_encode($dg_data['chk']); ?>;
+// for (var i1 = 0; i1 < dgdata.length; i1++) {
+// 	var cnt_dg='chkdg'+i1;
+// 	var meter=dgdata[i1]["dgname"];
 
-	var time=[];
-	var run=[];
-	for(var k=0;k<dgdata[i1]['graph'].length;k++){
-		time.push(dgdata[i1]['graph'][k]['time']);
-        run.push(dgdata[i1]['graph'][k]['runninghrs']);
+// 	var time=[];
+// 	var run=[];
+// 	for(var k=0;k<dgdata[i1]['graph'].length;k++){
+// 		time.push(dgdata[i1]['graph'][k]['time']);
+//         run.push(dgdata[i1]['graph'][k]['runninghrs']);
         
-	}
+// 	}
 	
 
 
-	Highcharts.chart(cnt_dg, {
-    chart: {
-        type: 'column'
-    },
+// 	Highcharts.chart(cnt_dg, {
+//     chart: {
+//         type: 'column'
+//     },
 
-                      credits: {
-                          enabled: false
-                      },
-    title: {
-        text: ' '
-    },
+//                       credits: {
+//                           enabled: false
+//                       },
+//     title: {
+//         text: ' '
+//     },
    
-    xAxis: {
-      title: {      
-      text: 'Time and Date'      
-    },
-      categories: time
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Running Hours(Min)'
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0;font-size:10px">{series.name}: </td>' +
-            '<td style="padding:0;font-size:10px"><b>{point.y} Minutes</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        column: {
-            pointPadding: 0.2,
-            borderWidth: 0
-        }
-    },
-    series: [{
-        name: ' ',
-        data: run,
-		color:'#2ca832'
+//     xAxis: {
+//       title: {      
+//       text: 'Time and Date'      
+//     },
+//       categories: time
+//     },
+//     yAxis: {
+//         min: 0,
+//         title: {
+//             text: 'Running Hours(Min)'
+//         }
+//     },
+//     tooltip: {
+//         headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+//         pointFormat: '<tr><td style="color:{series.color};padding:0;font-size:10px">{series.name}: </td>' +
+//             '<td style="padding:0;font-size:10px"><b>{point.y} Minutes</b></td></tr>',
+//         footerFormat: '</table>',
+//         shared: true,
+//         useHTML: true
+//     },
+//     plotOptions: {
+//         column: {
+//             pointPadding: 0.2,
+//             borderWidth: 0
+//         }
+//     },
+//     series: [{
+//         name: ' ',
+//         data: run,
+// 		color:'#2ca832'
 
-    }]
-});
+//     }]
+// });
 
-	}
+// 	}
 	
 	//DG End
 	<?php } ?>

@@ -1323,7 +1323,7 @@ var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 var yyyy = today.getFullYear();
 
 today = yyyy + '-' + mm + '-' + dd;
-
+var today1='2023-07-04';
   var meter_names = document.getElementById("hvac").value;
   
   var meters = meter_names.split(",");
@@ -1336,7 +1336,7 @@ today = yyyy + '-' + mm + '-' + dd;
         url:urlString,
         type : 'GET',
         async: true,
-        data: {meter: escape(meters[i]),date:today},
+        data: {meter: escape(meters[i]),date:today1},
         success: function(data){
           console.log("success"+data);
           generateCard(data,mlength);

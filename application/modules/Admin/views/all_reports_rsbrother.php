@@ -672,102 +672,26 @@ footer {
 					<div class="RprtFullDv FllHght">
 					<?php 	
 						//echo print_r($data['device']);die();
-						//water tabular
 						
-						if($data['device']==19 && $data['report_type']==0){
-							$this->load->view('reportcommon/waterlevelreport');
-						}
-						if($data['device']==27 && $data['report_type']==0){
-							$this->load->view('reportcommon/borewellrunnreport');
-						}
-						if($data['device']==20 && $data['report_type']==0){
-							$this->load->view('reportcommon/firepumprunnreport_dyn');
-							
-						}
-						if($data['device']==39 && $data['report_type']==0){
-							$this->load->view('reportcommon/firepumprunnreport');
-							$this->load->view('reportcommon/statusview1');
-							$this->load->view('reportcommon/dgreport');
-							$this->load->view('reportcommon/dgfadded');
-						}
-						if($data['device']==26 && $data['report_type']==0){
-							$this->load->view('reportcommon/hpsrunnreport');
-							$this->load->view('reportcommon/hpsstatusview');
-						}
-						if($data['device']==25 && $data['report_type']==0){
-							
-							$this->load->view('reportcommon/watermeterDashboard');
-						}
-						
-						//end water
 						//Energy tabular
 						if($data['device']==28 && $data['report_type']==0){
 							$this->load->view('reportcommon/dgreport_rsbro');
-							$this->load->view('reportcommon/dgfadded_rsbro');
-							$this->load->view('reportcommon/dgfremove_rsbro');							
+							//$this->load->view('reportcommon/dgfadded_rsbro');
+							//$this->load->view('reportcommon/dgfremove_rsbro');							
 						}
-						if($data['device']==41 && $data['report_type']==0){
-							$this->load->view('reportcommon/energyconsumptionreport');						
-							
-						}
-						if($data['device']==34 && $data['report_type']==0){							
-							$this->load->view('reportcommon/flowconsumptionreport',$data);
-							
-						}
-						if($data['device']==35 && $data['report_type']==0){							
-							$this->load->view('reportcommon/switch_control_report',$data);
-							
-						}
+						
 						
 					?>
 					
 					
 					<?php
-						//water grapical
-						if($data['device']==19 && $data['report_type']==1){
-							$this->load->view('graphreportcommon/waterlevelgraph');
-						}
-						if($data['device']==34 && $data['report_type']==1){
-							$this->load->view('graphreportcommon/flowconsumption')	;
-						}
+						
 						if($data['device']==28 && $data['report_type']==1){
 							$this->load->view('graphreportcommon/dgrungraph_rsbro');
 							// $this->load->view('graphreportcommon/dgfadd_rsbro');
 							// $this->load->view('graphreportcommon/dgfremove_rsbro');
 						}
-						if($data['device']==30 && $data['report_type']==1){
-							$this->load->view('graphreportcommon/dgtrip');
-						}
-						if($data['device']==27 && $data['report_type']==1){
-							$this->load->view('graphreportcommon/borewellrungraph');
-						}
-						if($data['device']==20 && $data['report_type']==1){
-							//$this->load->view('graphreportcommon/firepumprungraph');
-						//$this->load->view('graphreportcommon/firepumplinepressure');
-						//$this->load->view('graphreportcommon/dgrungraph');
-						//$this->load->view('graphreportcommon/dgfadd');
-						}
-						if($data['device']==39 && $data['report_type']==1){
-							$this->load->view('graphreportcommon/firepumprungraph1');
-						$this->load->view('graphreportcommon/firepumplinepressure');
-						$this->load->view('graphreportcommon/dgrungraph');
-						$this->load->view('graphreportcommon/dgfadd');
-						}
-						if($data['device']==26 && $data['report_type']==1){
-							$this->load->view('graphreportcommon/hpsrun');
-						$this->load->view('graphreportcommon/firepumplinepressure');								
-						}
-						if($data['device']==25 && $data['report_type']==1){
-						$this->load->view('graphreportcommon/watermeter');								
-						}
-						//end water
-						//start energy
-						if($data['device']==41 && $data['report_type']==1){							
-							$this->load->view('graphreportcommon/energyconsumptiongraph');
-							}
-						if($data['device']==51 && $data['report_type']==1){
-							$this->load->view('graphreportcommon/energypowerfactor');
-						}	?>
+							?>
 						</div>
 					</div>
 				</div>

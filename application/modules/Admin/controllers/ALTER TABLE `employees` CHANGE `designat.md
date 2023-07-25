@@ -1,0 +1,15 @@
+ALTER TABLE `employees` CHANGE `designation` `designation` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `address` `address` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `contact` `contact` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `job_type` `job_type` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `city` `city` VARCHAR(50) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `date_of_joining` `date_of_joining` DATE NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `doc` `doc` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `profile_pic` `profile_pic` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `permissions` `permissions` TEXT CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `status` `status` INT NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `department` `department` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `created_by` `created_by` INT NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `created_time` `created_time` DATETIME NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `updated_time` `updated_time` DATETIME NULL DEFAULT NULL;
+ALTER TABLE `employees` CHANGE `session` `session` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci NULL DEFAULT NULL;

@@ -1513,7 +1513,7 @@ class Services_model extends CI_Model
 	}
 	function get_meters_name() {
         $this->db->select('');
-        $this->db->from('hardware_station_consumption_data_mumbai_bkp_aprl12');     
+        $this->db->from('hardware_station_consumption_data_mumbai_bkp_27june2023');     
         $this->db->where('UtilityName','Water Monitor'); 
 		$this->db->group_by('LocationName');
         $res = $this->db->get()->result_array(); 
@@ -2107,7 +2107,7 @@ function get_version($app_id,$operator){
 			(SELECT CurReading FROM $table_name WHERE TxnDate='".$todayDate."' AND LineConnected='Fuel Level' AND UtilityName='".$hardware_name."' ORDER BY TxnTime LIMIT 1) as 'start',
 			(SELECT CurReading FROM $table_name WHERE TxnDate='".$todayDate."' AND UtilityName='".$hardware_name."' AND LineConnected='Fuel Level' ORDER BY TxnTime DESC LIMIT 1) as 'end'";
 			$dataStartEndFuel = $this->db->query($startEndFuelQuery)->result();
-			//echo json_encode($dataStartEndFuel[0]->start);die();
+			// echo json_encode($dataStartEndFuel[0]->start);die();
 			if(is_null($dataStartEndFuel[0]->start)){
 				$resdata1['hardware_name']=(string)$hardware_name;
 			$resdata1['running_hours']="NA";
@@ -2140,7 +2140,7 @@ function get_version($app_id,$operator){
 	
 			$queryRuntimes="SELECT TxnTime FROM $table_name WHERE UtilityName='".$hardware_name."' AND TxnDate='".$todayDate."' AND LineConnected='DG_Running_Time'  AND Consumption>0";
 			
-	
+	// echo $queryRuntimes;die();
 			$dataRunTimes = $this->db->query($queryRuntimes)->result();
 			$runarray=array();
 			for ($i=0; $i < count($dataRunTimes) ; $i++) { 
@@ -2168,6 +2168,7 @@ function get_version($app_id,$operator){
 			$resdata['fuel_remove']=(string)$fremove;
 			$resdata1['fuel_remove']=(string)$fremove." Ltrs";
 			$resdata['fuel_consume1']=(string)round($dataStartEndFuel[0]->start+$resdata['fuel_add']-$dataStartEndFuel[0]->end-$resdata['fuel_remove'],2);
+			
 			if($resdata['fuel_consume1'] <= 0 || $dataRunn[0]->run==0){
 				$finaleco =0;
 				$resdata['fuel_consume']="0 Ltrs";
@@ -2177,7 +2178,8 @@ function get_version($app_id,$operator){
 			else{
 				$resdata['fuel_consume']=(string)$resdata['fuel_consume1'];
 				$resdata1['fuel_consume']=(string)$resdata['fuel_consume1']." Ltrs";
-				$rs = explode(":", $resdata['run']);
+				$rs = explode(":", $resdata['running_hours']);
+				// echo json_encode($rs);die();
 				//print_r($rs);
 				$hrs = $rs[0];
 				$mins = $rs[1];
@@ -2192,6 +2194,7 @@ function get_version($app_id,$operator){
 				$finaleco= round($eco,2);
 				
 			}
+			
 			$resdata1['hardware_name']=(string)$hardware_name;
 			$resdata['economy']=(string)$finaleco;
 			$resdata1['economy']=(string)$finaleco;

@@ -7,6 +7,7 @@ class Hardware_model extends CI_Model{
 	function insert_hardware($data) {
         if (count($data) > 0) {
             $res = $this->db->insert('hardware', $data);
+            // echo $this->db->last_query();exit;
             return $res;
         }
         return false;

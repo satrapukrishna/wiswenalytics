@@ -1,0 +1,3171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PMP</title>
+    <link rel="stylesheet" href="AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="AppTheme/Fonts/IconFont.css" />
+</head>
+
+<body>
+    <div class="AppHeader">
+        <div class="AppMnuTtlHldr">
+            <div class="TtlHldr">
+                <div class="ClntLgoHldr">
+                    <img src="Images/CompanyLogo.png" class="Lgo" />
+                </div>
+            </div>
+        </div>
+        <div class="AppUsrCntrlHldr">
+            <ul class="UsrNav">
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Notification"></a>
+                </li>
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Help"></a>
+                </li>
+                <li>
+                    <div class="UsrDvHldr">
+                        <div class="UsrDtls">
+                            <div class="PrflNmeHldr">
+                                <span class="Nme">Vinay Kumar</span>
+                            </div>
+                            <div class="PrflImgHldr">
+                                <img src="Images/ProfileImage.jpg" class="PrfImg" />
+                                <span class="PrflTxtImg">
+                                    <span class="Intls">VK</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <div class="AppVrsnDtls">
+            <span class="AppCurrVrsn">Version:<span class="Vrsn">v3.0.20</span></span>
+        </div>
+        <div class="AppPwrdDtls">
+            <span class="CorpTxt">Powered by<a href="#" class="Lnk" target="_blank">WIS</a></span>
+        </div>
+    </div>
+    <div class="AppMnuHldr">
+        <div class="MnuLstHldr">
+            <ul class="MnuLst">
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Dashboard"></span>
+                        <span class="LnkTxt">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Map"></span>
+                        <span class="LnkTxt">Locations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Employees"></span>
+                        <span class="LnkTxt">Employees</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-AccessControl"></span>
+                        <span class="LnkTxt">Access Control</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Masters"></span>
+                        <span class="LnkTxt">Masters</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Reports"></span>
+                        <span class="LnkTxt">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppMstrCntnr">
+        <div class="GnPgHdrDvHldr">
+            <div class="TtlHldr">
+                <span class="PgTtl">Preventive Maintenance Plan</span>
+            </div>
+            <div class="NvBtnHldr">
+                <div class="Hldr">
+                    <a href="#" class="AppBtn Icn WISIcn-Add">Add New</a>
+                </div>
+            </div>
+        </div>
+        <div class="GnPgCntntDvHldr">
+            <div class="FormHldr Search">
+                <div class="row">
+                    <div class="col-5">
+                        <select class="Input">
+                            <option>All PMP ID</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                        </select>
+                    </div>
+                    <div class="col-5">
+                        <select class="Input">
+                            <option>All Services</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                        </select>
+                    </div>
+                    <div class="col-5">
+                        <select class="Input">
+                            <option>All Devices</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                        </select>
+                    </div>
+                    <div class="col-5">
+                        <button type="submit" class="AppBtn">Update</button>
+                    </div>
+                </div>
+            </div>
+            <div class="InnrCntntHldr">
+                <table class="AppGenTable NoMrgnTop VAMiddle">
+                    <thead>
+                        <tr>
+                            <th class="CntrAlgn" style="width: 6%">PMP ID</th>
+                            <th>Department</th>
+                            <th style="width: 18%">Equipment Name</th>
+                            <th>Frequency</th>
+                            <th class="CntrAlgn" style="width: 5.5%">JAN</th>
+                            <th class="CntrAlgn" style="width: 5.5%">FEB</th>
+                            <th class="CntrAlgn" style="width: 5.5%">MAR</th>
+                            <th class="CntrAlgn" style="width: 5.5%">APR</th>
+                            <th class="CntrAlgn" style="width: 5.5%">MAY</th>
+                            <th class="CntrAlgn" style="width: 5.5%">JUN</th>
+                            <th class="CntrAlgn" style="width: 5.5%">JUL</th>
+                            <th class="CntrAlgn" style="width: 5.5%">AUG</th>
+                            <th class="CntrAlgn" style="width: 5.5%">SEP</th>
+                            <th class="CntrAlgn" style="width: 5.5%">OCT</th>
+                            <th class="CntrAlgn" style="width: 5.5%">NOV</th>
+                            <th class="CntrAlgn" style="width: 5.5%">DEC</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                                    <td class="CntrAlgn">StID-01</td>
+                                    <td>Electrical</td>
+                                    <td>Block-A Transformer - 1 - 315 KVA</td>
+                                    <td>Quarterly
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th January</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv NotCompleted">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Cross-Big"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Not Completed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th April</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">27</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 27th July</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">24</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 24th October</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+
+                        </tr>
+                        <tr>
+                                    <td class="CntrAlgn">StID-02</td>
+                                    <td>Electrical</td>
+                                    <td>Block-A D.G - 1 - 160 KVA</td>
+                                    <td>Monthly</td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th January</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Delayed">
+                                            <span class="Date">23</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Delayed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 23rd February</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv NotCompleted">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Cross-Big"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Not Completed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th March</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Late">
+                                            <span class="Date">22</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Late</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 22nd April</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th May</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">24</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 24th June</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">27</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 27th July</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">22</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 22nd August</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">24</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 24th September</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">24</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 24th October</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">21</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 21st November</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">24</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 24th December</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                        </tr>
+                        <tr>
+                                    <td class="CntrAlgn">StID-03</td>
+                                    <td>Electrical</td>
+                                    <td>Block-A D.G AMF Panel</td>
+                                    <td>Monthly</td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th January</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="PMPPlnDv NotCompleted">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Cross-Big"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Not Completed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th February</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Delayed">
+                                            <span class="Date">23</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Delayed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 23rd March</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th April</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Late">
+                                            <span class="Date">22</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Late</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 22nd May</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">25</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 25th June</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th July</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">23</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 23rd August</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">25</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 25th September</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th October</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">22</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 22nd November</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th December</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                        </tr>
+                        <tr>
+                                    <td class="CntrAlgn">StID-04</td>
+                                    <td>Electrical</td>
+                                    <td>Block-A Earth Pits (Service Provider )</td>
+                                    <td>Yearly</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th May</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+
+
+
+
+                        </tr>
+                        <tr>
+                                    <td class="CntrAlgn">StID-05</td>
+                                    <td>Electrical</td>
+                                    <td>Block-B Earth Pits (Service Provider )</td>
+                                    <td>Yearly</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">24</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 24th March</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                        </tr>
+                        <tr>
+                                    <td class="CntrAlgn">StID-06</td>
+                                    <td>HVAC</td>
+                                    <td>Block-A AHU S 1,2,3</td>
+                                    <td>Monthly</td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">23</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 23rd January</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv NotCompleted">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Cross-Big"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Not Completed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th February</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th March</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <div class="PMPPlnDv Delayed">
+                                            <span class="Date">29</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Delayed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 29th April</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+
+                                        <div class="PMPPlnDv Delayed">
+                                            <span class="Date">23</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Delayed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 23rd May</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">25</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 25th June</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">27</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 27th July</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th August</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">29</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 29th September</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">30</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 30th October</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">25</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 25th November</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">23</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 23rd December</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                        </tr>
+                        <tr>
+                                    <td class="CntrAlgn">StID-07</td>
+                                    <td>HVAC</td>
+                                    <td>Block-A A/C Duct cleaning - Followed by floor wise</td>
+                                    <td>Monthly</td>
+
+                                    <td>
+                                        <div class="PMPPlnDv NotCompleted">
+                                            <span class="Date">25</span>
+                                            <span class="Stts WISIcn-Cross-Big"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Not Completed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 25th January</span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th February</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">23</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 23rd March</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+
+                                        <div class="PMPPlnDv Late">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Late</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th April</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td>
+
+                                        <div class="PMPPlnDv Delayed">
+                                            <span class="Date">23</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Delayed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 23rd May</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">22</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 22nd June</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th July</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">29</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 29th August</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">30</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 30th September</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">31</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 31st October</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">26</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 26th November</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th December</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                        </tr>
+                        <tr>
+                                    <td class="CntrAlgn">StID-08</td>
+                                    <td>HVAC</td>
+                                    <td>Block-B AHU'S Each servised once in Qtr (Service Provider)</td>
+                                    <td>Quarterly
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th March</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv NotCompleted">
+                                            <span class="Date">22</span>
+                                            <span class="Stts WISIcn-Cross-Big"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Not Completed</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 22nd May</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">27</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 27th August</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">24</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 24th November</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="CntrAlgn">-</td>
+
+                        </tr>
+                        <tr>
+                                        <td class="CntrAlgn">StID-09</td>
+                                        <td>HVAC</td>
+                                        <td>Block-A VRF Units - (Each serviced once in Qtr Service Provider)
+                                        </td>
+                                        <td>Quarterly
+                                        </td>
+                                        <td>
+                                            <div class="PMPPlnDv OnTime">
+                                                <span class="Date">28</span>
+                                                <span class="Stts WISIcn-Tick"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">On Time</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 28th January</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="CntrAlgn">-</td>
+                                        <td class="CntrAlgn">-</td>
+                                        <td>
+                                            <div class="PMPPlnDv Late">
+                                                <span class="Date">27</span>
+                                                <span class="Stts WISIcn-Tick"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">Late</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 27th April</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="CntrAlgn">-</td>
+                                        <td class="CntrAlgn">-</td>
+                                        <td>
+                                            <div class="PMPPlnDv Schedule">
+                                                <span class="Date">26</span>
+                                                <span class="Stts WISIcn-Calendar"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">Scheduled</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 26th July</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="CntrAlgn">-</td>
+                                        <td class="CntrAlgn">-</td>
+                                        <td>
+                                            <div class="PMPPlnDv Schedule">
+                                                <span class="Date">20</span>
+                                                <span class="Stts WISIcn-Calendar"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">Scheduled</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 20th October</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="CntrAlgn">-</td>
+                                        <td class="CntrAlgn">-</td>
+
+                        </tr>
+
+                        <tr>
+                            <td class="CntrAlgn">StID-10</td>
+                            <td>HVAC</td>
+                            <td>Block-A Cassette & Split A/C Units Followed by floor wise
+                            </td>
+                            <td>Monthly</td>
+
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th January</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th February</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd March</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th April</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">30</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 30th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">30</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 30th October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CntrAlgn">StID-11</td>
+                            <td>House Keeping</td>
+                            <td>Toilets cheking</td>
+                            <td>Monthly</td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th January</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd February</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                            <td>
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd March</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th April</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">30</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 30th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">31</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 31st October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CntrAlgn">StID-12</td>
+                            <td>Plumbing</td>
+                            <td>Water Tanks cleaning</td>
+                            <td>Monthly</td>
+
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd January</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th February</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd March</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">21</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 21st April</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">21</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 21st October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CntrAlgn">StID-13</td>
+                            <td>Plumbing</td>
+                            <td>Water Samples Testing (Service Provider)</td>
+                            <td>Monthly</td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th January</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th February</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd March</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+                            <td>
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">21</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 21st April</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                                    <td class="CntrAlgn">StID-14</td>
+                                    <td>Plumbing</td>
+                                    <td>Water Tanks (cleaning each once in Qtr Service Provider)
+                                    </td>
+                                    <td>Quarterly
+                                    </td>
+                                    <td>
+                                        <div class="PMPPlnDv OnTime">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">On Time</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th January</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv Late">
+                                            <span class="Date">28</span>
+                                            <span class="Stts WISIcn-Tick"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Late</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 28th May</span>
+                                                </div>
+                                            </div>
+                                        </div>
+        
+                                    </td>
+
+
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">22</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 22nd June</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td class="CntrAlgn">-</td>
+                                    <td>
+                                        <div class="PMPPlnDv Schedule">
+                                            <span class="Date">24</span>
+                                            <span class="Stts WISIcn-Calendar"></span>
+                                            <div class="PMPPopup">
+                                                <div class="DtlsHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="Ttl">Scheduled</span>
+                                                        <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                    </div>
+                                                    <span class="Txt">On 24th November</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <td class="CntrAlgn">-</td>
+
+
+                        </tr>
+
+                        <tr>
+                            <td class="CntrAlgn">StID-15</td>
+                            <td>Plumbing</td>
+                            <td>R.O Plant</td>
+                            <td>Monthly</td>
+                            <td>
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th January</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th February</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd March</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                            <td>
+
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th April</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">21</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 21st June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CntrAlgn">StID-16</td>
+                            <td>Civil</td>
+                            <td>Carpenter( Furniture,wheel chairs, Strechers ,Side Railing )</td>
+                            <td>Monthly</td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd January</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th February</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th March</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                            <td>
+
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th April</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">30</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 30th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CntrAlgn">StID-17</td>
+                            <td>Civil</td>
+                            <td>Painting (External)
+
+                            <td>Yearly</td>
+                            <td class="CntrAlgn">-</td>
+
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th February</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+                            <td class="CntrAlgn">-</td>
+
+                        </tr>
+                        <tr>
+                            <td class="CntrAlgn">StID-18</td>
+                            <td>Safety</td>
+                            <td>Fire fighting system-1</td>
+                            <td>Monthly</td>
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th January</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd February</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th March</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd April</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+
+
+
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">25</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 25th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CntrAlgn">StID-19</td>
+                            <td>Safety</td>
+                            <td>Safety Audit Hospitals Buildings
+                            </td>
+                            <td>Monthly</td>
+                            <td>
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th January</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th February</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th March</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                            <td>
+
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th April</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">27</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 27th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">31</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 31st December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="CntrAlgn">StID-20</td>
+                            <td>Safety</td>
+                            <td>Internal Training
+                            </td>
+                            <td>Monthly</td>
+
+
+                            <td>
+                                <div class="PMPPlnDv Late">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Late</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th January</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">22</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 22nd February</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv NotCompleted">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Cross-Big"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Not Completed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th March</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv OnTime">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">On Time</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th April</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+
+                                <div class="PMPPlnDv Delayed">
+                                    <span class="Date">24</span>
+                                    <span class="Stts WISIcn-Tick"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Delayed</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 24th May</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+
+
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">23</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 23rd June</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th July</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th August</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">30</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 30th September</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">29</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 29th October</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">26</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 26th November</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="PMPPlnDv Schedule">
+                                    <span class="Date">28</span>
+                                    <span class="Stts WISIcn-Calendar"></span>
+                                    <div class="PMPPopup">
+                                        <div class="DtlsHldr">
+                                            <div class="TtlHldr">
+                                                <span class="Ttl">Scheduled</span>
+                                                <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                            </div>
+                                            <span class="Txt">On 28th December</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    <!--<tr>
+                                        <td class="CntrAlgn">StID-01</td>
+                                        <td>Energy</td>
+                                        <td>Block-A Transformer - 1 - 315 KVA</td>
+                                        <td>
+                                            <div class="PMPPlnDv OnTime">
+                                                <span class="Date">28</span>
+                                                <span class="Stts WISIcn-Tick"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">On Time</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 18th December</span>                                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="PMPPlnDv Delayed">
+                                                <span class="Date">28</span>
+                                                <span class="Stts WISIcn-Tick"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">Delayed</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 18th December</span>                                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="PMPPlnDv NotCompleted">
+                                                <span class="Date">28</span>
+                                                <span class="Stts WISIcn-Cross-Big"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">Not Completed</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 18th December</span>                                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="PMPPlnDv Late">
+                                                <span class="Date">28</span>
+                                                <span class="Stts WISIcn-Tick"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">Late</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 18th December</span>                                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="PMPPlnDv Schedule">
+                                                <span class="Date">28</span>
+                                                <span class="Stts WISIcn-Calendar"></span>
+                                                <div class="PMPPopup">
+                                                    <div class="DtlsHldr">
+                                                        <div class="TtlHldr">
+                                                            <span class="Ttl">Scheduled</span>
+                                                            <a href="#" class="AppBtn IcnOnly WISIcn-Expand"></a>
+                                                        </div>
+                                                        <span class="Txt">On 18th December</span>                                            
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                        </tr> -->
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

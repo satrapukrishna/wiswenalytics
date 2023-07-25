@@ -1,0 +1,2892 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap");
+/* Complaints Type Colour Theme - Starts */
+/* Complaints Type Colour Theme - End */
+/* Location Type Colour Theme - Starts */
+/* Location Type Colour Theme - End */
+/* Employement Type Colour Theme - Starts */
+/* Employement Type Colour Theme - End */
+/* Complaint Prioirty Colour Theme - Starts */
+/* Complaint Prioirty Colour Theme - End */
+/* Complaint Status Colour Theme - Starts */
+/* Complaint Status Colour Theme - End */
+/* Approval Prioirty Colour Theme - Starts */
+/* Approval Prioirty Colour Theme - End */
+/* Approval Status Colour Theme - Starts */
+/* Approval Status Colour Theme - End */
+/* Messages - Starts */
+div.GenMsg {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  padding: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+}
+div.GenMsg span.MsgTxt {
+  display: block;
+  padding: 5px;
+  font-size: 13px;
+  font-weight: 600;
+}
+div.GenMsg.Error {
+  background: rgba(198, 40, 40, 0.05);
+  border-color: rgba(198, 40, 40, 0.1);
+}
+div.GenMsg.Error span.MsgTxt {
+  color: #c62828;
+}
+div.GenMsg.Success {
+  background: rgba(46, 125, 50, 0.05);
+  border-color: rgba(46, 125, 50, 0.1);
+}
+div.GenMsg.Success span.MsgTxt {
+  color: #2e7d32;
+}
+div.GenMsg.NoResult {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+div.GenMsg.NoResult span.MsgTxt {
+  color: black;
+}
+
+/* Messages - Ends */
+/* General Elements CSS - Starts */
+* {
+  box-sizing: border-box;
+}
+
+strong {
+  font-weight: 600;
+}
+
+.Hide {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.Lnk {
+  display: inline-block;
+  color: #009688;
+  font-size: 14px;
+  text-decoration: none;
+  position: relative;
+  cursor: pointer;
+  padding: 10px 3px;
+}
+.Lnk:hover {
+  text-decoration: underline;
+}
+.Lnk.Icn {
+  padding-left: 25px;
+  padding-right: 20px;
+}
+.Lnk.Icn:hover {
+  text-decoration: none;
+}
+.Lnk.Icn:before {
+  position: absolute;
+  left: 5px;
+  top: calc(50% - 7px);
+  font-size: 15px;
+}
+.Lnk.Icn.WISIcn-RemoveSolid {
+  color: #C62828;
+}
+
+/* Button CSS - Starts */
+.AppBtn {
+  display: flex;
+  padding: 8px 20px 0 20px;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 40px;
+  background: #005582;
+  min-height: 40px;
+  color: #ffffff;
+  font-family: Nunito, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  outline: none;
+  border: 1px solid #005582;
+  /*border-bottom: 3px solid rgba(darken($ButtonColour1, 8%), 1);*/
+  margin: 0 10px 0 0;
+  position: relative;
+  transition: 0.3s;
+}
+.AppBtn:active {
+  border-bottom: 1px solid #003a59;
+  background: #003a59;
+  transition: 0.3s;
+}
+.AppBtn.Scndry {
+  background: #ffffff;
+  color: #005582;
+  border-color: #005582;
+}
+.AppBtn.Icn {
+  padding-left: 40px;
+}
+.AppBtn.Icn:before {
+  position: absolute;
+  left: 15px;
+  top: calc(50% - 7px);
+}
+.AppBtn.IcnOnly {
+  display: block;
+  background-color: transparent;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 13px;
+  border: none;
+  width: 40px;
+  padding: 0;
+}
+.AppBtn.IcnOnly.Close {
+  background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1015_427)'%3E%3Cpath d='M29.4194 25.0008L49.0853 5.33707C50.306 4.11632 50.306 2.1371 49.0853 0.916448C47.8645 -0.304303 45.8853 -0.304303 44.6647 0.916448L25.0008 20.5822L5.33707 0.916448C4.11632 -0.304303 2.1371 -0.304303 0.916448 0.916448C-0.304205 2.1372 -0.304303 4.11641 0.916448 5.33707L20.5822 25.0008L0.916448 44.6647C-0.304303 45.8854 -0.304303 47.8646 0.916448 49.0853C2.1372 50.3059 4.11641 50.306 5.33707 49.0853L25.0008 29.4194L44.6646 49.0853C45.8853 50.306 47.8645 50.306 49.0852 49.0853C50.3059 47.8645 50.3059 45.8853 49.0852 44.6647L29.4194 25.0008Z' fill='%23fff'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1015_427'%3E%3Crect width='50' height='50' fill='%23fff'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+}
+.AppBtn.IcnOnly.Add {
+  background-color: #005582;
+  background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1015_407)'%3E%3Cpath d='M25 0C20.0555 0 15.222 1.46622 11.1108 4.21326C6.99952 6.96029 3.79521 10.8648 1.90302 15.4329C0.0108322 20.0011 -0.484251 25.0277 0.480379 29.8773C1.44501 34.7268 3.82603 39.1814 7.32234 42.6777C10.8187 46.174 15.2732 48.555 20.1228 49.5196C24.9723 50.4843 29.9989 49.9892 34.5671 48.097C39.1352 46.2048 43.0397 43.0005 45.7867 38.8893C48.5338 34.778 50 29.9445 50 25C49.9928 18.3718 47.3566 12.0171 42.6698 7.33025C37.9829 2.64339 31.6282 0.00716892 25 0ZM25 45.8333C20.8796 45.8333 16.8517 44.6115 13.4256 42.3223C9.99961 40.0331 7.32935 36.7794 5.75252 32.9726C4.1757 29.1658 3.76313 24.9769 4.56698 20.9356C5.37084 16.8943 7.35503 13.1822 10.2686 10.2686C13.1822 7.35501 16.8944 5.37083 20.9356 4.56697C24.9769 3.76311 29.1658 4.17568 32.9726 5.75251C36.7794 7.32934 40.0331 9.9996 42.3223 13.4256C44.6115 16.8516 45.8333 20.8796 45.8333 25C45.8273 30.5235 43.6304 35.819 39.7247 39.7247C35.819 43.6304 30.5235 45.8273 25 45.8333ZM35.4167 25C35.4167 25.5525 35.1972 26.0824 34.8065 26.4731C34.4158 26.8638 33.8859 27.0833 33.3333 27.0833H27.0833V33.3333C27.0833 33.8859 26.8638 34.4158 26.4731 34.8065C26.0824 35.1972 25.5525 35.4167 25 35.4167C24.4475 35.4167 23.9176 35.1972 23.5269 34.8065C23.1362 34.4158 22.9167 33.8859 22.9167 33.3333V27.0833H16.6667C16.1141 27.0833 15.5842 26.8638 15.1935 26.4731C14.8028 26.0824 14.5833 25.5525 14.5833 25C14.5833 24.4475 14.8028 23.9176 15.1935 23.5269C15.5842 23.1362 16.1141 22.9167 16.6667 22.9167H22.9167V16.6667C22.9167 16.1141 23.1362 15.5842 23.5269 15.1935C23.9176 14.8028 24.4475 14.5833 25 14.5833C25.5525 14.5833 26.0824 14.8028 26.4731 15.1935C26.8638 15.5842 27.0833 16.1141 27.0833 16.6667V22.9167H33.3333C33.8859 22.9167 34.4158 23.1362 34.8065 23.5269C35.1972 23.9176 35.4167 24.4475 35.4167 25Z' fill='%23fff'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1015_407'%3E%3Crect width='50' height='50' fill='%23fff'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");
+}
+.AppBtn.IcnOnly.Access {
+  background-size: 24px;
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='path-1-inside-1_1151_2' fill='white'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6 3C2.68629 3 0 5.68629 0 9C0 12.3137 2.68629 15 6 15H12C15.3137 15 18 12.3137 18 9C18 5.68629 15.3137 3 12 3H6ZM12 5C9.79086 5 8 6.79086 8 9C8 11.2091 9.79086 13 12 13C14.2091 13 16 11.2091 16 9C16 6.79086 14.2091 5 12 5Z'/%3E%3C/mask%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M6 3C2.68629 3 0 5.68629 0 9C0 12.3137 2.68629 15 6 15H12C15.3137 15 18 12.3137 18 9C18 5.68629 15.3137 3 12 3H6ZM12 5C9.79086 5 8 6.79086 8 9C8 11.2091 9.79086 13 12 13C14.2091 13 16 11.2091 16 9C16 6.79086 14.2091 5 12 5Z' fill='%232E7D32'/%3E%3Cpath d='M1 9C1 6.23858 3.23858 4 6 4V2C2.13401 2 -1 5.13401 -1 9H1ZM6 14C3.23858 14 1 11.7614 1 9H-1C-1 12.866 2.13401 16 6 16V14ZM12 14H6V16H12V14ZM17 9C17 11.7614 14.7614 14 12 14V16C15.866 16 19 12.866 19 9H17ZM12 4C14.7614 4 17 6.23858 17 9H19C19 5.13401 15.866 2 12 2V4ZM6 4H12V2H6V4ZM9 9C9 7.34315 10.3431 6 12 6V4C9.23858 4 7 6.23858 7 9H9ZM12 12C10.3431 12 9 10.6569 9 9H7C7 11.7614 9.23858 14 12 14V12ZM15 9C15 10.6569 13.6569 12 12 12V14C14.7614 14 17 11.7614 17 9H15ZM12 6C13.6569 6 15 7.34315 15 9H17C17 6.23858 14.7614 4 12 4V6Z' fill='%232E7D32' mask='url(%23path-1-inside-1_1151_2)'/%3E%3C/svg%3E%0A");
+}
+.AppBtn.IcnOnly.Access.Inactive {
+  background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cmask id='path-1-inside-1_1151_2' fill='white'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12 3C15.3137 3 18 5.68629 18 9C18 12.3137 15.3137 15 12 15H6C2.68629 15 0 12.3137 0 9C0 5.68629 2.68629 3 6 3H12ZM6 5C8.20914 5 10 6.79086 10 9C10 11.2091 8.20914 13 6 13C3.79086 13 2 11.2091 2 9C2 6.79086 3.79086 5 6 5Z'/%3E%3C/mask%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M12 3C15.3137 3 18 5.68629 18 9C18 12.3137 15.3137 15 12 15H6C2.68629 15 0 12.3137 0 9C0 5.68629 2.68629 3 6 3H12ZM6 5C8.20914 5 10 6.79086 10 9C10 11.2091 8.20914 13 6 13C3.79086 13 2 11.2091 2 9C2 6.79086 3.79086 5 6 5Z' fill='%23C62828'/%3E%3Cpath d='M17 9C17 6.23858 14.7614 4 12 4V2C15.866 2 19 5.13401 19 9H17ZM12 14C14.7614 14 17 11.7614 17 9H19C19 12.866 15.866 16 12 16V14ZM6 14H12V16H6V14ZM1 9C1 11.7614 3.23858 14 6 14V16C2.13401 16 -1 12.866 -1 9H1ZM6 4C3.23858 4 1 6.23858 1 9H-1C-1 5.13401 2.13401 2 6 2V4ZM12 4H6V2H12V4ZM9 9C9 7.34315 7.65685 6 6 6V4C8.76142 4 11 6.23858 11 9H9ZM6 12C7.65685 12 9 10.6569 9 9H11C11 11.7614 8.76142 14 6 14V12ZM3 9C3 10.6569 4.34315 12 6 12V14C3.23858 14 1 11.7614 1 9H3ZM6 6C4.34315 6 3 7.34315 3 9H1C1 6.23858 3.23858 4 6 4V6Z' fill='%23C62828' mask='url(%23path-1-inside-1_1151_2)'/%3E%3C/svg%3E%0A");
+}
+
+/* Button CSS - Ends */
+/* Uploaded File Link Display - Starts */
+div.UpldFlLst {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  padding: 5px 0;
+}
+div.UpldFlLst span.UpldFile {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  align-items: center;
+  padding: 5px 10px 5px 5px;
+  margin: 0 5px 5px 0;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  position: relative;
+}
+div.UpldFlLst span.UpldFile a.FileName {
+  display: block;
+  padding: 7px 15px 7px 30px !important;
+  text-decoration: none;
+  position: relative;
+  margin: 0 5px 0 0;
+}
+div.UpldFlLst span.UpldFile a.FileName:before {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  left: 5px;
+  top: calc(50% - 8px);
+}
+div.UpldFlLst span.UpldFile a.FileName:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 100%;
+  right: 0;
+  top: 0;
+  background: #ddd;
+}
+div.UpldFlLst span.UpldFile a.DelBtn {
+  display: block;
+  width: 30px;
+  height: 30px;
+  text-decoration: none;
+  color: #DF1125;
+  position: relative;
+}
+div.UpldFlLst span.UpldFile a.DelBtn:before {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  left: calc(50% - 8px);
+  top: calc(50% - 8px);
+}
+
+/* Uploaded File Link Display - Ends */
+/* Form Controls - Starts */
+input,
+select,
+optgroup,
+textarea {
+  margin: 0;
+  font-family: Nunito, Arial, sans-serif;
+  line-height: inherit;
+}
+
+input,
+select {
+  height: 40px;
+  background: #fff;
+}
+
+input.Input {
+  width: 100%;
+  font-weight: 600;
+  color: #222;
+  padding: 10px 7px;
+  border-radius: 5px;
+  border: 1px solid #dad0cb;
+}
+input.Input:focus-visible {
+  outline-color: #005582;
+}
+
+select.Input {
+  width: 100%;
+  font-weight: 600;
+  color: #222;
+  padding: 10px 7px;
+  border-radius: 5px;
+  border: 1px solid #dad0cb;
+}
+select.Input:focus-visible {
+  outline-color: #005582;
+}
+
+textarea {
+  min-height: 70px;
+}
+
+textarea.Input {
+  width: 100%;
+  font-weight: 400;
+  color: #222;
+  padding: 10px 7px;
+  border-radius: 5px;
+  border: 1px solid #dad0cb;
+}
+textarea.Input:focus-visible {
+  outline-color: #005582;
+}
+
+input[type=checkbox i],
+input[type=radio i] {
+  height: auto;
+  transform: scale(1.4);
+  margin: -2px 3px 0 3px;
+}
+
+input.Icn {
+  background-color: #fff;
+  background-position: left 10px center;
+  background-repeat: no-repeat;
+  background-size: 17px;
+  padding-left: 35px !important;
+}
+input.Icn.Calendar {
+  background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 50 50' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_1015_411)'%3E%3Cpath d='M39.5833 4.16667H37.5V2.08333C37.5 1.5308 37.2805 1.00089 36.8898 0.610194C36.4991 0.219493 35.9692 0 35.4167 0C34.8641 0 34.3342 0.219493 33.9435 0.610194C33.5528 1.00089 33.3333 1.5308 33.3333 2.08333V4.16667H16.6667V2.08333C16.6667 1.5308 16.4472 1.00089 16.0565 0.610194C15.6658 0.219493 15.1359 0 14.5833 0C14.0308 0 13.5009 0.219493 13.1102 0.610194C12.7195 1.00089 12.5 1.5308 12.5 2.08333V4.16667H10.4167C7.65501 4.16997 5.00741 5.2685 3.05462 7.22129C1.10184 9.17408 0.00330804 11.8217 0 14.5833L0 39.5833C0.00330804 42.345 1.10184 44.9926 3.05462 46.9454C5.00741 48.8982 7.65501 49.9967 10.4167 50H39.5833C42.345 49.9967 44.9926 48.8982 46.9454 46.9454C48.8982 44.9926 49.9967 42.345 50 39.5833V14.5833C49.9967 11.8217 48.8982 9.17408 46.9454 7.22129C44.9926 5.2685 42.345 4.16997 39.5833 4.16667V4.16667ZM4.16667 14.5833C4.16667 12.9257 4.82515 11.336 5.99725 10.1639C7.16935 8.99181 8.75906 8.33333 10.4167 8.33333H39.5833C41.2409 8.33333 42.8306 8.99181 44.0027 10.1639C45.1749 11.336 45.8333 12.9257 45.8333 14.5833V16.6667H4.16667V14.5833ZM39.5833 45.8333H10.4167C8.75906 45.8333 7.16935 45.1749 5.99725 44.0027C4.82515 42.8306 4.16667 41.2409 4.16667 39.5833V20.8333H45.8333V39.5833C45.8333 41.2409 45.1749 42.8306 44.0027 44.0027C42.8306 45.1749 41.2409 45.8333 39.5833 45.8333Z' fill='%23999'/%3E%3Cpath d='M25 34.375C26.7259 34.375 28.125 32.9759 28.125 31.25C28.125 29.5241 26.7259 28.125 25 28.125C23.2741 28.125 21.875 29.5241 21.875 31.25C21.875 32.9759 23.2741 34.375 25 34.375Z' fill='%23999'/%3E%3Cpath d='M14.5833 34.375C16.3092 34.375 17.7083 32.9759 17.7083 31.25C17.7083 29.5241 16.3092 28.125 14.5833 28.125C12.8574 28.125 11.4583 29.5241 11.4583 31.25C11.4583 32.9759 12.8574 34.375 14.5833 34.375Z' fill='%23999'/%3E%3Cpath d='M35.4167 34.375C37.1426 34.375 38.5417 32.9759 38.5417 31.25C38.5417 29.5241 37.1426 28.125 35.4167 28.125C33.6908 28.125 32.2917 29.5241 32.2917 31.25C32.2917 32.9759 33.6908 34.375 35.4167 34.375Z' fill='%23999'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_1015_411'%3E%3Crect width='50' height='50' fill='white'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
+}
+
+div.FormCheck {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  padding: 0 5px 0 0;
+}
+div.FormCheck.FullWidth {
+  width: 100%;
+}
+div.FormCheck label {
+  padding: 0 5px 0 5px;
+  cursor: pointer;
+}
+div.FormCheck.LrgFnt label {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+/* Form Controls - Ends */
+/* Scroll CSS - Starts */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 85, 130, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #005582;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #005582;
+}
+
+/* Scroll CSS - Ends */
+/* Tabs CSS - Starts */
+/* Page Title Tabs */
+div.AppCmpctTbHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  background: white;
+  border: 1px solid #009688;
+  padding: 2px;
+  border-radius: 20px;
+}
+div.AppCmpctTbHldr .TabLnk {
+  display: block;
+  padding: 6px 18px;
+  margin: 1px;
+  border-radius: 16px;
+  color: #00635a;
+  border: 1px solid rgba(0, 150, 136, 0);
+  text-decoration: none;
+  transition: 0.3s;
+}
+div.AppCmpctTbHldr .TabLnk:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(0, 150, 136, 0.3);
+  transition: 0.3s;
+}
+div.AppCmpctTbHldr .TabLnk.Actv {
+  background: #009688;
+  color: white;
+  border: 1px solid #009688;
+  cursor: default;
+  transition: 0.3s;
+}
+div.AppCmpctTbHldr .TabLnk.Icn {
+  padding-left: 30px;
+}
+
+/* Page Inner Content Tabs */
+div.AppFllTbHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  padding: 5px 0;
+}
+div.AppFllTbHldr .TabLnk {
+  display: block;
+  padding: 10px 25px;
+  margin: 1px 2px;
+  border-radius: 30px;
+  color: #007d71;
+  font-size: 15px;
+  font-weight: 600;
+  border: 1px solid rgba(0, 150, 136, 0.5);
+  text-decoration: none;
+  position: relative;
+  transition: 0.3s;
+}
+div.AppFllTbHldr .TabLnk:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid #009688;
+  transition: 0.3s;
+}
+div.AppFllTbHldr .TabLnk.Actv {
+  background: #009688;
+  color: white;
+  border: 1px solid #009688;
+  cursor: default;
+  transition: 0.3s;
+}
+div.AppFllTbHldr .TabLnk.Icn {
+  padding-left: 40px;
+}
+div.AppFllTbHldr .TabLnk.Icn:before {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  left: 15px;
+  top: calc(50% - 8px);
+}
+
+/* Tabs CSS - Ends */
+/* Table CSS - Starts */
+table.AppGenTable {
+  margin: 5px 0 0 0;
+  padding: 0;
+  border-spacing: 0;
+  width: 100%;
+}
+table.AppGenTable tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0.02);
+}
+table.AppGenTable tr:last-of-type td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+table.AppGenTable tr:hover td {
+  background: rgba(0, 85, 130, 0.05);
+}
+table.AppGenTable th,
+table.AppGenTable td {
+  padding: 14px 10px;
+  text-align: left;
+  vertical-align: top;
+  position: relative;
+  border-left: 1px solid rgba(0, 0, 0, 0.05);
+}
+table.AppGenTable th:last-of-type,
+table.AppGenTable td:last-of-type {
+  border-radius: 0 5px 5px 0;
+}
+table.AppGenTable th:first-of-type,
+table.AppGenTable td:first-of-type {
+  border-radius: 5px 0 0 5px;
+  border-left-width: 0;
+}
+table.AppGenTable.VAMiddle th,
+table.AppGenTable.VAMiddle td {
+  vertical-align: middle;
+}
+table.AppGenTable th {
+  background: rgba(0, 85, 130, 0.05);
+  font-size: 13px;
+  font-weight: 600;
+  color: #005582;
+}
+table.AppGenTable th .Lnk {
+  cursor: pointer;
+  text-decoration: none;
+}
+table.AppGenTable th .Lnk.Srt {
+  display: inline-block;
+  padding: 0 20px 0 0;
+}
+table.AppGenTable th .Lnk.Srt:before {
+  position: absolute;
+  right: 5px;
+  font-size: 10px;
+  top: calc(50% - 5px);
+}
+table.AppGenTable td {
+  background: rgba(0, 0, 0, 0);
+  font-size: 13px;
+}
+table.AppGenTable td .Lnk {
+  padding: 0;
+  font-size: 13px;
+}
+table.AppGenTable td .Lnk.Icn {
+  padding-left: 25px;
+  padding-right: 20px;
+}
+table.AppGenTable td span {
+  position: relative;
+}
+table.AppGenTable td span.Blk {
+  display: block;
+}
+table.AppGenTable td span.InlnBlk {
+  display: inline-block;
+}
+table.AppGenTable td span.TxtInactive {
+  opacity: 0.5;
+}
+table.AppGenTable td span.EmpType {
+  padding: 10px;
+  border-radius: 5px;
+}
+table.AppGenTable td span.EmpType.Theme1-FullTime {
+  background: #d4e4ff;
+}
+table.AppGenTable td span.EmpType.Theme1-PartTime {
+  background: #ffeecc;
+}
+table.AppGenTable td span.EmpType.Theme1-Contract {
+  background: #dde2e4;
+}
+table.AppGenTable td span.EmpType.Theme2-FullTime {
+  background: #d4e4ff;
+}
+table.AppGenTable td span.EmpType.Theme2-PartTime {
+  background: #ffeecc;
+}
+table.AppGenTable td span.EmpType.Theme2-Contract {
+  background: #dde2e4;
+}
+table.AppGenTable td span.ApprvlPrty {
+  padding: 10px;
+  border-radius: 5px;
+}
+table.AppGenTable td span.ApprvlPrty.Theme1-High {
+  background: rgba(225, 83, 83, 0.1);
+}
+table.AppGenTable td span.ApprvlPrty.Theme1-Medium {
+  background: rgba(220, 135, 0, 0.1);
+}
+table.AppGenTable td span.ApprvlPrty.Theme1-Low {
+  background: rgba(120, 178, 52, 0.1);
+}
+table.AppGenTable td span.ApprvlPrty.Theme2-High {
+  background: rgba(212, 228, 255, 0.1);
+}
+table.AppGenTable td span.ApprvlPrty.Theme2-Medium {
+  background: rgba(255, 238, 204, 0.1);
+}
+table.AppGenTable td span.ApprvlPrty.Theme2-Low {
+  background: rgba(221, 226, 228, 0.1);
+}
+table.AppGenTable td span.ApprvlStts {
+  padding: 10px;
+  border-radius: 5px;
+}
+table.AppGenTable td span.ApprvlStts.Theme1-Approved {
+  background: #e6f7e5;
+}
+table.AppGenTable td span.ApprvlStts.Theme1-PendingApproval {
+  background: #f3f5ff;
+}
+table.AppGenTable td span.ApprvlStts.Theme1-Rejected {
+  background: #fbeaea;
+}
+table.AppGenTable td span.ApprvlStts.Theme1-OnHold {
+  background: #eef0f2;
+}
+table.AppGenTable td span.ApprvlStts.Theme2-Approved {
+  background: #0fc8a3;
+}
+table.AppGenTable td span.ApprvlStts.Theme2-PendingApproval {
+  background: #fd7036;
+}
+table.AppGenTable td span.ApprvlStts.Theme2-Rejected {
+  background: #df1125;
+}
+table.AppGenTable td span.ApprvlStts.Theme2-OnHold {
+  background: #9ed59e;
+}
+table.AppGenTable td span.CmpltPrty {
+  padding-left: 15px;
+}
+table.AppGenTable td span.CmpltPrty:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  left: 0;
+  top: calc(50% - 5px);
+}
+table.AppGenTable td span.CmpltPrty.Theme1-High:before {
+  background: #e15353;
+}
+table.AppGenTable td span.CmpltPrty.Theme1-Medium:before {
+  background: #dc8700;
+}
+table.AppGenTable td span.CmpltPrty.Theme1-Low:before {
+  background: #78b234;
+}
+table.AppGenTable td span.CmpltPrty.Theme2-High:before {
+  background: #d4e4ff;
+}
+table.AppGenTable td span.CmpltPrty.Theme2-Medium:before {
+  background: #ffeecc;
+}
+table.AppGenTable td span.CmpltPrty.Theme2-Low:before {
+  background: #dde2e4;
+}
+table.AppGenTable td span.CmpltPrty.ReOpened {
+  padding-right: 25px;
+}
+table.AppGenTable td span.CmpltPrty.ReOpened:after {
+  content: "R";
+  position: absolute;
+  background: #005582;
+  width: 20px;
+  height: 20px;
+  right: 0;
+  top: calc(50% - 10px);
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  line-height: 100%;
+  padding: 4px 0 0 0;
+  box-sizing: border-box;
+}
+table.AppGenTable td .AppBtn.CmpltStts {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 40px;
+  border-radius: 5px;
+  text-align: left;
+  margin: 0;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Icn:before {
+  font-size: 22px;
+  top: calc(50% - 11px);
+  right: 15px;
+  left: inherit;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-Ongoing {
+  background: white;
+  color: black;
+  border-color: #0fc8a3;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-Ongoing:before {
+  color: #0fc8a3;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-AssignComplaint {
+  background: white;
+  color: black;
+  border-color: #228be6;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-AssignComplaint:before {
+  color: #228be6;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-PendingApproval {
+  background: white;
+  color: black;
+  border-color: #fd7036;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-PendingApproval:before {
+  color: #fd7036;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-Delayed {
+  background: white;
+  color: black;
+  border-color: #df1125;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-Delayed:before {
+  color: #df1125;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-Completed {
+  background: white;
+  color: black;
+  border-color: #9ed59e;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-Completed:before {
+  color: #9ed59e;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-ReOpened {
+  background: white;
+  color: black;
+  border-color: #bc5c8f;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme1-ReOpened:before {
+  color: #bc5c8f;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-Ongoing {
+  background: white;
+  color: black;
+  border-color: #0fc8a3;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-Ongoing:before {
+  color: #0fc8a3;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-AssignComplaint {
+  background: white;
+  color: black;
+  border-color: #228be6;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-AssignComplaint:before {
+  color: #228be6;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-PendingApproval {
+  background: white;
+  color: black;
+  border-color: #fd7036;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-PendingApproval:before {
+  color: #fd7036;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-Delayed {
+  background: white;
+  color: black;
+  border-color: #df1125;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-Delayed:before {
+  color: #df1125;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-Completed {
+  background: white;
+  color: black;
+  border-color: #9ed59e;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-Completed:before {
+  color: #9ed59e;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-ReOpened {
+  background: white;
+  color: black;
+  border-color: #bc5c8f;
+}
+table.AppGenTable td .AppBtn.CmpltStts.Theme2-ReOpened:before {
+  color: #bc5c8f;
+}
+table.AppGenTable td div.ActnBtnsHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+table.AppGenTable td div.ActnBtnsHldr div.BtnHldr a.AppBtn {
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  opacity: 1;
+  color: #009688;
+  transition: 0.3s;
+}
+table.AppGenTable td div.ActnBtnsHldr div.BtnHldr a.AppBtn.WISIcn-WebApp {
+  color: #0288D1;
+}
+table.AppGenTable td div.ActnBtnsHldr div.BtnHldr a.AppBtn.WISIcn-MobileApp {
+  color: #FF6F00;
+}
+table.AppGenTable td div.ActnBtnsHldr div.BtnHldr a.AppBtn.WISIcn-SMS {
+  color: #00796B;
+}
+table.AppGenTable td div.ActnBtnsHldr div.BtnHldr a.AppBtn.WISIcn-Store {
+  color: #EC407A;
+}
+table.AppGenTable td div.ActnBtnsHldr div.BtnHldr a.AppBtn.InActv {
+  opacity: 0.25;
+  transition: 0.3s;
+}
+table.AppGenTable td div.ActnBtnsHldr div.BtnHldr a.AppBtn:before {
+  position: absolute;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+}
+table.AppGenTable td div.FormCheck {
+  height: 20px !important;
+}
+table.AppGenTable td div.FormCheck input[type=checkbox i], table.AppGenTable td div.FormCheck input[type=radio i] {
+  margin: 1px 3px 0 3px;
+}
+table.AppGenTable.MastersTreeView {
+  margin: 0 !important;
+}
+table.AppGenTable.MastersTreeView tr:first-of-type td {
+  border-top: none;
+}
+table.AppGenTable.MastersTreeView tr:nth-child(even) td {
+  background: rgba(0, 0, 0, 0);
+}
+table.AppGenTable.MastersTreeView tr td {
+  padding: 0 0 0 20px;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+table.AppGenTable.MastersTreeView tr td:last-of-type {
+  padding-left: 0;
+}
+table.AppGenTable.MastersTreeView tr td:first-of-type:before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: calc(100% - 50px);
+  background: #005582;
+  left: 5px;
+  top: 25px;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable {
+  margin: 0 0 -1px 0;
+  border-top: 1px solid #eee;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td {
+  border-bottom: 1px solid #eee;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td:first-of-type:before {
+  background: #ad82ff;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td:first-of-type:after {
+  display: none;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
+  background: #ad82ff;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
+  background: #005582;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
+  background-color: #ad82ff;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
+  background: #ff82d4;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
+  background: #ff82d4;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
+  background: #ad82ff;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
+  background-color: #ff82d4;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
+  background: #ffad82;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
+  background: #ffad82;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
+  background: #ff82d4;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
+  background-color: #ffad82;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
+  background: #76b500;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
+  background: #76b500;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
+  background: #ffad82;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
+  background-color: #76b500;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
+  background: #00b57b;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
+  background: #00b57b;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
+  background: #76b500;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
+  background-color: #00b57b;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
+  background: #0076b5;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
+  background: #0076b5;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
+  background: #00b57b;
+}
+table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
+  background-color: #0076b5;
+}
+table.AppGenTable.MastersTreeView tr td div.FormHldr {
+  padding-left: 20px;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  position: relative;
+  height: 50px;
+  padding: 0 10px 0 0;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Name {
+  display: block;
+  padding: 10px 10px 10px 20px;
+  margin: 0 0 0 -20px;
+  position: relative;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Name:before {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  background: #005582;
+  border-radius: 6px;
+  left: 0;
+  top: calc(50% - 5px);
+  z-index: 3;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Name:after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 1px;
+  background: #005582;
+  left: -15px;
+  top: 50%;
+  z-index: 2;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type {
+  padding: 5px 10px;
+  background: rgba(0, 0, 0, 0.04);
+  font-size: 12px;
+  border-radius: 20px;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt {
+  border-radius: 3px;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt.Theme1-Emergency {
+  background: rgba(211, 47, 47, 0.2);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt.Theme1-Minor {
+  background: rgba(255, 171, 0, 0.2);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt.Theme1-Major {
+  background: rgba(41, 121, 255, 0.2);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt.Theme1-Upgradation {
+  background: rgba(140, 158, 255, 0.2);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt.Theme2-Emergency {
+  background: rgba(255, 136, 0, 0.2);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt.Theme2-Minor {
+  background: rgba(115, 255, 0, 0.2);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt.Theme2-Major {
+  background: rgba(152, 41, 255, 0.2);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName span.Type.Cmplt.Theme2-Upgradation {
+  background: rgba(22, 194, 206, 0.2);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName .AppBtn {
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  color: #005582;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName .AppBtn:before {
+  position: absolute;
+  left: calc(50% - 7px);
+  top: calc(50% - 7px);
+  transform: rotate(0deg);
+  transition: 0.3s;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName .AppBtn.Actv:before {
+  transform: rotate(180deg);
+  transition: 0.3s;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.AddButton {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0 0 0 auto;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.AddButton a.AppBtn {
+  width: 24px;
+  height: 24px;
+  min-height: 24px;
+  background-size: 22px;
+}
+table.AppGenTable.MastersTreeView tr td div.SubLevelMastersDv {
+  padding: 0 0 0 20px;
+  margin: 10px 10px 10px 5px;
+  background: rgba(0, 85, 130, 0.05);
+}
+table.AppGenTable.MastersTreeView tr td div.BranchAccess {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  position: relative;
+  height: 50px;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchAccess div.BtnHldr .AppBtn {
+  margin: 0;
+  color: #005582;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchAccess div.BtnHldr .AppBtn.WISIcn-MenuVertical {
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  color: #005582;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchAccess div.BtnHldr .AppBtn.WISIcn-MenuVertical:before {
+  position: absolute;
+  left: calc(50% - 8px);
+  top: calc(50% - 8px);
+}
+table.AppGenTable.MastersTreeView tr td div.FormHldr div.row {
+  align-items: center;
+  border-top: 0;
+  border-bottom: 0;
+}
+table.AppGenTable.MastersTreeView tr:hover td {
+  background: none;
+}
+table.AppGenTable.AccssCntrl tr td:last-of-type {
+  padding-left: 20px;
+}
+table.AppGenTable.AccssCntrl tr td div.BranchDetails {
+  width: 100%;
+}
+table.AppGenTable.AccssCntrl tr td div.AccssCntrlOptns {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  align-items: center;
+  padding: 5px 0;
+}
+table.AppGenTable.AccssCntrl tr td div.AccssCntrlOptns span.Designation {
+  padding: 10px;
+  font-weight: 600;
+  color: #005582;
+  background: rgba(0, 85, 130, 0.05);
+  margin: 0 10px 0 0;
+  border-radius: 5px;
+}
+table.AppGenTable.AccssCntrl tr td div.AccssCntrlOptns .Lnk {
+  background: #fff;
+  color: #2E7D32;
+  padding: 10px 10px 10px 30px;
+  font-weight: 600;
+  border: 1px solid #2E7D32;
+  border-radius: 5px;
+  height: 40px;
+  margin: 0 10px 0 0;
+}
+table.AppGenTable.AccssCntrl tr td div.AccssCntrlOptns .Lnk:before {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 10px;
+  top: calc(50% - 8px);
+  padding-right: 5px;
+}
+table.AppGenTable.AccssCntrl tr td div.AccssCntrlOptns .AppBtn {
+  border-radius: 5px;
+  margin: 0 10px 0 0;
+}
+
+/* Table CSS - Ends */
+/* Forms CSS - Starts */
+div.FormHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+}
+div.FormHldr span.FormTxtTtl {
+  display: block;
+  width: 100%;
+  font-size: 17px;
+  font-weight: 700;
+  color: #005582;
+  padding: 10px;
+  position: relative;
+}
+div.FormHldr span.FormTxtTtl a.Lnk {
+  padding: 0;
+}
+div.FormHldr span.FormTxtSbTtl {
+  display: block;
+  width: 100%;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 10px 0 10px;
+}
+div.FormHldr span.FormTxt {
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 5px 0;
+}
+div.FormHldr span.FormTxt:after {
+  content: " ";
+  white-space: pre;
+}
+div.FormHldr span.FormTxtVlu {
+  display: block;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 0 0 5px 0;
+}
+div.FormHldr span.FormHint {
+  display: block;
+  width: 100%;
+  font-size: 12px;
+  color: #555555;
+  padding: 3px 0 0 0;
+}
+div.FormHldr div.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  border-top: 1px solid #efebe9;
+  border-bottom: 1px solid #efebe9;
+  margin: -1px 0 0 0;
+}
+div.FormHldr div.row:first-of-type {
+  margin: 0 0 0 0;
+}
+div.FormHldr div.row:last-of-type {
+  border-bottom: none;
+}
+div.FormHldr div.row:nth-child(even) {
+  background: rgba(239, 235, 233, 0.2);
+}
+div.FormHldr div.row.VCenter {
+  align-items: center;
+}
+div.FormHldr div.row.NoBG {
+  background: transparent !important;
+}
+div.FormHldr div.row.NoBG:nth-child(even) {
+  background: transparent !important;
+}
+div.FormHldr div.row div.col {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: auto;
+  padding: 10px;
+  flex-grow: 1;
+}
+div.FormHldr div.row div.col-1 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 100%;
+}
+div.FormHldr div.row div.col-1 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-1.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 50%;
+}
+div.FormHldr div.row div.col-2 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-2.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-3 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 33.3333333333%;
+}
+div.FormHldr div.row div.col-3 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-3.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-4 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 25%;
+}
+div.FormHldr div.row div.col-4 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-4.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-5 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 20%;
+}
+div.FormHldr div.row div.col-5 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-5.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-6 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 16.6666666667%;
+}
+div.FormHldr div.row div.col-6 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-6.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-7 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 14.2857142857%;
+}
+div.FormHldr div.row div.col-7 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-7.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-8 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 12.5%;
+}
+div.FormHldr div.row div.col-8 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-8.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-9 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 11.1111111111%;
+}
+div.FormHldr div.row div.col-9 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-9.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-10 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 10%;
+}
+div.FormHldr div.row div.col-10 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-10.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-11 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 9.0909090909%;
+}
+div.FormHldr div.row div.col-11 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-11.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div.col-12 {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  padding: 10px;
+  width: 8.3333333333%;
+}
+div.FormHldr div.row div.col-12 span.FormTxtSbTtl {
+  padding: 0 0 5px 0;
+}
+div.FormHldr div.row div.col-12.BtnHldr {
+  padding: 20px 0;
+  justify-content: right;
+}
+div.FormHldr div.row div span.FormTxtTtl {
+  padding-left: 0;
+}
+div.FormHldr div.row div.NoPd {
+  padding: 0;
+}
+div.FormHldr div.row div.NoPdTop {
+  padding-top: 0;
+}
+div.FormHldr div.row div.NoPdRight {
+  padding-right: 0;
+}
+div.FormHldr div.row div.NoPdBottom {
+  padding-bottom: 0;
+}
+div.FormHldr div.row div.NoPdLeft {
+  padding-left: 0;
+}
+div.FormHldr div.row div.FormCheck {
+  height: 40px;
+}
+div.FormHldr div.row.AppUsrComment {
+  border: 1px solid #ddd !important;
+  border-radius: 10px !important;
+  background: #fff !important;
+  padding: 10px;
+}
+div.FormHldr div.row.AppUsrComment:first-of-type {
+  border-top: 1px solid #ddd !important;
+}
+div.FormHldr div.row.AppUsrComment > div {
+  border-bottom: 1px solid #ddd;
+}
+div.FormHldr div.row.AppUsrComment > div:last-of-type {
+  border: none;
+}
+div.FormHldr.Search div.row {
+  border-top: none;
+  border-bottom: none;
+}
+div.FormHldr.Search div.row > div:first-of-type {
+  padding-left: 0;
+}
+div.FormHldr.EmployeeProfile div.EmpBscInfo img.EmpImg {
+  width: 100%;
+  border-radius: 100%;
+}
+div.FormHldr.EmployeeProfile div.EmpBscInfo div.EmpInfo span.EmpName {
+  display: block;
+  font-size: 23px;
+  font-weight: 700;
+  padding: 5px 0 0 0;
+}
+div.FormHldr.EmployeeProfile div.EmpBscInfo div.EmpInfo span.EmpDesignation {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 0 0 0;
+}
+div.FormHldr.EmployeeProfile div.EmpBscInfo div.EmpInfo div.DtlDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  align-items: center;
+  padding: 5px 0;
+}
+div.FormHldr.EmployeeProfile div.EmpBscInfo div.EmpInfo div.DtlDv span.EmpStts {
+  padding: 8px 20px 8px 40px;
+  margin: 0 0 0 10px;
+  position: relative;
+  border-radius: 50px;
+}
+div.FormHldr.EmployeeProfile div.EmpBscInfo div.EmpInfo div.DtlDv span.EmpStts.WISIcn-Visible {
+  background-color: #2E7D32;
+  color: #fff;
+}
+div.FormHldr.EmployeeProfile div.EmpBscInfo div.EmpInfo div.DtlDv span.EmpStts.WISIcn-NotVisible {
+  background-color: #ddd;
+  color: #666;
+}
+div.FormHldr.EmployeeProfile div.EmpBscInfo div.EmpInfo div.DtlDv span.EmpStts:before {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  font-size: 16px;
+  left: 15px;
+  top: calc(50% - 8px);
+}
+div.FormHldr.EmployeeProfile div.BsEmpPrflInfo {
+  background: rgba(239, 235, 233, 0.3);
+}
+div.FormHldr.EmployeeProfile div.BsEmpPrflInfo span.FormTxtSbTtl {
+  color: #998073;
+}
+div.FormHldr.EmployeeProfile div.EmpAccessLst {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.FormHldr.EmployeeProfile div.EmpAccessLst span.AccssLst {
+  position: relative;
+  padding: 10px 10px 10px 35px;
+  margin: 0 5px 0 0;
+  background: white;
+  border: 1px solid #dad0cb;
+  opacity: 1;
+  transition: 0.3s;
+  border-radius: 5px;
+}
+div.FormHldr.EmployeeProfile div.EmpAccessLst span.AccssLst.WISIcn-WebApp {
+  color: #0288D1;
+}
+div.FormHldr.EmployeeProfile div.EmpAccessLst span.AccssLst.WISIcn-MobileApp {
+  color: #FF6F00;
+}
+div.FormHldr.EmployeeProfile div.EmpAccessLst span.AccssLst.WISIcn-SMS {
+  color: #00796B;
+}
+div.FormHldr.EmployeeProfile div.EmpAccessLst span.AccssLst.WISIcn-Store {
+  color: #EC407A;
+}
+div.FormHldr.EmployeeProfile div.EmpAccessLst span.AccssLst.InActv {
+  opacity: 0.25;
+  transition: 0.3s;
+}
+div.FormHldr.EmployeeProfile div.EmpAccessLst span.AccssLst:before {
+  position: absolute;
+  left: 10px;
+  font-size: 20px;
+  top: calc(50% - 10px);
+}
+div.FormHldr table.AppGenTable {
+  margin: -10px 0 0 0;
+}
+
+/* Forms CSS - Ends */
+/* Popup CSS - Starts */
+div.PopUpBG {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9;
+}
+
+div.PopUpHldr {
+  position: absolute;
+  width: 600px;
+  height: calc(100% - 40px);
+  left: calc(50% - 300px);
+  top: 20px;
+  z-index: 10;
+  border-radius: 10px;
+  box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+div.PopUpHldr.Max {
+  width: 940px;
+  left: calc(50% - 470px);
+}
+div.PopUpHldr.Max div.PopUpHldr {
+  line-height: inherit;
+}
+div.PopUpHldr.Rght {
+  width: 940px;
+  left: auto;
+  right: 0;
+  border-radius: 10px 0 0 10px;
+}
+div.PopUpHldr.Rght.Max {
+  width: calc(100% - 10px);
+  max-width: 1200px;
+}
+div.PopUpHldr.Rght div.PopUpHldr.Right {
+  left: auto;
+  right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+div.PopUpHldr.Rght div.PopUpBdy {
+  border-top-right-radius: 0;
+}
+div.PopUpHldr div.PopUpHedr {
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: center;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(92deg, #005582 0%, #003a59 52%);
+  position: relative;
+  z-index: 1;
+}
+div.PopUpHldr div.PopUpHedr div.HdrTtlHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  padding: 0 20px;
+  position: relative;
+  margin: -5px 0 0 0;
+}
+div.PopUpHldr div.PopUpHedr div.HdrTtlHldr span.TtlTxt {
+  display: block;
+  width: 100%;
+  font-size: 21px;
+  font-weight: 600;
+  color: white;
+}
+div.PopUpHldr div.PopUpHedr div.HdrTtlHldr span.SbTtlTxt {
+  display: block;
+  width: 100%;
+  font-size: 13px;
+  font-weight: 500;
+  color: white;
+}
+div.PopUpHldr div.PopUpHedr div.HdrBtnHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: -5px 0 0 auto;
+}
+div.PopUpHldr div.PopUpBdy {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column;
+  width: 100%;
+  height: calc(100% - 140px);
+  margin: -10px 0 0 0;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+  background: #fff;
+  position: relative;
+  z-index: 2;
+  overflow-y: hidden;
+}
+div.PopUpHldr div.PopUpBdy div.InnrCntntHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  padding: 0 5px 0 0;
+}
+div.PopUpHldr div.PopUpBdy div.InnrCntntHldr div.FormHldr div.row:first-of-type {
+  border-top: none;
+}
+div.PopUpHldr div.PopUpBdy.NoPopUpBtnFtr {
+  height: calc(100% - 70px);
+}
+div.PopUpHldr div.PopUpBtnFtr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  justify-content: right;
+  width: 100%;
+  height: 70px;
+  padding: 0 20px;
+  background: #fafafa;
+  border-top: 1px solid #eee;
+  position: relative;
+  z-index: 3;
+}
+div.PopUpHldr div.PopUpBtnFtr div.FormHldr div.row {
+  border-top: none;
+  border-bottom: none;
+}
+div.PopUpHldr div.PopUpBtnFtr div.FormHldr div.row div.BtnHldr {
+  padding: 0 10px;
+}
+div.PopUpHldr div.PopUpBtnFtr .AppBtn {
+  margin: 0 0 0 10px;
+}
+
+/* Popup CSS - Ends */
+/* Info Icon Box - Starts */
+div.InfoBxHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  position: relative;
+  margin: 0 3px;
+}
+div.InfoBxHldr span.InfoBtn {
+  display: block;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  position: relative;
+}
+div.InfoBxHldr span.InfoBtn:before {
+  color: #009688;
+  position: absolute;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+}
+div.InfoBxHldr div.InfoToolTip {
+  display: none;
+  position: absolute;
+  width: calc(100% + 100px);
+  max-width: 200px;
+  left: -10px;
+  top: calc(100% - 5px);
+  padding: 5px;
+  background: #fff;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+div.InfoBxHldr div.InfoToolTip:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 20px;
+  top: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fff;
+  z-index: 1;
+}
+div.InfoBxHldr div.InfoToolTip p.Txt {
+  display: block;
+  padding: 5px;
+  margin: 0;
+}
+div.InfoBxHldr:hover div.InfoToolTip {
+  display: block;
+}
+
+/* Info Icon Box - Ends */
+/* Sub Menu Box - Starts */
+div.SbMnuBtnHldrDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  position: relative;
+  margin: 0 3px;
+}
+div.SbMnuBtnHldrDv span.SbMnuBtn {
+  display: block;
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  position: relative;
+}
+div.SbMnuBtnHldrDv span.SbMnuBtn:before {
+  color: #009688;
+  position: absolute;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+}
+div.SbMnuBtnHldrDv div.SbMnuHldr {
+  display: none;
+  position: absolute;
+  width: calc(100% + 100px);
+  right: -10px;
+  top: 100%;
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 85, 130, 0.2);
+  border-radius: 5px;
+  z-index: 1;
+}
+div.SbMnuBtnHldrDv div.SbMnuHldr:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 19px;
+  top: -5px;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #fff;
+  z-index: 1;
+}
+div.SbMnuBtnHldrDv div.SbMnuHldr ul.SbMnuLst {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+div.SbMnuBtnHldrDv div.SbMnuHldr ul.SbMnuLst li {
+  display: block;
+  border-bottom: 1px solid rgba(0, 85, 130, 0.2);
+}
+div.SbMnuBtnHldrDv div.SbMnuHldr ul.SbMnuLst li a.SbMnuLnk {
+  display: block;
+  color: #009688;
+  text-decoration: none;
+  padding: 10px 0;
+  font-size: 13px;
+}
+div.SbMnuBtnHldrDv:hover div.SbMnuHldr {
+  display: block;
+}
+
+/* Sub Menu Box - Ends */
+/* General Elements CSS - Ends */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font: 500 14px Nunito, Arial, sans-serif;
+  color: #222;
+  background: #fafafa;
+}
+
+/* App Header - Starts */
+div.AppHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  background: #fff;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-bottom: 1px solid rgba(0, 85, 130, 0.1);
+  z-index: 4;
+}
+div.AppHeader div.AppMnuTtlHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0;
+  width: 50%;
+}
+div.AppHeader div.AppMnuTtlHldr div.MdlMnuHldr {
+  width: 50px;
+  height: 50px;
+}
+div.AppHeader div.AppMnuTtlHldr div.MdlMnuHldr a.MdlMnuLnk {
+  display: block;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  position: relative;
+}
+div.AppHeader div.AppMnuTtlHldr div.MdlMnuHldr a.MdlMnuLnk:before {
+  position: absolute;
+  color: #005582;
+  left: calc(50% - 8px);
+  top: calc(50% - 8px);
+  text-align: center;
+  font-size: 16px;
+}
+div.AppHeader div.AppMnuTtlHldr div.TtlHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  width: calc(100% - 50px);
+}
+div.AppHeader div.AppMnuTtlHldr div.TtlHldr div.ClntLgoHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  padding: 0 10px;
+}
+div.AppHeader div.AppMnuTtlHldr div.TtlHldr div.ClntLgoHldr img.Lgo {
+  display: block;
+  max-height: 40px;
+}
+div.AppHeader div.AppMnuTtlHldr div.TtlHldr div.MdlNmeHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.AppHeader div.AppMnuTtlHldr div.TtlHldr div.MdlNmeHldr span.MdlNme {
+  display: inline-block;
+  background: rgba(0, 85, 130, 0.05);
+  font-weight: 600;
+  color: #005582;
+  padding: 6px 10px;
+  border-radius: 20px;
+}
+div.AppHeader div.AppUsrCntrlHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0;
+  width: 50%;
+  justify-content: right;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li a.NavLnk {
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+  text-align: center;
+  position: relative;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li a.NavLnk:before {
+  position: absolute;
+  color: #005582;
+  left: calc(50% - 10px);
+  top: calc(50% - 10px);
+  text-align: center;
+  font-size: 20px;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li div.UsrDvHldr {
+  padding: 0 10px 0 20px;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li div.UsrDvHldr div.UsrDtls {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li div.UsrDvHldr div.UsrDtls div.PrflNmeHldr {
+  padding: 0 10px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li div.UsrDvHldr div.UsrDtls div.PrflNmeHldr span.Nme {
+  display: block;
+  font-weight: 600;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li div.UsrDvHldr div.UsrDtls div.PrflImgHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li div.UsrDvHldr div.UsrDtls div.PrflImgHldr img.PrfImg {
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: #005582;
+  border-radius: 15px;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li div.UsrDvHldr div.UsrDtls div.PrflImgHldr span.PrflTxtImg {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  background: #005582;
+  border-radius: 15px;
+}
+div.AppHeader div.AppUsrCntrlHldr ul.UsrNav li div.UsrDvHldr div.UsrDtls div.PrflImgHldr span.PrflTxtImg span.Intls {
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* App Header - Ends */
+/* App Footer - Starts */
+div.AppFooter {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  position: fixed;
+  width: 100%;
+  height: 30px;
+  padding: 0 10px;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  z-index: 2;
+}
+div.AppFooter div.AppVrsnDtls {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  width: 50%;
+}
+div.AppFooter div.AppVrsnDtls span.AppCurrVrsn {
+  display: block;
+  font-size: 11px;
+}
+div.AppFooter div.AppVrsnDtls span.AppCurrVrsn span.Vrsn {
+  display: inline-block;
+  padding: 0 0 0 3px;
+}
+div.AppFooter div.AppPwrdDtls {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  width: 50%;
+  justify-content: right;
+}
+div.AppFooter div.AppPwrdDtls span.CorpTxt {
+  display: block;
+  font-size: 11px;
+}
+div.AppFooter div.AppPwrdDtls span.CorpTxt a.Lnk {
+  display: inline-block;
+  color: #005582;
+  padding: 0 0 0 3px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* App Footer - Ends */
+/* App Menu - Starts */
+div.AppMnuHldr {
+  position: fixed;
+  width: 50px;
+  height: calc(100vh - 80px);
+  background: #005582;
+  left: 0;
+  top: 50px;
+  padding: 10px 0;
+  transition: 0.3s;
+  z-index: 3;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li {
+  padding: 0;
+  position: relative;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  text-decoration: none;
+  border-bottom: 1px solid #005582;
+  transition: 0.3s;
+  padding: 15px 0 20px 0;
+  margin: 5px 0;
+  cursor: pointer;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk span.LnkIcn,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk span.LnkIcn {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  justify-content: center;
+  width: 50px;
+  height: 20px;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk span.LnkIcn svg,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk span.LnkIcn svg {
+  width: 20px;
+  height: 20px;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk span.LnkIcn path.PthClr,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk span.LnkIcn path.PthClr {
+  fill: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk span.LnkTxt,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk span.LnkTxt {
+  display: none;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+  padding: 0 20px 0 0;
+  position: relative;
+  width: calc(100% - 50px);
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk span.LnkTxt span.Arrw,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk span.LnkTxt span.Arrw {
+  position: absolute;
+  right: 0;
+  top: calc(50% - 10px);
+  width: 20px;
+  height: 20px;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk span.LnkTxt span.Arrw:before,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk span.LnkTxt span.Arrw:before {
+  font-size: 20px;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk.Actv span.LnkIcn path.PthClr, div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk:hover span.LnkIcn path.PthClr,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk.Actv span.LnkIcn path.PthClr,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk:hover span.LnkIcn path.PthClr {
+  fill: white;
+  transition: 0.3s;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > a.Lnk:hover,
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk:hover {
+  border-color: white;
+  transition: 0.3s;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li div.SbMnu {
+  display: none;
+  background: white;
+  position: absolute;
+  width: 100%;
+  left: 100%;
+  top: 0;
+  padding: 0 20px 10px 20px;
+  box-shadow: 10px 0px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li div.SbMnu:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #005582;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li div.SbMnu a.Lnk {
+  display: block;
+  text-decoration: none;
+  padding: 15px 20px 15px 0;
+  color: #005582;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+}
+div.AppMnuHldr div.MnuLstHldr ul.MnuLst li div.SbMnu a.Lnk.Actv, div.AppMnuHldr div.MnuLstHldr ul.MnuLst li div.SbMnu a.Lnk:hover {
+  border-bottom: 1px solid #005582;
+  transition: 0.3s;
+}
+div.AppMnuHldr:hover {
+  width: auto;
+  padding: 10px;
+  transition: 0.3s;
+}
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li a.Lnk,
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li span.Lnk {
+  border-color: rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
+}
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li a.Lnk span.LnkTxt,
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li span.Lnk span.LnkTxt {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-self: center;
+  color: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+}
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li a.Lnk.Actv span.LnkTxt, div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li a.Lnk:hover span.LnkTxt,
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li span.Lnk.Actv span.LnkTxt,
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li span.Lnk:hover span.LnkTxt {
+  color: white;
+  transition: 0.3s;
+}
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover a.Lnk,
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover span.Lnk {
+  border-color: rgba(255, 255, 255, 0.5);
+  transition: 0.3s;
+}
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover a.Lnk span.LnkIcn path.PthClr,
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover span.Lnk span.LnkIcn path.PthClr {
+  fill: white;
+  transition: 0.3s;
+}
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover a.Lnk span.LnkTxt,
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover span.Lnk span.LnkTxt {
+  color: white;
+}
+div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover div.SbMnu {
+  display: block;
+}
+
+/* App Menu - Ends */
+/* App Master Container - Starts */
+div.AppMstrCntnr {
+  position: fixed;
+  width: calc(100% - 50px);
+  height: calc(100vh - 80px);
+  padding: 0 10px 10px 20px;
+  right: 0;
+  top: 50px;
+  overflow: hidden;
+  z-index: 1;
+}
+div.AppMstrCntnr div.GnPgHdrDvHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  width: 100%;
+  height: 70px;
+  position: relative;
+  z-index: 2;
+}
+div.AppMstrCntnr div.GnPgHdrDvHldr div.TtlHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.AppMstrCntnr div.GnPgHdrDvHldr div.TtlHldr span.PgTtl {
+  display: block;
+  color: #222222;
+  font-size: 22px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+div.AppMstrCntnr div.GnPgHdrDvHldr div.TtlHldr span.PgTtlSpprtTxt {
+  display: block;
+  margin: 0 0 0 10px;
+  padding: 6px 14px;
+  background: white;
+  color: #005582;
+  font-size: 13px;
+  border: 1px solid #005582;
+  border-radius: 20px;
+}
+div.AppMstrCntnr div.GnPgHdrDvHldr div.NvBtnHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0 0 0 auto;
+}
+div.AppMstrCntnr div.GnPgHdrDvHldr div.NvBtnHldr div.Hldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0 0 0 10px;
+}
+div.AppMstrCntnr div.GnPgCntntDvHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  flex-flow: column;
+  width: 100%;
+  height: calc(100vh - 160px);
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 4px 50px rgba(30, 83, 143, 0.08);
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+}
+div.AppMstrCntnr div.GnPgCntntDvHldr div.AppFllTbHldr {
+  width: 100%;
+}
+div.AppMstrCntnr div.GnPgCntntDvHldr div.InnrCntntHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow-y: auto;
+  width: 100%;
+  height: 100%;
+  padding: 0 5px 0 0;
+}
+
+/* App Master Container - Ends */
+/* Admin Location Flow - Starts */
+div.LocationInnrDshbrd {
+  padding: 0;
+  width: 100%;
+}
+div.LocationInnrDshbrd div.LocationList {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: calc(20% - 20px);
+  margin: 10px;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid rgba(0, 85, 130, 0.3);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+@media only screen and (max-width: 2000px) {
+  div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv {
+    width: calc(25% - 20px);
+  }
+}
+@media only screen and (max-width: 1700px) {
+  div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv {
+    width: calc(33.33% - 20px);
+  }
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv:hover {
+  border-color: rgba(0, 85, 130, 0.8);
+  transition: 0.3;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocTypDv {
+  background: #005582;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100%;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocTypDv span.LocTypName {
+  display: block;
+  font-size: 13px;
+  color: white;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationNameDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  width: 100%;
+  padding: 10px 5px;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationNameDv div.NameDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationNameDv div.NameDv span.Name {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #005582;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationNameDv div.OptnsDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0 0 0 auto;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationOvrvw {
+  width: 100%;
+  padding: 0 5px;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationOvrvw ul.OverviewLst {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 100%;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationOvrvw ul.OverviewLst li {
+  width: 33.33%;
+  padding: 10px;
+  border-top: 1px solid #eee;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationOvrvw ul.OverviewLst li div.LstDtlsHldr span.Txt {
+  display: block;
+  font-weight: 600;
+  padding: 3px 0 0 0;
+  text-align: center;
+}
+div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocationOvrvw ul.OverviewLst li div.LstDtlsHldr span.Txt.Vlu {
+  color: #005582;
+  font-size: 19px;
+  font-weight: 600;
+}
+
+div.LocationFullDetails {
+  width: 100%;
+}
+div.LocationFullDetails div.LocationBasicDtls {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  width: 100%;
+  padding: 5px 0 10px 0;
+  margin: 0 0 5px 0;
+  border-bottom: 1px solid rgba(0, 85, 130, 0.1);
+}
+div.LocationFullDetails div.LocationBasicDtls div.PrePgBtnDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.LocationFullDetails div.LocationBasicDtls div.PrePgBtnDv a.AppBtn {
+  color: #005582;
+  font-size: 24px;
+}
+div.LocationFullDetails div.LocationBasicDtls div.PrePgBtnDv a.AppBtn:before {
+  position: absolute;
+  left: calc(50% - 12px);
+  top: calc(50% - 12px);
+  transition: 0.3s;
+}
+div.LocationFullDetails div.LocationBasicDtls div.PrePgBtnDv a.AppBtn:hover:before {
+  left: calc(50% - 20px);
+  transition: 0.3s;
+}
+div.LocationFullDetails div.LocationBasicDtls div.LocaitonNameDtls {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.LocationFullDetails div.LocationBasicDtls div.LocaitonNameDtls div.NameDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.LocationFullDetails div.LocationBasicDtls div.LocaitonNameDtls div.NameDv span.Name {
+  display: block;
+  font-size: 19px;
+  font-weight: 700;
+  color: #005582;
+}
+div.LocationFullDetails div.LocationBasicDtls div.LocaitonNameDtls div.LocTypDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  background: #005582;
+  padding: 0 10px;
+  border-radius: 20px;
+}
+div.LocationFullDetails div.LocationBasicDtls div.LocaitonNameDtls div.LocTypDv span.LocTypName {
+  display: block;
+  font-size: 13px;
+  color: white;
+}
+div.LocationFullDetails div.LocationBasicDtls div.AddCategoryBtnDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0 0 0 auto;
+}
+div.LocationFullDetails div.DtlsHldrDv {
+  width: 100%;
+  padding: 10px 0;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv {
+  border: 1px solid rgba(201, 217, 225, 0.5);
+  border-radius: 8px;
+  margin: 0 0 20px 0;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv:last-of-type {
+  margin: 0;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  background: rgba(201, 217, 225, 0.05);
+  border-bottom: 1px solid rgba(201, 217, 225, 0.5);
+  border-radius: 7px 7px 0 0;
+  padding: 10px 10px;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnNameHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnNameHldr span.Name {
+  display: block;
+  padding: 5px 5px 5px 0;
+  font-weight: 600;
+  color: #10181c;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnNameHldr span.Type {
+  display: block;
+  padding: 5px 20px;
+  border-radius: 20px;
+  margin: 0 3px;
+  font-size: 13px;
+  background: rgba(62, 93, 109, 0.08);
+  color: #10181c;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnArrdnBtnHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnArrdnBtnHldr .AppBtn {
+  color: #3E5D6D;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnArrdnBtnHldr .AppBtn:before {
+  position: absolute;
+  left: calc(50% - 9px);
+  top: calc(50% - 9px);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.OptnsDv {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  margin: 0 0 0 auto;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.OptnsDv div.BtnHldr .AppBtn {
+  color: #3E5D6D;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.OptnsDv div.BtnHldr .AppBtn:before {
+  position: absolute;
+  left: calc(50% - 9px);
+  top: calc(50% - 9px);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.OptnsDv div.SbMnuBtnHldrDv span.SbMnuBtn:before {
+  color: #3E5D6D;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls {
+  padding: 10px;
+  border-radius: 0 0 7px 7px;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  border-width: 1px;
+  border-style: solid;
+  padding: 6px 6px 6px 10px;
+  margin: 5px;
+  width: calc(20% - 10px);
+  border-radius: 8px;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type1 {
+  background: rgba(255, 171, 64, 0.15);
+  border-color: rgba(255, 171, 64, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type2 {
+  background: rgba(144, 202, 249, 0.15);
+  border-color: rgba(144, 202, 249, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type3 {
+  background: rgba(244, 143, 177, 0.15);
+  border-color: rgba(244, 143, 177, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type4 {
+  background: rgba(161, 136, 127, 0.15);
+  border-color: rgba(161, 136, 127, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type5 {
+  background: rgba(128, 203, 196, 0.15);
+  border-color: rgba(128, 203, 196, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type1 {
+  background: rgba(255, 171, 64, 0.15);
+  border-color: rgba(255, 171, 64, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type2 {
+  background: rgba(144, 202, 249, 0.15);
+  border-color: rgba(144, 202, 249, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type3 {
+  background: rgba(244, 143, 177, 0.15);
+  border-color: rgba(244, 143, 177, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type4 {
+  background: rgba(161, 136, 127, 0.15);
+  border-color: rgba(161, 136, 127, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type5 {
+  background: rgba(128, 203, 196, 0.15);
+  border-color: rgba(128, 203, 196, 0.5);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn div.InnSctnNameHldr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn div.InnSctnNameHldr span.Name {
+  display: block;
+  font-weight: 600;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn div.SbMnuBtnHldrDv {
+  margin: 0 0 0 auto;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn div.SbMnuBtnHldrDv span.SbMnuBtn:before {
+  color: #3E5D6D;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.SctnHldrDv {
+  border-color: rgba(169, 193, 206, 0.6);
+  margin: 0 0 10px 0;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.SctnHldrDv div.SctnHeader {
+  background: rgba(169, 193, 206, 0.09);
+  border-bottom-color: rgba(169, 193, 206, 0.6);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.SctnHldrDv div.SctnDtls div.SctnHldrDv {
+  border-color: rgba(136, 170, 188, 0.7);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.SctnHldrDv div.SctnDtls div.SctnHldrDv div.SctnHeader {
+  background: rgba(136, 170, 188, 0.12);
+  border-bottom-color: rgba(136, 170, 188, 0.7);
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv.Closed div.SctnHeader {
+  border-radius: 7px;
+  border-bottom: none;
+}
+div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv.Closed div.SctnDtls {
+  display: none;
+}
+
+/* Admin Location Flow - Ends */
+/* Admin Complaint Process Flow - Starts */
+div.ComplaintPrccHldr {
+  width: 100%;
+}
+div.ComplaintPrccHldr div.PrcssHdr {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  width: 100%;
+  padding: 0 0 5px 0;
+}
+div.ComplaintPrccHldr div.PrcssHdr span.TxtTtl {
+  display: block;
+  width: 100%;
+  padding: 0 0 5px 0;
+  font-weight: 600;
+  color: #005582;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.TtlDtls {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  width: 50%;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.TtlDtls span.CmpltTtl {
+  display: block;
+  width: 100%;
+  font-weight: 600;
+  font-size: 20px;
+  color: #222222;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  justify-content: right;
+  align-items: flex-end;
+  width: 50%;
+  margin: 0 0 0 auto;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 0 5px 0 0;
+  font-weight: 600;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-Ongoing {
+  background: rgba(15, 200, 163, 0.08);
+  color: #0b997c;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-AssignComplaint {
+  background: rgba(34, 139, 230, 0.08);
+  color: #1671bf;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-PendingApproval {
+  background: rgba(253, 112, 54, 0.08);
+  color: #fc4c04;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-Delayed {
+  background: rgba(223, 17, 37, 0.08);
+  color: #b00d1d;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-Completed {
+  background: rgba(158, 213, 158, 0.08);
+  color: #7ac67a;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-ReOpened {
+  background: rgba(188, 92, 143, 0.08);
+  color: #a24375;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-Ongoing {
+  background: rgba(15, 200, 163, 0.08);
+  color: #0b997c;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-AssignComplaint {
+  background: rgba(34, 139, 230, 0.08);
+  color: #1671bf;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-PendingApproval {
+  background: rgba(253, 112, 54, 0.08);
+  color: #fc4c04;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-Delayed {
+  background: rgba(223, 17, 37, 0.08);
+  color: #b00d1d;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-Completed {
+  background: rgba(158, 213, 158, 0.08);
+  color: #7ac67a;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-ReOpened {
+  background: rgba(188, 92, 143, 0.08);
+  color: #a24375;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty {
+  display: block;
+  padding: 10px 15px;
+  border-radius: 5px;
+  margin: 0 5px 0 0;
+  font-weight: 600;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme1-High {
+  background: rgba(225, 83, 83, 0.08);
+  color: #d92828;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme1-Medium {
+  background: rgba(220, 135, 0, 0.08);
+  color: #a96800;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme1-Low {
+  background: rgba(120, 178, 52, 0.08);
+  color: #5d8b28;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme2-High {
+  background: rgba(212, 228, 255, 0.08);
+  color: #a1c4ff;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme2-Medium {
+  background: rgba(255, 238, 204, 0.08);
+  color: #ffdd99;
+}
+div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme2-Low {
+  background: rgba(221, 226, 228, 0.08);
+  color: #c1cacd;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline {
+  width: calc(100% + 20px);
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 20px;
+  background: #fff;
+  margin: -10px;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline span.TotalTime {
+  position: absolute;
+  background: #fff;
+  color: #005582;
+  padding: 5px 10px;
+  text-align: center;
+  width: 150px;
+  left: calc(50% - 75px);
+  top: 6px;
+  z-index: 1;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline {
+  display: flex;
+  width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  flex-basis: 0;
+  position: relative;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline.Assigned {
+  padding: 20px 0 0 0;
+  border-top: 1px solid #005582;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline.Assigned:before, div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline.Assigned:after {
+  content: "";
+  position: absolute;
+  width: 1px;
+  height: 20px;
+  top: 0;
+  background: #005582;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline.Assigned:before {
+  left: 0;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline.Assigned:after {
+  right: 0;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 100%;
+  padding: 15px 0 0 0;
+  margin: 5px 0 0 0;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:before {
+  content: "";
+  position: absolute;
+  width: 11px;
+  height: 11px;
+  left: -5px;
+  top: 0;
+  border-radius: 6px;
+  background: #009688;
+  z-index: 2;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  top: 5px;
+  background: #009688;
+  z-index: 1;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:last-of-type:before {
+  left: inherit;
+  right: -5px;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:last-of-type span.PrcssTtl {
+  text-align: right;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:last-of-type span.PrcssDate {
+  text-align: right;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:last-of-type span.PrcssTime {
+  text-align: right;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:last-of-type span.PrcssStpDuration {
+  left: calc(0% - 50px);
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:first-of-type:before {
+  left: -5px;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:first-of-type span.PrcssTtl {
+  text-align: left;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:first-of-type span.PrcssDate {
+  text-align: left;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:first-of-type span.PrcssTime {
+  text-align: left;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li:first-of-type span.PrcssStpDuration {
+  left: 0;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li span.PrcssTtl {
+  display: block;
+  width: 100%;
+  position: relative;
+  font-weight: 400;
+  z-index: 8;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li span.PrcssDate {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 8;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li span.PrcssTime {
+  display: block;
+  width: 100%;
+  position: relative;
+  z-index: 8;
+}
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li span.PrcssStpDuration {
+  position: absolute;
+  left: calc(-50% - 50px);
+  top: -5px;
+  background: #fff;
+  color: #009688;
+  width: 100px;
+  padding: 0px 10px;
+  z-index: 3;
+  text-align: center;
+}
+div.ComplaintPrccHldr div.row.NoBG {
+  margin-top: -10px;
+}
+div.ComplaintPrccHldr div.row.MrgnAdd {
+  margin-top: 0;
+  align-items: center;
+}
+div.ComplaintPrccHldr div.row div.LrgFnt label {
+  color: #005582;
+}
+div.ComplaintPrccHldr span.FormTxtTtl {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding-left: 10px;
+}
+div.ComplaintPrccHldr span.FormTxtTtl span.Icn {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  margin-left: 5px;
+}
+div.ComplaintPrccHldr img.CmpltPhoto {
+  display: block;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 85, 130, 0.2);
+}
+
+/* Admin Complaint Process Flow - Ends *//*# sourceMappingURL=MdlTheme.css.map */

@@ -234,17 +234,18 @@ class Home extends MX_Controller {
 			//   echo json_encode($hydrodata);die();
 			$data['hydro_data']=$hydrodata;
 		}
+		// echo json_encode($data);die();
 			$this->load->view('water-dashboard-chennai',$data);
 		}else{
-			 //echo json_encode($hardwares);die();
+			//  echo json_encode($hardwares);die();
 					if(isset($hardwares['Flow Meter']['hardaware_list'])){
 						for ($i=0; $i <count($hardwares['Flow Meter']['hardaware_list']) ; $i++) { 
 							$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter($hardwares['Flow Meter']['hardaware_list'][$i]);
 						}
 						$data['flowmeter_data']=$flowmeterdata;
 					}
-				
-					if(count($hardwares['Water Level']['hardaware_list'])>0){
+					if(isset($hardwares['Water Level']['hardaware_list'])){
+					//if(count($hardwares['Water Level']['hardaware_list'])>0){
 					for ($i=0; $i <count($hardwares['Water Level']['hardaware_list']) ; $i++) { 
 						$waterleveldata[$i]=$this->Api_data_model->get_hardwares_device_data_waterlevelmeter($hardwares['Water Level']['hardaware_list'][$i]);
 					}
@@ -270,10 +271,8 @@ class Home extends MX_Controller {
 						$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter($hardwares['Water Meter']['hardaware_list'][$i]);
 					}
 					$data['water_meter_data']=$flowmeterdata;
-				}
-				
-				//echo json_encode($flowmeterdata[0]['monthly_data']);die();
-				$$dps1=array();
+
+					$$dps1=array();
 				
 				for($k=0;$k<count($flowmeterdata);$k++){
 					$dps1[$k]['meter']=$flowmeterdata[$k]['meter'];
@@ -286,6 +285,10 @@ class Home extends MX_Controller {
 					}
 				}
 				$data['water_meter_data_month']=$dps1;
+				}
+				
+				//echo json_encode($flowmeterdata[0]['monthly_data']);die();
+				
 				// echo json_encode($dps1);die();
 				if(isset($hardwares['Firepump']['hardaware_list'])){
 					for ($i=0; $i <count($hardwares['Firepump']['hardaware_list']) ; $i++) { 
@@ -431,20 +434,23 @@ class Home extends MX_Controller {
 			//echo "No Hardware data";
 		}
 		// echo json_encode($hardwares['DG']['hardaware_list']);die();
-		//if(isset($hardwares['DG']['hardaware_list'][0])){
+		if(isset($hardwares['DG']['hardaware_list'][0])){
         for ($i=0; $i <count($hardwares['DG']['hardaware_list']) ; $i++) { 
 			// echo "kj";
 			$dgdata[$i]=$this->Api_data_model->get_hardwares_device_data($hardwares['DG']['hardaware_list'][$i]);
 		}
 		$data['dg_data']=$dgdata;
-	    //}
+	    }
 		
-		// echo json_encode($data['dg_data']);die();
+		// echo json_encode($data['dg_data']);
+		// echo json_encode($hardwares['Power Supply']['hardaware_list']);die();
+		if(isset($hardwares['Power Supply']['hardaware_list'][0])){
 		for ($i=0; $i <count($hardwares['Power Supply']['hardaware_list']) ; $i++) { 
 			$powerdata[$i]=$this->Api_data_model->get_hardwares_device_data_power($hardwares['Power Supply']['hardaware_list'][$i]);
 		}
 		$data['power_data']=$powerdata;
-		
+		}
+		// echo json_encode($hardwares['DG']['hardaware_list']);die();
 		$data['lpg']=6;
 		$data['dg']=7;
 		$data['ups']=8;
@@ -532,9 +538,11 @@ class Home extends MX_Controller {
 				$dgdata['wis'][$l]=$this->Api_data_model->get_hardwares_device_data_dg_rsbro($device_data[$i]);
 				$l++;
 			}else{
-				$dgdata['chk'][$n]=$this->Api_data_model->get_hardwares_device_data_dg_rsbro_chk($device_data[$i]);
+				//$dgdata['chk'][$n]=$this->Api_data_model->get_hardwares_device_data_dg_rsbro_chk($device_data[$i]);
 				
-				$n++;
+				//$n++;
+				//$dgdata['chk'][$n]=[];
+				//$n++;
 			}
 			
 		}
@@ -610,16 +618,18 @@ class Home extends MX_Controller {
 			//echo "No Hardware data";
 		}
 		//echo json_encode($hardwares);die();
+		if(isset($hardwares['Switch Control']['hardaware_list'][0])){
 		for ($i=0; $i <count($hardwares['Switch Control']['hardaware_list']) ; $i++) { 
 			$scdata[$i]=$this->Api_data_model->get_hardwares_device_data_switch_control($hardwares['Switch Control']['hardaware_list'][$i]);
 		}
 		$data['switchcontrol_data']=$scdata;
+	}
 		//echo json_encode($scdata);die();
 		
 		
 		if($this->session->userdata('created_by')==20){
 			$data['switch_status_data']=$this->Api_data_model->get_hardwares_device_data_switch_status($hardwares['Switch Status']['hardaware_list'][0]);
-			//echo json_encode($data['switch_status_data']);die();
+			// echo json_encode($data['switch_status_data']);die();
 			$this->load->view('switch_control_chennai',$data);
 		}else if($this->session->userdata('created_by')==34){
 			$data['switch_status_data']=$this->Api_data_model->get_hardwares_device_data_switch_status_iit($hardwares['Switch Status']['hardaware_list'][0]);
@@ -1414,6 +1424,7 @@ class Home extends MX_Controller {
 		 $this->load->view('all_reports_chennai',$data);
 	}
 	function vegas_cron(){
+		$this->load->model('Api_data_model');
 		$this->Api_data_model->get_hardwares_device_data_energymeter_report_vega_cron();
 	}
 	function all_reports_vega(){
@@ -1505,13 +1516,19 @@ class Home extends MX_Controller {
 				}
 				
 			}
+			if($data['data']['device']==16){
+				
+				$meters = $this->Api_data_model->getHavcList_vega('hardware_station_consumption_data_vegaschool_live');
+
+				$data['ahudata']=$this->Api_data_model->getahuReportVegas($meters,$this->input->post('fromdate'),'hardware_station_consumption_data_vegaschool_live','hardware_station_consumption_data_vegaschool');
+			}
 		
 			//if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
 				// $data['energy_meters_data']=$this->Api_data_model->get_hardwares_device_data_energy_meters_vegas($hardwares['Energy Meter']['hardaware_list'][0]);
 				//$data['energy_meters_data']=$this->Api_data_model->get_hardwares_device_data_energy_meters_vegas_report($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
 			//}
 		
-		// echo json_encode( $data['energydata']);die();
+		// echo json_encode( $data['ahudata']);die();
 		
 		 $this->load->view('all_reports_vega',$data);
 	}
@@ -1898,7 +1915,7 @@ class Home extends MX_Controller {
 				$waterleveldata=$this->Api_data_model->get_hardwares_device_data_waterlevelmeter_mum_report($hardwares['Water Level']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
 			//}
 			//$data['waterlevel_data']=$waterleveldata;
-//echo json_encode($waterleveldata);die();
+// echo json_encode($waterleveldata);die();
 			
 			$data['watergraphdata']=$waterleveldata;
 			$water_meter_dashboard_report=$this->Api_data_model->getWaterMeterDashboardReport($this->input->post('fromdate'),$this->input->post('todate'));
@@ -2395,6 +2412,18 @@ class Home extends MX_Controller {
 		// $data['device_list']=$this->Api_data_model->get_hardwares_device_list();
 		$data['firepump_id']=$this->Api_data_model->get_devices(3);
 		$data['meters'] = $this->Api_data_model->getHavcList();
+		$this->load->view('aircondition-dashboard',$data);
+	}
+	function aircondition_vegas(){
+		$this->load->model('Api_data_model');
+		// $data['categories']=$this->Api_data_model->get_categories();
+		// $data['devices']=$this->Api_data_model->get_devices('');
+		// $data['device_list']=$this->Api_data_model->get_hardwares_device_list();
+		$table='hardware_station_consumption_data_vegaschool_live';
+		$meters = $this->Api_data_model->getHavcList_vega($table);
+		// echo json_encode($meters);die();
+		$data['ahudata']=$this->Api_data_model->getAHUData_vegas($meters,$table);
+		// echo json_encode($data['ahudata']);die();
 		$this->load->view('aircondition-dashboard',$data);
 	}
 	function aircondition_rainbow(){

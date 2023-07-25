@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Management 05</title>
+    <link rel="stylesheet" href="AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="AppTheme/Fonts/IconFont.css" />
+</head>
+
+<body>
+    <div class="AppHeader">
+        <div class="AppMnuTtlHldr">
+            <div class="TtlHldr">
+                <div class="ClntLgoHldr">
+                    <img src="Images/CompanyLogo.png" class="Lgo" />
+                </div>
+            </div>
+        </div>
+        <div class="AppUsrCntrlHldr">
+            <ul class="UsrNav">
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Notification"></a>
+                </li>
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Help"></a>
+                </li>
+                <li>
+                    <div class="UsrDvHldr">
+                        <div class="UsrDtls">
+                            <div class="PrflNmeHldr">
+                                <span class="Nme">Vinay Kumar</span>
+                            </div>
+                            <div class="PrflImgHldr">
+                                <img src="Images/ProfileImage.jpg" class="PrfImg" />
+                                <span class="PrflTxtImg">
+                                    <span class="Intls">VK</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <div class="AppVrsnDtls">
+            <span class="AppCurrVrsn">Version:<span class="Vrsn">v3.0.20</span></span>
+        </div>
+        <div class="AppPwrdDtls">
+            <span class="CorpTxt">Powered by<a href="#" class="Lnk" target="_blank">WIS</a></span>
+        </div>
+    </div>
+    <div class="AppMnuHldr">
+        <div class="MnuLstHldr">
+            <ul class="MnuLst">
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Dashboard"></span>
+                        <span class="LnkTxt">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Requests"></span>
+                        <span class="LnkTxt">Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Inventory"></span>
+                        <span class="LnkTxt">Inventory</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-PurchaseOrders"></span>
+                        <span class="LnkTxt">Purchase Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Approvals"></span>
+                        <span class="LnkTxt">Approvals</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Audits"></span>
+                        <span class="LnkTxt">Audits</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Reports"></span>
+                        <span class="LnkTxt">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppMstrCntnr">
+        <div class="GnPgHdrDvHldr HotelManagement">
+            <div class="TtlHldr">
+                <a href="#" class="AppBtn IcnOnly WISIcn-ArrowLeft"></a>
+                <span class="PgTtl">Embassy Suits</span>
+                <div class="TtlSbDtlsHldr HtlMngment">
+                    <span class="RoomsDtls">250 Rooms</span>
+                    <span class="LocationDtls WISIcn-Menu-Map">River walk, San Antonio, Texas</span>
+                </div>
+            </div>
+            <div class="NvBtnHldr">
+                <div class="Hldr DtDsplHldr">
+                    <span class="DtTxt">10 Mar, 2023</span>
+                </div>
+                <div class="Hldr">
+                    <div class="AppCmpctTbHldr">
+                        <a href="#" class="TabLnk Actv">Today</a>
+                        <a href="#" class="TabLnk">This Month</a>
+                        <a href="#" class="TabLnk">Custom Date</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GnPgCntntDvHldr HotelManagement">
+            <div class="InnrCntntHldr">
+                <div class="FormHldr HotelSrvcFlDtls">
+                    <span class="FormTxtTtl">Energy Usage</span>
+                    <div class="row NoBG NoBrdrBottom">
+                        <div class="col-4">
+                            <img src="Images/Figpie3.png" style="display: block; width: 100%;" />
+                        </div>
+                        <div class="col-2">
+                            <img src="Images/NBcharts-lineChats5.png" style="display: block; width: 100%;" />
+                        </div>
+                    </div>
+                    <div class="row NoBG NoBrdrTop">
+                        <div class="col-1">
+                            <ul class="HtlSrvcTypeLst">
+                                <li>
+                                    <span class="ServiceType Theme1-Type1">Rooms/ Floors</span>
+                                </li>
+                                <li>
+                                    <span class="ServiceType Theme1-Type2">HVAC</span>
+                                </li>
+                                <li>
+                                    <span class="ServiceType Theme1-Type3">Water</span>
+                                </li>
+                                <li>
+                                    <span class="ServiceType Theme1-Type4">Firefighting System</span>
+                                </li>
+                                <li>
+                                    <span class="ServiceType Theme1-Type5">Laundry</span>
+                                </li>
+                                <li>
+                                    <span class="ServiceType Theme1-Type6">Banquet Halls & Front office</span>
+                                </li>
+                                <li>
+                                    <span class="ServiceType Theme1-Type7">Kitchen</span>
+                                </li>
+                                <li>
+                                    <span class="ServiceType Theme1-Type8">Fitness</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1">
+                            <div class="SrvcDtlsSection Theme1-Type1 Active">
+                                <div class="SctnHdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">Rooms/ Floors</span>
+                                    </div>
+                                    <div class="ArrwLnkHldr">
+                                        <a href="#" class="Lnk Active WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                                <div class="SctnFlDtls">
+                                    <div class="DtlsHldr">
+                                        <table class="AppGenTable VAMiddle NoMrgnTop">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 35%;">Assets/ Relevant Breaker</th>
+                                                    <th>Energy Consumption</th>
+                                                    <th>Average Energy Consumption</th>
+                                                    <th>% Difference Consumption</th>
+                                                    <th>Avg. Consumption per availability</th>
+                                                    <th>Consumption per availability</th>
+                                                    <th>% Difference Consumption per availability</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Floors 2,3,4,5 - Block A - HVAC ( FCUs in each room)</td>
+                                                    <td>265 kWh</td>
+                                                    <td>265 kWh</td>
+                                                    <td>
+                                                        <span
+                                                            class="DshbrdSttsTxt Compact NoMrgn Theme1-Negative">+4%</span>
+                                                    </td>
+                                                    <td>265 kWh</td>
+                                                    <td>265 kWh</td>
+                                                    <td>
+                                                        <span
+                                                            class="DshbrdSttsTxt Compact NoMrgn Theme1-Negative">+4%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Floors 2,3,4,5 - Block A - HVAC ( FCUs in each room)</td>
+                                                    <td>265 kWh</td>
+                                                    <td>265 kWh</td>
+                                                    <td>
+                                                        <span
+                                                            class="DshbrdSttsTxt Compact NoMrgn">0%</span>
+                                                    </td>
+                                                    <td>265 kWh</td>
+                                                    <td>265 kWh</td>
+                                                    <td>
+                                                        <span
+                                                            class="DshbrdSttsTxt Compact NoMrgn">0%</span>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Floors 2,3,4,5 - Block A - HVAC ( FCUs in each room)</td>
+                                                    <td>265 kWh</td>
+                                                    <td>265 kWh</td>
+                                                    <td>
+                                                        <span
+                                                            class="DshbrdSttsTxt Compact NoMrgn Theme1-Positive">-3%</span>
+                                                    </td>
+                                                    <td>265 kWh</td>
+                                                    <td>265 kWh</td>
+                                                    <td>
+                                                        <span
+                                                            class="DshbrdSttsTxt Compact NoMrgn Theme1-Positive">-3%</span>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="DtlsHldr">
+                                        <div class="TableGraphHldr">
+                                            <div class="HdrHldr">
+                                                <div class="TtlHldr">
+                                                    <span class="TtlTxt">Energy Usage data for Rooms/ Floors</span>
+                                                </div>
+                                                <div class="OptnsHldr">
+                                                    <div class="RdOptnHldr HtlMngment">
+                                                        <span class="Txt">Overall Consumption</span>
+                                                        <a href="#" class="AppBtn IcnOnly Access"></a>
+                                                        <span class="Txt">Consumption per occupancy</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="TableGraph">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Duration</th>
+                                                        <th>Asset 1</th>
+                                                        <th>Asset 2</th>
+                                                        <th>Asset 3</th>
+                                                        <th>Asset 4</th>
+                                                        <th>Asset 5</th>
+                                                        <th>Asset 6</th>
+                                                        <th>Asset 7</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>00:00 - 01:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>01:00 - 02:00</td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-30"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-90"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>02:00 - 03:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>03:00 - 04:00</td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-90"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-30"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>04:00 - 05:00</td>
+                                                        <td class="Theme1-40"></td>
+                                                        <td class="Theme1-10"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>05:00 - 06:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>06:00 - 07:00</td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-90"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-30"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>07:00 - 08:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>08:00 - 09:00</td>
+                                                        <td class="Theme1-40"></td>
+                                                        <td class="Theme1-10"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>09:00 - 10:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>10:00 - 11:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>11:00 - 12:00</td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-90"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-30"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>12:00 - 13:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>13:00 - 14:00</td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-10"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-90"></td>
+                                                        <td class="Theme1-50"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>14:00 - 15:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>15:00 - 16:00</td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-90"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-30"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>16:00 - 17:00</td>
+                                                        <td class="Theme1-40"></td>
+                                                        <td class="Theme1-10"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>17:00 - 18:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>18:00 - 19:00</td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-90"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-30"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>19:00 - 20:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>20:00 - 21:00</td>
+                                                        <td class="Theme1-40"></td>
+                                                        <td class="Theme1-10"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-80"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>21:00 - 22:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>22:00 - 23:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-50"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>23:00 - 00:00</td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-100"></td>
+                                                        <td class="Theme1-20"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-0"></td>
+                                                        <td class="Theme1-70"></td>
+                                                        <td class="Theme1-10"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1">
+                            <div class="SrvcDtlsSection Theme1-Type2">
+                                <div class="SctnHdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">HVAC</span>
+                                    </div>
+                                    <div class="ArrwLnkHldr">
+                                        <a href="#" class="Lnk Active WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1">
+                            <div class="SrvcDtlsSection Theme1-Type3">
+                                <div class="SctnHdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">Water</span>
+                                    </div>
+                                    <div class="ArrwLnkHldr">
+                                        <a href="#" class="Lnk Active WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1">
+                            <div class="SrvcDtlsSection Theme1-Type4">
+                                <div class="SctnHdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">Firefighting System</span>
+                                    </div>
+                                    <div class="ArrwLnkHldr">
+                                        <a href="#" class="Lnk Active WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1">
+                            <div class="SrvcDtlsSection Theme1-Type5">
+                                <div class="SctnHdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">Laundry</span>
+                                    </div>
+                                    <div class="ArrwLnkHldr">
+                                        <a href="#" class="Lnk Active WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1">
+                            <div class="SrvcDtlsSection Theme1-Type6">
+                                <div class="SctnHdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">Banquet Halls & Front office</span>
+                                    </div>
+                                    <div class="ArrwLnkHldr">
+                                        <a href="#" class="Lnk Active WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1">
+                            <div class="SrvcDtlsSection Theme1-Type7">
+                                <div class="SctnHdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">Kitchen</span>
+                                    </div>
+                                    <div class="ArrwLnkHldr">
+                                        <a href="#" class="Lnk Active WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1">
+                            <div class="SrvcDtlsSection Theme1-Type8">
+                                <div class="SctnHdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">Fitness</span>
+                                    </div>
+                                    <div class="ArrwLnkHldr">
+                                        <a href="#" class="Lnk Active WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

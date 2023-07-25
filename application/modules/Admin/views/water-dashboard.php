@@ -2224,7 +2224,10 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 <script>
-
+function menushow(id){
+	$("#subcat"+id).toggle('slow');
+	return false;
+}
 <?php if(modules::run('Admin/Site/authlink','water_Line-Pressure')){ ?>
  var dps1=[];
     var dps2=[];      
@@ -3409,6 +3412,7 @@ function device1(a){
             // $(".inner_collaps").removeClass("Expndd");
         }
 }
+
 function deviceall(){
 	if($( ".device" ).is( ":visible" ))
         {

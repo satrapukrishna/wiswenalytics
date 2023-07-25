@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Report</title>
+    <link rel="stylesheet" href="AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="AppTheme/Fonts/IconFont.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.CmpltsBrkDwnSlider').bxSlider({
+                slideWidth: 980,
+                minSlides: 2,
+                maxSlides: 3,
+                moveSlides: 1,
+                hideControlOnEnd: true,
+                infiniteLoop: false,
+                slideMargin: 10
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="AppHeader">
+        <div class="AppMnuTtlHldr">
+            <div class="TtlHldr">
+                <div class="ClntLgoHldr">
+                    <img src="Images/CompanyLogo.png" class="Lgo" />
+                </div>
+            </div>
+        </div>
+        <div class="AppUsrCntrlHldr">
+            <ul class="UsrNav">
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Notification"></a>
+                </li>
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Help"></a>
+                </li>
+                <li>
+                    <div class="UsrDvHldr">
+                        <div class="UsrDtls">
+                            <div class="PrflNmeHldr">
+                                <span class="Nme">Vinay Kumar</span>
+                            </div>
+                            <div class="PrflImgHldr">
+                                <img src="Images/ProfileImage.jpg" class="PrfImg" />
+                                <span class="PrflTxtImg">
+                                    <span class="Intls">VK</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <div class="AppVrsnDtls">
+            <span class="AppCurrVrsn">Version:<span class="Vrsn">v3.0.20</span></span>
+        </div>
+        <div class="AppPwrdDtls">
+            <span class="CorpTxt">Powered by<a href="#" class="Lnk" target="_blank">WIS</a></span>
+        </div>
+    </div>
+    <div class="AppMnuHldr">
+        <div class="MnuLstHldr">
+            <ul class="MnuLst">
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Dashboard"></span>
+                        <span class="LnkTxt">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Map"></span>
+                        <span class="LnkTxt">Locations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Employees"></span>
+                        <span class="LnkTxt">Employees</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-AccessControl"></span>
+                        <span class="LnkTxt">Access Control</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Masters"></span>
+                        <span class="LnkTxt">Masters</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Reports"></span>
+                        <span class="LnkTxt">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppMstrCntnr">
+        <div class="GnPgHdrDvHldr">
+            <div class="TtlHldr">
+                <span class="PgTtl">Complaints Report</span>
+            </div>
+            <div class="NvBtnHldr">
+                <div class="Hldr">
+                    <div class="DtDsplHldr">
+                        <span class="DtTxt">11 May 2023</span>
+                    </div>
+                </div>
+                <div class="Hldr">
+                    <div class="AppCmpctTbHldr">
+                        <a href="#" class="TabLnk Actv">Today</a>
+                        <a href="#" class="TabLnk">This Week</a>
+                        <a href="#" class="TabLnk">Custom Date</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GnPgCntntDvHldr DashboardView">
+            <div class="InnrCntntHldr">
+                <div class="FormHldr">
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-3 FllHght">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Raised by</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="FormHldr">
+                                        <div class="row NoBrdr">
+                                            <div class="col-66 NoPd">
+                                                <div class="GrphHldr CmpltRprt PChrt">
+                                                    <canvas id="CmpltRsdBy"></canvas>
+                                                </div>
+                                            </div>
+                                            <div class="col-3 FllHght NoPd AlgnCntntCntr">
+                                                <div class="GrphLgd">
+                                                    <ul class="LgndLst">
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #CA498C;"></span>
+                                                            <span class="LgndNumb">805</span>
+                                                            <span class="LgndTxt">Guests</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #3F51B5;"></span>
+                                                            <span class="LgndNumb">142</span>
+                                                            <span class="LgndTxt">Staff</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 FllHght">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Complaints Stage</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="FormHldr">
+                                        <div class="row NoBrdr">
+                                            <div class="col-66 NoPd">
+                                                <div class="GrphHldr CmpltRprt PChrt">
+                                                    <canvas id="CmpltStage"></canvas>
+                                                </div>
+                                            </div>
+                                            <div class="col-3 FllHght NoPd AlgnCntntCntr">
+                                                <div class="GrphLgd">
+                                                    <ul class="LgndLst">
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #BCAAA4;"></span>
+                                                            <span class="LgndNumb">40</span>
+                                                            <span class="LgndTxt">Assigned</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #42A5F5;"></span>
+                                                            <span class="LgndNumb">80</span>
+                                                            <span class="LgndTxt">In Process</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #FF7043;"></span>
+                                                            <span class="LgndNumb">30</span>
+                                                            <span class="LgndTxt">Pending</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #26A69A;"></span>
+                                                            <span class="LgndNumb">797</span>
+                                                            <span class="LgndTxt">Completed</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3 FllHght">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Complaints Status</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="FormHldr">
+                                        <div class="row NoBrdr">
+                                            <div class="col-66 NoPd">
+                                                <div class="GrphHldr CmpltRprt PChrt">
+                                                    <canvas id="CmpltStatus"></canvas>
+                                                </div>
+                                            </div>
+                                            <div class="col-3 FllHght NoPd AlgnCntntCntr">
+                                                <div class="GrphLgd">
+                                                    <ul class="LgndLst">
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #66BB6A;"></span>
+                                                            <span class="LgndNumb">285</span>
+                                                            <span class="LgndTxt">On Time</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #EF5350;"></span>
+                                                            <span class="LgndNumb">379</span>
+                                                            <span class="LgndTxt">Delayed</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #FB8C00;"></span>
+                                                            <span class="LgndNumb">190</span>
+                                                            <span class="LgndTxt">Pending</span>
+                                                        </li>
+                                                        <li>
+                                                            <span class="LgndClr" style="background: #26A69A;"></span>
+                                                            <span class="LgndNumb">-854</span>
+                                                            <span class="LgndTxt">Pending Approval</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBG">
+                        <span class="FormTxtTtl Dshbrd">Complaints Breakdown</span>
+                        <div class="col-1 FllHght">
+                            <div class="SldrHldr">
+                                <div class="CmpltsBrkDwnSlider">
+                                    <div class="slide">
+                                        <div class="DashboardHldr">
+                                            <div class="DshHdrHldr Brdr">
+                                                <div class="TtlHldr">
+                                                    <span class="TtlTxt SmlCse">Electrical</span>
+                                                </div>
+                                                <div class="ActnBtnHldr">
+                                                    <a href="#" class="Lnk WISIcn-Reset"></a>
+                                                </div>
+                                            </div>
+                                            <div class="DshDtlHldr FllPddng">
+                                                <div class="FormHldr">
+                                                    <div class="row NoBrdr">
+                                                        <div class="col-3 NoPd">
+                                                            <div class="GrphHldr CmpltRprt PChrt">
+                                                                <canvas id="CmpltBrkdn"></canvas>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-66 FllHght NoPd">
+                                                            <div class="GrphTblDv">
+                                                                <table class="AppGenTable NoMrgnTop VAMiddle">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>S. No.</th>
+                                                                            <th>Complaint Type</th>
+                                                                            <th>Assigned</th>
+                                                                            <th>In Process</th>
+                                                                            <th>Completed</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>1</td>
+                                                                            <td>Lighting</td>
+                                                                            <td>52</td>
+                                                                            <td>30</td>
+                                                                            <td>22</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2</td>
+                                                                            <td>Microwave</td>
+                                                                            <td>40</td>
+                                                                            <td>9</td>
+                                                                            <td>31</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>3</td>
+                                                                            <td>Refrigerator</td>
+                                                                            <td>24</td>
+                                                                            <td>10</td>
+                                                                            <td>14</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>4</td>
+                                                                            <td>Telephone</td>
+                                                                            <td>64</td>
+                                                                            <td>24</td>
+                                                                            <td>40</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="DashboardHldr">
+                                            <div class="DshHdrHldr Brdr">
+                                                <div class="TtlHldr">
+                                                    <span class="TtlTxt SmlCse">Plumbing</span>
+                                                </div>
+                                                <div class="ActnBtnHldr">
+                                                    <a href="#" class="Lnk WISIcn-Reset"></a>
+                                                </div>
+                                            </div>
+                                            <div class="DshDtlHldr FllPddng">
+                                                <div class="FormHldr">
+                                                    <div class="row NoBrdr">
+                                                        <div class="col-3 NoPd">
+                                                            <div class="GrphHldr CmpltRprt PChrt">
+                                                                <canvas id="CmpltPlumb"></canvas>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-66 FllHght NoPd">
+                                                            <div class="GrphTblDv">
+                                                                <table class="AppGenTable NoMrgnTop VAMiddle">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>S. No.</th>
+                                                                            <th>Complaint Type</th>
+                                                                            <th>Assigned</th>
+                                                                            <th>In Process</th>
+                                                                            <th>Completed</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>1</td>
+                                                                            <td>Bathroom Condition</td>
+                                                                            <td>22</td>
+                                                                            <td>11</td>
+                                                                            <td>11</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2</td>
+                                                                            <td>Shower</td>
+                                                                            <td>38</td>
+                                                                            <td>26</td>
+                                                                            <td>12</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>3</td>
+                                                                            <td>Sink Issues</td>
+                                                                            <td>44</td>
+                                                                            <td>23</td>
+                                                                            <td>21</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>4</td>
+                                                                            <td>Tub Issues</td>
+                                                                            <td>67</td>
+                                                                            <td>52</td>
+                                                                            <td>15</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBG">
+                        <span class="FormTxtTtl Dshbrd">Location Wise Breakdown</span>
+                        <div class="col-1 FllHght">
+                            <div class="SldrHldr">
+                                <div class="CmpltsBrkDwnSlider">
+                                    <div class="slide">
+                                        <div class="DashboardHldr">
+                                            <div class="DshHdrHldr Brdr">
+                                                <div class="TtlHldr">
+                                                    <span class="TtlTxt SmlCse">Building One</span>
+                                                </div>
+                                                <div class="ActnBtnHldr">
+                                                    <a href="#" class="Lnk WISIcn-Reset"></a>
+                                                </div>
+                                            </div>
+                                            <div class="DshDtlHldr FllPddng">
+                                                <div class="FormHldr">
+                                                    <div class="row NoBrdr">
+                                                        <div class="col-3 NoPd">
+                                                            <div class="GrphHldr CmpltRprt PChrt">
+                                                                <canvas id="CmpltLocBrdn"></canvas>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-66 FllHght NoPd">
+                                                            <div class="GrphTblDv">
+                                                                <table class="AppGenTable NoMrgnTop VAMiddle">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>S. No.</th>
+                                                                            <th>Complaint Type</th>
+                                                                            <th>Assigned</th>
+                                                                            <th>In Process</th>
+                                                                            <th>Completed</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>1</td>
+                                                                            <td>Microwave</td>
+                                                                            <td>68</td>
+                                                                            <td>31</td>
+                                                                            <td>37</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2</td>
+                                                                            <td>Refrigerator</td>
+                                                                            <td>22</td>
+                                                                            <td>10</td>
+                                                                            <td>12</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>3</td>
+                                                                            <td>Sink Issues</td>
+                                                                            <td>66</td>
+                                                                            <td>52</td>
+                                                                            <td>14</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>4</td>
+                                                                            <td>Tub Issues</td>
+                                                                            <td>32</td>
+                                                                            <td>12</td>
+                                                                            <td>20</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slide">
+                                        <div class="DashboardHldr">
+                                            <div class="DshHdrHldr Brdr">
+                                                <div class="TtlHldr">
+                                                    <span class="TtlTxt SmlCse">Building Two</span>
+                                                </div>
+                                                <div class="ActnBtnHldr">
+                                                    <a href="#" class="Lnk WISIcn-Reset"></a>
+                                                </div>
+                                            </div>
+                                            <div class="DshDtlHldr FllPddng">
+                                                <div class="FormHldr">
+                                                    <div class="row NoBrdr">
+                                                        <div class="col-3 NoPd">
+                                                            <div class="GrphHldr CmpltRprt PChrt">
+                                                                <canvas id="CmpltLocBrdn2"></canvas>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-66 FllHght NoPd">
+                                                            <div class="GrphTblDv">
+                                                                <table class="AppGenTable NoMrgnTop VAMiddle">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>S. No.</th>
+                                                                            <th>Complaint Type</th>
+                                                                            <th>Assigned</th>
+                                                                            <th>In Process</th>
+                                                                            <th>Completed</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td>1</td>
+                                                                            <td>Telephone</td>
+                                                                            <td>42</td>
+                                                                            <td>10</td>
+                                                                            <td>32</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>2</td>
+                                                                            <td>Lighting</td>
+                                                                            <td>52</td>
+                                                                            <td>13</td>
+                                                                            <td>39</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>3</td>
+                                                                            <td>Shower</td>
+                                                                            <td>36</td>
+                                                                            <td>14</td>
+                                                                            <td>22</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td>4</td>
+                                                                            <td>Tub Issues</td>
+                                                                            <td>55</td>
+                                                                            <td>28</td>
+                                                                            <td>27</td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                    <div class="row NoBG">
+                        <span class="FormTxtTtl Dshbrd">Total Complaints</span>
+                        <div class="col-1">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="FormHldr">
+                                        <div class="row NoBrdr">
+                                            <div class="col-4">
+                                                <select class="Input">
+                                                    <option>May 2023</option>
+                                                    <option>April 2023</option>
+                                                    <option>March 2023</option>
+                                                    <option>Custom Dates</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-75">
+                                                <div class="FormCheck">
+                                                    <input class="CheckInput" type="checkbox" checked>
+                                                    <label>All Departments</label>
+                                                </div>
+                                                <div class="FormCheck">
+                                                    <input class="CheckInput" type="checkbox">
+                                                    <label>Electrical</label>
+                                                </div>
+                                                <div class="FormCheck">
+                                                    <input class="CheckInput" type="checkbox">
+                                                    <label>Plumbing</label>
+                                                </div>
+                                                <div class="FormCheck">
+                                                    <input class="CheckInput" type="checkbox">
+                                                    <label>Mechanical</label>
+                                                </div>
+                                                <div class="FormCheck">
+                                                    <input class="CheckInput" type="checkbox">
+                                                    <label>Civil</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <canvas id="CmpltTotal"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBG">
+                        <div class="col-1 FllHght">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Avg. turn around time</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="FormHldr">
+                                        <div class="row NoBrdr">
+                                            <div class="col-1 NoPd">
+                                                <div class="GrphTblDv Max">
+                                                    <table class="AppGenTable NoMrgnTop VAMiddle">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 5%;">S. No.</th>
+                                                                <th style="width: 25%;">Complaint Type</th>
+                                                                <th style="width: 10%;">Complaint Raised</th>
+                                                                <th style="width: 10%;">Avg. Completion Time</th>
+                                                                <th style="width: 10%;">Avg. Rating</th>
+                                                                <th style="width: 10%;">Total Manpower</th>
+                                                                <th style="width: 10%;">Complaint per Manpower</th>
+                                                                <th style="width: 10%;">Total Manhours</th>
+                                                                <th style="width: 10%;">Avg. Manpower per Manhours</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>1</td>
+                                                                <td>
+                                                                    <a href="#" class="Lnk Icn WISIcn-ArrowUp">Electrical</a>
+                                                                </td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>
+                                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                                </td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="9" class="SubTableWthn">
+                                                                    <table class="AppGenTable NoMrgnTop VAMiddle">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td style="width: 5%;">1</td>
+                                                                                <td style="width: 25%;">Air Conditioning</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">
+                                                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                                                </td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="width: 5%;">2</td>
+                                                                                <td style="width: 25%;">Air Conditioning</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">
+                                                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                                                </td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="width: 5%;">3</td>
+                                                                                <td style="width: 25%;">Air Conditioning</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">
+                                                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                                                </td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td style="width: 5%;">4</td>
+                                                                                <td style="width: 25%;">Air Conditioning</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">
+                                                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                                                </td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                                <td style="width: 10%;">52</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>2</td>
+                                                                <td>
+                                                                    <a href="#" class="Lnk Icn WISIcn-ArrowDown">Plumbing</a>
+                                                                </td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>
+                                                                    <span class="Rating WISIcn-Rating3p0"></span>
+                                                                </td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>3</td>
+                                                                <td>
+                                                                    <a href="#" class="Lnk Icn WISIcn-ArrowDown">Mechanical</a>
+                                                                </td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>
+                                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                                </td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>4</td>
+                                                                <td>
+                                                                    <a href="#" class="Lnk Icn WISIcn-ArrowDown">Civil</a>
+                                                                </td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>
+                                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                                </td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                                <td>52</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('CmpltRsdBy');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                family: "'Nunito Sans', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            }
+        });
+        const ctx_c_stage = document.getElementById('CmpltStage');
+        new Chart(ctx_c_stage, {
+            type: 'doughnut',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [26, 50, 18, 71],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                family: "'Nunito Sans', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            }
+        });
+
+        const ctx_c_status = document.getElementById('CmpltStatus');
+        new Chart(ctx_c_status, {
+            type: 'doughnut',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [26, 32, 18, 4],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                family: "'Nunito Sans', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            }
+        });
+        const ctx_c_brkdn = document.getElementById('CmpltBrkdn');
+        new Chart(ctx_c_brkdn, {
+            type: 'doughnut',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [26, 32, 18, 4],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                family: "'Nunito Sans', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            }
+        });
+        const ctx_c_plumb = document.getElementById('CmpltPlumb');
+        new Chart(ctx_c_plumb, {
+            type: 'doughnut',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [26, 32, 18, 4],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                family: "'Nunito Sans', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            }
+        });
+        const ctx_c_loc_brdn = document.getElementById('CmpltLocBrdn');
+        new Chart(ctx_c_loc_brdn, {
+            type: 'doughnut',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [26, 32, 18, 4],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                family: "'Nunito Sans', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            }
+        });
+        const ctx_c_loc_brdn2 = document.getElementById('CmpltLocBrdn2');
+        new Chart(ctx_c_loc_brdn2, {
+            type: 'doughnut',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [26, 32, 18, 4],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top',
+                        labels: {
+                            // This more specific font property overrides the global property
+                            font: {
+                                family: "'Nunito Sans', sans-serif",
+                                size: 14
+                            }
+                        }
+                    },
+                    title: {
+                        display: false,
+                        text: 'Chart.js Bar Chart'
+                    }
+                }
+            }
+        });
+        const ctx_c_total = document.getElementById('CmpltTotal');
+        new Chart(ctx_c_total, {
+            type: 'bar',
+            data: {
+                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23],
+                datasets: [{
+
+                    label: 'Electrical',
+                    data: [10, 30, 40, 10, 20, 40, 30, 28, 33, 44, 22, 44, 55, 33, 22, 44, 33, 55, 65, 22, 25, 57, 45]
+                }, {
+
+                    label: 'Plumbing',
+                    data: [30, 20, 30, 40, 30, 44, 33, 22, 66, 33, 44, 22, 44, 88, 55, 33, 55, 66, 33, 22, 33, 5, 5]
+                }, {
+
+                    label: 'Mechanical',
+                    data: [40, 20, 30, 40, 35, 22, 35, 44, 22, 34, 55, 44, 88, 22, 33, 57, 44, 77, 33, 22, 33, 44, 44]
+                }, {
+
+                    label: 'Civil',
+                    data: [30, 20, 30, 40, 32, 33, 2, 34, 22, 44, 32, 4, 5, 55, 33, 88, 33,]
+                }]
+            }
+        });
+
+    </script>
+</body>
+
+</html>

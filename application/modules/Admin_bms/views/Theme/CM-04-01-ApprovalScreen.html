@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approvals</title>
+    <link rel="stylesheet" href="AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="AppTheme/Fonts/IconFont.css" />
+</head>
+
+<body>
+    <div class="AppHeader">
+        <div class="AppMnuTtlHldr">
+            <div class="TtlHldr">
+                <div class="ClntLgoHldr">
+                    <img src="Images/CompanyLogo.png" class="Lgo" />
+                </div>
+            </div>
+        </div>
+        <div class="AppUsrCntrlHldr">
+            <ul class="UsrNav">
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Notification"></a>
+                </li>
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Help"></a>
+                </li>
+                <li>
+                    <div class="UsrDvHldr">
+                        <div class="UsrDtls">
+                            <div class="PrflNmeHldr">
+                                <span class="Nme">Vinay Kumar</span>
+                            </div>
+                            <div class="PrflImgHldr">
+                                <img src="Images/ProfileImage.jpg" class="PrfImg" />
+                                <span class="PrflTxtImg">
+                                    <span class="Intls">VK</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <div class="AppVrsnDtls">
+            <span class="AppCurrVrsn">Version:<span class="Vrsn">v3.0.20</span></span>
+        </div>
+        <div class="AppPwrdDtls">
+            <span class="CorpTxt">Powered by<a href="#" class="Lnk" target="_blank">WIS</a></span>
+        </div>
+    </div>
+    <div class="AppMnuHldr">
+        <div class="MnuLstHldr">
+            <ul class="MnuLst">
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Dashboard"></span>
+                        <span class="LnkTxt">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Requests"></span>
+                        <span class="LnkTxt">Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Inventory"></span>
+                        <span class="LnkTxt">Inventory</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-PurchaseOrders"></span>
+                        <span class="LnkTxt">Purchase Orders</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk Actv">
+                        <span class="LnkIcn WISIcn-Menu-Approvals"></span>
+                        <span class="LnkTxt">Approvals</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Audits"></span>
+                        <span class="LnkTxt">Audits</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Reports"></span>
+                        <span class="LnkTxt">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppMstrCntnr">
+        <div class="GnPgHdrDvHldr">
+            <div class="TtlHldr">
+                <span class="PgTtl">Approvals</span>
+            </div>
+            <div class="NvBtnHldr">
+                <div class="Hldr">
+                    <a href="#" class="AppBtn Icn WISIcn-Add">Request New Approval</a>
+                </div>
+            </div>
+        </div>
+        <div class="GnPgCntntDvHldr">
+            <div class="AppFllTbHldr">
+                <a href="#" class="TabLnk Actv">Your Requests</a>
+                <a href="#" class="TabLnk">Your Approvals</a>
+            </div>
+            <div class="FormHldr Search">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="FormCheck">
+                            <input class="RadioInput" type="radio" checked="">
+                            <label>All</label>
+                        </div>
+                        <div class="FormCheck">
+                            <input class="RadioInput" type="radio">
+                            <label>Pending</label>
+                        </div>
+                        <div class="FormCheck">
+                            <input class="RadioInput" type="radio">
+                            <label>Approved</label>
+                        </div>
+                        <div class="FormCheck">
+                            <input class="RadioInput" type="radio">
+                            <label>Rejected</label>
+                        </div>
+                        <div class="FormCheck">
+                            <input class="RadioInput" type="radio">
+                            <label>On Hold</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="Input Icn Calendar" placeholder="From Date">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="Input Icn Calendar" placeholder="To Date">
+                    </div>
+                    <div class="col-6">
+                        <select class="Input">
+                            <option>Sort by</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                          </select>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="AppBtn">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="InnrCntntHldr">
+                <div class="Loading InlineView">
+                    <img src="Images/Loading.svg" class="LdngImg" />
+                    <span class="Ttl">Loading</span>
+                    <span class="Txt">Please wait while we load data.</span>
+                </div>
+                <table class="AppGenTable VAMiddle">
+                    <thead>
+                        <tr>
+                            <th>Request ID</th>
+                            <th>
+                                <span class="Lnk Srt WISIcn-Sort">Department</span>
+                            </th>
+                            <th>Ref. Complaint ID</th>
+                            <th>No. of Products</th>
+                            <th>Requested from</th>
+                            <th>Subject</th>
+                            <th>
+                                <span class="Lnk Srt WISIcn-Sort">Priority</span>
+                            </th>
+                            <th>
+                                <span class="Lnk Srt WISIcn-Sort">Status</span>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>AppRq-5587</td>
+                            <td>Electrical</td>
+                            <td>CMP-1087</td>
+                            <td>6</td>
+                            <td>Krishna M.</td>
+                            <td>Request for purchasing new AC for HOD...</td>
+                            <td>
+                                <span class="Blk ApprvlPrty Theme1-High">High</span>
+                            </td>
+                            <td>
+                                <span class="Blk ApprvlStts Theme1-Approved">Approved</span>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Web App Access" href="#" class="AppBtn IcnOnly WISIcn-Alert"></a>
+                                    </div>
+                                    <div class="BtnHldr">
+                                        <a title="Mobile App Access" href="#" class="AppBtn IcnOnly WISIcn-Reminder"></a>
+                                    </div>
+                                    <div class="BtnHldr">
+                                        <a title="SMS Reminder" href="#" class="AppBtn IcnOnly WISIcn-ReApply"></a>
+                                    </div>
+                                    <div class="SbMnuBtnHldrDv">
+                                        <span class="SbMnuBtn WISIcn-MenuVertical"></span>
+                                        <div class="SbMnuHldr">
+                                            <ul class="SbMnuLst">
+                                                <li>
+                                                    <a href="#" class="SbMnuLnk">Preview Details</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="SbMnuLnk">Edit Details</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>AppRq-5587</td>
+                            <td>Electrical</td>
+                            <td>CMP-1087</td>
+                            <td>6</td>
+                            <td>Krishna M.</td>
+                            <td>Request for purchasing new AC for HOD...</td>
+                            <td>
+                                <span class="Blk ApprvlPrty Theme1-Medium">Medium</span>
+                            </td>
+                            <td>
+                                <span class="Blk ApprvlStts Theme1-Rejected">Rejected</span>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Web App Access" href="#" class="AppBtn IcnOnly WISIcn-Alert"></a>
+                                    </div>
+                                    <div class="BtnHldr">
+                                        <a title="Mobile App Access" href="#" class="AppBtn IcnOnly WISIcn-Reminder"></a>
+                                    </div>
+                                    <div class="BtnHldr">
+                                        <a title="SMS Reminder" href="#" class="AppBtn IcnOnly WISIcn-ReApply"></a>
+                                    </div>
+                                    <div class="SbMnuBtnHldrDv">
+                                        <span class="SbMnuBtn WISIcn-MenuVertical"></span>
+                                        <div class="SbMnuHldr">
+                                            <ul class="SbMnuLst">
+                                                <li>
+                                                    <a href="#" class="SbMnuLnk">Preview Details</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="SbMnuLnk">Edit Details</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>AppRq-5587</td>
+                            <td>Electrical</td>
+                            <td>CMP-1087</td>
+                            <td>6</td>
+                            <td>Krishna M.</td>
+                            <td>Request for purchasing new AC for HOD...</td>
+                            <td>
+                                <span class="Blk ApprvlPrty Theme1-Low">Low</span>
+                            </td>
+                            <td>
+                                <span class="Blk ApprvlStts Theme1-PendingApproval">Pending Approval</span>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Web App Access" href="#" class="AppBtn IcnOnly WISIcn-Alert"></a>
+                                    </div>
+                                    <div class="BtnHldr">
+                                        <a title="Mobile App Access" href="#" class="AppBtn IcnOnly WISIcn-Reminder"></a>
+                                    </div>
+                                    <div class="BtnHldr">
+                                        <a title="SMS Reminder" href="#" class="AppBtn IcnOnly WISIcn-ReApply"></a>
+                                    </div>
+                                    <div class="SbMnuBtnHldrDv">
+                                        <span class="SbMnuBtn WISIcn-MenuVertical"></span>
+                                        <div class="SbMnuHldr">
+                                            <ul class="SbMnuLst">
+                                                <li>
+                                                    <a href="#" class="SbMnuLnk">Preview Details</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="SbMnuLnk">Edit Details</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>AppRq-5587</td>
+                            <td>Electrical</td>
+                            <td>CMP-1087</td>
+                            <td>6</td>
+                            <td>Krishna M.</td>
+                            <td>Request for purchasing new AC for HOD...</td>
+                            <td>
+                                <span class="Blk ApprvlPrty Theme1-High">High</span>
+                            </td>
+                            <td>
+                                <span class="Blk ApprvlStts Theme1-OnHold">On Hold</span>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Web App Access" href="#" class="AppBtn IcnOnly WISIcn-Alert"></a>
+                                    </div>
+                                    <div class="BtnHldr">
+                                        <a title="Mobile App Access" href="#" class="AppBtn IcnOnly WISIcn-Reminder"></a>
+                                    </div>
+                                    <div class="BtnHldr">
+                                        <a title="SMS Reminder" href="#" class="AppBtn IcnOnly WISIcn-ReApply"></a>
+                                    </div>
+                                    <div class="SbMnuBtnHldrDv">
+                                        <span class="SbMnuBtn WISIcn-MenuVertical"></span>
+                                        <div class="SbMnuHldr">
+                                            <ul class="SbMnuLst">
+                                                <li>
+                                                    <a href="#" class="SbMnuLnk">Preview Details</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" class="SbMnuLnk">Edit Details</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

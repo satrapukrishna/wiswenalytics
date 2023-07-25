@@ -4758,8 +4758,8 @@ function get_hardwares_device_data_waterlevelmeter_report_mum_db(){
 		$station_id=$data['station_id'];
 		$hardware_name=$data['api_name'];
 		$lineconnected=$data['LineConnected'];
-		$todayDate="2021-12-30";
-		$table_name="hardware_station_consumption_data_chennai_single";
+		$todayDate="2023-07-04";
+		$table_name="hardware_station_consumption_data_chennai_demouser";
 		
 		$meter_list=$this->get_meter_list($table_name);
 		$i=0;
@@ -4781,13 +4781,21 @@ function get_hardwares_device_data_waterlevelmeter_report_mum_db(){
 				$mcbtrip="SELECT `CurReading` FROM $table_name WHERE `LocationName`='".$meters['LocationName']."' AND `TxnDate`='".$todayDate."' AND LineConnected='Mcb Trip' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
 				$mcbtripdata = $this->db->query($mcbtrip)->result_array();
 				
-				$yphase="SELECT `CurReading` FROM $table_name WHERE `LocationName`='".$meters['LocationName']."' AND `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='Y-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
+				$yphase="SELECT `CurReading` FROM $table_name WHERE  `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='Y-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
 				$yphasedata = $this->db->query($yphase)->result_array();
 				//echo $yphase;die();
-				$rphase="SELECT `CurReading` FROM $table_name WHERE `LocationName`='".$meters['LocationName']."' AND `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='R-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
+				$rphase="SELECT `CurReading` FROM $table_name WHERE  `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='R-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
 				$rphasedata = $this->db->query($rphase)->result_array();
 				//echo $rphasedata[0]['CurReading'];die();
-				$bphase="SELECT `CurReading` FROM $table_name WHERE `LocationName`='".$meters['LocationName']."' AND `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='B-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
+				$bphase="SELECT `CurReading` FROM $table_name WHERE  `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='B-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
+
+				// $yphase="SELECT `CurReading` FROM $table_name WHERE `LocationName`='".$meters['LocationName']."' AND `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='Y-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
+				// $yphasedata = $this->db->query($yphase)->result_array();
+				
+				// $rphase="SELECT `CurReading` FROM $table_name WHERE `LocationName`='".$meters['LocationName']."' AND `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='R-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
+				// $rphasedata = $this->db->query($rphase)->result_array();
+				
+				// $bphase="SELECT `CurReading` FROM $table_name WHERE `LocationName`='".$meters['LocationName']."' AND `TxnDate`='".$todayDate."' AND `UtilityName`='".$utilityName."' AND LineConnected='B-Phase' and MeterName='Status Monitor'	ORDER BY TxnTime DESC LIMIT 1";
 				$bphasedata = $this->db->query($bphase)->result_array();
 
 				
@@ -4867,7 +4875,7 @@ function get_hardwares_device_data_waterlevelmeter_report_mum_db(){
 			}else{
 				$resdata[$i]['meter']=$meters['LocationName'];
 			}	
-			if($meters['LocationName']=='Hyd.Pneu.System' || $meters['LocationName']=='Fire Pump House'){
+			if($meters['LocationName']=='Hyd.Pneu.System' || $meters['LocationName']=='Project'|| $meters['LocationName']=='MarketingOffice'|| $meters['LocationName']=='Fire Pump House'){
 				$resdata[$i]['status']='On';
 				$resdata[$i]['trip']='no';
 			}else{
@@ -4984,7 +4992,7 @@ function get_hardwares_device_data_waterlevelmeter_report_mum_db(){
 		$hardware_name=$data['api_name'];
 		$lineconnected=$data['LineConnected'];
 		// $todayDate=date("Y-m-d");
-		$todayDate="2022-10-01";
+		$todayDate="2023-05-15";
 		$table_name=$this->get_table_name($station_id);
 		$towers=array('Tower-A','Tower-B','Tower-C');
 		foreach($towers as $tower){

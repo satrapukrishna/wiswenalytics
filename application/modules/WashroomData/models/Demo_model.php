@@ -7,17 +7,53 @@ class Demo_model extends CI_Model{
         $i=0;
         foreach ($branches as $row) {
             $res[$i]=$this->getFootfallConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            
             $res[$i]['power']=$this->getPowerConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            
             // $res[$i]['power_unavl']=round(100-$res[$i]['power'],2);
-            $res[$i]['water_cons']=$this->getWaterConsumptionConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+           $res[$i]['water_cons']=$this->getWaterConsumptionConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            
             $res[$i]['water_leak']=$this->getWaterLeakConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
             $res[$i]['station']=$row['stationid'];
+            if($row['stationid']==2022000112 ||$row['stationid']==2022000113 ){
+                $res[$i]['water_cons_per_footfall']=round($res[$i]['water_cons']/$res[$i]['total_footfall'],2);
+            }else{
+                $res[$i]['water_cons_per_footfall']="NA";
+            }
+           
             
-            $res[$i]['water_cons_per_footfall']=round($res[$i]['water_cons']/$res[$i]['total_footfall'],2);
             $res[$i]['unaccept']=$this->getUnacceptMaleConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch'],$res[$i]['power']);
             $res[$i]['feedback']=$this->getFeedbackConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            //echo json_encode($res);die();
+
+            $i++;
+
+        }
+        // echo json_encode($res);die();
+        //die();
+        return $res;
 
 
+    }
+    function getConsolidatedFootfallData($branches,$fromdate,$todate){
+        $i=0;
+        foreach ($branches as $row) {
+            $res[$i]=$this->getFootfallConsolidate_all($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            $i++;
+
+        }
+        //die();
+        return $res;
+
+
+    }
+    function getConsolidatedFootfallPowerData($branches,$fromdate,$todate){
+        $i=0;
+        foreach ($branches as $row) {
+            $res[$i]=$this->getFootfallConsolidate_all($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            $res[$i]['power']=$this->getPowerConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            $res[$i]['unaccept']=$this->getUnacceptMaleConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch'],$res[$i]['power']);
+            $res[$i]['sms']=$this->getSmsData($fromdate,$todate,$row['branch']);
             $i++;
 
         }
@@ -37,6 +73,28 @@ class Demo_model extends CI_Model{
         return $res;
 
     }
+    function getSmsData($fromdate,$todate,$location){
+         
+            
+           
+             $alerts="SELECT count(*) as count FROM alerts_warangal WHERE  alert_date between  '".$fromdate."' and '".$todate."' and alert_name='".$location."'";
+             $alert_data = $this->db->query($alerts)->result_array();
+                //echo $od_male;
+
+           
+            $fulldata['count']=$alert_data[0]['count'];
+            
+        
+
+        
+        $fulldata['location']=$location;
+
+
+
+        return $fulldata;
+
+
+}
     function getUnacceptMaleConsolidate_times($fromdate,$todate,$stationid,$table_name,$location,$power){
         $date_from = strtotime($fromdate); 
         $date_to = strtotime($todate); 
@@ -391,6 +449,7 @@ class Demo_model extends CI_Model{
 		$this->db->where('station_id',$station);
 		$this->db->where('report_date',$date);       
         $res = $this->db->get()->result_array();     
+        // echo "ll:".$this->db->last_query();die();
         return $res;
     }
     function getFootfallConsolidate($fromdate,$todate,$stationid,$table_name,$location){
@@ -408,6 +467,7 @@ class Demo_model extends CI_Model{
                     $male_footfall_tot=0;
                     $female_footfall_tot=0;
                     for ($k=0; $k < count($datesarray); $k++) { 
+                        // echo $datesarray[$k];die();
                         $res_check=$this->check_footfall($datesarray[$k],$stationid,'footfall',$location);
                         if(count($res_check)==1){
                             $male_footfall_tot+=$res_check[0]['male_footfall'];
@@ -470,6 +530,83 @@ class Demo_model extends CI_Model{
     
                     
     }
+    function getFootfallConsolidate_all($fromdate,$todate,$stationid,$table_name,$location){
+        $total_footfall=0;
+        $male_footfall=0;
+        $female_footfall=0;
+        $date_from = strtotime($fromdate); 
+        $date_to = strtotime($todate); 
+        $datesarray=array();
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400) {
+            array_push($datesarray, date("Y-m-d",$i1));
+            
+        }
+        $totaldays=count($datesarray);
+        $male_footfall_tot=0;
+        $female_footfall_tot=0;
+        for ($k=0; $k < count($datesarray); $k++) { 
+            $res_check=$this->check_footfall($datesarray[$k],$stationid,'footfall',$location);
+            if(count($res_check)==1){
+                $male_footfall_tot+=$res_check[0]['male_footfall'];
+                $female_footfall_tot+=$res_check[0]['female_footfall'];
+            }else{
+                $query="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate = '".$datesarray[$k]."' and LineConnected='Footfall Male' ";
+                // echo $query;die();
+                $query_female="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate = '".$datesarray[$k]."' and LineConnected='Footfall Female' ";
+                 $data = $this->db->query($query)->result();
+                 if(isset($data[0]->Consumption)){
+                    $male_footfall=$data[0]->Consumption;
+                }else{
+                    $male_footfall=0;
+                }
+                
+                $data_female = $this->db->query($query_female)->result();
+                 if(isset($data_female[0]->Consumption)){
+                    $female_footfall=$data_female[0]->Consumption;
+                }else{
+                    $female_footfall=0;
+                }  
+                // echo $query_female;die();
+                $query_footfall_time="(SELECT * FROM $table_name where StationId=$stationid and TxnDate = '".$datesarray[$k]."' and LineConnected IN ('Footfall Male','Footfall Female') and Consumption>0 order by TxnTime ASC LIMIT 1) UNION (SELECT * FROM $table_name where StationId=$stationid and TxnDate = '".$datesarray[$k]."' and LineConnected IN ('Footfall Male','Footfall Female') and Consumption>0 order by TxnTime DESC LIMIT 1)";
+                //echo $query_footfall_time_male;die();
+                $data_time = $this->db->query($query_footfall_time)->result();
+               
+                $footfall_data=array(
+                    'report_date'=>$datesarray[$k],
+                    'created_date'=>date("Y-m-d H:i:s"),
+                    'updated_date'=>date("Y-m-d H:i:s"),
+                    'male_footfall'=>$male_footfall,
+                    'female_footfall'=>$female_footfall,
+                    'morning_footfall'=>$data_time[0]->TxnTime,
+                    'evening_footfall'=>$data_time[1]->TxnTime,
+                    'station_id'=>$stationid,
+                    'location'=>$location              
+                );
+                $male_footfall_tot+=$male_footfall;
+                $female_footfall_tot+=$female_footfall;
+                $this->db->insert('warangal_footfall_data', $footfall_data);
+            }
+            
+
+               
+        }
+            
+            $total_footfall=$male_footfall_tot+$female_footfall_tot;
+           
+            $fulldata['male_footfall']=$male_footfall_tot;
+            $fulldata['female_footfall']=$female_footfall_tot;
+            $fulldata['total_footfall']=$total_footfall;
+            $fulldata['male_footfall_avg']=round($male_footfall_tot/$totaldays);
+            $fulldata['female_footfall_avg']=round($female_footfall_tot/$totaldays);
+            $fulldata['total_footfall_avg']=round($total_footfall/$totaldays);
+            $fulldata['fromdate']=$fromdate;
+            $fulldata['todate']=$todate;
+            $fulldata['totaldays']=$totaldays;
+            $fulldata['location']=$location;
+            return $fulldata;
+
+        
+}
     function check_power($date,$station){
         $this->db->select('*');
         $this->db->from('warangal_power_data');        
@@ -589,12 +726,42 @@ class Demo_model extends CI_Model{
 
         
 }
+function getOnlineOfflineData(){
+    $fromdate='2023-01-01';
+    $todate='2023-04-30';
+    $date_from = strtotime($fromdate); 
+        $date_to = strtotime($todate); 
+        $datesarray=array();
+		for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+
+        for ($k=0; $k < count($datesarray); $k++){
+            $tables = array("hardware_station_consumption_data_district_court","hardware_station_consumption_data_gopalaswami_temple","hardware_station_consumption_data_radhika_theatre_lane","hardware_station_consumption_data_kazipet_railwaystation","hardware_station_consumption_data_chintal_bridge","hardware_station_consumption_data_lic_office_marketroad","hardware_station_consumption_data_mission_hospital","hardware_station_consumption_data_police_headquarters","hardware_station_consumption_data_wr_jpnagar","hardware_station_consumption_data_wr_collector");
+            for ($n=0; $n <count($tables) ; $n++) { 
+                $q1="select * from $tables[$n] where TxnDate='".$datesarray[$k]."'";
+            $r1 = $this->db->query($q1)->result_array();
+            if(count($r1)==0){
+                $res[$k][$n]['status']="OFF";
+            }else{
+                $res[$k][$n]['status']="ON";
+            }
+            $res[$k][$n]['meter']=$tables[$n];
+            $res[$k][$n]['date']=$datesarray[$k];
+            }
+            
+
+        }
+        return $res;
+}
 function check_consumption($date,$station){
     $this->db->select('*');
     $this->db->from('warangal_waterconsumption_data');        
     $this->db->where('station_id',$station);
     $this->db->where('report_date',$date);       
-    $res = $this->db->get()->result_array();     
+    $res = $this->db->get()->result_array();  
+    // echo "ll:".$this->db->last_query();   
     return $res;
 }
 function getWaterConsumptionConsolidate($fromdate,$todate,$stationid,$table_name,$location){
@@ -609,13 +776,19 @@ function getWaterConsumptionConsolidate($fromdate,$todate,$stationid,$table_name
     $cons=0;
     
         for ($k=0; $k < count($datesarray); $k++) { 
+           
             $res_check=$this->check_consumption($datesarray[$k],$stationid,'consumption',$location);
+            
             if(count($res_check)==1){
+                if($stationid==2022000112 ||$stationid==2022000113 ){
                 $cons+=$res_check[0]['water_consumption'];
+                }
                                 
             }else{
+                // echo $stationid;die();
                 if($stationid==2022000112 ||$stationid==2022000113 ){
                     $water_add_query="SELECT abs(SUM(`CurReading`-`Consumption`)) as water_add FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' AND `CurReading`-`Consumption`<0";
+                    echo $water_add_query;die();
                     $water_cons_query="SELECT (SELECT CurReading FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' ORDER BY TxnTime LIMIT 1) as 'start',(SELECT CurReading FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' ORDER BY TxnTime DESC LIMIT 1) as 'end'";
                     $water_add_data = $this->db->query($water_add_query)->result_array();
                     $water_cons_data = $this->db->query($water_cons_query)->result_array();
@@ -673,7 +846,9 @@ function getWaterLeakConsolidate($fromdate,$todate,$stationid,$table_name,$locat
         for ($k=0; $k < count($datesarray); $k++) { 
             $res_check=$this->check_leakage($datesarray[$k],$stationid);
             if(count($res_check)==1){
+                if($stationid==2022000112 ||$stationid==2022000113 ){
                 $leak_water+=$res_check[0]['water_leakage'];
+                }
                                 
             }else{
                 if($stationid==2022000112 ||$stationid==2022000113 ){
@@ -1098,32 +1273,42 @@ function getWaterLeakConsolidate($fromdate,$todate,$stationid,$table_name,$locat
                         
                     }
                     for ($k=0; $k < count($datesarray); $k++) { 
-                        $today=date("Y-m-d");
-                        if($datesarray[$k]==$today){
-                            $table_name=$table_name_live;
+                        $res_check=$this->check_footfall($datesarray[$k],$stationid,'footfall',$location);
+                        if(count($res_check)==1){
+                            
+                            $fulldata[$k]['Time']=$datesarray[$k];
+                            $fulldata[$k]['footfall']=$res_check[0]['male_footfall'];
+                            $fulldata[$k]['footfall_female']=$res_check[0]['female_footfall'];
+                            $fulldata[$k]['Date']=$datesarray[$k];
                         }else{
-                            $table_name=$table_name;
+                            $today=date("Y-m-d");
+                            if($datesarray[$k]==$today){
+                                $table_name=$table_name_live;
+                            }else{
+                                $table_name=$table_name;
+                            }
+                            $query="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate='".$datesarray[$k]."' and LineConnected='Footfall Male' ";
+                            // echo $query;die();
+                            $query_female="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate='".$datesarray[$k]."' and LineConnected='Footfall Female' ";
+                             $data = $this->db->query($query)->result();
+                             if(isset($data[0]->Consumption)){
+                                $footfall=$data[0]->Consumption;
+                            }else{
+                                $footfall="0";
+                            }
+        
+                            $data_female = $this->db->query($query_female)->result();
+                             if(isset($data_female[0]->Consumption)){
+                                $footfall_female=$data_female[0]->Consumption;
+                            }else{
+                                $footfall_female="0";
+                            }
+                            $fulldata[$k]['Time']=$datesarray[$k];
+                            $fulldata[$k]['footfall']=$footfall;
+                            $fulldata[$k]['footfall_female']=$footfall_female;
+                            $fulldata[$k]['Date']=$datesarray[$k];
                         }
-                        $query="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate='".$datesarray[$k]."' and LineConnected='Footfall Male' ";
-                        // echo $query;die();
-                        $query_female="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate='".$datesarray[$k]."' and LineConnected='Footfall Female' ";
-                         $data = $this->db->query($query)->result();
-                         if(isset($data[0]->Consumption)){
-                            $footfall=$data[0]->Consumption;
-                        }else{
-                            $footfall="0";
-                        }
-    
-                        $data_female = $this->db->query($query_female)->result();
-                         if(isset($data_female[0]->Consumption)){
-                            $footfall_female=$data_female[0]->Consumption;
-                        }else{
-                            $footfall_female="0";
-                        }
-                        $fulldata[$k]['Time']=$datesarray[$k];
-                        $fulldata[$k]['footfall']=$footfall;
-                        $fulldata[$k]['footfall_female']=$footfall_female;
-                        $fulldata[$k]['Date']=$datesarray[$k];
+                       
     
                     }
                      return $fulldata;
@@ -1131,6 +1316,7 @@ function getWaterLeakConsolidate($fromdate,$todate,$stationid,$table_name,$locat
     }
     function getFootfalAnalysisData($fromdate,$todate,$location,$branch,$stationid,$table_name,$table_name_live){
         $fulldata=array();
+        
         
         $query_total="select sum(tbl.Consumption) as Consumption from (select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate between '".$fromdate."' and '".$todate."' and LineConnected='Footfall Male' UNION ALL select round(SUM(Consumption)/2) as Consumption FROM $table_name_live where StationId=$stationid and TxnDate between '".$fromdate."' and '".$todate."' and LineConnected='Footfall Male')tbl";
         $query_female_total="select sum(tbl.Consumption) as Consumption from (select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate between '".$fromdate."' and '".$todate."' and LineConnected='Footfall Female' UNION ALL select round(SUM(Consumption)/2) as Consumption FROM $table_name_live where StationId=$stationid and TxnDate between '".$fromdate."' and '".$todate."' and LineConnected='Footfall Female')tbl";
@@ -1355,31 +1541,41 @@ function getWaterLeakConsolidate($fromdate,$todate,$stationid,$table_name,$locat
                 
             }
             for ($k=0; $k < count($datesarray); $k++) { 
-                $today=date("Y-m-d");
-            if($datesarray[$k]==$today){
-                $table_name=$table_name_live;
-            }else{
-                $table_name=$table_name;
-            }
-                $querygood="SELECT SUM(Consumption) as Consumption FROM $table_name where LineConnected='FB Good' AND StationId=$stationid and TxnDate='".$datesarray[$k]."'";
-                
-                $queryavg="SELECT SUM(Consumption) as Consumption FROM $table_name where LineConnected='FB Avg' AND StationId=$stationid and TxnDate='".$datesarray[$k]."'";
-                $querypoor="SELECT SUM(Consumption) as Consumption FROM $table_name where LineConnected='FB Poor' AND StationId=$stationid and TxnDate='".$datesarray[$k]."'"; 
-                $gooddata = $this->db->query($querygood)->result();
-                $avgdata = $this->db->query($queryavg)->result();
-                $poordata = $this->db->query($querypoor)->result();
-
-                $fulldata[$k]['Time']=$datesarray[$k];
-                $fulldata[$k]['good']=$gooddata[0]->Consumption;
-                $fulldata[$k]['avg']=$avgdata[0]->Consumption;
-                $fulldata[$k]['poor']=$poordata[0]->Consumption;
+                $res_check=$this->check_feedback($datesarray[$k],$stationid);
+                if(count($res_check)==1){
+                        $fulldata[$k]['Time']=$datesarray[$k];
+                        $fulldata[$k]['good']=$res_check[0]['good'];
+                        $fulldata[$k]['avg']=$res_check[0]['avg'];
+                        $fulldata[$k]['poor']=$res_check[0]['poor'];
+                }else{
+                    $today=date("Y-m-d");
+                    if($datesarray[$k]==$today){
+                        $table_name=$table_name_live;
+                    }else{
+                        $table_name=$table_name;
+                    }
+                    
+                        $querygood="SELECT SUM(Consumption) as Consumption FROM $table_name where LineConnected='FB Good' AND StationId=$stationid and TxnDate='".$datesarray[$k]."'";
+                        
+                        $queryavg="SELECT SUM(Consumption) as Consumption FROM $table_name where LineConnected='FB Avg' AND StationId=$stationid and TxnDate='".$datesarray[$k]."'";
+                        $querypoor="SELECT SUM(Consumption) as Consumption FROM $table_name where LineConnected='FB Poor' AND StationId=$stationid and TxnDate='".$datesarray[$k]."'"; 
+                        $gooddata = $this->db->query($querygood)->result();
+                        $avgdata = $this->db->query($queryavg)->result();
+                        $poordata = $this->db->query($querypoor)->result();
+        
+                        $fulldata[$k]['Time']=$datesarray[$k];
+                        $fulldata[$k]['good']=$gooddata[0]->Consumption;
+                        $fulldata[$k]['avg']=$avgdata[0]->Consumption;
+                        $fulldata[$k]['poor']=$poordata[0]->Consumption;
+                }
+               
             }
             return $fulldata;
         }
 }
 function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_name,$table_name_live){
                  $fulldata=array();
- 
+  
                   $date_from = strtotime($fromdate); 
                    $date_to = strtotime($todate); 
                    $datesarray=array();
@@ -1395,10 +1591,10 @@ function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_n
                     }else{
                         $table_name=$table_name;
                     }
-                       $check=$this->check_water_leak($stationid,$datesarray[$k]);
+                       $check=$this->check_leakage($datesarray[$k],$stationid);
                        if(count($check)==1){
                            $fulldata[$k]['date']=$datesarray[$k];
-                           $fulldata[$k]['leak']=((float)$check[0]['leakage']);
+                           $fulldata[$k]['leak']=((float)$check[0]['water_leakage']);
                        }else{
                            if($datesarray[$k]>=date('Y-m-d')){
                             
@@ -1433,9 +1629,9 @@ function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_n
                                $error_correction=$lw1+$lw2+$w_add;
                                //echo $error_correction;die();
                                    $water1data = $this->db->query($water1)->result_array();
-                                   $water1leak=$water1data[0]['CurReading']-$water1data[count($water1data)]['CurReading'];
+                                   $water1leak=$water1data[0]['CurReading']-$water1data[count($water1data)-1]['CurReading'];
                                    $water2data = $this->db->query($water2)->result_array();
-                                   $water2leak=$water2data[0]['CurReading']-$water2data[count($water2data)]['CurReading'];
+                                   $water2leak=$water2data[0]['CurReading']-$water2data[count($water2data)-1]['CurReading'];
                                $leak=$water1leak+$water2leak;
                                if($leak>0){
                                    $err=5;
@@ -1444,7 +1640,7 @@ function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_n
                                }
                                $fulldata[$k]['date']=$datesarray[$k];
                                $fulldata[$k]['leak']=abs(round($leak-$error_correction+$w_add,2));
-                               // $fulldata[$k]['leak']=(round($leak+$w_add-$err,2));
+                            //    $fulldata[$k]['test']=$water1leak;
        
                                   
                            }else{
@@ -1508,13 +1704,17 @@ function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_n
                                $fulldata[$k]['leak']=abs(round($leak-$error_correction+$w_add,2));
                                // $fulldata[$k]['leak']=(round($leak+$w_add-$err,2));
        
-                                   $water_leak_query=array(
-                                   'location'=>$location,
-                                   'leakage'=>abs($fulldata[$k]['leak']),
-                                   'date'=>$datesarray[$k],
-                                   'stationid'=>$stationid            
-                               );
-                               $this->db->insert('wrngl_water_leak_report', $water_leak_query);
+                                 
+
+                               $leakage_data=array(
+                                'report_date'=>$datesarray[$k],
+                                'created_date'=>date("Y-m-d H:i:s"),
+                                'updated_date'=>date("Y-m-d H:i:s"),
+                                'water_leakage'=>abs($fulldata[$k]['leak']),
+                                'station_id'=>$stationid,
+                                'location'=>$location              
+                            );
+                            $this->db->insert('warangal_waterleakage_data', $leakage_data);
                            }
                            
                        }
@@ -1545,11 +1745,15 @@ function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_n
                     }else{
                         $table_name=$table_name;
                     }
+                    
                        $check=$this->check_water_cons($stationid,$datesarray[$k]);
                        if(count($check)==1){
                            $fulldata[$k]['date']=$datesarray[$k];
-                           $fulldata[$k]['cons']=((float)$check[0]['leakage']);
+                           $fulldata[$k]['cons']=((float)$check[0]['water_consumption']);
+                           $fulldata[$k]['from']="db";
+
                        }else{
+                        
                            if($datesarray[$k]>=date('Y-m-d')){
                                $water_add_query="SELECT abs(SUM(`CurReading`-`Consumption`)) as water_add FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' AND `CurReading`-`Consumption`<0";
                                $water_cons_query="SELECT (SELECT CurReading FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' ORDER BY TxnTime LIMIT 1) as 'start',(SELECT CurReading FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' ORDER BY TxnTime DESC LIMIT 1) as 'end'";
@@ -1572,14 +1776,18 @@ function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_n
                             
                             $fulldata[$k]['date']=$datesarray[$k];
                             $fulldata[$k]['cons']=(round($water_cons+$water_add,2));
+
+                            $consumption_data=array(
+                                'report_date'=>$datesarray[$k],
+                                'created_date'=>date("Y-m-d H:i:s"),
+                                'updated_date'=>date("Y-m-d H:i:s"),
+                                'water_consumption'=>$fulldata[$k]['cons'],
+                                'station_id'=>$stationid,
+                                'location'=>$location              
+                            );
+                            $this->db->insert('warangal_waterconsumption_data', $consumption_data);
        
-                                   $water_cons_array=array(
-                                   'location'=>$location,
-                                   'cons'=>$fulldata[$k]['cons'],
-                                   'date'=>$datesarray[$k],
-                                   'stationid'=>$stationid            
-                               );
-                               $this->db->insert('wrngl_water_cons_report', $water_cons_array);
+                                   
                            }
                            
                        }
@@ -1594,14 +1802,10 @@ function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_n
    function check_water_cons($station,$date)
 	{
 		$this->db->select('*');
-        $this->db->from('wrngl_water_cons_report');        
-		// $this->db->where('location',$location);
-		$this->db->where('stationid',$station);
-        $this->db->where('date',$date);
-       
-        $res = $this->db->get()->result_array();
-		//echo $res[0]['report_date'];die();        
-		 //echo "ll:".$this->db->last_query();die();       
+    $this->db->from('warangal_waterconsumption_data');        
+    $this->db->where('station_id',$station);
+    $this->db->where('report_date',$date);       
+    $res = $this->db->get()->result_array();     
         return $res;
 	}
    function check_water_leak($station,$date)
@@ -1649,7 +1853,7 @@ function getLekageReport($fromdate,$todate,$location,$branch,$stationid,$table_n
                         $table_name=$table_name;
                     } 
    
-                       $check=$this->check_odour_data($stationid,$datesarray[$k]);
+                       $check=$this->check_odour($datesarray[$k],$stationid);
                        if(count($check)==1){
                            $fulldata[$k]['date']=$datesarray[$k];
                            //$fulldata[$k]['leak']=(float)$check[0]['leakage'];

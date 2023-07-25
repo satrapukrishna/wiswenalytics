@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Page</title>
+    <link rel="stylesheet" href="AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="AppTheme/Fonts/IconFont.css" />
+</head>
+
+<body>
+    <div class="AppHeader">
+        <div class="AppMnuTtlHldr">
+            <div class="TtlHldr">
+                <div class="ClntLgoHldr">
+                    <img src="Images/CompanyLogo.png" class="Lgo" />
+                </div>
+            </div>
+        </div>
+        <div class="AppUsrCntrlHldr">
+            <ul class="UsrNav">
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Notification"></a>
+                </li>
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Help"></a>
+                </li>
+                <li>
+                    <div class="UsrDvHldr">
+                        <div class="UsrDtls">
+                            <div class="PrflNmeHldr">
+                                <span class="Nme">Vinay Kumar</span>
+                            </div>
+                            <div class="PrflImgHldr">
+                                <img src="Images/ProfileImage.jpg" class="PrfImg" />
+                                <span class="PrflTxtImg">
+                                    <span class="Intls">VK</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <div class="AppVrsnDtls">
+            <span class="AppCurrVrsn">Version:<span class="Vrsn">v3.0.20</span></span>
+        </div>
+        <div class="AppPwrdDtls">
+            <span class="CorpTxt">Powered by<a href="#" class="Lnk" target="_blank">WIS</a></span>
+        </div>
+    </div>
+    <div class="AppMnuHldr">
+        <div class="MnuLstHldr">
+            <ul class="MnuLst">
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Dashboard"></span>
+                        <span class="LnkTxt">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Map"></span>
+                        <span class="LnkTxt">Locations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Employees"></span>
+                        <span class="LnkTxt">Employees</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-AccessControl"></span>
+                        <span class="LnkTxt">Access Control</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Masters"></span>
+                        <span class="LnkTxt">Masters</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Reports"></span>
+                        <span class="LnkTxt">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppMstrCntnr">
+        <div class="GnPgHdrDvHldr">
+            <div class="TtlHldr">
+                <span class="PgTtl">Inventory</span>
+            </div>
+            <div class="NvBtnHldr">
+                <div class="Hldr">
+                    <a href="#" class="AppBtn Icn WISIcn-Add">Add Inventory</a>
+                </div>
+            </div>
+        </div>
+        <div class="GnPgCntntDvHldr">
+            <div class="AppFllTbHldr">
+                <a href="#" class="TabLnk Actv">All</a>
+                <a href="#" class="TabLnk">Electrical</a>
+                <a href="#" class="TabLnk">Air Conditioning</a>
+                <a href="#" class="TabLnk">Carpentry</a>
+                <a href="#" class="TabLnk">House Keeping</a>
+                <a href="#" class="TabLnk">Plumbing</a>
+                <a href="#" class="TabLnk">Ceiling</a>
+                <a href="#" class="TabLnk">Civil</a>
+            </div>
+            <div class="FormHldr Search">
+                <div class="row BrdrTp">
+                    <div class="col-5">
+                        <div class="FormCheck">
+                            <input class="RadioInput" type="radio" checked="">
+                            <label>All</label>
+                        </div>
+                        <div class="FormCheck">
+                            <input class="RadioInput" type="radio">
+                            <label>New</label>
+                        </div>
+                        <div class="FormCheck">
+                            <input class="RadioInput" type="radio">
+                            <label>Repair/ Refurbished</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="Input Icn Search" placeholder="Product Search">
+                    </div>
+                    <div class="col-6">
+                        <input type="text" class="Input Icn Calendar" placeholder="Date">
+                    </div>
+                    <div class="col-6">
+                        <select class="Input">
+                            <option>Sort by</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                            <option>Select</option>
+                          </select>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="AppBtn">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="InnrCntntHldr Legends">
+                <table class="AppGenTable VAMiddle">
+                    <thead>
+                        <tr>
+                            <th>S. No.</th>
+                            <th>Product</th>
+                            <th>Product Type</th>
+                            <th>Make</th>
+                            <th class="CntrAlgn">
+                                <span class="Lnk Srt WISIcn-Sort">Qty</span>
+                            </th>
+                            <th class="CntrAlgn">RC/NRC</th>
+                            <th class="RghtAlgn">
+                                <span class="Lnk Srt WISIcn-Sort">Cost in Rs. per unit</span>
+                            </th>
+                            <th class="CntrAlgn">Last Received</th>
+                            <th class="CntrAlgn">
+                                <span class="Lnk Srt WISIcn-Sort">Avg. Monthly Consumption</span>
+                            </th>
+                            <th class="CntrAlgn">MSL</th>
+                            <th>
+                                <span class="Lnk Srt WISIcn-Sort">Full Stock Level</span>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>63 A MCB - Changeover</td>
+                            <td>
+                                <span class="InlnBlk InvType Theme1-HCHV">Electrical</span>
+                            </td>
+                            <td>Havells</td>
+                            <td class="CntrAlgn">4 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">RC</td>
+                            <td class="RghtAlgn">Rs. 4300</td>
+                            <td class="CntrAlgn">15-12-2023</td>
+                            <td class="CntrAlgn">1 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">1 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">20 <span class="Blk HntTxt">Nos</span></td>
+                            <td>
+                                <a href="#" class="AppBtn Scndry">Details</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>63 A MCB - Changeover</td>
+                            <td>
+                                <span class="InlnBlk InvType Theme1-LCLV">Electrical</span>
+                            </td>
+                            <td>Havells</td>
+                            <td class="CntrAlgn">4 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">RC</td>
+                            <td class="RghtAlgn">Rs. 4300</td>
+                            <td class="CntrAlgn">15-12-2023</td>
+                            <td class="CntrAlgn">1 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">1 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">20 <span class="Blk HntTxt">Nos</span></td>
+                            <td>
+                                <a href="#" class="AppBtn Scndry">Details</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>63 A MCB - Changeover</td>
+                            <td>
+                                <span class="InlnBlk InvType Theme1-LCHV">Electrical</span>
+                            </td>
+                            <td>Havells</td>
+                            <td class="CntrAlgn">4 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">RC</td>
+                            <td class="RghtAlgn">Rs. 4300</td>
+                            <td class="CntrAlgn">15-12-2023</td>
+                            <td class="CntrAlgn">1 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">1 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">20 <span class="Blk HntTxt">Nos</span></td>
+                            <td>
+                                <a href="#" class="AppBtn Scndry">Details</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>63 A MCB - Changeover</td>
+                            <td>
+                                <span class="InlnBlk InvType Theme1-HCLV">Electrical</span>
+                            </td>
+                            <td>Havells</td>
+                            <td class="CntrAlgn">4 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">RC</td>
+                            <td class="RghtAlgn">Rs. 4300</td>
+                            <td class="CntrAlgn">15-12-2023</td>
+                            <td class="CntrAlgn">1 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">1 <span class="Blk HntTxt">Nos</span></td>
+                            <td class="CntrAlgn">20 <span class="Blk HntTxt">Nos</span></td>
+                            <td>
+                                <a href="#" class="AppBtn Scndry">Details</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="TableLegends">
+                <div class="Hldr">
+                    <span class="Blk InvType Theme1-HCHV">HCHV</span>
+                    <span class="Blk InvType Theme1-LCLV">LCLV</span>
+                    <span class="Blk InvType Theme1-LCHV">LCHV</span>
+                    <span class="Blk InvType Theme1-HCLV">HCLV</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

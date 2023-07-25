@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Complaints</title>
+    <link rel="stylesheet" href="AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="AppTheme/Fonts/IconFont.css" />
+</head>
+
+<body>
+    <div class="AppHeader">
+        <div class="AppMnuTtlHldr">
+            <div class="TtlHldr">
+                <div class="ClntLgoHldr">
+                    <img src="Images/CompanyLogo.png" class="Lgo" />
+                </div>
+            </div>
+        </div>
+        <div class="AppUsrCntrlHldr">
+            <ul class="UsrNav">
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Notification"></a>
+                </li>
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Help"></a>
+                </li>
+                <li>
+                    <div class="UsrDvHldr">
+                        <div class="UsrDtls">
+                            <div class="PrflNmeHldr">
+                                <span class="Nme">Vinay Kumar</span>
+                            </div>
+                            <div class="PrflImgHldr">
+                                <img src="Images/ProfileImage.jpg" class="PrfImg" />
+                                <span class="PrflTxtImg">
+                                    <span class="Intls">VK</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <div class="AppVrsnDtls">
+            <span class="AppCurrVrsn">Version:<span class="Vrsn">v3.0.20</span></span>
+        </div>
+        <div class="AppPwrdDtls">
+            <span class="CorpTxt">Powered by<a href="#" class="Lnk" target="_blank">WIS</a></span>
+        </div>
+    </div>
+    <div class="AppMnuHldr">
+        <div class="MnuLstHldr">
+            <ul class="MnuLst">
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Dashboard"></span>
+                        <span class="LnkTxt">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk Actv">
+                        <span class="LnkIcn WISIcn-Menu-ComplaintManagement"></span>
+                        <span class="LnkTxt">Complaint Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Map"></span>
+                        <span class="LnkTxt">Map View</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-ComplaintsAdmin"></span>
+                        <span class="LnkTxt">Complaints Admin<span class="Arrw WISIcn-ArrowRight"></span></span>
+                    </span>
+                    <div class="SbMnu">
+                        <a href="#" class="Lnk">Sub Menu Link 1</a>
+                        <a href="#" class="Lnk">Sub Menu Link 2</a>
+                        <a href="#" class="Lnk">Sub Menu Link 3</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Rooster"></span>
+                        <span class="LnkTxt">Rooster</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Employees"></span>
+                        <span class="LnkTxt">Employee Manager<span class="Arrw WISIcn-ArrowRight"></span></span>
+                    </span>
+                    <div class="SbMnu">
+                        <a href="#" class="Lnk">Sub Menu Link 1</a>
+                        <a href="#" class="Lnk">Sub Menu Link 2</a>
+                        <a href="#" class="Lnk">Sub Menu Link 3</a>
+                    </div>
+                </li>
+                <li>
+                    <span class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-AccessControl"></span>
+                        <span class="LnkTxt">Access Control<span class="Arrw WISIcn-ArrowRight"></span></span>
+                    </span>
+                    <div class="SbMnu">
+                        <a href="#" class="Lnk">Sub Menu Link 1</a>
+                        <a href="#" class="Lnk">Sub Menu Link 2</a>
+                        <a href="#" class="Lnk">Sub Menu Link 3</a>
+                    </div>
+                </li>
+                <li>
+                    <span class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Masters"></span>
+                        <span class="LnkTxt">Masters<span class="Arrw WISIcn-ArrowRight"></span></span>
+                    </span>
+                    <div class="SbMnu">
+                        <a href="#" class="Lnk">Sub Menu Link 1</a>
+                        <a href="#" class="Lnk">Sub Menu Link 2</a>
+                        <a href="#" class="Lnk">Sub Menu Link 3</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Reports"></span>
+                        <span class="LnkTxt">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppMstrCntnr">
+        <div class="GnPgHdrDvHldr">
+            <div class="TtlHldr">
+                <span class="PgTtl">Complaint Viewer</span>
+            </div>
+            <div class="NvBtnHldr">
+                <div class="AppCmpctTbHldr">
+                    <a href="#" class="TabLnk Actv">Today</a>
+                    <a href="#" class="TabLnk">This Week</a>
+                    <a href="#" class="TabLnk">Custom Date</a>
+                </div>
+                <div class="Hldr">
+                    <a href="#" class="AppBtn Icn WISIcn-Add">Add Complaint</a>
+                </div>
+            </div>
+        </div>
+        <div class="GnPgCntntDvHldr">
+            <div class="AppFllTbHldr">
+                <a href="#" class="TabLnk Icn WISIcn-CM-All Actv">All (168)</a>
+                <a href="#" class="TabLnk Icn WISIcn-CM-PendingApproval">Pending Approval (4)</a>
+                <a href="#" class="TabLnk Icn WISIcn-CM-New">New (4)</a>
+                <a href="#" class="TabLnk Icn WISIcn-CM-ViewUnassigned">View & Unassigned (3)</a>
+                <a href="#" class="TabLnk Icn WISIcn-CM-Ongoing">Ongoing (2)</a>
+                <a href="#" class="TabLnk Icn WISIcn-CM-Delayed">Delayed (2)</a>
+                <a href="#" class="TabLnk Icn WISIcn-CM-Reopened">Re-Opened (1)</a>
+                <a href="#" class="TabLnk Icn WISIcn-CM-Completed">Completed (4)</a>
+            </div>
+            <div class="InnrCntntHldr">
+                <table class="AppGenTable VAMiddle">
+                    <thead>
+                        <tr>
+                            <th>Complaint ID</th>
+                            <th>
+                                Nature of Complaint
+                            </th>
+                            <th>
+                                <span class="Lnk Srt WISIcn-Sort">Department</span>
+                            </th>
+                            <th>
+                                Location
+                            </th>
+                            <th>
+                                Complaint Time
+                            </th>
+                            <th>
+                                Assigned To
+                            </th>
+                            <th>
+                                <span class="Lnk Srt WISIcn-Sort">Status</span>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="InlnBlk CmpltPrty Theme1-High">CMP-1087</span>
+                            </td>
+                            <td>Door or window jammed / Repairs</td>
+                            <td>Civil</td>
+                            <td>Cancer Block</td>
+                            <td>18 Dec, 2022 11:21PM</td>
+                            <td>
+                                <span class="Blk">Pradeep</span>
+                                <span class="Blk">Sr. Technician</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="AppBtn Icn WISIcn-FullArrowRight CmpltStts Theme1-Ongoing">Ongoing (11 mins)</button>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Feedbac" href="#" class="AppBtn IcnOnly WISIcn-Feedback"></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="InlnBlk CmpltPrty Theme1-Medium">CMP-1087</span>
+                            </td>
+                            <td>Door or window jammed / Repairs</td>
+                            <td>Civil</td>
+                            <td>Cancer Block</td>
+                            <td>18 Dec, 2022 11:21PM</td>
+                            <td>
+                                <span class="TxtInactive">Not Assigned</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="AppBtn Icn WISIcn-FullArrowRight CmpltStts Theme1-AssignComplaint">Assign Complaint</button>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Feedbac" href="#" class="AppBtn IcnOnly WISIcn-Feedback"></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="InlnBlk CmpltPrty Theme1-Low">CMP-1087</span>
+                            </td>
+                            <td>Door or window jammed / Repairs</td>
+                            <td>Civil</td>
+                            <td>Cancer Block</td>
+                            <td>18 Dec, 2022 11:21PM</td>
+                            <td>
+                                <span class="Blk">Pradeep</span>
+                                <span class="Blk">Sr. Technician</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="AppBtn Icn WISIcn-FullArrowRight CmpltStts Theme1-PendingApproval">Pending Approval (18hrs 9mins)</button>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Feedbac" href="#" class="AppBtn IcnOnly WISIcn-Feedback"></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="InlnBlk CmpltPrty Theme1-High">CMP-1087</span>
+                            </td>
+                            <td>Door or window jammed / Repairs</td>
+                            <td>Civil</td>
+                            <td>Cancer Block</td>
+                            <td>18 Dec, 2022 11:21PM</td>
+                            <td>
+                                <span class="Blk">Pradeep</span>
+                                <span class="Blk">Sr. Technician</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="AppBtn Icn WISIcn-FullArrowRight CmpltStts Theme1-Delayed">Delayed (3hrs 5mins)</button>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Feedbac" href="#" class="AppBtn IcnOnly WISIcn-Feedback"></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="InlnBlk CmpltPrty Theme1-Medium">CMP-1087</span>
+                            </td>
+                            <td>Door or window jammed / Repairs</td>
+                            <td>Civil</td>
+                            <td>Cancer Block</td>
+                            <td>18 Dec, 2022 11:21PM</td>
+                            <td>
+                                <span class="Blk">Pradeep</span>
+                                <span class="Blk">Sr. Technician</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="AppBtn Icn WISIcn-FullArrowRight CmpltStts Theme1-Completed">Completed (9hrs 45 mins)</button>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Feedbac" href="#" class="AppBtn IcnOnly WISIcn-Feedback"></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="InlnBlk CmpltPrty Theme1-Low Theme1-ReOpened">CMP-1087</span>
+                            </td>
+                            <td>Door or window jammed / Repairs</td>
+                            <td>Civil</td>
+                            <td>Cancer Block</td>
+                            <td>18 Dec, 2022 11:21PM</td>
+                            <td>
+                                <span class="Blk">Pradeep</span>
+                                <span class="Blk">Sr. Technician</span>
+                            </td>
+                            <td>
+                                <button type="submit" class="AppBtn Icn WISIcn-FullArrowRight CmpltStts Theme1-ReOpened">Re-opened (2hrs 14mins)</button>
+                            </td>
+                            <td>
+                                <div class="ActnBtnsHldr">
+                                    <div class="BtnHldr">
+                                        <a title="Feedbac" href="#" class="AppBtn IcnOnly WISIcn-Feedback"></a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="PopUpBG"></div>
+        <div class="PopUpHldr Rght Max">
+            <div class="PopUpHedr">
+                <div class="HdrTtlHldr">
+                    <span class="TtlTxt">Complaint Details</span>
+                </div>
+                <div class="HdrBtnHldr">
+                    <span class="AppBtn IcnOnly Close"></span>
+                </div>
+            </div>
+            <div class="PopUpBdy">
+                <div class="InnrCntntHldr">
+                    <div class="ComplaintPrccHldr">
+                        <div class="FormHldr">
+                            <div class="row">
+                                <div class="col-1">
+                                    <div class="PrcssHdr">
+                                        <div class="TtlDtls">
+                                            <span class="TxtTtl">Nature of Complaint</span>
+                                            <span class="CmpltTtl">Fan Regulator not working</span>
+                                        </div>
+                                        <div class="CmpltBscDtls">
+                                            <div class="TxtHghlts">
+                                                <span class="CmpltStts Theme1-Ongoing">Completed (2hrs 15mins)</span>
+                                                <span class="CmpltPrty Theme1-High">High</span>
+                                            </div>
+                                            <div class="PrtyActn">
+                                                <span class="TxtTtl">Change Priority</span>
+                                                <select class="Input">
+                                                    <option>Select</option>
+                                                    <option>Select</option>
+                                                    <option>Select</option>
+                                                    <option>Select</option>
+                                                  </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-1">
+                                    <div class="CmpltPrcssTimeline">
+                                        <span class="TotalTime">2hrs 15mins</span>
+                                        <ul class="Timeline Assigned">
+                                            <li>
+                                                <span class="PrcssTtl">Registered</span>
+                                                <span class="PrcssDate">18 Dec, 2022</span>
+                                                <span class="PrcssTime">11:21AM</span>
+                                            </li>
+                                            <li>
+                                                <span class="PrcssTtl">Assigned</span>
+                                                <span class="PrcssDate">18 Dec, 2022</span>
+                                                <span class="PrcssTime">11:56AM</span>
+                                                <span class="PrcssStpDuration">35mins</span>
+                                            </li>
+                                            <li>
+                                                <span class="PrcssTtl">Materials Picked up</span>
+                                                <span class="PrcssDate">18 Dec, 2022</span>
+                                                <span class="PrcssTime">12:08PM</span>
+                                                <span class="PrcssStpDuration">12mins</span>
+                                            </li>
+                                            <li>
+                                                <span class="PrcssTtl">Completed</span>
+                                                <span class="PrcssDate">18 Dec, 2022</span>
+                                                <span class="PrcssTime">1:36PM</span>
+                                                <span class="PrcssStpDuration">1hr 28mins</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span class="FormTxtTtl">Location Details<span class="Icn WISIcn-ArrowUp"></span></span>
+                                <div class="row NoBG Hide">
+                                    <div class="col-6">
+                                        <span class="FormTxt">Building</span>
+                                        <span class="FormTxtVlu">Cancer Block</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="FormTxt">Floor</span>
+                                        <span class="FormTxtVlu">Basement 2</span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="FormTxt">Room</span>
+                                        <span class="FormTxtVlu">Parking Zone 1</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span class="FormTxtTtl">Complaint Details<span class="Icn WISIcn-ArrowUp"></span></span>
+                                <div class="row NoBG Hide">
+                                    <div class="col-6">
+                                        <span class="FormTxt">Complaint ID</span>
+                                        <span class="FormTxtVlu">CMP-1087</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="FormTxt">Date</span>
+                                        <span class="FormTxtVlu">21 Jan, 2023</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="FormTxt">Complaint by</span>
+                                        <span class="FormTxtVlu">Patient</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="FormTxt">Complaint time</span>
+                                        <span class="FormTxtVlu">02:30PM</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="FormTxt">Complainant Name</span>
+                                        <span class="FormTxtVlu">Krishna Rao</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="FormTxt">Contact no.</span>
+                                        <span class="FormTxtVlu">+91 98490 98490</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span class="FormTxtTtl">Complaint Photos<span class="Icn WISIcn-ArrowUp"></span></span>
+                                <div class="row NoBG Hide">
+                                    <div class="col-12">
+                                        <img src="Images/CM-Temp-Img-01.jpg" class="CmpltPhoto" />
+                                    </div>
+                                    <div class="col-12">
+                                        <img src="Images/CM-Temp-Img-02.jpg" class="CmpltPhoto" />
+                                    </div>
+                                    <div class="col-12">
+                                        <img src="Images/CM-Temp-Img-03.jpg" class="CmpltPhoto" />
+                                    </div>
+                                    <div class="col-12">
+                                        <img src="Images/CM-Temp-Img-04.jpg" class="CmpltPhoto" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span class="FormTxtTtl">Action Taken<span class="Icn WISIcn-ArrowUp"></span></span>
+                                <div class="row NoBG Hide">
+                                    <div class="col-6">
+                                        <span class="FormTxt">Assigned Department</span>
+                                        <span class="FormTxtVlu">Electrical</span>
+                                    </div>
+                                    <div class="col-6">
+                                        <span class="FormTxt">Assigned To</span>
+                                        <span class="FormTxtVlu">Krishna</span>
+                                    </div>
+                                    <div class="col">
+                                        <span class="FormTxt">Assigned Time</span>
+                                        <span class="FormTxtVlu">03, Jan 2023 - 06:05PM</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span class="FormTxtTtl">Materials<span class="Icn WISIcn-ArrowUp"></span></span>
+                                <div class="row NoBG Hide">
+                                    <div class="col-1">
+                                        <table class="AppGenTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Department</th>
+                                                    <th>Product Make</th>
+                                                    <th>Product Type</th>
+                                                    <th>Product Name</th>
+                                                    <th>Total Units</th>
+                                                    <th>Assigned by</th>
+                                                    <th>Assigned Date & Time</th>
+                                                    <th>Store Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Electrcity</td>
+                                                    <td>Crompton</td>
+                                                    <td>Fan</td>
+                                                    <td>Airflow 3</td>
+                                                    <td>1</td>
+                                                    <td>Rajesh</td>
+                                                    <td>05 Jan 2023, 07:15PM</td>
+                                                    <td>Yet to be picked up</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Electrcity</td>
+                                                    <td>Crompton</td>
+                                                    <td>Regulator</td>
+                                                    <td>Airflow 3 Regulator</td>
+                                                    <td>1</td>
+                                                    <td>Rajesh</td>
+                                                    <td>05 Jan 2023, 07:15PM</td>
+                                                    <td>Picked up</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Electrcity</td>
+                                                    <td>Anchor</td>
+                                                    <td>Switch</td>
+                                                    <td>Switch 147</td>
+                                                    <td>1</td>
+                                                    <td>Rajesh</td>
+                                                    <td>05 Jan 2023, 07:15PM</td>
+                                                    <td>Not Available</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-1">
+                                        <button type="submit" class="AppBtn Scndry">Assign Materials</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <span class="FormTxtTtl">Update Complaint<span class="Icn WISIcn-ArrowDown"></span></span>
+                                <div class="row NoBG">
+                                    <div class="col-3">
+                                        <span class="FormTxt">Notes</span>
+                                        <input type="text" class="Input" placeholder="Add Notes">
+                                    </div>
+                                    <div class="col-3">
+                                        <span class="FormTxt">Materials</span>
+                                        <input type="text" class="Input" placeholder="Added/ Replaced">
+                                    </div>
+                                    <div class="col-3">
+                                        <span class="FormTxt">Status</span>
+                                        <div class="FormCheck">
+                                            <input class="RadioInput" type="radio">
+                                            <label>Pending</label>
+                                        </div>
+                                        <div class="FormCheck">
+                                            <input class="RadioInput" type="radio">
+                                            <label>Complete</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="UpldFlLst">
+                                            <span class="UpldFile">
+                                                <a href="#" class="Lnk FileName WISIcn-File">Photo.jpg</a>
+                                                <a href="#" class="Lnk DelBtn WISIcn-Thrash"></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="PopUpBtnFtr">
+                <button type="submit" class="AppBtn Scndry Icn WISIcn-File-PDF">Download Progress</button>
+                <button type="submit" class="AppBtn">Save</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

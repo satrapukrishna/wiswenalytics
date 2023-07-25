@@ -9,12 +9,13 @@
 		</tr>
 		<?php $k=1;
 		for($j=0;$j<count($dgdata);$j++){ 
+			
 			for($i=0;$i<count($dgdata[$j]['consolidate']);$i++){ ?>
 		<tr>
 			<td><?php echo $k; ?></td>
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['date']."/".date('l', strtotime($dgdata[$j]['consolidate'][$i]['date'])); ?></td>
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['dgname']; ?></td>
-			<td><?php echo $dgdata[$j]['consolidate'][$i]['fadd']; ?></td>
+			<td><?php echo $dgdata[$j]['consolidate'][$i]['fadd']; ?></td>						
 		</tr>
 		<?php $k++;}
 	}?>

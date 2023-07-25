@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMS - Energy</title>
+    <link rel="stylesheet" href="AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="AppTheme/Fonts/IconFont.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.EnergyMeter').bxSlider({
+                slideWidth: 400,
+                minSlides: 2,
+                maxSlides: 3,
+                moveSlides: 1,
+                hideControlOnEnd: true,
+                infiniteLoop: false
+            });
+            $('.DieselGeneratorSet').bxSlider({
+                slideWidth: 500,
+                minSlides: 2,
+                maxSlides: 3,
+                moveSlides: 1,
+                hideControlOnEnd: true,
+                infiniteLoop: false
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="AppHeader">
+        <div class="AppMnuTtlHldr">
+            <div class="TtlHldr">
+                <div class="ClntLgoHldr">
+                    <img src="Images/CompanyLogo.png" class="Lgo" />
+                </div>
+            </div>
+        </div>
+        <div class="AppUsrCntrlHldr">
+            <ul class="UsrNav">
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Notification"></a>
+                </li>
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Help"></a>
+                </li>
+                <li>
+                    <div class="UsrDvHldr">
+                        <div class="UsrDtls">
+                            <div class="PrflNmeHldr">
+                                <span class="Nme">Vinay Kumar</span>
+                            </div>
+                            <div class="PrflImgHldr">
+                                <img src="Images/ProfileImage.jpg" class="PrfImg">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="HdrSbMnuHldr UsrDv">
+                        <div class="InnrHldr">
+                            <div class="PrflSbMnu">
+                                <ul class="LnkLst">
+                                    <li>
+                                        <div class="PrflMiniView">
+                                            <div class="PrflImgHldr">
+                                                <img src="Images/ProfileImage.jpg" class="PrfImg">
+                                            </div>
+                                            <div class="PrflBscDtls">
+                                                <span class="PrflName">Vinay Kumar</span>
+                                                <span class="PrflDesignation">Site Admin</span>
+                                                <span class="PrflEmail">vinay.kumar@gmail.com</span>
+                                                <span class="PrflPhone">+91 98490 98490</span>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="Lnk">My Profile</a>
+                                    </li>
+                                    <li>
+                                        <a href="index.html" class="Lnk">Sign Out</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <div class="AppVrsnDtls">
+            <span class="AppCurrVrsn">Version:<span class="Vrsn">v3.0.20</span></span>
+        </div>
+        <div class="AppPwrdDtls">
+            <span class="CorpTxt">Powered by<a href="#" class="Lnk" target="_blank">WIS</a></span>
+        </div>
+    </div>
+    <div class="AppMnuHldr">
+        <div class="MnuLstHldr">
+            <ul class="MnuLst">
+                <li>
+                    <a href="#" class="Lnk Actv">
+                        <span class="LnkIcn WISIcn-Menu-Dashboard"></span>
+                        <span class="LnkTxt">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-ComplaintManagement"></span>
+                        <span class="LnkTxt">Complaint Management</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Map"></span>
+                        <span class="LnkTxt">Map View</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-ComplaintsAdmin"></span>
+                        <span class="LnkTxt">Complaints Admin<span class="Arrw WISIcn-ArrowRight"></span></span>
+                    </span>
+                    <ul class="SbMnu">
+                        <li>
+                            <span class="Lnk">
+                                <span class="LnkTxt">Masters<span class="Arrw WISIcn-ArrowRight"></span></span>
+                            </span>
+                            <ul class="SbMnuInnr">
+                                <li>
+                                    <a href="#" class="Lnk">Sub Menu Link 1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="Lnk">Sub Menu Link 2</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="Lnk">Sub Menu Link 3</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="Lnk">Sub Menu Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#" class="Lnk">Sub Menu Link 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Rooster"></span>
+                        <span class="LnkTxt">Rooster</span>
+                    </a>
+                </li>
+                <li>
+                    <span class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Employees"></span>
+                        <span class="LnkTxt">Employee Manager<span class="Arrw WISIcn-ArrowRight"></span></span>
+                    </span>
+                    <ul class="SbMnu">
+                        <li>
+                            <a href="#" class="Lnk">Sub Menu Link 1</a>
+                        </li>
+                        <li>
+                            <span class="Lnk">
+                                <span class="LnkTxt">Masters<span class="Arrw WISIcn-ArrowRight"></span></span>
+                            </span>
+                            <ul class="SbMnuInnr">
+                                <li>
+                                    <a href="#" class="Lnk">Sub Menu Link 1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="Lnk">Sub Menu Link 2</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="Lnk">Sub Menu Link 3</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="Lnk">Sub Menu Link 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-AccessControl"></span>
+                        <span class="LnkTxt">BMS<span class="Arrw WISIcn-ArrowRight"></span></span>
+                    </span>
+                    <ul class="SbMnu">
+                        <li>
+                            <a href="#" class="Lnk">Water</a>
+                        </li>
+                        <li>
+                            <a href="#" class="Lnk">Energy</a>
+                        </li>
+                        <li>
+                            <a href="#" class="Lnk">Switch Status</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Masters"></span>
+                        <span class="LnkTxt">Masters<span class="Arrw WISIcn-ArrowRight"></span></span>
+                    </span>
+                    <ul class="SbMnu">
+                        <li>
+                            <span class="Lnk">
+                                <span class="LnkTxt">Masters<span class="Arrw WISIcn-ArrowRight"></span></span>
+                            </span>
+                            <ul class="SbMnuInnr">
+                                <li>
+                                    <a href="#" class="Lnk">Sub Menu Link 1</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="Lnk">Sub Menu Link 2</a>
+                                </li>
+                                <li>
+                                    <span class="Lnk">
+                                        <span class="LnkTxt">Masters<span class="Arrw WISIcn-ArrowRight"></span></span>
+                                    </span>
+                                    <ul class="SbMnuInnr">
+                                        <li>
+                                            <a href="#" class="Lnk">Sub Menu Link 1</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="Lnk">Sub Menu Link 2</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" class="Lnk">Sub Menu Link 3</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" class="Lnk">Sub Menu Link 2</a>
+                        </li>
+                        <li>
+                            <a href="#" class="Lnk">Sub Menu Link 3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Reports"></span>
+                        <span class="LnkTxt">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppMstrCntnr">
+        <div class="GnPgCntntDvHldr DashboardView FullView">
+            <div class="InnrCntntHldr">
+                <div class="FormHldr">
+                    <div class="row NoBrdr NoBG ExtraPaddTop ExtraPaddBottom">
+                        <div class="col-1">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">Energy Meter</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="AppBtn">Expand All</a>
+                                        <a href="#" class="AppBtn Scndry">Collapse</a>
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="SldrHldr FllWdth">
+                                        <div class="EnergyMeter">
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Container Office</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Container Office</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">A4 Building</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Fire Pump Panel</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">LDB (Pump Room)</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">LDB (Street Light Panel)</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Main I/C (EB)</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Marketing Office</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">PDB Panel</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="BMSDashBlck">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Security Office</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Today's Consumption</span>
+                                                            <span class="Txt">71.44 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Yesterday's Consumption</span>
+                                                            <span class="Txt">68.67 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Month's Consumption</span>
+                                                            <span class="Txt">3921.47 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Average/Day</span>
+                                                            <span class="Txt">126.5 kWh</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current KW</span>
+                                                            <span class="Txt">6.253 kW</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">PF</span>
+                                                            <span class="Txt">0.931</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVA</span>
+                                                            <span class="Txt">6.719 kVA</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">kVAH</span>
+                                                            <span class="Txt">1.218 kVAH</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_1</span>
+                                                            <span class="Txt">239.328 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_2</span>
+                                                            <span class="Txt">240.336 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Voltate_3</span>
+                                                            <span class="Txt">240.057 V</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_1</span>
+                                                            <span class="Txt">10.69 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_2</span>
+                                                            <span class="Txt">6.533 A</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Current_3</span>
+                                                            <span class="Txt">10.756 A</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBG ExtraPaddTop ExtraPaddBottom">
+                        <div class="col-1">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt">DG Set</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="AppBtn Scndry">Collapse</a>
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="SldrHldr FllWdth">
+                                        <div class="DieselGeneratorSet">
+                                            <div class="slide">
+                                                <div class="BMSDashBlck NoMrgn">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Diesel Generator</span>
+                                                    </div>
+                                                    <div class="OvrvwHldr">
+                                                        <div class="TankDV">
+                                                            <div class="LiquidTank">
+                                                                <div class="Liquid Liquidhigh l-48"></div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="TankDV">
+                                                            <span class="Stts Theme1-Off">Off</span>
+                                                            <span class="VluType">Filled</span>
+                                                            <span class="Vlu">48%</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Running Hours</span>
+                                                            <span class="Txt">00:00</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Fuel Consumption</span>
+                                                            <span class="Txt">0 Lts</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Available Fuel</span>
+                                                            <span class="Txt">43 Lts</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Fuel Added</span>
+                                                            <span class="Txt">25 Lts</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Fuel Removed</span>
+                                                            <span class="Txt">0 Lts</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Efficiency (SEGR)</span>
+                                                            <span class="Txt">0</span>
+                                                        </div>
+                                                        <div class="DtlDv Fll">
+                                                            <span class="Ttl">Battery Voltage</span>
+                                                            <span class="Txt">389 Volts</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        Graph 1
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">Monthly Consumption Graph Area</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

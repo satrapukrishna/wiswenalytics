@@ -332,6 +332,11 @@ function checkData($date,$stationId){
     //print_r($fuelData);
 
 }
+function getOnlineOfflineData(){
+    $data=$this->Demo_model->getOnlineOfflineData();
+    echo json_encode($data);
+
+}
 function getSodexoReport(){
         $data=$this->input->get();
         $date=$data['fromdate'];

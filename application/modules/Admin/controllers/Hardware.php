@@ -127,10 +127,10 @@ class Hardware extends MX_Controller {
 				$tankheight=$this->input->post('tankheight');
 				$tankwidth=$this->input->post('tankwidth');
 			}else{
-				$floor='';
-				$capacity='';
-				$tankheight='';
-				$tankwidth='';
+				$floor='0';
+				$capacity='0';
+				$tankheight='0';
+				$tankwidth='0';
 			}
 			
             $website_data = array(
@@ -159,9 +159,11 @@ class Hardware extends MX_Controller {
                 'status' => $status,                     
 				'created_time'=>date('Y-m-d H:i:s')			
             );
-			// print_r($website_data);die();
+			
 			
             $res = $this->Hardware_model->insert_hardware($website_data);
+			// echo json_encode($website_data);
+			// die();
             $hardware_id = $this->db->insert_id();
 			
 			$qr_code=$this->session->userdata('user_id').$this->input->post('hardware_device').$hardware_id;
@@ -184,7 +186,7 @@ class Hardware extends MX_Controller {
 			//QR code links
 			$this->load->library('phpqrcode/Qrlib');
 			$SERVERFILEPATH = 'asset/admin/hardware_qrcodes/';
-			$url = "http://wenalytics.in/Admin/Qrcontroller/get_qr_hardware_data/".$hardware_id;
+			$url = site_url()."Admin/Qrcontroller/get_qr_hardware_data/".$hardware_id;
 				
 			$folder = $SERVERFILEPATH;
 			$file_name1 = "device_qrcode_" . $qr_code . ".png";

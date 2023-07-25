@@ -1392,6 +1392,7 @@ function getCyberData(){
 	
 	function getDistrictCourtData(){
 		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		// $yesterDay = date("26/05/202");	
 		$datachennai = array("StoreCode" => "0016", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
 		$tokenData=  $this->Api_model->getToken("lonavala");
 		 
@@ -1583,7 +1584,199 @@ function getCyberData(){
 		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
 		
 	}
-	function getIitData(){
+	function getRSBPatnyData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "0030", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+	function getRSBMehadiData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "0031", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+	function getRSBSuchitraData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "0026", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+	function getRSBNarayaniData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "0028", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+	function getSISMadinagudaData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "0029", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+	function getSISUppalData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "0032", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+	function getNarayaniBoduppalData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "0033", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+	function getSISSuchitraData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "0027", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+  function getIitData(){
 		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
 		$datachennai = array("StoreCode" => "0021", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
 		$tokenData=  $this->Api_model->getToken("lonavala");
@@ -1736,6 +1929,206 @@ function getCyberData(){
 		$today=date("d/m/Y");
 	  // $today=date("26/03/2022");	 
 		$datachennai = array("StoreCode" => "0023", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsDataLive($json_chennai);
+		
+	}
+	function getRSBPatnyDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0030", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsDataLive($json_chennai);
+		
+	}
+	function getRSBMehadiDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0031", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsDataLive($json_chennai);
+		
+	}
+	function getRSBSuchitraDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0026", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsDataLive($json_chennai);
+		
+	}
+	function getRSBNarayaniDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0028", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsDataLive($json_chennai);
+		
+	}
+	function getSISMadinagudaDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0029", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsDataLive($json_chennai);
+		
+	}
+	function getSISUppalDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0032", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsDataLive($json_chennai);
+		
+	}
+	function getNarayaniBoduppalDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0033", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRsbroGeneratorsDataLive($json_chennai);
+		
+	}
+	function getSISSuchitraDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0027", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
 		$tokenData=  $this->Api_model->getToken("lonavala");
 		 
 		$token= $tokenData['token'];  

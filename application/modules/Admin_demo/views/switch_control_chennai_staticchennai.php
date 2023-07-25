@@ -223,7 +223,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 		</div>
 		
 		
-		<?php if(modules::run('Admin/Site/authlink','switchStatus')){ ?>
+		<?php if(modules::run('Admin/Site/authlink','swimming_pool')){ ?>
 		<!-- energy meter -->
         <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="swtch">
@@ -252,26 +252,21 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 				$t=0;
 				$p=0;
 				for($k=0;$k<count($switch_status_data);$k++){
-					if($switch_status_data[$k]['meter']=="DG Room" ){
+					if($switch_status_data[$k]['meter']=="DG Room" || $switch_status_data[$k]['meter']=="Mains"){
 						$res1[$t]['meter']=$switch_status_data[$k]['meter'];
-						$res1[$t]['status']='off';
-						$res1[$t]['trip']='no';
+						$res1[$t]['status']=$switch_status_data[$k]['status'];
+						$res1[$t]['trip']=$switch_status_data[$k]['trip'];
 						$t++;
 						
-					}else if( $switch_status_data[$k]['meter']=="Mains"){
-						$res1[$t]['meter']=$switch_status_data[$k]['meter'];
-						$res1[$t]['status']='on';
-						$res1[$t]['trip']='no';
-						$t++;
 					}else{
 						$res2[$p]['meter']=$switch_status_data[$k]['meter'];
-						$res2[$p]['status']='on';
-						$res2[$p]['trip']='no';
+						$res2[$p]['status']=$switch_status_data[$k]['status'];
+						$res2[$p]['trip']=$switch_status_data[$k]['trip'];
 						$p++;
 					}
 
 				}
-				//echo json_encode($res1[0]);die();
+				//echo json_encode($res2[0]);die();
 				
 				
 
@@ -287,17 +282,17 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl">
 					<li><div class="ClLft">R Phase</div><div class="ClRgt">
                        
-					   <span class="status-on">ON</span>
+					   <span class="status-<?php echo $res['Mains']['rphase'] ?>"><?php echo strtoupper($res['Mains']['rphase']) ?></span>
 					  
 	   				</div></li>
 	   					<li><div class="ClLft">Y Phase</div><div class="ClRgt">
                        
-                                        <span class="status-on">ON</span>
+                                        <span class="status-<?php echo $res['Mains']['yphase'] ?>"><?php echo strtoupper($res['Mains']['yphase']) ?></span>
                                        
                         </div></li>
 						<li><div class="ClLft">B Phase</div><div class="ClRgt">
                        
-                                        <span class="status-on">ON</span>
+                                        <span class="status-<?php echo $res['Mains']['bphase'] ?>"><?php echo strtoupper($res['Mains']['bphase']) ?></span>
                                        
                         </div></li>
 						
@@ -319,17 +314,17 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl">
 					<li><div class="ClLft">R Phase</div><div class="ClRgt">
                        
-					   <span class="status-off">OFF</span>
+					   <span class="status-<?php echo $res['DG Room']['rphase'] ?>"><?php echo strtoupper($res['DG Room']['rphase']) ?></span>
 					  
 	   				</div></li>
 	   					<li><div class="ClLft">Y Phase</div><div class="ClRgt">
                        
-                                        <span class="status-off">OFF</span>
+                                        <span class="status-<?php echo $res['DG Room']['yphase'] ?>"><?php echo strtoupper($res['DG Room']['yphase']) ?></span>
                                        
                         </div></li>
 						<li><div class="ClLft">B Phase</div><div class="ClRgt">
                        
-                                        <span class="status-off">OFF</span>
+                                        <span class="status-<?php echo $res['DG Room']['bphase'] ?>"><?php echo strtoupper($res['DG Room']['bphase']) ?></span>
                                        
                         </div></li>
 						
@@ -343,7 +338,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					
-					<?php for ($i=0; $i < count($res1); $i++) 
+					<?php if(isset($res1[0])){ for ($i=0; $i < count($res1); $i++) 
          				 {?>
 						<div style="width:320px">
 					<div class="SctnDtlsHldr">
@@ -352,17 +347,17 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<span class="SctnTtl">Status </span>
 					<!-- <span class="SctnTtl"> </span> -->
 					<ul class="SctnDtlsGrdTbl">
-						<li><div class="ClLft"><?php echo $res1[$i]['meter'] ?></div><div class="ClRgt">
+						<li class="middle"><div class="ClLft"><?php echo $res1[$i]['meter'] ?></div><div class="ClRgt">
                        
                                         
                                        
                         </div></li>
-						<li><div class="ClLft">Power Supply</div><div class="ClRgt">
+						<li class="middle"><div class="ClLft">Power Supply</div><div class="ClRgt">
                        
                                         <span class="status-<?php echo $res1[$i]['status'] ?>"><?php echo strtoupper($res1[$i]['status']) ?></span>
                                        
                         </div></li>
-						<?php if($res1[$i]['trip']='no'){ ?>
+						<?php /* if($res1[$i]['trip']='no'){ ?>
 						<li class="middle"><div>
                        
                                         <span class="status-<?php echo $res1[$i]['trip'] ?>">NO TRIP</span>
@@ -374,7 +369,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                                         <span class="status-<?php echo $res1[$i]['trip'] ?>">TRIP</span>
                                        
                         </div></li>
-						<?php } ?>
+						<?php } */?>
 						
 						
 					</ul>
@@ -382,26 +377,27 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					</div>
-					<?php } ?>
+					<?php }} ?>
 					<?php for ($i=0; $i < count($res2); $i++) 
          				 {?>
 						<div style="width:320px">
 					<div class="SctnDtlsHldr">
 					<div class="SldrCntnr">
 					<div class="SctnDtls BorewellHldr">
+					<!-- <span class="SctnTtl"><?php //echo $res2[$i]['meter'] ?> </span> -->
 					<span class="SctnTtl">Status </span>
 					<ul class="SctnDtlsGrdTbl">
-					<li><div class="ClLft"><?php echo $res2[$i]['meter'] ?></div><div class="ClRgt">
+					<li class="middle"><div class="ClLft"><?php echo $res2[$i]['meter'] ?></div><div class="ClRgt">
                        
                                         
                                        
 					   </div></li>
-						<li><div class="ClLft">Power Supply</div><div class="ClRgt">
+						<li class="middle"><div class="ClLft">Power Supply</div><div class="ClRgt">
                        
                                         <span class="status-<?php echo $res2[$i]['status'] ?>"><?php echo strtoupper($res2[$i]['status']) ?></span>
                                        
                         </div></li>
-						<?php if($res2[$i]['trip']='no'){ ?>
+						<?php /* if($res2[$i]['trip']='no'){ ?>
 						<li class="middle"><div>
                        
                                         <span class="status-<?php echo $res2[$i]['trip'] ?>">NO TRIP</span>
@@ -413,7 +409,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                                         <span class="status-<?php echo $res2[$i]['trip'] ?>">TRIP</span>
                                        
                         </div></li>
-						<?php } ?>
+						<?php } */?>
 						
 						
 					</ul>

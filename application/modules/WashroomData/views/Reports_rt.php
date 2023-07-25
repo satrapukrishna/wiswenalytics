@@ -275,6 +275,13 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
   }
 }
 
+  
+        /* Equal width table cell */
+        /* table#table2 {
+            table-layout: fixed;
+            width: 200px;
+        } */
+  
     </style>
     <script type="text/javascript">  
     <?php if($id==1){ ?>
@@ -630,7 +637,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
           var fromdate = document.getElementById("fromdate").value;
           var todate = document.getElementById("todate").value; 
 
-          var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedReportTimes";
+          var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedReportTabular";
           $.ajax({
           url:urlString,
           type : 'GET',
@@ -647,6 +654,56 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
 
 
           }
+          if(mtype=='Consolidate Footfall Report Tabular'){
+
+          var valid=validate();
+          if(valid){
+          document.getElementById("loading").style.display="block";
+          var fromdate = document.getElementById("fromdate").value;
+          var todate = document.getElementById("todate").value; 
+
+          var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedFootfallTabular";
+          $.ajax({
+          url:urlString,
+          type : 'GET',
+          async: true,
+          data: {fromdate:fromdate,todate:todate},
+          success: function(data){
+          var obj = JSON.parse(data);
+          console.log(obj);
+          appendData_consolidated_footfall(obj);
+          }
+          });
+          }
+
+
+
+          }
+          if(mtype=='Consolidate Footfall Odour Report'){
+
+            var valid=validate();
+            if(valid){
+            document.getElementById("loading").style.display="block";
+            var fromdate = document.getElementById("fromdate").value;
+            var todate = document.getElementById("todate").value; 
+
+            var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedFootfallWithpowerTabular";
+            $.ajax({
+            url:urlString,
+            type : 'GET',
+            async: true,
+            data: {fromdate:fromdate,todate:todate},
+            success: function(data){
+            var obj = JSON.parse(data);
+            console.log(obj);
+            appendData_consolidated_footfall_power(obj);
+            }
+            });
+            }
+
+
+
+            }
           if(mtype=='Consolidate Report Tabular2'){
 
           var valid=validate();
@@ -664,8 +721,8 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
           success: function(data){
           var obj = JSON.parse(data);
           console.log(obj);
-          // appendData_consolidated_datewise(obj);
-          appendData_consolidated_datewise_ratio(obj);
+          appendData_consolidated_datewise(obj);
+          // appendData_consolidated_datewise_ratio(obj);
           }
           });
           }
@@ -673,7 +730,534 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
 
 
           }
+       if(mtype=='Consolidate Report'){
+        
+        
+          var valid=validate();
+           if(valid){
+            document.getElementById("loading").style.display="block";
+            var fromdate = document.getElementById("fromdate").value;
+            var todate = document.getElementById("todate").value;  
+            var location = document.getElementById("location").value;
+
+          var c=betweenDate(fromdate, todate);
+      //alert(c);
+          var dd='';
+          for (var i = 0; i < c.length; i++) {
+
+            dd+='<div class="CntntDtls" ><div class="Dtls TltDtt1" style="text-align: center;font-size: 17px;text-align: center;font-weight: bold;padding-top: 75px;width:14% !important" id="dateid'+i+'"><div id="foot'+i+'"></div></div><div class="Dtls TltDtt1"  id="water'+i+'" style="display: none;width:14% !important"></div><div class="Dtls TltDtt1" id="janitorsv'+i+'" style="display: block;width:14% !important"></div><div class="Dtls TltDtt1" id="odourleftdashboard'+i+'" style="display: none;width:14% !important"></div><div class="Dtls TltDtt1" id="odourrightdashboard'+i+'" style="display: none;"></div><div class="Dtls TltDtt1" id="footfalllive'+i+'" style="display: none;width:14% !important"></div><div class="Dtls TltDtt1" id="feedbacklive'+i+'" style="display: none;width:14% !important"></div></div>';
+
+          }
+      $('#consolidate').html(dd);
+      document.getElementById("consolidate").style.display="block";
+      for (var i1 = 0; i1 < c.length; i1++) {
+        document.getElementById("dateid"+i1).innerHTML = c[i1];
+          var urlStringfoot = "<?php echo base_url(); ?>WashroomData/consolidateReport?date="+c[i1]+"&location="+location;
+     
+           $.ajax({
+              url:urlStringfoot,
+              type : 'GET',
+              async: false,
+              success: function(data){
+              var obj = JSON.parse(data);
+              var cd='<br>Male Footfall:'+obj['footfallcount'][0]+'<br>Female Footfall:'+obj['footfallcount'][1];
+                        $("#dateid"+i1).append(cd);
+                         addWaterlevelLive(obj['waterlevel'],i1);
+                         power(obj['power'],i1);
+                         addOdourDataLiveDashboard(obj['odour'],i1);
+                         appendFootfallLive(obj['footfall'],i1);
+                         addfeedbackgraphLive(obj['feedback'],i1,c.length);
+        
+                                  }
+                  });
+      }
+
+function addfeedbackgraphLive(data,v,t){
+  //document.getElementById("loading12").style.display="block";
+  document.getElementById("loading").style.display="none";
+           var d =  JSON.parse(JSON.stringify(data)); 
+           var fbr='feedbacklive'+v;  
+               // obj['xdata']
+               var xdata = d['xdata'];
+              var ygood = d['good'];
+
+              var yavg = d['avg'];
+              var ypoor = d['poor'];
+           document.getElementById(fbr).style.display="block";
+           if(v==(t-1)){
+            //document.getElementById("loading12").style.display="none";
+           }
+            
+            
+                 Highcharts.chart('feedbacklive'+v, {
+                      chart: {
+                          type: 'column',
+                          height:200
+                      },
+
+                      credits: {
+                          enabled: false
+                      },
+                      title: {
+                          text: ''
+                      },
+                      xAxis: {
+                          categories: xdata
+                      },
+                      yAxis: {
+                          min: 0,
+                          title: {
+                              text: 'Feedback'
+                          },
+                          tickInterval: 1,
+                          stackLabels: {
+                              enabled: false,
+                              style: {
+                                  fontWeight: 'bold',
+                                  color: ( // theme
+                                      Highcharts.defaultOptions.title.style &&
+                                      Highcharts.defaultOptions.title.style.color
+                                  ) || 'gray'
+                              }
+                          }
+                      },
+                     
+                      tooltip: {
+                          headerFormat: '<b>{point.x}</b><br/>',
+                          pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                      },
+                      plotOptions: {
+                          column: {
+                              stacking: 'normal',
+                              dataLabels: {
+                                  enabled: false
+                              }
+                          }
+                      },
+                      series: [{
+                          name: 'Poor',
+                          data: ypoor,
+                          color:'#ca5555'
+                      }, {
+                          name: 'Average',
+                          data: yavg,
+                          color:'#d6ce68'
+                      }, {
+                          name: 'Good',
+                          data: ygood,
+                          color:'#67b777'
+                      }],
+                      responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'top'
+                                }
+                            }
+                        }]
+                    }
+            });
+
+
+  }
+function addOdourDataLiveDashboard(data,v){
+              var d =  JSON.parse(JSON.stringify(data));
+             
+              document.getElementById('odourrightdashboard'+v).style.display="block";
+              document.getElementById('odourleftdashboard'+v).style.display="block";
+                document.getElementById("tab").style.display='none';
+                document.getElementById("tab2").style.display='none';
+                document.getElementById("tab3").style.display='none';
+                document.getElementById("tab4").style.display='none';
+                document.getElementById("tab6").style.display='none';
+                document.getElementById("tab7").style.display='none';
+               document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+                document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+              var xdata = d['leftxdata'];
+              var ydata = d['leftydata'];
+
+              var xdatahmd = d['rightxdata'];
+              var ydatahmd = d['rightydata'];
+
+    
+    
+                         Highcharts.chart('odourleftdashboard'+v, {
+                            chart: {
+                                type: 'line',
+                            height:200
+                            },
+
+                          credits: {
+                              enabled: false
+                          },
+                            title: {
+                                text: ''
+                            },
+                           
+                            xAxis: {
+                                categories: xdata
+                            },
+                            yAxis: {
+                                title: {
+                                    text: 'Odour'
+                                },
+                                          tickInterval: 20,
+                                          min:0    
+
+                            },
+
+                            plotOptions: {
+                                series: {
+                                    label: {
+                                        connectorAllowed: false
+                                    },
+                                    pointStart: 0
+                                }
+                            },
+                           
+                            series: [{
+                                name: 'Odour Male',
+                                data: ydata
+                            }],
+                             responsive: {
+                              rules: [{
+                                  condition: {
+                                      maxWidth: 500
+                                  },
+                                  chartOptions: {
+                                      legend: {
+                                          layout: 'horizontal',
+                                          align: 'center',
+                                          verticalAlign: 'top'
+                                      }
+                                  }
+                            }]
+                        }
+                        });
+
+                          Highcharts.chart('odourrightdashboard'+v, {
+                              chart: {
+                                  type: 'line',
+                              height:200
+                              },
+
+                              credits: {
+                                  enabled: false
+                              },
+                              title: {
+                                  text: ''
+                              },
+                             
+                              xAxis: {
+                                  categories: xdatahmd
+                              },
+                              yAxis: {
+                                  title: {
+                                      text: 'Odour'
+                                  },
+                                tickInterval: 20,
+                                            min:0  
+
+                              },
+
+                              plotOptions: {
+                                 
+                                   line: {
+                                  dataLabels: {
+                                      enabled: false
+                                  },
+                                  enableMouseTracking: true
+                              }
+                              },
+                             
+                              series: [{
+                                  name: 'Odour Female',
+                                  data: ydatahmd
+                              }],
+                                responsive: {
+                                    rules: [{
+                                        condition: {
+                                            maxWidth: 500
+                                        },
+                                        chartOptions: {
+                                            legend: {
+                                                layout: 'horizontal',
+                                                align: 'center',
+                                                verticalAlign: 'top'
+                                            }
+                                        }
+                                    }]
+                          }
+                          });
+  }
+function appendFootfallLive(obj,v)
+      {
+        var hoursxaxisarray = obj['xdata'];
+         var footfallyaxisarray = obj['ydata'];
+         var footfallyaxisarray_female = obj['ydata_female'];
+        document.getElementById('footfalllive'+v).style.display="block";
+
+        
+         Highcharts.chart('footfalllive'+v, {
+          chart: {
+              type: 'column'
+          },
+
+          credits: {
+              enabled: false
+          },
+          title: {
+              text: ''
+          },
+          xAxis: {
+              categories: hoursxaxisarray
+          },
+          yAxis: {
+              title: {
+                  text: 'FootFall'
+              },tickInterval: 3,
+                      min:0 ,
+                      maxPadding: 1.5
+          },
+          series: [{
+              name: 'Footfall Male',
+              data: footfallyaxisarray
+          },{
+              name: 'Footfall Female',
+              data: footfallyaxisarray_female
+          }],
+          responsive: {
+              rules: [{
+                  condition: {
+                      maxWidth: 500
+                  },
+                  chartOptions: {
+                      legend: {
+                          layout: 'horizontal',
+                          align: 'center',
+                          verticalAlign: 'top'
+                      }
+                  }
+              }]
+            }
+        });
+  }
+function power(data,v){
+        var d =  JSON.parse(JSON.stringify(data));
+       
+         document.getElementById('janitorsv'+v).style.display="block";
+         document.getElementById("tab").style.display='none';
+         document.getElementById("tab2").style.display='none';
+         document.getElementById("tab3").style.display='none';
+         document.getElementById("tab4").style.display='none';
+         document.getElementById("tab6").style.display='none';
+         document.getElementById("tab7").style.display='none';
+        document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+         document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+        var xdata = d['xdata'];
+        var ydata = d['ydata'];
       
+                   
+          Highcharts.chart('janitorsv'+v, {
+    chart: {
+        type: 'column',
+        height:200
+    },
+
+    credits: {
+        enabled: false
+    },
+    title: {
+        text: ''
+    },
+   
+    xAxis: {
+        categories: xdata,
+        crosshair: true,
+         maxPadding: 2.5 
+    },
+    yAxis: {
+      tickInterval: 1,
+        min: 0,
+        title: {
+            text: 'Min'
+        },
+                      maxPadding: 0.5 
+    },
+    
+    plotOptions: {
+        column: {
+            pointPadding: 0.6,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Power Availability',      
+        data: ydata
+
+    }],
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                legend: {
+                    layout: 'horizontal',
+                    align: 'center',
+                    verticalAlign: 'top'
+                }
+            }
+        }]
+    }
+}); 
+                  
+  }
+  function addWaterlevelLive(data,v){
+        var d =  JSON.parse(JSON.stringify(data));
+       
+         document.getElementById('water'+v).style.display="block";
+         document.getElementById("tab").style.display='none';
+         document.getElementById("tab2").style.display='none';
+         document.getElementById("tab3").style.display='none';
+         document.getElementById("tab4").style.display='none';
+         document.getElementById("tab6").style.display='none';
+         document.getElementById("tab7").style.display='none';
+        document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+         document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+         
+         var ydata = data['ydata'];
+          var xdata =data['xdata'];
+          var fs = data['fs'];
+          if(fs==1){
+            Highcharts.chart('water'+v, {
+                    chart: {
+                        type: 'area',
+                        height:200
+                    },
+
+                  credits: {
+                      enabled: false
+                  },
+                    title: {
+                        text: ''
+                    },
+                   
+                    xAxis: {
+                        categories: xdata,
+                        crosshair: true,
+                         maxPadding: 2.5 
+                    },
+                    yAxis: {
+                      tickInterval: 1,
+                        min: 0,
+                        title: {
+                            text: 'Liters'
+                        },
+                                      maxPadding: 0.5 
+                    },
+                    
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.6,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Water Level',      
+                        data: ydata
+
+                    }],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'top'
+                                }
+                            }
+                        }]
+                    }
+                });  
+          }else{
+            Highcharts.chart('water'+v, {
+                    chart: {
+                        type: 'column',
+                        height:200
+                    },
+
+                  credits: {
+                      enabled: false
+                  },
+                    title: {
+                        text: ''
+                    },
+                   
+                    xAxis: {
+                        categories: xdata,
+                        crosshair: true,
+                         maxPadding: 2.5 
+                    },
+                    yAxis: {
+                      tickInterval: 1,
+                        min: 0,
+                        title: {
+                            text: 'Min'
+                        },
+                                      maxPadding: 0.5 
+                    },
+                    
+                    plotOptions: {
+                        column: {
+                            pointPadding: 0.6,
+                            borderWidth: 0
+                        }
+                    },
+                    series: [{
+                        name: 'Water Availability',      
+                        data: ydata
+
+                    }],
+                    responsive: {
+                        rules: [{
+                            condition: {
+                                maxWidth: 500
+                            },
+                            chartOptions: {
+                                legend: {
+                                    layout: 'horizontal',
+                                    align: 'center',
+                                    verticalAlign: 'top'
+                                }
+                            }
+                        }]
+                    }
+                });  
+          }
+                   
+                  
+  }
+      
+           }
+        
+       
+       
+      }
        
       
       if(mtype=='None Selected'){
@@ -698,6 +1282,8 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
           document.getElementById("tab4").style.display='none';
           document.getElementById("tab6").style.display='none';
           document.getElementById("tab7").style.display='none';
+         document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
           document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
           document.getElementById("odourleft").style.display="none";
@@ -773,6 +1359,8 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
               document.getElementById("tab4").style.display='none';
               document.getElementById("tab6").style.display='none';
               document.getElementById("tab7").style.display='none';
+             document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
               document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
                 document.getElementById("odourleft").style.display="none";
@@ -892,6 +1480,8 @@ function addfeedbackgraph(data){
      document.getElementById("tab4").style.display='none';
      document.getElementById("tab6").style.display='none';
      document.getElementById("tab7").style.display='none';
+    document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
      document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
       document.getElementById("odourleft").style.display="none";
@@ -982,6 +1572,8 @@ function addOdourData(data){
     document.getElementById("tab4").style.display='none';
     document.getElementById("tab6").style.display='none';
     document.getElementById("tab7").style.display='none';
+   document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
     document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
     document.getElementById("odourleft").style.display="block";
@@ -1112,30 +1704,151 @@ function addOdourData(data){
 
 }
 function appendData_consolidated(obj){
-    $("#consolidated_tab_7 tbody").empty();
+    $("#consolidated_tab tbody").empty();
        
-       document.getElementById("tab7").style.display="block";
+       document.getElementById("tab6").style.display="block";
        var rows="";
-       var k=1;
+       var j=1;
        // alert(obj.length);
        // rows+="<thead><tr><th>SNo</th><th>Meter</th><th>Date</th><th>Time</th><th>Footfall</th></tr></thead>"
        for (var i = 0; i < obj.length; i++) 
        {
-        for (let j = 0; j < obj[i]['oddata'].length; j++) {
-           
-             for(var m=0;m<obj[i]['oddata'][j]['male'].length;m++){
-              rows += "<tr><td>" + k + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['oddata'][j]['date'] + "</td><td>" + obj[i]['oddata'][j]['day'] + "</td><td>male</td><td>" + obj[i]['oddata'][j]['male'][m]['odour'] + "</td><td>" + obj[i]['oddata'][j]['male'][m]['footfall'] + "</td><td>" + obj[i]['oddata'][j]['male'][m]['TxnTime'] + "</td></tr>";
-
-             }
-             for(var m=0;m<obj[i]['oddata'][j]['female'].length;m++){
-              rows += "<tr><td>" + k + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['oddata'][j]['date'] + "</td><td>" + obj[i]['oddata'][j]['day'] + "</td><td>female</td><td>" + obj[i]['oddata'][j]['female'][m]['odour'] + "</td><td>" + obj[i]['oddata'][j]['female'][m]['footfall'] + "</td><td>" + obj[i]['oddata'][j]['female'][m]['TxnTime'] + "</td></tr>";
-
-             }
-          
+        if(obj[i]['station']==2022000112 || obj[i]['station']==2022000113){
+          rows += "<tr><td>" + j + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['fromdate'] + "</td><td>" + obj[i]['todate'] + "</td><td>" + obj[i]['totaldays'] + "</td><td>" + obj[i]['male_footfall'] + "</td><td>" + obj[i]['male_footfall_avg'] + "</td><td>" + obj[i]['female_footfall'] + "</td><td>" + obj[i]['female_footfall_avg'] + "</td><td>" + obj[i]['total_footfall'] + "</td><td>" + obj[i]['total_footfall_avg'] + "</td><td>" + obj[i]['power']['power_available'] + "</td><td>" + obj[i]['water_cons'] + "</td><td>" + obj[i]['water_leak'] + "</td><td>" + obj[i]['water_cons_per_footfall'] + "</td><td>" + obj[i]['unaccept']['od_male_count'] + "</td><td>" + obj[i]['unaccept']['od_male_high'] + "</td><td>" + obj[i]['unaccept']['od_female_count'] + "</td><td>" + obj[i]['unaccept']['od_female_high'] + "</td><td>" + obj[i]['feedback']['total'] + "</td><td>" + obj[i]['feedback']['good'] + "</td><td>" + obj[i]['feedback']['avggood'] + "</td><td>" + obj[i]['feedback']['avg'] + "</td><td>" + obj[i]['feedback']['avgavg'] + "</td><td>" + obj[i]['feedback']['poor'] + "</td><td>" + obj[i]['feedback']['avgpoor'] + "</td></tr>"; 
+        }else{
+          rows += "<tr><td>" + j + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['fromdate'] + "</td><td>" + obj[i]['todate'] + "</td><td>" + obj[i]['totaldays'] + "</td><td>" + obj[i]['male_footfall'] + "</td><td>" + obj[i]['male_footfall_avg'] + "</td><td>" + obj[i]['female_footfall'] + "</td><td>" + obj[i]['female_footfall_avg'] + "</td><td>" + obj[i]['total_footfall'] + "</td><td>" + obj[i]['total_footfall_avg'] + "</td><td>" + obj[i]['power']['power_available'] + "</td><td>" + obj[i]['power']['power_available'] + "</td><td>" + obj[i]['power']['power_unavailable'] + "</td><td>" + obj[i]['water_cons_per_footfall'] + "</td><td>" + obj[i]['unaccept']['od_male_count'] + "</td><td>" + obj[i]['unaccept']['od_male_high'] + "</td><td>" + obj[i]['unaccept']['od_female_count'] + "</td><td>" + obj[i]['unaccept']['od_female_high'] + "</td><td>" + obj[i]['feedback']['total'] + "</td><td>" + obj[i]['feedback']['good'] + "</td><td>" + obj[i]['feedback']['avggood'] + "</td><td>" + obj[i]['feedback']['avg'] + "</td><td>" + obj[i]['feedback']['avgavg'] + "</td><td>" + obj[i]['feedback']['poor'] + "</td><td>" + obj[i]['feedback']['avgpoor'] + "</td></tr>"; 
         }
                     
-         k++;    
+         j++;    
        }
+
+       $(rows).appendTo("#consolidated_tab tbody");
+       document.getElementById("loading").style.display="none";
+       document.getElementById("export").style.display="none";
+       document.getElementById("export_consolidated").style.display="inline";
+  }
+  function appendData_consolidated_footfall(obj){
+    $("#consolidated_tab_cfootfall tbody").empty();
+       
+       document.getElementById("tab_cfootfall").style.display="block";
+       var rows="";
+       var j=1;
+       // alert(obj.length);
+       // rows+="<thead><tr><th>SNo</th><th>Meter</th><th>Date</th><th>Time</th><th>Footfall</th></tr></thead>"
+       for (var i = 0; i < obj.length; i++) 
+       {
+          rows += "<tr><td>" + j + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['fromdate'] + "</td><td>" + obj[i]['todate'] + "</td><td>" + obj[i]['totaldays'] + "</td><td>" + obj[i]['male_footfall'] + "</td><td>" + obj[i]['female_footfall'] + "</td><td>" + obj[i]['total_footfall'] + "</td><td>" + obj[i]['male_footfall_avg'] + "</td><td>" + obj[i]['female_footfall_avg'] + "</td><td>" + obj[i]['total_footfall_avg'] + "</td></tr>"; 
+          
+        
+                    
+         j++;    
+       }
+
+       $(rows).appendTo("#consolidated_tab_cfootfall tbody");
+       document.getElementById("loading").style.display="none";
+       document.getElementById("export").style.display="none";
+       document.getElementById("export_consolidated_cfootfall").style.display="inline";
+       const xaxisarray = [];
+       const footfallyaxisarray_male = [];
+       const footfallyaxisarray_female = [];
+       const footfallyaxisarray_total = [];
+       for (var k = 0; k < obj.length; k++) 
+        {
+          xaxisarray[k]=obj[k]['location'];
+          footfallyaxisarray_male[k]=parseInt(obj[k]['male_footfall']);
+          footfallyaxisarray_female[k]=parseInt(obj[k]['female_footfall']);
+          footfallyaxisarray_total[k]=parseInt(obj[k]['total_footfall']);
+        }
+        addGraph_cfootfall(xaxisarray,footfallyaxisarray_male,footfallyaxisarray_female,footfallyaxisarray_total);
+
+        
+  }
+  function appendData_consolidated_footfall_power(obj){
+    $("#consolidated_tab_cfootpower tbody").empty();
+       
+       document.getElementById("tab_cfootpower").style.display="block";
+       var rows="";
+       var j=1;
+       // alert(obj.length);
+       // rows+="<thead><tr><th>SNo</th><th>Meter</th><th>Date</th><th>Time</th><th>Footfall</th></tr></thead>"
+       for (var i = 0; i < obj.length; i++) 
+       {
+          rows += "<tr><td>" + j + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['fromdate'] + "</td><td>" + obj[i]['todate'] + "</td><td>" + obj[i]['totaldays'] + "</td><td>" + obj[i]['male_footfall'] + "</td><td>" + obj[i]['female_footfall'] + "</td><td>" + obj[i]['total_footfall'] + "</td><td>" + obj[i]['unaccept']['od_male_count'] + "</td><td>" + obj[i]['unaccept']['od_female_count'] + "</td><td>" + obj[i]['power']['power_available'] + "</td><td>" + obj[i]['sms']['count'] + "</td></tr>"; 
+          
+        
+                    
+         j++;    
+       }
+
+       $(rows).appendTo("#consolidated_tab_cfootpower tbody");
+       document.getElementById("loading").style.display="none";
+       document.getElementById("export").style.display="none";
+       document.getElementById("export_consolidated_cfootfall_power").style.display="inline";
+       const xaxisarray = [];
+       const footfallyaxisarray_male = [];
+       const footfallyaxisarray_female = [];
+       const footfallyaxisarray_total = [];
+       for (var k = 0; k < obj.length; k++) 
+        {
+          xaxisarray[k]=obj[k]['location'];
+          footfallyaxisarray_male[k]=parseInt(obj[k]['male_footfall']);
+          footfallyaxisarray_female[k]=parseInt(obj[k]['female_footfall']);
+          footfallyaxisarray_total[k]=parseInt(obj[k]['total_footfall']);
+        }
+        addGraph_cfootfall(xaxisarray,footfallyaxisarray_male,footfallyaxisarray_female,footfallyaxisarray_total);
+
+        
+  }
+  function appendData_consolidated_datewise_bkp(obj){
+    $("#consolidated_tab_7 tbody").empty();
+       
+       document.getElementById("tab7").style.display="block";
+       var rows="";
+       var j=1;
+       // alert(obj.length);
+       // rows+="<thead><tr><th>SNo</th><th>Meter</th><th>Date</th><th>Time</th><th>Footfall</th></tr></thead>"
+       for (var i = 0; i < obj.length; i++) 
+       {
+        
+        var b=0;
+        var m=1;
+        var malefoot=0;
+          var femalefoot=0;
+          var odmale=0;
+          var odfemale=0;
+        for( var k=0 ; k< obj[i]['data'].length;k++){
+         
+         
+          malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
+          femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
+          odmale=odmale+parseFloat(obj[i]['data'][k]['od_male_count']);
+          odfemale=odfemale+parseFloat(obj[i]['data'][k]['od_female_count']);
+          if(k%7==0){
+            rows += "<tr><td colspan='17'>week" +(m) + "</td></tr>";
+            
+            rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + malefoot + "</td><td>" + femalefoot + "</td><td>na</td><td>na</td><td>" + (malefoot+femalefoot) + "</td><td>na</td><td>na</td><td>na</td><td>na</td><td>" + odmale + "</td><td>na</td><td>" + odfemale + "</td><td>na</td><td>na</td><td>na</td><td>na</td><td>na</td></tr>"; 
+            malefoot=0;
+            femalefoot=0;
+            m++;
+          }
+          
+          
+          if(obj[i]['data'][k]['morning_footfall']=='No Data'){
+            b--;
+          }
+         
+        b++;
+        }
+        rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
+        rows += "<tr><td colspan='17'></td></tr>";
+           
+       }
+       
+       
+       
+       
+      
+      
 
        $(rows).appendTo("#consolidated_tab_7 tbody");
        document.getElementById("loading").style.display="none";
@@ -1152,137 +1865,207 @@ function appendData_consolidated(obj){
        // rows+="<thead><tr><th>SNo</th><th>Meter</th><th>Date</th><th>Time</th><th>Footfall</th></tr></thead>"
        for (var i = 0; i < obj.length; i++) 
        {
+        var malefoot=0;
+        var femalefoot=0;
+        var b=0;
+        var m=1;
         for( var k=0 ; k< obj[i]['data'].length;k++){
+          malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
+          femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
+          if(k%7==0){
+            rows += "<tr><td colspan='17'>week" +(m) + "</td></tr>";
+            m++;
+          }
+          
+          if(obj[i]['data'][k]['morning_footfall']=='No Data'){
+            b--;
+          }
           if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
           rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
         }else{
           rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
         }
+        b++;
         }
+        rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
         rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='17'>Sundays data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
+        var malefoot=0;
+        var femalefoot=0;
+        var b=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
+          
           var n=1;
           if(obj[i]['data'][k]['day']=='Sunday'){
-            
+            malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
+          femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
+          if(obj[i]['data'][k]['morning_footfall']=='No Data'){
+            b--;
+          }
           if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
           rows += "<tr><td>" + n + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
         }else{
           rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
         }
         n++;
+        b++;
       }
         }
+       rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
         rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='17'>Saturday`s data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
+        var malefoot=0;
+        var femalefoot=0;
+        var b=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           if(obj[i]['data'][k]['day']=='Saturday'){
-            
+            malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
+          femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
+          if(obj[i]['data'][k]['morning_footfall']=='No Data'){
+            b--;
+          }
           if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
           rows += "<tr><td>" + n + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
         }else{
           rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
         }
-        n++;
+        b++;
       }
         }
+       rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
         rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='17'>Festival data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
+        var malefoot=0;
+        var femalefoot=0;
+        var b=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           // obj[i]['data'][k]['festivals']
           for(var m=0;m<obj[i]['data'][k]['festivals'].length;m++){
             if(obj[i]['data'][k]['festivals'][m]['festive_date']==obj[i]['data'][k]['date']){
+              malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
+          femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
+          if(obj[i]['data'][k]['morning_footfall']=='No Data'){
+            b--;
+          }
               if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
           rows += "<tr><td>" + n + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
         }else{
           rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
         }
-        n++;
+        b++;
             }
 
           }
          
         }
+        rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
         rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='17'>Before OneDay Festival data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
+        var malefoot=0;
+        var femalefoot=0;
+        var b=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           // obj[i]['data'][k]['festivals']
           for(var m=0;m<obj[i]['data'][k]['festivals'].length;m++){
             if(obj[i]['data'][k]['festivals'][m]['festive_beforedate']==obj[i]['data'][k]['date']){
+              malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
+          femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
+          if(obj[i]['data'][k]['morning_footfall']=='No Data'){
+            b--;
+          }
               if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
           rows += "<tr><td>" + n + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
         }else{
           rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
         }
-        n++;
+        b++;
             }
 
           }
          
         }
+        rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
         rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='17'>After OneDay Festival data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
+        var malefoot=0;
+        var femalefoot=0;
+        var b=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           // obj[i]['data'][k]['festivals']
           for(var m=0;m<obj[i]['data'][k]['festivals'].length;m++){
             if(obj[i]['data'][k]['festivals'][m]['festive_afteronedate']==obj[i]['data'][k]['date']){
+              malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
+          femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
+          if(obj[i]['data'][k]['morning_footfall']=='No Data'){
+            b--;
+          }
               if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
           rows += "<tr><td>" + n + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
         }else{
           rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
         }
-        n++;
+        b++;
             }
 
           }
          
         }
+       rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
         rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='17'>After Two Days Festival data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
+        var malefoot=0;
+        var femalefoot=0;
+        var b=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           // obj[i]['data'][k]['festivals']
           for(var m=0;m<obj[i]['data'][k]['festivals'].length;m++){
             if(obj[i]['data'][k]['festivals'][m]['festive_aftertwodate']==obj[i]['data'][k]['date']){
+              malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
+          femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
+          if(obj[i]['data'][k]['morning_footfall']=='No Data'){
+            b--;
+          }
               if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
           rows += "<tr><td>" + n + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
         }else{
           rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
         }
-        n++;
+        b++;
             }
 
           }
          
         }
+        rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
         rows += "<tr><td colspan='17'></td></tr>";
            
        }
@@ -1302,185 +2085,109 @@ function appendData_consolidated(obj){
        // rows+="<thead><tr><th>SNo</th><th>Meter</th><th>Date</th><th>Time</th><th>Footfall</th></tr></thead>"
        for (var i = 0; i < obj.length; i++) 
        {
-        var male=0;
-        var female=0;
-        var tot=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
-          male=male+parseFloat(obj[i]['data'][k]['male_footfall']);
-          female=female+parseFloat(obj[i]['data'][k]['female_footfall']);
-          tot=tot+parseFloat(obj[i]['data'][k]['total_footfall']);
+          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>1</td><td>" + (obj[i]['data'][k]['female_footfall']/obj[i]['data'][k]['male_footfall']).toFixed(2) + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>All Days</tr>"; 
         }
-        if(tot==0){
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>No Data</td><td>No Data</td><td>No Data</td><td>All Days</tr>"; 
-        }else{
-          
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>1</td><td>" + (female/male).toFixed(2) + "</td><td>" + tot + "</td><td>All Days</tr>"; 
-        }
-        
         // rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='6'>Sundays data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
-        var male=0;
-        var female=0;
-        var tot=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           if(obj[i]['data'][k]['day']=='Sunday'){
-            male=male+parseFloat(obj[i]['data'][k]['male_footfall']);
-            female=female+parseFloat(obj[i]['data'][k]['female_footfall']);
-            tot=tot+parseFloat(obj[i]['data'][k]['total_footfall']);
-          }
+            
+            rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>1</td><td>" + (obj[i]['data'][k]['female_footfall']/obj[i]['data'][k]['male_footfall']).toFixed(2) + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>Sundays</tr>"; 
+        n++;
+      }
         }
-        if(tot==0){
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>No Data</td><td>No Data</td><td>No Data</td><td>Sundays</tr>"; 
-        }else{
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>1</td><td>" + (female/male).toFixed(2) + "</td><td>" + tot + "</td><td>Sundays</tr>"; 
-        }
-        
         // rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='6'>Saturday`s data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
-        var male=0;
-        var female=0;
-        var tot=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           if(obj[i]['data'][k]['day']=='Saturday'){
             
-            male=male+parseFloat(obj[i]['data'][k]['male_footfall']);
-            female=female+parseFloat(obj[i]['data'][k]['female_footfall']);
-            tot=tot+parseFloat(obj[i]['data'][k]['total_footfall']);
+            rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>1</td><td>" + (obj[i]['data'][k]['female_footfall']/obj[i]['data'][k]['male_footfall']).toFixed(2) + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>Saturdays</tr>"; 
+        n++;
       }
         }
-        if(tot==0){
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>No Data</td><td>No Data</td><td>No Data</td><td>Saturdays</tr>";
-          }else{
-            rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>1</td><td>" + (female/male).toFixed(2) + "</td><td>" + tot + "</td><td>Saturdays</tr>";
-          }
-        
         // rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='6'>Festival data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
-        var male=0;
-        var female=0;
-        var tot=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           // obj[i]['data'][k]['festivals']
           for(var m=0;m<obj[i]['data'][k]['festivals'].length;m++){
             if(obj[i]['data'][k]['festivals'][m]['festive_date']==obj[i]['data'][k]['date']){
-              male=male+parseFloat(obj[i]['data'][k]['male_footfall']);
-            female=female+parseFloat(obj[i]['data'][k]['female_footfall']);
-            tot=tot+parseFloat(obj[i]['data'][k]['total_footfall']);
+              rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>1</td><td>" + (obj[i]['data'][k]['female_footfall']/obj[i]['data'][k]['male_footfall']).toFixed(2) + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>Festivals</tr>";
+        n++;
             }
 
           }
          
         }
-        if(tot==0){
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>No Data</td><td>No Data</td><td>No Data</td><td>Festival</tr>";
-        }else{
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>1</td><td>" + (female/male).toFixed(2) + "</td><td>" + tot + "</td><td>Festival</tr>";
-        }
-        
         // rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='6'>Before OneDay Festival data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
-        var male=0;
-        var female=0;
-        var tot=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           // obj[i]['data'][k]['festivals']
           for(var m=0;m<obj[i]['data'][k]['festivals'].length;m++){
             if(obj[i]['data'][k]['festivals'][m]['festive_beforedate']==obj[i]['data'][k]['date']){
-              male=male+parseFloat(obj[i]['data'][k]['male_footfall']);
-            female=female+parseFloat(obj[i]['data'][k]['female_footfall']);
-            tot=tot+parseFloat(obj[i]['data'][k]['total_footfall']);
+              rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>1</td><td>" + (obj[i]['data'][k]['female_footfall']/obj[i]['data'][k]['male_footfall']).toFixed(2) + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>Before OneDay Festival</tr>";
         n++;
             }
 
           }
          
         }
-        if(tot==0){
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>No Data</td><td>No Data</td><td>No Data</td><td>Before OneDay Festival</tr>";
-        }else{
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>1</td><td>" + (female/male).toFixed(2) + "</td><td>" + tot + "</td><td>Before OneDay Festival</tr>";
-        }
-        
-
-        
         // rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='6'>After OneDay Festival data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
-        var male=0;
-        var female=0;
-        var tot=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           // obj[i]['data'][k]['festivals']
           for(var m=0;m<obj[i]['data'][k]['festivals'].length;m++){
             if(obj[i]['data'][k]['festivals'][m]['festive_afteronedate']==obj[i]['data'][k]['date']){
-              male=male+parseFloat(obj[i]['data'][k]['male_footfall']);
-            female=female+parseFloat(obj[i]['data'][k]['female_footfall']);
-            tot=tot+parseFloat(obj[i]['data'][k]['total_footfall']);
+              rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>1</td><td>" + (obj[i]['data'][k]['female_footfall']/obj[i]['data'][k]['male_footfall']).toFixed(2) + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>After OneDay Festival</tr>";
         n++;
             }
 
           }
          
         }
-        if(tot==0){
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>No Data</td><td>No Data</td><td>No Data</td><td>After OneDay Festival</tr>";
-          }else{
-            rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>1</td><td>" + (female/male).toFixed(2) + "</td><td>" + tot + "</td><td>After OneDay Festival</tr>";
-          }
-        
         // rows += "<tr><td colspan='17'></td></tr>";
            
        }
        rows += "<tr><td colspan='6'>After Two Days Festival data</td></tr>";
        for (var i = 0; i < obj.length; i++) 
        {
-        var male=0;
-        var female=0;
-        var tot=0;
         for( var k=0 ; k< obj[i]['data'].length;k++){
           var n=1;
           // obj[i]['data'][k]['festivals']
           for(var m=0;m<obj[i]['data'][k]['festivals'].length;m++){
             if(obj[i]['data'][k]['festivals'][m]['festive_aftertwodate']==obj[i]['data'][k]['date']){
-              male=male+parseFloat(obj[i]['data'][k]['male_footfall']);
-            female=female+parseFloat(obj[i]['data'][k]['female_footfall']);
-            tot=tot+parseFloat(obj[i]['data'][k]['total_footfall']);
+              rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>" +obj[i]['data'][k]['day']+"("+obj[i]['data'][k]['festivals'][m]['festival_name']+")"+"</td><td>1</td><td>" + (obj[i]['data'][k]['female_footfall']/obj[i]['data'][k]['male_footfall']).toFixed(2) + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>After Two Days Festival</tr>";
         n++;
             }
 
           }
          
         }
-        if(tot==0){
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>No Data</td><td>No Data</td><td>No Data</td><td>After Two Days Festival</tr>";
-        }else{
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][0]['fdate'] +"</td><td>"+obj[i]['data'][0]['tdate']+ "</td><td>1</td><td>" + (female/male).toFixed(2) + "</td><td>" + tot + "</td><td>After Two Days Festival</tr>";
-        }
-        
         // rows += "<tr><td colspan='17'></td></tr>";
            
        }
@@ -1576,6 +2283,8 @@ function appendData_consolidated(obj){
          document.getElementById("export_odour").style.display="none";
          document.getElementById("export_foot").style.display="none";
          document.getElementById("export_consolidated").style.display="none";
+         document.getElementById("export_consolidated_cfootfall").style.display="none";
+         document.getElementById("export_consolidated_cfootfall_power").style.display="none";
         // for (var k = 0; k < obj.length; k++) 
         // {
         //   hoursxaxisarray[k]=obj[k]['Time'];
@@ -1613,6 +2322,8 @@ function appendData_consolidated(obj){
          document.getElementById("export_odour").style.display="none";
          document.getElementById("export_foot").style.display="none";
          document.getElementById("export_consolidated").style.display="none";
+         document.getElementById("export_consolidated_cfootfall").style.display="none";
+         document.getElementById("export_consolidated_cfootfall_power").style.display="none";
         // for (var k = 0; k < obj.length; k++) 
         // {
         //   hoursxaxisarray[k]=obj[k]['Time'];
@@ -1649,6 +2360,8 @@ function appendData_consolidated(obj){
          document.getElementById("export_odour").style.display="inline";
          document.getElementById("export_foot").style.display="none";
          document.getElementById("export_consolidated").style.display="none";
+         document.getElementById("export_consolidated_cfootfall").style.display="none";
+         document.getElementById("export_consolidated_cfootfall_power").style.display="none";
         // for (var k = 0; k < obj.length; k++) 
         // {
         //   hoursxaxisarray[k]=obj[k]['Time'];
@@ -1862,7 +2575,58 @@ function appendData_consolidated(obj){
 
          
       }
+      function addGraph_cfootfall(xaxisarray,footfallyaxisarray_male,footfallyaxisarray_female,footfallyaxisarray_total) 
+      {
+      
+          document.getElementById("janitor1").style.display="none";
+          document.getElementById("janitor2").style.display="none";
+          document.getElementById("feedback").style.display="none";
+          document.getElementById("supervsr").style.display="none";
+        
+        $('#containter_cfootfall').highcharts({
+          chart: {
+              type: 'column'
+          },
 
+    credits: {
+        enabled: false
+    },
+          title: {
+              text: 'Footfall'
+          },
+          xAxis: {
+              categories: xaxisarray
+          },
+          yAxis: {
+              title: {
+                  text: 'FootFall'
+              }
+          },
+          exporting: {
+            enabled: true,
+            buttons: {
+                contextButton: {
+                    text: 'Export',
+                    symbolFill: '#f88',
+                    symbolStroke: '#f00'
+                }
+            }
+        },
+          series: [{
+              name: 'Footfall Male',
+              data: footfallyaxisarray_male
+          },{
+              name: 'Footfall Female',
+              data: footfallyaxisarray_female
+          },{
+              name: 'Footfall Total',
+              data: footfallyaxisarray_total
+          }]
+        });
+        
+
+         
+      }
   </script>
 </head>
 <body >
@@ -1909,6 +2673,17 @@ function appendData_consolidated(obj){
                     <div class="LstRgt">
                       <select class="Inpt" id="reports">
                         <option>None Selected</option>
+                        <option>Footfall Report</option>
+                        <option>Footfall Analysis Report</option>
+                        <option>Odour Graph Report</option>
+                        <!-- <option>Janitor Report</option> -->
+                        <option>Feedback Report</option>
+                        <option>Water Leakage Report</option>
+                        <option>Water Consumption Report</option>
+                        <option>High Odour Report</option>
+                        <option>Consolidate Footfall Report Tabular</option>
+                        <option>Consolidate Footfall Odour Report</option>
+                        <option>Consolidate Report</option>
                         <option>Consolidate Report Tabular</option>
                         <option>Consolidate Report Tabular2</option>
                       </select>
@@ -1931,6 +2706,8 @@ function appendData_consolidated(obj){
                     <input type="button" class="btn5"  id="export"   onclick="exportTableToExcel('list1')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_foot"   onclick="exportTableToExcel_foot('list_footfall')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_consolidated"   onclick="exportTableToExcel_consolidated('consolidated_tab')" style="display: none;" value="Export">
+                    <input type="button" class="btn5"  id="export_consolidated_cfootfall"   onclick="exportTableToExcel_consolidated('consolidated_tab_cfootfall')" style="display: none;" value="Export">
+                    <input type="button" class="btn5"  id="export_consolidated_cfootfall_power"   onclick="exportTableToExcel_consolidated('consolidated_tab_cfootpower')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_consolidated_7"   onclick="exportTableToExcel_consolidated('consolidated_tab_7')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_consolidated_8"   onclick="exportTableToExcel_consolidated('consolidated_tab_8')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_water"   onclick="exportTableToExcel_water('list1_water')" style="display: none;" value="Export">
@@ -1960,16 +2737,74 @@ function appendData_consolidated(obj){
             <table id ="list1" class="table table-bordered table-hover" style="width: 100%;">
               <thead>
                 <tr>
-                <th>SNo</th>
+                  <th>SNo</th>
                   <th>Meter</th>
-                  <th>Date</th>
-                  <th>Day</th>
-                  <th>Male Time</th>                  
-                  <th>Odour Male</th>
+                  <th>Date/Time</th>
                   <th>Footfall Male</th>
-                  <th>Female Time</th>                  
-                  <th>Odour Female</th>
                   <th>Footfall Female</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+          <div id="tab4" style="display: none;">
+            <table id ="list_footfall" class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Date</th>
+                  <th>Time</th>
+                  <th>Footfall Male</th>
+                  <th>Footfall Male Percent</th>
+                  <th>Footfall Female</th>
+                  <th>Footfall Female Percent</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+          <div id="tab2" style="display: none;">
+            <table id ="list1_water" class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Water Leakage(Liters)</th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+          <div id="tab5" style="display: none;">
+            <table id ="list1_water_con" class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Date</th>
+                  <th>Consumption(Liters)</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+          <div id="tab3" style="display: none;">
+            <table id ="list1_odour" class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Date</th>
+                  <th>Male Odour Count</th>
+                  <th>Male High Odour</th>
+                  <th>Female Odour Count</th>
+                  <th>Female High Odour</th>
                 </tr>
               </thead>
               <tbody>
@@ -2014,18 +2849,76 @@ function appendData_consolidated(obj){
               </tbody>
             </table>
           </div>
+          <div id="tab_cfootfall" style="display: none;">
+            <table id ="consolidated_tab_cfootfall" class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Meter</th>
+                  <th>FromDate</th>
+                  <th>ToDate</th>
+                  <th>No Of Days</th>
+                  <th>Total Footfall Male</th>
+                  <th>Total Footfall Female</th>
+                  <th>Total Footfall</th>
+                  <th>Average Footfall Male</th>                  
+                  <th>Average Footfall Female</th>                  
+                  <th>Average Footfall Total</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+          <div id="tab_cfootpower" style="display: none;">
+            <table id ="consolidated_tab_cfootpower" class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Meter</th>
+                  <th>FromDate</th>
+                  <th>ToDate</th>
+                  <th>No Of Days</th>
+                  <th>Total Footfall Male</th>
+                  <th>Total Footfall Female</th>
+                  <th>Total Footfall</th>
+                  <th>Male Unacceptable Odour Count	</th>                  
+                  <th>Female Unacceptable Odour Count	</th>  
+                  <th>Water Availability</th>                
+                  <th>Total SMS</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
           <div id="tab7" style="display: none;">
             <table id ="consolidated_tab_7" class="table table-bordered table-hover" style="width: 100%;">
               <thead>
-              <tr>
-                <th>SNo</th>
+                <tr>
+                  <th>SNo</th>
                   <th>Meter</th>
                   <th>Date</th>
                   <th>Day</th>
-                  <th>Gender</th>                  
-                  <th>Odour</th>
-                  <th>Footfall</th>
-                  <th>Time</th>
+                  <th>Footfall Male</th>                  
+                  <th>Footfall Female</th>
+                  <th>Morning Footfall</th>
+                  <th>Evening Footfall</th>
+                  <th>Total Footfall</th>
+                  <th>Power Availability</th>
+                  <th>Water Consumption/ Availability</th>
+                  <th>Leakage/ Unavialibility</th>
+                  <th>Water Consumption per Footfall</th>
+                  <th>Male Unacceptable  Odour Count</th>
+                  <th>Male Unacceptable Highest Odour</th>
+                  <th>Female Unacceptable  Odour Count</th>
+                  <th>Female Unacceptable Highest Odour</th>
+                  <th>Total Feedback</th>
+                  <th>Good Feedback</th>
+                  <th>Average Feedback</th>
+                  <th>Poor Feedback</th>
                 </tr>
               </thead>
               <tbody>
@@ -2037,10 +2930,10 @@ function appendData_consolidated(obj){
             <table id ="consolidated_tab_8" class="table table-bordered table-hover" style="width: 100%;">
               <thead>
                 <tr>
-                <th>SNo</th>
+                  <th>SNo</th>
                   <th>Meter</th>
-                  <th>From Date</th>
-                  <th>To Date</th>
+                  <th>Date</th>
+                  <th>Day</th>
                   <th>Footfall Male</th>                  
                   <th>Footfall Female</th>
                   <th>Total Footfall</th>
@@ -2052,8 +2945,51 @@ function appendData_consolidated(obj){
               </tbody>
             </table>
           </div>
-         
-           
+          <div id="supervsr" style="display: none;">
+            <table id ="list2" class="table table-bordered table-hover" style="width: 100%;border: 1px">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Checking Time</th>
+                  <th>Hand Towel</th>
+                  <th>Toilet Roll</th>
+                  <th>Dustbin</th>
+                  <th>Floor Wet/Dry</th>
+                  <th>Handsoap</th>
+                  <th>Odour</th>
+                  <th>Feedback</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+              <table id ="list3" class="table table-bordered table-hover" style="width: 100%;border: 1px;display: none;">
+                <thead>
+                  <tr>
+                    <th>SNo</th>
+                    <th>Checking Time</th>
+                    <th>Hand Towel</th>
+                    <th>Toilet Roll</th>
+                    <th>Dustbin</th>
+                    <th>Floor Wet/Dry</th>
+                    <th>Handsoap</th>
+                    <th>Odour</th>
+                    <th>Feedback</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
+            </div>
+            <div id="containter1" style="display: none;"></div>
+            <div id="containter_cfootfall" style="display: none;"></div>
+            <div id="odourleft" style="display: none;"></div>
+            <div id="odourright" style="display: none;"></div>
+            <div id="janitor1" style="display: none;"></div>
+            <div id="janitor2" style="display: none;"></div>
+            <div id="feedback" style="display: none;"></div>
           </div>
           <div class="Footer" style="position:absolute; bottom:0px; height:40px; left:0px; right:0px; overflow:hidden;"> 
             <span class="Cpyrght">&copy; www.wenalytics.com</span>
@@ -2076,6 +3012,8 @@ $(function() {
                  document.getElementById("tab4").style.display='none';
                  document.getElementById("tab6").style.display='none';
                  document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
                  document.getElementById("export_water_con").style.display="none";
                 document.getElementById("tab5").style.display='none';
                   document.getElementById("containter1").style.display='none';
@@ -2092,12 +3030,426 @@ $(function() {
            document.getElementById("export_odour").style.display="none";
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
            document.getElementById("export").style.display="none";
 
        
       }
-     
+      if(mtype=='Consolidate Report Tabular'){
+      //document.getElementById("loading12").style.display="block";
+               $("#dst").css("display","flex");
+                 document.getElementById("tab").style.display='none';
+                 document.getElementById("tab2").style.display='none';
+                 document.getElementById("tab3").style.display='none';
+                 document.getElementById("tab4").style.display='none';
+                 document.getElementById("tab6").style.display='block';
+                 document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+                 document.getElementById("export_water_con").style.display="none";
+                document.getElementById("tab5").style.display='none';
+                  document.getElementById("containter1").style.display='none';
+                   document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+                    document.getElementById("consolidate").style.display="none";
+
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           //document.getElementById("export_consolidated").style.display="block";
+
+       
+      }
+      if(mtype=='Consolidate Footfall Report Tabular'){
+      //document.getElementById("loading12").style.display="block";
+               $("#dst").css("display","flex");
+                 document.getElementById("tab").style.display='none';
+                 document.getElementById("tab2").style.display='none';
+                 document.getElementById("tab3").style.display='none';
+                 document.getElementById("tab4").style.display='none';
+                 document.getElementById("tab6").style.display='none';
+                 document.getElementById("tab7").style.display='none';
+                 document.getElementById("tab_cfootfall").style.display='block';
+                 document.getElementById("tab_cfootpower").style.display='none';
+                 document.getElementById("export_water_con").style.display="none";
+                document.getElementById("tab5").style.display='none';
+                  document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='block';
+                   document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+                    document.getElementById("consolidate").style.display="none";
+
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           //document.getElementById("export_consolidated").style.display="block";
+
+       
+      }
+      if(mtype=='Consolidate Footfall Odour Report'){
+      //document.getElementById("loading12").style.display="block";
+               $("#dst").css("display","flex");
+                 document.getElementById("tab").style.display='none';
+                 document.getElementById("tab2").style.display='none';
+                 document.getElementById("tab3").style.display='none';
+                 document.getElementById("tab4").style.display='none';
+                 document.getElementById("tab6").style.display='none';
+                 document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='block';
+                 document.getElementById("export_water_con").style.display="none";
+                document.getElementById("tab5").style.display='none';
+                  document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='none';
+                   document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+                    document.getElementById("consolidate").style.display="none";
+
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           //document.getElementById("export_consolidated").style.display="block";
+
+       
+      }
+      if(mtype=='Consolidate Report Tabular2'){
+      //document.getElementById("loading12").style.display="block";
+               $("#dst").css("display","flex");
+                 document.getElementById("tab").style.display='none';
+                 document.getElementById("tab2").style.display='none';
+                 document.getElementById("tab3").style.display='none';
+                 document.getElementById("tab4").style.display='none';
+                 document.getElementById("tab6").style.display='none';
+                 document.getElementById("tab7").style.display='block';
+                 document.getElementById("export_water_con").style.display="none";
+                document.getElementById("tab5").style.display='none';
+                  document.getElementById("containter1").style.display='none';
+                   document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+                    document.getElementById("consolidate").style.display="none";
+
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export").style.display="none";
+           //document.getElementById("export_consolidated").style.display="block";
+
+       
+      }
+      if(mtype=='Odour Graph Report'){
+        $("#dst").css("display","none");
+                 document.getElementById("tab").style.display='none';
+                 document.getElementById("tab2").style.display='none';
+                 document.getElementById("tab3").style.display='none';
+                 document.getElementById("tab4").style.display='none';
+                 document.getElementById("tab6").style.display='none';
+                 document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+                 document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+                  document.getElementById("containter1").style.display='none';
+                   document.getElementById("odourleft").style.display='block';
+                    document.getElementById("odourright").style.display='block';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+                                document.getElementById("consolidate").style.display="none";
+                                document.getElementById("export").style.display="none";
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           document.getElementById("export_consolidated_7").style.display="none";
+           
+
+       
+      }
+       if(mtype=='Supervisor Report'){
+        $("#dst").css("display","none");
+                 document.getElementById("tab").style.display='none';
+                 document.getElementById("tab2").style.display='none';
+                 document.getElementById("tab3").style.display='none';
+                 document.getElementById("tab4").style.display='none';
+                 document.getElementById("tab6").style.display='none';
+                 document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+                 document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+                  document.getElementById("containter1").style.display='none';
+                   document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="block";
+                     document.getElementById("export1").style.display="inline";
+                     document.getElementById("export_water").style.display="none";
+                     document.getElementById("export").style.display="none";
+                     document.getElementById("export_odour").style.display="none";
+                     document.getElementById("export_foot").style.display="none";
+                                document.getElementById("consolidate").style.display="none";
+                                document.getElementById("export_consolidated").style.display="none";
+                                document.getElementById("export_consolidated_cfootfall").style.display="none";
+                                document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+                                document.getElementById("export_consolidated_7").style.display="none";
+
+
+       
+      }
+      if(mtype=='Footfall Report'){
+        $("#dst").css("display","flex");
+        document.getElementById("tab").style.display='block';
+        document.getElementById("tab2").style.display='none';
+        document.getElementById("tab3").style.display='none';
+        document.getElementById("tab4").style.display='none';
+        document.getElementById("tab6").style.display='none';
+        document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+        document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+        document.getElementById("containter1").style.display='block';
+        document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           document.getElementById("export_consolidated_7").style.display="none";
+           document.getElementById("export").style.display="inline";
+                      document.getElementById("consolidate").style.display="none";
+
+
+       
+      }
+      if(mtype=='Footfall Analysis Report'){
+        $("#dst").css("display","flex");
+        document.getElementById("tab").style.display='none';
+        document.getElementById("tab2").style.display='none';
+        document.getElementById("tab3").style.display='none';
+        document.getElementById("tab4").style.display='block';
+        document.getElementById("containter1").style.display='none';
+        document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export").style.display="none";
+           document.getElementById("export_water_con").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           document.getElementById("export_consolidated_7").style.display="none";
+                      document.getElementById("consolidate").style.display="none";
+
+
+       
+      }
+      if(mtype=='Water Leakage Report'){
+        $("#dst").css("display","flex");
+        document.getElementById("tab").style.display='none';
+        document.getElementById("tab2").style.display='block';
+        document.getElementById("tab3").style.display='none';
+        document.getElementById("tab4").style.display='none';
+        document.getElementById("tab6").style.display='none';
+        document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+        document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+        document.getElementById("containter1").style.display='none';
+        document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="inline";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           document.getElementById("export_consolidated_7").style.display="none";
+                      document.getElementById("consolidate").style.display="none";
+                      document.getElementById("export").style.display="none";
+
+
+       
+      }
+      if(mtype=='Water Consumption Report'){
+        $("#dst").css("display","flex");
+        document.getElementById("tab").style.display='none';
+        document.getElementById("tab2").style.display='none';
+        document.getElementById("tab3").style.display='none';
+        document.getElementById("tab4").style.display='none';
+        document.getElementById("tab6").style.display='none';
+        document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+        document.getElementById("tab5").style.display='block';
+        document.getElementById("containter1").style.display='none';
+        document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_water_con").style.display="inline";
+           document.getElementById("export_odour").style.display="none";
+           
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           document.getElementById("export_consolidated_7").style.display="none";
+                      document.getElementById("consolidate").style.display="none";
+                      document.getElementById("export").style.display="none";
+
+
+       
+      }
+      if(mtype=='High Odour Report'){
+        $("#dst").css("display","flex");
+        document.getElementById("tab").style.display='none';
+        document.getElementById("tab2").style.display='none';
+        document.getElementById("tab5").style.display='none';
+        document.getElementById("tab3").style.display='block';
+        document.getElementById("containter1").style.display='none';
+        document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="inline";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           document.getElementById("export_consolidated_7").style.display="none";
+           document.getElementById("export_water_con").style.display="none";
+                      document.getElementById("consolidate").style.display="none";
+                      document.getElementById("export").style.display="none";
+
+
+       
+      }
+      if(mtype=='Janitor Report'){
+        $("#dst").css("display","flex");
+        document.getElementById("tab").style.display='none';
+        document.getElementById("tab2").style.display='none';
+        document.getElementById("tab3").style.display='none';
+        document.getElementById("tab4").style.display='none';
+        document.getElementById("tab6").style.display='none';
+        document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+        document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+        document.getElementById("containter1").style.display='none';
+        document.getElementById("odourleft").style.display='none';
+        document.getElementById("odourright").style.display='none';
+         document.getElementById("janitor1").style.display="block";
+         document.getElementById("janitor2").style.display="block";
+         document.getElementById("feedback").style.display="none";
+         document.getElementById("supervsr").style.display="none";
+     document.getElementById("export1").style.display="none";
+     document.getElementById("export_water").style.display="none";
+     document.getElementById("export_odour").style.display="none";
+     document.getElementById("export_foot").style.display="none";
+     document.getElementById("export_consolidated").style.display="none";
+     document.getElementById("export_consolidated_cfootfall").style.display="none";
+     document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+     document.getElementById("export_consolidated_7").style.display="none";
+     document.getElementById("export").style.display="none";
+                document.getElementById("consolidate").style.display="none";
+
+
+
+       
+      }
+      if(mtype=='Feedback Report'){
+        $("#dst").css("display","flex");
+        document.getElementById("tab").style.display='none';
+        document.getElementById("tab2").style.display='none';
+        document.getElementById("tab3").style.display='none';
+        document.getElementById("tab4").style.display='none';
+        document.getElementById("tab6").style.display='none';
+        document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
+        document.getElementById("export_water_con").style.display="none";
+        document.getElementById("tab5").style.display='none';
+        document.getElementById("containter1").style.display='none';
+        document.getElementById("odourleft").style.display='none';
+        document.getElementById("odourright").style.display='none';
+         document.getElementById("janitor1").style.display="none";
+         document.getElementById("janitor2").style.display="none";
+         document.getElementById("feedback").style.display="block";
+     document.getElementById("export1").style.display="none";
+                document.getElementById("consolidate").style.display="none";
+
+
+       
+      }
       if(mtype=='None Selected'){
         //$("#dst").css("display","block");
         document.getElementById("tab").style.display='none';
@@ -2106,6 +3458,8 @@ $(function() {
         document.getElementById("tab4").style.display='none';
         document.getElementById("tab6").style.display='none';
         document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
         document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
         document.getElementById("containter1").style.display='none';
@@ -2121,6 +3475,8 @@ $(function() {
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
                       document.getElementById("consolidate").style.display="none";
 

@@ -36,6 +36,18 @@ class WashroomData extends CI_Controller
         $foot= $this->Demo_model->getConsolidatedData($branches,$data['fromdate'],$data['todate']);  
         echo json_encode($foot); 
     }
+    function consolidatedFootfallTabular(){
+        $data=$this->input->get();
+        $branches=$this->Demo_model->getBranches();
+        $foot= $this->Demo_model->getConsolidatedFootfallData($branches,$data['fromdate'],$data['todate']);  
+        echo json_encode($foot); 
+    }
+    function consolidatedFootfallWithpowerTabular(){
+        $data=$this->input->get();
+        $branches=$this->Demo_model->getBranches();
+        $foot= $this->Demo_model->getConsolidatedFootfallPowerData($branches,$data['fromdate'],$data['todate']);  
+        echo json_encode($foot); 
+    }
     function consolidatedReportTimes(){
         $data=$this->input->get();
         $branches=$this->Demo_model->getBranches();

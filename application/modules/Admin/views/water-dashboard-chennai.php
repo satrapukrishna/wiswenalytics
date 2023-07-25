@@ -778,9 +778,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 						<div class="LiquidTank Smll">
 						<?php 
 							/*$total_level=$rec['Volume'];*/
-							$total_level=200;
-							$avial_level=$water_level_sen->Consumption;
-							$level=($avial_level/$total_level)*100;
+							//$total_level=200;
+							//$avial_level=$water_level_sen->Consumption;
+							//$level=($avial_level/$total_level)*100;
 							// $fuel=40;
 							?>
 								<div class="Liquid Liquidhigh l-80"></div>
@@ -1097,9 +1097,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 						<div class="LiquidTank Smll">
 						<?php 
 							/*$total_level=$rec['Volume'];*/
-							$total_level=200;
-							$avial_level=$water_level_sen->Consumption;
-							$level=($avial_level/$total_level)*100;
+							// $total_level=200;
+							// $avial_level=$water_level_sen->Consumption;
+							// $level=($avial_level/$total_level)*100;
 							// $fuel=40;
 							?>
 								<div class="Liquid Liquidhigh l-80"></div>
@@ -1381,7 +1381,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                         
                             <li>
                                 <div class="ClLft liright">Present Pressure</div>
-                                <div class="ClRgt liright"><?php echo $hydro_data[0]['pressure_data'][count($hydro_data[0]['pressure_data'])-1]['pressure'] ?></div>
+                                <div class="ClRgt liright"><?php echo $hydro_data['Hydro Pnematic System 01']['pressure_data'][count($hydro_data['Hydro Pnematic System 01']['pressure_data'])-1]['pressure'] ?></div>
                             </li>
                             <li>
                                 <div class="ClLft liright">Min Threshold Pressure</div>

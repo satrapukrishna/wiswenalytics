@@ -501,9 +501,9 @@ function clientNotifications_warangal(){
 	$branches=$this->Warangal_data_model->getBranches();
 	foreach ($branches as $row) {
 		// echo $row['table_name_live']."<br>";
-		$this->Sms_model->water_availability($row);
+		//$this->Sms_model->water_availability($row);
 		$this->Sms_model->high_odour($row);
-		$this->Sms_model->no_footfall($row);
+		//$this->Sms_model->no_footfall($row);
 	}
 	// echo json_encode($branches);
 

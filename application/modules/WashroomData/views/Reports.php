@@ -117,7 +117,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
     }
     .Table{
     width: 100%;
-    /* table-layout: fixed; */
+    table-layout: fixed;
     }
     .fd{
     text-transform:capitalize;
@@ -275,6 +275,13 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
   }
 }
 
+  
+        /* Equal width table cell */
+        /* table#table2 {
+            table-layout: fixed;
+            width: 200px;
+        } */
+  
     </style>
     <script type="text/javascript">  
     <?php if($id==1){ ?>
@@ -647,6 +654,56 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
 
 
           }
+          if(mtype=='Consolidate Footfall Report Tabular'){
+
+          var valid=validate();
+          if(valid){
+          document.getElementById("loading").style.display="block";
+          var fromdate = document.getElementById("fromdate").value;
+          var todate = document.getElementById("todate").value; 
+
+          var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedFootfallTabular";
+          $.ajax({
+          url:urlString,
+          type : 'GET',
+          async: true,
+          data: {fromdate:fromdate,todate:todate},
+          success: function(data){
+          var obj = JSON.parse(data);
+          console.log(obj);
+          appendData_consolidated_footfall(obj);
+          }
+          });
+          }
+
+
+
+          }
+          if(mtype=='Consolidate Footfall Odour Report'){
+
+            var valid=validate();
+            if(valid){
+            document.getElementById("loading").style.display="block";
+            var fromdate = document.getElementById("fromdate").value;
+            var todate = document.getElementById("todate").value; 
+
+            var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedFootfallWithpowerTabular";
+            $.ajax({
+            url:urlString,
+            type : 'GET',
+            async: true,
+            data: {fromdate:fromdate,todate:todate},
+            success: function(data){
+            var obj = JSON.parse(data);
+            console.log(obj);
+            appendData_consolidated_footfall_power(obj);
+            }
+            });
+            }
+
+
+
+            }
           if(mtype=='Consolidate Report Tabular2'){
 
           var valid=validate();
@@ -819,6 +876,8 @@ function addOdourDataLiveDashboard(data,v){
                 document.getElementById("tab4").style.display='none';
                 document.getElementById("tab6").style.display='none';
                 document.getElementById("tab7").style.display='none';
+               document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
                 document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
               var xdata = d['leftxdata'];
@@ -1000,6 +1059,8 @@ function power(data,v){
          document.getElementById("tab4").style.display='none';
          document.getElementById("tab6").style.display='none';
          document.getElementById("tab7").style.display='none';
+        document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
          document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
         var xdata = d['xdata'];
@@ -1071,6 +1132,8 @@ function power(data,v){
          document.getElementById("tab4").style.display='none';
          document.getElementById("tab6").style.display='none';
          document.getElementById("tab7").style.display='none';
+        document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
          document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
          
@@ -1219,11 +1282,14 @@ function power(data,v){
           document.getElementById("tab4").style.display='none';
           document.getElementById("tab6").style.display='none';
           document.getElementById("tab7").style.display='none';
+         document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
           document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
           document.getElementById("odourleft").style.display="none";
           document.getElementById("odourright").style.display="none";
           document.getElementById("containter1").style.display="none";
+          document.getElementById("containter_cfootfall").style.display='none';
           document.getElementById("janitor1").style.display="block";
           document.getElementById("janitor2").style.display="none";
           document.getElementById("feedback").style.display="none";
@@ -1294,11 +1360,14 @@ function power(data,v){
               document.getElementById("tab4").style.display='none';
               document.getElementById("tab6").style.display='none';
               document.getElementById("tab7").style.display='none';
+             document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
               document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
                 document.getElementById("odourleft").style.display="none";
                 document.getElementById("odourright").style.display="none";
                 document.getElementById("containter1").style.display="none";
+                document.getElementById("containter_cfootfall").style.display='none';
                 document.getElementById("janitor1").style.display="block";
                 document.getElementById("janitor2").style.display="block";
                 document.getElementById("feedback").style.display="none";
@@ -1413,11 +1482,14 @@ function addfeedbackgraph(data){
      document.getElementById("tab4").style.display='none';
      document.getElementById("tab6").style.display='none';
      document.getElementById("tab7").style.display='none';
+    document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
      document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
       document.getElementById("odourleft").style.display="none";
        document.getElementById("odourright").style.display="none";
        document.getElementById("containter1").style.display="none";
+       document.getElementById("containter_cfootfall").style.display='none';
        document.getElementById("janitor1").style.display="none";
        document.getElementById("janitor2").style.display="none";
        document.getElementById("feedback").style.display="block";
@@ -1503,11 +1575,14 @@ function addOdourData(data){
     document.getElementById("tab4").style.display='none';
     document.getElementById("tab6").style.display='none';
     document.getElementById("tab7").style.display='none';
+   document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
     document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
     document.getElementById("odourleft").style.display="block";
     document.getElementById("odourright").style.display="block";
     document.getElementById("containter1").style.display="none";
+    document.getElementById("containter_cfootfall").style.display='none';
  document.getElementById("janitor1").style.display="none";
  document.getElementById("janitor2").style.display="none";
  document.getElementById("feedback").style.display="none";
@@ -1655,6 +1730,78 @@ function appendData_consolidated(obj){
        document.getElementById("loading").style.display="none";
        document.getElementById("export").style.display="none";
        document.getElementById("export_consolidated").style.display="inline";
+  }
+  function appendData_consolidated_footfall(obj){
+    $("#consolidated_tab_cfootfall tbody").empty();
+       
+       document.getElementById("tab_cfootfall").style.display="block";
+       var rows="";
+       var j=1;
+       // alert(obj.length);
+       // rows+="<thead><tr><th>SNo</th><th>Meter</th><th>Date</th><th>Time</th><th>Footfall</th></tr></thead>"
+       for (var i = 0; i < obj.length; i++) 
+       {
+          rows += "<tr><td>" + j + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['fromdate'] + "</td><td>" + obj[i]['todate'] + "</td><td>" + obj[i]['totaldays'] + "</td><td>" + obj[i]['male_footfall'] + "</td><td>" + obj[i]['female_footfall'] + "</td><td>" + obj[i]['total_footfall'] + "</td><td>" + obj[i]['male_footfall_avg'] + "</td><td>" + obj[i]['female_footfall_avg'] + "</td><td>" + obj[i]['total_footfall_avg'] + "</td></tr>"; 
+          
+        
+                    
+         j++;    
+       }
+
+       $(rows).appendTo("#consolidated_tab_cfootfall tbody");
+       document.getElementById("loading").style.display="none";
+       document.getElementById("export").style.display="none";
+       document.getElementById("export_consolidated_cfootfall").style.display="inline";
+       const xaxisarray = [];
+       const footfallyaxisarray_male = [];
+       const footfallyaxisarray_female = [];
+       const footfallyaxisarray_total = [];
+       for (var k = 0; k < obj.length; k++) 
+        {
+          xaxisarray[k]=obj[k]['location'];
+          footfallyaxisarray_male[k]=parseInt(obj[k]['male_footfall']);
+          footfallyaxisarray_female[k]=parseInt(obj[k]['female_footfall']);
+          footfallyaxisarray_total[k]=parseInt(obj[k]['total_footfall']);
+        }
+        addGraph_cfootfall(xaxisarray,footfallyaxisarray_male,footfallyaxisarray_female,footfallyaxisarray_total);
+
+        
+  }
+  function appendData_consolidated_footfall_power(obj){
+    $("#consolidated_tab_cfootpower tbody").empty();
+       
+       document.getElementById("tab_cfootpower").style.display="block";
+       var rows="";
+       var j=1;
+       // alert(obj.length);
+       // rows+="<thead><tr><th>SNo</th><th>Meter</th><th>Date</th><th>Time</th><th>Footfall</th></tr></thead>"
+       for (var i = 0; i < obj.length; i++) 
+       {
+          rows += "<tr><td>" + j + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['fromdate'] + "</td><td>" + obj[i]['todate'] + "</td><td>" + obj[i]['totaldays'] + "</td><td>" + obj[i]['male_footfall'] + "</td><td>" + obj[i]['female_footfall'] + "</td><td>" + obj[i]['total_footfall'] + "</td><td>" + obj[i]['unaccept']['od_male_count'] + "</td><td>" + obj[i]['unaccept']['od_female_count'] + "</td><td>" + obj[i]['power']['power_available'] + "</td><td>" + obj[i]['sms']['count'] + "</td></tr>"; 
+          
+        
+                    
+         j++;    
+       }
+
+       $(rows).appendTo("#consolidated_tab_cfootpower tbody");
+       document.getElementById("loading").style.display="none";
+       document.getElementById("export").style.display="none";
+       document.getElementById("export_consolidated_cfootfall_power").style.display="inline";
+       const xaxisarray = [];
+       const footfallyaxisarray_male = [];
+       const footfallyaxisarray_female = [];
+       const footfallyaxisarray_total = [];
+       for (var k = 0; k < obj.length; k++) 
+        {
+          xaxisarray[k]=obj[k]['location'];
+          footfallyaxisarray_male[k]=parseInt(obj[k]['male_footfall']);
+          footfallyaxisarray_female[k]=parseInt(obj[k]['female_footfall']);
+          footfallyaxisarray_total[k]=parseInt(obj[k]['total_footfall']);
+        }
+        addGraph_cfootfall(xaxisarray,footfallyaxisarray_male,footfallyaxisarray_female,footfallyaxisarray_total);
+
+        
   }
   function appendData_consolidated_datewise_bkp(obj){
     $("#consolidated_tab_7 tbody").empty();
@@ -2140,6 +2287,8 @@ function appendData_consolidated(obj){
          document.getElementById("export_odour").style.display="none";
          document.getElementById("export_foot").style.display="none";
          document.getElementById("export_consolidated").style.display="none";
+         document.getElementById("export_consolidated_cfootfall").style.display="none";
+         document.getElementById("export_consolidated_cfootfall_power").style.display="none";
         // for (var k = 0; k < obj.length; k++) 
         // {
         //   hoursxaxisarray[k]=obj[k]['Time'];
@@ -2177,6 +2326,8 @@ function appendData_consolidated(obj){
          document.getElementById("export_odour").style.display="none";
          document.getElementById("export_foot").style.display="none";
          document.getElementById("export_consolidated").style.display="none";
+         document.getElementById("export_consolidated_cfootfall").style.display="none";
+         document.getElementById("export_consolidated_cfootfall_power").style.display="none";
         // for (var k = 0; k < obj.length; k++) 
         // {
         //   hoursxaxisarray[k]=obj[k]['Time'];
@@ -2213,6 +2364,8 @@ function appendData_consolidated(obj){
          document.getElementById("export_odour").style.display="inline";
          document.getElementById("export_foot").style.display="none";
          document.getElementById("export_consolidated").style.display="none";
+         document.getElementById("export_consolidated_cfootfall").style.display="none";
+         document.getElementById("export_consolidated_cfootfall_power").style.display="none";
         // for (var k = 0; k < obj.length; k++) 
         // {
         //   hoursxaxisarray[k]=obj[k]['Time'];
@@ -2426,7 +2579,58 @@ function appendData_consolidated(obj){
 
          
       }
+      function addGraph_cfootfall(xaxisarray,footfallyaxisarray_male,footfallyaxisarray_female,footfallyaxisarray_total) 
+      {
+      
+          document.getElementById("janitor1").style.display="none";
+          document.getElementById("janitor2").style.display="none";
+          document.getElementById("feedback").style.display="none";
+          document.getElementById("supervsr").style.display="none";
+        
+        $('#containter_cfootfall').highcharts({
+          chart: {
+              type: 'column'
+          },
 
+    credits: {
+        enabled: false
+    },
+          title: {
+              text: 'Footfall'
+          },
+          xAxis: {
+              categories: xaxisarray
+          },
+          yAxis: {
+              title: {
+                  text: 'FootFall'
+              }
+          },
+          exporting: {
+            enabled: true,
+            buttons: {
+                contextButton: {
+                    text: 'Export',
+                    symbolFill: '#f88',
+                    symbolStroke: '#f00'
+                }
+            }
+        },
+          series: [{
+              name: 'Footfall Male',
+              data: footfallyaxisarray_male
+          },{
+              name: 'Footfall Female',
+              data: footfallyaxisarray_female
+          },{
+              name: 'Footfall Total',
+              data: footfallyaxisarray_total
+          }]
+        });
+        
+
+         
+      }
   </script>
 </head>
 <body >
@@ -2481,9 +2685,11 @@ function appendData_consolidated(obj){
                         <option>Water Leakage Report</option>
                         <option>Water Consumption Report</option>
                         <option>High Odour Report</option>
-                        <option>Consolidate Report</option>
-                        <option>Consolidate Report Tabular</option>
-                        <option>Consolidate Report Tabular2</option>
+                        <option>Consolidate Footfall Report Tabular</option>
+                        <option>Consolidate Footfall Odour Report</option>
+                        <!-- <option>Consolidate Report</option> -->
+                        <!-- <option>Consolidate Report Tabular</option>
+                        <option>Consolidate Report Tabular2</option> -->
                       </select>
                     </div>
                 </div>
@@ -2504,6 +2710,8 @@ function appendData_consolidated(obj){
                     <input type="button" class="btn5"  id="export"   onclick="exportTableToExcel('list1')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_foot"   onclick="exportTableToExcel_foot('list_footfall')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_consolidated"   onclick="exportTableToExcel_consolidated('consolidated_tab')" style="display: none;" value="Export">
+                    <input type="button" class="btn5"  id="export_consolidated_cfootfall"   onclick="exportTableToExcel_consolidated('consolidated_tab_cfootfall')" style="display: none;" value="Export">
+                    <input type="button" class="btn5"  id="export_consolidated_cfootfall_power"   onclick="exportTableToExcel_consolidated('consolidated_tab_cfootpower')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_consolidated_7"   onclick="exportTableToExcel_consolidated('consolidated_tab_7')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_consolidated_8"   onclick="exportTableToExcel_consolidated('consolidated_tab_8')" style="display: none;" value="Export">
                     <input type="button" class="btn5"  id="export_water"   onclick="exportTableToExcel_water('list1_water')" style="display: none;" value="Export">
@@ -2645,6 +2853,51 @@ function appendData_consolidated(obj){
               </tbody>
             </table>
           </div>
+          <div id="tab_cfootfall" style="display: none;">
+            <table id ="consolidated_tab_cfootfall" class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Meter</th>
+                  <th>FromDate</th>
+                  <th>ToDate</th>
+                  <th>No Of Days</th>
+                  <th>Total Footfall Male</th>
+                  <th>Total Footfall Female</th>
+                  <th>Total Footfall</th>
+                  <th>Average Footfall Male</th>                  
+                  <th>Average Footfall Female</th>                  
+                  <th>Average Footfall Total</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+          <div id="tab_cfootpower" style="display: none;">
+            <table id ="consolidated_tab_cfootpower" class="table table-bordered table-hover" style="width: 100%;">
+              <thead>
+                <tr>
+                  <th>SNo</th>
+                  <th>Meter</th>
+                  <th>FromDate</th>
+                  <th>ToDate</th>
+                  <th>No Of Days</th>
+                  <th>Total Footfall Male</th>
+                  <th>Total Footfall Female</th>
+                  <th>Total Footfall</th>
+                  <th>Male Unacceptable Odour Count	</th>                  
+                  <th>Female Unacceptable Odour Count	</th>  
+                  <th>Water Availability</th>                
+                  <th>Total SMS</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
           <div id="tab7" style="display: none;">
             <table id ="consolidated_tab_7" class="table table-bordered table-hover" style="width: 100%;">
               <thead>
@@ -2735,6 +2988,7 @@ function appendData_consolidated(obj){
               </table>
             </div>
             <div id="containter1" style="display: none;"></div>
+            <div id="containter_cfootfall" style="display: none;"></div>
             <div id="odourleft" style="display: none;"></div>
             <div id="odourright" style="display: none;"></div>
             <div id="janitor1" style="display: none;"></div>
@@ -2762,9 +3016,12 @@ $(function() {
                  document.getElementById("tab4").style.display='none';
                  document.getElementById("tab6").style.display='none';
                  document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
                  document.getElementById("export_water_con").style.display="none";
                 document.getElementById("tab5").style.display='none';
                   document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='none';
                    document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -2778,6 +3035,8 @@ $(function() {
            document.getElementById("export_odour").style.display="none";
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
            document.getElementById("export").style.display="none";
 
@@ -2792,9 +3051,12 @@ $(function() {
                  document.getElementById("tab4").style.display='none';
                  document.getElementById("tab6").style.display='block';
                  document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
                  document.getElementById("export_water_con").style.display="none";
                 document.getElementById("tab5").style.display='none';
                   document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='none';
                    document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -2808,6 +3070,81 @@ $(function() {
            document.getElementById("export_odour").style.display="none";
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           //document.getElementById("export_consolidated").style.display="block";
+
+       
+      }
+      if(mtype=='Consolidate Footfall Report Tabular'){
+      //document.getElementById("loading12").style.display="block";
+               $("#dst").css("display","flex");
+                 document.getElementById("tab").style.display='none';
+                 document.getElementById("tab2").style.display='none';
+                 document.getElementById("tab3").style.display='none';
+                 document.getElementById("tab4").style.display='none';
+                 document.getElementById("tab6").style.display='none';
+                 document.getElementById("tab7").style.display='none';
+                 document.getElementById("tab_cfootfall").style.display='block';
+                 document.getElementById("tab_cfootpower").style.display='none';
+                 document.getElementById("export_water_con").style.display="none";
+                document.getElementById("tab5").style.display='none';
+                  document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='block';
+                  document.getElementById("containter_cfootfall").style.display='block';
+                   document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+                    document.getElementById("consolidate").style.display="none";
+
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
+           //document.getElementById("export_consolidated").style.display="block";
+
+       
+      }
+      if(mtype=='Consolidate Footfall Odour Report'){
+      //document.getElementById("loading12").style.display="block";
+               $("#dst").css("display","flex");
+                 document.getElementById("tab").style.display='none';
+                 document.getElementById("tab2").style.display='none';
+                 document.getElementById("tab3").style.display='none';
+                 document.getElementById("tab4").style.display='none';
+                 document.getElementById("tab6").style.display='none';
+                 document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='block';
+                 document.getElementById("export_water_con").style.display="none";
+                document.getElementById("tab5").style.display='none';
+                  document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='none';
+                   document.getElementById("odourleft").style.display='none';
+                    document.getElementById("odourright").style.display='none';
+                     document.getElementById("janitor1").style.display="none";
+                     document.getElementById("janitor2").style.display="none";
+                     document.getElementById("feedback").style.display="none";
+                     document.getElementById("supervsr").style.display="none";
+                    document.getElementById("consolidate").style.display="none";
+
+           document.getElementById("export1").style.display="none";
+           document.getElementById("export_water").style.display="none";
+           document.getElementById("export_odour").style.display="none";
+           document.getElementById("export_foot").style.display="none";
+           document.getElementById("export").style.display="none";
+           document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            //document.getElementById("export_consolidated").style.display="block";
 
        
@@ -2824,6 +3161,7 @@ $(function() {
                  document.getElementById("export_water_con").style.display="none";
                 document.getElementById("tab5").style.display='none';
                   document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='none';
                    document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -2849,9 +3187,12 @@ $(function() {
                  document.getElementById("tab4").style.display='none';
                  document.getElementById("tab6").style.display='none';
                  document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
                  document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
                   document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='none';
                    document.getElementById("odourleft").style.display='block';
                     document.getElementById("odourright").style.display='block';
                      document.getElementById("janitor1").style.display="none";
@@ -2865,6 +3206,8 @@ $(function() {
            document.getElementById("export_odour").style.display="none";
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
            
 
@@ -2878,9 +3221,12 @@ $(function() {
                  document.getElementById("tab4").style.display='none';
                  document.getElementById("tab6").style.display='none';
                  document.getElementById("tab7").style.display='none';
+                document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
                  document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
                   document.getElementById("containter1").style.display='none';
+                  document.getElementById("containter_cfootfall").style.display='none';
                    document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -2894,6 +3240,8 @@ $(function() {
                      document.getElementById("export_foot").style.display="none";
                                 document.getElementById("consolidate").style.display="none";
                                 document.getElementById("export_consolidated").style.display="none";
+                                document.getElementById("export_consolidated_cfootfall").style.display="none";
+                                document.getElementById("export_consolidated_cfootfall_power").style.display="none";
                                 document.getElementById("export_consolidated_7").style.display="none";
 
 
@@ -2907,9 +3255,12 @@ $(function() {
         document.getElementById("tab4").style.display='none';
         document.getElementById("tab6").style.display='none';
         document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
         document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
         document.getElementById("containter1").style.display='block';
+        document.getElementById("containter_cfootfall").style.display='none';
         document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -2921,6 +3272,8 @@ $(function() {
            document.getElementById("export_odour").style.display="none";
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
            document.getElementById("export").style.display="inline";
                       document.getElementById("consolidate").style.display="none";
@@ -2935,6 +3288,7 @@ $(function() {
         document.getElementById("tab3").style.display='none';
         document.getElementById("tab4").style.display='block';
         document.getElementById("containter1").style.display='none';
+        document.getElementById("containter_cfootfall").style.display='none';
         document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -2948,6 +3302,8 @@ $(function() {
            document.getElementById("export").style.display="none";
            document.getElementById("export_water_con").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
                       document.getElementById("consolidate").style.display="none";
 
@@ -2962,9 +3318,12 @@ $(function() {
         document.getElementById("tab4").style.display='none';
         document.getElementById("tab6").style.display='none';
         document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
         document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
         document.getElementById("containter1").style.display='none';
+        document.getElementById("containter_cfootfall").style.display='none';
         document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -2976,6 +3335,8 @@ $(function() {
            document.getElementById("export_odour").style.display="none";
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
                       document.getElementById("consolidate").style.display="none";
                       document.getElementById("export").style.display="none";
@@ -2991,8 +3352,11 @@ $(function() {
         document.getElementById("tab4").style.display='none';
         document.getElementById("tab6").style.display='none';
         document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
         document.getElementById("tab5").style.display='block';
         document.getElementById("containter1").style.display='none';
+        document.getElementById("containter_cfootfall").style.display='none';
         document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -3006,6 +3370,8 @@ $(function() {
            
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
                       document.getElementById("consolidate").style.display="none";
                       document.getElementById("export").style.display="none";
@@ -3020,7 +3386,10 @@ $(function() {
         document.getElementById("tab5").style.display='none';
         document.getElementById("tab3").style.display='block';
         document.getElementById("containter1").style.display='none';
+        document.getElementById("containter_cfootfall").style.display='none';
         document.getElementById("odourleft").style.display='none';
+        document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
                      document.getElementById("janitor2").style.display="none";
@@ -3031,6 +3400,8 @@ $(function() {
            document.getElementById("export_odour").style.display="inline";
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
            document.getElementById("export_water_con").style.display="none";
                       document.getElementById("consolidate").style.display="none";
@@ -3047,9 +3418,12 @@ $(function() {
         document.getElementById("tab4").style.display='none';
         document.getElementById("tab6").style.display='none';
         document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
         document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
         document.getElementById("containter1").style.display='none';
+        document.getElementById("containter_cfootfall").style.display='none';
         document.getElementById("odourleft").style.display='none';
         document.getElementById("odourright").style.display='none';
          document.getElementById("janitor1").style.display="block";
@@ -3061,6 +3435,8 @@ $(function() {
      document.getElementById("export_odour").style.display="none";
      document.getElementById("export_foot").style.display="none";
      document.getElementById("export_consolidated").style.display="none";
+     document.getElementById("export_consolidated_cfootfall").style.display="none";
+     document.getElementById("export_consolidated_cfootfall_power").style.display="none";
      document.getElementById("export_consolidated_7").style.display="none";
      document.getElementById("export").style.display="none";
                 document.getElementById("consolidate").style.display="none";
@@ -3077,9 +3453,12 @@ $(function() {
         document.getElementById("tab4").style.display='none';
         document.getElementById("tab6").style.display='none';
         document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
         document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
         document.getElementById("containter1").style.display='none';
+        document.getElementById("containter_cfootfall").style.display='none';
         document.getElementById("odourleft").style.display='none';
         document.getElementById("odourright").style.display='none';
          document.getElementById("janitor1").style.display="none";
@@ -3099,9 +3478,12 @@ $(function() {
         document.getElementById("tab4").style.display='none';
         document.getElementById("tab6").style.display='none';
         document.getElementById("tab7").style.display='none';
+       document.getElementById("tab_cfootfall").style.display='none';
+                 document.getElementById("tab_cfootpower").style.display='none';
         document.getElementById("export_water_con").style.display="none";
         document.getElementById("tab5").style.display='none';
         document.getElementById("containter1").style.display='none';
+        document.getElementById("containter_cfootfall").style.display='none';
         document.getElementById("odourleft").style.display='none';
                     document.getElementById("odourright").style.display='none';
                      document.getElementById("janitor1").style.display="none";
@@ -3114,6 +3496,8 @@ $(function() {
            document.getElementById("export_foot").style.display="none";
            document.getElementById("export").style.display="none";
            document.getElementById("export_consolidated").style.display="none";
+           document.getElementById("export_consolidated_cfootfall").style.display="none";
+           document.getElementById("export_consolidated_cfootfall_power").style.display="none";
            document.getElementById("export_consolidated_7").style.display="none";
                       document.getElementById("consolidate").style.display="none";
 
@@ -3133,6 +3517,7 @@ $(function() {
           document.getElementById("sodexodatahead").style.display='none';
           document.getElementById("reportsid").style.display='block';
           document.getElementById("containter1").style.display='block';
+          document.getElementById("containter_cfootfall").style.display='block';
            document.getElementById("odourleft").style.display="block";
        document.getElementById("odourright").style.display="block";
         document.getElementById("janitor1").style.display="block";

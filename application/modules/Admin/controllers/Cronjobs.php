@@ -127,7 +127,7 @@ class Cronjobs extends MX_Controller  {
     
     $list = array('alerts@rsbrothers.net','security@rsbrothers.net','amareshwar@rsbrothers.net','krishna@wenalytics.com');
     
-    // $list = array('krishna3175@gmail.com');
+    // $list = array('krishna@wenalytics.com');
     $this->email->to($list);
     $this->email->subject('Daily Mail');
     $this->email->message($msg_data);

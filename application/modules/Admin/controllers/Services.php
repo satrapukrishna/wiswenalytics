@@ -562,7 +562,7 @@ class Services extends REST_Controller  {
 
 
 
-        if($emp_id != '' || $emp_id != NULL){
+        if($emp_id != '' || $emp_id != NULL || $meter_id!= '' || $meter_id != NULL){
             $client_id = $this->Services_model->get_clientid($emp_id);
             $meter_name = $this->Services_model->get_meter_name($meter_id); 
             $location_name = $this->Services_model->get_location_name($meter_id); 
@@ -573,9 +573,9 @@ class Services extends REST_Controller  {
                 $time = time();
                 if ($_FILES['photo']['name'] != '') {
                 $file_upl_data = $this->Upload_model->uploadDocuments('photo', 'scheduled_doc');
-                // echo "<pre>";print_r($file_upl_data);
+                // echo "<pre>";print_r($file_upl_data);die();
                 if ($file_upl_data['success'] == 1){
-                $image = $file_upl_data['file_name']; 
+                $image = $file_upl_data['file_path']; 
                 
            }
         }
@@ -583,7 +583,7 @@ class Services extends REST_Controller  {
             'meter_id' => $meter_id,
             'meter_name' => $meter_name,                
             'meter_reading' => $meter_reading,
-            'meter_photo' => base_url()."asset/admin/scheduled_doc/".$image,
+            'meter_photo' => base_url().$image,
             'client_id' => $client_id,
             'emp_id' => $emp_id,                
             'schedule_id' => $schedule_id,

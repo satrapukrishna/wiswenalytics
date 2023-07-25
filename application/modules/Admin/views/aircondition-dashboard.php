@@ -1,7 +1,7 @@
 
 <html>
 <head>
-    <?php $this->load->view('common/css3') ?>
+    <?php $this->load->view('common/css3')?>
     <link href="<?php echo base_url(); ?>asset/fairmontasset/CSS/StyleSheet.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -78,9 +78,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
     cursor: pointer;
   z-index:1000000;
   margin: 8px 10px 0 0!important;
-  
+
   }
-  
+
   div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClLft, div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClRgt{padding:9px}
   div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls span.SctnTtl {padding:10px}
   .table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{border-top: none !important;border-bottom: 1px solid #ddd;}
@@ -97,7 +97,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
   }
   .imageadd img{ left: 0px!important;}
   div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls div.SctnDtlsHldr div.SldrCntnr div.SctnDtls span.SctnTtl{color:#000}
-  
+
   .switch {
   position: relative;
   display: inline-block;
@@ -105,7 +105,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
   height: 24px;
 }
 
-.switch input { 
+.switch input {
   opacity: 0;
   width: 0;
   height: 0;
@@ -163,12 +163,12 @@ div.LiquidTank div.Liquid.l-70, div.LiquidTank.Smll div.Liquid.l-70{height:182px
 div.LiquidTank.Smll div.Liquid.High{height:80px}
 .head-h4{margin:0px;padding:10px;background-color: #eee;
     font: 800 14px 'Open Sans';
-    color: #3c8dbc; 
+    color: #3c8dbc;
   text-align:left;
     border-bottom: 1px solid #ddd;}
 div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClRgt{width:43%}
 div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl li div.ClLft{width:57%}
-  
+
     .imageadd img{ left: 0px!important;}
     .panel-group{margin-bottom:0px}
     div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.IOQ div.SctnDtls.IOQFtr {
@@ -215,7 +215,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
   .Expndd:before {
     content: 'Expand!!'!important;
   }
-  
+
   .Expndd1:before {
     content: '-'!important;
   }
@@ -224,359 +224,269 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
   div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls.IOQ div.SctnDtls.IOQFtr div.FtrOtrCrcl.presure-bg {background-color:#a3f3f7!important;}
 
     </style>
-<body > 
+<body >
     <div id="MnCtnr" class="DshMnCtnr">
-        
-        <?php $this->load->view('common/left_menu3') ?>
-        <?php $this->load->view('common/header2') ?>
-        
-       
+
+        <?php $this->load->view('common/left_menu3')?>
+        <?php $this->load->view('common/header2')?>
+
+
         <div id="DshbrdRgtCtnr" class="DshBrdCtnr style-2">
         <div class="DshBrdSctn">
     <input type="hidden" id="page" value="aircondition" />
     </div>
-	
+
 	<!-- AHU starts -->
-	<?php if(modules::run('Admin/Site/authlink','ahu')){ ?>
+	<?php if (modules::run('Admin/Site/authlink', 'ahu')) {?>
            <div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
                 <div class="DshBrdSctnTtl" id="hvac">
                     <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu.png" width="45" />AHU</span>
-                    
+
                     <?php /*<span class="SctnVw Cllps" id="Bwcollapse"></span>*/?>
                     <span class="SctnVw Cllps dev" onclick="device(5555)" id="device5555"></span>
                     <span class="Cllps FA SctnVwAll deviceall col" onclick="deviceall()"></span>
-                   
-                   
-                    
+
+
+
                 </div>
                 <?php /*<div class="DshBrdSctnDtls" id="Bwmeter">*/?>
-				<?php for ($i=0; $i < count($ahudata); $i++) {?>
+
 
                 <div class="DshBrdSctnDtls device devicebox5555" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;margin-bottom:10px;">
-               
-        <h4 class="head-h4">Floor - 01</h4>
-        <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span>
+
+        
         <div class="devicebox5555">
-                
-                <div class="bxslider10" id="bxid">    
-                    
-					<div class="box bxc1 bxheight box-com">    
-                    
-						<div class="SctnDtlsHldr">
+
+                <div class="bxslider10" id="bxid">
+				<?php for ($i=0; $i < count($ahudata); $i++) {?>
+			<?php if($ahudata[$i]['Set_Temp']<$ahudata[$i]['Return Air Temp']){ ?>
+					<div class="box bxc1 bxheight box-com">
+					
+					<div class="SctnDtlsHldr">
 						<div class="SldrCntnr">
-						<div class="SctnDtls BorewellHldr">
-							<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">AHU #01 </span>
-							<div>
-							<div class="small-box">
-							<span class="status-working">ON</span><br/>
-							<h5>AHU Status</h5>
-							</div>
-							<div class="small-box">
-							<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool2.png' width='20'> </h3>
-							<h5>Cooling</h5>
-							</div>
-							<div class="small-box no-border-right">
-							<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
-							<h5>Set Temp.</h5>
-							</div>
-							<div style="clear:both"></div>
-							
-							</div>
-							<div>
-							<div class="small-box">
-							<h3>14&#8451;</h3>
-							<h5>Return Air Temp.</h5>
-							</div>
-							<div class="small-box">
-							<h3>5.8%</h3>
-							<h5>Actuator Level</h5>
-							</div>
-							<div class="small-box no-border-right">
-							<h3>N/A</h3>
-							<h5>VFD </h5>
-							</div>
-							<div style="clear:both"></div>
-							</div>
-							<div class="ahu-list">
-							<h5><img src='<?php echo base_url(); ?>asset/admin/images/air.png' width='20'> Air Flow</h5>
-							<span class="inner_collaps1" onclick="device2(1)"><i class="fa fa-angle-down "></i></span>								
-							</div>
+							<div class="SctnDtls BorewellHldr">
+								<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc"><?php echo $ahudata[$i]['meter']."-".$ahudata[$i]['LocationName'] ?> </span>
+								<div>
+									<div class="small-box">
+										<span class="status-working">ON</span><br/>
+										<h5>AHU Status</h5>
+									</div>
+									<div class="small-box">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool2.png' width='20'> </h3>
+										<h5>Cooling</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> <?php echo $ahudata[$i]['Set_Temp'] ?>&#8451;</h3>
+										<h5>Set Temp.</h5>
+									</div>
+									<div style="clear:both">
+									</div>
+								</div>
+								<div>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['Return Air Temp'] ?>&#8451;</h3>
+										<h5>Return Air Temp.</h5>
+									</div>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['Actuator Level'] ?>%</h3>
+										<h5>Actuator Level</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3>N/A</h3>
+										<h5>VFD </h5>
+									</div>
+									<div style="clear:both">
+									</div>
+								</div>
+								<div class="ahu-list">
+									<h5><img src='<?php echo base_url(); ?>asset/admin/images/air.png' width='20'> Air Flow</h5>
+									<span class="inner_collaps1" onclick="device2(1)"><i class="fa fa-angle-down "></i></span>
+								</div>
 								<div class="devicebox1" style="display:none;background-color:#fff">
-								<div class="small-box">
-								<h3>14&#8451;</h3>
-								<h5>Supply Air Temp.</h5>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['Supply Air Temp'] ?>&#8451;</h3>
+										<h5>Supply Air Temp.</h5>
+									</div>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['Return Air Temp'] ?>&#8451;</h3>
+										<h5>Return Air Temp.</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> <?php echo $ahudata[$i]['Delta T Air'] ?>&#8451;</h3>
+										<h5>Delta T </h5>
+									</div>
+									<div style="clear:both">
+									</div>
 								</div>
-								<div class="small-box">
-								<h3>26&#8451;</h3>
-								<h5>Return Air Temp.</h5>
+								<div class="ahu-list">
+									<h5><img src='<?php echo base_url(); ?>asset/admin/images/water.png' width='20'> Water Flow</h5>
+									<span class="inner_collaps1" onclick="device2(2)"><i class="fa fa-angle-down "></i></span>
 								</div>
-								<div class="small-box no-border-right">
-								<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
-								<h5>Delta T </h5>
-								</div>
-								<div style="clear:both"></div>
-								</div>
-							
-							<div class="ahu-list">
-							<h5><img src='<?php echo base_url(); ?>asset/admin/images/water.png' width='20'> Water Flow</h5>
-							<span class="inner_collaps1" onclick="device2(2)"><i class="fa fa-angle-down "></i></span>
-							</div>
 								<div class="devicebox2" style="display:none;background-color:#fff">
-								<div class="small-box">
-								<h3>8&#8451;</h3>
-								<h5>Supply Water Temp.</h5>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['CW Sup Temp'] ?>&#8451;</h3>
+										<h5>Supply Water Temp.</h5>
+									</div>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['CH Ret Temp'] ?>&#8451;</h3>
+										<h5>Return Water Temp.</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> <?php echo $ahudata[$i]['Delta T CW'] ?>&#8451;</h3>
+										<h5>Delta T </h5>
+									</div>
+									<div style="clear:both">
+									</div>
 								</div>
-								<div class="small-box">
-								<h3>12&#8451;</h3>
-								<h5>Return Water Temp.</h5>
+								<div class="ahu-list no-border-bottom no-radius-bottom">
+									<h5>&nbsp;<img src='<?php echo base_url(); ?>asset/admin/images/more.png' width='15'> Filter Details</h5>
+									<span class="inner_collaps1" onclick="device2(3)"><i class="fa fa-angle-down "></i></span>
 								</div>
-								<div class="small-box no-border-right">
-								<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 22&#8451;</h3>
-								<h5>Delta T </h5>
-								</div>
-								<div style="clear:both"></div>
-								</div>
-							<div class="ahu-list no-border-bottom no-radius-bottom">
-							<h5>&nbsp;<img src='<?php echo base_url(); ?>asset/admin/images/more.png' width='15'> Filter Details</h5>
-							<span class="inner_collaps1" onclick="device2(3)"><i class="fa fa-angle-down "></i></span>
-							</div>
 								<div class="devicebox3" style="display:none;background-color:#fff">
-								<div class="small-box" style="width:50%">
-								<h3>37 Pa.</h3>
-								<h5>Filter Pressure</h5>
+									<div class="small-box" style="width:50%">
+										<h3><?php echo $ahudata[$i]['Filter Pressure'] ?> Pa.</h3>
+										<h5>Filter Pressure</h5>
+									</div>
+									<div class="small-box no-border-right" style="width:50%">
+										<h3>N/A</h3>
+										<h5>Blockage</h5>
+									</div>
+									<div style="clear:both">
+									</div>
 								</div>
-								<div class="small-box no-border-right" style="width:50%">
-								<h3>N/A</h3>
-								<h5>Blockage</h5>
-								</div>
-								
-								<div style="clear:both"></div>
-								</div>
+							</div>
 						</div>
-						</div>
-						</div>
-                    </div>
-                    
-                    <div class="box">
-						<div class="SctnDtlsHldr">
+					</div>
+					
+					</div>
+					<?php }else{?>
+						<div class="box bxc1 bxheight box-com">
+					
+					<div class="SctnDtlsHldr">
 						<div class="SldrCntnr">
-						<div class="SctnDtls BorewellHldr">
-							<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">AHU #02 </span>
-							<div>
-							<div class="small-box">
-							<span class="status-working">ON</span><br/>
-							<h5>AHU Status</h5>
-							</div>
-							<div class="small-box">
-							<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool2.png' width='20'> </h3>
-							<h5>Cooling</h5>
-							</div>
-							<div class="small-box no-border-right">
-							<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
-							<h5>Set Temp.</h5>
-							</div>
-							<div style="clear:both"></div>
-							
-							</div>
-							<div>
-							<div class="small-box">
-							<h3>14&#8451;</h3>
-							<h5>Return Air Temp.</h5>
-							</div>
-							<div class="small-box">
-							<h3>5.8%</h3>
-							<h5>Actuator Level</h5>
-							</div>
-							<div class="small-box no-border-right">
-							<h3>N/A</h3>
-							<h5>VFD </h5>
-							</div>
-							<div style="clear:both"></div>
-							</div>
-							<div class="ahu-list">
-							<h5><img src='<?php echo base_url(); ?>asset/admin/images/air.png' width='20'> Air Flow</h5>
-							<span class="inner_collaps1" onclick="device2(4)"><i class="fa fa-angle-down "></i></span>								
-							</div>
-								<div class="devicebox4" style="display:none;background-color:#fff">
-								<div class="small-box">
-								<h3>14&#8451;</h3>
-								<h5>Supply Air Temp.</h5>
+							<div class="SctnDtls BorewellHldr">
+								<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc"><?php echo $ahudata[$i]['meter']."-".$ahudata[$i]['LocationName'] ?> </span>
+								<div>
+									<div class="small-box">
+										<span class="status-working">ON</span><br/>
+										<h5>AHU Status</h5>
+									</div>
+									<div class="small-box">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/heat.png' width='20'> </h3>
+										<h5>Heat</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> <?php echo $ahudata[$i]['Set_Temp'] ?>&#8451;</h3>
+										<h5>Set Temp.</h5>
+									</div>
+									<div style="clear:both">
+									</div>
 								</div>
-								<div class="small-box">
-								<h3>26&#8451;</h3>
-								<h5>Return Air Temp.</h5>
+								<div>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['Return Air Temp'] ?>&#8451;</h3>
+										<h5>Return Air Temp.</h5>
+									</div>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['Actuator Level'] ?>%</h3>
+										<h5>Actuator Level</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3>N/A</h3>
+										<h5>VFD </h5>
+									</div>
+									<div style="clear:both">
+									</div>
 								</div>
-								<div class="small-box no-border-right">
-								<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
-								<h5>Delta T </h5>
+								<div class="ahu-list">
+									<h5><img src='<?php echo base_url(); ?>asset/admin/images/air.png' width='20'> Air Flow</h5>
+									<span class="inner_collaps1" onclick="device2(1)"><i class="fa fa-angle-down "></i></span>
 								</div>
-								<div style="clear:both"></div>
+								<div class="devicebox1" style="display:none;background-color:#fff">
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['Supply Air Temp'] ?>&#8451;</h3>
+										<h5>Supply Air Temp.</h5>
+									</div>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['Return Air Temp'] ?>&#8451;</h3>
+										<h5>Return Air Temp.</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> <?php echo $ahudata[$i]['Delta T Air'] ?>&#8451;</h3>
+										<h5>Delta T </h5>
+									</div>
+									<div style="clear:both">
+									</div>
 								</div>
-							
-							<div class="ahu-list">
-							<h5><img src='<?php echo base_url(); ?>asset/admin/images/water.png' width='20'> Water Flow</h5>
-							<span class="inner_collaps1" onclick="device2(5)"><i class="fa fa-angle-down "></i></span>
+								<div class="ahu-list">
+									<h5><img src='<?php echo base_url(); ?>asset/admin/images/water.png' width='20'> Water Flow</h5>
+									<span class="inner_collaps1" onclick="device2(2)"><i class="fa fa-angle-down "></i></span>
+								</div>
+								<div class="devicebox2" style="display:none;background-color:#fff">
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['CW Sup Temp'] ?>&#8451;</h3>
+										<h5>Supply Water Temp.</h5>
+									</div>
+									<div class="small-box">
+										<h3><?php echo $ahudata[$i]['CH Ret Temp'] ?>&#8451;</h3>
+										<h5>Return Water Temp.</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> <?php echo $ahudata[$i]['Delta T CW'] ?>&#8451;</h3>
+										<h5>Delta T </h5>
+									</div>
+									<div style="clear:both">
+									</div>
+								</div>
+								<div class="ahu-list no-border-bottom no-radius-bottom">
+									<h5>&nbsp;<img src='<?php echo base_url(); ?>asset/admin/images/more.png' width='15'> Filter Details</h5>
+									<span class="inner_collaps1" onclick="device2(3)"><i class="fa fa-angle-down "></i></span>
+								</div>
+								<div class="devicebox3" style="display:none;background-color:#fff">
+									<div class="small-box" style="width:50%">
+										<h3><?php echo $ahudata[$i]['Filter Pressure'] ?> Pa.</h3>
+										<h5>Filter Pressure</h5>
+									</div>
+									<div class="small-box no-border-right" style="width:50%">
+										<h3>N/A</h3>
+										<h5>Blockage</h5>
+									</div>
+									<div style="clear:both">
+									</div>
+								</div>
 							</div>
-								<div class="devicebox5" style="display:none;background-color:#fff">
-								<div class="small-box">
-								<h3>8&#8451;</h3>
-								<h5>Supply Water Temp.</h5>
-								</div>
-								<div class="small-box">
-								<h3>12&#8451;</h3>
-								<h5>Return Water Temp.</h5>
-								</div>
-								<div class="small-box no-border-right">
-								<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 22&#8451;</h3>
-								<h5>Delta T </h5>
-								</div>
-								<div style="clear:both"></div>
-								</div>
-							<div class="ahu-list no-border-bottom no-radius-bottom">
-							<h5>&nbsp;<img src='<?php echo base_url(); ?>asset/admin/images/more.png' width='15'> Filter Details</h5>
-							<span class="inner_collaps1" onclick="device2(6)"><i class="fa fa-angle-down "></i></span>
-							</div>
-								<div class="devicebox6" style="display:none;background-color:#fff">
-								<div class="small-box" style="width:50%">
-								<h3>37 Pa.</h3>
-								<h5>Filter Pressure</h5>
-								</div>
-								<div class="small-box no-border-right" style="width:50%">
-								<h3>N/A</h3>
-								<h5>Blockage</h5>
-								</div>
-								
-								<div style="clear:both"></div>
-								</div>
 						</div>
-						</div>
-						</div>
-                    </div>
-                    <div class="box">
-						<div class="SctnDtlsHldr">
-						<div class="SldrCntnr">
-						<div class="SctnDtls BorewellHldr">
-							<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">AHU #03 </span>
-							<div>
-							<div class="small-box">
-							<span class="status-working">ON</span><br/>
-							<h5>AHU Status</h5>
-							</div>
-							<div class="small-box">
-							<h3><img src='<?php echo base_url(); ?>asset/admin/images/heat.png' width='25'> </h3>
-							<h5>Not Cooling</h5>
-							</div>
-							<div class="small-box no-border-right">
-							<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
-							<h5>Set Temp.</h5>
-							</div>
-							<div style="clear:both"></div>
-							
-							</div>
-							<div>
-							<div class="small-box">
-							<h3>14&#8451;</h3>
-							<h5>Return Air Temp.</h5>
-							</div>
-							<div class="small-box">
-							<h3>5.8%</h3>
-							<h5>Actuator Level</h5>
-							</div>
-							<div class="small-box no-border-right">
-							<h3>N/A</h3>
-							<h5>VFD </h5>
-							</div>
-							<div style="clear:both"></div>
-							</div>
-							<div class="ahu-list">
-							<h5><img src='<?php echo base_url(); ?>asset/admin/images/air.png' width='20'> Air Flow</h5>
-							<span class="inner_collaps1" onclick="device21(7)"><i class="fa fa-angle-down "></i></span>								
-							</div>
-								<div class="devicebox7" style="display:none;background-color:#fff">
-								<div class="small-box">
-								<h3>14&#8451;</h3>
-								<h5>Supply Air Temp.</h5>
-								</div>
-								<div class="small-box">
-								<h3>26&#8451;</h3>
-								<h5>Return Air Temp.</h5>
-								</div>
-								<div class="small-box no-border-right">
-								<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
-								<h5>Delta T </h5>
-								</div>
-								<div style="clear:both"></div>
-								</div>
-							
-							<div class="ahu-list">
-							<h5><img src='<?php echo base_url(); ?>asset/admin/images/water.png' width='20'> Water Flow</h5>
-							<span class="inner_collaps1" onclick="device21(8)"><i class="fa fa-angle-down "></i></span>
-							</div>
-								<div class="devicebox8" style="display:none;background-color:#fff">
-								<div class="small-box">
-								<h3>8&#8451;</h3>
-								<h5>Supply Water Temp.</h5>
-								</div>
-								<div class="small-box">
-								<h3>12&#8451;</h3>
-								<h5>Return Water Temp.</h5>
-								</div>
-								<div class="small-box no-border-right">
-								<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 22&#8451;</h3>
-								<h5>Delta T </h5>
-								</div>
-								<div style="clear:both"></div>
-								</div>
-							<div class="ahu-list no-border-bottom no-radius-bottom">
-							<h5>&nbsp;<img src='<?php echo base_url(); ?>asset/admin/images/more.png' width='15'> Filter Details</h5>
-							<span class="inner_collaps1" onclick="device21(9)"><i class="fa fa-angle-down "></i></span>
-							</div>
-								<div class="devicebox9" style="display:none;background-color:#fff">
-								<div class="small-box" style="width:50%">
-								<h3>37 Pa.</h3>
-								<h5>Filter Pressure</h5>
-								</div>
-								<div class="small-box no-border-right" style="width:50%">
-								<h3>N/A</h3>
-								<h5>Blockage</h5>
-								</div>
-								
-								<div style="clear:both"></div>
-								</div>
-						</div>
-						</div>
-						</div>
-                    </div>
-                    
-                    
-                
+					</div>
+					
+					</div>
+					<?php }}?>
                 </div>
                 </div>
-                   
+
                 </div>
-				<?php }?>
+
     </div>
     <!-- AHU ends -->
-    <?php } ?>
-			<?php if(modules::run('Admin/Site/authlink','trip_status')){ ?>
+    <?php }?>
+			<?php if (modules::run('Admin/Site/authlink', 'trip_status')) {?>
 	<!-- Chillers starts -->
     <div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
         <div class="DshBrdSctnTtl" id="div7">
         <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/images/chillers2.png" width="45" />Chillers</span>
-                    
+
         <?php /*<span class="SctnVw Cllps" id="Bwcollapse"></span>*/?>
         <span class="SctnVw Cllps dev" onclick="device(5556)" id="device5556"></span>
-        
-        
+
+
 		</div>
         <?php /*<div class="DshBrdSctnDtls" id="Bwmeter">*/?>
-                
+
         <div class="DshBrdSctnDtls device devicebox5556" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;margin-bottom:10px;">
-               
-			
+
+
 			<div class="devicebox5556">
-            <div class="bxslider9" id="bxid">    
-                    
+            <div class="bxslider9" id="bxid">
+
 				<div class="box bxc1 bxheight">
 					<div class="SctnDtlsHldr">
 					<div class="SldrCntnr">
@@ -596,7 +506,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<h5>Set Point</h5>
 						</div>
 						<div style="clear:both"></div>
-						
+
 						</div>
 						<div>
 						<div class="small-box"  style="width:40%">
@@ -615,7 +525,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						</div>
 						<div class="ahu-list">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
-						<span class="inner_collaps1" onclick="device2('c1')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('c1')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxc1" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -642,13 +552,13 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
-						
+
 						<div class="ahu-list no-border-bottom">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
-						<span class="inner_collaps1" onclick="device2('c2')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('c2')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxc2" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -675,7 +585,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
 					</div>
@@ -701,7 +611,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<h5>Set Point</h5>
 						</div>
 						<div style="clear:both"></div>
-						
+
 						</div>
 						<div>
 						<div class="small-box"  style="width:40%">
@@ -720,7 +630,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						</div>
 						<div class="ahu-list">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
-						<span class="inner_collaps1" onclick="device2('c3')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('c3')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxc3" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -747,13 +657,13 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
-						
+
 						<div class="ahu-list no-border-bottom">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
-						<span class="inner_collaps1" onclick="device2('c4')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('c4')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxc4" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -780,7 +690,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
 					</div>
@@ -806,7 +716,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<h5>Set Point</h5>
 						</div>
 						<div style="clear:both"></div>
-						
+
 						</div>
 						<div>
 						<div class="small-box"  style="width:40%">
@@ -825,7 +735,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						</div>
 						<div class="ahu-list">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
-						<span class="inner_collaps1" onclick="device2('c5')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('c5')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxc5" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -852,13 +762,13 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
-						
+
 						<div class="ahu-list no-border-bottom">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
-						<span class="inner_collaps1" onclick="device2('c6')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('c6')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxc6" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -885,7 +795,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
 					</div>
@@ -911,7 +821,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<h5>Set Point</h5>
 						</div>
 						<div style="clear:both"></div>
-						
+
 						</div>
 						<div>
 						<div class="small-box"  style="width:40%">
@@ -930,7 +840,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						</div>
 						<div class="ahu-list">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
-						<span class="inner_collaps1" onclick="device2('c7')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('c7')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxc7" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -957,13 +867,13 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
-						
+
 						<div class="ahu-list no-border-bottom">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
-						<span class="inner_collaps1" onclick="device2('c8')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('c8')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxc8" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -990,43 +900,43 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Return Air Temp.</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
 					</div>
 					</div>
 					</div>
 				</div>
-               
-               
-                    
-				
+
+
+
+
 				</div>
-                <!--<div style="clear:both"></div>  -->              
-            </div>                   
+                <!--<div style="clear:both"></div>  -->
+            </div>
         </div>
 	</div>
 	<!-- Chiller ends -->
-	<?php } ?>
-			<?php if(modules::run('Admin/Site/authlink','trip_status')){ ?>
+	<?php }?>
+			<?php if (modules::run('Admin/Site/authlink', 'trip_status')) {?>
 	<!-- Cooling starts -->
     <div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
         <div class="DshBrdSctnTtl" id="div8">
         <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/images/cooling-c.png" width="45" />Cooling Tower</span>
-                    
+
         <?php /*<span class="SctnVw Cllps" id="Bwcollapse"></span>*/?>
         <span class="SctnVw Cllps dev" onclick="device3(5557)" id="device5557"></span>
-        
-        
+
+
 		</div>
         <?php /*<div class="DshBrdSctnDtls" id="Bwmeter">*/?>
-                
+
         <div class="DshBrdSctnDtls device devicebox5557" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;margin-bottom:10px;">
-               
-			
+
+
 			<div class="devicebox5557">
-            <div class="bxslider11" id="bxid">    
-                    
+            <div class="bxslider11" id="bxid">
+
 				<div class="box bxc1 bxheight">
 					<div class="SctnDtlsHldr">
 					<div class="SldrCntnr">
@@ -1046,7 +956,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<h5>Set Point</h5>
 						</div>
 						<div style="clear:both"></div>
-						
+
 						</div>
 						<div>
 						<div class="small-box"  style="width:40%">
@@ -1065,7 +975,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						</div>
 						<div class="ahu-list">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
-						<span class="inner_collaps1" onclick="device2('d1')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('d1')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxd1" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -1092,13 +1002,13 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
-						
+
 						<div class="ahu-list no-border-bottom">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
-						<span class="inner_collaps1" onclick="device2('d2')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('d2')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxd2" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -1125,7 +1035,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
 					</div>
@@ -1151,7 +1061,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<h5>Set Point</h5>
 						</div>
 						<div style="clear:both"></div>
-						
+
 						</div>
 						<div>
 						<div class="small-box"  style="width:40%">
@@ -1170,7 +1080,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						</div>
 						<div class="ahu-list">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
-						<span class="inner_collaps1" onclick="device2('d3')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('d3')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxd3" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -1197,13 +1107,13 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
-						
+
 						<div class="ahu-list no-border-bottom">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
-						<span class="inner_collaps1" onclick="device2('d4')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('d4')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxd4" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -1230,7 +1140,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
 					</div>
@@ -1256,7 +1166,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<h5>Set Point</h5>
 						</div>
 						<div style="clear:both"></div>
-						
+
 						</div>
 						<div>
 						<div class="small-box"  style="width:40%">
@@ -1275,7 +1185,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						</div>
 						<div class="ahu-list">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
-						<span class="inner_collaps1" onclick="device2('d5')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('d5')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxd5" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -1302,13 +1212,13 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
-						
+
 						<div class="ahu-list no-border-bottom">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
-						<span class="inner_collaps1" onclick="device2('d6')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('d6')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxd6" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -1335,7 +1245,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
 					</div>
@@ -1361,7 +1271,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<h5>Set Point</h5>
 						</div>
 						<div style="clear:both"></div>
-						
+
 						</div>
 						<div>
 						<div class="small-box"  style="width:40%">
@@ -1380,7 +1290,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						</div>
 						<div class="ahu-list">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
-						<span class="inner_collaps1" onclick="device2('d7')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('d7')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxd7" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -1407,13 +1317,13 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Suction Oil Temperature</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
-						
+
 						<div class="ahu-list no-border-bottom">
 						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
-						<span class="inner_collaps1" onclick="device2('d8')"><i class="fa fa-angle-down "></i></span>								
+						<span class="inner_collaps1" onclick="device2('d8')"><i class="fa fa-angle-down "></i></span>
 						</div>
 							<div class="deviceboxd8" style="display:none;background-color:#fff">
 							<div class="small-box" style="width:50%">
@@ -1440,129 +1350,124 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 							<h3>26&#8451;</h3>
 							<h5>Return Air Temp.</h5>
 							</div>
-							
+
 							<div style="clear:both"></div>
 							</div>
 					</div>
 					</div>
 					</div>
 				</div>
-               
-               
-                    
-				
+
+
+
+
 				</div>
-                <!--<div style="clear:both"></div>  -->              
-            </div>                   
+                <!--<div style="clear:both"></div>  -->
+            </div>
         </div>
 	</div>
 	<!-- Cooling ends -->
-	<?php } ?>
-			
-			
-			
-      
-         
+	<?php }?>
+
+
+
+
+
         <?php /*
-        
-        <?php
-        $j=0;
-        foreach ($devices as $dev) {
-        $hardwares=$this->Api_data_model->get_hardwares($dev['category_id'],$dev['device_id']); 
-        // $permission=str_replace(' ','_',$dev['device_name']);
-        // $permissions=$this->session->userdata('permissions');
-        if(($dev['device_id']!=9)&&($dev['device_id']!=10)){
-        if($hardwares->num_rows()>0){
-        
-        // if(in_array($permission,explode(',',$permissions))){
-            
-            ?>
-      
-            <!-- Bore Wells code starts -->
-            <div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
-                <div class="DshBrdSctnTtl" id="div<?php echo $dev['device_id']?>">
-                    <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/img/<?php echo  $dev['dashboard_icon'] ?>" width="40" /><?php echo ucwords(strtolower($dev['device_name'])); ?></span>
-                    
-                   
-                    <span class="SctnVw Cllps dev" onclick="device(<?php echo $dev['device_id']?> )" id="device<?php echo $dev['device_id']?>"></span>
-                    
-                </div>
-                
-				
-                <div class="DshBrdSctnDtls device devicebox<?php echo $dev['device_id']?>" style="background-color:#fff;" id="devicebox<?php echo $dev['device_id']?>">
-        <div class="device devicebox<?php echo $dev['device_id']?>">
-                <div class="bxslider<?php echo $dev['device_id']?>" id="bxid">
-                    <?php 
-                    
-                    if($hardwares->num_rows()>0){
-                        
-                        foreach($hardwares->result() as $row){ 
-                        $hdata=array(
-                        'station_id'=>$this->session->userdata('station_id'),
-                        'api_name'=>$row->api_name
-                        );
-                        $hardware_api_data=$this->Api_data_model->get_hardware_api_data($hdata);
-                        // echo "<pre>";print_r($hardware_api_data);
-                        ?>
-                
-                    <div style="padding-top:20px;padding-bottom:20px">
-                    <div class="SctnDtlsHldr">
-                    <div class="SldrCntnr">
-                    <div class="SctnDtls BorewellHldr">
-                    <span class="SctnTtl"><?php echo $row->dashboard_name;?></span>
-                    <ul class="SctnDtlsGrdTbl">
-                        <li><div class="ClLft"><?php echo ucwords(strtolower($dev['device_name'])); ?> Status</div><div class="ClRgt">
-                        <?php if($hardware_api_data['status']==0){?>
-                                    <span class="status-off">OFF</span>
-                                    <?php }else{
-                                        ?>
-                                        <span class="status-on">ON</span>
-                                        <?php
-                                    } ?>
-                        </div></li>
-                        <li><div class="ClLft">Running Hours</div><div class="ClRgt"><?php echo $hardware_api_data['RunningHours']?></div></li>
-                        <li><div class="ClLft">InletWaterTemp</div><div class="ClRgt">NA </div></li>
-                        <li><div class="ClLft">OutletWaterTemp</div><div class="ClRgt">NA</div></li>
-                        <li><div class="ClLft">InletWaterPressure</div><div class="ClRgt">NA Pa.</div></li>
-                        <li><div class="ClLft">OutletWaterPressure</div><div class="ClRgt">NA Pa.</div></li>
-                    </ul>
-                    </div>
-                    </div>
-                    </div>
-                    </div>
-                    <?php 
-                        }
-                    }
-                    
-                    ?>
-                    
-                </div>
-                </div>
-                   
-                </div>
-                
-                
 
-            </div>
-            <!-- Bore Wells code ends -->
-            <?php 
-        
-        
-        }
-        }$j++;
-        }
-        ?>
-          
-        */?>       
-        
-            
-            
-            
-            
+<?php
+$j=0;
+foreach ($devices as $dev) {
+$hardwares=$this->Api_data_model->get_hardwares($dev['category_id'],$dev['device_id']);
+// $permission=str_replace(' ','_',$dev['device_name']);
+// $permissions=$this->session->userdata('permissions');
+if(($dev['device_id']!=9)&&($dev['device_id']!=10)){
+if($hardwares->num_rows()>0){
 
-        <?php $this->load->view('common/footer3') ?>
-            
-       
+// if(in_array($permission,explode(',',$permissions))){
+
+?>
+
+<!-- Bore Wells code starts -->
+<div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
+<div class="DshBrdSctnTtl" id="div<?php echo $dev['device_id']?>">
+<span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/img/<?php echo  $dev['dashboard_icon'] ?>" width="40" /><?php echo ucwords(strtolower($dev['device_name'])); ?></span>
+
+<span class="SctnVw Cllps dev" onclick="device(<?php echo $dev['device_id']?> )" id="device<?php echo $dev['device_id']?>"></span>
+
+</div>
+
+<div class="DshBrdSctnDtls device devicebox<?php echo $dev['device_id']?>" style="background-color:#fff;" id="devicebox<?php echo $dev['device_id']?>">
+<div class="device devicebox<?php echo $dev['device_id']?>">
+<div class="bxslider<?php echo $dev['device_id']?>" id="bxid">
+<?php
+
+if($hardwares->num_rows()>0){
+
+foreach($hardwares->result() as $row){
+$hdata=array(
+'station_id'=>$this->session->userdata('station_id'),
+'api_name'=>$row->api_name
+);
+$hardware_api_data=$this->Api_data_model->get_hardware_api_data($hdata);
+// echo "<pre>";print_r($hardware_api_data);
+?>
+
+<div style="padding-top:20px;padding-bottom:20px">
+<div class="SctnDtlsHldr">
+<div class="SldrCntnr">
+<div class="SctnDtls BorewellHldr">
+<span class="SctnTtl"><?php echo $row->dashboard_name;?></span>
+<ul class="SctnDtlsGrdTbl">
+<li><div class="ClLft"><?php echo ucwords(strtolower($dev['device_name'])); ?> Status</div><div class="ClRgt">
+<?php if($hardware_api_data['status']==0){?>
+<span class="status-off">OFF</span>
+<?php }else{
+?>
+<span class="status-on">ON</span>
+<?php
+} ?>
+</div></li>
+<li><div class="ClLft">Running Hours</div><div class="ClRgt"><?php echo $hardware_api_data['RunningHours']?></div></li>
+<li><div class="ClLft">InletWaterTemp</div><div class="ClRgt">NA </div></li>
+<li><div class="ClLft">OutletWaterTemp</div><div class="ClRgt">NA</div></li>
+<li><div class="ClLft">InletWaterPressure</div><div class="ClRgt">NA Pa.</div></li>
+<li><div class="ClLft">OutletWaterPressure</div><div class="ClRgt">NA Pa.</div></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<?php
+}
+}
+
+?>
+
+</div>
+</div>
+
+</div>
+
+</div>
+<!-- Bore Wells code ends -->
+<?php
+
+}
+}$j++;
+}
+?>
+
+ */?>
+
+
+
+
+
+
+        <?php $this->load->view('common/footer3')?>
+
+
 
 </div>
 </div>
@@ -1586,12 +1491,11 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 <script src="https://www.highcharts.com/samples/static/highslide-full.min.js"></script>
 <script src="https://www.highcharts.com/samples/static/highslide.config.js" charset="utf-8"></script>
 
-
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
-*/?>
-<script>    
- 
+ */?>
+<script>
+
 $('.bxslider555').bxSlider({
         slideWidth: 290,
         minSlides: 2,
@@ -1618,35 +1522,40 @@ $('.bxslider7').bxSlider({
         minSlides: 2,
         maxSlides: 30,
     touchEnabled: false,
-        slideMargin: 0
+        slideMargin: 0,
+		infiniteLoop:false
     });
 $('.bxslider8').bxSlider({
         slideWidth: 500,
         minSlides: 2,
         maxSlides: 30,
         touchEnabled: false,
-        slideMargin: 0
+        slideMargin: 0,
+		infiniteLoop:false
     });
 $('.bxslider9').bxSlider({
         slideWidth: 450,
         minSlides: 2,
         maxSlides: 30,
         touchEnabled: false,
-        slideMargin: 0
+        slideMargin: 0,
+		infiniteLoop:false
     });
 $('.bxslider10').bxSlider({
         slideWidth: 435,
         minSlides: 2,
         maxSlides: 30,
         touchEnabled: false,
-        slideMargin: 0
+        slideMargin: 0,
+		infiniteLoop:false
     });
 $('.bxslider11').bxSlider({
         slideWidth: 435,
         minSlides: 2,
         maxSlides: 30,
         touchEnabled: false,
-        slideMargin: 0
+        slideMargin: 0,
+		infiniteLoop:false
     });
 
 $('.bxslider558').bxSlider({
@@ -1654,268 +1563,267 @@ $('.bxslider558').bxSlider({
         minSlides: 3,
         maxSlides: 30,
         touchEnabled: false,
-        slideMargin: 0
+        slideMargin: 0,
+		infiniteLoop:false
     });
 <?php /*
-    // iaq data start
-    data = '[{"temp":30.7,"humidity":69.1,"co2":"NA"},{"tmp":[{"FromTime":"00:04:13","CurReading":"30.80"},{"FromTime":"00:19:43","CurReading":"30.80"},{"FromTime":"00:36:02","CurReading":"30.80"},{"FromTime":"00:51:31","CurReading":"30.80"},{"FromTime":"01:07:01","CurReading":"30.80"},{"FromTime":"01:22:33","CurReading":"30.80"},{"FromTime":"01:42:31","CurReading":"30.80"},{"FromTime":"02:02:18","CurReading":"30.70"},{"FromTime":"02:22:38","CurReading":"30.70"},{"FromTime":"02:42:27","CurReading":"30.70"},{"FromTime":"03:02:21","CurReading":"30.70"},{"FromTime":"03:22:25","CurReading":"30.70"},{"FromTime":"03:42:14","CurReading":"30.70"},{"FromTime":"04:02:11","CurReading":"30.70"},{"FromTime":"04:23:00","CurReading":"30.70"},{"FromTime":"04:43:55","CurReading":"30.80"},{"FromTime":"05:04:42","CurReading":"30.80"},{"FromTime":"05:25:30","CurReading":"30.70"},{"FromTime":"05:45:28","CurReading":"30.70"},{"FromTime":"06:05:46","CurReading":"30.70"},{"FromTime":"06:26:38","CurReading":"30.70"},{"FromTime":"06:46:28","CurReading":"30.60"},{"FromTime":"07:07:23","CurReading":"30.60"},{"FromTime":"07:26:36","CurReading":"30.60"},{"FromTime":"07:36:32","CurReading":"30.60"},{"FromTime":"07:46:26","CurReading":"30.60"},{"FromTime":"07:56:20","CurReading":"30.60"},{"FromTime":"08:06:15","CurReading":"30.60"},{"FromTime":"08:16:09","CurReading":"30.60"},{"FromTime":"08:26:32","CurReading":"30.50"},{"FromTime":"08:36:27","CurReading":"30.50"},{"FromTime":"08:46:22","CurReading":"30.50"},{"FromTime":"08:56:13","CurReading":"30.50"},{"FromTime":"09:06:36","CurReading":"30.50"},{"FromTime":"09:16:31","CurReading":"30.50"},{"FromTime":"09:26:26","CurReading":"30.40"},{"FromTime":"09:36:21","CurReading":"30.40"},{"FromTime":"09:46:17","CurReading":"30.50"},{"FromTime":"09:56:22","CurReading":"30.50"},{"FromTime":"10:06:17","CurReading":"30.50"},{"FromTime":"10:16:11","CurReading":"30.60"},{"FromTime":"10:26:35","CurReading":"30.60"},{"FromTime":"10:36:29","CurReading":"30.60"},{"FromTime":"10:46:24","CurReading":"30.60"},{"FromTime":"10:56:19","CurReading":"30.70"}],"hmd":[{"FromTime":"00:04:13","CurReading":"71.70"},{"FromTime":"00:19:43","CurReading":"71.90"},{"FromTime":"00:36:02","CurReading":"72.00"},{"FromTime":"00:51:31","CurReading":"71.80"},{"FromTime":"01:07:01","CurReading":"71.40"},{"FromTime":"01:22:33","CurReading":"71.10"},{"FromTime":"01:42:31","CurReading":"70.80"},{"FromTime":"02:02:18","CurReading":"69.90"},{"FromTime":"02:22:38","CurReading":"69.30"},{"FromTime":"02:42:27","CurReading":"69.10"},{"FromTime":"03:02:21","CurReading":"68.60"},{"FromTime":"03:22:25","CurReading":"67.90"},{"FromTime":"03:42:14","CurReading":"67.60"},{"FromTime":"04:02:11","CurReading":"67.80"},{"FromTime":"04:23:00","CurReading":"68.20"},{"FromTime":"04:43:55","CurReading":"69.10"},{"FromTime":"05:04:42","CurReading":"69.20"},{"FromTime":"05:25:30","CurReading":"69.80"},{"FromTime":"05:45:28","CurReading":"69.70"},{"FromTime":"06:05:46","CurReading":"69.70"},{"FromTime":"06:26:38","CurReading":"69.70"},{"FromTime":"06:46:28","CurReading":"69.50"},{"FromTime":"07:07:23","CurReading":"69.30"},{"FromTime":"07:26:36","CurReading":"69.20"},{"FromTime":"07:36:32","CurReading":"69.50"},{"FromTime":"07:46:26","CurReading":"69.50"},{"FromTime":"07:56:20","CurReading":"69.50"},{"FromTime":"08:06:15","CurReading":"69.60"},{"FromTime":"08:16:09","CurReading":"69.30"},{"FromTime":"08:26:32","CurReading":"69.00"},{"FromTime":"08:36:27","CurReading":"68.60"},{"FromTime":"08:46:22","CurReading":"68.50"},{"FromTime":"08:56:13","CurReading":"68.30"},{"FromTime":"09:06:36","CurReading":"68.40"},{"FromTime":"09:16:31","CurReading":"68.30"},{"FromTime":"09:26:26","CurReading":"67.80"},{"FromTime":"09:36:21","CurReading":"68.30"},{"FromTime":"09:46:17","CurReading":"68.20"},{"FromTime":"09:56:22","CurReading":"68.30"},{"FromTime":"10:06:17","CurReading":"68.50"},{"FromTime":"10:16:11","CurReading":"68.50"},{"FromTime":"10:26:35","CurReading":"68.60"},{"FromTime":"10:36:29","CurReading":"68.70"},{"FromTime":"10:46:24","CurReading":"69.10"},{"FromTime":"10:56:19","CurReading":"69.10"}],"co":0}]';
+// iaq data start
+data = '[{"temp":30.7,"humidity":69.1,"co2":"NA"},{"tmp":[{"FromTime":"00:04:13","CurReading":"30.80"},{"FromTime":"00:19:43","CurReading":"30.80"},{"FromTime":"00:36:02","CurReading":"30.80"},{"FromTime":"00:51:31","CurReading":"30.80"},{"FromTime":"01:07:01","CurReading":"30.80"},{"FromTime":"01:22:33","CurReading":"30.80"},{"FromTime":"01:42:31","CurReading":"30.80"},{"FromTime":"02:02:18","CurReading":"30.70"},{"FromTime":"02:22:38","CurReading":"30.70"},{"FromTime":"02:42:27","CurReading":"30.70"},{"FromTime":"03:02:21","CurReading":"30.70"},{"FromTime":"03:22:25","CurReading":"30.70"},{"FromTime":"03:42:14","CurReading":"30.70"},{"FromTime":"04:02:11","CurReading":"30.70"},{"FromTime":"04:23:00","CurReading":"30.70"},{"FromTime":"04:43:55","CurReading":"30.80"},{"FromTime":"05:04:42","CurReading":"30.80"},{"FromTime":"05:25:30","CurReading":"30.70"},{"FromTime":"05:45:28","CurReading":"30.70"},{"FromTime":"06:05:46","CurReading":"30.70"},{"FromTime":"06:26:38","CurReading":"30.70"},{"FromTime":"06:46:28","CurReading":"30.60"},{"FromTime":"07:07:23","CurReading":"30.60"},{"FromTime":"07:26:36","CurReading":"30.60"},{"FromTime":"07:36:32","CurReading":"30.60"},{"FromTime":"07:46:26","CurReading":"30.60"},{"FromTime":"07:56:20","CurReading":"30.60"},{"FromTime":"08:06:15","CurReading":"30.60"},{"FromTime":"08:16:09","CurReading":"30.60"},{"FromTime":"08:26:32","CurReading":"30.50"},{"FromTime":"08:36:27","CurReading":"30.50"},{"FromTime":"08:46:22","CurReading":"30.50"},{"FromTime":"08:56:13","CurReading":"30.50"},{"FromTime":"09:06:36","CurReading":"30.50"},{"FromTime":"09:16:31","CurReading":"30.50"},{"FromTime":"09:26:26","CurReading":"30.40"},{"FromTime":"09:36:21","CurReading":"30.40"},{"FromTime":"09:46:17","CurReading":"30.50"},{"FromTime":"09:56:22","CurReading":"30.50"},{"FromTime":"10:06:17","CurReading":"30.50"},{"FromTime":"10:16:11","CurReading":"30.60"},{"FromTime":"10:26:35","CurReading":"30.60"},{"FromTime":"10:36:29","CurReading":"30.60"},{"FromTime":"10:46:24","CurReading":"30.60"},{"FromTime":"10:56:19","CurReading":"30.70"}],"hmd":[{"FromTime":"00:04:13","CurReading":"71.70"},{"FromTime":"00:19:43","CurReading":"71.90"},{"FromTime":"00:36:02","CurReading":"72.00"},{"FromTime":"00:51:31","CurReading":"71.80"},{"FromTime":"01:07:01","CurReading":"71.40"},{"FromTime":"01:22:33","CurReading":"71.10"},{"FromTime":"01:42:31","CurReading":"70.80"},{"FromTime":"02:02:18","CurReading":"69.90"},{"FromTime":"02:22:38","CurReading":"69.30"},{"FromTime":"02:42:27","CurReading":"69.10"},{"FromTime":"03:02:21","CurReading":"68.60"},{"FromTime":"03:22:25","CurReading":"67.90"},{"FromTime":"03:42:14","CurReading":"67.60"},{"FromTime":"04:02:11","CurReading":"67.80"},{"FromTime":"04:23:00","CurReading":"68.20"},{"FromTime":"04:43:55","CurReading":"69.10"},{"FromTime":"05:04:42","CurReading":"69.20"},{"FromTime":"05:25:30","CurReading":"69.80"},{"FromTime":"05:45:28","CurReading":"69.70"},{"FromTime":"06:05:46","CurReading":"69.70"},{"FromTime":"06:26:38","CurReading":"69.70"},{"FromTime":"06:46:28","CurReading":"69.50"},{"FromTime":"07:07:23","CurReading":"69.30"},{"FromTime":"07:26:36","CurReading":"69.20"},{"FromTime":"07:36:32","CurReading":"69.50"},{"FromTime":"07:46:26","CurReading":"69.50"},{"FromTime":"07:56:20","CurReading":"69.50"},{"FromTime":"08:06:15","CurReading":"69.60"},{"FromTime":"08:16:09","CurReading":"69.30"},{"FromTime":"08:26:32","CurReading":"69.00"},{"FromTime":"08:36:27","CurReading":"68.60"},{"FromTime":"08:46:22","CurReading":"68.50"},{"FromTime":"08:56:13","CurReading":"68.30"},{"FromTime":"09:06:36","CurReading":"68.40"},{"FromTime":"09:16:31","CurReading":"68.30"},{"FromTime":"09:26:26","CurReading":"67.80"},{"FromTime":"09:36:21","CurReading":"68.30"},{"FromTime":"09:46:17","CurReading":"68.20"},{"FromTime":"09:56:22","CurReading":"68.30"},{"FromTime":"10:06:17","CurReading":"68.50"},{"FromTime":"10:16:11","CurReading":"68.50"},{"FromTime":"10:26:35","CurReading":"68.60"},{"FromTime":"10:36:29","CurReading":"68.70"},{"FromTime":"10:46:24","CurReading":"69.10"},{"FromTime":"10:56:19","CurReading":"69.10"}],"co":0}]';
 
-    var d1 = JSON.parse(data);
+var d1 = JSON.parse(data);
 $("#temp").text(d1[0]["temp"]+(' \u2103'));
 $("#hmd").text(Math.round(d1[0]["humidity"])+(' %RH'));
 $("#co").text(d1[0]["co2"]+(''));
 $("#temptext").val(d1[0]["temp"]+(' \u2103'));
 $("#hmdtext").val(Math.round(d1[0]["humidity"])+(' %RH'));
 
-    var xdata = new Array();
-    var ydata = new Array();
+var xdata = new Array();
+var ydata = new Array();
 
-    var xdatahmd = new Array();
-    var ydatahmd = new Array();
+var xdatahmd = new Array();
+var ydatahmd = new Array();
 
-    var xdataco = new Array();
-    var ydataco = new Array();
-    //var jsondata = JSON.parse(data);
-    for (i = 0; i < d1[1]['tmp'].length; i++) 
-    { 
-        xdata[i] = d1[1]['tmp'][i]['FromTime'];
-        ydata[i] = parseFloat(d1[1]['tmp'][i]['CurReading']); 
-        
-      
-    }
-     for (i = 0; i < d1[1]['hmd'].length; i++) 
-    { 
-        xdatahmd[i] = d1[1]['hmd'][i]['FromTime'];
-        ydatahmd[i] = parseInt(d1[1]['hmd'][i]['CurReading']); 
-        
-      
-    }
-    Highcharts.chart('container_temp', {
-        chart: {
-            type: 'line'
-        },credits: {
-                          enabled: false
-                      },
-        title: {
-            text: 'Temperature'
-        },
-       
-        xAxis: {
-            categories: xdata
-        },
-        yAxis: {
-            title: {
-                text: 'Temperature oC'
-            },
-                      tickInterval: 10,
-                      min:0,
-                      max:60     
+var xdataco = new Array();
+var ydataco = new Array();
+//var jsondata = JSON.parse(data);
+for (i = 0; i < d1[1]['tmp'].length; i++)
+{
+xdata[i] = d1[1]['tmp'][i]['FromTime'];
+ydata[i] = parseFloat(d1[1]['tmp'][i]['CurReading']);
 
-        },
+}
+for (i = 0; i < d1[1]['hmd'].length; i++)
+{
+xdatahmd[i] = d1[1]['hmd'][i]['FromTime'];
+ydatahmd[i] = parseInt(d1[1]['hmd'][i]['CurReading']);
 
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 0
-            }
-        },
-       
-        series: [{
-            name: 'Temperature',
-            data: ydata
-        }]
-    });
+}
+Highcharts.chart('container_temp', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: 'Temperature'
+},
 
-    Highcharts.chart('container_hmd', {
-        chart: {
-            type: 'line'
-        },
-        credits: {
-                          enabled: false
-                      },
-        title: {
-            text: 'Humidity'
-        },
-       
-        xAxis: {
-            categories: xdatahmd
-        },
-        yAxis: {
-            title: {
-                text: 'Humidity %RH'
-            },
-          tickInterval: 10,
-                      min:0,
-                      max:100   
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'Temperature oC'
+},
+tickInterval: 10,
+min:0,
+max:60
 
-        },
+},
 
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 0
-            }
-        },
-       
-        series: [{
-            name: 'Humidity',
-            data: ydatahmd
-        }]
-    });
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
 
-    Highcharts.chart('container_co2', {
-        chart: {
-            type: 'line'
-        },credits: {
-                          enabled: false
-                      },
-        title: {
-            text: 'CO2'
-        },
-       
-        xAxis: {
-            categories: xdata
-        },
-        yAxis: {
-            title: {
-                text: 'CO2'
-            }
-        },
+series: [{
+name: 'Temperature',
+data: ydata
+}]
+});
 
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 0
-            }
-        },
-       
-        series: [{
-            name: 'CO2',
-            data: ydata
-        }]
-    });
-    Highcharts.chart('container_co', {
-        chart: {
-            type: 'line'
-        },credits: {
-                          enabled: false
-                      },
-        title: {
-            text: ' '
-        },
-       
-        xAxis: {
-            categories: xdata
-        },
-        yAxis: {
-            title: {
-                text: 'CO'
-            }
-        },
+Highcharts.chart('container_hmd', {
+chart: {
+type: 'line'
+},
+credits: {
+enabled: false
+},
+title: {
+text: 'Humidity'
+},
 
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 0
-            }
-        },
-       
-        series: [{
-            name: 'CO',
-            data: ydata
-        }]
-    });
-     Highcharts.chart('container_pressure', {
-        chart: {
-            type: 'line'
-        },credits: {
-                          enabled: false
-                      },
-        title: {
-            text: ' '
-        },
-       
-        xAxis: {
-            categories: xdata
-        },
-        yAxis: {
-            title: {
-                text: 'Bar'
-            }
-        },
+xAxis: {
+categories: xdatahmd
+},
+yAxis: {
+title: {
+text: 'Humidity %RH'
+},
+tickInterval: 10,
+min:0,
+max:100
 
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 0
-            }
-        },
-       
-        series: [{
-            name: 'Pressure1',
-            data: ydata
-        }]
-    });
-     Highcharts.chart('container_pm', {
-        chart: {
-            type: 'line'
-        },credits: {
-                          enabled: false
-                      },
-        title: {
-            text: ' '
-        },
-       
-        xAxis: {
-            categories: xdata
-        },
-        yAxis: {
-            title: {
-                text: 'Micrograms per cubic meter'
-            }
-        },
+},
 
-        plotOptions: {
-            series: {
-                label: {
-                    connectorAllowed: false
-                },
-                pointStart: 0
-            }
-        },
-       
-        series: [{
-            name: 'PM2.5',
-            data: ydata
-        }]
-    });
-    // iaq data end
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'Humidity',
+data: ydatahmd
+}]
+});
+
+Highcharts.chart('container_co2', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: 'CO2'
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'CO2'
+}
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'CO2',
+data: ydata
+}]
+});
+Highcharts.chart('container_co', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: ' '
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'CO'
+}
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'CO',
+data: ydata
+}]
+});
+Highcharts.chart('container_pressure', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: ' '
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'Bar'
+}
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'Pressure1',
+data: ydata
+}]
+});
+Highcharts.chart('container_pm', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: ' '
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'Micrograms per cubic meter'
+}
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'PM2.5',
+data: ydata
+}]
+});
+// iaq data end
 // $('.bxslider555').bxSlider({
-  // minSlides: 2,
-  // maxSlides: 4,
-  // slideWidth: 300,
-  // slideMargin: 0,
-  // responsive: false
+// minSlides: 2,
+// maxSlides: 4,
+// slideWidth: 300,
+// slideMargin: 0,
+// responsive: false
 // });
 
 // $( window ).resize(function () {
-  // console.log('rs');
-  // bxSlider.reloadSlider();
+// console.log('rs');
+// bxSlider.reloadSlider();
 // });
 
-*/?>
- function em(id){   
-    $('.em-disc'+id).toggle('slow'); 
+ */?>
+ function em(id){
+    $('.em-disc'+id).toggle('slow');
     $('.em'+id).hide();
     $('.em-hide'+id).show();
  }
@@ -1923,13 +1831,13 @@ function device(a){
   if($( ".devicebox"+a ).is( ":visible" ))
         {
       // alert("aaaa");
-            $('.devicebox'+a).hide('slow'); 
+            $('.devicebox'+a).hide('slow');
             $("#device"+a).addClass("Expndd");
         }
         else if($( ".devicebox"+a ).is( ":hidden" ))
         {
       // alert("bbb");
-            $('.devicebox'+a).show('slow'); 
+            $('.devicebox'+a).show('slow');
             $("#device"+a).removeClass("Expndd");
         }
 }
@@ -1937,41 +1845,41 @@ function device3(a){
   if($( ".devicebox"+a ).is( ":visible" ))
         {
        //alert("aaaa");
-            $('.devicebox'+a).hide('slow'); 
+            $('.devicebox'+a).hide('slow');
             $("#device"+a).addClass("Expndd");
         }
         else if($( ".devicebox"+a ).is( ":hidden" ))
         {
       // alert("bbb");
-            $('.devicebox'+a).show('slow'); 
+            $('.devicebox'+a).show('slow');
             $("#device"+a).removeClass("Expndd");
         }
 }
 function device1(a){
   if($( ".devicebox"+a ).is( ":visible" ))
         {
-            $('.devicebox'+a).hide('slow'); 
+            $('.devicebox'+a).hide('slow');
             $("#device"+a).addClass("Expndd");
         }
         else if($( ".devicebox"+a ).is( ":hidden" ))
         {
-            $('.devicebox'+a).show('slow'); 
+            $('.devicebox'+a).show('slow');
             $("#device"+a).removeClass("Expndd");
         }
 }
 function device2(a){
   if($( ".devicebox"+a ).is( ":visible" ))
         {
-            $('.devicebox'+a).hide('slow'); 
+            $('.devicebox'+a).hide('slow');
             $("#device"+a).addClass("Expndd1");
         }
         else if($( ".devicebox"+a ).is( ":hidden" ))
         {
-            $('.devicebox'+a).show('slow'); 
+            $('.devicebox'+a).show('slow');
             $("#device"+a).removeClass("Expndd1");
 			$('.bx'+a).addClass("bxheight");
 			//$(".devicebox5555").css("height", "500px");
-			$(".bx-viewport").css("height", "fit-content");			
+			$(".bx-viewport").css("height", "fit-content");
         }
 }
 
@@ -1979,15 +1887,15 @@ function device2(a){
 function deviceall(){
   if($( ".device" ).is( ":visible" ))
         {
-      
-            $('.device').hide('slow'); 
+
+            $('.device').hide('slow');
             $(".deviceall").addClass("Expnd");
       $(".dev").addClass("Expndd");
         }
         else if($( ".device" ).is( ":hidden" ))
         {
-      
-            $('.device').show('slow'); 
+
+            $('.device').show('slow');
             $(".deviceall").removeClass("Expnd");
       $(".dev").removeClass("Expndd");
         }
@@ -2002,6 +1910,6 @@ $('#exampleModal').on('show.bs.modal', function (event) {
   modal.find('.modal-title').text('New message to ' + recipient)
   modal.find('.modal-body input').val(recipient)
 })
- </script>  
+ </script>
 </html>
 

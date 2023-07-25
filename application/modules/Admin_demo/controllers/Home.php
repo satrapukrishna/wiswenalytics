@@ -112,27 +112,380 @@ class Home extends MX_Controller {
 
 			}
 		}
-		if(isset($hardwares['Water Meter']['hardaware_list'])){
-			for ($i=0; $i <count($hardwares['Water Meter']['hardaware_list']) ; $i++) { 
-				$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter($hardwares['Water Meter']['hardaware_list'][$i]);
-			}
-			$data['water_meter_data']=$flowmeterdata;
-		}
-		
-		//echo json_encode($flowmeterdata);die();
-		 $dps1=array();
-		
-		for($k=0;$k<count($flowmeterdata);$k++){
-			$dps1[$k]['meter']=$flowmeterdata[$k]['meter'];
+		// if(isset($hardwares['Water Meter']['hardaware_list'])){
+		// 	for ($i=0; $i <count($hardwares['Water Meter']['hardaware_list']) ; $i++) { 
+		// 		$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter($hardwares['Water Meter']['hardaware_list'][$i]);
+		// 	}
+		// 	$data['water_meter_data']=$flowmeterdata;
+		// }
+			$ww[0]['meter']="Borewell 1 (IN)";
+			$ww[0]['monthly_data']=[];
+			$ww[0]['todayconsumption']=22;
+			$ww[0]['yesterdayconsumption']=44;
+			$ww[0]['monthly_consumption']=1304.7;
+			$ww[0]['weeklyavg']=45;
+
+			$ww[1]['meter']="Borewell 2 (IN)";
+			$ww[1]['monthly_data']=[];
+			$ww[1]['todayconsumption']=23;
+			$ww[1]['yesterdayconsumption']=42;
+			$ww[1]['monthly_consumption']=1244.7;
+			$ww[1]['weeklyavg']=41;
+
+			$ww[2]['meter']="Marketing Office & Garden";
+			$ww[2]['monthly_data']=[];
+			$ww[2]['todayconsumption']=0;
+			$ww[2]['yesterdayconsumption']=6;
+			$ww[2]['monthly_consumption']=125.7;
+			$ww[2]['weeklyavg']=4.1;
+
+			$ww[3]['meter']="TPI(OUT)";
+			$ww[3]['monthly_data']=[];
+			$ww[3]['todayconsumption']=4;
+			$ww[3]['yesterdayconsumption']=9;
+			$ww[3]['monthly_consumption']=234;
+			$ww[3]['weeklyavg']=7;
+
+			$ww[4]['meter']="A4 BUILDING(OUT)";
+			$ww[4]['monthly_data']=[];
+			$ww[4]['todayconsumption']=0;
+			$ww[4]['yesterdayconsumption']=1;
+			$ww[4]['monthly_consumption']=43;
+			$ww[4]['weeklyavg']=1.6;
+			$data['water_meter_data']=$ww;
+			$tt[0]['meter']="Borewell 1 (IN)";
 			
-			$tot=0;
-			for ($i=0; $i < count($flowmeterdata[$k]['monthly_data']); $i++) { 
-				$dps1[$k]['dates'][$i]=$flowmeterdata[$k]['monthly_data'][$i]['date'];				
-				$dps1[$k]['conses'][$i]=(int)$flowmeterdata[$k]['monthly_data'][$i]['con'];						
+			$tt[0]['dates']=[
+				"2022-01-01",
+				"2022-01-02",
+				"2022-01-03",
+				"2022-01-04",
+				"2022-01-05",
+				"2022-01-06",
+				"2022-01-07",
+				"2022-01-08",
+				"2022-01-09",
+				"2022-01-10",
+				"2022-01-11",
+				"2022-01-12",
+				"2022-01-13",
+				"2022-01-14",
+				"2022-01-15",
+				"2022-01-16",
+				"2022-01-17",
+				"2022-01-18",
+				"2022-01-19",
+				"2022-01-20",
+				"2022-01-21",
+				"2022-01-22",
+				"2022-01-23",
+				"2022-01-24",
+				"2022-01-25",
+				"2022-01-26",
+				"2022-01-27",
+				"2022-01-28",
+				"2022-01-29"
+				];
+			$tt[0]['conses']=[
+				20,
+				13,
+				60,
+				24,
+				50,
+				67,
+				66,
+				65,
+				14,
+				50,
+				66,
+				63,
+				43,
+				42,
+				18,
+				20,
+				67,
+				52,
+				49,
+				62,
+				64,
+				66,
+				50,
+				65,
+				58,
+				44,
+				18,
+				0,
+				0
+				];
+				$tt[1]['meter']="Borewell 2 (IN)";
+			$tt[1]['dates']=[
+				"2022-01-01",
+				"2022-01-02",
+				"2022-01-03",
+				"2022-01-04",
+				"2022-01-05",
+				"2022-01-06",
+				"2022-01-07",
+				"2022-01-08",
+				"2022-01-09",
+				"2022-01-10",
+				"2022-01-11",
+				"2022-01-12",
+				"2022-01-13",
+				"2022-01-14",
+				"2022-01-15",
+				"2022-01-16",
+				"2022-01-17",
+				"2022-01-18",
+				"2022-01-19",
+				"2022-01-20",
+				"2022-01-21",
+				"2022-01-22",
+				"2022-01-23",
+				"2022-01-24",
+				"2022-01-25",
+				"2022-01-26",
+				"2022-01-27",
+				"2022-01-28",
+				"2022-01-29"
+				];
+			$tt[1]['conses']=[
+				26,
+				67,
+				50,
+				54,
+				67,
+				62,
+				83,
+				83,
+				18,
+				57,
+				83,
+				71,
+				82,
+				19,
+				41,
+				43,
+				16,
+				54,
+				82,
+				83,
+				82,
+				75,
+				59,
+				81,
+				73,
+				70,
+				71,
+				48,
+				0
+				];
+
+			$tt[2]['meter']="Marketing Office & Garden";
+			$tt[2]['dates']=[
+				"2022-01-01",
+				"2022-01-02",
+				"2022-01-03",
+				"2022-01-04",
+				"2022-01-05",
+				"2022-01-06",
+				"2022-01-07",
+				"2022-01-08",
+				"2022-01-09",
+				"2022-01-10",
+				"2022-01-11",
+				"2022-01-12",
+				"2022-01-13",
+				"2022-01-14",
+				"2022-01-15",
+				"2022-01-16",
+				"2022-01-17",
+				"2022-01-18",
+				"2022-01-19",
+				"2022-01-20",
+				"2022-01-21",
+				"2022-01-22",
+				"2022-01-23",
+				"2022-01-24",
+				"2022-01-25",
+				"2022-01-26",
+				"2022-01-27",
+				"2022-01-28",
+				"2022-01-29"
+				];
+			$tt[2]['conses']=[
+				0,
+				0,
+				0,
+				0,
+				1,
+				0,
+				1,
+				2,
+				0,
+				0,
+				12,
+				9,
+				5,
+				3,
+				4,
+				2,
+				0,
+				4,
+				12,
+				23,
+				14,
+				12,
+				0,
+				1,
+				2,
+				1,
+				1,
+				1,
+				6
+				];
+
+			$tt[3]['meter']="TPI(OUT)";
+			$tt[3]['dates']=[
+				"2022-01-01",
+				"2022-01-02",
+				"2022-01-03",
+				"2022-01-04",
+				"2022-01-05",
+				"2022-01-06",
+				"2022-01-07",
+				"2022-01-08",
+				"2022-01-09",
+				"2022-01-10",
+				"2022-01-11",
+				"2022-01-12",
+				"2022-01-13",
+				"2022-01-14",
+				"2022-01-15",
+				"2022-01-16",
+				"2022-01-17",
+				"2022-01-18",
+				"2022-01-19",
+				"2022-01-20",
+				"2022-01-21",
+				"2022-01-22",
+				"2022-01-23",
+				"2022-01-24",
+				"2022-01-25",
+				"2022-01-26",
+				"2022-01-27",
+				"2022-01-28",
+				"2022-01-29"
+				];
+			$tt[3]['conses']=[
+				4,
+				5,
+				8,
+				6,
+				8,
+				15,
+				12,
+				8,
+				0,
+				9,
+				9,
+				8,
+				8,
+				3,
+				2,
+				5,
+				6,
+				7,
+				10,
+				11,
+				10,
+				8,
+				6,
+				11,
+				11,
+				5,
+				8,
+				11,
+				9
+				];
+
+			$tt[4]['meter']="A4 BUILDING(OUT)";
+			$tt[4]['dates']=[
+				"2022-01-01",
+				"2022-01-02",
+				"2022-01-03",
+				"2022-01-04",
+				"2022-01-05",
+				"2022-01-06",
+				"2022-01-07",
+				"2022-01-08",
+				"2022-01-09",
+				"2022-01-10",
+				"2022-01-11",
+				"2022-01-12",
+				"2022-01-13",
+				"2022-01-14",
+				"2022-01-15",
+				"2022-01-16",
+				"2022-01-17",
+				"2022-01-18",
+				"2022-01-19",
+				"2022-01-20",
+				"2022-01-21",
+				"2022-01-22",
+				"2022-01-23",
+				"2022-01-24",
+				"2022-01-25",
+				"2022-01-26",
+				"2022-01-27",
+				"2022-01-28",
+				"2022-01-29"
+				];
+			$tt[4]['conses']=[
+				0,
+				0,
+				1,
+				1,
+				1,
+				1,
+				1,
+				1,
+				0,
+				1,
+				1,
+				1,
+				1,
+				0,
+				1,
+				0,
+				2,
+				2,
+				2,
+				2,
+				2,
+				2,
+				1,
+				2,
+				3,
+				3,
+				2,
+				2,
+				1
+				];
+		//echo json_encode($flowmeterdata);die();
+		//  $dps1=array();
+		
+		// for($k=0;$k<count($flowmeterdata);$k++){
+		// 	$dps1[$k]['meter']=$flowmeterdata[$k]['meter'];
+			
+		// 	$tot=0;
+		// 	for ($i=0; $i < count($flowmeterdata[$k]['monthly_data']); $i++) { 
+		// 		$dps1[$k]['dates'][$i]=$flowmeterdata[$k]['monthly_data'][$i]['date'];				
+		// 		$dps1[$k]['conses'][$i]=(int)$flowmeterdata[$k]['monthly_data'][$i]['con'];						
 				
-			}
-		}
-		$data['water_meter_data_month']=$dps1;
+		// 	}
+		// }
+		$data['water_meter_data_month']=$tt;
 		//echo json_encode($flowmeterdata);die();
 		//echo json_encode($dps1);die();
 			echo json_encode($data);
@@ -158,38 +511,236 @@ class Home extends MX_Controller {
 		}
 		
 	
-		  if(count($hardwares['Water Level']['hardaware_list'])>0){
-				for ($i=0; $i <count($hardwares['Water Level']['hardaware_list']) ; $i++) { 
-					$waterleveldata[$i]=$this->Api_data_model->get_hardwares_device_data_waterlevelmeter($hardwares['Water Level']['hardaware_list'][$i]);
-				}		
-			$data['waterlevel_data']=$waterleveldata;
-			}
-			// echo json_encode($waterleveldata);die();
-		if(isset($hardwares['Borewells']['hardaware_list'])){
-			for ($i=0; $i <count($hardwares['Borewells']['hardaware_list']) ; $i++) { 
-				$borewelldata[$i]=$this->Api_data_model->get_hardwares_device_data_borewell($hardwares['Borewells']['hardaware_list'][$i]);
-			}
-			// echo json_encode($waterleveldata);die();
-			$data['borewell_data']=$borewelldata;
-		}
-		
-		if(isset($hardwares['Firepump']['hardaware_list'])){
-			for ($i=0; $i <count($hardwares['Firepump']['hardaware_list']) ; $i++) { 
-				$firepumpdata[$hardwares['Firepump']['hardaware_list'][$i]['dashboard_name']]=$this->Api_data_model->get_hardwares_device_data_firepump($hardwares['Firepump']['hardaware_list'][$i]);
-			}
-			// echo json_encode($firepumpdata);die();
+		//   if(count($hardwares['Water Level']['hardaware_list'])>0){
+		// 		for ($i=0; $i <count($hardwares['Water Level']['hardaware_list']) ; $i++) { 
+		// 			$waterleveldata[$i]=$this->Api_data_model->get_hardwares_device_data_waterlevelmeter($hardwares['Water Level']['hardaware_list'][$i]);
+		// 		}		
+		// 	$data['waterlevel_data']=$waterleveldata;
+		// 	}
+			$waterleveldata[0]['meter']="Fire Water Tank 01";
+			$waterleveldata[0]['capacity']=270;
+			$waterleveldata[0]['currentlevel']=245.93;
+			$waterleveldata[0]['filledpercent']=91.08;
+			$waterleveldata[0]['filledpercent_1']=91;
 
-			// echo json_encode($firepumpdata['Phase-2 Fire Pump System']['dg_data']);die();
-			$data['firepump_data']=$firepumpdata;
-		}
-		if(isset($hardwares['Hydro Pnematic System']['hardaware_list'])){
-			for ($i=0; $i <count($hardwares['Hydro Pnematic System']['hardaware_list']) ; $i++) { 
-				$hydrodata[$hardwares['Hydro Pnematic System']['hardaware_list'][$i]['dashboard_name']]=$this->Api_data_model->get_hardwares_device_data_hydro($hardwares['Hydro Pnematic System']['hardaware_list'][$i]);
-			}
+			$waterleveldata[1]['meter']="Fire Water Tank 02";
+			$waterleveldata[1]['capacity']=305;
+			$waterleveldata[1]['currentlevel']=283.26;
+			$waterleveldata[1]['filledpercent']=92.87;
+			$waterleveldata[1]['filledpercent_1']=93;
+
+			$waterleveldata[2]['meter']="Fire Water Tank 03";
+			$waterleveldata[2]['capacity']=305;
+			$waterleveldata[2]['currentlevel']=264.27;
+			$waterleveldata[2]['filledpercent']=86.65;
+			$waterleveldata[2]['filledpercent_1']=87;
+
+			$waterleveldata[3]['meter']="Raw Water Tank";
+			$waterleveldata[3]['capacity']=107;
+			$waterleveldata[3]['currentlevel']=52.93;
+			$waterleveldata[3]['filledpercent']=87.08;
+			$waterleveldata[3]['filledpercent_1']=87;
+			$data['waterlevel_data']=$waterleveldata;
+			// echo json_encode($waterleveldata);die();
+		// if(isset($hardwares['Borewells']['hardaware_list'])){
+		// 	for ($i=0; $i <count($hardwares['Borewells']['hardaware_list']) ; $i++) { 
+		// 		$borewelldata[$i]=$this->Api_data_model->get_hardwares_device_data_borewell($hardwares['Borewells']['hardaware_list'][$i]);
+		// 	}
+		// 	// echo json_encode($waterleveldata);die();
 			
-			//   echo json_encode($hydrodata);die();
-			$data['hydro_data']=$hydrodata;
-		}
+
+		// 	$data['borewell_data']=$borewelldata;
+		// }
+		$b1[0]['meter']="Borewell 01";
+			$b1[0]['todayconsumption']="4 hours 49 minutes";
+			$b1[0]['yesterdayconsumption']="4 hours 20 minutes";
+			$b1[0]['monthly_consumption']="9 hours 38 minutes";
+
+			$b1[1]['meter']="Borewell 02";
+			$b1[1]['todayconsumption']="3 hours 22 minutes";
+			$b1[1]['yesterdayconsumption']="4 hours 33 minutes";
+			$b1[1]['monthly_consumption']="8 hours 38 minutes";
+
+			$data['borewell_data']="Borewell 01";
+			$b1[0]['todayconsumption']="4 hours 49 minutes";
+			$b1[0]['yesterdayconsumption']="4 hours 20 minutes";
+			$b1[0]['monthly_consumption']="9 hours 38 minutes";
+
+			$b1[1]['meter']="Borewell 02";
+			$b1[1]['todayconsumption']="3 hours 22 minutes";
+			$b1[1]['yesterdayconsumption']="4 hours 33 minutes";
+			$b1[1]['monthly_consumption']="8 hours 38 minutes";
+
+			$data['borewell_data']=$b1;
+		// if(isset($hardwares['Firepump']['hardaware_list'])){
+		// 	for ($i=0; $i <count($hardwares['Firepump']['hardaware_list']) ; $i++) { 
+		// 		$firepumpdata[$hardwares['Firepump']['hardaware_list'][$i]['dashboard_name']]=$this->Api_data_model->get_hardwares_device_data_firepump($hardwares['Firepump']['hardaware_list'][$i]);
+		// 	}
+		// 	// echo json_encode($firepumpdata);die();
+
+		// 	// echo json_encode($firepumpdata['Phase-2 Fire Pump System']['dg_data']);die();
+		// 	$data['firepump_data']=$firepumpdata;
+		// }
+		$ff['Phase-1 Fire Pump System']['run_data'][0]['meter']="Panel Power Supply";
+		$ff['Phase-1 Fire Pump System']['run_data'][0]['running_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][0]['switch_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][0]['today_running_hours']="";
+		$ff['Phase-1 Fire Pump System']['run_data'][0]['yesterday_running_hours']="";
+		$ff['Phase-1 Fire Pump System']['run_data'][0]['lastweek_running_hours']="";
+		$ff['Phase-1 Fire Pump System']['run_data'][0]['monthly_running_hours']="";
+
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['meter']="Jockey Pump";
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['running_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['switch_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['today_running_hours']="0 hours 2 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['yesterday_running_hours']="0 hours 0 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['lastweek_running_hours']="0 hours 24 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['monthly_running_hours']="1 days, 5 hours, 7 minutes";
+
+		$ff['Phase-1 Fire Pump System']['run_data'][2]['meter']="Main Pump";
+		$ff['Phase-1 Fire Pump System']['run_data'][2]['running_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][2]['switch_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][2]['today_running_hours']="0 hours 0 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][2]['yesterday_running_hours']="0 hours 0 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][2]['lastweek_running_hours']="0 hours 0 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][2]['monthly_running_hours']="0 days, 0 hours, 0 minutes";
+
+		$ff['Phase-1 Fire Pump System']['run_data'][3]['meter']="Diesel Engine Driven Pump";
+		$ff['Phase-1 Fire Pump System']['run_data'][3]['running_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][3]['switch_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][3]['today_running_hours']="0 hours 0 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][3]['yesterday_running_hours']="0 hours 0 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][3]['lastweek_running_hours']="0 hours 0 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][3]['monthly_running_hours']="0 days, 0 hours, 0 minutes";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][0]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][0]['TxnTime']="00:07:42";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][1]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][1]['TxnTime']="01:32:00";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][2]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][2]['TxnTime']="02:33:32";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][3]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][3]['TxnTime']="03:41:40";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][4]['pressure']=5.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][4]['TxnTime']="04:59:31";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][5]['pressure']=5.38;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][5]['TxnTime']="05:22:21";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][6]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][6]['TxnTime']="06:40:05";
+
+
+		$ff['Phase-1 Fire Pump System']['dg_data']['run']="00:00";
+		$ff['Phase-1 Fire Pump System']['dg_data']['fadd']=0;
+		$ff['Phase-1 Fire Pump System']['dg_data']['fremove']=0;
+		$ff['Phase-1 Fire Pump System']['dg_data']['fconsume1']=0;
+		$ff['Phase-1 Fire Pump System']['dg_data']['fconsume']=0;
+		$ff['Phase-1 Fire Pump System']['dg_data']['economy']=0;
+		$ff['Phase-1 Fire Pump System']['dg_data']['availableFuel']=267;
+		$ff['Phase-1 Fire Pump System']['dg_data']['filledper']=68;
+		$ff['Phase-1 Fire Pump System']['dg_data']['voltage']="24.5";
+		$ff['Phase-1 Fire Pump System']['dg_data']['status']="OFF";	
+
+		
+		$ff['Phase-2 Fire Pump System']['run_data'][1]['meter']="Jockey Pump";
+		$ff['Phase-2 Fire Pump System']['run_data'][1]['running_status']=true;
+		$ff['Phase-2 Fire Pump System']['run_data'][1]['switch_status']=true;
+		$ff['Phase-2 Fire Pump System']['run_data'][1]['today_running_hours']="0 hours 2 minutes";
+		$ff['Phase-2 Fire Pump System']['run_data'][1]['yesterday_running_hours']="0 hours 0 minutes";
+		$ff['Phase-2 Fire Pump System']['run_data'][1]['lastweek_running_hours']="0 hours 4 minutes";
+		$ff['Phase-2 Fire Pump System']['run_data'][1]['monthly_running_hours']="2 days, 0 hours, 40 minutes";
+
+		$ff['Phase-2 Fire Pump System']['run_data'][2]['meter']="Diesel Engine Driven Pump";
+		$ff['Phase-2 Fire Pump System']['run_data'][2]['running_status']=true;
+		$ff['Phase-2 Fire Pump System']['run_data'][2]['switch_status']=true;
+		$ff['Phase-2 Fire Pump System']['run_data'][2]['today_running_hours']="0 hours 0 minutes";
+		$ff['Phase-2 Fire Pump System']['run_data'][2]['yesterday_running_hours']="0 hours 0 minutes";
+		$ff['Phase-2 Fire Pump System']['run_data'][2]['lastweek_running_hours']="0 hours 0 minutes";
+		$ff['Phase-2 Fire Pump System']['run_data'][2]['monthly_running_hours']="0 days, 0 hours, 0 minutes";
+
+
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['pressure']=4.58;
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['TxnTime']="00:07:42";
+
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['pressure']=4.58;
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['TxnTime']="01:32:00";
+
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['pressure']=4.58;
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['TxnTime']="02:33:32";
+
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['pressure']=4.58;
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['TxnTime']="03:41:40";
+
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['pressure']=5.58;
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['TxnTime']="04:59:31";
+
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['pressure']=5.38;
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['TxnTime']="05:22:21";
+
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['pressure']=4.58;
+		$ff['Phase-2 Fire Pump System']['pressure_data'][0]['TxnTime']="06:40:05";
+
+
+		$ff['Phase-2 Fire Pump System']['dg_data']['run']="00:00";
+		$ff['Phase-2 Fire Pump System']['dg_data']['fadd']=0;
+		$ff['Phase-2 Fire Pump System']['dg_data']['fremove']=0;
+		$ff['Phase-2 Fire Pump System']['dg_data']['fconsume1']=0;
+		$ff['Phase-2 Fire Pump System']['dg_data']['fconsume']=0;
+		$ff['Phase-2 Fire Pump System']['dg_data']['economy']=0;
+		$ff['Phase-2 Fire Pump System']['dg_data']['availableFuel']=256;
+		$ff['Phase-2 Fire Pump System']['dg_data']['filledper']=70;
+		$ff['Phase-2 Fire Pump System']['dg_data']['voltage']="24.5";
+		$ff['Phase-2 Fire Pump System']['dg_data']['status']="OFF";	
+
+		$data['firepump_data']=$ff;
+			// if(isset($hardwares['Hydro Pnematic System']['hardaware_list'])){
+		// 	for ($i=0; $i <count($hardwares['Hydro Pnematic System']['hardaware_list']) ; $i++) { 
+		// 		$hydrodata[$hardwares['Hydro Pnematic System']['hardaware_list'][$i]['dashboard_name']]=$this->Api_data_model->get_hardwares_device_data_hydro($hardwares['Hydro Pnematic System']['hardaware_list'][$i]);
+		// 	}
+			
+		// 	//   echo json_encode($hydrodata);die();
+		// 	$data['hydro_data']=$hydrodata;
+		// }
+		$hh['Hydro Pnematic System 01']['run_data'][0]['meter']= "Motor-1";
+		$hh['Hydro Pnematic System 01']['run_data'][0]['running_status']= true;
+		$hh['Hydro Pnematic System 01']['run_data'][0]['today_running_hours']= "7 hours 12 minutes";
+		$hh['Hydro Pnematic System 01']['run_data'][0]['yesterday_running_hours']= "7 hours 12 minutes";
+		$hh['Hydro Pnematic System 01']['run_data'][0]['lastweek_running_hours']= "3 days, 2 hours, 46 minutes";
+		$hh['Hydro Pnematic System 01']['run_data'][0]['monthly_running_hours']= "0 days, 14 hours, 24 minutes";
+
+		$hh['Hydro Pnematic System 01']['run_data'][1]['meter']= "Motor-2";
+		$hh['Hydro Pnematic System 01']['run_data'][1]['running_status']= false;
+		$hh['Hydro Pnematic System 01']['run_data'][1]['today_running_hours']= "5 hours 12 minutes";
+		$hh['Hydro Pnematic System 01']['run_data'][1]['yesterday_running_hours']= "6 hours 12 minutes";
+		$hh['Hydro Pnematic System 01']['run_data'][1]['lastweek_running_hours']= "2 days, 22 hours, 46 minutes";
+		$hh['Hydro Pnematic System 01']['run_data'][1]['monthly_running_hours']= "0 days, 13 hours, 24 minutes";
+
+		$hh['Hydro Pnematic System 01']['pressure_data'][0]['pressure']=4.58;
+		$hh['Hydro Pnematic System 01']['pressure_data'][0]['TxnTime']="00:07:42";
+
+		$hh['Hydro Pnematic System 01']['pressure_data'][1]['pressure']=4.58;
+		$hh['Hydro Pnematic System 01']['pressure_data'][1]['TxnTime']="01:32:00";
+
+		$hh['Hydro Pnematic System 01']['pressure_data'][2]['pressure']=4.58;
+		$hh['Hydro Pnematic System 01']['pressure_data'][2]['TxnTime']="02:33:32";
+
+		$hh['Hydro Pnematic System 01']['pressure_data'][3]['pressure']=4.58;
+		$hh['Hydro Pnematic System 01']['pressure_data'][3]['TxnTime']="03:41:40";
+
+		$hh['Hydro Pnematic System 01']['pressure_data'][4]['pressure']=5.58;
+		$hh['Hydro Pnematic System 01']['pressure_data'][4]['TxnTime']="04:59:31";
+
+		$hh['Hydro Pnematic System 01']['pressure_data'][5]['pressure']=5.38;
+		$hh['Hydro Pnematic System 01']['pressure_data'][5]['TxnTime']="05:22:21";
+
+		$hh['Hydro Pnematic System 01']['pressure_data'][6]['pressure']=4.58;
+		$hh['Hydro Pnematic System 01']['pressure_data'][6]['TxnTime']="06:40:05";
+		$data['hydro_data']=$hh;
 			$this->load->view('water-dashboard-chennai',$data);
 		
 		
@@ -218,29 +769,121 @@ class Home extends MX_Controller {
 			//echo "No Hardware data";
 		}
 		 //echo json_encode($hardwares);die();
-		if(isset($hardwares['DG']['hardaware_list'][0])){
-        for ($i=0; $i <count($hardwares['DG']['hardaware_list']) ; $i++) { 
-			$dgdata[$i]=$this->Api_data_model->get_hardwares_device_data($hardwares['DG']['hardaware_list'][$i]);
-		}
-		$data['dg_data']=$dgdata;
-	    }
-		
+		// if(isset($hardwares['DG']['hardaware_list'][0])){
+        // for ($i=0; $i <count($hardwares['DG']['hardaware_list']) ; $i++) { 
+		// 	$dgdata[$i]=$this->Api_data_model->get_hardwares_device_data($hardwares['DG']['hardaware_list'][$i]);
+		// }
+		// $data['dg_data']=$dgdata;
+	    // }
+			$ddg[0]['run']="0:0";
+			$ddg[0]['fadd']=0;
+			$ddg[0]['fremove']=0;
+			$ddg[0]['fconsume']=0;
+			$ddg[0]['economy']=0;
+			$ddg[0]['availableFuel']=370;
+			$ddg[0]['filledper']=97;
+			$ddg[0]['voltage']="13.34";
+			$ddg[0]['status']="OFF";
+			$ddg[0]['dgname']="Diesel Generator";
+			$gr[0]['time']="2023-05-19";
+			$gr[0]['meter']="Diesel Generator";
+			$gr[0]['runninghrs']=0;
+			$gr[1]['time']="2023-05-20";
+			$gr[1]['meter']="Diesel Generator";
+			$gr[1]['runninghrs']=0;
+			$gr[2]['time']="2023-05-21";
+			$gr[2]['meter']="Diesel Generator";
+			$gr[2]['runninghrs']=0;
+			$gr[3]['time']="2023-05-22";
+			$gr[3]['meter']="Diesel Generator";
+			$gr[3]['runninghrs']=4;
+			$gr[4]['time']="2023-05-23";
+			$gr[4]['meter']="Diesel Generator";
+			$gr[4]['runninghrs']=0;
+			$gr[5]['time']="2023-05-24";
+			$gr[5]['meter']="Diesel Generator";
+			$gr[5]['runninghrs']=10;
+
+
+						$ddg[0]['graph']=$gr;
+						$data['dg_data']=$ddg;
 		//echo json_encode($data['dg_data']);die();
 		
-			$powerdata[]=$this->Api_data_model->get_hardwares_device_data_power($hardwares['Power Supply']['hardaware_list'][$i]);
-		
-		$data['power_data']=$powerdata;
+			//$powerdata[]=$this->Api_data_model->get_hardwares_device_data_power($hardwares['Power Supply']['hardaware_list'][$i]);
+			$tp[0]['ebstatus']=0;
+			$tp[0]['dgstatus']=1;
+			$tp[0]['trip']='No Trip';
+			$tp[0]['meter']='Power Supply';
+		    $data['power_data']=$tp;
 		//echo json_encode($powerdata);die();
-		$data['lpg']=6;
-		$data['dg']=7;
-		$data['ups']=8;
 		
-	
-			if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
-				$data['energy_meters_data']=$this->Api_data_model->get_hardwares_device_data_energy_meters($hardwares['Energy Meter']['hardaware_list'][0]);
-			}
-			//$data['energy_meters_data']=array();
+		$eng[0]['pf']= "0.963";
+		$eng[0]['meter']= "Container office";
+		$eng[0]['todaycons']= 70.14;
+		$eng[0]['yestcons']= 132.51;
+		$eng[0]['monthcons']= 140.28;
+		$eng[0]['kw']= "2.269";
+		$eng[0]['avgcons']= 140.28;
+		$eng[0]['current1']= "0.39";
+		$eng[0]['current2']= "0.161";
+		$eng[0]['current3']= "9.048";
+		$eng[0]['voltage1']= "245.032";
+		$eng[0]['voltage2']= "246.427";
+		$eng[0]['voltage3']= "245.492";
+		$eng[0]['kva']= "2.356";
+		$eng[0]['kvah']= "0.305";
+
+		$eng[1]['pf']= "0.961";
+		$eng[1]['meter']= "A4 Building";
+		$eng[1]['todaycons']= 18.16;
+		$eng[1]['yestcons']= 34.03;
+		$eng[1]['monthcons']= 36.31;
+		$eng[1]['kw']= "1.775";
+		$eng[1]['avgcons']= 36.31;
+		$eng[1]['current1']= "5.571";
+		$eng[1]['current2']= "1.962";
+		$eng[1]['current3']= "0";
+		$eng[1]['voltage1']= "245.113";
+		$eng[1]['voltage2']= "246.427";
+		$eng[1]['voltage3']= "246.427";
+		$eng[1]['kva']= "1.848";
+		$eng[1]['kvah']= "0.094";
+
+		$eng[2]['pf']= "0.947";
+		$eng[2]['meter']= "LDB (Pump room)";
+		$eng[2]['todaycons']= 10.16;
+		$eng[2]['yestcons']= 13.03;
+		$eng[2]['monthcons']= 21.31;
+		$eng[2]['kw']= "0.575";
+		$eng[2]['avgcons']= 21.31;
+		$eng[2]['current1']= "0.998";
+		$eng[2]['current2']= "1.23";
+		$eng[2]['current3']= "0.243";
+		$eng[2]['voltage1']= "244.113";
+		$eng[2]['voltage2']= "246.427";
+		$eng[2]['voltage3']= "245.427";
+		$eng[2]['kva']= "0.607";
+		$eng[2]['kvah']= "0.077";
+
+		$eng[3]['pf']= "0.935";
+		$eng[3]['meter']= "Main I/C (EB)";
+		$eng[3]['todaycons']= 240.94;
+		$eng[3]['yestcons']= 864.25;
+		$eng[3]['monthcons']= 481.88;
+		$eng[3]['kw']= "20.078";
+		$eng[3]['avgcons']= 481.88;
+		$eng[3]['current1']= "32.255";
+		$eng[3]['current2']= "22.777";
+		$eng[3]['current3']= "28.378";
+		$eng[3]['voltage1']= "245.113";
+		$eng[3]['voltage2']= "246.427";
+		$eng[3]['voltage3']= "245.427";
+		$eng[3]['kva']= "20.607";
+		$eng[3]['kvah']= "20.077";
+
+		
 			
+			$data['energy_meters_data']=$eng;
 			$this->load->view('energy-dashboard_chennai',$data);
 		
 		
@@ -262,16 +905,11 @@ class Home extends MX_Controller {
 			$hardwares[0]['hardaware_list']=array();
 			//echo "No Hardware data";
 		}
-		//echo json_encode($hardwares);die();
-		for ($i=0; $i <count($hardwares['Switch Control']['hardaware_list']) ; $i++) { 
-			$scdata[$i]=$this->Api_data_model->get_hardwares_device_data_switch_control($hardwares['Switch Control']['hardaware_list'][$i]);
-		}
-		$data['switchcontrol_data']=$scdata;
-		//echo json_encode($scdata);die();
+		
 	
 			$data['switch_status_data']=$this->Api_data_model->get_hardwares_device_data_switch_status($hardwares['Switch Status']['hardaware_list'][0]);
-			//echo json_encode($data['switch_status_data']);die();
-			$this->load->view('switch_control_chennai',$data);
+			// echo json_encode($data['switch_status_data']);die();
+			$this->load->view('switch_control_chennai_staticchennai',$data);
 		
 	}
 	function switchcontrol_one(){

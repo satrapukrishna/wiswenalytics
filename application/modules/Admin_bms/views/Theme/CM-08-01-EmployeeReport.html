@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Reports</title>
+    <link rel="stylesheet" href="AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="AppTheme/Fonts/IconFont.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.ManpowerBreakdownSlider').bxSlider({
+                slideWidth: 400,
+                minSlides: 2,
+                maxSlides: 3,
+                moveSlides: 1,
+                hideControlOnEnd: true,
+                infiniteLoop: false,
+                slideMargin: 10
+            });
+            $('.AttendanceBreakdownSlider').bxSlider({
+                slideWidth: 550,
+                minSlides: 2,
+                maxSlides: 3,
+                moveSlides: 1,
+                hideControlOnEnd: true,
+                infiniteLoop: false,
+                slideMargin: 10
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="AppHeader">
+        <div class="AppMnuTtlHldr">
+            <div class="TtlHldr">
+                <div class="ClntLgoHldr">
+                    <img src="Images/CompanyLogo.png" class="Lgo" />
+                </div>
+            </div>
+        </div>
+        <div class="AppUsrCntrlHldr">
+            <ul class="UsrNav">
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Notification"></a>
+                </li>
+                <li>
+                    <a href="#" class="NavLnk WISIcn-Help"></a>
+                </li>
+                <li>
+                    <div class="UsrDvHldr">
+                        <div class="UsrDtls">
+                            <div class="PrflNmeHldr">
+                                <span class="Nme">Vinay Kumar</span>
+                            </div>
+                            <div class="PrflImgHldr">
+                                <img src="Images/ProfileImage.jpg" class="PrfImg" />
+                                <span class="PrflTxtImg">
+                                    <span class="Intls">VK</span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppFooter">
+        <div class="AppVrsnDtls">
+            <span class="AppCurrVrsn">Version:<span class="Vrsn">v3.0.20</span></span>
+        </div>
+        <div class="AppPwrdDtls">
+            <span class="CorpTxt">Powered by<a href="#" class="Lnk" target="_blank">WIS</a></span>
+        </div>
+    </div>
+    <div class="AppMnuHldr">
+        <div class="MnuLstHldr">
+            <ul class="MnuLst">
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Dashboard"></span>
+                        <span class="LnkTxt">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Map"></span>
+                        <span class="LnkTxt">Locations</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Employees"></span>
+                        <span class="LnkTxt">Employees</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-AccessControl"></span>
+                        <span class="LnkTxt">Access Control</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Masters"></span>
+                        <span class="LnkTxt">Masters</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="Lnk">
+                        <span class="LnkIcn WISIcn-Menu-Reports"></span>
+                        <span class="LnkTxt">Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="AppMstrCntnr">
+        <div class="GnPgHdrDvHldr">
+            <div class="TtlHldr">
+                <span class="PgTtl">Employees Report</span>
+            </div>
+            <div class="NvBtnHldr">
+                <div class="Hldr">
+                    <div class="DtDsplHldr">
+                        <span class="DtTxt">11 May 2023</span>
+                    </div>
+                </div>
+                <div class="Hldr">
+                    <div class="AppCmpctTbHldr">
+                        <a href="#" class="TabLnk Actv">Today</a>
+                        <a href="#" class="TabLnk">This Week</a>
+                        <a href="#" class="TabLnk">Custom Date</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="GnPgCntntDvHldr DashboardView">
+            <div class="InnrCntntHldr">
+                <div class="FormHldr">
+                    <div class="row NoBrdr NoBG">
+                        <div class="col-1  NoPd">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Manpower Breadown</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="SldrHldr FllWdth">
+                                        <div class="ManpowerBreakdownSlider">
+                                            <div class="slide">
+                                                <div class="MnpwrPrtDshHldr Hghlght">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Total Positions</span>
+                                                    </div>
+                                                    <div class="OvrvwHldr">
+                                                        <span class="Vlu">38</span>
+                                                        <span class="VluType">Employees</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Full Time</span>
+                                                            <span class="Txt">20</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Part Time</span>
+                                                            <span class="Txt">6</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Contract</span>
+                                                            <span class="Txt">10</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Vacancy</span>
+                                                            <span class="Txt">2</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="MnpwrPrtDshHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Electrical</span>
+                                                        <a href="#" class="Lnk Icn WISIcn-Information"></a>
+                                                    </div>
+                                                    <div class="OvrvwHldr">
+                                                        <span class="Vlu">11</span>
+                                                        <span class="VluType">Employees</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Full Time</span>
+                                                            <span class="Txt">20</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Part Time</span>
+                                                            <span class="Txt">6</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Contract</span>
+                                                            <span class="Txt">10</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Vacancy</span>
+                                                            <span class="Txt">2</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="MnpwrPrtDshHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Civil</span>
+                                                        <a href="#" class="Lnk Icn WISIcn-Information"></a>
+                                                    </div>
+                                                    <div class="OvrvwHldr">
+                                                        <span class="Vlu">8</span>
+                                                        <span class="VluType">Employees</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Full Time</span>
+                                                            <span class="Txt">20</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Part Time</span>
+                                                            <span class="Txt">6</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Contract</span>
+                                                            <span class="Txt">10</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Vacancy</span>
+                                                            <span class="Txt">2</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="MnpwrPrtDshHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Sanitation</span>
+                                                        <a href="#" class="Lnk Icn WISIcn-Information"></a>
+                                                    </div>
+                                                    <div class="OvrvwHldr">
+                                                        <span class="Vlu">32</span>
+                                                        <span class="VluType">Employees</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Full Time</span>
+                                                            <span class="Txt">20</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Part Time</span>
+                                                            <span class="Txt">6</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Contract</span>
+                                                            <span class="Txt">10</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Vacancy</span>
+                                                            <span class="Txt">2</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="MnpwrPrtDshHldr">
+                                                    <div class="TtlHldr">
+                                                        <span class="TtlTxt">Mechanical</span>
+                                                        <a href="#" class="Lnk Icn WISIcn-Information"></a>
+                                                    </div>
+                                                    <div class="OvrvwHldr">
+                                                        <span class="Vlu">32</span>
+                                                        <span class="VluType">Employees</span>
+                                                    </div>
+                                                    <div class="DtlsHldr">
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Full Time</span>
+                                                            <span class="Txt">20</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Part Time</span>
+                                                            <span class="Txt">6</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Contract</span>
+                                                            <span class="Txt">10</span>
+                                                        </div>
+                                                        <div class="DtlDv">
+                                                            <span class="Ttl">Vacancy</span>
+                                                            <span class="Txt">2</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBG">
+                        <div class="col-1  NoPd">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Attendance Breadown</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <div class="AppCmpctTbHldr">
+                                            <a href="#" class="TabLnk Actv">Shift 1</a>
+                                            <a href="#" class="TabLnk">Shift 2</a>
+                                            <a href="#" class="TabLnk">Shift 3</a>
+                                        </div>
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="SldrHldr FllWdth">
+                                        <div class="AttendanceBreakdownSlider">
+                                            <div class="slide">
+                                                <div class="DashboardHldr InnrSldr BrdrRght">
+                                                    <div class="DshHdrHldr NoPadd">
+                                                        <div class="TtlHldr">
+                                                            <span class="TtlTxt SmlCse">Electrical</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="DshDtlHldr">
+                                                        <div class="FormHldr">
+                                                            <div class="row NoBrdr">
+                                                                <div class="col-66 NoPd">
+                                                                    <div class="GrphHldr CmpltRprt PChrt">
+                                                                        <canvas id="CmpltRsdBy"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3 FllHght NoPd AlgnCntntCntr">
+                                                                    <div class="GrphLgd">
+                                                                        <ul class="LgndLst">
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #64B5F6;"></span>
+                                                                                <span class="LgndNumb">26</span>
+                                                                                <span class="LgndTxt">On time</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #CA498C;"></span>
+                                                                                <span class="LgndNumb">3</span>
+                                                                                <span class="LgndTxt">Late &lt;30 mins</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #4DB6AC;"></span>
+                                                                                <span class="LgndNumb">1</span>
+                                                                                <span class="LgndTxt">Late 	&gt;30 mins</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #3F51B5;"></span>
+                                                                                <span class="LgndNumb">1</span>
+                                                                                <span class="LgndTxt">Half Day</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="DashboardHldr InnrSldr BrdrRght">
+                                                    <div class="DshHdrHldr NoPadd">
+                                                        <div class="TtlHldr">
+                                                            <span class="TtlTxt SmlCse">Civil</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="DshDtlHldr">
+                                                        <div class="FormHldr">
+                                                            <div class="row NoBrdr">
+                                                                <div class="col-66 NoPd">
+                                                                    <div class="GrphHldr CmpltRprt PChrt">
+                                                                        <canvas id="CmpltCivil"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3 FllHght NoPd AlgnCntntCntr">
+                                                                    <div class="GrphLgd">
+                                                                        <ul class="LgndLst">
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #64B5F6;"></span>
+                                                                                <span class="LgndNumb">26</span>
+                                                                                <span class="LgndTxt">On time</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #CA498C;"></span>
+                                                                                <span class="LgndNumb">3</span>
+                                                                                <span class="LgndTxt">Late &lt;30 mins</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #4DB6AC;"></span>
+                                                                                <span class="LgndNumb">1</span>
+                                                                                <span class="LgndTxt">Late 	&gt;30 mins</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #3F51B5;"></span>
+                                                                                <span class="LgndNumb">1</span>
+                                                                                <span class="LgndTxt">Half Day</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="DashboardHldr InnrSldr BrdrRght">
+                                                    <div class="DshHdrHldr NoPadd">
+                                                        <div class="TtlHldr">
+                                                            <span class="TtlTxt SmlCse">Plumbing</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="DshDtlHldr">
+                                                        <div class="FormHldr">
+                                                            <div class="row NoBrdr">
+                                                                <div class="col-66 NoPd">
+                                                                    <div class="GrphHldr CmpltRprt PChrt">
+                                                                        <canvas id="CmpltPlumb"></canvas>
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3 FllHght NoPd AlgnCntntCntr">
+                                                                    <div class="GrphLgd">
+                                                                        <ul class="LgndLst">
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #64B5F6;"></span>
+                                                                                <span class="LgndNumb">26</span>
+                                                                                <span class="LgndTxt">On time</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #CA498C;"></span>
+                                                                                <span class="LgndNumb">3</span>
+                                                                                <span class="LgndTxt">Late &lt;30 mins</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #4DB6AC;"></span>
+                                                                                <span class="LgndNumb">1</span>
+                                                                                <span class="LgndTxt">Late 	&gt;30 mins</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #3F51B5;"></span>
+                                                                                <span class="LgndNumb">1</span>
+                                                                                <span class="LgndTxt">Half Day</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="slide">
+                                                <div class="DashboardHldr InnrSldr BrdrRght">
+                                                    <div class="DshHdrHldr NoPadd">
+                                                        <div class="TtlHldr">
+                                                            <span class="TtlTxt SmlCse">Mechanical</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="DshDtlHldr">
+                                                        <div class="FormHldr">
+                                                            <div class="row NoBrdr">
+                                                                <div class="col-66 NoPd">
+                                                                    <div class="GrphHldr CmpltRprt PChrt">
+                                                                        <canvas id="CmpltMechanical"></canvas>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-3 FllHght NoPd AlgnCntntCntr">
+                                                                    <div class="GrphLgd">
+                                                                        <ul class="LgndLst">
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #64B5F6;"></span>
+                                                                                <span class="LgndNumb">26</span>
+                                                                                <span class="LgndTxt">On time</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #CA498C;"></span>
+                                                                                <span class="LgndNumb">3</span>
+                                                                                <span class="LgndTxt">Late &lt;30 mins</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #4DB6AC;"></span>
+                                                                                <span class="LgndNumb">1</span>
+                                                                                <span class="LgndTxt">Late 	&gt;30 mins</span>
+                                                                            </li>
+                                                                            <li>
+                                                                                <span class="LgndClr" style="background: #3F51B5;"></span>
+                                                                                <span class="LgndNumb">1</span>
+                                                                                <span class="LgndTxt">Half Day</span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBG">
+                        <div class="col-2 NoBG NoPd">
+                            <span class="FormTxtTtl Dshbrd">Complaints Overview</span>
+                        </div>
+                        <div class="col-2 NoBG RghAlgn">
+                            <a href="#" class="AppBtn Icn WISIcn-Add">Expand All</a>
+                            <a href="#" class="AppBtn Icn WISIcn-Minus">Collapse All</a>
+                        </div>
+                        <div class="col-1 NoPd">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Electrical</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-ArrowUp"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng">
+                                    <div class="GrphTblDv">
+                                        <table class="AppGenTable NoMrgnTop VAMiddle">
+                                            <thead>
+                                                <tr>
+                                                    <th>S. No.</th>
+                                                    <th>Emp. ID</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Employee Type</th>
+                                                    <th>Attendence (%)</th>
+                                                    <th>Allocated</th>
+                                                    <th>In Process</th>
+                                                    <th>Completed</th>
+                                                    <th>Reopened</th>
+                                                    <th>Avg. Rating</th>
+                                                    <th>Avg. time to complete</th>
+                                                    <th>Avg. time working</th>
+                                                    <th>Avg. time busy</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Plumbing</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng" style="display: none;">
+                                    <div class="GrphTblDv">
+                                        <table class="AppGenTable NoMrgnTop VAMiddle">
+                                            <thead>
+                                                <tr>
+                                                    <th>S. No.</th>
+                                                    <th>Emp. ID</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Employee Type</th>
+                                                    <th>Attendence (%)</th>
+                                                    <th>Allocated</th>
+                                                    <th>In Process</th>
+                                                    <th>Completed</th>
+                                                    <th>Reopened</th>
+                                                    <th>Avg. Rating</th>
+                                                    <th>Avg. time to complete</th>
+                                                    <th>Avg. time working</th>
+                                                    <th>Avg. time busy</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Mechanical</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng" style="display: none;">
+                                    <div class="GrphTblDv">
+                                        <table class="AppGenTable NoMrgnTop VAMiddle">
+                                            <thead>
+                                                <tr>
+                                                    <th>S. No.</th>
+                                                    <th>Emp. ID</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Employee Type</th>
+                                                    <th>Attendence (%)</th>
+                                                    <th>Allocated</th>
+                                                    <th>In Process</th>
+                                                    <th>Completed</th>
+                                                    <th>Reopened</th>
+                                                    <th>Avg. Rating</th>
+                                                    <th>Avg. time to complete</th>
+                                                    <th>Avg. time working</th>
+                                                    <th>Avg. time busy</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="DshHdrHldr Brdr">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Civil</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-ArrowDown"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr FllPddng" style="display: none;">
+                                    <div class="GrphTblDv">
+                                        <table class="AppGenTable NoMrgnTop VAMiddle">
+                                            <thead>
+                                                <tr>
+                                                    <th>S. No.</th>
+                                                    <th>Emp. ID</th>
+                                                    <th>Employee Name</th>
+                                                    <th>Employee Type</th>
+                                                    <th>Attendence (%)</th>
+                                                    <th>Allocated</th>
+                                                    <th>In Process</th>
+                                                    <th>Completed</th>
+                                                    <th>Reopened</th>
+                                                    <th>Avg. Rating</th>
+                                                    <th>Avg. time to complete</th>
+                                                    <th>Avg. time working</th>
+                                                    <th>Avg. time busy</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>1</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>3</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>4</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>5</td>
+                                                    <td>EMP-552</td>
+                                                    <td>Ramesh Kumar</td>
+                                                    <td>Full time</td>
+                                                    <td>88%</td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>21</td>
+                                                    <td>2</td>
+                                                    <td>
+                                                        <span class="Rating WISIcn-Rating4p5"></span>
+                                                    </td>
+                                                    <td>53</td>
+                                                    <td>2</td>
+                                                    <td>53</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row NoBG">
+                        <span class="FormTxtTtl Dshbrd">Top Repetitive Complaints</span>
+                        <div class="col-2 NoPd">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr ClrOneHghlgt">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Location wise</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr NoPddng">
+                                    <table class="AppGenTable NoMrgnTop ClrOneHghlgt VAMiddle">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Location Name</th>
+                                                <th>Building Name</th>
+                                                <th>Complaint Category</th>
+                                                <th>Repetitive Issues</th>
+                                                <th>Avg. Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>Location Name</td>
+                                                <td>Building Name</td>
+                                                <td>Electrical</td>
+                                                <td>14</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>Location Name</td>
+                                                <td>Building Name</td>
+                                                <td>Water</td>
+                                                <td>11</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating1p5"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>Location Name</td>
+                                                <td>Building Name</td>
+                                                <td>Mechanical</td>
+                                                <td>9</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating3p0"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>Location Name</td>
+                                                <td>Building Name</td>
+                                                <td>Civil</td>
+                                                <td>7</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating5p0"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>Location Name</td>
+                                                <td>Building Name</td>
+                                                <td>Plumbing</td>
+                                                <td>7</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating3p5"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-2 NoPd">
+                            <div class="DashboardHldr">
+                                <div class="DshHdrHldr ClrOneHghlgt">
+                                    <div class="TtlHldr">
+                                        <span class="TtlTxt SmlCse">Employee wise</span>
+                                    </div>
+                                    <div class="ActnBtnHldr">
+                                        <a href="#" class="Lnk WISIcn-Reset"></a>
+                                    </div>
+                                </div>
+                                <div class="DshDtlHldr NoPddng">
+                                    <table class="AppGenTable NoMrgnTop ClrOneHghlgt VAMiddle">
+                                        <thead>
+                                            <tr>
+                                                <th>S. No.</th>
+                                                <th>Emp. ID</th>
+                                                <th>Employee Name</th>
+                                                <th>Complaint Category</th>
+                                                <th>Repetitive Issues</th>
+                                                <th>Avg. Rating</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+                                                <td>EMP-552</td>
+                                                <td>Ramesh Kumar</td>
+                                                <td>Electrical</td>
+                                                <td>14</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating4p5"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+                                                <td>EMP-140</td>
+                                                <td>Surya Pratap</td>
+                                                <td>Water</td>
+                                                <td>11</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating1p5"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>3</td>
+                                                <td>EMP-71</td>
+                                                <td>Pradeep Singh</td>
+                                                <td>Mechanical</td>
+                                                <td>9</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating3p0"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>4</td>
+                                                <td>EMP-042</td>
+                                                <td>Venkatesh</td>
+                                                <td>Civil</td>
+                                                <td>7</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating5p0"></span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>5</td>
+                                                <td>EMP-552</td>
+                                                <td>Ramesh Kumar</td>
+                                                <td>Plumbing</td>
+                                                <td>7</td>
+                                                <td>
+                                                    <span class="Rating WISIcn-Rating3p5"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const ctx = document.getElementById('CmpltRsdBy');      
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: ['Total', 'Present', 'Absent'],
+            datasets: [{
+              label: '# of Votes',
+              data: [31, 28, 3],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                    position: 'top',
+                    labels: {
+                    // This more specific font property overrides the global property
+                        font: {
+                            family: "'Nunito Sans', sans-serif",
+                            size: 14
+                        }
+                    }
+                },
+                title: {
+                    display: false,
+                    text: 'Chart.js Bar Chart'
+                }
+            }
+          }
+        });
+        const ctx_civil = document.getElementById('CmpltCivil');      
+        new Chart(ctx_civil, {
+          type: 'bar',
+          data: {
+            labels: ['Total', 'Present', 'Absent'],
+            datasets: [{
+              label: '# of Votes',
+              data: [31, 28, 3],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                    position: 'top',
+                    labels: {
+                    // This more specific font property overrides the global property
+                        font: {
+                            family: "'Nunito Sans', sans-serif",
+                            size: 14
+                        }
+                    }
+                },
+                title: {
+                    display: false,
+                    text: 'Chart.js Bar Chart'
+                }
+            }
+          }
+        });
+        const ctx_plumb = document.getElementById('CmpltPlumb');      
+        new Chart(ctx_plumb, {
+          type: 'bar',
+          data: {
+            labels: ['Total', 'Present', 'Absent'],
+            datasets: [{
+              label: '# of Votes',
+              data: [31, 28, 3],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                    position: 'top',
+                    labels: {
+                    // This more specific font property overrides the global property
+                        font: {
+                            family: "'Nunito Sans', sans-serif",
+                            size: 14
+                        }
+                    }
+                },
+                title: {
+                    display: false,
+                    text: 'Chart.js Bar Chart'
+                }
+            }
+          }
+        });
+        const ctx_mechanical = document.getElementById('CmpltMechanical');      
+        new Chart(ctx_mechanical, {
+          type: 'bar',
+          data: {
+            labels: ['Total', 'Present', 'Absent'],
+            datasets: [{
+              label: '# of Votes',
+              data: [31, 28, 3],
+              borderWidth: 0
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false,
+                    position: 'top',
+                    labels: {
+                    // This more specific font property overrides the global property
+                        font: {
+                            family: "'Nunito Sans', sans-serif",
+                            size: 14
+                        }
+                    }
+                },
+                title: {
+                    display: false,
+                    text: 'Chart.js Bar Chart'
+                }
+            }
+          }
+        });
+      </script>
+</body>
+</html>

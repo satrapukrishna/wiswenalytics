@@ -69,7 +69,7 @@ class Hardware_category_model extends CI_Model{
     function get_hardware_category_dropdown_vega() {
         $this->db->select('category_id,category_name');
         $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[6]);
+        $this->db->where_in('category_id',[4,6]);
         $this->db->where('status',1);
         $this->db->order_by('category_id');
         $res = $this->db->get()->result_array();
@@ -257,7 +257,7 @@ class Hardware_category_model extends CI_Model{
         if ($category != ''){
             $this->db->where('category_id', $category);
         }
-        $this->db->where_in('device_id',[41,19,35,25,51,20,27,26,57,58]);
+        $this->db->where_in('device_id',[16,41,19,35,25,51,20,27,26,57,58]);
         $this->db->where('status',1);
         $this->db->order_by('device_name');
         $res = $this->db->get();

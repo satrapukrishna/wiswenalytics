@@ -266,7 +266,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					}
 
 				}
-				//echo json_encode($res1[0]);die();
+				//echo json_encode($res2[0]);die();
 				
 				
 
@@ -338,7 +338,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					
-					<?php for ($i=0; $i < count($res1); $i++) 
+					<?php if(isset($res1[0])){ for ($i=0; $i < count($res1); $i++) 
          				 {?>
 						<div style="width:320px">
 					<div class="SctnDtlsHldr">
@@ -377,7 +377,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					</div>
-					<?php } ?>
+					<?php }} ?>
 					<?php for ($i=0; $i < count($res2); $i++) 
          				 {?>
 						<div style="width:320px">

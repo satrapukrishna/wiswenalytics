@@ -1872,23 +1872,24 @@ function appendData_consolidated(obj){
         for( var k=0 ; k< obj[i]['data'].length;k++){
           malefoot=malefoot+parseFloat(obj[i]['data'][k]['male_footfall']);
           femalefoot=femalefoot+parseFloat(obj[i]['data'][k]['female_footfall']);
-          if(k%7==0){
-            rows += "<tr><td colspan='17'>week" +(m) + "</td></tr>";
-            m++;
-          }
+          // if(k%7==0){
+          //   rows += "<tr><td>week" +(m) + "</td></tr>";
+          //   m++;
+          // }
           
           if(obj[i]['data'][k]['morning_footfall']=='No Data'){
             b--;
           }
-          if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
-        }else{
-          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
-        }
+          rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
+        //   if(obj[i]['data'][k]['station']==2022000112 || obj[i]['data'][k]['station']==2022000113){
+        //   rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['water_consumption'] + "</td><td>" + obj[i]['data'][k]['water_leakage'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>"; 
+        // }else{
+        //   rows += "<tr><td>" + (k+1) + "</td><td>" +obj[i]['location'] + "</td><td>" +obj[i]['data'][k]['date'] +"</td><td>"+obj[i]['data'][k]['day']+ "</td><td>" + obj[i]['data'][k]['male_footfall'] + "</td><td>" + obj[i]['data'][k]['female_footfall'] + "</td><td>" + obj[i]['data'][k]['morning_footfall'] + "</td><td>" + obj[i]['data'][k]['evening_footfall'] + "</td><td>" + obj[i]['data'][k]['total_footfall'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_available'] + "</td><td>" + obj[i]['data'][k]['power_unavailable'] + "</td><td>" + obj[i]['data'][k]['water_cons_per_footfall'] + "</td><td>" + obj[i]['data'][k]['od_male_count'] + "</td><td>" + obj[i]['data'][k]['od_male_high'] + "</td><td>" + obj[i]['data'][k]['od_female_count'] + "</td><td>" + obj[i]['data'][k]['od_female_high'] + "</td><td>" + obj[i]['data'][k]['total_feedback'] + "</td><td>" + obj[i]['data'][k]['good'] + "</td><td>" + obj[i]['data'][k]['avg'] + "</td><td>" + obj[i]['data'][k]['poor'] + "</td></tr>";  
+        // }
         b++;
         }
-        rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
-        rows += "<tr><td colspan='17'></td></tr>";
+        //rows += "<tr><td>total days</td><td>" +b + "</td><td>male</td><td>" +malefoot + "</td><td>" +(malefoot/b).toFixed(2) + "</td><td>female</td><td>" +femalefoot + "</td><td>" +(femalefoot/b).toFixed(2) + "</td></tr>";
+        rows += "<tr><td></td></tr>";
            
        }
        rows += "<tr><td colspan='17'>Sundays data</td></tr>";
@@ -2904,13 +2905,7 @@ function appendData_consolidated(obj){
                   <th>Day</th>
                   <th>Footfall Male</th>                  
                   <th>Footfall Female</th>
-                  <th>Morning Footfall</th>
-                  <th>Evening Footfall</th>
                   <th>Total Footfall</th>
-                  <th>Power Availability</th>
-                  <th>Water Consumption/ Availability</th>
-                  <th>Leakage/ Unavialibility</th>
-                  <th>Water Consumption per Footfall</th>
                   <th>Male Unacceptable  Odour Count</th>
                   <th>Male Unacceptable Highest Odour</th>
                   <th>Female Unacceptable  Odour Count</th>

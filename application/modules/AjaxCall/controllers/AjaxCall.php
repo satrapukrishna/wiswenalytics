@@ -971,6 +971,43 @@ function getCyberData(){
 		$this->Api_model->getCollectorData($json_chennai);
 		
 	}
+	function getWrlCollectorDataDates(){
+		$date_from = strtotime("2022-10-01"); 
+        $date_to = strtotime("2022-10-15"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		// print_r($datesarray);die();
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	  $yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
+		$datachennai = array("StoreCode" => "0006", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->getCollectorData($json_chennai);
+	}
+		
+	}
 	function getWrlCollectorDataLive(){
 		$today=date("d/m/Y");
 	  //$today=date("21/04/2022");	 
@@ -994,6 +1031,42 @@ function getCyberData(){
 		$json_chennai = json_decode($result_chennai, true);
 		// print_r($json_chennai);die();
 		$this->Api_model->getCollectorDataLive($json_chennai);
+		
+	}
+	function getWrlJpnagarDataDates(){
+		$date_from = strtotime("2023-01-18"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k]));  
+		$datachennai = array("StoreCode" => "0007", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->getjpnagarData($json_chennai);
+	}
 		
 	}
 	function getWrlJpnagarData(){
@@ -1043,6 +1116,42 @@ function getCyberData(){
 		$json_chennai = json_decode($result_chennai, true);
 		// print_r($json_chennai);die();
 		$this->Api_model->getjpnagarDataLive($json_chennai);
+		
+	}
+	function getPoliceHeadquartersDataDates(){
+		$date_from = strtotime("2023-01-01"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 	 
+		$datachennai = array("StoreCode" => "0009", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushPoliceHeadquartersData($json_chennai);
+	}
 		
 	}
 	function getPoliceHeadquartersData(){
@@ -1095,6 +1204,42 @@ function getCyberData(){
 		
 	}
 	
+	function getMissionHospitalDataDates(){
+		$date_from = strtotime("2023-01-01"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 	 
+		$datachennai = array("StoreCode" => "0010", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushMissionHospitalData($json_chennai);
+	}
+		
+	}
 	function getMissionHospitalData(){
 		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
 		$datachennai = array("StoreCode" => "0010", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
@@ -1144,6 +1289,43 @@ function getCyberData(){
 		$this->Api_model->pushMissionHospitalDataLive($json_chennai);
 		
 	}
+	function getLICOfficeMarketRoadDataDates(){
+		$date_from = strtotime("2023-01-01"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
+		$datachennai = array("StoreCode" => "0011", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushLICOfficeMarketRoadData($json_chennai);
+	}
+		
+	}
+
 	function getLICOfficeMarketRoadData(){
 		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
 		$datachennai = array("StoreCode" => "0011", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
@@ -1167,8 +1349,7 @@ function getCyberData(){
 		// print_r($json_chennai);die();
 		$this->Api_model->pushLICOfficeMarketRoadData($json_chennai);
 		
-	}
-	function getLICOfficeMarketRoadDataLive(){
+	}	function getLICOfficeMarketRoadDataLive(){
 		$today=date("d/m/Y");
 	  // $today=date("26/03/2022");	 
 		$datachennai = array("StoreCode" => "0011", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
@@ -1191,6 +1372,42 @@ function getCyberData(){
 		$json_chennai = json_decode($result_chennai, true);
 		// print_r($json_chennai);die();
 		$this->Api_model->pushLICOfficeMarketRoadDataLive($json_chennai);
+		
+	}
+	function getChintalBridgeDataDates(){
+		$date_from = strtotime("2023-01-01"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
+		$datachennai = array("StoreCode" => "0012", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushChintalBridgeData($json_chennai);
+	}
 		
 	}
 	function getChintalBridgeData(){
@@ -1242,6 +1459,42 @@ function getCyberData(){
 		$this->Api_model->pushChintalBridgeDataLive($json_chennai);
 		
 	}
+	function getKazipetRailwayStationDataDates(){
+		$date_from = strtotime("2023-01-24"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k]));
+		$datachennai = array("StoreCode" => "0013", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushKazipetRailwayStationData($json_chennai);
+	}
+		
+	}
 	function getKazipetRailwayStationData(){
 		$yesterDay = date('d/m/Y',strtotime("-1 days"));
 		$datachennai = array("StoreCode" => "0013", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
@@ -1291,6 +1544,42 @@ function getCyberData(){
 		$this->Api_model->pushKazipetRailwayStationDataLive($json_chennai);
 		
 	}
+	function getRadhikaTheatreLaneDataDates(){
+		$date_from = strtotime("2023-01-16"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k]));
+		$datachennai = array("StoreCode" => "0014", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushRadhikaTheatreLaneData($json_chennai);
+	}
+		
+	}
 	function getRadhikaTheatreLaneData(){
 		$yesterDay = date('d/m/Y',strtotime("-1 days"));
 		$datachennai = array("StoreCode" => "0014", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
@@ -1338,6 +1627,42 @@ function getCyberData(){
 		$json_chennai = json_decode($result_chennai, true);
 		// print_r($json_chennai);die();
 		$this->Api_model->pushRadhikaTheatreLaneDataLive($json_chennai);
+		
+	}
+	function getGopalaswamiTempleDataDates(){
+		$date_from = strtotime("2022-01-01"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k]));
+		$datachennai = array("StoreCode" => "0015", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushGopalaswamiTempleData($json_chennai);
+	}
 		
 	}
 	function getGopalaswamiTempleData(){
@@ -1390,6 +1715,43 @@ function getCyberData(){
 		
 	}
 	
+	function getDistrictCourtDataDates(){
+		$date_from = strtotime("2023-01-01"); 
+        $date_to = strtotime("2023-01-31"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k]));
+		// $yesterDay = date("26/05/202");	
+		$datachennai = array("StoreCode" => "0016", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushDistrictCourtData($json_chennai);
+	}
+		
+	}
 	function getDistrictCourtData(){
 		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
 		// $yesterDay = date("26/05/202");	

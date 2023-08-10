@@ -163,11 +163,24 @@
                                 <li>
 								 <a href="<?php echo site_url('Admin/Home/aircondition_rainbow/')?>#hvac" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu-w.png" width="35px" style="margin-right:0px"/> <span class="Txt">AHU</span></a>
 								 </li>
+                                 <?php }else if($this->session->userdata('created_by')==35){?>
+                                    <li>
+								 <a href="<?php echo site_url('Admin/Home/ahu_monitoring/')?>#hvac" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu-w.png" width="35px" style="margin-right:0px"/> <span class="Txt">AHU Monitoring</span></a>
+								 </li>
+                                 <li>
+								 <a href="<?php echo site_url('Admin/Home/ahu_controlling/')?>#hvac" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu-w.png" width="35px" style="margin-right:0px"/> <span class="Txt">AHU Controlling</span></a>
+								 </li>
+                                 <li>
+								 <a href="<?php echo site_url('Admin/Home/vfd_monitoring/')?>#hvac" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu-w.png" width="35px" style="margin-right:0px"/> <span class="Txt">VFD Monitoring</span></a>
+								 </li>
+                                 <li>
+								 <a href="<?php echo site_url('Admin/Home/vfd_controlling/')?>#hvac" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu-w.png" width="35px" style="margin-right:0px"/> <span class="Txt">VFD Controlling</span></a>
+								 </li>
                                  <?php }else{?>
                                     <li>
 								 <a href="<?php echo site_url('Admin/Home/aircondition_vegas/')?>#hvac" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/ahu-w.png" width="35px" style="margin-right:0px"/> <span class="Txt">AHU</span></a>
 								 </li>
-                                 <?php } } ?>
+                               <?php  } } ?>
                             <?php if(modules::run('Admin/Site/authlink','airconditioning_chillers')){ ?>
 								 <li>
 									<a href="<?php echo site_url('Admin/Home/aircondition/')?>#div7" class="Lnk"><img src="<?php echo site_url() ?>asset/admin/images/Chillers.png" width="28px" style="margin-right:2px"/> <span class="Txt">Chiller</span></a>

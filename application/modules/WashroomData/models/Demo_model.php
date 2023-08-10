@@ -201,8 +201,8 @@ class Demo_model extends CI_Model{
         for ($k=0; $k < count($datesarray); $k++) { 
             $footfall_res_check=$this->check_footfall($datesarray[$k],$stationid,'footfall',$location);
             $power_check=$this->check_power($datesarray[$k],$stationid,'power',$location);
-            $watercons_res_check=$this->check_consumption($datesarray[$k],$stationid,'consumption',$location);
-            $leak_res_check=$this->check_leakage($datesarray[$k],$stationid);
+            //$watercons_res_check=$this->check_consumption($datesarray[$k],$stationid,'consumption',$location);
+            //$leak_res_check=$this->check_leakage($datesarray[$k],$stationid);
             $odour_res_check=$this->check_odour($datesarray[$k],$stationid);
             $feedback_res_check=$this->check_feedback($datesarray[$k],$stationid);
             $festivals=$this->check_festivals();
@@ -237,15 +237,18 @@ class Demo_model extends CI_Model{
                 $fulldata[$k]['total_footfall']=$footfall_res_check[0]['male_footfall']+$footfall_res_check[0]['female_footfall'];
                 $fulldata[$k]['power_available']=$power_check[0]['power_available'];
                 $fulldata[$k]['power_unavailable']=$power_check[0]['power_unavailable'];
-                $fulldata[$k]['water_consumption']=$watercons_res_check[0]['water_consumption'];
+                $fulldata[$k]['water_consumption']="NA";
+                // $fulldata[$k]['water_consumption']=$watercons_res_check[0]['water_consumption'];
                 if($stationid==2022000112 ||$stationid==2022000113 ){
-                    $fulldata[$k]['water_cons_per_footfall']=round($watercons_res_check[0]['water_consumption']/$fulldata[$k]['total_footfall'],2);
+                    $fulldata[$k]['water_cons_per_footfall']="NA";
+                    // $fulldata[$k]['water_cons_per_footfall']=round($watercons_res_check[0]['water_consumption']/$fulldata[$k]['total_footfall'],2);
                 }else{
                     $fulldata[$k]['water_cons_per_footfall']="NA";
                 }
                 
                 $fulldata[$k]['station']=$stationid;
-                $fulldata[$k]['water_leakage']=$leak_res_check[0]['water_leakage'];
+                $fulldata[$k]['water_leakage']="NA";
+                // $fulldata[$k]['water_leakage']=$leak_res_check[0]['water_leakage'];
                 $fulldata[$k]['od_male_high']=$odour_res_check[0]['od_male_high'];
                 $fulldata[$k]['od_female_high']=$odour_res_check[0]['od_female_high'];
                 $fulldata[$k]['od_male_count']=$odour_res_check[0]['od_male_count'];
@@ -788,7 +791,7 @@ function getWaterConsumptionConsolidate($fromdate,$todate,$stationid,$table_name
                 // echo $stationid;die();
                 if($stationid==2022000112 ||$stationid==2022000113 ){
                     $water_add_query="SELECT abs(SUM(`CurReading`-`Consumption`)) as water_add FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' AND `CurReading`-`Consumption`<0";
-                    echo $water_add_query;die();
+                    // echo $water_add_query;die();
                     $water_cons_query="SELECT (SELECT CurReading FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' ORDER BY TxnTime LIMIT 1) as 'start',(SELECT CurReading FROM $table_name WHERE TxnDate='".$datesarray[$k]."' AND LineConnected='Water Level' ORDER BY TxnTime DESC LIMIT 1) as 'end'";
                     $water_add_data = $this->db->query($water_add_query)->result_array();
                     $water_cons_data = $this->db->query($water_cons_query)->result_array();

@@ -1122,7 +1122,7 @@ function getClientToken($client_id){
                 $this->db->where('LineConnected','Odour Male');
                 $this->db->where('TxnTime',$valueclient['FromTime']);
                 $this->db->where('TxnDate',$newDate);
-                $this->db->update('hardware_station_consumption_data_wr_collector',$user_data);
+                $this->db->update('hardware_station_consumption_data_wr_collector_2022',$user_data);
                
             }
            
@@ -1146,7 +1146,7 @@ function getClientToken($client_id){
                 'UomScale'=>$valueclient['UomScale']               
             );
            
-         $this->db->insert('hardware_station_consumption_data_wr_collector', $appData2);
+         $this->db->insert('hardware_station_consumption_data_wr_collector_2022', $appData2);
           
         }
 
@@ -2118,9 +2118,9 @@ function getClientToken($client_id){
            
     }
     function updateWarangal($table_name){
-        $where = 'UomName="Count" and Consumption > 15 or Consumption<0';
+        $where = 'UomName="Count" and Consumption > 10 or Consumption<0';
         $this->db->where($where);
-        $this->db->update($table_name, array('Consumption' => 4));
+        $this->db->update($table_name, array('Consumption' => 2));
        
         // echo $this->db->last_query();exit; 
        

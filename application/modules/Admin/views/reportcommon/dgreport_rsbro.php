@@ -24,7 +24,7 @@
 		<tr>
 			<td><?php echo $k; ?></td>
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['date']."/".date('l', strtotime($dgdata[$j]['consolidate'][$i]['date'])); ?></td>
-			<td><?php echo $dgdata[$j]['consolidate'][$i]['dgname']; ?></td>
+			<td><?php echo $dgdata[$j]['consolidate'][$i]['dgname']."(".$dgdata[$j]['consolidate'][$i]['location'].")"; ?></td>
 			
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['run']; ?></td>
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['fconsume']; ?></td>
@@ -53,7 +53,7 @@
 		<tr>
 			<td><?php echo $k; ?></td>
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['date']."/".date('l', strtotime($dgdata[$j]['consolidate'][$i]['date'])); ?></td>
-			<td><?php echo $dgdata[$j]['consolidate'][$i]['dgname']; ?></td>
+			<td><?php echo $dgdata[$j]['consolidate'][$i]['dgname']."(".$dgdata[$j]['consolidate'][$i]['location'].")"; ?></td>
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['fadd']; ?></td>						
 		</tr>
 		<?php $k++;}
@@ -77,7 +77,7 @@
 		<tr>
 			<td><?php echo $k; ?></td>
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['date']."/".date('l', strtotime($dgdata[$j]['consolidate'][$i]['date'])); ?></td>
-			<td><?php echo $dgdata[$j]['consolidate'][$i]['dgname']; ?></td>
+			<td><?php echo $dgdata[$j]['consolidate'][$i]['dgname']."(".$dgdata[$j]['consolidate'][$i]['location'].")"; ?></td>
 			<td><?php echo $dgdata[$j]['consolidate'][$i]['fremove']; ?></td>					
 		</tr>
 		<?php $k++;}

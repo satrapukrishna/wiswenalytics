@@ -582,7 +582,7 @@ class Home extends MX_Controller {
 		// 	$data['firepump_data']=$firepumpdata;
 		// }
 		$ff['Phase-1 Fire Pump System']['run_data'][0]['meter']="Panel Power Supply";
-		$ff['Phase-1 Fire Pump System']['run_data'][0]['running_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][0]['running_status']=false;
 		$ff['Phase-1 Fire Pump System']['run_data'][0]['switch_status']=true;
 		$ff['Phase-1 Fire Pump System']['run_data'][0]['today_running_hours']="";
 		$ff['Phase-1 Fire Pump System']['run_data'][0]['yesterday_running_hours']="";
@@ -590,15 +590,15 @@ class Home extends MX_Controller {
 		$ff['Phase-1 Fire Pump System']['run_data'][0]['monthly_running_hours']="";
 
 		$ff['Phase-1 Fire Pump System']['run_data'][1]['meter']="Jockey Pump";
-		$ff['Phase-1 Fire Pump System']['run_data'][1]['running_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['running_status']=false;
 		$ff['Phase-1 Fire Pump System']['run_data'][1]['switch_status']=true;
 		$ff['Phase-1 Fire Pump System']['run_data'][1]['today_running_hours']="0 hours 2 minutes";
-		$ff['Phase-1 Fire Pump System']['run_data'][1]['yesterday_running_hours']="0 hours 0 minutes";
+		$ff['Phase-1 Fire Pump System']['run_data'][1]['yesterday_running_hours']="0 hours 4 minutes";
 		$ff['Phase-1 Fire Pump System']['run_data'][1]['lastweek_running_hours']="0 hours 24 minutes";
 		$ff['Phase-1 Fire Pump System']['run_data'][1]['monthly_running_hours']="1 days, 5 hours, 7 minutes";
 
 		$ff['Phase-1 Fire Pump System']['run_data'][2]['meter']="Main Pump";
-		$ff['Phase-1 Fire Pump System']['run_data'][2]['running_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][2]['running_status']=false;
 		$ff['Phase-1 Fire Pump System']['run_data'][2]['switch_status']=true;
 		$ff['Phase-1 Fire Pump System']['run_data'][2]['today_running_hours']="0 hours 0 minutes";
 		$ff['Phase-1 Fire Pump System']['run_data'][2]['yesterday_running_hours']="0 hours 0 minutes";
@@ -606,34 +606,87 @@ class Home extends MX_Controller {
 		$ff['Phase-1 Fire Pump System']['run_data'][2]['monthly_running_hours']="0 days, 0 hours, 0 minutes";
 
 		$ff['Phase-1 Fire Pump System']['run_data'][3]['meter']="Diesel Engine Driven Pump";
-		$ff['Phase-1 Fire Pump System']['run_data'][3]['running_status']=true;
+		$ff['Phase-1 Fire Pump System']['run_data'][3]['running_status']=false;
 		$ff['Phase-1 Fire Pump System']['run_data'][3]['switch_status']=true;
 		$ff['Phase-1 Fire Pump System']['run_data'][3]['today_running_hours']="0 hours 0 minutes";
 		$ff['Phase-1 Fire Pump System']['run_data'][3]['yesterday_running_hours']="0 hours 0 minutes";
 		$ff['Phase-1 Fire Pump System']['run_data'][3]['lastweek_running_hours']="0 hours 0 minutes";
 		$ff['Phase-1 Fire Pump System']['run_data'][3]['monthly_running_hours']="0 days, 0 hours, 0 minutes";
 
-		$ff['Phase-1 Fire Pump System']['pressure_data'][0]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][0]['pressure']=9;
 		$ff['Phase-1 Fire Pump System']['pressure_data'][0]['TxnTime']="00:07:42";
 
-		$ff['Phase-1 Fire Pump System']['pressure_data'][1]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][1]['pressure']=8.9;
 		$ff['Phase-1 Fire Pump System']['pressure_data'][1]['TxnTime']="01:32:00";
 
-		$ff['Phase-1 Fire Pump System']['pressure_data'][2]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][2]['pressure']=8.9;
 		$ff['Phase-1 Fire Pump System']['pressure_data'][2]['TxnTime']="02:33:32";
 
-		$ff['Phase-1 Fire Pump System']['pressure_data'][3]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][3]['pressure']=8.89;
 		$ff['Phase-1 Fire Pump System']['pressure_data'][3]['TxnTime']="03:41:40";
 
-		$ff['Phase-1 Fire Pump System']['pressure_data'][4]['pressure']=5.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][4]['pressure']=8.8;
 		$ff['Phase-1 Fire Pump System']['pressure_data'][4]['TxnTime']="04:59:31";
 
-		$ff['Phase-1 Fire Pump System']['pressure_data'][5]['pressure']=5.38;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][5]['pressure']=8.8;
 		$ff['Phase-1 Fire Pump System']['pressure_data'][5]['TxnTime']="05:22:21";
 
-		$ff['Phase-1 Fire Pump System']['pressure_data'][6]['pressure']=4.58;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][6]['pressure']=8.6;
 		$ff['Phase-1 Fire Pump System']['pressure_data'][6]['TxnTime']="06:40:05";
 
+		$ff['Phase-1 Fire Pump System']['pressure_data'][7]['pressure']=8.5;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][7]['TxnTime']="06:50:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][8]['pressure']=8.5;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][8]['TxnTime']="07:10:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][9]['pressure']=8.2;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][9]['TxnTime']="07:20:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][10]['pressure']=8.1;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][10]['TxnTime']="07:40:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][11]['pressure']=8.1;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][11]['TxnTime']="07:50:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][12]['pressure']=7.9;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][12]['TxnTime']="08:10:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][13]['pressure']=8;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][13]['TxnTime']="08:20:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][14]['pressure']=8.1;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][14]['TxnTime']="08:30:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][15]['pressure']=8.2;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][15]['TxnTime']="08:50:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][16]['pressure']=8.2;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][16]['TxnTime']="09:50:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][17]['pressure']=8.2;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][17]['TxnTime']="10:00:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][18]['pressure']=8.3;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][18]['TxnTime']="10:20:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][19]['pressure']=8.5;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][19]['TxnTime']="10:30:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][20]['pressure']=8.5;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][20]['TxnTime']="10:50:05";
+		
+		$ff['Phase-1 Fire Pump System']['pressure_data'][21]['pressure']=8.9;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][21]['TxnTime']="11:10:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][22]['pressure']=8.9;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][22]['TxnTime']="11:30:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][23]['pressure']=8.9;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][23]['TxnTime']="11:50:05";
+
+		$ff['Phase-1 Fire Pump System']['pressure_data'][24]['pressure']=9;
+		$ff['Phase-1 Fire Pump System']['pressure_data'][24]['TxnTime']="12:00:05";
 
 		$ff['Phase-1 Fire Pump System']['dg_data']['run']="00:00";
 		$ff['Phase-1 Fire Pump System']['dg_data']['fadd']=0;

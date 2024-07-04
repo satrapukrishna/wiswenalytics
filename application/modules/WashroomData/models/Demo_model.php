@@ -11,12 +11,18 @@ class Demo_model extends CI_Model{
             $res[$i]['power']=$this->getPowerConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
             
             // $res[$i]['power_unavl']=round(100-$res[$i]['power'],2);
-           $res[$i]['water_cons']=$this->getWaterConsumptionConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
             
-            $res[$i]['water_leak']=$this->getWaterLeakConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
             $res[$i]['station']=$row['stationid'];
             if($row['stationid']==2022000112 ||$row['stationid']==2022000113 ){
-                $res[$i]['water_cons_per_footfall']=round($res[$i]['water_cons']/$res[$i]['total_footfall'],2);
+                $res[$i]['water_cons']=$this->getWaterConsumptionConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            
+                $res[$i]['water_leak']=$this->getWaterLeakConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+                if($res[$i]['total_footfall']==0){
+                    $res[$i]['water_cons_per_footfall']=0;
+                }else{
+                    $res[$i]['water_cons_per_footfall']=round($res[$i]['water_cons']/$res[$i]['total_footfall'],2);
+                }
+                
             }else{
                 $res[$i]['water_cons_per_footfall']="NA";
             }
@@ -35,6 +41,55 @@ class Demo_model extends CI_Model{
 
 
     }
+    function getOpenClosewashroomData($branches,$fromdate,$todate){
+        $i=0;
+        foreach ($branches as $row) {
+            $res[$i]=$this->getFootfallOpenCloseConsolidate($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            
+            $res[$i]['station']=$row['stationid'];
+           
+
+            $i++;
+
+        }
+        // echo json_encode($res);die();
+        //die();
+        return $res;
+
+
+    }
+    function getOpenClosewashroomDataTimes($branches,$fromdate,$todate){
+       
+            $res=$this->getFootfallOpenCloseConsolidateTimes($fromdate,$todate,$branches['stationid'],$branches['table_name'],$branches['branch']);
+            
+            //$res[$i]['station']=$row['stationid'];
+           
+
+        // echo json_encode($res);die();
+        //die();
+        return $res;
+
+
+    }
+    function getFootfallwashroomDataTimes($branches,$fromdate,$todate){
+       
+        $i=0;
+        foreach ($branches as $row) {
+            $res[$i]=$this->getFootfallConsolidateTimes($fromdate,$todate,$row['stationid'],$row['table_name'],$row['branch']);
+            $i++;
+
+        }
+        //die();
+        return $res;
+        //$res[$i]['station']=$row['stationid'];
+       
+
+    // echo json_encode($res);die();
+    //die();
+    return $res;
+
+
+}
     function getConsolidatedFootfallData($branches,$fromdate,$todate){
         $i=0;
         foreach ($branches as $row) {
@@ -205,14 +260,7 @@ class Demo_model extends CI_Model{
             //$leak_res_check=$this->check_leakage($datesarray[$k],$stationid);
             $odour_res_check=$this->check_odour($datesarray[$k],$stationid);
             $feedback_res_check=$this->check_feedback($datesarray[$k],$stationid);
-            $festivals=$this->check_festivals();
-            for($m=0;$m<count($festivals);$m++){
-                $res[$m]['festive_date']=$festivals[$m]['festive_date'];
-                $res[$m]['festive_beforedate']=date('Y-m-d',strtotime($festivals[$m]['festive_date']."-1 days"));
-                $res[$m]['festive_afteronedate']=date('Y-m-d',strtotime($festivals[$m]['festive_date']."+1 days"));
-                $res[$m]['festive_aftertwodate']=date('Y-m-d',strtotime($festivals[$m]['festive_date']."+2 days"));
-                $res[$m]['festival_name']=$festivals[$m]['festive_name'];
-            }
+           
             
                 $male_footfall_tot+=$footfall_res_check[0]['male_footfall'];
                 $female_footfall_tot+=$footfall_res_check[0]['female_footfall'];
@@ -269,14 +317,7 @@ class Demo_model extends CI_Model{
                
         }
             
-            // $total_footfall=$male_footfall_tot+$female_footfall_tot;
            
-            // $fulldata['total']['male_footfall_tot']=$male_footfall_tot;
-            // $fulldata['total']['female_footfall_tot']=$female_footfall_tot;
-            // $fulldata['total']['total_footfall_tot']=$total_footfall;
-            // $fulldata['total']['male_footfall_avg']=round($male_footfall_tot/$totaldays,2);
-            // $fulldata['total']['female_footfall_avg']=round($female_footfall_tot/$totaldays,2);
-            // $fulldata['total']['total_footfall_avg']=round($total_footfall/$totaldays,2);
             
             return $fulldata;
 
@@ -455,6 +496,17 @@ class Demo_model extends CI_Model{
         // echo "ll:".$this->db->last_query();die();
         return $res;
     }
+    function check_footfall_times($date,$station,$time,$loc){
+        $this->db->select('*');
+        $this->db->from('warangal_footfall_data_times');        
+		$this->db->where('station_id',$station);
+		$this->db->where('report_date',$date);
+        $this->db->where('time',$time); 
+        $this->db->where('location',$loc);       
+        $res = $this->db->get()->result_array();     
+        // echo "ll:".$this->db->last_query();die();
+        return $res;
+    }
     function getFootfallConsolidate($fromdate,$todate,$stationid,$table_name,$location){
                     $total_footfall=0;
                     $male_footfall=0;
@@ -533,7 +585,192 @@ class Demo_model extends CI_Model{
     
                     
     }
-    function getFootfallConsolidate_all($fromdate,$todate,$stationid,$table_name,$location){
+    function getFootfallOpenCloseConsolidate($fromdate,$todate,$stationid,$table_name,$location){
+        $total_footfall=0;
+        $male_footfall=0;
+        $female_footfall=0;
+        $date_from = strtotime($fromdate); 
+        $date_to = strtotime($todate); 
+        $datesarray=array();
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400) {
+            array_push($datesarray, date("Y-m-d",$i1));
+            
+        }
+        $totaldays=count($datesarray);
+        $male_footfall_tot=0;
+        $female_footfall_tot=0;
+        $h=0;
+        $r=0;
+        for ($k=0; $k < count($datesarray); $k++) { 
+           
+                $query_morning="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate = '".$datesarray[$k]."' and LineConnected IN ('Footfall Male','Footfall Female') AND TxnTime BETWEEN '05:30:00' AND '6:30:00' ";
+                // echo $query;die();
+                $query_evng="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate = '".$datesarray[$k]."' and LineConnected IN ('Footfall Male','Footfall Female') AND TxnTime BETWEEN '21:00:00' AND '22:00:00'";
+                 $data_m = $this->db->query($query_morning)->result();                
+                 $data_e = $this->db->query($query_evng)->result();
+                 if($data_m[0]->Consumption >0){
+                   // $open=1;
+                    $h++;
+                 }
+                 if($data_e[0]->Consumption >0){
+                    $r++;
+                 }    
+                // $fulldata[$k]['open']=$open; 
+                 //$fulldata[$k]['date']=$datesarray[$k];
+                 
+        }
+           
+            $fulldata['mopen']=$h;
+            $fulldata['eopen']=$r;
+            $fulldata['fromdate']=$fromdate;
+            $fulldata['todate']=$todate;
+            $fulldata['totaldays']=$totaldays;
+            $fulldata['location']=$location;
+            return $fulldata;
+
+        
+}
+
+function getFootfallConsolidateTimes($fromdate,$todate,$stationid,$table_name,$location){
+    $total_footfall=0;
+    $male_footfall=0;
+    $female_footfall=0;
+    $date_from = strtotime($fromdate); 
+    $date_to = strtotime($todate); 
+    $datesarray=array();
+    for ($i1=$date_from; $i1<=$date_to; $i1+=86400) {
+        array_push($datesarray, date("Y-m-d",$i1));
+        
+    }
+    $totaldays=count($datesarray);
+    
+    
+    
+   // for ($k=0; $k < count($datesarray); $k++) { 
+
+        $n=0;
+        for ($i=4; $i < 22; $i++) 
+        { 
+            if($i>9)
+            {
+                $from =  $i.":00:00";
+                $to =  ($i+1).":00:00";    
+            }
+            else
+            {
+                $from =  "0".$i.":00:00";
+                $to =  "0".($i+1).":00:00"; 
+            }
+           
+                $h=0;
+                for ($k=0; $k < count($datesarray); $k++) {
+                    $query="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate = '".$datesarray[$k]."' and LineConnected IN ('Footfall Male','Footfall Female') AND TxnTime >= '".$from."' AND TxnTime < '".$to."' ";
+              
+                    $data_m = $this->db->query($query)->result();   
+                     if($data_m[0]->Consumption >0){
+                       $h=$h+$data_m[0]->Consumption;
+                        //$h++;
+                     }
+                   
+                }
+                
+               
+                
+                $fulldata[$n]['open']=$h; 
+                $fulldata[$n]['date']=$datesarray[0];
+                $fulldata[$n]['location']=$location;
+                $fulldata[$n]['time']=$from." To ".$to;
+                $n++;
+            
+
+            
+        }
+                
+        // echo json_encode();die();   
+             
+    //}
+       
+        // $fulldata['mopen']=$h;
+        // $fulldata['eopen']=$r;
+        // $fulldata['fromdate']=$fromdate;
+        // $fulldata['todate']=$todate;
+        // $fulldata['totaldays']=$totaldays;
+        // $fulldata['location']=$location;
+        return $fulldata;
+
+    
+}
+
+function getFootfallOpenCloseConsolidateTimes($fromdate,$todate,$stationid,$table_name,$location){
+    $total_footfall=0;
+    $male_footfall=0;
+    $female_footfall=0;
+    $date_from = strtotime($fromdate); 
+    $date_to = strtotime($todate); 
+    $datesarray=array();
+    for ($i1=$date_from; $i1<=$date_to; $i1+=86400) {
+        array_push($datesarray, date("Y-m-d",$i1));
+        
+    }
+    $totaldays=count($datesarray);
+    
+    
+    
+   // for ($k=0; $k < count($datesarray); $k++) { 
+
+        $n=0;
+        for ($i=4; $i < 22; $i++) 
+        { 
+            if($i>9)
+            {
+                $from =  $i.":00:00";
+                $to =  ($i+1).":00:00";    
+            }
+            else
+            {
+                $from =  "0".$i.":00:00";
+                $to =  "0".($i+1).":00:00"; 
+            }
+           
+                $h=0;
+                for ($k=0; $k < count($datesarray); $k++) {
+                    $query="select round(SUM(Consumption)/2) as Consumption FROM $table_name where StationId=$stationid and TxnDate = '".$datesarray[$k]."' and LineConnected IN ('Footfall Male','Footfall Female') AND TxnTime >= '".$from."' AND TxnTime < '".$to."' ";
+              
+                    $data_m = $this->db->query($query)->result();   
+                     if($data_m[0]->Consumption >0){
+                       // $open=1;
+                        $h=$h+$data_m[0]->Consumption;
+                     }
+                   
+                }
+                
+               
+                
+                $fulldata[$n]['open']=$h; 
+                $fulldata[$n]['date']=$datesarray[0];
+                $fulldata[$n]['location']=$location;
+                $fulldata[$n]['time']=$from." To ".$to;
+                $n++;
+            
+
+            
+        }
+                
+        // echo json_encode();die();   
+             
+    //}
+       
+        // $fulldata['mopen']=$h;
+        // $fulldata['eopen']=$r;
+        // $fulldata['fromdate']=$fromdate;
+        // $fulldata['todate']=$todate;
+        // $fulldata['totaldays']=$totaldays;
+        // $fulldata['location']=$location;
+        return $fulldata;
+
+    
+}
+function getFootfallConsolidate_all($fromdate,$todate,$stationid,$table_name,$location){
         $total_footfall=0;
         $male_footfall=0;
         $female_footfall=0;
@@ -1277,7 +1514,7 @@ function getWaterLeakConsolidate($fromdate,$todate,$stationid,$table_name,$locat
                     }
                     for ($k=0; $k < count($datesarray); $k++) { 
                         $res_check=$this->check_footfall($datesarray[$k],$stationid,'footfall',$location);
-                        if(count($res_check)==1){
+                        if(count($res_check)==1000){
                             
                             $fulldata[$k]['Time']=$datesarray[$k];
                             $fulldata[$k]['footfall']=$res_check[0]['male_footfall'];
@@ -2949,8 +3186,17 @@ function getFeedbackDataDayLivecreport($date,$location,$branch,$stationid,$table
     function getBranches(){
 		$this->db->select('');
         $this->db->from('warangal_washroom_branches');     
+        $this->db->where('status',1);     
+		//$this->db->order_by('orderby','ASC');
+        $res = $this->db->get()->result_array();  
+		//echo $this->db->last_query();exit;     
+        return $res;
+	}
+    function getBranches1(){
+		$this->db->select('');
+        $this->db->from('warangal_washroom_branches');     
         // $this->db->where('status',1);     
-		
+		$this->db->order_by('id','ASC');
         $res = $this->db->get()->result_array();  
 		//echo $this->db->last_query();exit;     
         return $res;
@@ -2959,7 +3205,7 @@ function getFeedbackDataDayLivecreport($date,$location,$branch,$stationid,$table
 		$this->db->select('');
         $this->db->from('warangal_washroom_branches');     
         $this->db->where('stationid',$stationid);     
-		
+		$this->db->order_by('orderby','ASC');
         $res = $this->db->get()->result_array();  
 		//echo $this->db->last_query();exit;     
         return $res;

@@ -258,7 +258,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 											</li>
 											<li>
 												<div class="ClLft">Set Frequence</div>
-												<div class="ClRgt">5 Min</div>
+												<div class="ClRgt">32 Hz</div>
 											</li>
 											<li>
 												<div class="ClLft">Running Hours</div>
@@ -281,7 +281,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 											</li>
 											<li>
 												<div class="ClLft">Set Frequence</div>
-												<div class="ClRgt">5 Min</div>
+												<div class="ClRgt">32 Hz</div>
 											</li>
 											<li>
 												<div class="ClLft">Running Hours</div>
@@ -304,7 +304,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 											</li>
 											<li>
 												<div class="ClLft">Set Frequence</div>
-												<div class="ClRgt">5 Min</div>
+												<div class="ClRgt">32 Hz</div>
 											</li>
 											<li>
 												<div class="ClLft">Running Hours</div>
@@ -327,7 +327,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 											</li>
 											<li>
 												<div class="ClLft">Set Frequence</div>
-												<div class="ClRgt">5 Min</div>
+												<div class="ClRgt">32 Hz</div>
 											</li>
 											<li>
 												<div class="ClLft">Running Hours</div>

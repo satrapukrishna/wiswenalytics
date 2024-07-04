@@ -7,9 +7,9 @@ class Login_model extends CI_Model{
     { 
     	$u = "'".$uname."'";
     	$p = "'".$pwd."'";
-    	$query = "SELECT profile.user_id,user_type_id,first_name,last_name
+    	$query = "SELECT profiles.user_id,user_type_id,first_name,last_name
 		  FROM app_users users
-		  INNER JOIN app_users_profile profile ON users.id = profile.user_id WHERE users.username=".$u." AND users.password=".$p;
+		  INNER JOIN app_users_profile profiles ON users.id = profiles.user_id WHERE users.username=".$u." AND users.password=".$p;
 
     	//$query = "SELECT TOP (1000) * FROM [dbo].[2018000041_YC]";
     	//$this->db->from('[dbo].[2018000041_YC]');

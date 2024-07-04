@@ -128,7 +128,7 @@ class Services extends REST_Controller  {
         $client_id = $this->get('client_id');
         $device_id = $this->get('device_id');
         
-        if(($client_id != '' || $client_id != NULL) &&  ($device_id != '' || $device_id != NULL) ){
+        if(($client_id != 26  || $client_id != NULL) &&  ($device_id != '' || $device_id != NULL) ){
             $data_hardware_list=$this->Services_model->get_hardwares_device_list($client_id,$device_id);
             if(count($data_hardware_list)>0){
                 $hardware_data=array();
@@ -151,14 +151,24 @@ class Services extends REST_Controller  {
                 }
 
                 if($device_id==28){ //DG
-                    $hardware_data[]=$this->Services_model->get_hardwares_device_data_dg($data_hardware_list[$i]);
+                    if($client_id==33){
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_dg_rs($data_hardware_list[$i]);
+                    }else{
+                        $hardware_data[]=$this->Services_model->get_hardwares_device_data_dg($data_hardware_list[$i]);
+                    }
+                    
                 }
 
                 if($device_id==48){ //Power Supply
                     $hardware_data[]=$this->Services_model->get_hardwares_device_data_power($data_hardware_list[$i]);
                 }
                 if($device_id==41){ //energy meter
-                    $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters($data_hardware_list[$i]);
+                    if($client_id==33){
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_undp($data_hardware_list[$i]);
+                    }else{
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters($data_hardware_list[$i]);
+                    }
+                    
                 }
                 // if($device_id==40){ //switch status
                 //     $hardware_data[]=$this->Services_model->get_hardwares_device_data_switch_status($data_hardware_list[0]);
@@ -341,7 +351,7 @@ class Services extends REST_Controller  {
 
     }
 
-    function getMeterList_get(){
+    function getMeterList_get_bkp(){
         $emp_id=$this->get('emp_id');
         if($emp_id != '' || $emp_id != NULL){
             $schedule_data = $this->Services_model->getSchedules($emp_id);
@@ -387,7 +397,7 @@ class Services extends REST_Controller  {
 
 
     }
-    function checkReading_get(){
+    function checkReading_get_bkp(){
         $emp_id=$this->get('emp_id');
         $meter_id=$this->get('meter_id');
         if($meter_id != '' || $meter_id != NULL){
@@ -424,7 +434,7 @@ class Services extends REST_Controller  {
             ], REST_Controller::HTTP_BAD_REQUEST);
         }
     }
-    function getQRData_get(){
+    function getQRData_get_bkp(){
         $emp_id=$this->get('emp_id');
         $qr_id=$this->get('qr_id');
         $client_id = $this->Services_model->get_clientid($emp_id);

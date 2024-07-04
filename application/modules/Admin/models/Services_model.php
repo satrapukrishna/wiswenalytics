@@ -716,19 +716,19 @@ class Services_model extends CI_Model
 	
 						
 	
-						$runn_today="SELECT SUM(Consumption) as run FROM $table_name where UtilityName='Old Fire Pump' and LineConnected='Auto Mode RHT' and MeterSerial='0071'  and StationId='".$station_id."' and TxnDate='".$todayDate."' ";
+						$runn_today="SELECT SUM(Consumption) as run FROM $table_name where UtilityName='Old Fire Pump' and LineConnected='Main Pump RHT' and MeterSerial='0071'  and StationId='".$station_id."' and TxnDate='".$todayDate."' ";
 					   //echo $pressure;die();
 						$datarun_today = $this->db->query($runn_today)->result_array();
 						
-						$runn_yest="SELECT SUM(Consumption) as run FROM $table_name where UtilityName='Old Fire Pump' and LineConnected='Auto Mode RHT' and MeterSerial='0071'  and StationId='".$station_id."' and TxnDate='".$yesterDay."' ";
+						$runn_yest="SELECT SUM(Consumption) as run FROM $table_name where UtilityName='Old Fire Pump' and LineConnected='Main Pump RHT' and MeterSerial='0071'  and StationId='".$station_id."' and TxnDate='".$yesterDay."' ";
 					   //echo $pressure;die();
 						$datarun_yest = $this->db->query($runn_yest)->result_array();
 	
-						$runn_week="SELECT SUM(Consumption) as run FROM $table_name where UtilityName='Old Fire Pump' and LineConnected='Auto Mode RHT' and MeterSerial='0071'  and StationId='".$station_id."' and TxnDate between '".$end_week."' and '".$todayDate."' ";
+						$runn_week="SELECT SUM(Consumption) as run FROM $table_name where UtilityName='Old Fire Pump' and LineConnected='Main Pump RHT' and MeterSerial='0071'  and StationId='".$station_id."' and TxnDate between '".$end_week."' and '".$todayDate."' ";
 					   //echo $pressure;die();
 						$datarun_week = $this->db->query($runn_week)->result_array();
 	
-						$runn_month="SELECT SUM(Consumption) as run FROM $table_name where UtilityName='Old Fire Pump' and LineConnected='Auto Mode RHT' and MeterSerial='0071'  and StationId='".$station_id."' and TxnDate between '".$firstday."' and '".$todayDate."' ";
+						$runn_month="SELECT SUM(Consumption) as run FROM $table_name where UtilityName='Old Fire Pump' and LineConnected='Main Pump RHT' and MeterSerial='0071'  and StationId='".$station_id."' and TxnDate between '".$firstday."' and '".$todayDate."' ";
 					   //echo $pressure;die();
 						$datarun_month = $this->db->query($runn_month)->result_array();
 	
@@ -807,6 +807,7 @@ class Services_model extends CI_Model
 
 				$pressure="SELECT round(CurReading*Multiplier,2) as pressure,TxnTime FROM $table_name where UtilityName='Old Fire Pump' and LocationName='Fire Pump House' and MeterSerial='0068' and LineConnected='Pressure' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime asc ";
 				$pressuredata = $this->db->query($pressure)->result_array();
+				$presure=array();
 				for ($n=0; $n < count($pressuredata); $n++) { 
 					$presure[$n]['pressure']=(float)$pressuredata[$n]['pressure'];
 					$presure[$n]['time']=$pressuredata[$n]['TxnTime'];
@@ -921,9 +922,9 @@ class Services_model extends CI_Model
    
 		   }
 
-				// $pressure="SELECT round(CurReading*Multiplier,2) as pressure,TxnTime FROM $table_name where UtilityName='New Fire Pump' and LocationName='Fire Pump House' and MeterSerial='0069' and LineConnected='Pressure' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime asc";
+				$pressure="SELECT round(CurReading*Multiplier,2) as pressure,TxnTime FROM $table_name where UtilityName='New Fire Pump' and LocationName='Fire Pump House' and MeterSerial='0069' and LineConnected='Pressure' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime asc";
 
-				$pressure="SELECT round(CurReading*Multiplier,2) as pressure,TxnTime FROM $table_name where UtilityName='Old Fire Pump' and LocationName='Fire Pump House' and MeterSerial='0068' and LineConnected='Pressure' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime asc ";
+			// $pressure="SELECT round(CurReading*Multiplier,2) as pressure,TxnTime FROM $table_name where UtilityName='Old Fire Pump' and LocationName='Fire Pump House' and MeterSerial='0068' and LineConnected='Pressure' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime asc ";
 			$pressuredata = $this->db->query($pressure)->result_array();
 			for ($n=0; $n < count($pressuredata); $n++) { 
 				$presure[$n]['pressure']=(float)$pressuredata[$n]['pressure'];
@@ -1513,7 +1514,7 @@ class Services_model extends CI_Model
 	}
 	function get_meters_name() {
         $this->db->select('');
-        $this->db->from('hardware_station_consumption_data_mumbai_bkp_27june2023');     
+        $this->db->from('hardware_station_consumption_data_mumbai_14octTo5thNov2023');     
         $this->db->where('UtilityName','Water Monitor'); 
 		$this->db->group_by('LocationName');
         $res = $this->db->get()->result_array(); 
@@ -1549,13 +1550,19 @@ class Services_model extends CI_Model
 	   //echo $querywaterlevel;die();
 	   $datawaterlevel = $this->db->query($querywaterlevel)->result_array();
 	   if($meters['LocationName']=='Fire Water Sump'){
-		$waterlevel=$datawaterlevel[0]['CurReading']*1.33;
+		$waterlevel=$datawaterlevel[0]['CurReading']*1.23;
 		$capacity=334000;
 	}else if($meters['LocationName']=='Dom. Water Sump'){
 		$waterlevel=$datawaterlevel[0]['CurReading']*3.05*0.79;
 		$capacity=521000;
 	}else if($meters['LocationName']=='Domestic Tank-B'){
 		$waterlevel=$datawaterlevel[0]['CurReading']*0.471*2.15;
+		$capacity=148000;
+	}else if($meters['LocationName']=='Domestic Tank-A'){
+		$waterlevel=$datawaterlevel[0]['CurReading'];
+		$capacity=148000;
+	}else if($meters['LocationName']=='Domestic Tank-C'){
+		$waterlevel=$datawaterlevel[0]['CurReading'];
 		$capacity=148000;
 	}else{
 		$waterlevel=$datawaterlevel[0]['CurReading'];
@@ -1738,6 +1745,20 @@ function get_version($app_id,$operator){
 		
 
 	}
+	function get_energymeter_list_undp($table_name){
+		
+		$this->db->select('');
+        $this->db->from($table_name);     
+        $this->db->where('LineConnected','kWh'); 
+		$this->db->group_by('UtilityName');
+        $res = $this->db->get()->result_array(); 
+		//echo json_encode($res[0]); die();
+		//echo $this->db->last_query();exit;     
+        return $res;
+
+		
+
+	}
 	function get_hardwares_device_data_energy_meters($data){
 		$station_id=$data['station_id'];
 		$hardware_name=$data['api_name'];
@@ -1814,6 +1835,110 @@ function get_version($app_id,$operator){
 					}
 		
 						//$resdata[$i]['meter']=$meters['LocationName'];
+						$resdata[$i]['today_consumption']=(string)$today_cons." Kwh";
+						$resdata[$i]['yesterday_consumption']=(string)$yest_consumption." Kwh";
+						$resdata[$i]['monthly_consumption']=(string)$monthly_cons_with_today." Kwh";
+						$resdata[$i]['weekly_avg']=(string)round($monthly_cons_with_today/$abs_diff,2)." Kwh";
+						//$resdata[$i]['scale']="Kwh";
+		
+					$i++;
+		
+				}
+			}else{
+				$resdata[0]['hardware_name']=$dashboardName;
+				$resdata[0]['today_consumption']="NA";
+				$resdata[0]['yesterday_consumption']="NA";
+				$resdata[0]['monthly_consumption']="NA";
+				$resdata[0]['weekly_avg']="NA";
+			}
+			
+		}else{
+			$resdata[0]['hardware_name']=$dashboardName;
+			$resdata[0]['today_consumption']="NA";
+			$resdata[0]['yesterday_consumption']="NA";
+			$resdata[0]['monthly_consumption']="NA";
+			$resdata[0]['weekly_avg']="NA";
+		}
+		
+		//echo json_encode($resdata);die();
+		return $resdata;
+
+	}
+	function check_current_data_undp($type,$location_name,$date)
+	{
+		$this->db->select('*');
+        $this->db->from('current_report_tbl_undp');
+		// $this->db->where('type',$type);  
+		$this->db->where('location_name',$location_name);
+		$this->db->where('report_date',$date);
+		      
+        $res = $this->db->get()->result_array();
+		//echo $res[0]['report_date'];die();        
+		 //echo "ll:".$this->db->last_query();die();       
+        return $res;
+	}
+	function get_hardwares_device_data_energy_meters_undp($data){
+		$station_id=$data['station_id'];
+		$hardware_name=$data['api_name'];
+		$lineconnected=$data['LineConnected'];
+		$todayDate=date("Y-m-d");
+		$dashboardName=$data['dashboard_name'];
+		//$todayDate="2021-10-15";
+		$table_name=$this->get_table_name($station_id);
+		if($table_name !=''){
+			$meter_list=$this->get_energymeter_list_undp($table_name);
+			if(count($meter_list)>0){
+				$yesterDay = date('Y-m-d',strtotime("-1 days"));
+				//$yesterDay = "2021-10-18";
+				$weekday = date('Y-m-d',strtotime("-7 days"));
+				$firstday= date('Y-m-01', strtotime($todayDate));
+				$earlier = new DateTime($firstday);
+				$later = new DateTime($todayDate);
+				$date_from_month = strtotime($firstday); 
+				$date_to_month = strtotime($todayDate); 
+				$datesarray_month=array();
+				for ($i1=$date_from_month; $i1<=$date_to_month; $i1+=86400)
+				{
+				array_push($datesarray_month, date("Y-m-d",$i1));  
+				}
+				$abs_diff = $later->diff($earlier)->format("%a")+1;
+				//print_r($meter_list);die();
+				$i=0;
+				foreach($meter_list as $meters){
+					$enquery="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meters['UtilityName']."' AND `TxnDate`='".$todayDate."' AND LineConnected='kWh'	ORDER BY TxnTime";
+					//echo $enquery;die();
+						$consdata = $this->db->query($enquery)->result_array();
+						$today_cons=round($consdata[0]['cons'],2);
+						$check=$this->check_current_data_undp("type",$meters['UtilityName'],$yesterDay);
+						if(count($check)==1){
+						   $yest_consumption=(float)$check[0]['consumption'];
+						}else{
+							$enqueryyest="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meters['UtilityName']."' AND `TxnDate`='".$yesterDay."' AND LineConnected='kWh'	ORDER BY TxnTime";
+							//echo $enquery;die();
+								$consdatayest = $this->db->query($enqueryyest)->result_array();
+								$yest_consumption=round($consdatayest[0]['cons'],2);
+						}
+						
+						$monthly_cons=0;
+						for ($k=0; $k < count($datesarray_month); $k++)
+								{ 
+								   $month_check=$this->check_current_data_undp("type",$meters['UtilityName'],$datesarray_month[$k]);
+								   if(count($month_check)==1){
+									   $monthly_cons+=(float)$month_check[0]['consumption'];
+								   }else{
+									   $runn_month="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meters['UtilityName']."' AND `TxnDate` = '".$datesarray_month[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
+									   //echo $pressure;die();
+										$runn_month_data = $this->db->query($runn_month)->result_array();
+										
+										$monthly_cons+=(float)$runn_month_data[0]['cons'];
+								   }
+								}
+								$monthly_cons_with_today=$monthly_cons+$today_cons;
+						
+		
+								$resdata[$i]['hardware_name']=$meters['UtilityName'];
+		
+						//$resdata[$i]['meter']=$meters['UtilityName'];
 						$resdata[$i]['today_consumption']=(string)$today_cons." Kwh";
 						$resdata[$i]['yesterday_consumption']=(string)$yest_consumption." Kwh";
 						$resdata[$i]['monthly_consumption']=(string)$monthly_cons_with_today." Kwh";
@@ -2258,6 +2383,275 @@ function get_version($app_id,$operator){
 			
 		return $resdata1;
 		
+	}
+	function get_devices_list_rsbros(){
+		$this->db->select('*');
+        $this->db->from('rsbrothers_vehicle_info');   
+		$this->db->where('status',1);
+		// $this->db->where('station_id','2022000276');
+		$this->db->order_by('api_name','desc');
+		// $this->db->where('from','wis');SIS Mall DG-1
+        $res = $this->db->get()->result_array();        
+		// echo $this->db->last_query();die();       
+        return $res;
+	}
+	function check_data($name,$table_name,$station_id){
+		$this->db->select('');
+        $this->db->from($table_name);        
+        $this->db->where('UtilityName', $name);
+		$this->db->where('StationId', $station_id);
+		
+		 $res = $this->db->get();    
+		 		//  echo "ll:".$this->db->last_query();  
+         
+        return $res->num_rows();
+	}
+	function get_hardwares_device_data_dg_rs($data){
+		
+		
+		$todayDate=date("Y-m-d");
+		//$todayDate="2021-08-20";
+		$device_data=$this->get_devices_list_rsbros();
+		$resdata1=array();
+		$table_name_live="hardware_station_consumption_data_rsbrothers_live";
+		$table_name="hardware_station_consumption_data_rsbrothers";
+		for ($i=0; $i <count($device_data) ; $i++) {
+			$station_id=$device_data[$i]['station_id'];
+			$hardware_name=$device_data[$i]['api_name'];
+			$dashboardName=$device_data[$i]['dg_name'];
+			$location=$device_data[$i]['location'];
+			$capacity=$device_data[$i]['capacity'];
+			$todayDate=date("Y-m-d");
+			
+		
+			$check=$this->check_data($hardware_name,$table_name_live,$station_id);
+			if($check){
+			$startEndFuelQuery="SELECT 
+		(SELECT Consumption as CurReading FROM $table_name_live WHERE TxnDate='".$todayDate."' AND StationId='".$station_id."' AND LineConnected='Fuel Level' AND UtilityName='".$hardware_name."' ORDER BY TxnTime LIMIT 1) as 'start',
+		(SELECT Consumption as CurReading FROM $table_name_live WHERE TxnDate='".$todayDate."' AND StationId='".$station_id."' AND UtilityName='".$hardware_name."' AND LineConnected='Fuel Level' ORDER BY TxnTime DESC LIMIT 1) as 'end'"; 
+			$dataStartEndFuel = $this->db->query($startEndFuelQuery)->result();
+			// echo json_encode($dataStartEndFuel[0]->start);die();
+			if(is_null($dataStartEndFuel[0]->start)){
+				$resdata1[$i]['hardware_name']=(string)$dashboardName."-".$location;
+			$resdata1[$i]['running_hours']="NA";
+			$resdata1[$i]['fuel_add']="NA";
+			$resdata1[$i]['fuel_remove']="NA";
+			$resdata1[$i]['fuel_consume']="NA";
+			$resdata1[$i]['economy']="NA";
+			$resdata1[$i]['available_fuel']="NA";
+			$resdata1[$i]['tank_capacity']="NA";		
+			$resdata1[$i]['filled_percent']="0";
+			$resdata1[$i]['voltage']="NA";
+			$resdata1[$i]['graph']=array();
+			}else{
+				$queryRunn="SELECT SUM(Consumption) as run FROM $table_name_live WHERE UtilityName='".$hardware_name."' AND TxnDate='".$todayDate."' AND StationId='".$station_id."' AND LineConnected='DG_Running_Time'";
+			$dataRunn = $this->db->query($queryRunn)->result();
+			
+			$resdata[$i]['running_hours']=floor($dataRunn[0]->run / 60).':'.($dataRunn[0]->run -   floor($dataRunn[0]->run / 60) * 60);
+			$resdata1[$i]['running_hours']=floor($dataRunn[0]->run / 60).':'.($dataRunn[0]->run -   floor($dataRunn[0]->run / 60) * 60);
+			
+			$queryFadd="SELECT SUM(Consumption) as fadd FROM $table_name_live WHERE UtilityName='".$hardware_name."' AND StationId='".$station_id."' AND TxnDate='".$todayDate."' AND LineConnected='Fuel Filled'";
+			
+			$dataAdd = $this->db->query($queryFadd)->result();
+			$resdata[$i]['fuel_add']=(string)$dataAdd[0]->fadd;
+			$resdata1[$i]['fuel_add']=(string)$dataAdd[0]->fadd." Ltrs";
+	
+	
+			$queryNonRuntimes="SELECT TxnTime,PrvReading,CurReading FROM $table_name_live WHERE UtilityName='".$hardware_name."' AND StationId='".$station_id."' AND TxnDate='".$todayDate."' AND LineConnected='Fuel Level'";
+			//echo $queryRuntimes;die();
+			$dataNonRunTimes = $this->db->query($queryNonRuntimes)->result();
+	
+			$queryRuntimes="SELECT TxnTime FROM $table_name_live WHERE UtilityName='".$hardware_name."' AND StationId='".$station_id."' AND TxnDate='".$todayDate."' AND LineConnected='DG_Running_Time'  AND Consumption>0";
+			
+	// echo $queryRuntimes;die();
+			$dataRunTimes = $this->db->query($queryRuntimes)->result();
+			$runarray=array();
+			for ($i2=0; $i2 < count($dataRunTimes) ; $i2++) { 
+				array_push($runarray,$dataRunTimes[$i2]->TxnTime);
+			}
+			$fremove=0;
+	
+	
+	
+			foreach ($dataNonRunTimes as $item)
+			{ 
+				
+				
+					if (!in_array($item->TxnTime, $runarray))
+					{
+						//echo $item->PrvReading."----".$item->CurReading."<br>"; 
+						$fm= $item->PrvReading-$item->CurReading;
+						if($fm>3){
+							$fremove+=$fm;
+						}
+						
+					}
+			}
+	
+			$resdata[$i]['fuel_remove']=(string)$fremove;
+			$resdata1[$i]['fuel_remove']=(string)$fremove." Ltrs";
+			$resdata[$i]['fuel_consume1']=(string)round($dataStartEndFuel[0]->start+$resdata[$i]['fuel_add']-$dataStartEndFuel[0]->end-$resdata[$i]['fuel_remove'],2);
+			
+			if($resdata[$i]['fuel_consume1'] <= 0 || $dataRunn[0]->run==0){
+				$finaleco =0;
+				$resdata[$i]['fuel_consume']="0 Ltrs";
+				$resdata1[$i]['fuel_consume']="0 Ltrs";
+				//return 0;
+			}
+			else{
+				$resdata[$i]['fuel_consume']=(string)$resdata[$i]['fuel_consume1'];
+				$resdata1[$i]['fuel_consume']=(string)$resdata[$i]['fuel_consume1']." Ltrs";
+				$rs = explode(":", $resdata[$i]['running_hours']);
+				// echo json_encode($rs);die();
+				//print_r($rs);
+				$hrs = $rs[0];
+				$mins = $rs[1];
+				$total_mins = ($hrs*60)+$mins;
+				if($total_mins != 0){
+					$eco = ($resdata[$i]['fuel_consume']/$total_mins)*60;
+				}
+				else{
+					$eco = 0;
+				}
+				//echo "<br>".$eco."<br>";
+				$finaleco= round($eco,2);
+				
+			}
+			
+			$resdata1[$i]['hardware_name']=(string)$dashboardName."-".$location;
+			$resdata[$i]['economy']=(string)$finaleco;
+			$resdata1[$i]['economy']=(string)$finaleco;
+			$resdata[$i]['available_fuel']=(string)$dataStartEndFuel[0]->end;
+			$resdata1[$i]['available_fuel']=(string)$dataStartEndFuel[0]->end." Ltrs";
+			$resdata1[$i]['tank_capacity']=$capacity;
+			$resdata[$i]['filled_percent']=(string)round(($dataStartEndFuel[0]->end/$capacity)*100);
+			$resdata1[$i]['filled_percent']=(string)round(($dataStartEndFuel[0]->end/$capacity)*100);
+	
+			$queryVoltage="SELECT Consumption FROM $table_name_live WHERE TxnDate='".$todayDate."' AND StationId='".$station_id."' AND LineConnected='Battery' AND UtilityName='".$hardware_name."' ORDER BY TxnTime DESC LIMIT 1";
+			//echo $queryRuntimes;die();
+			$dataVoltage = $this->db->query($queryVoltage)->result();
+	
+			$resdata1[$i]['voltage']=(string)$dataVoltage[0]->Consumption." Volt";
+			//$resdata[$i]['scale']="Ltrs";
+	
+			$queryStatus="SELECT Consumption FROM $table_name_live WHERE TxnDate='".$todayDate."' AND StationId='".$station_id."'  AND LineConnected='Battery' AND UtilityName='".$hardware_name."' ORDER BY TxnTime DESC LIMIT 1";
+			//echo $queryRuntimes;die();
+			$dataStatus = $this->db->query($queryStatus)->result();
+			if($dataStatus[0]->Consumption==1){
+				$status=true;
+			}else{
+				$status=false;
+			}
+			$resdata1[$i]['status']=$status;
+			
+			$graphdata=$this->graph_data_rs($dashboardName,$todayDate,$table_name,$station_id);
+			$resdata1[$i]['graph']=$graphdata;
+			// }else{
+			//     $resdata[$i]['hardware_name']=$hardware_name;
+			// 	$resdata[$i]['run']="NA";
+			// 	$resdata[$i]['fadd']="NA";
+			// 	$resdata[$i]['fremove']="NA";
+			// 	$resdata[$i]['fconsume']="NA";
+			// 	$resdata[$i]['economy']="NA";
+			// 	$resdata[$i]['availableFuel']="NA";
+			// 	$resdata[$i]['voltage']="NA";
+			// 	$resdata[$i]['status']="NA";
+			// 	$resdata[$i]['filledpercent']="NA";
+			// 	$resdata[$i]['graph']=array();
+	
+	
+			// }
+			}
+			
+			
+		}else{
+			$resdata1[$i]['hardware_name']=$dashboardName."-".$location;
+			$resdata1[$i]['running_hours']="NA";
+			$resdata1[$i]['fuel_add']="NA";
+			$resdata1[$i]['fuel_remove']="NA";
+			$resdata1[$i]['fuel_consume']="NA";
+			$resdata1[$i]['economy']="NA";
+			$resdata1[$i]['available_fuel']="NA";
+			$resdata1[$i]['tank_capacity']="NA";		
+			$resdata1[$i]['filled_percent']="0";
+			$resdata1[$i]['voltage']="NA";
+			$resdata1[$i]['graph']=array();
+
+		}
+		
+	}	
+		return $resdata1;
+		
+		
+	}
+	function graph_data_rs($name,$date,$db_table,$station_id){
+		// $to=date("Y-m-d");
+		$to = date('Y-m-d',strtotime("-1 days"));
+		$from = date('Y-m-d',strtotime("-6 days"));
+		
+		$date_from = strtotime($from); 
+        $date_to = strtotime($to); 
+        $datesarray=array();
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400) 
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for($k=0; $k < count($datesarray); $k++) 
+        {
+			$check=$this->chech_dg_running_rs($name,$datesarray[$k],$station_id);
+			if(count($check)>0){
+				$fulldata[$k]['time']=$check[0]['report_date'];;
+				$fulldata[$k]['meter']=$check[0]['dg_name'];
+				$rs = preg_split('/\s+/', $check[0]['running_min2']);
+				
+										//print_r($rs);
+										$hrs = $rs[0];
+										$mins = $rs[2];
+										$total_mins = ($hrs*60)+$mins;
+				$fulldata[$k]['runninghrs']=$total_mins;
+				$fulldata[$k]['from']="db";
+			}else{
+				$queryD = "SELECT SUM(Consumption) as run  FROM $db_table where UtilityName='".$name."'  AND LineConnected='DG_Running_Time' AND StationId='".$station_id."' AND TxnDate='".$datesarray[$k]."'   order by TxnTime";
+				
+				$data1D = $this->db->query($queryD)->result();
+				$fulldata[$k]['time']=$datesarray[$k];
+				$fulldata[$k]['meter']=$name;
+				$fulldata[$k]['runninghrs']=(int)$data1D[0]->run;
+			}
+			
+		}
+		
+		  
+		  return $fulldata;
+
+	}
+	function chech_dg_running_rs($hardware_name,$date,$station_id){
+		if($station_id==''){
+			$this->db->select('*');
+			$this->db->from('dg_running_report_tbl_rs');        
+			
+			$this->db->where('dg_name',$hardware_name);
+			//$this->db->where('station_id',$station_id);
+			
+			$this->db->where('report_date',$date);
+		   
+			$res = $this->db->get()->result_array();
+		}else{
+			$this->db->select('*');
+			$this->db->from('dg_running_report_tbl_rs');        
+			
+			$this->db->where('dg_name',$hardware_name);
+			$this->db->where('station_id',$station_id);
+			
+			$this->db->where('report_date',$date);
+		   
+			$res = $this->db->get()->result_array();
+			// echo "ll:".$this->db->last_query()."<br>";
+		}
+		
+		//echo $res[0]['report_date'];die();        
+		// echo "ll:".$this->db->last_query();die();       
+        return $res;
 	}
 	function graph_data($name,$date,$table_name){
 		$to=date("Y-m-d");

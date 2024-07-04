@@ -71,7 +71,7 @@ class Login extends MX_Controller {
 		$pwd = $this->input->post('pwd');
 		$result = $this->Login_model->validate_user($uname,$pwd);
 		//echo $uname." ".$pwd;
-		//print_r($result);die();
+		// print_r($result);die();
 		if($result)
 		{		
 			$this->setSession($result);
@@ -126,13 +126,24 @@ class Login extends MX_Controller {
 				redirect('WashroomData/demoData');
 				// redirect('WRLData/demoData');
 			}
+			else if($result['user']->user_id == 19)
+			{
+				redirect('WashroomDemoData/demoData');
+				// redirect('WRLData/demoData');
+			}
 			else if($result['user']->user_id == 21)
 			{
 				redirect('WRLJPNagar/demoData');
 			}
 			else if($result['user']->first_name == "WDemoClient")
 			{
-				redirect(base_url('Login/wdemologin'));
+				//redirect(base_url('Login/wdemologin'));
+				redirect('WashroomDemoData/demoData');
+			}
+			else if($result['user']->first_name == "test")
+			{
+				//redirect(base_url('Login/wdemologin'));
+				redirect('WashroomDemo2Data/demoData');
 			}
 
 			else

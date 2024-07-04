@@ -97,7 +97,10 @@
                             <li>
                                 <?php if($this->session->userdata('created_by')==35){ ?>
                                     <a href="<?php echo site_url('Admin/Home/energy_vegasschool/')?>#energy" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/Electric-Meter-W.png" width="22px"/> <span class="Txt">Energy Meter</span></a>
-                                    <?php }else{?>
+                                    <?php }elseif($this->session->userdata('created_by')==38){?>
+                                        <a href="<?php echo site_url('Admin/Home/energy_undp/')?>#energy" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/Electric-Meter-W.png" width="22px"/> <span class="Txt">Energy Meter</span></a>
+                                      
+                                        <?php }else{?>
                                         <a href="<?php echo site_url('Admin/Home/energy/')?>#energy" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/Electric-Meter-W.png" width="22px"/> <span class="Txt">Energy Meter</span></a>
                                         <?php }?>
                                 
@@ -460,10 +463,17 @@
                         
                     
                         <a href="<?php echo site_url('Admin/Home/all_reports_vega') ?>" class="Lnk Arr" id="reportss"><img src="<?php echo site_url() ?>asset/admin/img/reports-img.png" width="20px"/> <span class="Txt">Reports</span></a>
+                        <?php } if($this->session->userdata('created_by')==38){?>                       
+                    
+                        <a href="<?php echo site_url('Admin/Home/all_reports_undp') ?>" class="Lnk Arr" id="reportss"><img src="<?php echo site_url() ?>asset/admin/img/reports-img.png" width="20px"/> <span class="Txt">Reports</span></a>
                     <?php } if($this->session->userdata('created_by')==33){?>
                         
                     
                         <a href="<?php echo site_url('Admin/Home/all_reports_rsbrother') ?>" class="Lnk Arr" id="reportss"><img src="<?php echo site_url() ?>asset/admin/img/reports-img.png" width="20px"/> <span class="Txt">Reports</span></a>
+                        <?php } if($this->session->userdata('created_by')==39){?>
+                        
+                    
+                        <a href="<?php echo site_url('Admin/Home/all_reports_hcug') ?>" class="Lnk Arr" id="reportss"><img src="<?php echo site_url() ?>asset/admin/img/reports-img.png" width="20px"/> <span class="Txt">Reports</span></a>
                     <?php } if($this->session->userdata('user_id')==25){?>
                         
                     

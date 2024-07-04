@@ -23,6 +23,251 @@ class Api_model extends CI_Model{
 // print_r($this->db->last_query());die();
         return $result[0];
     }
+    function pushDelhiDataLive($json_client)
+    {
+        //print_r($json_client);die();
+        foreach ($json_client as $valueclient) {
+            
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+           
+            //if(strtotime($adate)>strtotime($pdate)){
+            $appData2=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'LocationName'=>$valueclient['LocationName'],
+                'MeterSerial'=>$valueclient['MeterSerial'],
+                'LineConnected'=>$valueclient['LineConnected'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'PrvReading'=>$valueclient['PrvReading'],
+                'CurReading'=>$valueclient['PrvReading'],
+                'Consumption'=>$valueclient['Consumption'],
+                'Multiplier'=>$valueclient['Multiplier'],
+                'UomScale'=>$valueclient['UomScale']             
+            );
+        $queryclient = $this->db->get_where('hardware_station_consumption_data_delhi', array(//making selection
+        'StationId'=>$appData2['StationId'],'TxnTime'=>$appData2['TxnTime'],'LineConnected'=>$appData2['LineConnected'],'TxnDate'=>$newDate
+        ));
+
+        $countclient = $queryclient->num_rows(); //counting result from query
+
+        if ($countclient === 0) {
+
+        $this->db->insert('hardware_station_consumption_data_delhi', $appData2);
+        }
+          
+        }
+
+    }
+    function pushApiDataUNDP($json_chennai){
+        foreach ($json_chennai as $valueclient) {
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+           
+            $appData2=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'LocationName'=>$valueclient['LocationName'],
+                'MeterName'=>$valueclient['MeterName'],
+                'MeterSerial'=>$valueclient['MeterSerial'],
+                'LineConnected'=>$valueclient['LineConnected'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'FromTime'=>$valueclient['FromTime'],
+                'ToTime'=>$valueclient['ToTime'],
+                'PrvReading'=>$valueclient['PrvReading'],
+                'CurReading'=>$valueclient['PrvReading'],
+                'Consumption'=>$valueclient['Consumption'],
+                'Multiplier'=>$valueclient['Multiplier'],
+                'UomScale'=>$valueclient['UomScale'],
+                'update_date'=>date("Y-m-d H:i:s")               
+            );
+             $this->db->insert('hardware_station_consumption_data_undp', $appData2);
+         
+        }
+     }
+    function pushApiDataUNDPLive($json_client)
+    {
+        //print_r($json_client);die();
+        foreach ($json_client as $valueclient) {
+            
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+           
+            //if(strtotime($adate)>strtotime($pdate)){
+                $appData2=array(
+                    'StationId'=>$valueclient['StationId'],
+                    'UtilityName'=>$valueclient['UtilityName'],
+                    'LocationName'=>$valueclient['LocationName'],
+                    'MeterName'=>$valueclient['MeterName'],
+                    'MeterSerial'=>$valueclient['MeterSerial'],
+                    'LineConnected'=>$valueclient['LineConnected'],
+                    'TxnDate'=>$newDate,
+                    'TxnTime'=>$valueclient['TxnTime'],
+                    'FromTime'=>$valueclient['FromTime'],
+                    'ToTime'=>$valueclient['ToTime'],
+                    'PrvReading'=>$valueclient['PrvReading'],
+                    'CurReading'=>$valueclient['PrvReading'],
+                    'Consumption'=>$valueclient['Consumption'],
+                    'Multiplier'=>$valueclient['Multiplier'],
+                    'UomScale'=>$valueclient['UomScale'],
+                    'update_date'=>date("Y-m-d H:i:s")               
+                );
+        $queryclient = $this->db->get_where('hardware_station_consumption_data_undp_live', array(//making selection
+        'StationId'=>$appData2['StationId'],'TxnTime'=>$appData2['TxnTime'],'LineConnected'=>$appData2['LineConnected'],'TxnDate'=>$newDate
+        ));
+
+        $countclient = $queryclient->num_rows(); //counting result from query
+
+        if ($countclient === 0) {
+
+        $this->db->insert('hardware_station_consumption_data_undp_live', $appData2);
+        }
+          
+        }
+
+    }
+    function trunIITH(){
+        $this->db->truncate('hardware_station_consumption_data_iith');
+
+    }
+    function trunHCUG(){
+        $this->db->truncate('hardware_station_consumption_data_hcug_status');
+        
+
+    }
+    function pushApiHCUGStatus($json_client)
+    {
+        //print_r($json_client);die();
+        date_default_timezone_set('Asia/Kolkata');
+        //echo date('d-m-Y H:i');
+
+        foreach ($json_client as $valueclient) {
+            
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            $time=$valueclient['TxnTime'];
+            $adate = date('Y-m-d H:i:s', strtotime("$newDate $time"));
+            $pdate= date("Y-m-d H:i:s", strtotime("-30 minutes"));           
+           
+        //    echo $pdate;die();
+            if($valueclient['UtilityId']==144 && $valueclient['LineConnected']=='Unit Status' && strtotime($adate)>strtotime($pdate)){
+                $appData2=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'UtilityId'=>$valueclient['UtilityId'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'FromTime'=>$valueclient['FromTime'],
+                'ToTime'=>$valueclient['ToTime'],
+                'CurReading'=>$valueclient['CurReading']         
+                );
+                $this->db->insert('hardware_station_consumption_data_hcug_status', $appData2);
+    }
+          
+        }
+
+    }
+    function pushApiIITH($json_client)
+    {
+        //print_r($json_client);die();
+        date_default_timezone_set('Asia/Kolkata');
+        //echo date('d-m-Y H:i');
+
+        foreach ($json_client as $valueclient) {
+            
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            $time=$valueclient['TxnTime'];
+            $adate = date('Y-m-d H:i:s', strtotime("$newDate $time"));
+            $pdate= date("Y-m-d H:i:s", strtotime("-30 minutes"));           
+            
+        //    echo $pdate;die();
+            if($valueclient['LineConnected']!='Equip_RHT' && strtotime($adate)>strtotime($pdate)){
+                $appData2=array(
+                    'StationId'=>$valueclient['StationId'],
+                    'UtilityName'=>$valueclient['UtilityName'],
+                    'LocationName'=>$valueclient['LocationName'],
+                    'MeterName'=>$valueclient['MeterName'],
+                    'MeterSerial'=>$valueclient['MeterSerial'],
+                    'LineConnected'=>$valueclient['LineConnected'],
+                    'TxnDate'=>$newDate,
+                    'TxnTime'=>$valueclient['TxnTime'],
+                    'CurReading'=>$valueclient['CurReading']         
+                );
+                $this->db->insert('hardware_station_consumption_data_iith', $appData2);
+    }
+          
+        }
+
+    }
+    function pushDelhiDataLive1($json_client)
+    {
+        //print_r($json_client);die();
+        foreach ($json_client as $valueclient) {
+            
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            if($valueclient['LocationName']=='AFS project-C'){
+                    $appData2=array(
+                        'StationId'=>2023000252,
+                        'UtilityName'=>$valueclient['UtilityName'],
+                        'LocationName'=>"EM01",
+                        'MeterSerial'=>$valueclient['MeterSerial'],
+                        'LineConnected'=>$valueclient['LineConnected'],
+                        'TxnDate'=>$newDate,
+                        'TxnTime'=>$valueclient['TxnTime'],
+                        'PrvReading'=>$valueclient['PrvReading'],
+                        'CurReading'=>$valueclient['PrvReading'],
+                        'Consumption'=>$valueclient['Consumption'],
+                        'Multiplier'=>$valueclient['Multiplier'],
+                        'UomScale'=>$valueclient['UomScale']             
+                    );
+                $queryclient = $this->db->get_where('hardware_station_consumption_data_delhi', array(//making selection
+                'StationId'=>$appData2['StationId'],'TxnTime'=>$appData2['TxnTime'],'LineConnected'=>$appData2['LineConnected'],'TxnDate'=>$newDate
+                ));
+        
+                $countclient = $queryclient->num_rows(); //counting result from query
+        
+                if ($countclient === 0) {
+        
+                $this->db->insert('hardware_station_consumption_data_delhi', $appData2);
+                }
+
+            }
+           
+            
+          
+        }
+
+    }
+    function pushDelhiDataLive2($json_client)
+    {
+        //print_r($json_client);die();
+        foreach ($json_client as $valueclient) {
+            
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            if($valueclient['LocationName']=='AFS project-C'){
+                    $appData2=array(
+                        'StationId'=>2023000252,
+                        'UtilityName'=>$valueclient['UtilityName'],
+                        'LocationName'=>"EM01",
+                        'MeterSerial'=>$valueclient['MeterSerial'],
+                        'LineConnected'=>$valueclient['LineConnected'],
+                        'TxnDate'=>$newDate,
+                        'TxnTime'=>$valueclient['TxnTime'],
+                        'PrvReading'=>$valueclient['PrvReading'],
+                        'CurReading'=>$valueclient['PrvReading'],
+                        'Consumption'=>$valueclient['Consumption'],
+                        'Multiplier'=>$valueclient['Multiplier'],
+                        'UomScale'=>$valueclient['UomScale']             
+                    );
+               
+                $this->db->insert('hardware_station_consumption_data_delhi', $appData2);
+                
+
+            }
+           
+            
+          
+        }
+
+    }
     function pushApiDataChennaiLive($json_chennai){
         foreach ($json_chennai as $valueclient) {
             //$newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
@@ -75,10 +320,39 @@ class Api_model extends CI_Model{
                 'UomScale'=>$valueclient['UomScale'],
                 'update_date'=>date("Y-m-d H:i:s")               
             );
-             $this->db->insert('hardware_station_consumption_data_chennai_bkp_27octTo6Nov2022', $appDataChennai);
+             $this->db->insert('hardware_station_consumption_data_chennai_june13_14&22_23_2023', $appDataChennai);
          
         }
      }
+     function pushHCUGDataDates($json_chennai){
+        foreach ($json_chennai as $valueclient) {
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+           
+            $appDataChennai=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'LocationName'=>$valueclient['LocationName'],
+                'LocationGroup'=>$valueclient['LocationGroup'],
+                'MeterName'=>$valueclient['MeterName'],
+                'MeterSerial'=>$valueclient['MeterSerial'],
+                'LineConnected'=>$valueclient['LineConnected'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'FromTime'=>$valueclient['FromTime'],
+                'ToTime'=>$valueclient['ToTime'],
+                'PrvReading'=>$valueclient['PrvReading'],
+                'CurReading'=>$valueclient['PrvReading'],
+                'Consumption'=>$valueclient['Consumption'],
+                'Multiplier'=>$valueclient['Multiplier'],
+                'UomName'=>$valueclient['UomName'],
+                'UomScale'=>$valueclient['UomScale'],
+                'update_date'=>date("Y-m-d H:i:s")               
+            );
+             $this->db->insert('hardware_station_consumption_data_hcug', $appDataChennai);
+         
+        }
+     }
+     
      function pushApiDataVegaschoolLive($json_client)
     {
         //print_r($json_client);die();
@@ -184,6 +458,36 @@ class Api_model extends CI_Model{
          
         }
      }
+     function pushApiDataChennaiDates($json_chennai){
+        foreach ($json_chennai as $valueclient) {
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+                          
+           $appDataChennai=array(
+                 'StationId'=>$valueclient['StationId'],
+                 'UtilityName'=>$valueclient['UtilityName'],
+                 'LocationName'=>$valueclient['LocationName'],
+                 'LocationGroup'=>$valueclient['LocationGroup'],
+                 'MeterName'=>$valueclient['MeterName'],
+                 'MeterSerial'=>$valueclient['MeterSerial'],
+                 'LineConnected'=>$valueclient['LineConnected'],
+                 'TxnDate'=>$newDate,
+                 'TxnTime'=>$valueclient['TxnTime'],
+                 'FromTime'=>$valueclient['FromTime'],
+                 'ToTime'=>$valueclient['ToTime'],
+                 'PrvReading'=>$valueclient['PrvReading'],
+                 'CurReading'=>$valueclient['PrvReading'],
+                 'Consumption'=>$valueclient['Consumption'],
+                 'Multiplier'=>$valueclient['Multiplier'],
+                 'UomName'=>$valueclient['UomName'],
+                 'UomScale'=>$valueclient['UomScale'],
+                 'update_date'=>date("Y-m-d H:i:s")               
+             );           
+         
+            $this->db->insert('hardware_station_consumption_data_chennai_jan13tofeb52024', $appDataChennai);
+            
+         
+        }
+     }
      function pushApiDataMumbaiFromTo($json_mumbai){
         foreach ($json_mumbai as $valueclient) {
             $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));            
@@ -206,7 +510,7 @@ class Api_model extends CI_Model{
                 'UomName'=>$valueclient['UomName'],
                 'UomScale'=>$valueclient['UomScale'],               
             );
-             $this->db->insert('hardware_station_consumption_data_mumbai', $appDataMumbai);
+             $this->db->insert('hardware_station_consumption_data_mumbai8', $appDataMumbai);
             
         }
      }
@@ -1116,15 +1420,15 @@ function getClientToken($client_id){
             
             $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
              
-            if($valueclient['LineConnected']=='Footfall Male' && $valueclient['Consumption']>=8){
+            // if($valueclient['LineConnected']=='Footfall Male' && $valueclient['Consumption']>=8){
                
-                $user_data = array('Consumption' => $valueclient['Consumption']*7,'CurReading' => $valueclient['Consumption']*7);
-                $this->db->where('LineConnected','Odour Male');
-                $this->db->where('TxnTime',$valueclient['FromTime']);
-                $this->db->where('TxnDate',$newDate);
-                $this->db->update('hardware_station_consumption_data_wr_collector_2022',$user_data);
+            //     $user_data = array('Consumption' => $valueclient['Consumption']*7,'CurReading' => $valueclient['Consumption']*7);
+            //     $this->db->where('LineConnected','Odour Male');
+            //     $this->db->where('TxnTime',$valueclient['FromTime']);
+            //     $this->db->where('TxnDate',$newDate);
+            //     $this->db->update('hardware_station_consumption_data_wr_collector',$user_data);
                
-            }
+            // }
            
             $appData2=array(
                 'StationId'=>$valueclient['StationId'],
@@ -1146,7 +1450,7 @@ function getClientToken($client_id){
                 'UomScale'=>$valueclient['UomScale']               
             );
            
-         $this->db->insert('hardware_station_consumption_data_wr_collector_2022', $appData2);
+         $this->db->insert('hardware_station_consumption_data_wr_collector', $appData2);
           
         }
 
@@ -1221,7 +1525,7 @@ function getClientToken($client_id){
                 'UomName'=>$valueclient['UomName'],
                 'UomScale'=>$valueclient['UomScale']               
             );
-            $this->db->insert('hardware_station_consumption_data_wr_jpnagar', $appData2);
+            $this->db->insert('hardware_station_consumption_data_wr_jpnagar_2022', $appData2);
           
         }
 
@@ -1566,7 +1870,7 @@ function getClientToken($client_id){
                 'UomName'=>$valueclient['UomName'],
                 'UomScale'=>$valueclient['UomScale']               
             );
-            $this->db->insert('hardware_station_consumption_data_chintal_bridge', $appData2);
+            $this->db->insert('hardware_station_consumption_data_chintal_bridge_2022', $appData2);
           
         }
 
@@ -2074,6 +2378,124 @@ function getClientToken($client_id){
         }
 
     }
+    function pushHCUGData($json_client)
+    {
+        //print_r($json_client);die();
+        foreach ($json_client as $valueclient) {
+            if($valueclient['UtilityId']==144 && $valueclient['LineConnected']=='Unit Status'){
+                $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            
+            $appData2=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'UtilityId'=>$valueclient['UtilityId'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'FromTime'=>$valueclient['FromTime'],
+                'ToTime'=>$valueclient['ToTime'],
+                'CurReading'=>$valueclient['CurReading']         
+            );
+            $this->db->insert('hardware_station_consumption_data_hcug', $appData2);
+
+            }
+            
+          
+        }
+
+    }
+    function pushHCUGDataLive($json_client)
+    {
+        //print_r($json_client);die();
+        foreach ($json_client as $valueclient) {
+            if($valueclient['UtilityId']==144 && $valueclient['LineConnected']=='Unit Status'){
+                $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            
+            $appData2=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'UtilityId'=>$valueclient['UtilityId'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'FromTime'=>$valueclient['FromTime'],
+                'ToTime'=>$valueclient['ToTime'],
+                'CurReading'=>$valueclient['CurReading']         
+            );
+            $queryclient = $this->db->get_where('hardware_station_consumption_data_hcug_live', array(//making selection
+                'StationId'=>$appData2['StationId'],'TxnTime'=>$appData2['TxnTime'],'TxnDate'=>$newDate
+                ));
+        
+                $countclient = $queryclient->num_rows(); //counting result from query
+        
+                if ($countclient === 0) {
+        
+                $this->db->insert('hardware_station_consumption_data_hcug_live', $appData2);
+                }
+
+            }
+            
+          
+        }
+
+    }
+    function pushHCUG0036DataLive($json_client)
+    {
+        //print_r($json_client);die();
+        foreach ($json_client as $valueclient) {
+            if($valueclient['UtilityId']==151 && $valueclient['LineConnected']=='Unit Status'){
+                $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            
+            $appData2=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'UtilityId'=>$valueclient['UtilityId'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'FromTime'=>$valueclient['FromTime'],
+                'ToTime'=>$valueclient['ToTime'],
+                'CurReading'=>$valueclient['CurReading']         
+            );
+            $queryclient = $this->db->get_where('hardware_station_consumption_data_hcug_live', array(//making selection
+                'StationId'=>$appData2['StationId'],'TxnTime'=>$appData2['TxnTime'],'TxnDate'=>$newDate
+                ));
+        
+                $countclient = $queryclient->num_rows(); //counting result from query
+        
+                if ($countclient === 0) {
+        
+                $this->db->insert('hardware_station_consumption_data_hcug_live', $appData2);
+                }
+
+            }
+            
+          
+        }
+
+    }
+    function pushHCUG0036Data($json_client)
+    {
+        //print_r($json_client);die();
+        foreach ($json_client as $valueclient) {
+            if($valueclient['UtilityId']==151 && $valueclient['LineConnected']=='Unit Status'){
+                $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            
+            $appData2=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'UtilityId'=>$valueclient['UtilityId'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'FromTime'=>$valueclient['FromTime'],
+                'ToTime'=>$valueclient['ToTime'],
+                'CurReading'=>$valueclient['CurReading']         
+            );
+            $this->db->insert('hardware_station_consumption_data_hcug', $appData2);
+
+            }
+            
+          
+        }
+
+    }
     function pushDistrictCourtData($json_client)
     {
         // print_r($json_client);die();
@@ -2101,7 +2523,7 @@ function getClientToken($client_id){
                     'UomScale'=>$valueclient['UomScale']                 
             );
             
-            $this->db->insert('hardware_station_consumption_data_district_court', $appData2);
+            $this->db->insert('hardware_station_consumption_data_district_court_2022', $appData2);
            
 
           
@@ -2109,10 +2531,22 @@ function getClientToken($client_id){
 
     }
     function deleteAllLiveData(){
-        $tables = array("hardware_station_consumption_data_district_court_live","hardware_station_consumption_data_gopalaswami_temple_live","hardware_station_consumption_data_radhika_theatre_lane_live","hardware_station_consumption_data_kazipet_railwaystation_live","hardware_station_consumption_data_chintal_bridge_live","hardware_station_consumption_data_lic_office_marketroad_live","hardware_station_consumption_data_mission_hospital_live","hardware_station_consumption_data_police_headquarters_live","hardware_station_consumption_data_wr_jpnagar_live","hardware_station_consumption_data_wr_collector_live","hardware_station_consumption_data_rsbrothers_live","hardware_station_consumption_data_vegaschool_live");
-        $date = date('Y-m-d',strtotime("-1 days"));
+        $tables = array("hardware_station_consumption_data_district_court_live","hardware_station_consumption_data_gopalaswami_temple_live","hardware_station_consumption_data_radhika_theatre_lane_live","hardware_station_consumption_data_kazipet_railwaystation_live","hardware_station_consumption_data_chintal_bridge_live","hardware_station_consumption_data_lic_office_marketroad_live","hardware_station_consumption_data_mission_hospital_live","hardware_station_consumption_data_police_headquarters_live","hardware_station_consumption_data_wr_jpnagar_live","hardware_station_consumption_data_wr_collector_live","hardware_station_consumption_data_rsbrothers_live","hardware_station_consumption_data_vegaschool_live","hardware_station_consumption_data_undp_live");
+        $date = date('Y-m-d');
         foreach($tables as $table) {
-            $this->db->where('TxnDate', $date);
+            $where="TxnDate < '".$date."'";
+            $this->db->where($where);
+            $this->db->delete($table);
+        }
+           
+    }
+    function getDeleteUndpLive(){
+        $tables = array("hardware_station_consumption_data_vegaschool_live","hardware_station_consumption_data_undp_live");
+        $date = date('Y-m-d');
+        echo $date;die();
+        foreach($tables as $table) {
+            $where="TxnDate < '".$date."'";
+            $this->db->where($where);
             $this->db->delete($table);
         }
            

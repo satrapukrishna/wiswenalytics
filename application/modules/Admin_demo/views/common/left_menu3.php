@@ -150,6 +150,9 @@
 								 <li>
 								  <a href="<?php echo site_url('Admin_demo/Home/aircondition/')?>#div8" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/cooling-w.png" width="22px"/> <span class="Txt">Cooling Tower</span></a>
 								  </li>
+                                  <li>
+								  <a href="<?php echo site_url('Admin_demo/Home/aircondition/')?>#div88" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/IndoorAirQuality.png" width="22px"/> <span class="Txt">Indoor Air Quality</span></a>
+								  </li>
 							</ul>
 						</li>
 						<?php } ?>

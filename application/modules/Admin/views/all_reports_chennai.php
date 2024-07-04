@@ -1311,7 +1311,7 @@ footer {
 									</div>
 									<?php 
 									$this->load->view('graphreportcommon/firepumprungraph');
-									
+									$this->load->view('graphreportcommon/firepumplinepressure_f1');
 									$this->load->view('reportcommon/firepumprunnreport_dyn_p1'); ?>
 									<span class="SctnTtl"><?php echo $firepump_data[1]['meter']; ?></span>
 									<div class="SmmryDtlsTblHldr">

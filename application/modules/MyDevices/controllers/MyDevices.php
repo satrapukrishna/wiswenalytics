@@ -204,7 +204,7 @@ function getEmbassyData_prev(){
 	$companyId=$this->getCompanyId($token);
 	$locationId=$this->getLocationId($companyId,$token);
 	$things=$this->getThings($locationId,$companyId,$token);
-	$things_data= json_decode($things);
+	//$things_data= json_decode($things);
 	$date=$this->input->get('date');
    // echo print_r($date);die();
     // echo print_r($companyId);die();
@@ -269,10 +269,11 @@ function getEmbassyData_prev_morning(){
 	$companyId=$this->getCompanyId($token);
 	$locationId=$this->getLocationId($companyId,$token);
 	$things=$this->getThings($locationId,$companyId,$token);
-	$things_data= json_decode($things);
+	//$things_data= json_decode($things);
 	$date=$this->input->get('date');
    // echo print_r($date);die();
     // echo print_r($companyId);die();
+	// echo count($things);die();
  $result=array();
  $k=0;
 	for ($i=0; $i < count($things); $i++) {
@@ -418,16 +419,10 @@ function getEmbassyData_prev_morning(){
 	$startdate1= $date." 12:00:00 AM";
 	//echo date('Y-m-d H:m:s A');
 	$enddate1= $date." 12:00:00 PM";
-	$startdate2= $date." 12:00:00 PM";
-	//echo date('Y-m-d H:m:s A');
-	$enddate2= $date." 11:59:00 PM";
-	// $startdate= date('Y-m-d')." 12:00:00 AM";
-	// $enddate= date('Y-m-d h:m:s A');
+	
 	$start_date1=strtotime($startdate1)*1000;
 	$end_date1=strtotime($enddate1)*1000;
 
-	$start_date2=strtotime($startdate2)*1000;
-	$end_date2=strtotime($enddate2)*1000;
 	$url='https://api.iotinabox.com/companies/'.$compId.'/locations/'.$locaId.'/things/'.$thingId.'/history?start_date=' . $start_date1 . '&end_date=' . $end_date1 . '&type=custom&units=d,p,v,dbm,mins';
 	$ch = curl_init($url);                                                                      
 	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");                                                                     

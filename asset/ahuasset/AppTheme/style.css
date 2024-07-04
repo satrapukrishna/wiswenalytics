@@ -1,0 +1,871 @@
+#stime,#etime{
+    position:relative;
+}
+.ui-timepicker-container{
+    left:10px !important;
+    top:82px !important;
+    z-index: 999 !important;
+}
+.logo{
+    background-color: #003550;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%; 
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-content: center;
+    justify-content: center;
+} 
+.logo .txt{
+    font-size: 30px;
+    text-transform: uppercase;
+    color: white;
+}
+/* Error message */
+label.error {
+    padding: 0 !important;
+    bottom:-6px; 
+}
+.LocationNameDv a {
+    text-decoration: none;
+    color: black;
+}
+
+.LocationOvrvw a {
+    text-decoration: none;
+    color: black;
+}
+.SbMnuHldr1 {
+    top: auto !important;
+    bottom: 100% !important;
+}
+
+.SbMnuHldr1::before {
+    top: auto !important;
+    bottom: -5px !important;
+    border-bottom: none !important;
+    border-top: 5px solid #fff;
+}
+.ScnLocTxt{
+    display: block !important;
+    text-align: center;
+    padding: 0 !important;
+    color: #000000;
+    font-size: 18px;
+    font-weight: 800;
+}
+.BrdCrumb{
+    display: block !important;
+    text-align: center;
+    padding: 0 !important;
+    color: #000000;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.CntTxt{
+    display: block !important;
+    text-align: center;
+    padding: 0 !important;
+    color: #000000;
+    font-size: 22px;
+    font-weight: 800;
+}
+div.ClrThemePreviewHldr span.Cmplt.Theme1-Type1,div.ClrThemePreviewHldr span.Cmplt.Theme2-Type1{
+    background: rgba(255, 171, 64, 0.5);
+}
+div.ClrThemePreviewHldr span.Cmplt.Theme1-Type2,div.ClrThemePreviewHldr span.Cmplt.Theme2-Type2{
+    background: rgba(144, 202, 249, 0.5);
+}
+div.ClrThemePreviewHldr span.Cmplt.Theme1-Type3,div.ClrThemePreviewHldr span.Cmplt.Theme2-Type3{
+    background: rgba(144, 202, 249, 0.5);
+}
+div.ClrThemePreviewHldr span.Cmplt.Theme1-Type4,div.ClrThemePreviewHldr span.Cmplt.Theme2-Type4{
+    background: rgba(161, 136, 127, 0.5);
+}
+div.ClrThemePreviewHldr span.Cmplt.Theme1-Type5,div.ClrThemePreviewHldr span.Cmplt.Theme2-Type5{
+    background: rgba(128, 203, 196, 0.5);
+}
+select.StartTime option:not(:first-child),
+select.EndTime option:not(:first-child) {
+    text-align: center !important;
+    font-size: 18px;
+}
+.padlSp{
+    padding-left: 20px !important;
+}.TechTbl, .VndrTbl{
+    max-height: 260px;
+    overflow-y: scroll;
+}.zoom-thumb, .zoom-main{
+    width: 100%;
+}
+table.AppGenTable.Rooster .Date {
+    min-width: 70px !important;
+}.CmpltPhoto {
+    max-width: 60px;
+    min-width: 60px;
+}
+
+/* Inventory/Asset Master */
+.Inventory {
+    margin-right: 10px;
+}
+table.AppGenTable td span.EmpType.Theme11-Contract {
+    background: #cdf7d5;
+}
+.Inventory_img{
+    margin-right:10px;
+    height: 16px;
+    width: 26px;
+}
+table.AppGenTable.MastersTreeView tr td div.BranchDetails div.BranchName img {
+    padding-left: 10px;
+}
+div.InfoBxHldr div.InfoToolTip {
+    z-index: 999;
+}
+
+
+
+/* Asset Set */
+.AssetSetSpace{
+    position:relative;
+    top:-40px;
+    left:30px;
+}
+/* custom checkbox */
+
+.custom-checkbox {
+    position: relative;
+    padding-left: 30px; /* Adjust the padding as needed */
+}
+
+.custom-checkbox input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.custom-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px; /* Adjust the width as needed */
+    height: 50px; /* Adjust the height as needed */
+    background: #FFF;
+    border-radius: 5px;
+    border: 1px solid #c3b5b5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:10px 20px;
+    line-break:auto;
+}
+.custom-checkbox .checkmark.InActive{
+    background: #c3b5b5;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + .checkmark {
+    background: #00746a; /* Adjust the background color for checked state */
+    color:#fff;
+}
+.custom-checkbox input[type="checkbox"]:checked + .checkmark .InfoBtn:before {
+    color: #fff; /* Change the color of the info button for checked state */
+}
+
+div.bxpdng{
+    display:flex;
+    margin:5px 0 20px 20px;
+}
+div.bxpdng div.colorbox{
+    width:20px;
+    height:20px;
+    border: 1px solid #a29393;
+}
+.color-1{
+    background: #00746a; 
+}
+.color-2{
+    background: #c3b5b5;
+}
+.color-3{
+    background: #dc5200;
+}
+.color-4{
+    background: #9e4ca9;
+}
+.custom-checkbox-display{
+    background-color: transparent !important;
+    border-top:none !important;
+    border-bottom:none !important;
+}
+div.postn{
+    position:absolute;
+    list-style-type: none;
+    right:0px;
+    bottom:5px;
+    display:flex;
+}
+span.colordisplay{
+    width:10px;
+    height:10px;
+    border: 1px solid #a29393;
+    margin-right:5px;
+}
+div.Infopostn{
+    position:absolute;
+    right:-12px;
+    top:10px;
+    display:flex;
+}
+.display-table{
+    background: rgba(102, 102, 102, 0.05);
+    padding:10px 0;
+}
+/* process bar */
+div.ComplaintPrccHldr div.CmpltPrcssTimeline ul.Timeline li span.PrcssStpDuration {
+    padding: 0px 0px !important;
+}
+/* New Login Page */
+.bg-color {
+    background: url("../Images/LoginBG.jpg");
+    background-size: cover;
+    background-position: center;
+    overflow-y: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+.login-container {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    padding: 20px 100px;
+}
+.carousel-container{
+    padding: 30px 0 0 80px;
+}
+.heading{
+    color: #FFFFFF;
+    font-size: 30px;
+    font-weight:lighter;
+}
+.text{
+    color: #FFFFFF;
+    font-size: 15px;
+    font-weight: 400;
+    padding-top: 5px;
+}
+.carousel-container-dots{
+    display:flex;
+    justify-content: center;
+    padding-top:20px;
+}
+.carousel-dots {
+    height: 10px;
+    width: 10px;
+    background-color: rgb(255, 255, 255, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+}
+.carousel-dots.Active{
+    background-color:#ffffff;
+}
+.slide-align{
+    display: block;
+    padding-right: 100px;
+    text-align: center;
+}
+.signin{
+    min-width: 350px;
+    height: auto;
+    padding-bottom: 100px;
+    border-radius: 20px;
+    background:url("../Images/Sign-In-Bg.png");
+    margin: 70px 0 0 180px; 
+    position: relative;
+}
+.logo-wd{
+    padding-left: 100px;
+}
+.img-space {
+    padding: 40px 0 20px 80px;
+    position: relative;
+}
+
+.img-space:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    transform: translateX(-20%);
+    width: calc(100% - 80px);
+    height: 1px;
+    background-color: rgba(28, 62, 116, 0.2);
+}
+.btn-align{
+    position:relative;
+    left:40px;
+    top:20px;
+}
+.btn{
+    width: 280px;
+    height: 50px;
+    margin: 10px 0px;
+    font-size: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    border-radius: 25px;
+    background: #1C3E74;
+}
+.input-field {
+    width: 80%;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #9FB4D4;
+    background: transparent;
+    margin: 0px 0 20px 40px;
+}
+.checkbox-align {
+    padding: 20px 0 0 40px;
+}
+.sn-title{
+    font-size: 32px;
+    font-weight: 700;
+    padding: 20px 0 40px 30px;
+}
+.txt-1{
+    display: block;
+    padding: 10px 0 20px 40px;
+}
+.frgt-pswd{
+    color: #005582;
+    font-size: 15px;
+    font-weight: 600px;
+    text-align: center;
+    padding-top: 30px;
+}
+.ftr-align{
+    position: absolute;
+    left: 50%;
+    bottom: 0%;
+    transform: translate(-50%, -50%);
+}
+.ftr{
+    color: #FFFFFF;
+    font-size: 13px;
+    max-width: 800px; 
+    padding: 0 auto;
+}
+@media only screen and (max-width:1600px){
+    .logo-wd{
+        height:440px;
+        padding-left: 60px;
+    }
+    .carousel-container{
+        padding: 10px 0 0 0px;
+    }
+    .signin{
+        padding-bottom: 50px;
+        margin: 50px 0 0 180px;
+    }
+    .heading{
+        font-size: 26px;
+    }
+    .text{
+        font-size: 12px;
+        padding-top: 5px;
+        line-height: 17px;
+    }
+    .checkbox-align {
+        padding: 0 0 0 40px;
+    }
+    .sn-title{
+        font-size: 28px;
+        padding: 20px 0 20px 30px;
+    }
+    .btn{
+        margin: 0px 0px;
+    }
+    .img-space {
+        padding: 20px 0 20px 80px;
+    }
+}
+@media only screen and (max-width:1400px){
+    .login-container {
+        width: 100%;
+    }
+    .img-space {
+        padding: 40px 0 10px 80px;
+    }
+    .sn-title{
+        padding: 10px 0 10px 30px;
+    }
+    .btn{
+        height: 40px;
+    }
+}
+@media only screen and (max-width:1300px){
+    .carousel-container{
+        padding: 5px 0 0 0px;
+    }
+    .signin{
+        margin: 40px 0 0 0px; 
+    }
+}
+@media only screen and (max-width:1200px){
+    .carousel-container{
+        display:none;
+    }
+    .signin{
+        margin: 30px 0 0 0px; 
+        }
+    .logo-wd{
+        padding-left: 0px;
+    }
+}
+@media only screen and (max-width:600px){
+    .signin{
+    min-width: 300px;
+    }
+    .btn{
+    width: 230px;
+    }
+    .img-space {
+    padding: 30px 0 20px 50px;
+    }
+}
+@media only screen and (max-width:300px){
+    .signin{
+    min-width: 230px; 
+    }
+    .img-space {
+    padding: 20px 0 20px 20px;
+    }
+    .btn{
+    width: 150px;
+    }
+    .input-field {
+    margin: 0px 0 20px 20px;
+}
+}
+
+/* Lakshmi */
+.LocCheckBlk{
+    width: 100% !important;
+    cursor: pointer;
+}
+.LocCheckBlk .checkmark{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    background: #FFF;
+    border-radius: 5px;
+    border: 1px solid #c3b5b5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-break: auto;
+}.LocCheckBlk input[type="checkbox"]{
+    /* display: none; */
+    position: absolute;
+    top: 20px;
+    left: 50%;
+}
+.LocCheckBlk .checkmark.InActive{
+    background: #c3b5b5;
+}
+
+.LocCheckBlk input[type="checkbox"]:checked + .checkmark {
+    background: #00746a; /* Adjust the background color for checked state */
+    color:#fff;
+}
+.LocCheckBlk input[type="checkbox"]:checked + .checkmark .InfoBtn:before {
+    color: #fff; /* Change the color of the info button for checked state */
+}
+
+/* Multi Select Related */
+.multi-select-container {
+    display: inline-block;
+    position: relative;
+}
+
+.multi-select-menu {
+    position: absolute;
+    left: 0;
+    top: 0.8em;
+    z-index: 1;
+    float: left;
+    min-width: 100%;
+    background: #fff;
+    margin: 1em 0;
+    border: 1px solid #aaa;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    display: none;
+}
+
+.multi-select-menuitem {
+    display: block;
+    font-size: 0.875em;
+    padding: 0.6em 1em 0.6em 30px;
+    white-space: nowrap;
+}
+
+.multi-select-menuitem--titled:before {
+    display: block;
+    font-weight: bold;
+    content: attr(data-group-title);
+    margin: 0 0 0.25em -20px;
+}
+
+.multi-select-menuitem--titledsr:before {
+    display: block;
+    font-weight: bold;
+    content: attr(data-group-title);
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.multi-select-menuitem + .multi-select-menuitem {
+    padding-top: 0;
+}
+
+.multi-select-presets {
+    border-bottom: 1px solid #ddd;
+}
+
+.multi-select-menuitem input {
+    position: absolute;
+    margin-top: 0.25em;
+    margin-left: -20px;
+}
+
+.multi-select-button {
+    display: inline-block;
+    font-size: 0.875em;
+    padding: 0.2em 0.6em;
+    max-width: 16em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: -0.5em;
+    background-color: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    cursor: default;
+}
+
+.multi-select-button:after {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0.4em 0.4em 0 0.4em;
+    border-color: #999 transparent transparent transparent;
+    margin-left: 0.4em;
+    vertical-align: 0.1em;
+}
+
+.multi-select-container--open .multi-select-menu {
+    display: block;
+}
+
+.multi-select-container--open .multi-select-button:after {
+    border-width: 0 0.4em 0.4em 0.4em;
+    border-color: transparent transparent #999 transparent;
+}
+
+.multi-select-container--positioned .multi-select-menu {
+    /* Avoid border/padding on menu messing with JavaScript width calculation */
+    box-sizing: border-box;
+}
+
+.multi-select-container--positioned .multi-select-menu label {
+    /* Allow labels to line wrap when menu is artificially narrowed */
+    white-space: normal;
+}
+
+/* Complaints Reports  */
+div.GrphLgd ul.LgndLst li span.LgndRund {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    left: -5px;
+    top: calc(50% - 5px);
+    border-radius: 5px;
+    }
+div.DashboardHldrBrdr {
+    background: #fff;
+    width: 100%;
+    overflow: hidden;
+    border-right: 1px solid rgba(0, 53, 80, 0.3);
+}
+div.DshHdrHldr div.TtlHldr span.TtlTxtclr {
+    display: block;
+    position: relative;
+    font-size: 20px;
+    font-weight: 800;
+    text-transform: none;
+    color: #327597;
+}
+#CmpltTotal1 {
+    height: 400px !important; 
+    width: 100% !important;
+} 
+#CmpltTotal2 {
+    height: 400px !important; 
+    width: 100% !important;
+}
+div.GrphLgd ul.LgndLst li span.LgndRund .dsp {
+    display: inline-block;
+    margin-right: 10px;
+    Z-index: 999;
+}
+.drctn{
+    display: flex;
+}
+.drctn li .txtdrctn {
+    margin-right: 130px; 
+}
+.blak{
+    font-weight: 700 !important;
+    color: #121212 !important;
+    font-size: 23px !important;
+}
+
+/* Admin-DeviceList-GridView */
+div.AppCmpctTbView {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-content: center;
+    background: white;
+    border: 1px solid #ECEFF1;
+    padding: 2px;
+    border-radius: 25px;
+}
+
+div.AppCmpctTbView .TabView.Actv {
+    background: #1E538F;
+    color: white;
+    border: 1px solid #1E538F;
+    cursor: default;
+    transition: 0.3s;
+}
+div.AppCmpctTbView .TabView {
+    display: block;
+    padding: 6px 18px;
+    margin: 1px;
+    border-radius: 20px;
+    color: #444444;
+    border: 1px solid rgba(0, 116, 106, 0);
+    text-align: center;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+.ViewSpace{
+    padding-right: 10px;
+}
+.DvlstBg{
+    width: 98% !important;
+    background: rgba(25, 118, 210, 0.05);
+    border: 1px solid rgba(25, 118, 210, 0.25);
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+    overflow: hidden;
+    margin: 10px 20px;
+}
+.LocationDtlsGrd{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+    padding: 10px;
+    background: #fff;
+    border: 1px solid rgba(25, 118, 210, 0.5);
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.LocationDtlsGrd.BrRmv{
+    background: transparent !important;
+    border:none !important;
+}
+.Grd{   
+    background: transparent !important;
+    padding: 16px 20px 16px 5px !important;
+}
+.TtlGrd{
+    font-size: 15px;
+    font-weight: 700;
+    color: #1976D2;
+}
+.TtlGrd.grn{
+    color: #2E7D32;
+}
+.TtlGrd.rd{
+    color: #DF1125;
+}
+.DvlstGrdVw{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+.DvlstGVw{
+    width: calc(33.33% - 10px);
+    border-right: 1px solid #ddd;
+    margin: 5px;
+}
+.NoBrrght{
+    border-right: transparent !important;
+}
+.TtGdvw{
+    display:block;
+    color: #666666;
+    font-size: 12px;
+    font-weight: 600;
+}
+.TtlGrdDrk{
+    color: #333;
+    font-size: 15px;
+    font-weight: 700;
+}
+.RmMrgn{
+    margin: 0 !important;
+}
+.BGGrdVw{
+    background: rgba(25, 118, 210, 0.06);
+    text-align: center;
+    border: 1px solid rgba(25, 118, 210, 0.25);
+    border-radius: 7px;
+}
+.Brrght{
+    position: relative;
+}
+.Brrght::before {
+    content: ""; 
+    position: absolute;
+    top: 6px; 
+    left: 0; 
+    width: 1px;
+    height: 70%; 
+    background-color: #ddd;
+  } 
+.pdtp{
+    position:relative;
+    top: 10px;
+}
+.Grdbtn{
+    display: flex;
+    padding: 5px 15px 5px 15px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 40px;
+    background: #1976D2;
+    color: #ffffff;
+    font-family: Nunito, Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    outline: none;
+    border: 1px solid #1976D2;
+    margin: 0 10px 0 0;
+    position: relative;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+}
+.Grdbtn.Dscnct{
+    background: #B71C1C;
+    border: 1px solid #B71C1C;
+    font-size: 13px;
+}
+.LocationDtlsGrd.Dscnct{
+    border: 1px solid #B71C1C;
+}
+div.DshHdrHldr div.ActnBtnHldr [class*=' WISIcn-'].InActv{
+    color: #aba7a7;
+}
+div.DshHdrHldr div.ActnBtnHldr [class*=' WISIcn-'].Dscnct{
+    color: #B71C1C;
+}
+.Btndwn{
+    width: 100%;
+    padding-top: 10px;
+}
+.LstDv{
+    position: relative;
+    top: 60px;
+    left: -10px;
+}
+.BtnPsn{
+    position: absolute;
+    top: 0px;
+}
+@media only screen and (max-width:1730px){
+    .pdtp{
+        margin: 0 -3px 0 -3px !important;
+        font-size: 16px !important;
+    }
+}
+
+@media only screen and (max-width:1400px){
+    .pdtp{
+        margin: 0 -5px 0 -5px !important;
+        font-size: 15px !important;
+    }
+    .TtGdvw{
+       font-size: 10px;
+    }
+    .Brrght::before {
+        top: 8px;
+       height: 50%; 
+    } 
+    
+}
+@media only screen and (max-width:1250px){
+    .pdtp{
+        margin: 0 -7px 0 -7px !important;
+        font-size: 14px !important;
+    }
+    .TtGdvw{
+        font-size: 8px;
+     }
+}
+/* CSS for Admin-Device Groups */
+table.Devicelist tr:last-of-type td {
+    border-bottom: 1px solid #FAFAFA;
+}
+table.Devicelist tr {
+    border-top: 1px solid #FAFAFA !important;
+}
+div.Devcheck label {
+    font-size: 14px;
+}
+table.Devicelist td {
+    background: rgba(0, 0, 0, 0);
+    font-size: 12px;
+}
+table.Devicelist th {
+    font-size: 14px;
+    font-weight: 700;
+}
+table.Devicelist td div.ActnBtnsHldr div.BtnHldr a.AppBtn {
+    color: #DF1125;
+}

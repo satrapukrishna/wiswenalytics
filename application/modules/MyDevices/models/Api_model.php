@@ -64,7 +64,7 @@ echo $countap."<br>";
                 'Consumption'=>$valueclient['Consumption']            
               );
               $this->db->insert('hardware_station_consumption_data_embessy', $embessyData);
-              $this->db->insert('hardware_station_consumption_data_embessy_test', $embessyData);
+             // $this->db->insert('hardware_station_consumption_data_embessy_test', $embessyData);
             
         }
     }

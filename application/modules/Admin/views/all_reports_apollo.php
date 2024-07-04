@@ -367,7 +367,8 @@ function getSolution(){
 		if(category==3){
 			var div='<select name="device" class="form-control chosen-select" id="device" name="device"><option value="" selected="selected">Select Report</option><option value="51">OT1</option>		<option value="52">OT2</option><option value="53">OT3</option><option value="54">OT4</option><option value="55">OT5</option><option value="56">OT6</option><option value="57">OT7</option><option value="58">OT8</option></select>';
 		//	var d='<option value="56">Trip Status</option>'
-			$("#solution").html(div);
+			
+		
              $("#solution").trigger("chosen:updated");
 
 		}

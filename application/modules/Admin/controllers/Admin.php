@@ -201,6 +201,26 @@ class Admin extends MX_Controller {
                     //$go_to = 'Admin_feb21/Home/water';
                      redirect($go_to);
 
+                }if($this->session->userdata('created_by')==38) {
+                    $go_to = 'Admin/Home/energy_undp';
+                    //$go_to = 'Admin_feb21/Home/water';
+                     redirect($go_to);
+
+                }if($this->session->userdata('created_by')==30) {
+                    $go_to = 'Admin/Home/energy';
+                    //$go_to = 'Admin_feb21/Home/water';
+                     redirect($go_to);
+
+                }if($this->session->userdata('created_by')==39) {
+                    $go_to = 'Admin/Home/switchcontrol';
+                    //$go_to = 'Admin_feb21/Home/water';
+                     redirect($go_to);
+
+                }if($this->session->userdata('created_by')==37) {
+                    $go_to = 'Admin/HomeNew/energy';
+                    //$go_to = 'Admin_feb21/Home/water';
+                     redirect($go_to);
+
                 }else{
                     $go_to = 'Admin/Home/water';
                    redirect($go_to);

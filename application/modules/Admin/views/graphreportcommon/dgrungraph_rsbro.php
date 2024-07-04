@@ -15,19 +15,19 @@ for($j=0;$j<count($dgdata);$j++){
 // $fulldata['meter']=$dgdata[0]['consolidate'][0]['dgname']; 
 ?>
 
-<span class="SctnTtl"><?php echo $dgdata[$j]['consolidate'][0]['dgname'] ?> Fuel Level Graph Report</span>
+<span class="SctnTtl"><?php echo $dgdata[$j]['consolidate'][0]['dgname']."(".$dgdata[$j]['consolidate'][0]['location'].")" ?> Fuel Level Graph Report</span>
 <div class="GrphMnHldr FllWdth WtrMtr">
     <div class="GrphDv" id="container_fuellevel_dg<?php echo $j; ?>"></div>
 </div>
-<span class="SctnTtl"><?php echo $dgdata[$j]['consolidate'][0]['dgname'] ?> Running Graph Report</span>
+<span class="SctnTtl"><?php echo $dgdata[$j]['consolidate'][0]['dgname']."(".$dgdata[$j]['consolidate'][0]['location'].")" ?> Running Graph Report</span>
 <div class="GrphMnHldr FllWdth WtrMtr">
     <div class="GrphDv" id="container_dgrunn<?php echo $j; ?>"></div>
 </div>
-<span class="SctnTtl"><?php echo $dgdata[$j]['consolidate'][0]['dgname'] ?> Fuel Added Graph Report</span>
+<span class="SctnTtl"><?php echo $dgdata[$j]['consolidate'][0]['dgname']."(".$dgdata[$j]['consolidate'][0]['location'].")" ?> Fuel Added Graph Report</span>
 <div class="GrphMnHldr FllWdth DgfAdd">
     <div class="GrphDv" id="container_fadd<?php echo $j; ?>"></div>
 </div>
-<span class="SctnTtl"><?php echo $dgdata[$j]['consolidate'][0]['dgname'] ?> Fuel Removed Graph Report</span>
+<span class="SctnTtl"><?php echo $dgdata[$j]['consolidate'][0]['dgname']."(".$dgdata[$j]['consolidate'][0]['location'].")" ?> Fuel Removed Graph Report</span>
 <div class="GrphMnHldr FllWdth WtrMtr">
     <div class="GrphDv" id="container_fremove<?php echo $j; ?>"></div>
 </div>

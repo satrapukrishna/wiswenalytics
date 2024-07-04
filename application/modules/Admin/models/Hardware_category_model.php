@@ -79,6 +79,32 @@ class Hardware_category_model extends CI_Model{
         }
         return $items;
     }
+    function get_hardware_category_dropdown_undp() {
+        $this->db->select('category_id,category_name');
+        $this->db->from('hardware_category');
+        $this->db->where_in('category_id',[6]);
+        $this->db->where('status',1);
+        $this->db->order_by('category_id');
+        $res = $this->db->get()->result_array();
+        $items = array();
+        foreach ($res as $row){
+            $items[$row['category_id']] = $row['category_name'];
+        }
+        return $items;
+    }
+    function get_hardware_category_dropdown_hcug() {
+        $this->db->select('category_id,category_name');
+        $this->db->from('hardware_category');
+        $this->db->where_in('category_id',[10]);
+        $this->db->where('status',1);
+        $this->db->order_by('category_id');
+        $res = $this->db->get()->result_array();
+        $items = array();
+        foreach ($res as $row){
+            $items[$row['category_id']] = $row['category_name'];
+        }
+        return $items;
+    }
     function get_hardware_category_dropdown_rsbro() {
         $this->db->select('category_id,category_name');
         $this->db->from('hardware_category');
@@ -363,6 +389,22 @@ class Hardware_category_model extends CI_Model{
         }
         return $items;
 	}
+    function get_devices_hcug($category){
+		$this->db->select('device_id as id,device_name as name');
+        $this->db->from('hardware_device');        
+        if ($category != ''){
+            $this->db->where('category_id', $category);
+        }
+        $this->db->where_in('device_id',[37]);
+        $this->db->where('status',1);
+        $this->db->order_by('device_name');
+        $res = $this->db->get();
+        $items = array();
+        foreach ($res->result_array() as $row) {
+            $items[$row['id']] = $row['name'];
+        }
+        return $items;
+	}
     function get_devices_rsbro($category){
 		$this->db->select('device_id as id,device_name as name');
         $this->db->from('hardware_device');        
@@ -418,6 +460,22 @@ class Hardware_category_model extends CI_Model{
             $this->db->where('category_id', $category);
         }
         $this->db->where_in('device_id',[40]);
+        $this->db->where('status',1);
+        $this->db->order_by('device_name');
+        $res = $this->db->get();
+        $items = array();
+        foreach ($res->result_array() as $row) {
+            $items[$row['id']] = $row['name'];
+        }
+        return $items;
+	}
+    function get_devices_hcug_tab($category){
+		$this->db->select('device_id as id,device_name as name');
+        $this->db->from('hardware_device');        
+        if ($category != ''){
+            $this->db->where('category_id', $category);
+        }
+        $this->db->where_in('device_id',[37]);
         $this->db->where('status',1);
         $this->db->order_by('device_name');
         $res = $this->db->get();

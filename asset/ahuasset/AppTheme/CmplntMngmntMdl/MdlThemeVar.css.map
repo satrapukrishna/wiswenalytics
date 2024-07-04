@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AACA,0BAA0B",
+    "sources": [
+        "MdlThemeVar.scss"
+    ],
+    "names": [],
+    "file": "MdlThemeVar.css"
+}

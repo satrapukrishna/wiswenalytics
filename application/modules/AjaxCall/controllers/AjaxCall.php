@@ -22,7 +22,7 @@ function getJLLTokenGenerate()
 {
 	    
 
-		$ch = curl_init('http://137.59.201.64/ClientDataService/token');                                                                      
+		$ch = curl_init('https://protechservice.in/ClientDataService/token');                                                                      
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 		curl_setopt($ch, CURLOPT_POSTFIELDS,
@@ -45,7 +45,7 @@ function getApolloTokenGenerate()
 {
 	    
 
-		$ch = curl_init('http://137.59.201.64/ClientDataService/token');                                                                      
+		$ch = curl_init('https://protechservice.in/ClientDataService/token');                                                                      
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 		curl_setopt($ch, CURLOPT_POSTFIELDS,
@@ -68,7 +68,7 @@ function getMyhomeTokenGenerate()
 {
 	    
 
-		$ch = curl_init('http://137.59.201.64/ClientDataService/token');                                                                      
+		$ch = curl_init('https://protechservice.in/ClientDataService/token');                                                                      
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 		curl_setopt($ch, CURLOPT_POSTFIELDS,
@@ -91,7 +91,7 @@ function getCBRETokenGenerate()
 {
 	    
 
-		$ch = curl_init('http://137.59.201.64/ClientDataService/token');                                                                      
+		$ch = curl_init('https://protechservice.in/ClientDataService/token');                                                                      
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 		curl_setopt($ch, CURLOPT_POSTFIELDS,
@@ -114,7 +114,7 @@ function getLonavalaTokenGenerate()
 {
 	  // echo "kkk"; 
 
-		$ch = curl_init('http://137.59.201.64/ClientDataService/token');                                                                      
+		$ch = curl_init('https://protechservice.in/ClientDataService/token');                                                                      
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		//curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
 		curl_setopt($ch, CURLOPT_POSTFIELDS,
@@ -129,7 +129,7 @@ function getLonavalaTokenGenerate()
 		curl_close($ch);
 
 		$json = json_decode($result, true);
-				echo json_encode($json);
+				// echo json_encode($json);die();
 		$this->Api_model->saveToken($json,"lonavala");
 
 		// print_r($json);
@@ -159,8 +159,268 @@ function getLonavalaTokenGenerate_ssl()
 		// print_r($json);
 
 }
+function truncateHCUG(){
+	
+	
+	$this->Api_model->trunHCUG();
+	
+}
+function getHCUGDataLiveStatus(){
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "HCUG", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiHCUGStatus($json_chennai);
+	
+}
+function truncateIITH(){
+	
+	
+	$this->Api_model->trunIITH($json_chennai);
+	
+}
+function getIITA7thFloor(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0037", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
+function getIITBShaft1(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0038", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
+function getIITA4thFloor(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0039", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
+function getIITA1stFloor(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0040", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
+function getIITBShaft2(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0041", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
+function getIITBShaft3(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0042", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
+function getIITCShaft1(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0043", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
 
-
+function getIITCShaft2(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0044", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
+function getIITMSME(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "0045", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiIITH($json_chennai);
+	
+}
 
 function getApolloData(){
 	    $today=date("d/m/Y");
@@ -171,7 +431,7 @@ function getApolloData(){
 		$token= $tokenData['token'];  
 		                                                      
 		$data_string_apollo = json_encode($dataapollo);                                                                                                              
-		$ch_apolllo = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_apolllo = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 		                                                                      
 		curl_setopt($ch_apolllo, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_apolllo, CURLOPT_POSTFIELDS, $data_string_apollo);                                                                  
@@ -195,7 +455,7 @@ function getLonavalaData(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_lonavala = json_encode($datalonavala);                                                                                                              
-	$ch_lonavala = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_lonavala = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_lonavala, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_lonavala, CURLOPT_POSTFIELDS, $data_string_lonavala);                                                                  
@@ -219,7 +479,7 @@ function getVegaschoolData(){
 					$token= $tokenData['token'];  
 																		
 					$data_string_chennai = json_encode($datachennai);                                                                                                              
-					$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+					$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																						
 					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -240,8 +500,8 @@ function getVegaschoolData(){
 function getVegaschoolData_dates(){
 	
 	// $yesterDay = date('d/m/Y',strtotime("-1 days"));
-	   $date_from = strtotime("2023-03-11"); 
-        $date_to = strtotime("2023-03-15"); 
+	   $date_from = strtotime("2023-10-04"); 
+        $date_to = strtotime("2023-10-04"); 
         $datesarray=array();
 		
 		
@@ -258,7 +518,7 @@ function getVegaschoolData_dates(){
 					$token= $tokenData['token'];  
 																		
 					$data_string_chennai = json_encode($datachennai);                                                                                                              
-					$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+					$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																						
 					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -285,7 +545,7 @@ function getVegaschoolData_live(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -301,6 +561,356 @@ function getVegaschoolData_live(){
 	$this->Api_model->pushApiDataVegaschoolLive($json_chennai);
 	
 }
+function getUNDP_live(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "UNDP", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiDataUNDPLive($json_chennai);
+	
+}
+function getUNDP(){
+	$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+	// $yesterDay = date("26/05/202");	
+	$datachennai = array("StoreCode" => "UNDP", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiDataUNDP($json_chennai);
+	
+}
+function getUNCW_live(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "UNCW", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiDataUNDPLive($json_chennai);
+	
+}
+function getUNCW(){
+	$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+	// $yesterDay = date("26/05/202");	
+	$datachennai = array("StoreCode" => "UNCW", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiDataUNDP($json_chennai);
+	
+}
+function getUNEW_live(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "UNEW", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiDataUNDPLive($json_chennai);
+	
+}
+function getUNEW(){
+	$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+	// $yesterDay = date("26/05/202");	
+	$datachennai = array("StoreCode" => "UNEW", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiDataUNDP($json_chennai);
+	
+}
+function getUNFF_live(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "UNFF", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiDataUNDPLive($json_chennai);
+	
+}
+function getUNFF(){
+	$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+	// $yesterDay = date("26/05/202");	
+	$datachennai = array("StoreCode" => "UNFF", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiDataUNDP($json_chennai);
+	
+}
+function getUNWW_live(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "UNWW", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiDataUNDPLive($json_chennai);
+	
+}
+function getUNWW(){
+	$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+	// $yesterDay = date("26/05/202");	
+	$datachennai = array("StoreCode" => "UNWW", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiDataUNDP($json_chennai);
+	
+}
+function getUNSG_live(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "UNSG", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiDataUNDPLive($json_chennai);
+	
+}
+function getUNSG(){
+	$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+	// $yesterDay = date("26/05/202");	
+	$datachennai = array("StoreCode" => "UNSG", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiDataUNDP($json_chennai);
+	
+}
+function getUNAB_live(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "UNAB", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushApiDataUNDPLive($json_chennai);
+	
+}
+function getUNAB(){
+	$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+	// $yesterDay = date("26/05/202");	
+	$datachennai = array("StoreCode" => "UNAB", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiDataUNDP($json_chennai);
+	
+}
 function getChennaiData(){
 	
 	$today=date("d/m/Y");
@@ -311,7 +921,7 @@ function getChennaiData(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -326,6 +936,43 @@ function getChennaiData(){
 	$this->Api_model->pushApiDataChennai($json_chennai);
 	
 }
+function getChennaiDataDates(){
+	$date_from = strtotime("2024-01-13"); 
+	$date_to = strtotime("2024-02-05"); 
+	$datesarray=array();
+	
+	
+	for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+	{
+	  array_push($datesarray, date("Y-m-d",$i1));  
+	}
+	// print_r($datesarray);die();
+	for ($k=0; $k < count($datesarray); $k++)
+			{ 
+  $yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
+	$datachennai = array("StoreCode" => "0002", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// print_r($json_chennai);die();
+	$this->Api_model->pushApiDataChennaiDates($json_chennai);
+}
+	
+}
 
 function getChennaiDataLive(){
 	//$today=date("d/m/Y");
@@ -336,7 +983,7 @@ function getChennaiDataLive(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -360,7 +1007,7 @@ function getMumbaiData(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_mumbai = json_encode($dataMumbai);                                                                                                              
-	$ch_mumbai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_mumbai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_mumbai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_mumbai, CURLOPT_POSTFIELDS, $data_string_mumbai);                                                                  
@@ -383,7 +1030,7 @@ function getMumbaiDataLive(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_mumbai = json_encode($dataMumbai);                                                                                                              
-	$ch_mumbai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_mumbai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_mumbai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_mumbai, CURLOPT_POSTFIELDS, $data_string_mumbai);                                                                  
@@ -406,7 +1053,7 @@ function getRainbowVikrampuriData(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -431,7 +1078,7 @@ function getRainbowKondapurData(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -457,7 +1104,7 @@ function getWrlCollectorData_day(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -483,7 +1130,7 @@ function getWrlJpnagarData_day(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -509,7 +1156,7 @@ function getChennaiData_watermeter(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -534,7 +1181,7 @@ function getChennaiData_day(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_chennai = json_encode($datachennai);                                                                                                              
-	$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -576,15 +1223,15 @@ function getChennaiData_ssl(){
 }
 
 function getMumbaiData_day(){
-	$today=date("d/m/Y");
-  //$today=date("01/06/2022");	 
+	// $today=date("d/m/Y");
+  $today=date("29/04/2024");	 
 	$dataMumbai = array("StoreCode" => "0003", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
 	$tokenData=  $this->Api_model->getToken("lonavala");
 	 
 	$token= $tokenData['token'];  
 														  
 	$data_string_mumbai = json_encode($dataMumbai);                                                                                                              
-	$ch_mumbai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_mumbai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_mumbai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_mumbai, CURLOPT_POSTFIELDS, $data_string_mumbai);                                                                  
@@ -607,7 +1254,7 @@ function getMumbaiData_towerb(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_mumbai = json_encode($dataMumbai);                                                                                                              
-	$ch_mumbai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_mumbai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_mumbai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_mumbai, CURLOPT_POSTFIELDS, $data_string_mumbai);                                                                  
@@ -630,7 +1277,7 @@ function getMumbaiData_towerb_prev(){
 	$token= $tokenData['token'];  
 														  
 	$data_string_mumbai = json_encode($dataMumbai);                                                                                                              
-	$ch_mumbai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+	$ch_mumbai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																		  
 	curl_setopt($ch_mumbai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_mumbai, CURLOPT_POSTFIELDS, $data_string_mumbai);                                                                  
@@ -655,7 +1302,7 @@ function getCBREData(){
 		$token= $tokenData['token'];  
 		                                                      
 		$data_string_cbre = json_encode($data_cbre);                                                                                                              
-		$ch_cbre = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_cbre = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 		                                                                      
 		curl_setopt($ch_cbre, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_cbre, CURLOPT_POSTFIELDS, $data_string_cbre);                                                                  
@@ -681,7 +1328,7 @@ function getJLLData()
 		$token= $tokenData['token'];  
 		                                                      
 		$data_string_jll = json_encode($data_jll);                                                                                                              
-		$ch_jll = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_jll = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 		                                                                      
 		curl_setopt($ch_jll, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_jll, CURLOPT_POSTFIELDS, $data_string_jll);                                                                  
@@ -706,7 +1353,7 @@ function getSamsungData()
 		$token= $tokenData['token'];    
 		                                                      
 		$data_string_smsg = json_encode($data_smsg);                                                                                                              
-		$ch_smsg = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_smsg = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 		                                                                      
 		curl_setopt($ch_smsg, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_smsg, CURLOPT_POSTFIELDS, $data_string_smsg);                                                                  
@@ -729,7 +1376,7 @@ function getMyHomeData(){
 		$token= $tokenData['token']; 
 		                                                                   
 		$data_string_myhome = json_encode($data_myhome);                                                                                               
-		$ch_myhome = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');                                                                      
+		$ch_myhome = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');                                                                      
 		curl_setopt($ch_myhome, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_myhome, CURLOPT_POSTFIELDS, $data_string_myhome);                                                                  
 		curl_setopt($ch_myhome, CURLOPT_RETURNTRANSFER, true);                                                                      
@@ -756,7 +1403,7 @@ function getSodexoData(){
 		$token= $tokenData['token'];  
 		                                                                   
 		$data_string_sodexo = json_encode($data_sodexo);                                                                                                        
-		$ch_sodexo = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');                                                                      
+		$ch_sodexo = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');                                                                      
 		curl_setopt($ch_sodexo, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_sodexo, CURLOPT_POSTFIELDS, $data_string_sodexo);                                                                  
 		curl_setopt($ch_sodexo, CURLOPT_RETURNTRANSFER, true);                                                                      
@@ -784,7 +1431,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 		                                                                   
 		$data_string_cyber = json_encode($data_cyber);                                                                                                        
-		$ch_cyber = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');                                                                      
+		$ch_cyber = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');                                                                      
 		curl_setopt($ch_cyber, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_cyber, CURLOPT_POSTFIELDS, $data_string_cyber);                                                                  
 		curl_setopt($ch_cyber, CURLOPT_RETURNTRANSFER, true);                                                                      
@@ -817,7 +1464,7 @@ function getCyberData(){
 			$token= $tokenData['token'];  
 																  
 			$data_string_client = json_encode($data_client);                                                                                                              
-			$ch_client = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+			$ch_client = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																				  
 			curl_setopt($ch_client, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 			curl_setopt($ch_client, CURLOPT_POSTFIELDS, $data_string_client);                                                                  
@@ -852,7 +1499,7 @@ function getCyberData(){
 			$token= $tokenData['token'];  
 																  
 			$data_string_client = json_encode($data_client);                                                                                                              
-			$ch_client = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+			$ch_client = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																				  
 			curl_setopt($ch_client, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 			curl_setopt($ch_client, CURLOPT_POSTFIELDS, $data_string_client);                                                                  
@@ -870,9 +1517,45 @@ function getCyberData(){
 		}
 		
 	}
+	function getHCUGDataDates(){
+		$date_from = strtotime("2024-03-16"); 
+        $date_to = strtotime("2024-04-21"); 
+        $datesarray=array();
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+	    $yesterDay = date('d/m/Y',strtotime($datesarray[$k]));
+		$datachennai = array("StoreCode" => "HCUG", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushHCUGDataDates($json_chennai);
+	}
+		
+	}
 	function getChennaiDataFromTo(){
-		$date_from = strtotime("2022-10-06"); 
-        $date_to = strtotime("2022-10-06"); 
+		$date_from = strtotime("2023-06-23"); 
+        $date_to = strtotime("2023-06-23"); 
         $datesarray=array();
 		
 		
@@ -889,7 +1572,7 @@ function getCyberData(){
 					$token= $tokenData['token'];  
 																		  
 					$data_string_chennai = json_encode($datachennai);                                                                                                              
-					$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+					$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																						  
 					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -907,8 +1590,8 @@ function getCyberData(){
 		
 	}
 	function getMumbaiDataFromTo(){
-		$date_from = strtotime("2022-12-24"); 
-        $date_to = strtotime("2023-01-02"); 
+		$date_from = strtotime("2023-11-05"); 
+        $date_to = strtotime("2023-11-05"); 
         $datesarray=array();
 		
 		
@@ -925,7 +1608,7 @@ function getCyberData(){
 					$token= $tokenData['token'];  
 																		  
 					$data_string_chennai = json_encode($datachennai);                                                                                                              
-					$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+					$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																						  
 					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -955,7 +1638,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -972,8 +1655,8 @@ function getCyberData(){
 		
 	}
 	function getWrlCollectorDataDates(){
-		$date_from = strtotime("2022-10-01"); 
-        $date_to = strtotime("2022-10-15"); 
+		$date_from = strtotime("2024-01-14"); 
+        $date_to = strtotime("2024-04-14"); 
         $datesarray=array();
 		
 		
@@ -991,7 +1674,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1017,7 +1700,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1034,8 +1717,8 @@ function getCyberData(){
 		
 	}
 	function getWrlJpnagarDataDates(){
-		$date_from = strtotime("2023-01-18"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2022-09-08"); 
+        $date_to = strtotime("2022-12-31"); 
         $datesarray=array();
 		
 		
@@ -1052,7 +1735,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1077,7 +1760,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1102,7 +1785,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1119,8 +1802,8 @@ function getCyberData(){
 		
 	}
 	function getPoliceHeadquartersDataDates(){
-		$date_from = strtotime("2023-01-01"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2022-09-08"); 
+        $date_to = strtotime("2022-12-31"); 
         $datesarray=array();
 		
 		
@@ -1137,7 +1820,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1162,7 +1845,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1187,7 +1870,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1205,8 +1888,8 @@ function getCyberData(){
 	}
 	
 	function getMissionHospitalDataDates(){
-		$date_from = strtotime("2023-01-01"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2022-09-08"); 
+        $date_to = strtotime("2022-12-31"); 
         $datesarray=array();
 		
 		
@@ -1223,7 +1906,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1235,7 +1918,7 @@ function getCyberData(){
 		$result_chennai = curl_exec($ch_chennai);
 		curl_close($ch_chennai);
 		$json_chennai = json_decode($result_chennai, true);
-		// print_r($json_chennai);die();
+		//print_r($json_chennai);die();
 		$this->Api_model->pushMissionHospitalData($json_chennai);
 	}
 		
@@ -1248,7 +1931,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1273,7 +1956,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1290,8 +1973,8 @@ function getCyberData(){
 		
 	}
 	function getLICOfficeMarketRoadDataDates(){
-		$date_from = strtotime("2023-01-01"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2023-07-25"); 
+        $date_to = strtotime("2023-07-25"); 
         $datesarray=array();
 		
 		
@@ -1308,7 +1991,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1334,7 +2017,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1358,7 +2041,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1375,8 +2058,8 @@ function getCyberData(){
 		
 	}
 	function getChintalBridgeDataDates(){
-		$date_from = strtotime("2023-01-01"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2022-09-08"); 
+        $date_to = strtotime("2022-12-31");  
         $datesarray=array();
 		
 		
@@ -1393,7 +2076,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1418,7 +2101,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1443,7 +2126,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1460,8 +2143,8 @@ function getCyberData(){
 		
 	}
 	function getKazipetRailwayStationDataDates(){
-		$date_from = strtotime("2023-01-24"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2023-03-25"); 
+        $date_to = strtotime("2023-03-31"); 
         $datesarray=array();
 		
 		
@@ -1478,7 +2161,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1503,7 +2186,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1528,7 +2211,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1545,8 +2228,8 @@ function getCyberData(){
 		
 	}
 	function getRadhikaTheatreLaneDataDates(){
-		$date_from = strtotime("2023-01-16"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2023-01-01"); 
+        $date_to = strtotime("2023-07-31"); 
         $datesarray=array();
 		
 		
@@ -1563,7 +2246,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1588,7 +2271,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1613,7 +2296,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1630,8 +2313,8 @@ function getCyberData(){
 		
 	}
 	function getGopalaswamiTempleDataDates(){
-		$date_from = strtotime("2022-01-01"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2023-06-05"); 
+        $date_to = strtotime("2023-06-06");  
         $datesarray=array();
 		
 		
@@ -1648,7 +2331,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1673,7 +2356,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1698,7 +2381,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1716,8 +2399,8 @@ function getCyberData(){
 	}
 	
 	function getDistrictCourtDataDates(){
-		$date_from = strtotime("2023-01-01"); 
-        $date_to = strtotime("2023-01-31"); 
+		$date_from = strtotime("2022-10-10"); 
+        $date_to = strtotime("2022-12-31"); 
         $datesarray=array();
 		
 		
@@ -1735,7 +2418,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1761,7 +2444,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1786,7 +2469,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1810,7 +2493,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1834,7 +2517,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1858,7 +2541,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1882,7 +2565,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1906,7 +2589,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1930,7 +2613,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1954,7 +2637,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -1978,7 +2661,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2002,7 +2685,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2026,7 +2709,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2050,7 +2733,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2074,7 +2757,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2098,7 +2781,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2122,7 +2805,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2146,7 +2829,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2162,6 +2845,103 @@ function getCyberData(){
 		$this->Api_model->pushIItData($json_chennai);
 		
 	}
+	function getHCUGData(){
+		$yesterDay = date('d/m/Y',strtotime("-1 days")); 
+		$datachennai = array("StoreCode" => "HCUG", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushHCUGData($json_chennai);
+		
+	}
+	function getHCUGDataLive(){
+		$today=date("d/m/Y");
+		$datachennai = array("StoreCode" => "HCUG", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushHCUGDataLive($json_chennai);
+		
+	}
+	function getHCUG0036Data(){
+		$yesterDay = date('d/m/Y',strtotime("-6 days")); 
+		$datachennai = array("StoreCode" => "0036", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+
+		$this->Api_model->pushHCUG0036Data($json_chennai);
+		
+	}
+
+	function getHCUG0036DataLive(){
+		$today=date("d/m/Y");
+		$datachennai = array("StoreCode" => "0036", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+
+		$this->Api_model->pushHCUG0036DataLive($json_chennai);
+		
+	}
 	function getRsbroGeneratorsDataLive(){
 		$today=date("d/m/Y");
 	  // $today=date("26/03/2022");	 
@@ -2171,7 +2951,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2196,7 +2976,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2221,7 +3001,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2246,7 +3026,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2271,7 +3051,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2296,7 +3076,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2321,7 +3101,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2346,7 +3126,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2371,7 +3151,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2396,7 +3176,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2421,7 +3201,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2446,7 +3226,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2471,7 +3251,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2496,7 +3276,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2521,7 +3301,7 @@ function getCyberData(){
 		$token= $tokenData['token'];  
 															  
 		$data_string_chennai = json_encode($datachennai);                                                                                                              
-		$ch_chennai = curl_init('http://137.59.201.64/ClientDataService/api/ConsumptionData');
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
@@ -2537,8 +3317,86 @@ function getCyberData(){
 		$this->Api_model->pushIItDataLive($json_chennai);
 		
 	}
+	function getDelhiDataLive(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0035", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushDelhiDataLive($json_chennai);
+		
+	}
+	function getDelhiDataLive1(){
+		$today=date("d/m/Y");
+	  // $today=date("26/03/2022");	 
+		$datachennai = array("StoreCode" => "0002", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushDelhiDataLive1($json_chennai);
+		
+	}
+	function getDelhiDataYest(){
+		// $today=date("d/m/Y");
+	    $today=date("01/10/2023");	 
+		$datachennai = array("StoreCode" => "0002", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+		$tokenData=  $this->Api_model->getToken("lonavala");
+		 
+		$token= $tokenData['token'];  
+															  
+		$data_string_chennai = json_encode($datachennai);                                                                                                              
+		$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																			  
+		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+			 'Content-Type: application/json',                                                                                
+			 'Authorization: Bearer '.$token.''                                                                       
+		));  
+		$result_chennai = curl_exec($ch_chennai);
+		curl_close($ch_chennai);
+		$json_chennai = json_decode($result_chennai, true);
+		// print_r($json_chennai);die();
+		$this->Api_model->pushDelhiDataLive2($json_chennai);
+		
+	}
 	function getDeleteAllLive(){		
 		$this->Api_model->deleteAllLiveData();		
+	}
+	function getDeleteUndpLive(){		
+		$this->Api_model->deleteUndpLiveData();		
 	}
 	function updatewarangalData(){
 		

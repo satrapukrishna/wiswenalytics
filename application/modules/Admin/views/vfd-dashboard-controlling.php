@@ -4,6 +4,9 @@
     <?php $this->load->view('common/css3')?>
     <link href="<?php echo base_url(); ?>asset/fairmontasset/CSS/StyleSheet.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>asset/ahuasset/AppTheme/CmplntMngmntMdl/MdlTheme.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>asset/ahuasset/AppTheme/Fonts/IconFont.css" />
+    <link rel="stylesheet" href="<?php echo base_url(); ?>asset/ahuasset/AppTheme/style.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
 	.bx-wrapper img{display:inline!important}
@@ -276,82 +279,59 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                 <div class="bxslider10" id="bxid">
 				<?php for ($i=1; $i < 5; $i++) {?>
 			
-					<div class="box bxc1 bxheight box-com">
-					
-					<div class="SctnDtlsHldr">
-						<div class="SldrCntnr">
-							<div class="SctnDtls BorewellHldr">
-								<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc;font-weight:bold">VFD<?php echo $i ?> </span>
-								<div>
-								<div class="panel-body">
-								<?php echo form_open_multipart('Admin/Home/create_account/', array('id' => 'create_account','class' => 'form-horizontal')); ?>
-                                    
-										
-									<div class="form-group">
-										<label class="col-md-6"> VFD<span class="required_fields">*</span></label>
-
-										 <div class="col-md-6">
-										 <input type="text" style="background-color:white" class="form-control" name="client_name" value="<?php echo "VFD".$i ?>" readonly/>
-										 </div> 
-										  
-										 
-									</div>  
-									<div class="form-group">
-										<label class="col-md-6">Status<span class="required_fields">*</span></label>
-
-										 <div class="col-md-6">
-											 <div class="switch-field">
-												<input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
-												<label for="radio-one">ON</label>
-												<input type="radio" id="radio-two" name="switch-one" value="no" style="margin-left:25px" />
-												<label for="radio-two">OFF</label>
-											</div>
-										 </div> 
-										  
-										 
-									</div>  
-								
-									<div class="form-group">
-										 
-										
-										 <label class="col-md-6">Set Frequence <span class="required_fields">*</span></label>
-
-										 <div class="col-md-6">
-										 <input type="text" class="form-control" name="client_name" value="6" />
-										 </div>
-									</div>
-																		
-									
-									<br><br>
-									<div class="form-group" style="margin-left:30%;">
-										 <div class="col-md-12" >
-											<button class="button">Update</button>
-										 </div>
-									</div>
-							</form>
-				</div>
-									<!-- <div class="small-box">
-										<span class="status-working">ON</span><br/>
-										<h5>AHU Status</h5>
-									</div>
-									<div class="small-box">
-										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool2.png' width='20'> </h3>
-										<h5>Cooling</h5>
-									</div>
-									<div class="small-box no-border-right">
-										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> <?php echo $ahudata[$i]['Set_Temp'] ?>&#8451;</h3>
-										<h5>Set Temp.</h5>
-									</div>
-									<div style="clear:both">
-									</div> -->
-								</div>
-								
-								
-							</div>
-						</div>
-					</div>
-					
-					</div>
+					<div class="col-4 FllHght">
+                                <div class="LocationDtlsGrd PosReltv">
+                                    <div class="DshHdrHldr Grd">
+                                        
+                                        <div class="TtlHldr">
+                                            <span class="TtlGrd TxtPsn"><?php echo $ahudata[$i]['meter']."-".$ahudata[$i]['LocationName'] ?></span>
+                                        </div>
+                                        <div class="ActnBtnHldr">
+										<?php if($ahudata[$i]['status']==1){ ?>
+											<img src="<?php echo base_url(); ?>asset/ahuasset/Images/switch-green.svg" alt="switch" />
+											<?php }else{?>
+												<img src="<?php echo base_url(); ?>asset/ahuasset/Images/switch-red.svg" alt="switch" />
+												<?php }?>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="DvlstGrdVw">
+                                        <div class="DvlstGVw">
+                                            <span class="TtGdvw">Set Frequence.</span>
+                                            <span class="TtlGrd"><?php echo $ahudata[$i]['set_temp'] ?>&deg;C</span>
+                                        </div>
+                                        <div class="DvlstGVw">
+                                            <span class="TtGdvw">Room temp.</span>
+                                            <span class="TtlGrdDrk"><?php echo $ahudata[$i]['room_temp'] ?>&deg;C</span>
+                                        </div>
+                                       
+                                    </div>
+                                    <div class="DshHdrHldr Grd">
+                                        <div class="ActnBtnHldr RmMrgn">
+                                            <div class="BtnHldr">
+                                                <a href="#" class="pdtp AppBtn IcnOnly WISIcn-Menu-Dashboard InActv"></a>
+                                            </div>
+                                        </div>
+                                        <div class="ActnBtnHldr BGGrdVw">
+                                            <div class="BtnHldr">
+                                                <a href="#" class="pdtp AppBtn IcnOnly WISIcn-Location"></a>
+                                            </div>
+                                            <div class="BtnHldr Brrght">
+                                                <a href="#" class="pdtp AppBtn IcnOnly WISIcn-Image"></a>
+                                            </div>
+                                            <div class="BtnHldr Brrght">
+                                                <a href="#" class="pdtp AppBtn IcnOnly WISIcn-Menu-Masters InActv"></a>
+                                            </div>
+                                            <div class="BtnHldr Brrght">
+                                                <a href="#" class="pdtp AppBtn IcnOnly WISIcn-Calendar InActv"></a>
+                                            </div>
+                                            <div class="BtnHldrb Brrght">
+                                                <a href="#" class="pdtp AppBtn IcnOnly WISIcn-MenuVertical"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 					
 						
 					<?php }?>

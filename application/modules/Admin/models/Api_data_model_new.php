@@ -158,6 +158,8 @@ class Api_data_model_new extends CI_Model{
 			$data['CurReading']=$c1[0]['CurReading'];
 			if($c1[0]['CurReading']==0){
 				$data['Switch']="ON";
+			}else{
+				$data['Switch']="OFF";
 			}
 			
 
@@ -168,6 +170,181 @@ class Api_data_model_new extends CI_Model{
 		return $data;
 
 	}
+	function get_switch_data_hcug_day(){
+		date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+		//echo date('d-m-Y H:i:s');
+		//$to_time = strtotime("2008-12-13 10:42:00");
+		//$from_time = strtotime("2008-12-13 10:21:00");
+		//echo "ft:".$from_time." tt:".$to_time;die();
+		$today=date("Y-m-d");
+		$pdate= date("Y-m-d H:i:s", strtotime("-30 minutes"));  
+		// echo $today;die();
+		$fullarray=array();
+		$uid=[150,39];
+		for($i=0; $i < count($uid) ; $i++){
+			$q1="SELECT CurReading,UtilityName,TxnTime FROM hardware_station_consumption_data_hcug36_status WHERE `UtilityId`=$uid[$i] AND `TxnDate`='".$today."' 	ORDER BY TxnTime DESC LIMIT 1";
+			$c1 = $this->db->query($q1)->result_array();
+			
+			if(isset($c1[0]['CurReading'])){
+				$tt=$today." ".$c1[0]['TxnTime'];
+				$currentDate= strtotime($tt);
+				$pfdate= strtotime($pdate);
+				if($currentDate > $pfdate){
+					$data1[$i]['Device']=$c1[0]['UtilityName'];
+					$data1[$i]['CurReading']=$c1[0]['CurReading'];
+					if($c1[0]['CurReading']==0){
+					$data1[$i]['Status']="Full";
+					}else{
+						$data1[$i]['Status']="Down";
+					}
+				}else{
+					$data1[$i]['Device']=$c1[0]['UtilityName'];
+					$data1[$i]['CurReading']=2;
+					$data1[$i]['Status']="Offline";
+
+				}
+				
+			}else{
+				if($uid[$i]==150){
+					$data1[$i]['Device']="Sump Water Level";
+				}else{
+					$data1[$i]['Device']="Overhead Tank";
+				}
+				
+				$data1[$i]['CurReading']="No Data";
+				$data1[$i]['Status']="No Data";
+
+			}
+			
+		}
+		$fullarray['d1']=$data1;
+
+		 
+		$devices=[144,151];
+		for ($i=0; $i < count($devices); $i++) { 
+			
+		//echo "hi".$pdate;die();
+		
+		if($devices[$i]==144){
+			$q1_status="SELECT TxnDate,TxnTime,CurReading,UtilityName FROM hardware_station_consumption_data_hcug_day WHERE `UtilityId`=$devices[$i] AND `TxnDate`='".$today."' ORDER BY TxnTime DESC LIMIT 1";
+			$c1_status = $this->db->query($q1_status)->result_array();
+			if(isset($c1_status[0]['TxnTime'])){
+				$data[$i]['Device']="VC Borewell";
+				$tt=$today." ".$c1_status[0]['TxnTime'];
+				$currentDate= strtotime($tt);
+				$pfdate= strtotime($pdate);
+				if($currentDate > $pfdate){
+					$data[$i]['DeviceStatus']="Online";
+					$data[$i]['DeviceUpdatedDate']=$c1_status[0]['TxnDate'].' '.$c1_status[0]['TxnTime'];
+		
+					if($c1_status[0]['CurReading']==0){
+						$data[$i]['status']=1;
+					}else{
+						$data[$i]['status']=0;
+					}
+				}else{
+					$data[$i]['DeviceStatus']="Offline";
+					if(isset($c1_status[0]['TxnDate'])){
+						$data[$i]['DeviceUpdatedDate']=$c1_status[0]['TxnDate'].' '.$c1_status[0]['TxnTime'];
+						$data[$i]['status']=2;
+					}else{
+						$data[$i]['DeviceUpdatedDate']="No Data Today";
+						$data[$i]['status']="No Data";
+					}
+					
+					
+				}
+				$queryruntoday="SELECT SUM( CASE  WHEN TIME_TO_SEC(ToTime) - TIME_TO_SEC(FromTime)>=0 THEN TIME_TO_SEC(ToTime) - TIME_TO_SEC(FromTime) ELSE 0 END) AS `secs` FROM hardware_station_consumption_data_hcug_day WHERE `UtilityId`=144 AND `TxnDate`='".$today."' and CurReading=0";
+					$todayrunq = $this->db->query($queryruntoday)->result_array();
+					if(isset($todayrunq[0]['secs'])){
+						$data[$i]['todayrunn']=gmdate("H:i:s", $todayrunq[0]['secs']);
+						
+					}else{
+						$data[$i]['todayrunn']="No Data";
+					}
+			}else{
+				$data[$i]['Device']="VC Borewell";
+				$data[$i]['DeviceStatus']="No Data";
+				$data[$i]['DeviceUpdatedDate']="No Data Today";
+				$data[$i]['status']="No Data";
+				$data[$i]['todayrunn']="No Data";
+			}
+			
+		}else{
+			$q1_status="SELECT TxnDate,TxnTime,CurReading FROM hardware_station_consumption_data_hcug_day WHERE `UtilityId`=$devices[$i] ORDER BY TxnTime DESC LIMIT 1";
+			$c1_status = $this->db->query($q1_status)->result_array();
+			if(isset($c1_status[0]['TxnTime'])){
+				$data[$i]['Device']="Sump Motor";
+				$tt=$today." ".$c1_status[0]['TxnTime'];
+				$currentDate= strtotime($tt);
+				$pfdate= strtotime($pdate);
+				if($currentDate > $pfdate){
+					$data[$i]['DeviceStatus']="Online";
+					$data[$i]['DeviceUpdatedDate']=$c1_status[0]['TxnDate'].' '.$c1_status[0]['TxnTime'];
+		
+					$data[$i]['status']=(int)$c1_status[0]['CurReading'];
+				}else{
+					$data[$i]['DeviceStatus']="Offline";
+					if(isset($c1_status[0]['TxnDate'])){
+						$data[$i]['DeviceUpdatedDate']=$c1_status[0]['TxnDate'].' '.$c1_status[0]['TxnTime'];
+						$data[$i]['status']=2;
+					}else{
+						$data[$i]['DeviceUpdatedDate']="No Data Today";
+						$data[$i]['status']="No Data";
+					}
+				}
+				$queryruntoday="SELECT SUM( CASE  WHEN TIME_TO_SEC(ToTime) - TIME_TO_SEC(FromTime)>=0 THEN TIME_TO_SEC(ToTime) - TIME_TO_SEC(FromTime) ELSE 0 END) AS `secs` FROM hardware_station_consumption_data_hcug_day WHERE `UtilityId`=$devices[$i] AND `TxnDate`='".$today."' and CurReading=1";
+					$todayrunq = $this->db->query($queryruntoday)->result_array();
+					if(isset($todayrunq[0]['secs'])){
+						$data[$i]['todayrunn']=gmdate("H:i:s", $todayrunq[0]['secs']);
+						
+					}else{
+						$data[$i]['todayrunn']="No Data";
+					}
+			}else{
+				$data[$i]['Device']="Sump Motor";
+				$data[$i]['DeviceStatus']="No Data";
+				$data[$i]['DeviceUpdatedDate']="No Data Today";
+				$data[$i]['status']="No Data";
+				$data[$i]['todayrunn']="No Data";
+			}
+			
+		}
+		
+		}
+		$fullarray['d2']=$data;
+
+		//echo json_encode($fullarray);die();
+	
+	return $fullarray;
+
+}
+	function get_switch_data_hcug36($uid){
+		 
+			for($i=0; $i < count($uid) ; $i++){
+				$q1="SELECT CurReading,UtilityName,TxnTime FROM hardware_station_consumption_data_hcug36_status WHERE `UtilityId`=$uid[$i] 	ORDER BY TxnTime DESC LIMIT 1";
+				$c1 = $this->db->query($q1)->result_array();
+				
+				
+				$data[$i]['DeviceName']=$c1[0]['UtilityName'];
+				$data[$i]['TxnTime']=$c1[0]['TxnTime'];
+				$data[$i]['CurReading']=$c1[0]['CurReading'];
+				if($c1[0]['CurReading']==0){
+					$data[$i]['Status']="Full";
+					}else{
+						$data[$i]['Status']="Down";
+					}
+			}
+		
+		
+
+
+		
+
+	
+	return $data;
+
+}
 	function get_switch_data($stsn){
 		for ($i=0; $i < count($stsn) ; $i++) { 
 			$q1="SELECT CurReading,TxnTime FROM `hardware_station_consumption_data_iith` WHERE StationId=$stsn[$i] and UtilityName='Channel1' ORDER BY TxnTime DESC limit 1";

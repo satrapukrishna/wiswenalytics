@@ -1,0 +1,1316 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font: 400 14px/100% 'Montserrat';
+    color: #444;
+    background: #ccdeec;
+}
+
+/* Base CSS - Starts */
+
+.AppBtn {
+    font: 600 11px/100% 'Montserrat';
+    border-radius: 20px;
+    text-align: center;
+    text-decoration: none;
+    background: #228BE6;
+    border: 1px solid #228BE6;
+    color: #fff;
+    padding: 10px 14px;
+}
+
+.AppBtn.Scndry {
+    color: #228BE6;
+    border-color: #228BE6;
+    background: #fff;
+}
+
+.AppBtn.FllWidth {
+    width: 100%;
+}
+
+.AppBtn.Lrge {
+    padding: 15px;
+    font: 700 13px/100% 'Montserrat';
+}
+
+select {
+    font: 600 11px/100% 'Montserrat';
+}
+
+.Input {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 15px 10px;
+    border-radius: 5px;
+    font: 500 10px/100% 'Montserrat';
+    color: #444;
+}
+
+
+.NoPadding {
+    padding: 0 !important;
+}
+
+table.GenTbl {
+    width: 100%;
+    border-spacing: 0;
+}
+
+table.GenTbl th,
+table.GenTbl td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+table.GenTbl th {
+    font: 600 11px/100% 'Montserrat';
+}
+
+table.GenTbl td {
+    font: 500 11px/100% 'Montserrat';
+}
+
+table.GenTbl.VAMiddle th,
+table.GenTbl.VAMiddle td {
+    vertical-align: middle;
+}
+
+table.GenTbl td span.Txt {}
+
+table.GenTbl td span.Hnt {
+    display: inline-block;
+    font: 500 10px/100% 'Montserrat';
+    color: #666;
+}
+
+
+/* Base CSS - Ends */
+div.AppHldr {
+    display: flex;
+    background: #F6FBFF;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    position: relative;
+    width: 100%;
+    max-width: 767px;
+    height: calc(100vh - 40px);
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(34, 139, 230, 0.1);
+    overflow: hidden;
+}
+
+div.AppHdrDv {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    height: 76px;
+    left: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0);
+    overflow: hidden;
+    z-index: 2;
+}
+
+div.AppHdrDv div.HdrCntntList {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+/* my css */
+.HdrCntntListList {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border: 1px solid #62b8f5;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-radius: 28px 28px 28px 28px;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn {
+    display: block;
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn:before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv span.SctnIcn:before {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 9px;
+    top: 14px;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv span.SctnName {
+    display: block;
+    position: relative;
+    font: 700 15px/100% 'Montserrat';
+    text-transform: uppercase;
+    margin-left: 30px;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Complaints:before {
+    background-image: url(../Images/NavIcn-ComplaintsActv.svg);
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv span.SctnIcn.Clock:before {
+    background-image: url(../Images/calendar-clocklist.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Apps:before {
+    background-image: url(../Images/appslist.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Bell:before {
+    background-image: url(../Images/belllist.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Store:before {
+    background-image: url(../Images/NavIcn-StoreActv.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Account:before {
+    background-image: url(../Images/NavIcn-AccountActv.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnName {
+    display: block;
+    position: relative;
+    font: 700 15px/100% 'Montserrat';
+    text-transform: uppercase;
+}
+
+
+div.AppHdrDv div.HdrCntntList div.UsrDtlsHldr {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin: 0 0 0 auto;
+}
+
+div.AppHdrDv div.HdrCntntList div.UsrDtlsHldr div.DtlDv {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: right;
+}
+
+div.AppHdrDv div.HdrCntntList div.UsrDtlsHldr div.DtlDv span.UsrNme {
+    display: block;
+    width: 100%;
+    position: relative;
+    font: 700 15px/100% 'Montserrat';
+    color: #016BB8;
+    text-align: center;
+}
+
+div.AppHdrDv div.HdrCntntList div.UsrDtlsHldr div.DtlDv span.UsrID {
+    display: block;
+    width: 100%;
+    position: relative;
+    font: 500 11px/100% 'Montserrat';
+    padding: 2px 0 0 0;
+    text-align: center;
+}
+
+
+
+div.AppCntntDv {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    position: absolute;
+    width: 100%;
+    height: calc(100% - 50px);
+    left: 0;
+    top: 68px;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px -10px 50px rgba(34, 139, 230, 0.1);
+    border-radius: 25px 25px 0 0;
+    overflow: hidden;
+    z-index: 3;
+}
+
+div.AppCntntDv div.InnrHdrHldr {
+    padding: 15px 10px 0 10px;
+    position: relative;
+    width: 100%;
+}
+
+div.AppCntntDv div.InnrHdrHldr:after {
+    content: '';
+    position: absolute;
+    width: calc(100% - 20px);
+    height: 1px;
+    left: 10px;
+    bottom: 0;
+    background: #eee;
+}
+
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.DateDv {
+    width: 50%;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.DateDv span.Txt {
+    display: block;
+    position: relative;
+    font: 600 13px/100% 'Montserrat';
+    color: #222;
+    padding: 0 10px 0 24px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.DateDv span.Txt:before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 0;
+    top: calc(50% - 9px);
+    background: transparent url(../Images/Icn-Calendar.svg) no-repeat center center;
+    background-size: 16px;
+
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SlctnDv {
+    width: 50%;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SlctnDv .Input {
+    width: 100%;
+    background: #228BE6;
+    color: #fff;
+    border: 1px solid #228BE6;
+    padding: 6px 10px;
+    border-radius: 20px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv {
+    width: 100%;
+    padding: 5px 20px 15px 0;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv a.BackBtn {
+    display: inline-block;
+    position: relative;
+    font: 600 13px/100% 'Montserrat';
+    color: #222;
+    padding: 0 10px 0 24px;
+    text-decoration: none;
+    margin: 4px 0 0 10px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv a.BackBtn:after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0;
+    top: calc(50% - 10px);
+    background: transparent url(../Images/angle-small-downlist.svg) no-repeat center center;
+    background-size: 20px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv a.BackArrBtn {
+    display: inline-block;
+    position: relative;
+    font: 600 13px/100% 'Montserrat';
+    color: #222;
+    padding: 0 10px 0 24px;
+    text-decoration: none;
+    margin: 4px 0 0 10px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv a.BackArrBtn:before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 0;
+    top: calc(50% - 10px);
+    background: transparent url(../Images/Icn-Arrow.svg) no-repeat center center;
+    background-size: 20px;
+}
+.WkInput{
+    border: 1px solid #CAE3F9;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: 500;
+    color: #000;
+    font-family: Montserrat;
+    font-size: 12px;
+}
+.Sublst {
+    font-size: 15px;
+    font-weight: 700;
+    color: #016BB8;
+    margin-top: 15px;
+    display: flex;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr div.TabsDv {
+    display: inline-flex;
+    flex-wrap: inherit;
+    width: 100%;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    /*// IE 10+*/
+    overflow: -moz-scrollbars-none;
+    /*// Firefox*/
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr span.Tab {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin: 10px 10px 10px 0;
+    font: 600 11px/100% 'Montserrat';
+    color: rgba(34, 139, 230, 1);
+    background: rgba(34, 139, 230, 0.05);
+    border: 1px solid rgba(34, 139, 230, 0.2);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr span.Tab.Actv {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(34, 139, 230, 1);
+    border: 1px solid rgba(34, 139, 230, 1);
+}
+
+
+
+
+
+
+
+
+
+
+
+div.AppCntntDv div.CntntHldr {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList {
+    width: 100%;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv {
+    background: #fff;
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #eee;
+    box-shadow: 4px 4px 18px rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv:first-of-type {
+    margin-top: 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0 0 6px 0;
+}
+
+.weeklylist {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.wklstUp {
+    border: 1px solid #016BB8;
+    background: #edf4fa;
+}
+
+.wklstCnd {
+    border: 1px solid #DDDDDD;
+    background: #FFFFFF;
+    padding: 15px;
+}
+.WklstInup{
+    border: 1px solid #D3EAFC;
+    background: #FFFFFF;
+    padding: 15px;
+    margin-top: 20px;
+}
+.WklstAsh{
+    border: 1px solid #D3EAFC;
+    background: #F6FBFF;
+    padding: 15px;
+    margin-top: 20px;
+}
+.options>label>input {
+    display: none;
+}
+
+.options>label {
+    display: block;
+    margin: 0 0 0 -10px;
+    padding: 0 0 20px 0;
+    height: 20px;
+    width: 150px;
+}
+
+.options>label>.custom-radio {
+    position: absolute;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #999999;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 14px;
+    color: white;
+}
+
+.options>label>input:checked+.custom-radio::before {
+    content: "\2713";
+    position: absolute;
+    bottom: -3px;
+    right: -6px;
+    line-height: 19px;
+    display: inline-block;
+    width: 19px;
+    height: 18px;
+    border: 2px solid #1E538F;
+    border-radius: 50%;
+    background: #1E538F;
+}
+
+.wklstCmd {
+    border: 1px solid #17A300;
+    background: #f1faf0;
+}
+
+.wklstLt {
+    border: 1px solid #ED7302;
+    background: #faf4ee;
+}
+
+.wklstDl {
+    border: 1px solid #D61B1B;
+    background: #faeeee;
+}
+
+.Wkhd {
+    font-size: 11px;
+    font-weight: 600;
+    color: #222222;
+}
+
+.WkShHd {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222222;
+}
+
+.WkShHdiv {
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #EEEEEE;
+}
+
+.Wksh {
+    font-size: 15px;
+    font-weight: 700;
+    color: #222222;
+}
+
+.WkShsub {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444;
+}
+
+.Wklhd {
+    display: flex;
+    padding: 0 0 5px 0;
+}
+
+.WklhdU {
+    border-bottom: 1px solid #cde6f8;
+}
+
+.WklhdC {
+    border-bottom: 1px solid #d5f5d0;
+}
+
+.WklhdLt {
+    border-bottom: 1px solid #fde6d1;
+}
+
+.WklhdDl {
+    border-bottom: 1px solid #fdc4c4;
+}
+
+.WkHdr {
+    display: flex;
+    flex-direction: column;
+}
+
+.WkInrd {
+    display: flex;
+    width: 100%;
+    padding: 5px 0 0 0;
+}
+
+.WkIElm {
+    font-size: 12px;
+    font-weight: 600;
+    color: #222222;
+}
+
+.WkIElmDtl {
+    font-size: 10px;
+    font-weight: 500;
+    color: #444444;
+}
+
+.WkAtdbtn {
+    padding: 10px;
+    margin: 0 0 0 0;
+    color: #016BB8;
+    background: #FFFFFF;
+    border: 1px solid #016BB8;
+    border-radius: 20px;
+    font: 600 10px/100% 'Montserrat';
+    max-width: 100px;
+}
+
+.Wkbtn {
+    padding: 5px 10px;
+    margin: 0 0 0 auto;
+    border-radius: 20px;
+    font: 600 10px/100% 'Montserrat';
+}
+
+.WkbtnUp {
+    color: #016BB8;
+    background: #FFFFFF;
+    border: 1px solid #016BB8;
+}
+.WkbtnSub{
+    color: #FFFFFF;
+    background: #228BE6;
+    border: 1px solid #228BE6;
+    width: 100%;
+    padding: 15px;
+    border-radius: 20px;
+    font: 500 15px/100% 'Montserrat';
+}
+.WkbtnCmd {
+    color: #FFFFFF;
+    background: #17A300;
+    border: 1px solid #17A300;
+}
+
+.WkbtnLt {
+    color: #FFFFFF;
+    background: #ED7302;
+    border: 1px solid #ED7302;
+}
+
+.WkbtnDl {
+    color: #FFFFFF;
+    background: #D61B1B;
+    border: 1px solid #D61B1B;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntTyp {
+    display: block;
+    color: #666;
+    font: 500 11px/100% 'Montserrat';
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntStts {
+    display: block;
+    padding: 5px 10px;
+    margin: 0 10px 0 0;
+    color: #444;
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    font: 600 10px/100% 'Montserrat';
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntStts.Newlist.Actv {
+    color: #FFFFFF;
+    background: #016BB8;
+    border: 1px solid rgba(34, 139, 230, 0.2);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntStts.Newlist {
+    color: #666666;
+    background: #FFFFFF;
+    border: 1px solid #DDDDDD;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntStts.Ongoing {
+    color: rgba(15, 200, 163, 1);
+    background: rgba(15, 200, 163, 0.05);
+    border: 1px solid rgba(15, 200, 163, 0.2);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntStts.Completed {
+    color: rgba(21, 205, 73, 1);
+    background: rgba(21, 205, 73, 0.05);
+    border: 1px solid rgba(21, 205, 73, 0.2);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntStts.Reopened {
+    color: rgba(188, 92, 143, 1);
+    background: rgba(188, 92, 143, 0.05);
+    border: 1px solid rgba(188, 92, 143, 0.2);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntStts.Delayed {
+    color: rgba(223, 17, 37, 1);
+    background: rgba(223, 17, 37, 0.05);
+    border: 1px solid rgba(223, 17, 37, 0.2);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.BscInfo span.CmplntStts.Pending {
+    color: rgba(253, 112, 54, 1);
+    background: rgba(253, 112, 54, 0.05);
+    border: 1px solid rgba(253, 112, 54, 0.2);
+}
+
+.Wkdtl {
+    display: flex;
+    border-bottom: 1px solid #EEEEEE;
+    padding: 10px;
+}
+
+.WkShDt {
+    font-size: 12px;
+    font-weight: 500;
+    color: #444444;
+}
+
+.WkSHsub {
+    font-size: 13px;
+    font-weight: 600;
+    color: #222222;
+    margin-top: 2px;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo {
+    padding: 3px 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo span.CmplntName {
+    display: block;
+    font: 600 15px/100% 'Montserrat';
+    color: #222;
+    padding: 5px 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo span.InfoTtlName {
+    display: block;
+    position: relative;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo span.InfoTtlName:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #eee;
+    left: 0;
+    top: 50%;
+    z-index: 1;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo span.InfoTtlName span.Txt {
+    position: relative;
+    font: 600 11px/100% 'Montserrat';
+    color: #222;
+    background: #fff;
+    padding: 3px 6px 3px 0;
+    z-index: 2;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 0;
+}
+
+.WkDtlsSctnDv {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 0 5px 0 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn.Btn {
+    justify-content: center;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Txt {
+    display: block;
+    position: relative;
+    font: 500 11px/100% 'Montserrat';
+    padding: 2px 0;
+    width: 100%;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Txt.Hnt {
+    font: 500 11px/100% 'Montserrat';
+    color: #777;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Txt.Icn {
+    padding-left: 14px;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Txt.Icn:before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 0;
+    top: 1px;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 10px;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Icn.Location:before {
+    background-image: url(../Images/Icn-Location.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Icn.DateTime:before {
+    background-image: url(../Images/Icn-DateTime.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Icn.TimeStatus:before {
+    background-image: url(../Images/Icn-TimeStatus.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Icn.Technician:before {
+    background-image: url(../Images/Icn-Technician.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Icn.Comment:before {
+    background-image: url(../Images/Icn-Comment.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn span.Icn.Time:before {
+    background-image: url(../Images/Icn-Time.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn ul.PhotoLst {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn ul.PhotoLst li {
+    width: fit-content;
+    padding: 5px;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn ul.PhotoLst li img.PhotoImg {
+    display: block;
+    width: 100%;
+    max-width: 60px;
+    border: 1px solid #ccdeec;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.WkPhotoLst {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 100%;
+}
+
+.WkPhotoLst li {
+    width: fit-content;
+    padding: 5px;
+}
+
+.WkPhotoLst li img.PhotoImg {
+    display: block;
+    width: 100%;
+    max-width: 60px;
+    object-fit: cover;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn.Comment {
+    border: 1px solid #CAE3F9;
+    padding: 10px !important;
+    border-radius: 10px;
+    margin: 10px 0 5px 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn.Comment div.CmmntTxtHldr span.CmmntTxt {
+    display: block;
+    border-bottom: 1px solid #CAE3F9;
+    font: 500 11px/130% 'Montserrat';
+    padding: 0 0 10px 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv div.CmplntInfo div.DtlsSctnDv div.Sctn.Comment ul.PhotoLst {
+    border-bottom: 1px solid #CAE3F9;
+    padding: 8px 0;
+}
+
+
+
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView {
+    background: #fff;
+    margin: 0;
+    padding: 0;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.BscInfo span.CmplntStts {
+    font-size: 13px;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.BscInfo span.CmplntStts.New {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(34, 139, 230, 1);
+    border: 1px solid rgba(34, 139, 230, 1);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.BscInfo span.CmplntStts.Ongoing {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(15, 200, 163, 1);
+    border: 1px solid rgba(15, 200, 163, 1);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.BscInfo span.CmplntStts.Completed {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(21, 205, 73, 1);
+    border: 1px solid rgba(21, 205, 73, 1);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.BscInfo span.CmplntStts.Reopened {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(188, 92, 143, 1);
+    border: 1px solid rgba(188, 92, 143, 1);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.BscInfo span.CmplntStts.Delayed {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(223, 17, 37, 1);
+    border: 1px solid rgba(223, 17, 37, 1);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.BscInfo span.CmplntStts.Pending {
+    color: rgba(255, 255, 255, 1);
+    background: rgba(253, 112, 54, 1);
+    border: 1px solid rgba(253, 112, 54, 1);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo {
+    padding: 8px 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.CmplntName {
+    padding: 0px 0 5px 10px;
+    font: 700 18px/100% 'Montserrat';
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Txt {
+    padding-left: 16px;
+    position: relative;
+}
+
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Icn:before {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    left: 0;
+    top: calc(50% - 6px);
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 12px;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Icn.Location:before {
+    background-image: url(../Images/Icn-Location.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Icn.Complaint:before {
+    background-image: url(../Images/Icn-Complaint.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Icn.Photos:before {
+    background-image: url(../Images/Icn-Photos.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Icn.Technician:before {
+    background-image: url(../Images/Icn-Technician.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Icn.Materials:before {
+    background-image: url(../Images/Icn-Materials.svg);
+}
+
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Icn.Comment:before {
+    background-image: url(../Images/Icn-Comment.svg);
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo span.InfoTtlName span.Icn.Feedback:before {
+    background-image: url(../Images/Icn-Feedback.svg);
+}
+
+
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo div.DtlsSctnDv div.Sctn {
+    padding: 5px 0;
+
+}
+
+.WkSctn {
+    padding: 5px 0;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo div.DtlsSctnDv div.Sctn span.Txt {
+    font-weight: 600;
+}
+
+div.AppCntntDv div.CntntHldr div.ComplaintsList div.ComplaintDv.FullView div.CmplntInfo div.DtlsSctnDv div.Sctn span.Hnt {
+    font-weight: 500;
+}
+
+
+div.StoreSearch {
+    width: 100%;
+    padding: 30px 10px;
+    text-align: center;
+}
+
+div.StoreSearch span.QRCodeHldr {
+    display: inline-block;
+    padding: 0;
+    cursor: pointer;
+}
+
+div.StoreSearch span.QRCodeHldr img.QRImg {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 130px;
+    padding: 30px 10px;
+}
+
+div.StoreSearch span.SrchTxt {
+    display: block;
+    padding: 10px 0;
+    font: 600 13px/140% 'Montserrat';
+    color: #444;
+}
+
+
+
+div.AppNavDv {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    position: absolute;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px -4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    height: 50px;
+    left: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+div.AppNavDv div.NavLnksHldr {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li {
+    margin: 0;
+    padding: 0 10px;
+}
+
+div.AppNavDv div.NavLnksHldr.Technician ul.LnksLst li {
+    width: 33.33%;
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    text-align: center;
+    text-decoration: none;
+    color: #222;
+    height: 50px;
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk span.LnkIcn {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+    position: relative;
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk span.LnkIcn:before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk span.LnkIcn.Complaints {
+    background-image: url(../Images/NavIcn-Complaints.svg);
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk.Actv span.LnkIcn.Complaints {
+    background-image: url(../Images/NavIcn-ComplaintsActv.svg);
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk span.LnkIcn.Store {
+    background-image: url(../Images/NavIcn-Store.svg);
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk.Actv span.LnkIcn.Store {
+    background-image: url(../Images/NavIcn-StoreActv.svg);
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk span.LnkIcn.Account {
+    background-image: url(../Images/NavIcn-Account.svg);
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk.Actv span.LnkIcn.Account {
+    background-image: url(../Images/NavIcn-AccountActv.svg);
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk span.LnkTxt {
+    display: block;
+    width: 100%;
+    font: 600 10px/100% 'Montserrat';
+    text-align: center;
+    text-transform: uppercase;
+    padding: 6px 0 0 0;
+}
+
+div.AppNavDv div.NavLnksHldr ul.LnksLst li a.Lnk.Actv span.LnkTxt {
+    color: rgba(34, 139, 230, 1);
+}
+
+
+
+
+
+@media only screen and (max-width: 767px) {
+
+    body {
+        background: #F6FBFF;
+    }
+
+    div.AppHldr {
+        position: fixed;
+        height: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+        overflow: hidden;
+    }
+}
+/* trail */
+div.radio-with-Icon {
+    display: block;
+  }
+  div.radio-with-Icon p.radioOption-Item {
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 25px 15px;
+    border: none;
+  }
+  div.radio-with-Icon p.radioOption-Item label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 34%;
+    width: 34%;
+    border-radius: 50%;
+    
+    cursor: pointer;
+    opacity: .8;
+    transition: none;
+    font-size: 22px;
+
+    margin: 0 !important;
+  }
+  div.radio-with-Icon p.radioOption-Item label:hover, div.radio-with-Icon p.radioOption-Item label:focus, div.radio-with-Icon p.radioOption-Item label:active {
+    opacity: .5;
+    color: #999999;
+    background-color: #EFEFEF;
+    margin: 0 !important;
+  }
+  div.radio-with-Icon p.radioOption-Item label::after, div.radio-with-Icon p.radioOption-Item label:after, div.radio-with-Icon p.radioOption-Item label::before, div.radio-with-Icon p.radioOption-Item label:before {
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+  }
+  div.radio-with-Icon p.radioOption-Item label i.fa {
+    display: block;
+    font-size: 50px;
+  }
+  div.radio-with-Icon p.radioOption-Item input[type="radio"] {
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+  div.radio-with-Icon p.radioOption-Item input[type="radio"]:active ~ label {
+    opacity: 1;
+  }
+  div.radio-with-Icon p.radioOption-Item input[type="radio"]:checked ~ label {
+    opacity: 1;
+    border: none;
+    color: #999999;
+    background-color: #EFEFEF;
+  }
+  div.radio-with-Icon p.radioOption-Item input[type="radio"]:hover, div.radio-with-Icon p.radioOption-Item input[type="radio"]:focus, div.radio-with-Icon p.radioOption-Item input[type="radio"]:active {
+    margin: 0 !important;
+  }
+  div.radio-with-Icon p.radioOption-Item input[type="radio"] + label:before, div.radio-with-Icon p.radioOption-Item input[type="radio"] + label:after {
+    margin: 0 !important;
+  }
+  .WISIcn-BMS-PPM-CheckOk{
+    color: #17A300;
+    font-size: 20px;
+  }
+  .WISIcn-BMS-PPM-CleaningDone{
+    color: #2196F3;
+    font-size: 20px;
+  }
+  .WISIcn-BMS-PPM-Replaced{
+    color: #9C27B0;
+    font-size: 20px;
+  }
+  .WISIcn-BMS-PPM-CheckedNotOk{
+    color: #FF5722;
+    font-size: 20px;
+  }
+  .WISIcn-BMS-PPM-Incomplete{
+    color: #D91B1B;
+    font-size: 20px;
+  }
+  .Inactv-PPMicon{
+    color: #999999;
+  }

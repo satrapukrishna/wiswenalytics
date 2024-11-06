@@ -180,6 +180,16 @@
         series: [{
             name: 'Set Temperature',
             data: ydatastemp
+        },{
+            name: 'Return Air Temperature',
+            data: ydatarat
+        }
+        ,{
+            name: 'Supply Air Temperature',
+            data: ydatasat
+        },{
+            name: 'Supply Water Temperature',
+            data: ydataswt
         }]
     });
     Highcharts.chart('returnair', {

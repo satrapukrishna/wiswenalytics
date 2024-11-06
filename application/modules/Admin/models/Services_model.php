@@ -1486,7 +1486,7 @@ class Services_model extends CI_Model
 			$waterlevel=$datawaterlevel[0]->CurReading*1.34;
 		}else if($locationName=='Fire-2'){
 			// $waterlevel=$datawaterlevel[0]->CurReading*3.5;
-			$waterlevel=$datawaterlevel[0]->CurReading*0.925;
+			$waterlevel=$datawaterlevel[0]->CurReading;
 		}else if($locationName=='Raw Water'){
 			$waterlevel=$datawaterlevel[0]->CurReading*0.47;
 		}else if($locationName=='Domestic Tank-A' ||$locationName=='Domestic Tank-B'||$locationName=='Domestic Tank-C'){

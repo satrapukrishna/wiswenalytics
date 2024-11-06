@@ -1,0 +1,736 @@
+@font-face {
+  font-family: 'WISIconSet';
+  src: url('WISIconSet.eot?2pliiv');
+  src: url('WISIconSet.eot?2pliiv#iefix') format('embedded-opentype'),
+    url('WISIconSet.ttf?2pliiv') format('truetype'),
+    url('WISIconSet.woff?2pliiv') format('woff'),
+    url('WISIconSet.svg?2pliiv#WISIconSet') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^='WISIcn-']:before,
+[class*=' WISIcn-']:before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'WISIconSet' !important;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.WISIcn-Calendar-Today:before {
+  content: "\e9b0";
+}
+
+.WISIcn-Reschedule:before {
+  content: "\e9ac";
+}
+
+.WISIcn-Share:before {
+  content: "\e9ad";
+}
+
+.WISIcn-Waiting:before {
+  content: "\e9ae";
+}
+
+.WISIcn-AddPlus:before {
+  content: "\e9af";
+}
+
+.WISIcn-A360-Duration-1:before {
+  content: "\e9a3";
+}
+
+.WISIcn-A360-Duration-2:before {
+  content: "\e9a4";
+}
+
+.WISIcn-A360-Duration-3:before {
+  content: "\e9a5";
+}
+
+.WISIcn-A360-Invoice:before {
+  content: "\e9a6";
+}
+
+.WISIcn-A360-AMC:before {
+  content: "\e9a7";
+}
+
+.WISIcn-A360-Manual:before {
+  content: "\e9a8";
+}
+
+.WISIcn-A360-Warranty:before {
+  content: "\e9a9";
+}
+
+.WISIcn-A360-Cost:before {
+  content: "\e9aa";
+}
+
+.WISIcn-A360-Fixes:before {
+  content: "\e9ab";
+}
+
+.WISIcn-AMC-Asset:before {
+  content: "\e9a1";
+}
+.WISIcn-Link:before {
+  content: "\e9a2";
+}
+
+.WISIcn-Tick-Solid:before {
+  content: "\e99d";
+}
+
+.WISIcn-Calendar-Check:before {
+  content: "\e99e";
+}
+
+.WISIcn-Feedback-O2:before {
+  content: "\e99f";
+}
+
+.WISIcn-Notice-O2:before {
+  content: "\e9a0";
+}
+
+.WISIcn-TableView:before {
+  content: "\e99c";
+}
+
+.WISIcn-BMS-PPM-CheckedNotOk:before {
+  content: "\e997";
+}
+
+.WISIcn-BMS-PPM-CheckOk:before {
+  content: "\e998";
+}
+
+.WISIcn-BMS-PPM-Incomplete:before {
+  content: "\e999";
+}
+
+.WISIcn-BMS-PPM-Replaced:before {
+  content: "\e99a";
+}
+
+.WISIcn-BMS-PPM-CleaningDone:before {
+  content: "\e99b";
+}
+
+.WISIcn-Notice:before {
+  content: "\e996";
+}
+
+.WISIcn-ReOrderArrowDown:before {
+  content: "\e98e";
+}
+
+.WISIcn-BMS-ActvtTyp-FixReplace:before {
+  content: "\e991";
+}
+
+.WISIcn-BMS-ActvtTyp-Maintenance:before {
+  content: "\e992";
+}
+
+.WISIcn-ReOrderArrowUp:before {
+  content: "\e993";
+}
+
+.WISIcn-BMS-ActvtTyp-CheckReading:before {
+  content: "\e994";
+}
+
+.WISIcn-BMS-ActvtTyp-Cleaning:before {
+  content: "\e995";
+}
+
+.WISIcn-BMS-MntncTyp-AirCondition:before {
+  content: "\e97f";
+}
+
+.WISIcn-BMS-MntncTyp-AV:before {
+  content: "\e980";
+}
+
+.WISIcn-BMS-MntncTyp-Carpentry:before {
+  content: "\e981";
+}
+
+.WISIcn-BMS-MntncTyp-Civil:before {
+  content: "\e982";
+}
+
+.WISIcn-BMS-MntncTyp-Electricity:before {
+  content: "\e983";
+}
+
+.WISIcn-BMS-MntncTyp-Plumbing:before {
+  content: "\e984";
+}
+
+.WISIcn-BMS-MntncTyp-Telephone:before {
+  content: "\e985";
+}
+
+.WISIcn-CalendarDay:before {
+  content: "\e986";
+}
+
+.WISIcn-DocType-Document:before {
+  content: "\e990";
+}
+
+.WISIcn-DocType-Completion:before {
+  content: "\e987";
+}
+
+.WISIcn-DocType-Download:before {
+  content: "\e988";
+}
+
+.WISIcn-DocType-Invoice:before {
+  content: "\e989";
+}
+
+.WISIcn-DocType-Quotation:before {
+  content: "\e98a";
+}
+
+.WISIcn-DocType-Receipt:before {
+  content: "\e98b";
+}
+
+.WISIcn-Price:before {
+  content: "\e98d";
+}
+
+.WISIcn-Amount:before {
+  content: "\e98c";
+}
+
+.WISIcn-VisibleDark:before {
+  content: "\e98f";
+}
+
+.WISIcn-BMS-ColdTemp:before {
+  content: "\e973";
+}
+
+.WISIcn-BMS-Damper:before {
+  content: "\e975";
+}
+
+.WISIcn-BMS-HotTemp:before {
+  content: "\e976";
+}
+
+.WISIcn-BMS-Humidity:before {
+  content: "\e977";
+}
+
+.WISIcn-BMS-HumidityPercent:before {
+  content: "\e978";
+}
+
+.WISIcn-BMS-MixedAir:before {
+  content: "\e979";
+}
+
+.WISIcn-BMS-PM:before {
+  content: "\e97a";
+}
+
+.WISIcn-BMS-Priority:before {
+  content: "\e97b";
+}
+
+.WISIcn-BMS-Status:before {
+  content: "\e97c";
+}
+
+.WISIcn-BMS-Temperature:before {
+  content: "\e97d";
+}
+
+.WISIcn-BMS-Timer:before {
+  content: "\e97e";
+}
+
+.WISIcn-Information2:before {
+  content: "\e972";
+}
+
+.WISIcn-RawData:before {
+  content: "\e974";
+}
+
+.WISIcn-Device:before {
+  content: "\e96e";
+}
+
+.WISIcn-Sequence:before {
+  content: "\e96f";
+}
+
+.WISIcn-Calendar-Day:before {
+  content: "\e970";
+}
+
+.WISIcn-Clock:before {
+  content: "\e971";
+}
+
+.WISIcn-Disable:before {
+  content: "\e966";
+}
+
+.WISIcn-Enable:before {
+  content: "\e967";
+}
+
+.WISIcn-Group:before {
+  content: "\e968";
+}
+
+.WISIcn-Menu-DeviceList:before {
+  content: "\e969";
+}
+
+.WISIcn-Menu-Groups:before {
+  content: "\e96a";
+}
+
+.WISIcn-Ungroup:before {
+  content: "\e96b";
+}
+
+.WISIcn-Unlink:before {
+  content: "\e96c";
+}
+
+.WISIcn-Weather:before {
+  content: "\e96d";
+}
+
+.WISIcn-Menu-Thermostat:before {
+  content: "\e965";
+}
+
+.WISIcn-Collapse:before {
+  content: "\e962";
+}
+
+.WISIcn-CollapseOne:before {
+  content: "\e963";
+}
+
+.WISIcn-ExpandOne:before {
+  content: "\e964";
+}
+
+.WISIcn-User:before {
+  content: "\e961";
+}
+
+.WISIcn-Image:before {
+  content: "\e960";
+}
+
+.WISIcn-File-TypeOne:before {
+  content: "\e95c";
+}
+.WISIcn-File-TypeThree:before {
+  content: "\e95d";
+}
+.WISIcn-File-TypeTwo:before {
+  content: "\e95e";
+}
+.WISIcn-Location:before {
+  content: "\e95f";
+}
+
+.WISIcn-ApprovalManagement:before {
+  content: "\e95a";
+}
+
+.WISIcn-Maintenance:before {
+  content: "\e95b";
+}
+
+.WISIcn-Expand:before {
+  content: "\e959";
+}
+
+.WISIcn-Minus:before {
+  content: "\e958";
+}
+.WISIcn-Rating0p0:before {
+  content: "\e94d";
+  color: #C62828;
+}
+.WISIcn-Rating0p5:before {
+  content: "\e950";
+  color: #C62828;
+}
+.WISIcn-Rating1p0:before {
+  content: "\e94e";
+  color: #C62828;
+}
+.WISIcn-Rating1p5:before {
+  content: "\e94f";
+  color: #C62828;
+}
+.WISIcn-Rating1p5-1:before {
+  content: "\e950";
+  color: #C62828;
+}
+.WISIcn-Rating2p0:before {
+  content: "\e951";
+  color: #FF6F00;
+}
+.WISIcn-Rating2p5:before {
+  content: "\e952";
+  color: #FF6F00;
+}
+.WISIcn-Rating3p0:before {
+  content: "\e953";
+  color: #FF6F00;
+}
+.WISIcn-Rating3p5:before {
+  content: "\e954";
+  color: #FF6F00;
+}
+.WISIcn-Rating4p0:before {
+  content: "\e955";
+  color: #388E3C;
+}
+.WISIcn-Rating4p5:before {
+  content: "\e956";
+  color: #388E3C;
+}
+.WISIcn-Rating5p0:before {
+  content: "\e957";
+  color: #388E3C;
+}
+
+.WISIcn-Edit:before {
+  content: "\e94c";
+}
+
+.WISIcn-Email:before {
+  content: "\e94a";
+}
+
+.WISIcn-WhatsApp:before {
+  content: "\e94b";
+}
+
+.WISIcn-Download:before {
+  content: "\e949";
+}
+
+.WISIcn-Juris-Building:before {
+  content: "\e945";
+}
+
+.WISIcn-Juris-Residential:before {
+  content: "\e946";
+}
+
+.WISIcn-Juris-SportsComplex:before {
+  content: "\e947";
+}
+
+.WISIcn-Juris-SwimmingPool:before {
+  content: "\e948";
+}
+
+.WISIcn-Msg-Error:before {
+  content: "\e900";
+}
+
+.WISIcn-Msg-Success:before {
+  content: "\e901";
+}
+
+.WISIcn-Menu-AccessControl:before {
+  content: "\e902";
+}
+
+.WISIcn-Menu-Approvals:before {
+  content: "\e903";
+}
+
+.WISIcn-Menu-Audits:before {
+  content: "\e904";
+}
+
+.WISIcn-Menu-ComplaintManagement:before {
+  content: "\e905";
+}
+
+.WISIcn-Menu-ComplaintsAdmin:before {
+  content: "\e906";
+}
+
+.WISIcn-Menu-Dashboard:before {
+  content: "\e907";
+}
+
+.WISIcn-Menu-Employees:before {
+  content: "\e908";
+}
+
+.WISIcn-Menu-Inventory:before {
+  content: "\e909";
+}
+
+.WISIcn-Menu-Map:before {
+  content: "\e90a";
+}
+
+.WISIcn-Menu-Masters:before {
+  content: "\e90b";
+}
+
+.WISIcn-Menu-PurchaseOrders:before {
+  content: "\e90c";
+}
+
+.WISIcn-Menu-Reports:before {
+  content: "\e90d";
+}
+
+.WISIcn-Menu-Requests:before {
+  content: "\e90e";
+}
+
+.WISIcn-Menu-Rooster:before {
+  content: "\e90f";
+}
+
+.WISIcn-Add:before {
+  content: "\e910";
+}
+
+.WISIcn-AddSolid:before {
+  content: "\e911";
+}
+
+.WISIcn-Alert:before {
+  content: "\e912";
+}
+
+.WISIcn-ArrowDown:before {
+  content: "\e913";
+}
+
+.WISIcn-ArrowLeft:before {
+  content: "\e914";
+}
+
+.WISIcn-ArrowRight:before {
+  content: "\e915";
+}
+
+.WISIcn-ArrowUp:before {
+  content: "\e916";
+}
+
+.WISIcn-Calendar:before {
+  content: "\e917";
+}
+
+.WISIcn-CM-All:before {
+  content: "\e918";
+}
+
+.WISIcn-CM-Completed:before {
+  content: "\e919";
+}
+
+.WISIcn-CM-Delayed:before {
+  content: "\e91a";
+}
+
+.WISIcn-CM-New:before {
+  content: "\e91b";
+}
+
+.WISIcn-CM-Ongoing:before {
+  content: "\e91c";
+}
+
+.WISIcn-CM-PendingApproval:before {
+  content: "\e91d";
+}
+
+.WISIcn-CM-Reopened:before {
+  content: "\e91e";
+}
+
+.WISIcn-CM-ViewUnassigned:before {
+  content: "\e91f";
+}
+
+.WISIcn-Cross:before {
+  content: "\e920";
+}
+
+.WISIcn-Cross-Big:before {
+  content: "\e921";
+}
+
+.WISIcn-Feedback:before {
+  content: "\e922";
+}
+
+.WISIcn-File:before {
+  content: "\e923";
+}
+
+.WISIcn-File-PDF:before {
+  content: "\e924";
+}
+
+.WISIcn-FullArrowDown:before {
+  content: "\e925";
+}
+
+.WISIcn-FullArrowLeft:before {
+  content: "\e926";
+}
+
+.WISIcn-FullArrowRight:before {
+  content: "\e927";
+}
+
+.WISIcn-FullArrowUp:before {
+  content: "\e928";
+}
+
+.WISIcn-GridView:before {
+  content: "\e929";
+}
+
+.WISIcn-HeaderMenu:before {
+  content: "\e92a";
+}
+
+.WISIcn-Help:before {
+  content: "\e92b";
+}
+
+.WISIcn-Information:before {
+  content: "\e92c";
+}
+
+.WISIcn-ListView:before {
+  content: "\e92d";
+}
+
+.WISIcn-MenuHorizontal:before {
+  content: "\e92e";
+}
+
+.WISIcn-MenuVertical:before {
+  content: "\e92f";
+}
+
+.WISIcn-MobileApp:before {
+  content: "\e930";
+}
+
+.WISIcn-Notification:before {
+  content: "\e931";
+}
+
+.WISIcn-NotVisible:before {
+  content: "\e932";
+  color: #C62828;
+}
+
+.WISIcn-Print:before {
+  content: "\e933";
+}
+
+.WISIcn-Profile:before {
+  content: "\e934";
+}
+
+.WISIcn-QRCode:before {
+  content: "\e935";
+}
+
+.WISIcn-ReApply:before {
+  content: "\e936";
+}
+
+.WISIcn-Reminder:before {
+  content: "\e937";
+}
+
+.WISIcn-Remove:before {
+  content: "\e938";
+}
+
+.WISIcn-RemoveSolid:before {
+  content: "\e939";
+}
+
+.WISIcn-Reset:before {
+  content: "\e93a";
+}
+
+.WISIcn-Search:before {
+  content: "\e93b";
+}
+
+.WISIcn-SMS:before {
+  content: "\e93c";
+}
+
+.WISIcn-Sort:before {
+  content: "\e93d";
+}
+
+.WISIcn-Store:before {
+  content: "\e93e";
+}
+
+.WISIcn-Thrash:before {
+  content: "\e93f";
+}
+
+.WISIcn-Tick:before {
+  content: "\e940";
+}
+
+.WISIcn-Upload:before {
+  content: "\e941";
+}
+
+.WISIcn-Visible:before {
+  content: "\e942";
+  color: #2E7D32;
+}
+
+.WISIcn-WebApp:before {
+  content: "\e943";
+}
+
+.WISIcn-Reseet:before {
+  content: "\e944";
+}

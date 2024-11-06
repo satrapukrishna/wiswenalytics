@@ -143,7 +143,7 @@ class Login extends MX_Controller {
 			else if($result['user']->first_name == "test")
 			{
 				//redirect(base_url('Login/wdemologin'));
-				redirect('WashroomDemo2Data/demoData');
+				redirect('JNTUWashroom/demoData');
 			}
 
 			else

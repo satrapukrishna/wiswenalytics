@@ -72,7 +72,7 @@
     <div class="AppSbHdr DshbrdMpPg" style="left: 20px; top: 70px">
         <div class="ContainerLeft" style="width:20%; min-width: 400px;">
             <div class="CtyDrpDwn MpActv">
-                <span class="DrpdwnTxt">All 10 Locations</span>
+                <span class="DrpdwnTxt">All Locations</span>
                 <!-- <div class="MpSrchBx">
                     <input class="form-control MpSrchInpt" type="text" placeholder="Search by area name"
                         aria-label="default input example" />
@@ -82,7 +82,7 @@
                         <div class="accordion-item">
                             <span class="accordion-header" id="flush-headingCOne">
                                 <button class="accordion-button collapsed" type="button">
-                                    <span class="CtyNme Lctn">Warangal(10)</span>
+                                    <span class="CtyNme Lctn">Kakinada(1)</span>
                                     
                                 </button>
                             </span>
@@ -228,11 +228,11 @@ function addpopup(data,lat,lng){
     var markers = [
         {
             
-            "title": 'Warangal',
-            "lat": '17.9581358',
-            "lng": '79.5325131',
-            "description": 'Warangal.',
-            "label": { text: '10', color: '#ffffff' },
+            "title": 'Kakinada',
+            "lat": '16.9782157',
+            "lng": '82.242755',
+            "description": 'JNTU.',
+            "label": { text: '1', color: '#ffffff' },
             "type": "blue"
         }
     ];

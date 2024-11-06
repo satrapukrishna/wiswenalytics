@@ -294,7 +294,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             //alert(fromdate);
             //var todate = document.getElementById("todate").value;    
     
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getSodexoReport";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getSodexoReport";
         $.ajax({
           url:urlString,
           type : 'GET',
@@ -442,7 +442,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             var fromdate = document.getElementById("fromdate").value;
         // var todate = document.getElementById("todate").value;    
     
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getSupervisorDayData";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getSupervisorDayData";
         $.ajax({
           url:urlString,
           type : 'GET',
@@ -469,7 +469,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             var todate = document.getElementById("todate").value;
            var location = document.getElementById("location").value;    
     
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getFootfalReport";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getFootfalReport";
         $.ajax({
           url:urlString,
           type : 'GET',
@@ -494,7 +494,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             var todate = document.getElementById("todate").value;
            var location = document.getElementById("location").value;    
     
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getFootfalAnalysisReport";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getFootfalAnalysisReport";
         $.ajax({
           url:urlString,
           type : 'GET',
@@ -516,7 +516,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             var location = document.getElementById("location").value;
         // var todate = document.getElementById("todate").value;    
     
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getOudorLevelReport";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getOudorLevelReport";
         $.ajax({
           url:urlString,
           type : 'GET',
@@ -540,7 +540,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             var todate = document.getElementById("todate").value;    
             var location = document.getElementById("location").value;
     
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getFeedbackReport";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getFeedbackReport";
         $.ajax({
           url:urlString,
           type : 'GET',
@@ -563,7 +563,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             var todate = document.getElementById("todate").value;
            var location = document.getElementById("location").value;    
     
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getWaterLekageReport";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getWaterLekageReport";
         $.ajax({
           url:urlString,
           type : 'GET',
@@ -589,7 +589,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             var todate = document.getElementById("todate").value;
           var location = document.getElementById("location").value;    
 
-          var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getWaterConsReport";
+          var urlString = "<?php echo base_url(); ?>WashroomData/getWaterConsReport";
           $.ajax({
           url:urlString,
           type : 'GET',
@@ -612,7 +612,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
         var todate = document.getElementById("todate").value;
         var location = document.getElementById("location").value;    
 
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getHighOdourReport";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getHighOdourReport";
         $.ajax({
         url:urlString,
         type : 'GET',
@@ -637,7 +637,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
           var fromdate = document.getElementById("fromdate").value;
           var todate = document.getElementById("todate").value; 
 
-          var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/consolidatedReportTabular";
+          var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedReportTabular";
           $.ajax({
           url:urlString,
           type : 'GET',
@@ -662,7 +662,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
           var fromdate = document.getElementById("fromdate").value;
           var todate = document.getElementById("todate").value; 
 
-          var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/consolidatedFootfallTabular";
+          var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedFootfallTabular";
           $.ajax({
           url:urlString,
           type : 'GET',
@@ -687,7 +687,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
             var fromdate = document.getElementById("fromdate").value;
             var todate = document.getElementById("todate").value; 
 
-            var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/consolidatedFootfallWithpowerTabular";
+            var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedFootfallWithpowerTabular";
             $.ajax({
             url:urlString,
             type : 'GET',
@@ -712,7 +712,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
           var fromdate = document.getElementById("fromdate").value;
           var todate = document.getElementById("todate").value; 
 
-          var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/consolidatedReportDatewise";
+          var urlString = "<?php echo base_url(); ?>WashroomData/consolidatedReportDatewise";
           $.ajax({
           url:urlString,
           type : 'GET',
@@ -752,7 +752,7 @@ $stationIdspan = str_replace("[","",$stationIdVar[0]);
       document.getElementById("consolidate").style.display="block";
       for (var i1 = 0; i1 < c.length; i1++) {
         document.getElementById("dateid"+i1).innerHTML = c[i1];
-          var urlStringfoot = "<?php echo base_url(); ?>WashroomDemo2Data/consolidateReport?date="+c[i1]+"&location="+location;
+          var urlStringfoot = "<?php echo base_url(); ?>WashroomData/consolidateReport?date="+c[i1]+"&location="+location;
      
            $.ajax({
               url:urlStringfoot,
@@ -2648,17 +2648,17 @@ function appendData_consolidated(obj){
               <div class="row SctnSlctr" style="width: 100%;">
                 <div class="col-md-1" style="width: 10%;" id="links">
                   <span class="SctnNm">
-                    <a href="<?php echo site_url('WashroomDemo2Data/demoData') ?>" class="Lnk">Dashboard</a>
+                    <a href="<?php echo site_url('WashroomData/demoData') ?>" class="Lnk">Dashboard</a>
                   </span>
                 </div>
                 <div class="col-md-1" style="width: 10%;" id="links">
                   <span class="SctnNm">
-                    <a href="<?php echo site_url('WashroomDemo2Data/getReport') ?>" class="Lnk">Reports</a>
+                    <a href="<?php echo site_url('WashroomData/getReport') ?>" class="Lnk">Reports</a>
                   </span>
                 </div>
                 <div class="col-md-1" style="width: 10%;" id="links">
                   <span class="SctnNm">
-                    <a href="<?php echo site_url('WashroomDemo2Data/map') ?>" class="Lnk">MapView</a>
+                    <a href="<?php echo site_url('WashroomData/map') ?>" class="Lnk">MapView</a>
                   </span>
                 </div>
                 <div class="col-md-2" style="width: 13%;" id="links">
@@ -3524,7 +3524,7 @@ $(function() {
         document.getElementById("janitor2").style.display="block";
         document.getElementById("feedback").style.display="block";
        
-        var urlString = "<?php echo base_url(); ?>WashroomDemo2Data/getSodexoReportLive";
+        var urlString = "<?php echo base_url(); ?>WashroomData/getSodexoReportLive";
         $.ajax({
           url:urlString,
           type : 'GET',

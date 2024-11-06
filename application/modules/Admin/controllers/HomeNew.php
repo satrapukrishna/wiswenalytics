@@ -9,6 +9,7 @@ class HomeNew extends MX_Controller {
         modules::run('Admin/is_logged_in',__CLASS__);
 		//$this->load->model('login_model');
 		// $this->load->library('session');
+		
 	}
 	public function index()
 	{
@@ -33,7 +34,7 @@ class HomeNew extends MX_Controller {
 			//echo "No Hardware data";
 		}
 		
-		// echo json_encode($hardwares['Energy Meter']['hardaware_list'][0]);die();
+		
 		
 			if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
 				$data['energy_meters_data']=$this->Api_data_model_new->get_hardwares_device_data_energy_meters($hardwares['Energy Meter']['hardaware_list'][0]);

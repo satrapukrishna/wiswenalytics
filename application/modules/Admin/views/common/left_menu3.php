@@ -287,12 +287,7 @@
 								 <li>
 									 <a href="<?php echo site_url('Admin/Home/airquality/')?>#airqua" class="Lnk"><img src="<?php echo site_url() ?>asset/admin/images/IndoorAirQuality.png" width="22px"/> <span class="Txt">Indoor Air Quality </span></a>
 								</li>
-								 <li>
-									 <a href="<?php echo site_url('Admin/Home/airquality/')?>#toilet" class="Lnk"><img src="<?php echo site_url() ?>asset/admin/images/ToiletExhaust.png" width="22px"/> <span class="Txt">Toilet Exhaust </span></a>
-								</li>
-								 <li>
-									 <a href="<?php echo site_url('Admin/Home/airquality/')?>#ventilation" class="Lnk"><img src="<?php echo site_url() ?>asset/admin/images/VentilationFan.png" width="22px"/> <span class="Txt">Ventilation Fans</span></a>
-								</li>
+								
 							 </ul>
 						<!-- </li> -->
 

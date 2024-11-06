@@ -3,12 +3,10 @@
 //die(); ?>
 <html>
 <head>
-    <?php $this->load->view('common/css3') ?>
-	
-  
+  <?php $this->load->view('common/css3') ?>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet" />
 
 
 	<style>
@@ -195,9 +193,9 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 						<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['todaycons'] ?> kWh</div></li>
 						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Month`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average/Day</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Current KW</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['kw'] ?> kW</div></li>
 						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['pf'] ?> </div></li>
 						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['voltage1'] ?></div></li>
 						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['voltage2'] ?></div></li>
@@ -223,6 +221,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
 				<div class=" devicebox5551">
 				<div class="bxslider555" id="bxid">
+				<?php if(isset($energy_meters_data['uncw'])){ ?>
 				<?php for ($i=0; $i < count($energy_meters_data['uncw']); $i++) 
          				 {?>
 					<div style="width:320px">
@@ -234,9 +233,9 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 						<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['todaycons'] ?> kWh</div></li>
 						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Month`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average/Day</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Current KW</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['kw'] ?> kW</div></li>
 						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['pf'] ?> </div></li>
 						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['voltage1'] ?></div></li>
 						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['voltage2'] ?></div></li>
@@ -249,7 +248,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					</div>
-					<?php }?>
+					<?php }}?>
 					
 					
 				</div>
@@ -262,6 +261,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
 				<div class=" devicebox5551">
 				<div class="bxslider555" id="bxid">
+				<?php if(isset($energy_meters_data['unew'])){ ?>
 				<?php for ($i=0; $i < count($energy_meters_data['unew']); $i++) 
          				 {?>
 					<div style="width:320px">
@@ -273,9 +273,9 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['todaycons'] ?> kWh</div></li>
 						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Month`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average/Day</div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Current KW</div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['kw'] ?> kW</div></li>
 						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['pf'] ?> </div></li>
 						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['voltage1'] ?></div></li>
 						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['unew'][$i]['voltage2'] ?></div></li>
@@ -289,7 +289,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					</div>
-					<?php }?>
+					<?php }}?>
 					
 					
 				</div>
@@ -303,6 +303,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
 				<div class=" devicebox5551">
 				<div class="bxslider555" id="bxid">
+				<?php if(isset($energy_meters_data['unff'])){ ?>
 				<?php for ($i=0; $i < count($energy_meters_data['unff']); $i++) 
          				 {?>
 					<div style="width:320px">
@@ -314,9 +315,9 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['todaycons'] ?> kWh</div></li>
 						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Month`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average/Day</div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Current KW</div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['kw'] ?> kW</div></li>
 						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['pf'] ?> </div></li>
 						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['voltage1'] ?></div></li>
 						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['unff'][$i]['voltage2'] ?></div></li>
@@ -330,7 +331,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					</div>
-					<?php }?>
+					<?php }}?>
 					
 					
 				</div>
@@ -343,6 +344,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
 				<div class=" devicebox5551">
 				<div class="bxslider555" id="bxid">
+				<?php if(isset($energy_meters_data['unww'])){ ?>	
 				<?php for ($i=0; $i < count($energy_meters_data['unww']); $i++) 
          				 {?>
 					<div style="width:320px">
@@ -354,9 +356,9 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['todaycons'] ?> kWh</div></li>
 						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Month`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average/Day</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Current KW</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['kw'] ?> kW</div></li>
 						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['pf'] ?> </div></li>
 						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['voltage1'] ?></div></li>
 						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['voltage2'] ?></div></li>
@@ -370,7 +372,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					</div>
-					<?php }?>
+					<?php }}?>
 					
 					
 				</div>
@@ -383,6 +385,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
 				<div class=" devicebox5551">
 				<div class="bxslider555" id="bxid">
+				<?php if(isset($energy_meters_data['unsg'])){ ?>
 				<?php for ($i=0; $i < count($energy_meters_data['unsg']); $i++) 
          				 {?>
 					<div style="width:320px">
@@ -394,9 +397,9 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['todaycons'] ?> kWh</div></li>
 						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Month`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average/Day</div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Current KW</div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['kw'] ?> kW</div></li>
 						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['pf'] ?> </div></li>
 						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['voltage1'] ?></div></li>
 						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['unsg'][$i]['voltage2'] ?></div></li>
@@ -410,7 +413,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					</div>
-					<?php }?>
+					<?php }}?>
 					
 					
 				</div>
@@ -423,6 +426,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
 				<div class=" devicebox5551">
 				<div class="bxslider555" id="bxid">
+				<?php if(isset($energy_meters_data['unab'])){ ?>
 				<?php for ($i=0; $i < count($energy_meters_data['unab']); $i++) 
          				 {?>
 					<div style="width:320px">
@@ -434,9 +438,9 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['todaycons'] ?> kWh</div></li>
 						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Month`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average/Day</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Current KW</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['kw'] ?> kW</div></li>
 						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['pf'] ?> </div></li>
 						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['voltage1'] ?></div></li>
 						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['voltage2'] ?></div></li>
@@ -450,7 +454,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</div>
 					</div>
 					</div>
-					<?php }?>
+					<?php }}?>
 					
 					
 				</div>
@@ -483,7 +487,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 
 	
 $('.bxslider555').bxSlider({
-        slideWidth: 293,
+        slideWidth: 310,
         minSlides: 2,
         maxSlides: 30,
 		touchEnabled: false,

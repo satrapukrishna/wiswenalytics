@@ -96,28 +96,29 @@ class Login_model extends CI_Model{
 	
 	function employee_validate_user($credentials)
     {
-        // print_r($credentials);die();
+        //print_r($credentials['username']);
 	$result_ary = array();
-    if($credentials["firstname"]=='srinivas'){
-     $conditions = array('firstname' => $credentials["firstname"], 'password' => $credentials["password"]);
-    }else{
-      $conditions = array('username' => $credentials["username"], 'password' => $credentials["password"]);  
-    }
+    // if($credentials["firstname"]=='srinivas'){
+    //  $conditions = array('firstname' => $credentials["firstname"], 'password' => $credentials["password"]);
+    // }else{
+    //   $conditions = array('username' => $credentials["username"], 'password' => $credentials["password"]);  
+    // }
         //$conditions = array('email_id' => $credentials["email_id"], 'password' => $credentials["password"]);
+        $conditions = array('username' => $credentials["username"], 'password' => $credentials["password"]); 
         $this->db->select('');
         $this->db->from('employees');
         $this->db->where($conditions);
         $this->db->limit(1);
         $login = $this->db->get();
         $row = $login->row_array();
-		
+		//echo $this->db->last_query();exit;  
 		$this->db->select('');
         $this->db->from('clients');
         $this->db->where('client_id',$row['created_by']);
         $this->db->limit(1);
         $login = $this->db->get();
         $client = $login->row_array();
-		
+		 
         if ($login->num_rows() > 0) {
             if ($row['status'] == 1) {
                 $result_ary['status'] = 'success';

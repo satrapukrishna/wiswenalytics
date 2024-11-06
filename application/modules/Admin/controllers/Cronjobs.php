@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-  
+date_default_timezone_set("Asia/Calcutta"); 
 class Cronjobs extends MX_Controller  {
     
 	
@@ -64,10 +64,11 @@ class Cronjobs extends MX_Controller  {
     }
     
   }
-  function push_vegas_cons_data(){
+  function push_vegas_cons_data1(){
 		$this->Api_data_db_table_model->addVegasCons();
 	}
   function push_undp_cons_hourly_data(){
+    // echo date('Y-m-d h:m:s');die();
     $yesterDay = date('Y-m-d',strtotime("-1 days"));
     // echo $yesterDay;
     $energydathrly=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_undp_hourly(66,$yesterDay,$yesterDay);
@@ -77,6 +78,7 @@ class Cronjobs extends MX_Controller  {
         $energydat=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_undp(66,$yesterDay,$yesterDay);
        
         $current_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_current_report_undp(66,$yesterDay,$yesterDay);
+        // echo json_encode($current_data);die();
         // $data['current']=$energydat;
         $voltage_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_voltage_report_undp(66,$yesterDay,$yesterDay);
         // echo json_encode($voltage_data);
@@ -86,10 +88,34 @@ class Cronjobs extends MX_Controller  {
         // echo json_encode($pf_data);
         // $data['power_factor_data']=$energydat;
 	}
-  function vegas_cron(){
-    $fromdate='2023-09-06';
-    $todate='2023-11-06';
-        $meters = $this->Api_data_db_table_model->getHavcList_vega('hardware_station_consumption_data_vegaschool_live');
+  function push_vegas_cons_data(){
+   // $yesterDay = date('Y-m-d',strtotime("-1 days"));
+    
+    $first = date('Y-m-d',strtotime("-1 days"));
+    $last = date('Y-m-d',strtotime("-1 days"));
+
+    // $first = '2024-06-01';
+    // $last = '2024-06-15';
+    $energydat=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_vegas(2022000313,$first,$last);
+    //echo json_encode($energydat);
+   $current_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_current_report_vegas(2022000313,$first,$last);
+   // echo json_encode($current_data);die();
+    // $data['current']=$energydat;
+    $voltage_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_voltage_report_vegas(2022000313,$first,$last);
+    // echo json_encode($voltage_data);
+    // $data['voltage']=$energydat;
+
+    $pf_data=$this->Api_data_db_table_model->get_hardwares_device_data_power_factor_report_vegas(2022000313,$first,$last);
+    // echo json_encode($pf_data);
+    // $data['power_factor_data']=$energydat;
+}
+  function vegas_ahu(){
+      //  $fromdate='2024-07-01';
+      //  $todate='2024-07-15';
+
+       $fromdate = date('Y-m-d',strtotime("-1 days"));
+       $todate = date('Y-m-d',strtotime("-1 days"));
+        $meters = $this->Api_data_db_table_model->getHavcList_vega();
         $date_from = strtotime($fromdate); 
         $date_to = strtotime($todate); 
         $datesarray=array();
@@ -100,7 +126,7 @@ class Cronjobs extends MX_Controller  {
           array_push($datesarray, date("Y-m-d",$i1));  
         }
         for($t=0;$t<count($datesarray);$t++){
-          $this->Api_data_db_table_model->getahuReportVegas($meters,$datesarray[$t],'hardware_station_consumption_data_vegaschool_live','hardware_station_consumption_data_vegaschool');
+          $this->Api_data_db_table_model->getahuReportVegas(2022000313,$meters,$datesarray[$t]);
         }
         
   }

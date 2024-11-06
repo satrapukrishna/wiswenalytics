@@ -1,0 +1,1036 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font: 400 14px/100% 'Nunito';
+    color: #455A64;
+    background: #ccdeec;
+}
+
+/* Base CSS - Starts */
+
+.AppBtn {
+    display: inline-block;
+    font: 700 15px/100% 'Nunito';
+    border-radius: 50px;
+    text-align: center;
+    text-decoration: none;
+    background: #228BE6;
+    border: 1px solid #228BE6;
+    color: #fff;
+    padding: 15px;
+    position: relative;
+}
+
+.AppBtn.Scndry {
+    color: #228BE6;
+    border-color: #228BE6;
+    background: #fff;
+}
+
+.AppBtn.FllWidth {
+    width: 100%;
+}
+
+.AppBtn.Icn {
+    padding-left: 40px;
+}
+
+.AppBtn.Icn:before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 15px;
+    top: calc(50% - 8px);
+    background-color: transparent !important;
+    background-repeat: no-repeat !important;
+    background-size: 16px !important;
+}
+
+.AppBtn.Upload:before {
+    background-image: url(../Images/Icn-Upload.svg);
+}
+
+.AppBtn.Lrge {
+    padding: 15px;
+    font: 700 13px/100% 'Nunito';
+}
+
+select {
+    font: 600 13px/100% 'Nunito';
+}
+
+.Input {
+    width: 100%;
+    border: 1px solid #ddd;
+    padding: 15px 10px;
+    border-radius: 5px;
+    font: 500 13px/100% 'Nunito';
+    color: #455A64;
+}
+
+
+.NoPadding {
+    padding: 0 !important;
+}
+
+*.Disabled {
+    filter: saturate(0) !important;
+    cursor: not-allowed !important;
+    opacity: 0.3;
+}
+
+div.GllryPrvwHldr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 0;
+}
+
+div.GllryPrvwHldr div.GlryCntntHldr {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ECEFF1;
+    border-radius: 5px;
+    background: #fff;
+}
+
+div.GllryPrvwHldr div.GlryCntntHldr .Img {
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+div.GllryPrvwHldr.Lrg div.GlryCntntHldr {
+    margin-right: 20px;
+}
+
+div.GllryPrvwHldr.Lrg div.GlryCntntHldr .Img {
+    border-radius: 5px;
+    width: 70px;
+    height: 70px;
+}
+
+/* Base CSS - Ends */
+div.AppHldr {
+    display: flex;
+    background: #F6FBFF;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    align-items: flex-start;
+    flex-flow: column;
+    position: relative;
+    width: 100%;
+    max-width: 1024px;
+    height: calc(100svh - 40px);
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0 20px 50px rgba(34, 139, 230, 0.1);
+    overflow: hidden;
+}
+
+div.AppHdrDv {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: 100%;
+    height: 70px;
+    z-index: 2;
+}
+
+div.AppHdrDv div.HdrCntntList {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 10px;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border: 1px solid #62b8f5;
+    padding: 10px;
+    background-color: #FFFFFF;
+    border-radius: 28px 28px 28px 28px;
+    position: relative;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn {
+    display: block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.Numb {
+    display: block;
+    padding: 0 3px 0 2px;
+    font: 700 11px/100% 'Nunito';
+    color: #016BB8;
+    position: relative;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn:before {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    left: calc(50% - 8px);
+    top: calc(50% - 8px);
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Complaints:before {
+    background-image: url(../Images/NavIcn-ComplaintsActv.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Apps:before {
+    background-image: url(../Images/appslist.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Bell:before {
+    background-image: url(../Images/belllist.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Store:before {
+    background-image: url(../Images/NavIcn-StoreActv.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.Account:before {
+    background-image: url(../Images/NavIcn-AccountActv.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnIcn.MSCIcn:before {
+    background-image: url(../Images/MSCIcn.svg);
+}
+
+div.AppHdrDv div.HdrCntntList div.SctnDtlsHldr div.DtlDv span.SctnName {
+    display: block;
+    position: relative;
+    font: 700 15px/100% 'Nunito';
+    text-transform: uppercase;
+}
+
+div.AppHdrDv div.HdrCntntList div.UsrDtlsHldr div.DtlDv {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: right;
+}
+
+div.AppHdrDv div.HdrCntntList div.UsrDtlsHldr div.DtlDv span.UsrNme {
+    display: block;
+    width: 100%;
+    position: relative;
+    font: 700 15px/100% 'Nunito';
+    color: #016BB8;
+    text-align: center;
+}
+
+div.AppHdrDv div.HdrCntntList div.UsrDtlsHldr div.DtlDv span.UsrID {
+    display: block;
+    width: 100%;
+    position: relative;
+    font: 500 13px/100% 'Nunito';
+    padding: 2px 0 0 0;
+    text-align: center;
+}
+
+
+
+div.AppCntntDv {
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0px -10px 50px rgba(34, 139, 230, 0.1);
+    border-radius: 25px 25px 10px 10px;
+    overflow: hidden;
+    z-index: 3;
+}
+
+div.AppCntntDv div.InnrHdrHldr {
+    padding: 10px;
+    position: relative;
+    width: 100%;
+}
+
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0 0 10px 0;
+    width: -webkit-fill-available;
+    border-bottom: 1px solid #ECEFF1;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.DateDv {
+    width: 50%;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.DateDv span.Txt {
+    display: block;
+    position: relative;
+    font: 600 13px/100% 'Nunito';
+    color: #263238;
+    padding: 0 10px 0 24px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.DateDv span.Txt:before {
+    content: '';
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    left: 0;
+    top: calc(50% - 9px);
+    background: transparent url(../Images/Icn-Calendar.svg) no-repeat center center;
+    background-size: 16px;
+
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SlctnDv {
+    width: 50%;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SlctnDv .Input {
+    width: 100%;
+    background: #C0DAED;
+    color: #fff;
+    border: 1px solid #C0DAED;
+    padding: 6px 10px;
+    border-radius: 20px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv {
+    padding: 0 10px 0 0;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv a.BackBtn {
+    display: flex;
+    align-items: center;
+    position: relative;
+    font: 600 13px/100% 'Nunito';
+    color: #263238;
+    padding: 0 0 0 30px;
+    min-width: 30px;
+    min-height: 30px;
+    text-decoration: none;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv a.BackBtn:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    left: 0;
+    top: calc(50% - 15px);
+    background: transparent url(../Images/Icn-Arrow.svg) no-repeat center center;
+    background-size: 20px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SctnNameDv {
+    display: flex;
+    flex-wrap: wrap;
+    width: -webkit-fill-available;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SctnNameDv span.SctnName {
+    display: block;
+    width: 100%;
+    position: relative;
+    font: 800 18px/100% 'Nunito';
+    color: #263238;
+    padding: 10px 0 5px 0;
+}
+
+
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SctnNameDv span.SctnName.Icn {
+    padding: 10px 0 10px 40px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SctnNameDv span.SctnName.Icn:before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: calc(50% - 15px);
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SctnNameDv span.SctnName.PPMSchd:before {
+    background-image: url(../Images/calendar-clocklist.svg);
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SctnNameDv span.SctnName.MSCIcn:before {
+    background-image: url(../Images/MSCIcn.svg);
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.SctnNameDv span.SctnTpSbTxt {
+    display: block;
+    width: 100%;
+    position: relative;
+    font: 600 12px/100% 'Nunito';
+    color: #78909C;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.BackBtnDv span.SctnIcn.Clock:before {
+    background-image: url(../Images/calendar-clocklist.svg);
+}
+
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.PPMRouting span.RtnType {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    font: 600 13px / 100% 'Nunito';
+    color: #fff;
+    background: #263238;
+    border-radius: 50px;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.PPMRouting span.RtnType.IntPMDaily {
+    background: #016BB8 !important;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.DtSlctnDv div.PPMRouting span.RtnType.IntPMWeekly {
+    background: #00897B !important;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr span.TabTtl {
+    display: block;
+    position: relative;
+    font: 700 16px/100% 'Nunito';
+    color: #263238;
+    padding: 15px 0 0 0;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr div.TabsDv {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 10px 0;
+    overflow-x: auto;
+    -ms-overflow-style: none;
+    /*// IE 10+*/
+    overflow: -moz-scrollbars-none;
+    /*// Firefox*/
+}
+
+
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr span.Tab {
+    position: relative;
+    display: block;
+    padding: 14px 20px;
+    margin: 0 10px 0 0;
+    font: 600 13px/100% 'Nunito';
+    color: #546E7A;
+    background: #F0F2F4;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr span.Tab.Actv {
+    color: #fff;
+    background: #228BE6;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr span.IntPMDaily.Actv {
+    background: #016BB8 !important;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr span.IntPMWeekly.Actv {
+    background: #00897B !important;
+}
+
+div.AppCntntDv div.InnrHdrHldr div.TabsDvHldr span.Tab:last-of-type {
+    margin: 0;
+}
+
+
+div.AppCntntDv div.CntntHldr {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+div.AppFtrDv {
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+    font: 700 11px/100% 'Nunito';
+    color: #546E7A;
+    text-align: center;
+}
+
+
+/* Internal PPM - Start */
+
+div.IntPPMLstHldr {
+    width: 100%;
+}
+
+div.IntPPMLstHldr div.IntPPMLst {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: -5px 0 0 0;
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: calc(25% - 10px);
+    background: #F6F7F8;
+    border: 1px solid #ECEFF1;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm div.IcnHldr {
+    padding: 5px;
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm div.IcnHldr img.Icn {
+    display: block;
+    max-width: 40px;
+    margin: 0 auto;
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm div.DtlsHldr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    width: -webkit-fill-available;
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm div.DtlsHldr span.ItmName {
+    width: 100%;
+    text-align: center;
+    color: #263238;
+    font: 700 14px/100% 'Nunito';
+    padding: 0 0 5px 0;
+    ;
+}
+
+div.IntPPMLstHldr div.IntPPMLst.IntPMDaily div.PPMItm div.DtlsHldr span.ItmName {
+    color: #016BB8 !important;
+}
+
+div.IntPPMLstHldr div.IntPPMLst.IntPMWeekly div.PPMItm div.DtlsHldr span.ItmName {
+    color: #00897B !important;
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm div.DtlsHldr div.ItmCount {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    background: #263238;
+    padding: 6px;
+    border-radius: 50px;
+    width: calc(100% - 20px);
+}
+
+div.IntPPMLstHldr div.IntPPMLst.IntPMDaily div.PPMItm div.DtlsHldr div.ItmCount {
+    background: #016BB8 !important;
+}
+
+div.IntPPMLstHldr div.IntPPMLst.IntPMWeekly div.PPMItm div.DtlsHldr div.ItmCount {
+    background: #00897B !important;
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm div.DtlsHldr div.ItmCount span.Vlu {
+    display: block;
+    color: #fff;
+    font: 800 14px/100% 'Nunito';
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm div.DtlsHldr div.ItmCount span.VluSml {
+    display: block;
+    color: #fff;
+    font: 600 13px/100% 'Nunito';
+    position: relative;
+}
+
+div.IntPPMLstHldr div.IntPPMLst div.PPMItm div.DtlsHldr div.ItmCount span.VluSml::before {
+    content: '/';
+    padding: 0 3px;
+}
+
+div.IntPPMLstHldr div.IntPPMLst.Daily div.PPMItm div.DtlsHldr span.ItmName {
+    color: #016BB8 !important;
+}
+
+div.IntPPMDtlsLstHldr {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #ECEFF1;
+    border-radius: 10px;
+    box-shadow: 4px 4px 10px rgba(38, 50, 56, 0.05);
+    width: calc(33.33% - 10px);
+    margin: 10px 5px;
+    padding: 10px;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstTtlHldr {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: -webkit-fill-available;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstTtlHldr div.TtlHldr {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstTtlHldr div.TtlHldr span.TtlTxt {
+    display: block;
+    font: 700 16px/100% 'Nunito';
+    color: #263238;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstTtlHldr div.TtlHldr span.PMCount {
+    display: block;
+    font: 700 12px/100% 'Nunito';
+    background: #F6F7F8;
+    padding: 7px 10px;
+    border-radius: 50px;
+    margin: 0 0 0 5px;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstTtlHldr div.TtlHldr span.PMCount span.Vlu {
+    display: inline-block;
+    font: 700 15px/100% 'Nunito';
+    padding-right: 3px;
+    color: #263238;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstTtlHldr div.BtnHldr {
+    margin: 0 0 0 auto;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstTtlHldr div.BtnHldr a.DtlsBtn {
+    display: flex;
+    align-items: center;
+    position: relative;
+    font: 600 13px / 100% 'Nunito';
+    color: #263238;
+    padding: 0 0 0 30px;
+    min-width: 30px;
+    min-height: 30px;
+    text-decoration: none;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstTtlHldr div.BtnHldr a.DtlsBtn:after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: 0;
+    top: calc(50% - 15px);
+    background: transparent url(../Images/Details-Arrow-Right.svg) no-repeat center center;
+    background-size: 20px;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstDscHldr {
+    width: -webkit-fill-available;
+    padding: 10px 0;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.LstDscHldr span.Txt {
+    display: block;
+    width: 100%;
+    font: 600 13px / 100% 'Nunito';
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.WorkLstHldr {
+    width: -webkit-fill-available;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.WorkLstHldr .WorkLst {
+    list-style: none;
+    ;
+    margin: 0;
+    padding: 0;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.WorkLstHldr .WorkLst li {
+    counter-increment: item;
+    position: relative;
+    padding: 10px 0 10px 20px;
+    border-top: 1px solid #ECEFF1;
+    font: 600 13px / 100% 'Nunito';
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.WorkLstHldr .WorkLst li:before {
+    content: counter(item);
+    position: absolute;
+    left: 0;
+    top: calc(50% - 6px);
+    font: 700 12px / 100% 'Nunito';
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.WorkLstHldr .WorkLst li span.WrkEntry {
+    display: block;
+    padding: 4px 0;
+}
+
+div.IntPPMDtlsLstHldr div.LstItem div.WorkLstHldr .WorkLst li span.WrkEntry.NotVrfd {
+    font-weight: 800;
+    color: #D32F2F;
+}
+
+a.PMBtn {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    cursor: pointer;
+    color: #fff;
+    font: 700 13px/100% 'Nunito';
+    background: #17A300 url(../Images/PM-Btn-Check.svg) no-repeat right 10px center;
+    background-size: 20px;
+    padding: 15px 50px 15px 15px;
+    border-radius: 10px;
+}
+
+
+
+div.IntPPMDtlsLstHldr div.LstItem.NoPMEntry {
+    background: #FFF5F7;
+    border: 1px solid #F44336;
+    box-shadow: 4px 4px 10px rgba(38, 50, 56, 0.05);
+}
+
+div.IntPPMDtlsLstHldr div.LstItem.NoPMEntry div.LstTtlHldr div.TtlHldr span.PMCount {
+    background: #F7C7C8;
+}
+
+
+div.IntPPMFllDtlsHldr {
+    width: 50%;
+}
+
+div.IntPPMFllDtlsHldr div.BseInfo span.SttnName {
+    display: block;
+    color: #78909C;
+    font: 600 13px/100% 'Nunito';
+}
+
+div.IntPPMFllDtlsHldr div.BseInfo span.AsstName {
+    display: block;
+    color: #263238;
+    font: 700 24px/100% 'Nunito';
+    padding: 5px 0;
+}
+
+div.IntPPMFllDtlsHldr div.BseInfo span.PMWork {
+    display: block;
+    padding: 10px;
+    background: #F6F7F8;
+    color: #263238;
+    font: 600 13px/140% 'Nunito';
+    border-radius: 5px;
+    margin: 0 0 10px 0;
+}
+
+div.IntPPMFllDtlsHldr div.BseInfo span.PMTskNumbTyp {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    width: fit-content;
+    background: #263238;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+div.IntPPMFllDtlsHldr div.BseInfo span.PMTskNumbTyp.IntPMDaily {
+    background: #016BB8 !important;
+}
+
+div.IntPPMFllDtlsHldr div.BseInfo span.PMTskNumbTyp.IntPMWeekly {
+    background: #00897B !important;
+}
+
+div.IntPPMFllDtlsHldr div.BseInfo span.PMTskNumbTyp span.TskNumb {
+    padding: 10px 20px;
+    color: #fff;
+    font: 600 13px/140% 'Nunito';
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50px;
+}
+
+div.IntPPMFllDtlsHldr div.BseInfo span.PMTskNumbTyp span.TskTyp {
+    padding: 10px 20px 10px 15px;
+    font: 700 13px/140% 'Nunito';
+    text-transform: uppercase;
+    color: #fff;
+}
+
+div.IntPPMFllDtlsHldr div.TskDtls {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid #ECEFF1;
+    border-radius: 10px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+div.IntPPMFllDtlsHldr div.TskDtls div.FldHldr {
+    padding: 10px 0;
+    border-bottom: 1px solid #ECEFF1;
+}
+
+div.IntPPMFllDtlsHldr div.TskDtls div.FldHldr.Fll {
+    width: 100%;
+}
+
+div.IntPPMFllDtlsHldr div.TskDtls div.FldHldr.Hlf {
+    width: 50%;
+}
+
+div.IntPPMFllDtlsHldr div.TskDtls div.FldHldr:last-of-type {
+    border: none;
+}
+
+div.IntPPMFllDtlsHldr div.TskDtls div.FldHldr span.FldTxt {
+    display: block;
+    color: #263238;
+    font: 600 13px/140% 'Nunito';
+    padding: 0 0 5px 0;
+}
+
+div.IntPPMFllDtlsHldr div.TskDtls div.FldHldr span.FldDtlTxt {
+    display: block;
+    color: #263238;
+    font: 700 13px/140% 'Nunito';
+    padding: 0 0 5px 0;
+}
+
+div.IntPPMFllDtlsHldr div.TskDtls div.FldHldr span.FldTxt.Mnd:after {
+    content: " *";
+    color: #D32F2F;
+}
+
+
+div.SwtchCntrlHldr {
+    width: 100%;
+}
+
+div.SwtchCntrlHldr div.SctnHldr {
+    padding: 15px;
+    margin: 20px 0;
+    background: #fff;
+    border: 1px solid #ECEFF1;
+    border-radius: 10px;
+    box-shadow: 4px 4px 20px rgba(38, 50, 56, 0.1);
+}
+
+div.SwtchCntrlHldr div.SctnHldr span.ScnTtl {
+    display: block;
+    font: 700 15px/100% 'Nunito';
+    color: #263238;
+    padding: 0 0 10px 0;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border-top: 1px solid #ECEFF1;
+    padding: 10px 0;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr:last-of-type {
+    padding-bottom: 0;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl.Hlf {
+    width: 50%;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl.OneThrd {
+    width: 33.33%;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SctnTxtTtl {
+    display: block;
+    padding: 5px 0 10px 0;
+    font: 700 13px/100% 'Nunito';
+    color: #263238;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt {
+    display: inline-block;
+    text-align: center;
+    font: 700 13px/100% 'Nunito';
+    padding: 10px 20px;
+    border-radius: 50px;
+    position: relative;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Online,
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Offline {
+    text-align: left;
+    border: 1px solid #ECEFF1;
+    background: #fff;
+    padding-left: 25px;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Online:before,
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Offline:before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 20px;
+    left: 10px;
+    top: calc(50% - 5px);
+    background: #ECEFF1;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Online {
+    color: #17A300;
+    border-color: #17A300;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Online:before {
+    background: #17A300;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Offline {
+    color: #90A4AE;
+    border-color: #90A4AE;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Offline:before {
+    background: #90A4AE;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Full {
+    background: #1565C0;
+    color: #fff;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Down {
+    background: #E53935;
+    color: #fff;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.On {
+    background: #C8E6C9;
+    color: #263238;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Off {
+    background: #FBE9E7;
+    color: #263238;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt.Hrs {
+    background: #ECEFF1;
+    color: #263238;
+}
+
+
+
+
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.Updtxt {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px 0 0 0;
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.Updtxt span {
+    display: flex;
+    color: #78909C;
+    font: 600 11px/120% 'Nunito';
+}
+
+div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.Updtxt span.TxtSml {
+    padding-right: 3px;
+}
+
+
+
+
+/* Internal PPM - Ends */
+
+@media only screen and (max-width: 1024px) {
+    div.AppHldr {
+        margin: 0;
+        height: 100svh;
+    }
+
+    div.IntPPMLstHldr div.IntPPMLst div.PPMItm {
+        width: calc(50% - 10px);
+    }
+
+    div.IntPPMDtlsLstHldr div.LstItem {
+        width: 100%;
+        margin: 15px 0;
+    }
+
+    div.IntPPMDtlsLstHldr div.LstItem:first-of-type {
+        margin-top: 0;
+    }
+
+
+    div.IntPPMFllDtlsHldr {
+        width: 100%;
+    }
+
+    div.SwtchCntrlHldr div.SctnHldr div.DtlScnHldr div.DtlSctnDtl span.SttsTxt {
+        width: calc(100% - 20px);
+    }
+}

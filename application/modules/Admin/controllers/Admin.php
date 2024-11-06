@@ -221,6 +221,11 @@ class Admin extends MX_Controller {
                     //$go_to = 'Admin_feb21/Home/water';
                      redirect($go_to);
 
+                }if($this->session->userdata('created_by')==41) {
+                    $go_to = 'Admin/Home/airquality';
+                    //$go_to = 'Admin_feb21/Home/water';
+                     redirect($go_to);
+
                 }else{
                     $go_to = 'Admin/Home/water';
                    redirect($go_to);

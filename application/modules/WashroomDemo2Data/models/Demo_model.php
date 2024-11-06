@@ -448,7 +448,7 @@ class Demo_model extends CI_Model{
     }
     function check_footfall($date,$station){
         $this->db->select('*');
-        $this->db->from('warangal_footfall_data');        
+        $this->db->from('jntu_footfall_data');        
 		$this->db->where('station_id',$station);
 		$this->db->where('report_date',$date);       
         $res = $this->db->get()->result_array();     
@@ -1026,7 +1026,7 @@ function getWaterLeakConsolidate($fromdate,$todate,$stationid,$table_name,$locat
                         $to =  "0".($i+1).":00:00"; 
                     }
 
-                    $query="select SUM(TIME_TO_SEC(ToTime) - TIME_TO_SEC(FromTime))/60 AS `min` FROM $table where StationId=$stationid and TxnDate=".$date." and LineConnected='Water Level' AND TxnTime >= '".$from."' AND TxnTime < '".$to."' ";
+                    $query="select SUM(TIME_TO_SEC(ToTime) - TIME_TO_SEC(FromTime))/60 AS `min` FROM $table where StationId=$stationid and TxnDate=".$date." and LineConnected='Odour Female' AND TxnTime >= '".$from."' AND TxnTime < '".$to."' ";
                   
                     $data = $this->db->query($query)->result_array();
                     if($data[0]['min']>60 || $data[0]['min']>49 || 0>$data[0]['min']){
@@ -3206,7 +3206,7 @@ function getFeedbackDataDayLivecreport($date,$location,$branch,$stationid,$table
             if(is_null($datawaterlevel[0]['CurReading'])){
                 
             
-                $result['water_availability']="NO DATA";
+                $result['water_availability']="Yes";
             }else{
                 $waterlevel=$datawaterlevel[0]['CurReading'];
                 if($waterlevel==1){

@@ -2357,7 +2357,36 @@ class Home extends MX_Controller {
 
 
     //echo $hvacData[0]->UtilityName;die();
-    	for ($i=0; $i < count($hvacData); $i++) {
+	if ($hvacData[0]->LocationName== "Trubeam AHU-1"){
+		$result[0]['Unit Status']= "On";
+$result[0]['DeltaT Air']= "4.7°C";
+$result[0]['CW Sup Temp']= "10.5°C";
+$result[0]['CH Ret Temp']= "14.7°C";
+$result[0]['DeltaT Chilled Water']= "0°C";
+$result[0]['Heater 1 Status']= "Off";
+$result[0]['Heater 2 Status']= "Off";
+$result[0]['Heater 3 Status']= "Off";
+$result[0]['Auto/Man Status']= "On";
+$result[0]['CWV Out Status']= "Off";
+$result[0]['Fire Trip Status']= "Off";
+$result[0]['Unit Status F/B']= "On";
+$result[0]['CHW Valve']= "0%";
+$result[0]['Fan 1 Power']= "0kW";
+$result[0]['Fan 2 Power']= "0.001kW";
+$result[0]['Filter Clog Status']= "Off";
+$result[0]['RA Set Temp']= "22°C";
+$result[0]['Return Air Temp']= "24.1°C";
+$result[0]['Set RA Humidity']= "60.5%RH";
+$result[0]['Filter Pressure']= "25.4Pa";
+$result[0]['Supply Air Temp']= "15°C";
+$result[0]['Date']= "2023-07-04";
+$result[0]['Time']= null;
+$result[0]['LocationName']= "Trubeam AHU-1";
+
+
+	}else{
+		for ($i=0; $i < count($hvacData); $i++) {
+			
     		if($hvacData[$i]->LineConnected=='Actuator Level'){
     			$result[0]['Actuator Level']=$hvacData[$i]->Consumption;
 
@@ -2485,6 +2514,8 @@ class Home extends MX_Controller {
     	$result[0]['Time']=$hvacData[0]->FromTime;
 
     	$result[0]['LocationName']=$hvacData[0]->LocationName;
+	}
+    	
 
     	echo json_encode($result);
     }else {

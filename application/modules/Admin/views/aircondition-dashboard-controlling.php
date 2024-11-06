@@ -2,11 +2,8 @@
 <html>
 <head>
     <?php $this->load->view('common/css3')?>
-    <!-- <link href="<?php echo base_url(); ?>asset/fairmontasset/CSS/StyleSheet.css" rel="stylesheet" /> -->
+    <link href="<?php echo base_url(); ?>asset/fairmontasset/CSS/StyleSheet.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="<?php echo base_url(); ?>asset/ahuasset/AppTheme/CmplntMngmntMdl/MdlTheme.css" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>asset/ahuasset/AppTheme/Fonts/IconFont.css" />
-    <link rel="stylesheet" href="<?php echo base_url(); ?>asset/ahuasset/AppTheme/style.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
 	.bx-wrapper img{display:inline!important}
@@ -275,66 +272,86 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 
         
         <div class="devicebox5555">
-			
 
                 <div class="bxslider10" id="bxid">
 				<?php for ($i=0; $i < count($ahudata); $i++) {?>
 			
-					 <div class="col-4 FllHght">
-                                    <div class="LocationDtlsGrd PosReltv">
-                                        <div class="DshHdrHldr Grd">
-                                            <button class="Grdbtn BtnPsn"><?php echo $i+1; ?></button>
-                                            <div class="TtlHldr">
-                                                <span class="TtlGrd" id="mt"><?php echo $ahudata[$i]['meter']."-".$ahudata[$i]['LocationName'] ?></span>
-                                            </div>
-                                            <div class="ActnBtnHldr">
-                                                <img src="<?php echo site_url() ?>new_assets/Images/switch-green.svg" alt="switch" />
-                                            </div>
-                                        </div>
-                                        <div class="DvlstGrdVw">
-                                            <div class="DvlstGVw set1" onclick="showpopup('<?php echo $ahudata[$i]['meter'] ?>','<?php echo $ahudata[$i]['LocationName'] ?>','<?php echo $ahudata[$i]['sid'] ?>')">
-                                                <span class="TtGdvw">Set temp.</span>
-                                                <span class="TtlGrd" ><?php echo $ahudata[$i]['set_temp'] ?>&deg;C <a href="#"
-                                                        class="Settings WISIcn-Menu-Masters" 
-                                                        style="color: #003550;text-decoration: none;font-size: 15px;"></a></span>
-                                            </div>
-                                            <div class="DvlstGVw set2">
-                                                <span class="TtGdvw">Room temp.</span>
-                                                <span class="TtlGrdDrk"><?php echo $ahudata[$i]['Return Air Temp'] ?>&deg;C</span>
-                                            </div>
-                                            <div class="DvlstGVw NoBrrght set3">
-                                                <span class="TtGdvw">Humidity</span>
-                                                <span class="TtlGrdDrk">75Hz</span>
-                                            </div>
-                                        </div>
-                                        <div class="DshHdrHldr Grd">
-                                            <div class="ActnBtnHldr RmMrgn">
-                                                <div class="BtnHldr">
-                                                    <a href="#" class="pdtp AppBtn IcnOnly WISIcn-Group InActv"></a>
-                                                </div>
-                                            </div>
-                                            <div class="ActnBtnHldr BGGrdVw">
-                                                <div class="BtnHldr">
-                                                    <a href="#" class="pdtp AppBtn IcnOnly WISIcn-Location"></a>
-                                                </div>
-                                                <div class="BtnHldr Brrght">
-                                                    <a href="#" class="pdtp AppBtn IcnOnly WISIcn-Weather"></a>
-                                                </div>
-                                                <div class="BtnHldr Brrght">
-                                                    <a href="#"
-                                                        class="pdtp AppBtn IcnOnly WISIcn-Menu-Masters InActv"></a>
-                                                </div>
-                                                <div class="BtnHldr Brrght">
-                                                    <a href="#"
-                                                        class="pdtp AppBtn IcnOnly WISIcn-Calendar-Day InActv"></a>
-                                                </div>
-                                                <div class="BtnHldrb Brrght">
-                                                    <a href="#" class="pdtp AppBtn IcnOnly WISIcn-MenuVertical"></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+					<div class="box bxc1 bxheight box-com">
+					
+					<div class="SctnDtlsHldr">
+						<div class="SldrCntnr">
+							<div class="SctnDtls BorewellHldr">
+								<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc;font-weight:bold"><?php echo $ahudata[$i]['meter']."-".$ahudata[$i]['LocationName'] ?> </span>
+								<div>
+								<div class="panel-body">
+								<?php echo form_open_multipart('Admin/Home/create_account/', array('id' => 'create_account','class' => 'form-horizontal')); ?>
+                                    
+										
+									<div class="form-group">
+										<label class="col-md-6"> AHU<span class="required_fields">*</span></label>
+
+										 <div class="col-md-6">
+										 <input type="text" style="background-color:white" class="form-control" name="client_name" value="<?php echo $ahudata[$i]['meter']."-".$ahudata[$i]['LocationName'] ?>" readonly/>
+										 </div> 
+										  
+										 
+									</div>  
+									<div class="form-group">
+										<label class="col-md-6">Status<span class="required_fields">*</span></label>
+
+										 <div class="col-md-6">
+											 <div class="switch-field">
+												<input type="radio" id="radio-one" name="switch-one" value="yes" checked/>
+												<label for="radio-one">ON</label>
+												<input type="radio" id="radio-two" name="switch-one" value="no" style="margin-left:25px" />
+												<label for="radio-two">OFF</label>
+											</div>
+										 </div> 
+										  
+										 
+									</div>  
+								
+									<div class="form-group">
+										 
+										
+										 <label class="col-md-6">Set Temperature <span class="required_fields">*</span></label>
+
+										 <div class="col-md-6">
+										 <input type="text" class="form-control" name="client_name" value="<?php echo $ahudata[$i]['Set_Temp'] ?>" />
+										 </div>
+									</div>
+																		
+									
+									<br><br>
+									<div class="form-group" style="margin-left:30%;">
+										 <div class="col-md-12" >
+											<button class="button">Update</button>
+										 </div>
+									</div>
+							</form>
+				</div>
+									<!-- <div class="small-box">
+										<span class="status-working">ON</span><br/>
+										<h5>AHU Status</h5>
+									</div>
+									<div class="small-box">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool2.png' width='20'> </h3>
+										<h5>Cooling</h5>
+									</div>
+									<div class="small-box no-border-right">
+										<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> <?php echo $ahudata[$i]['Set_Temp'] ?>&#8451;</h3>
+										<h5>Set Temp.</h5>
+									</div>
+									<div style="clear:both">
+									</div> -->
+								</div>
+								
+								
+							</div>
+						</div>
+					</div>
+					
+					</div>
 					
 						
 					<?php }?>
@@ -344,14 +361,1005 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                 </div>
 
     </div>
-	<div class="PopUpBG Settings_popup" style="display: none;"></div>
-	<div id="addpopup">
-	
-	</div>
-   
     <!-- AHU ends -->
     <?php }?>
-			
+			<?php if (modules::run('Admin/Site/authlink', 'trip_status')) {?>
+	<!-- Chillers starts -->
+    <div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
+        <div class="DshBrdSctnTtl" id="div7">
+        <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/images/chillers2.png" width="45" />Chillers</span>
+
+        <?php /*<span class="SctnVw Cllps" id="Bwcollapse"></span>*/?>
+        <span class="SctnVw Cllps dev" onclick="device(5556)" id="device5556"></span>
+
+
+		</div>
+        <?php /*<div class="DshBrdSctnDtls" id="Bwmeter">*/?>
+
+        <div class="DshBrdSctnDtls device devicebox5556" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;margin-bottom:10px;">
+
+
+			<div class="devicebox5556">
+            <div class="bxslider9" id="bxid">
+
+				<div class="box bxc1 bxheight">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+						<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">Chiller #01 </span>
+						<div>
+						<div class="small-box" style="width:25%">
+						<span class="status-working">ON</span><br/>
+						<h5>Status</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/run.png' width='20'>5:25:00</h3>
+						<h5>Running Hrs  </h5>
+						</div>
+						<div class="small-box no-border-right">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
+						<h5>Set Point</h5>
+						</div>
+						<div style="clear:both"></div>
+
+						</div>
+						<div>
+						<div class="small-box"  style="width:40%">
+						<h3>14&#8451;</h3>
+						<h5>Inlet Water Temp.</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3>20&#8451;</h3>
+						<h5>Outlet Water Temp.</h5>
+						</div>
+						<div class="small-box no-border-right" style="width:20%">
+						<h3>30&#8451;</h3>
+						<h5>DeltaT </h5>
+						</div>
+						<div style="clear:both"></div>
+						</div>
+						<div class="ahu-list">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
+						<span class="inner_collaps1" onclick="device2('c1')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxc1" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+
+						<div class="ahu-list no-border-bottom">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
+						<span class="inner_collaps1" onclick="device2('c2')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxc2" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+					</div>
+					</div>
+					</div>
+				</div>
+				<div class="box bxc2 bxheight">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+						<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">Chiller #02 </span>
+						<div>
+						<div class="small-box" style="width:25%">
+						<span class="status-working">ON</span><br/>
+						<h5>Status</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/run.png' width='20'>11:45:00</h3>
+						<h5>Running Hrs  </h5>
+						</div>
+						<div class="small-box no-border-right">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
+						<h5>Set Point</h5>
+						</div>
+						<div style="clear:both"></div>
+
+						</div>
+						<div>
+						<div class="small-box"  style="width:40%">
+						<h3>14&#8451;</h3>
+						<h5>Inlet Water Temp.</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3>20&#8451;</h3>
+						<h5>Outlet Water Temp.</h5>
+						</div>
+						<div class="small-box no-border-right" style="width:20%">
+						<h3>30&#8451;</h3>
+						<h5>DeltaT </h5>
+						</div>
+						<div style="clear:both"></div>
+						</div>
+						<div class="ahu-list">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
+						<span class="inner_collaps1" onclick="device2('c3')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxc3" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+
+						<div class="ahu-list no-border-bottom">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
+						<span class="inner_collaps1" onclick="device2('c4')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxc4" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+					</div>
+					</div>
+					</div>
+				</div>
+				<div class="box bxc3 bxheight">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+						<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">Chiller #03 </span>
+						<div>
+						<div class="small-box" style="width:25%">
+						<span class="status-working">ON</span><br/>
+						<h5>Status</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/run.png' width='20'>14:09:00</h3>
+						<h5>Running Hrs  </h5>
+						</div>
+						<div class="small-box no-border-right">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
+						<h5>Set Point</h5>
+						</div>
+						<div style="clear:both"></div>
+
+						</div>
+						<div>
+						<div class="small-box"  style="width:40%">
+						<h3>14&#8451;</h3>
+						<h5>Inlet Water Temp.</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3>20&#8451;</h3>
+						<h5>Outlet Water Temp.</h5>
+						</div>
+						<div class="small-box no-border-right" style="width:20%">
+						<h3>30&#8451;</h3>
+						<h5>DeltaT </h5>
+						</div>
+						<div style="clear:both"></div>
+						</div>
+						<div class="ahu-list">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
+						<span class="inner_collaps1" onclick="device2('c5')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxc5" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+
+						<div class="ahu-list no-border-bottom">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
+						<span class="inner_collaps1" onclick="device2('c6')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxc6" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+					</div>
+					</div>
+					</div>
+				</div>
+				<div class="box bxc4 bxheight">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+						<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">Chiller #04 </span>
+						<div>
+						<div class="small-box" style="width:25%">
+						<span class="status-working">ON</span><br/>
+						<h5>Status</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/run.png' width='20'>9:08:00</h3>
+						<h5>Running Hrs  </h5>
+						</div>
+						<div class="small-box no-border-right">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
+						<h5>Set Point</h5>
+						</div>
+						<div style="clear:both"></div>
+
+						</div>
+						<div>
+						<div class="small-box"  style="width:40%">
+						<h3>14&#8451;</h3>
+						<h5>Inlet Water Temp.</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3>20&#8451;</h3>
+						<h5>Outlet Water Temp.</h5>
+						</div>
+						<div class="small-box no-border-right" style="width:20%">
+						<h3>30&#8451;</h3>
+						<h5>DeltaT </h5>
+						</div>
+						<div style="clear:both"></div>
+						</div>
+						<div class="ahu-list">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
+						<span class="inner_collaps1" onclick="device2('c7')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxc7" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+
+						<div class="ahu-list no-border-bottom">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
+						<span class="inner_collaps1" onclick="device2('c8')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxc8" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Supply Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Return Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Supply Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Return Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Supply Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Return Air Temp.</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+					</div>
+					</div>
+					</div>
+				</div>
+
+
+
+
+				</div>
+                <!--<div style="clear:both"></div>  -->
+            </div>
+        </div>
+	</div>
+	<!-- Chiller ends -->
+	<?php }?>
+			<?php if (modules::run('Admin/Site/authlink', 'trip_status')) {?>
+	<!-- Cooling starts -->
+    <div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
+        <div class="DshBrdSctnTtl" id="div8">
+        <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/images/cooling-c.png" width="45" />Cooling Tower</span>
+
+        <?php /*<span class="SctnVw Cllps" id="Bwcollapse"></span>*/?>
+        <span class="SctnVw Cllps dev" onclick="device3(5557)" id="device5557"></span>
+
+
+		</div>
+        <?php /*<div class="DshBrdSctnDtls" id="Bwmeter">*/?>
+
+        <div class="DshBrdSctnDtls device devicebox5557" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;margin-bottom:10px;">
+
+
+			<div class="devicebox5557">
+            <div class="bxslider11" id="bxid">
+
+				<div class="box bxc1 bxheight">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+						<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">Cooling Tower #01 </span>
+						<div>
+						<div class="small-box" style="width:25%">
+						<span class="status-working">ON</span><br/>
+						<h5>Status</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/run.png' width='20'>5:25:00</h3>
+						<h5>Running Hrs  </h5>
+						</div>
+						<div class="small-box no-border-right">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
+						<h5>Set Point</h5>
+						</div>
+						<div style="clear:both"></div>
+
+						</div>
+						<div>
+						<div class="small-box"  style="width:40%">
+						<h3>14&#8451;</h3>
+						<h5>Inlet Water Temp.</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3>20&#8451;</h3>
+						<h5>Outlet Water Temp.</h5>
+						</div>
+						<div class="small-box no-border-right" style="width:20%">
+						<h3>30&#8451;</h3>
+						<h5>DeltaT </h5>
+						</div>
+						<div style="clear:both"></div>
+						</div>
+						<div class="ahu-list">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
+						<span class="inner_collaps1" onclick="device2('d1')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxd1" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+
+						<div class="ahu-list no-border-bottom">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
+						<span class="inner_collaps1" onclick="device2('d2')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxd2" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+					</div>
+					</div>
+					</div>
+				</div>
+				<div class="box bxc2 bxheight">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+						<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">Cooling Tower #02 </span>
+						<div>
+						<div class="small-box" style="width:25%">
+						<span class="status-working">ON</span><br/>
+						<h5>Status</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/run.png' width='20'>11:45:00</h3>
+						<h5>Running Hrs  </h5>
+						</div>
+						<div class="small-box no-border-right">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
+						<h5>Set Point</h5>
+						</div>
+						<div style="clear:both"></div>
+
+						</div>
+						<div>
+						<div class="small-box"  style="width:40%">
+						<h3>14&#8451;</h3>
+						<h5>Inlet Water Temp.</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3>20&#8451;</h3>
+						<h5>Outlet Water Temp.</h5>
+						</div>
+						<div class="small-box no-border-right" style="width:20%">
+						<h3>30&#8451;</h3>
+						<h5>DeltaT </h5>
+						</div>
+						<div style="clear:both"></div>
+						</div>
+						<div class="ahu-list">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
+						<span class="inner_collaps1" onclick="device2('d3')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxd3" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+
+						<div class="ahu-list no-border-bottom">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
+						<span class="inner_collaps1" onclick="device2('d4')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxd4" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+					</div>
+					</div>
+					</div>
+				</div>
+				<div class="box bxc3 bxheight">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+						<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">Cooling Tower #03 </span>
+						<div>
+						<div class="small-box" style="width:25%">
+						<span class="status-working">ON</span><br/>
+						<h5>Status</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/run.png' width='20'>14:09:00</h3>
+						<h5>Running Hrs  </h5>
+						</div>
+						<div class="small-box no-border-right">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
+						<h5>Set Point</h5>
+						</div>
+						<div style="clear:both"></div>
+
+						</div>
+						<div>
+						<div class="small-box"  style="width:40%">
+						<h3>14&#8451;</h3>
+						<h5>Inlet Water Temp.</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3>20&#8451;</h3>
+						<h5>Outlet Water Temp.</h5>
+						</div>
+						<div class="small-box no-border-right" style="width:20%">
+						<h3>30&#8451;</h3>
+						<h5>DeltaT </h5>
+						</div>
+						<div style="clear:both"></div>
+						</div>
+						<div class="ahu-list">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
+						<span class="inner_collaps1" onclick="device2('d5')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxd5" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+
+						<div class="ahu-list no-border-bottom">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
+						<span class="inner_collaps1" onclick="device2('d6')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxd6" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+					</div>
+					</div>
+					</div>
+				</div>
+				<div class="box bxc4 bxheight">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+						<span class="SctnTtl" style="line-height: 30px;border-bottom:1px solid #ccc;font: 600 16px 'Open Sans';color:#3c8dbc">Cooling Tower #04 </span>
+						<div>
+						<div class="small-box" style="width:25%">
+						<span class="status-working">ON</span><br/>
+						<h5>Status</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/run.png' width='20'>9:08:00</h3>
+						<h5>Running Hrs  </h5>
+						</div>
+						<div class="small-box no-border-right">
+						<h3><img src='<?php echo base_url(); ?>asset/admin/images/cool22.png' width='10'> 14&#8451;</h3>
+						<h5>Set Point</h5>
+						</div>
+						<div style="clear:both"></div>
+
+						</div>
+						<div>
+						<div class="small-box"  style="width:40%">
+						<h3>14&#8451;</h3>
+						<h5>Inlet Water Temp.</h5>
+						</div>
+						<div class="small-box" style="width:40%">
+						<h3>20&#8451;</h3>
+						<h5>Outlet Water Temp.</h5>
+						</div>
+						<div class="small-box no-border-right" style="width:20%">
+						<h3>30&#8451;</h3>
+						<h5>DeltaT </h5>
+						</div>
+						<div style="clear:both"></div>
+						</div>
+						<div class="ahu-list">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 1</h5>
+						<span class="inner_collaps1" onclick="device2('d7')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxd7" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>350 PSI</h3>
+							<h5>Condensor Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>340 PSI</h3>
+							<h5>Condensor Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Evaporator Pressure</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>30&#8451;</h3>
+							<h5>Evaporator Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Enter Oil Temperature</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Suction Oil Temperature</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+
+						<div class="ahu-list no-border-bottom">
+						<h5><img src='<?php echo base_url(); ?>asset/admin/images/com.png' width='20'> Compressor 2</h5>
+						<span class="inner_collaps1" onclick="device2('d8')"><i class="fa fa-angle-down "></i></span>
+						</div>
+							<div class="deviceboxd8" style="display:none;background-color:#fff">
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Supply Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Return Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Supply Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Return Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>14&#8451;</h3>
+							<h5>Supply Air Temp.</h5>
+							</div>
+							<div class="small-box" style="width:50%">
+							<h3>26&#8451;</h3>
+							<h5>Return Air Temp.</h5>
+							</div>
+
+							<div style="clear:both"></div>
+							</div>
+					</div>
+					</div>
+					</div>
+				</div>
+
+
+
+
+				</div>
+                <!--<div style="clear:both"></div>  -->
+            </div>
+        </div>
+	</div>
+	<!-- Cooling ends -->
+	<?php }?>
+
+
+
+
+
+        <?php /*
+
+<?php
+$j=0;
+foreach ($devices as $dev) {
+$hardwares=$this->Api_data_model->get_hardwares($dev['category_id'],$dev['device_id']);
+// $permission=str_replace(' ','_',$dev['device_name']);
+// $permissions=$this->session->userdata('permissions');
+if(($dev['device_id']!=9)&&($dev['device_id']!=10)){
+if($hardwares->num_rows()>0){
+
+// if(in_array($permission,explode(',',$permissions))){
+
+?>
+
+<!-- Bore Wells code starts -->
+<div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
+<div class="DshBrdSctnTtl" id="div<?php echo $dev['device_id']?>">
+<span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/img/<?php echo  $dev['dashboard_icon'] ?>" width="40" /><?php echo ucwords(strtolower($dev['device_name'])); ?></span>
+
+<span class="SctnVw Cllps dev" onclick="device(<?php echo $dev['device_id']?> )" id="device<?php echo $dev['device_id']?>"></span>
+
+</div>
+
+<div class="DshBrdSctnDtls device devicebox<?php echo $dev['device_id']?>" style="background-color:#fff;" id="devicebox<?php echo $dev['device_id']?>">
+<div class="device devicebox<?php echo $dev['device_id']?>">
+<div class="bxslider<?php echo $dev['device_id']?>" id="bxid">
+<?php
+
+if($hardwares->num_rows()>0){
+
+foreach($hardwares->result() as $row){
+$hdata=array(
+'station_id'=>$this->session->userdata('station_id'),
+'api_name'=>$row->api_name
+);
+$hardware_api_data=$this->Api_data_model->get_hardware_api_data($hdata);
+// echo "<pre>";print_r($hardware_api_data);
+?>
+
+<div style="padding-top:20px;padding-bottom:20px">
+<div class="SctnDtlsHldr">
+<div class="SldrCntnr">
+<div class="SctnDtls BorewellHldr">
+<span class="SctnTtl"><?php echo $row->dashboard_name;?></span>
+<ul class="SctnDtlsGrdTbl">
+<li><div class="ClLft"><?php echo ucwords(strtolower($dev['device_name'])); ?> Status</div><div class="ClRgt">
+<?php if($hardware_api_data['status']==0){?>
+<span class="status-off">OFF</span>
+<?php }else{
+?>
+<span class="status-on">ON</span>
+<?php
+} ?>
+</div></li>
+<li><div class="ClLft">Running Hours</div><div class="ClRgt"><?php echo $hardware_api_data['RunningHours']?></div></li>
+<li><div class="ClLft">InletWaterTemp</div><div class="ClRgt">NA </div></li>
+<li><div class="ClLft">OutletWaterTemp</div><div class="ClRgt">NA</div></li>
+<li><div class="ClLft">InletWaterPressure</div><div class="ClRgt">NA Pa.</div></li>
+<li><div class="ClLft">OutletWaterPressure</div><div class="ClRgt">NA Pa.</div></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<?php
+}
+}
+
+?>
+
+</div>
+</div>
+
+</div>
+
+</div>
+<!-- Bore Wells code ends -->
+<?php
+
+}
+}$j++;
+}
+?>
+
+ */?>
+
+
+
+
+
+
         <?php $this->load->view('common/footer3')?>
 
 
@@ -365,47 +1373,79 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet" />
 
-    <!-- <link rel="stylesheet" href="<?php echo base_url(); ?>asset/energymeterasset/css/energymeterStyle.css"> -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>asset/energymeterasset/css/energymeterStyle.css">
+<?php /*
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
+<!-- Additional files for the Highslide popup effect -->
+<script src="https://www.highcharts.com/samples/static/highslide-full.min.js"></script>
+<script src="https://www.highcharts.com/samples/static/highslide.config.js" charset="utf-8"></script>
+
+<script src="https://code.highcharts.com/highcharts-more.js"></script>
+<script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+ */?>
 <script>
-function showpopup(mtr,loc,sid){
-	$(".Settings_popup").css("display", "block");
-	var html='';
-	html+='<div class="PopUpHldr Settings_popup"        style="display: visible;width: 500px;height: 280px;top:250px;left: calc(50% - 200px);box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.3);">        <div class="PopUpHedr" style="background: #E65100;">            <div class="HdrTtlHldr">                <span class="TtlTxt">Update Set Temperature</span>            </div>        </div>        <div class="PopUpBdy" style="border-radius: 0px 0px 10px 10px">            <div class="InnrCntntHldr">                <div class="FormHldr">                    <div class="row">                        <div class="col-1"                            style="display: flex;padding-top: 10px;padding-bottom: 0px;padding-right: 0px;">                            <div style="width: 70%;">                                <select id="selUser" class="Input" style="width: 70%;height: 42px;">                                    <option value="0"selected>Select</option>                                    <option value="15.00">15.00&deg;C</option>                                    <option value="16.00">16.00&deg;C</option>                                    <option value="17.01">17.01&deg;C</option>                                    <option value="18.00">18.00&deg;C</option>                                    <option value="19.1">19.1&deg;C</option>                                    <option value="20">20.0&deg;C</option>                                    <option value="211.01">211.01&deg;C</option>                                    <option value="22">22.0&deg;C</option>                                    <option value="23">23.0&deg;C</option>                                    <option value="24">24.0&deg;C</option>                                    <option value="25">25.0&deg;C</option>                                    <option value="26">26.0&deg;C</option>                                    <option value="27">27.0&deg;C</option>                                    <option value="28">28.0&deg;C</option>                                    <option value="29">29.0&deg;C</option>                                    <option value="30">30.0&deg;C</option>                                </select>                                <div id="result"></div>                            </div>                        </div>                    </div>                </div>            </div>            <div class="PopUpBtnFtr" style="padding-top: 10px;">                <div class="FormHldr">                    <div class="row">                        <div class="col-1 BtnHldr">                            <a href="#" class="AppBtn Icn Scndry WISIcn-Cross-Big Settingsclose_btn">Cancel</a>                            <a href="#" class="AppBtn  Settingsclose_btn" onclick="addAHU(\''+mtr+'\',\''+loc+'\',\''+sid+'\')">Save</a>                        </div>                    </div>                </div>            </div>        </div>    </div>';
-	$("#addpopup").html(html);
 
-	$(".Settingsclose_btn").click(function () {
-            $(".Settings_popup").css("display", "none");
-        });
-
-}
-function addAHU(meter,location,switchId){
-	var temp=$('#selUser').val();
-	// alert(temp);
-	if(temp==0){
-		
-	}else{
-
-	}
-	//var loc = `'${location}'`;
-
-	$.ajax({
-        type: 'GET',
-        data: {
-            temp:temp,sid:switchId
-        },
-        url: BASE_URL+'Admin/SwitchUpdate/updateAhu',
-        success: function (data){
-			window.location.reload();
-
-			// alert(data);return false;
-            // $("#solution").html(data);
-            // $("#solution").trigger("chosen:updated");
-        }
+$('.bxslider555').bxSlider({
+        slideWidth: 290,
+        minSlides: 2,
+        maxSlides: 30,
+        touchEnabled: false,
+        slideMargin: 0
     });
-}
+    $('.bxslider556').bxSlider({
+        slideWidth: 500,
+        minSlides: 2,
+        maxSlides: 30,
+        touchEnabled: false,
+        slideMargin: 0
+    });
+    $('.bxslider557').bxSlider({
+        slideWidth: 500,
+        minSlides: 2,
+        maxSlides: 30,
+        touchEnabled: false,
+        slideMargin: 0
+    });
+$('.bxslider7').bxSlider({
+         slideWidth: 500,
+        minSlides: 2,
+        maxSlides: 30,
+    touchEnabled: false,
+        slideMargin: 0,
+		infiniteLoop:false
+    });
+$('.bxslider8').bxSlider({
+        slideWidth: 500,
+        minSlides: 2,
+        maxSlides: 30,
+        touchEnabled: false,
+        slideMargin: 0,
+		infiniteLoop:false
+    });
+$('.bxslider9').bxSlider({
+        slideWidth: 450,
+        minSlides: 2,
+        maxSlides: 30,
+        touchEnabled: false,
+        slideMargin: 0,
+		infiniteLoop:false
+    });
 $('.bxslider10').bxSlider({
-        slideWidth: 345,
+        slideWidth: 435,
+        minSlides: 2,
+        maxSlides: 30,
+        touchEnabled: false,
+        slideMargin: 0,
+		infiniteLoop:false
+    });
+$('.bxslider11').bxSlider({
+        slideWidth: 435,
         minSlides: 2,
         maxSlides: 30,
         touchEnabled: false,
@@ -413,8 +1453,270 @@ $('.bxslider10').bxSlider({
 		infiniteLoop:false
     });
 
+$('.bxslider558').bxSlider({
+        slideWidth: 300,
+        minSlides: 3,
+        maxSlides: 30,
+        touchEnabled: false,
+        slideMargin: 0,
+		infiniteLoop:false
+    });
+<?php /*
+// iaq data start
+data = '[{"temp":30.7,"humidity":69.1,"co2":"NA"},{"tmp":[{"FromTime":"00:04:13","CurReading":"30.80"},{"FromTime":"00:19:43","CurReading":"30.80"},{"FromTime":"00:36:02","CurReading":"30.80"},{"FromTime":"00:51:31","CurReading":"30.80"},{"FromTime":"01:07:01","CurReading":"30.80"},{"FromTime":"01:22:33","CurReading":"30.80"},{"FromTime":"01:42:31","CurReading":"30.80"},{"FromTime":"02:02:18","CurReading":"30.70"},{"FromTime":"02:22:38","CurReading":"30.70"},{"FromTime":"02:42:27","CurReading":"30.70"},{"FromTime":"03:02:21","CurReading":"30.70"},{"FromTime":"03:22:25","CurReading":"30.70"},{"FromTime":"03:42:14","CurReading":"30.70"},{"FromTime":"04:02:11","CurReading":"30.70"},{"FromTime":"04:23:00","CurReading":"30.70"},{"FromTime":"04:43:55","CurReading":"30.80"},{"FromTime":"05:04:42","CurReading":"30.80"},{"FromTime":"05:25:30","CurReading":"30.70"},{"FromTime":"05:45:28","CurReading":"30.70"},{"FromTime":"06:05:46","CurReading":"30.70"},{"FromTime":"06:26:38","CurReading":"30.70"},{"FromTime":"06:46:28","CurReading":"30.60"},{"FromTime":"07:07:23","CurReading":"30.60"},{"FromTime":"07:26:36","CurReading":"30.60"},{"FromTime":"07:36:32","CurReading":"30.60"},{"FromTime":"07:46:26","CurReading":"30.60"},{"FromTime":"07:56:20","CurReading":"30.60"},{"FromTime":"08:06:15","CurReading":"30.60"},{"FromTime":"08:16:09","CurReading":"30.60"},{"FromTime":"08:26:32","CurReading":"30.50"},{"FromTime":"08:36:27","CurReading":"30.50"},{"FromTime":"08:46:22","CurReading":"30.50"},{"FromTime":"08:56:13","CurReading":"30.50"},{"FromTime":"09:06:36","CurReading":"30.50"},{"FromTime":"09:16:31","CurReading":"30.50"},{"FromTime":"09:26:26","CurReading":"30.40"},{"FromTime":"09:36:21","CurReading":"30.40"},{"FromTime":"09:46:17","CurReading":"30.50"},{"FromTime":"09:56:22","CurReading":"30.50"},{"FromTime":"10:06:17","CurReading":"30.50"},{"FromTime":"10:16:11","CurReading":"30.60"},{"FromTime":"10:26:35","CurReading":"30.60"},{"FromTime":"10:36:29","CurReading":"30.60"},{"FromTime":"10:46:24","CurReading":"30.60"},{"FromTime":"10:56:19","CurReading":"30.70"}],"hmd":[{"FromTime":"00:04:13","CurReading":"71.70"},{"FromTime":"00:19:43","CurReading":"71.90"},{"FromTime":"00:36:02","CurReading":"72.00"},{"FromTime":"00:51:31","CurReading":"71.80"},{"FromTime":"01:07:01","CurReading":"71.40"},{"FromTime":"01:22:33","CurReading":"71.10"},{"FromTime":"01:42:31","CurReading":"70.80"},{"FromTime":"02:02:18","CurReading":"69.90"},{"FromTime":"02:22:38","CurReading":"69.30"},{"FromTime":"02:42:27","CurReading":"69.10"},{"FromTime":"03:02:21","CurReading":"68.60"},{"FromTime":"03:22:25","CurReading":"67.90"},{"FromTime":"03:42:14","CurReading":"67.60"},{"FromTime":"04:02:11","CurReading":"67.80"},{"FromTime":"04:23:00","CurReading":"68.20"},{"FromTime":"04:43:55","CurReading":"69.10"},{"FromTime":"05:04:42","CurReading":"69.20"},{"FromTime":"05:25:30","CurReading":"69.80"},{"FromTime":"05:45:28","CurReading":"69.70"},{"FromTime":"06:05:46","CurReading":"69.70"},{"FromTime":"06:26:38","CurReading":"69.70"},{"FromTime":"06:46:28","CurReading":"69.50"},{"FromTime":"07:07:23","CurReading":"69.30"},{"FromTime":"07:26:36","CurReading":"69.20"},{"FromTime":"07:36:32","CurReading":"69.50"},{"FromTime":"07:46:26","CurReading":"69.50"},{"FromTime":"07:56:20","CurReading":"69.50"},{"FromTime":"08:06:15","CurReading":"69.60"},{"FromTime":"08:16:09","CurReading":"69.30"},{"FromTime":"08:26:32","CurReading":"69.00"},{"FromTime":"08:36:27","CurReading":"68.60"},{"FromTime":"08:46:22","CurReading":"68.50"},{"FromTime":"08:56:13","CurReading":"68.30"},{"FromTime":"09:06:36","CurReading":"68.40"},{"FromTime":"09:16:31","CurReading":"68.30"},{"FromTime":"09:26:26","CurReading":"67.80"},{"FromTime":"09:36:21","CurReading":"68.30"},{"FromTime":"09:46:17","CurReading":"68.20"},{"FromTime":"09:56:22","CurReading":"68.30"},{"FromTime":"10:06:17","CurReading":"68.50"},{"FromTime":"10:16:11","CurReading":"68.50"},{"FromTime":"10:26:35","CurReading":"68.60"},{"FromTime":"10:36:29","CurReading":"68.70"},{"FromTime":"10:46:24","CurReading":"69.10"},{"FromTime":"10:56:19","CurReading":"69.10"}],"co":0}]';
 
+var d1 = JSON.parse(data);
+$("#temp").text(d1[0]["temp"]+(' \u2103'));
+$("#hmd").text(Math.round(d1[0]["humidity"])+(' %RH'));
+$("#co").text(d1[0]["co2"]+(''));
+$("#temptext").val(d1[0]["temp"]+(' \u2103'));
+$("#hmdtext").val(Math.round(d1[0]["humidity"])+(' %RH'));
 
+var xdata = new Array();
+var ydata = new Array();
+
+var xdatahmd = new Array();
+var ydatahmd = new Array();
+
+var xdataco = new Array();
+var ydataco = new Array();
+//var jsondata = JSON.parse(data);
+for (i = 0; i < d1[1]['tmp'].length; i++)
+{
+xdata[i] = d1[1]['tmp'][i]['FromTime'];
+ydata[i] = parseFloat(d1[1]['tmp'][i]['CurReading']);
+
+}
+for (i = 0; i < d1[1]['hmd'].length; i++)
+{
+xdatahmd[i] = d1[1]['hmd'][i]['FromTime'];
+ydatahmd[i] = parseInt(d1[1]['hmd'][i]['CurReading']);
+
+}
+Highcharts.chart('container_temp', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: 'Temperature'
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'Temperature oC'
+},
+tickInterval: 10,
+min:0,
+max:60
+
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'Temperature',
+data: ydata
+}]
+});
+
+Highcharts.chart('container_hmd', {
+chart: {
+type: 'line'
+},
+credits: {
+enabled: false
+},
+title: {
+text: 'Humidity'
+},
+
+xAxis: {
+categories: xdatahmd
+},
+yAxis: {
+title: {
+text: 'Humidity %RH'
+},
+tickInterval: 10,
+min:0,
+max:100
+
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'Humidity',
+data: ydatahmd
+}]
+});
+
+Highcharts.chart('container_co2', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: 'CO2'
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'CO2'
+}
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'CO2',
+data: ydata
+}]
+});
+Highcharts.chart('container_co', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: ' '
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'CO'
+}
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'CO',
+data: ydata
+}]
+});
+Highcharts.chart('container_pressure', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: ' '
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'Bar'
+}
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'Pressure1',
+data: ydata
+}]
+});
+Highcharts.chart('container_pm', {
+chart: {
+type: 'line'
+},credits: {
+enabled: false
+},
+title: {
+text: ' '
+},
+
+xAxis: {
+categories: xdata
+},
+yAxis: {
+title: {
+text: 'Micrograms per cubic meter'
+}
+},
+
+plotOptions: {
+series: {
+label: {
+connectorAllowed: false
+},
+pointStart: 0
+}
+},
+
+series: [{
+name: 'PM2.5',
+data: ydata
+}]
+});
+// iaq data end
+// $('.bxslider555').bxSlider({
+// minSlides: 2,
+// maxSlides: 4,
+// slideWidth: 300,
+// slideMargin: 0,
+// responsive: false
+// });
+
+// $( window ).resize(function () {
+// console.log('rs');
+// bxSlider.reloadSlider();
+// });
+
+ */?>
  function em(id){
     $('.em-disc'+id).toggle('slow');
     $('.em'+id).hide();
@@ -494,14 +1796,6 @@ function deviceall(){
         }
   //$('.device').hide();
 }
-$(".Settings").click(function () {
-	
-	//alert($("#mt").text());
-            $(".Settings_popup").css("display", "block");
-        });
-        $(".Settingsclose_btn").click(function () {
-            $(".Settings_popup").css("display", "none");
-        });
 $('#exampleModal').on('show.bs.modal', function (event) {
   var button = $(event.relatedTarget) // Button that triggered the modal
   var recipient = button.data('whatever') // Extract info from data-* attributes

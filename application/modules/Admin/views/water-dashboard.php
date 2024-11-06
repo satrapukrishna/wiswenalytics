@@ -224,7 +224,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 				
                 <?php /*<div class="DshBrdSctnDtls" id="Bwmeter">*/?>
 				<div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
-                <?php if(count($waterlevel_independent_data)>0){ ?>
+                <?php if(isset($waterlevel_independent_data)){ if(count($waterlevel_independent_data)>0){ ?>
                 <h4 class="head-h4">Terrace</h4>
                 <div class=" devicebox5551">
 				
@@ -278,7 +278,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 				</div>
                 
 				</div>
-                <?php }?>
+                <?php }}?>
                 <h4 class="head-h4">Basement</h4>
 				
 
@@ -488,7 +488,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					</div>
 					
 					
-					<?php   } ?> ?>
+					<?php   } ?>
 					
 
 					
@@ -518,55 +518,32 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 				<!-- <span class="inner_collaps" onclick="device1(55791)" id="device55791"></span> -->
 				<div class=" devicebox91">
 				<div class="bxslider99" id="bxid">
-				<?php foreach($water_meter_data as $rec){ ?>
-					<div style="width:340px">
-                        <div class="WtrMngtDtlsHldr" style="display:block">
-                            <div class="WtrLnDtls ">
-                                <span class="LnName MunWtrLn"><?php echo $rec['meter']; ?></span>
-                                <div class="InnrDtlsMnDv">
-                                    <div class="TxtDtlsHldr">
-                                        <span class="DtlsTxt"><?php echo $rec['today_reading']; ?></span>
-                                        <span class="DtlsTxtTtl">Today’s Reading</span>
-                                    </div>
-                                    <div class="TxtDtlsHldr">
-                                        <!-- <img src="Images/WaterMeterSample.jpg" class="ImgHldr" /> -->
-                                        <img src="<?php echo site_url() ?>asset/admin/scheduled_doc/<?php echo  $rec['today_reading_photo'] ?>" class="ImgHldr" /> 
-                                        <a href="<?php echo site_url() ?>asset/admin/scheduled_doc/<?php echo  $rec['today_reading_photo'] ?> " target="_blank">View</a>
-                                        <!-- <a href="#" class="TxtLnk">View</a> -->
-                                    </div>
-                                </div>
-                                <div class="InnrDtlsMnDv">
-                                    <div class="TxtDtlsHldr">
-                                        <span class="DtlsTxt"><?php echo $rec['yesterday_reading']; ?></span>
-                                        <span class="DtlsTxtTtl">Yesterday’s Reading</span>
-                                    </div>
-                                    <div class="TxtDtlsHldr">
-                                        <span class="DtlsTxt"><?php echo $rec['difference']; ?></span>
-                                        <span class="DtlsTxtTtl">Difference</span>
-                                    </div>
-                                </div>
-                                <div class="InnrDtlsMnDv">
-                                    <div class="TxtDtlsHldr">
-                                        <span class="DtlsTxt"><?php echo $rec['time']; ?></span>
-                                        <span class="DtlsTxtTtl">Reading Time</span>
-                                    </div>
-                                    <div class="TxtDtlsHldr">
-                                        <span class="DtlsTxt"><?php echo $rec['emp_name']; ?></span>
-                                        <span class="DtlsTxtTtl">Recorded By</span>
-                                    </div>
-                                </div>
-                                <div class="InnrDtlsMnDv BtnHldr">
-                                    <div class="TxtDtlsHldr">
-                                        <span class="DtlsTxtVrfctn NtVrd">Not Verified</span>
-                                    </div>
-                                    <div class="TxtDtlsHldr">
-                                        <input type="button" class="VrEdBtn" value="Verfiy/ Edit" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+				<?php for ($i=0; $i < count($watermeter_data); $i++) 
+         				 {
+							  ?>
+					<div style="width:320px">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+					<span class="SctnTtl"><?php echo $watermeter_data[$i]['meter']; ?> </span>
+					<ul class="SctnDtlsGrdTbl">
+						
+						<li><div class="ClLft">Today's Inflow</div><div class="ClRgt"><?php echo $watermeter_data[$i]['todayconsumption']; ?>KL</div></li>
+						<li><div class="ClLft">Yesterday Inflow</div><div class="ClRgt"><?php echo $watermeter_data[$i]['yesterdayconsumption']; ?>KL</div></li>
+						<li><div class="ClLft">Weekly Average</div><div class="ClRgt"><?php echo $watermeter_data[$i]['weeklyavg']; ?>KL</div></li>
+						
+						
+						
+						
+					</ul>
 					</div>
-					<?php }?>
+					</div>
+					</div>
+					</div>
+					
+					
+					<?php   } ?>
+					
 					
 					
 					
@@ -1416,10 +1393,69 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                     <?php /*<span class="SctnVw Cllps" id="fpcollapse"></span>*/?>
 				<span class="SctnVw Cllps dev" onclick="device(1112)" id="device1112"></span>
                 </div>
-                <?php foreach($water_meter_data as $rec){ ?>
                 <div class="DshBrdSctnDtls WhtBkgrnd FrPmp device devicebox1112" id="devicebox1112">
                     <table class="SctnDtlsDualGrd">
+                    <tr>
+                            <th>
+
+                            </th>
+                           
+                            <th>
+                                Running Status
+                            </th>
+                            <th>
+                                Today
+                            </th>
+                            <th>
+                                Yesterday
+                            </th>
+                            <th>
+                                Last Week
+                            </th>
+                            <th>
+                                Monthly
+                            </th>
+                        </tr>
+						<?php for ($i=0; $i < count($hydro_data['Hydro Pnematic System 01']['run_data']); $i++) 
+         				 {
+							  ?>
                         <tr>
+                            <td>
+                                <span class="Txt Ttl"><?php echo $hydro_data['Hydro Pnematic System 01']['run_data'][$i]['meter'] ?></span>
+                            </td>
+                           
+                            <td>
+                            <span class="Txt MblTtl">Running Status</span>
+                               
+								<?php if($hydro_data['Hydro Pnematic System 01']['run_data'][$i]['running_status']){ ?>
+								<span class="status-on">ON</span>
+								<?php }else{ ?>
+                                    <span class="status-off1">OFF</span>
+                                    <?php } ?>
+                                
+                            </td>
+							
+                            <td>
+                                <span class="Txt MblTtl">Today</span>
+                                <span class="Txt"><?php echo $hydro_data['Hydro Pnematic System 01']['run_data'][$i]['today_running_hours'] ?> </span>
+                            </td>
+                            <td>
+                                <span class="Txt MblTtl">Yesterday</span>
+                                <span class="Txt"><?php echo $hydro_data['Hydro Pnematic System 01']['run_data'][$i]['yesterday_running_hours'] ?> </span>
+                            </td>
+                            <td>
+                                <span class="Txt MblTtl">Last Week</span>
+                                <span class="Txt"><?php echo $hydro_data['Hydro Pnematic System 01']['run_data'][$i]['lastweek_running_hours'] ?> </span>
+                            </td>
+                            <td>
+                                <span class="Txt MblTtl">Monthly</span>
+                                <span class="Txt"><?php echo $hydro_data['Hydro Pnematic System 01']['run_data'][$i]['monthly_running_hours'] ?> </span>
+                            </td>
+                            
+							
+                        </tr>
+                        <?php }?>
+                        <!-- <tr>
                             <th>
 
                             </th>
@@ -1438,6 +1474,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                             <th>
                                 Last Week
                             </th>
+                            <th>
+                                Monthly
+                            </th>
                         </tr>
             
                         <tr>
@@ -1448,7 +1487,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                                 <span class="Txt MblTtl">Running Status</span>
                 
                                 
-                <span class="Txt Stts auto" id=""></span>
+                <span class="status-na" id="">NA</span>
                 
                                
                             </td>
@@ -1456,22 +1495,26 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                                 <span class="Txt MblTtl">Switch Status</span>
                                
                 
-                <span class="status-off">OFF</span>
+                <span class="status-na">NA</span>
                 
                                 
                             </td>
               
                             <td>
                                 <span class="Txt MblTtl">Today</span>
-                                <span class="Txt">1 Min</span>
+                                <span class="Txt">NA</span>
                             </td>
                             <td>
                                 <span class="Txt MblTtl">Yesterday</span>
-                                <span class="Txt">2 Mins</span>
+                                <span class="Txt">NA</span>
                             </td>
                             <td>
                                 <span class="Txt MblTtl">Last Week</span>
-                                <span class="Txt">12 Mins</span>
+                                <span class="Txt">NA</span>
+                            </td>
+                            <td>
+                                <span class="Txt MblTtl">Monthly</span>
+                                <span class="Txt">NA</span>
                             </td>
               
                         </tr>
@@ -1483,7 +1526,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                                 <span class="Txt MblTtl">Running Status</span>
                 
                                 
-                <span class="Txt Stts auto" id=""></span>
+                                <span class="status-na">NA</span>
                 
                                
                             </td>
@@ -1491,61 +1534,31 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                                 <span class="Txt MblTtl">Switch Status</span>
                                
                 
-                <span class="status-off">OFF</span>
+                <span class="status-na">NA</span>
                 
                                 
                             </td>
               
                             <td>
                                 <span class="Txt MblTtl">Today</span>
-                                <span class="Txt">1 Min</span>
+                                <span class="Txt">NA</span>
                             </td>
                             <td>
                                 <span class="Txt MblTtl">Yesterday</span>
-                                <span class="Txt">2 Mins</span>
+                                <span class="Txt">NA</span>
                             </td>
                             <td>
                                 <span class="Txt MblTtl">Last Week</span>
-                                <span class="Txt">12 Mins</span>
+                                <span class="Txt">NA</span>
+                            </td>
+                            <td>
+                                <span class="Txt MblTtl">Monthly</span>
+                                <span class="Txt">NA</span>
                             </td>
               
-                        </tr>
+                        </tr> -->
             
-            <tr>
-                            <td>
-                                <span class="Txt Ttl">Pump3</span>
-                            </td>
-                            <td>
-                                <span class="Txt MblTtl">Running Status</span>
-                
-                                
-                <span class="Txt Stts auto" id=""></span>
-                
-                               
-                            </td>
-                            <td>
-                                <span class="Txt MblTtl">Switch Status</span>
-                               
-                
-                <span class="status-off">OFF</span>
-                
-                                
-                            </td>
-              
-                            <td>
-                                <span class="Txt MblTtl">Today</span>
-                                <span class="Txt">1 Min</span>
-                            </td>
-                            <td>
-                                <span class="Txt MblTtl">Yesterday</span>
-                                <span class="Txt">2 Mins</span>
-                            </td>
-                            <td>
-                                <span class="Txt MblTtl">Last Week</span>
-                                <span class="Txt">12 Mins</span>
-                            </td>
-              
-                        </tr>
+            
            
             
                        
@@ -1554,17 +1567,18 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<div class="SctnDtlsHldr">					
 					<div class="SctnDtls BorewellHldr">
 					<ul class="SctnDtlsGrdTbl lpgdiv">
+                        
                             <li>
                                 <div class="ClLft liright">Present Pressure</div>
-                                <div class="ClRgt liright">100 PSI</div>
+                                <div class="ClRgt liright"><?php echo $hydro_data['Hydro Pnematic System 01']['pressure_data'][count($hydro_data['Hydro Pnematic System 01']['pressure_data'])-1]['pressure'] ?></div>
                             </li>
                             <li>
                                 <div class="ClLft liright">Min Threshold Pressure</div>
-                                <div class="ClRgt liright">20 Kgs</div>
+                                <div class="ClRgt liright"> 2.4 kg/cm2</div>
                             </li>
                             <li>
                                 <div class="ClLft liright">Max Threshold Pressure</div>
-                                <div class="ClRgt liright">30 Kgs</div>
+                                <div class="ClRgt liright">3.4 kg/cm2</div>
                             </li>
                             
                         </ul>
@@ -1584,7 +1598,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                        
                     </div>
                    
-                    <div class="childclass1" style="height:260px;width:33%;margin-top:28px">
+                    <div class="childclass1" style="height:100%;width:33%;margin-top:28px">
                          <!-- <div  id="container_pressure">
                 
 					</div>  -->
@@ -1597,7 +1611,6 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
           
                       
                 </div>
-                <?php }?>
             </div>
            
 			<!-- Hydro End -->
@@ -2224,10 +2237,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 <script>
-function menushow(id){
-	$("#subcat"+id).toggle('slow');
-	return false;
-}
+
 <?php if(modules::run('Admin/Site/authlink','water_Line-Pressure')){ ?>
  var dps1=[];
     var dps2=[];      
@@ -3412,7 +3422,6 @@ function device1(a){
             // $(".inner_collaps").removeClass("Expndd");
         }
 }
-
 function deviceall(){
 	if($( ".device" ).is( ":visible" ))
         {

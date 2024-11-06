@@ -720,6 +720,9 @@ footer {
 								<div class="form-control1" id="solutiondiv">
 									<?php echo form_dropdown('device', $solution, $this->input->post('device'), 'class="form-control chosen-select" id="solution" onchange="getdevices()"'); ?>
 								</div>
+								<div class="form-control1" id="type">							
+									<?php $sorttype = array('1' => 'Day Wise','2' => 'Hourly Wise'); echo form_dropdown('sorttype', $sorttype, $this->input->post('sorttype'), 'class="form-control chosen-select"  name="sorttype" id="sorttype"'); ?>
+								</div>
 								<div class="form-control1">
 									<input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" value="<?php echo set_value('fromdate') ?>"  name="fromdate" id="fromdate" placeholder="From Date">
 								</div>
@@ -1537,7 +1540,12 @@ footer {
 							// $this->load->view('reportcommon/dgfremove');							
 						}
 						if($data['device']==41 && $data['report_type']==0){
-							$this->load->view('reportcommon/energyconsumptionreport');						
+							if($sort==2){
+								$this->load->view('reportcommon/energyconsumptionreport_chennai');	
+							}else{
+								$this->load->view('reportcommon/energyconsumptionreport');	
+							}
+												
 							
 						}
 						if($data['device']==34 && $data['report_type']==0){							

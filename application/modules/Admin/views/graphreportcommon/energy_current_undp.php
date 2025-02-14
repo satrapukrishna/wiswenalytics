@@ -3,13 +3,7 @@
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <span class="SctnTtl">Current Graph Report</span>
-<span class="SctnTtl">AC Plant Room</span>
-<?php for($i=0;$i<count($current['undp']);$i++){ ?>
-    <div class="GrphMnHldr WtrLvl">
-        <div class="GrphDv" id="container_current_undp<?php echo $i; ?>"></div>
-    </div>
-    
-<?php } ?>
+
 <span class="SctnTtl">UN House Central Wing</span>
 <?php for($i=0;$i<count($current['uncw']);$i++){ ?>
     <div class="GrphMnHldr WtrLvl">
@@ -31,13 +25,6 @@
     </div>
     
 <?php } ?>
-<span class="SctnTtl">UN House  West Wing</span>
-<?php for($i=0;$i<count($current['unww']);$i++){ ?>
-    <div class="GrphMnHldr WtrLvl">
-        <div class="GrphDv" id="container_current_unww<?php echo $i; ?>"></div>
-    </div>
-    
-<?php } ?>
 <span class="SctnTtl">Security Gate</span>
 <?php for($i=0;$i<count($current['unsg']);$i++){ ?>
     <div class="GrphMnHldr WtrLvl">
@@ -52,8 +39,20 @@
     </div>
     
 <?php } ?>
-
-
+<span class="SctnTtl">AC Plant Room</span>
+<?php for($i=0;$i<count($current['undp']);$i++){ ?>
+    <div class="GrphMnHldr WtrLvl">
+        <div class="GrphDv" id="container_current_undp<?php echo $i; ?>"></div>
+    </div>
+    
+<?php } ?>
+<span class="SctnTtl">UN House  West Wing</span>
+<?php for($i=0;$i<count($current['unww']);$i++){ ?>
+    <div class="GrphMnHldr WtrLvl">
+        <div class="GrphDv" id="container_current_unww<?php echo $i; ?>"></div>
+    </div>
+    
+<?php } ?>
 <script>
 
     var energy_data_c1=<?php echo json_encode($current['undp']);?>;
@@ -520,6 +519,5 @@
     }]
   
 });
-    }
-   
+    } 
 </script>

@@ -14,40 +14,21 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         $(document).ready(function () {
-            let vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
-            var viewportWidth = vw / 2;
-            var SldWdth = viewportWidth - 26;
             $('.KPIDashboard').bxSlider({
-                slideWidth: SldWdth,
                 minSlides: 1,
-                maxSlides: 2,
+                maxSlides: 1,
                 moveSlides: 1,
                 hideControlOnEnd: true,
-                infiniteLoop: false,
-                auto: true,
-                
+                infiniteLoop: false
             });
-            window.onresize = function (event) {
-                document.location.reload(true);
-            }
         });
     </script>
-    <style>
-        .highcharts-container {
-            height: 200px !important;
-        }
-        div.BMSDshbrdBlck {
-            margin: 0 10px 10px 10px;
-        }
-
-        div.TableLegends div.Hldr span.Blk {
-            padding: 2px 0 2px 20px;
-        }
-
-        div.TableLegends div.Hldr span:before {
-            left: 5px;
-        }
+<style>
+    .highcharts-container {
+        height: 200px !important;
+    }
     </style>
+
 </head>
 <body>
     <div class="AppHeader">
@@ -59,13 +40,13 @@
             </div>
         </div>
     </div>
-    <div class="AppMstrCntnr FllScrn FllHghtwHdr" style="padding: 0 10px 10px 10px !important;">
+    <div class="AppMstrCntnr FllScrn FllHghtwHdr">
         <div class="GnPgCntntDvHldr DashboardView FullViewWOFooter">
-            <div id="InnrCntntHldrDv" class="InnrCntntHldr" style="overflow: hidden; padding: 0 !important;">
-                <div class="FormHldr" style="height: 100%;">
-                    <div id="KPIDashboard" class="row NoBrdr NoBG" style="height: 100%;">
-                        <div class="col-1 NoPd" style="height: 100%;">
-                            <div class="DashboardHldr TmpltTwo" style="display: flex; flex-wrap: wrap; align-content: flex-start; align-items: flex-start;">
+            <div id="InnrCntntHldrDv" class="InnrCntntHldr">
+                <div class="FormHldr">
+                    <div id="KPIDashboard" class="row NoBrdr NoBG">
+                        <div class="col-1 NoPd">
+                            <div class="DashboardHldr TmpltTwo">
                                 <div class="DshHdrHldr TmpltTwo Brdr">
                                     <div class="TtlHldr">
                                         <span class="TtlTxt">Room KPI Dashboard Showing status</span>
@@ -74,9 +55,9 @@
                                 <div class="DshDtlHldr TmpltTwo">
                                     <div class="SldrHldr">
                                         <div class="KPIDashboard">
-                                            <?php for ($i=0; $i < count($iaq_data); $i++) {?>
+                                             <?php for ($i=0; $i < count($iaq_data); $i++) {?>
                                             <div class="slide">
-                                                <div class="DshInnrAccrdn" style="margin: 0 5px;">
+                                                <div class="DshInnrAccrdn" style="margin: 0 !important;">
                                                     <div class="DshInnrAccrdnHdrHldr">
                                                         <div class="TtlHldr">
                                                             <span class="TtlTxt"><?php echo $iaq_data[$i]['meter']?></span>
@@ -88,7 +69,7 @@
                                                     <div class="DshInnrAccrdnDtlHldr">
                                                         <div class="FormHldr">
                                                             <div class="row NoBrdr NoBG">
-                                                                <div class="col-2 NoPd">
+                                                                <div class="col-4 NoPd">
                                                                     <div class="BMSDshbrdBlck ThemeOne">
                                                                         <div class="BMSDshbrdTtlHldr">
                                                                             <div class="TtlHldr">
@@ -111,7 +92,7 @@
                                                                                 <div class="row NoBrdr NoBG AlignItmsCntr">
                                                                                     <div class="col-66 NoPd FllHght">
                                                                                         <div class="BMSDshbrdDtlDv ArQltyMtrHldr" id="temp<?php echo $i?>">
-                                                                                           
+                                                                                            
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-3 NoPd">
@@ -146,7 +127,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row NoBrdr NoBG">
-                                                                                    <div class="col-1" style="padding-left: 0; padding-right: 0;">
+                                                                                    <div class="col-1">
                                                                                         <div class="TableLegends FormHldr JstfyCntntCntr">
                                                                                             <div class="Hldr">
                                                                                                 <span class="Blk InvType Theme1-TempBlue">32°F-66°F</span>
@@ -161,7 +142,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-2 NoPd">
+                                                                <div class="col-4 NoPd">
                                                                     <div class="BMSDshbrdBlck ThemeOne">
                                                                         <div class="BMSDshbrdTtlHldr">
                                                                             <div class="TtlHldr">
@@ -182,7 +163,7 @@
                                                                         <div class="BMSDshbrdDtlsHldr AddPd">
                                                                             <div class="FormHldr">
                                                                                 <div class="row NoBrdr NoBG AlignItmsCntr">
-                                                                                    <div class="col-66 NoPd FllHght">
+                                                                                    <div class="col-66 NoPd ">
                                                                                         <div class="BMSDshbrdDtlDv ArQltyMtrHldr" id="humidity<?php echo $i?>">
                                                                                             
                                                                                         </div>
@@ -219,7 +200,7 @@
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="row NoBrdr NoBG">
-                                                                                    <div class="col-1" style="padding-left: 0; padding-right: 0;">
+                                                                                    <div class="col-1">
                                                                                         <div class="TableLegends FormHldr JstfyCntntCntr">
                                                                                             <div class="Hldr">
                                                                                                 <span class="Blk InvType Theme1-RHSand">0-50%</span>
@@ -238,13 +219,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <?php }?> 
+                                            </div> 
+                                            <?php }?>                                          
                                         </div>
                                     </div>
                                 </div>
-                                <div class="DshDtlHldr TmpltTwo PaddBtm" style="position: relative; display: flex; flex-wrap: wrap; align-content: flex-start; height: calc(100% - 501px);">
-                                    <iframe frameborder="0" style="width: calc(100% - 30px); height: calc(100% - 15px); position: absolute; border-radius: 10px;" src="https://www.youtube.com/embed/Gqn9Ctwk-f8?mute=0&amp;autoplay=1&amp;loop=1&amp;controls=0" allow="autoplay"></iframe>
+                                <div class="DshDtlHldr TmpltTwo PaddBtm">
+                                    <iframe width="100%" height="280" frameborder="0" style="border-radius: 10px;" src="https://www.youtube.com/embed/Gqn9Ctwk-f8?mute=1&autoplay=1&loop=1&controls=0" allow="autoplay"></iframe>
                                 </div>
                             </div>
                         </div>

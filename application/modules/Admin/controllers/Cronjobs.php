@@ -16,8 +16,11 @@ class Cronjobs extends MX_Controller  {
   function push_water_level_data(){
 		$this->Api_data_db_table_model->addWaterLevel();
 	}
-  function push_water_level_graph_data(){
-		$this->Api_data_db_table_model->get_hardwares_device_data_waterlevelmeter_report_mum_db();
+  function push_water_level_graph_data_mumbai(){
+    $yesterDay = date('Y-m-d',strtotime("-1 days"));
+    // $first = "2025-01-01";
+    // $last = "2025-02-10";
+		$this->Api_data_db_table_model->get_hardwares_device_data_waterlevel_report_oberoi(2021000076,$yesterDay,$yesterDay);
 	}
   function water_module_data(){
     
@@ -67,11 +70,42 @@ class Cronjobs extends MX_Controller  {
   function push_vegas_cons_data1(){
 		$this->Api_data_db_table_model->addVegasCons();
 	}
+  function push_unicef_cons_hourly_data(){
+    // echo date('Y-m-d h:m:s');die();
+    $yesterDay = date('Y-m-d',strtotime("-1 days"));
+    // echo $yesterDay;
+    $energydathrly=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_unicef_hourly(2024000527,$yesterDay,$yesterDay);
+  }
+  function push_unicef_cons_data(){
+    $yesterDay = date('Y-m-d',strtotime("-1 days"));
+
+    $watermeterdata=$this->Api_data_db_table_model->get_hardwares_device_data_flowmeter_report_unicef(2024000527,$yesterDay,$yesterDay);
+    $energydat=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_unicef(2024000527,$yesterDay,$yesterDay);
+   
+    $current_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_current_report_unicef(2024000527,$yesterDay,$yesterDay);
+    // echo json_encode($current_data);die();
+    // $data['current']=$energydat;
+    $voltage_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_voltage_report_unicef(2024000527,$yesterDay,$yesterDay);
+    // echo json_encode($voltage_data);
+    // $data['voltage']=$energydat;
+
+    $pf_data=$this->Api_data_db_table_model->get_hardwares_device_data_power_factor_report_unicef(2024000527,$yesterDay,$yesterDay);
+    // echo json_encode($pf_data);
+    // $data['power_factor_data']=$energydat;
+}
   function push_undp_cons_hourly_data(){
     // echo date('Y-m-d h:m:s');die();
     $yesterDay = date('Y-m-d',strtotime("-1 days"));
     // echo $yesterDay;
     $energydathrly=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_undp_hourly(66,$yesterDay,$yesterDay);
+  }
+  function push_undp_cons_hourly_data_bkp(){
+    // echo date('Y-m-d h:m:s');die();
+    $first = '2024-11-15';
+    $last = '2024-11-16';
+    $tabl="hardware_station_consumption_data_undp_missing_2024";
+    // echo $yesterDay;
+    $energydathrly=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_undp_hourly_bkp(66,$first,$last,$tabl);
   }
   function push_undp_cons_data(){
         $yesterDay = date('Y-m-d',strtotime("-1 days"));
@@ -88,6 +122,23 @@ class Cronjobs extends MX_Controller  {
         // echo json_encode($pf_data);
         // $data['power_factor_data']=$energydat;
 	}
+  function push_undp_cons_data_bkp(){
+    $first = '2024-11-15';
+    $last = '2024-11-16';
+    $tabl="hardware_station_consumption_data_undp_missing_2024";
+    $energydat=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_undp_bkp(66,$first,$last,$tabl);
+   
+    $current_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_current_report_undp_bkp(66,$first,$last,$tabl);
+    // echo json_encode($current_data);die();
+    // $data['current']=$energydat;
+   $voltage_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_voltage_report_undp_bkp(66,$first,$last,$tabl);
+    // echo json_encode($voltage_data);
+    // $data['voltage']=$energydat;
+
+    $pf_data=$this->Api_data_db_table_model->get_hardwares_device_data_power_factor_report_undp_bkp(66,$first,$last,$tabl);
+    // echo json_encode($pf_data);
+    // $data['power_factor_data']=$energydat;
+}
   function push_vegas_cons_data(){
    // $yesterDay = date('Y-m-d',strtotime("-1 days"));
     

@@ -92,6 +92,19 @@ class Hardware_category_model extends CI_Model{
         }
         return $items;
     }
+    function get_hardware_category_dropdown_unicef() {
+        $this->db->select('category_id,category_name');
+        $this->db->from('hardware_category');
+        $this->db->where_in('category_id',[5,6]);
+        $this->db->where('status',1);
+        $this->db->order_by('category_id');
+        $res = $this->db->get()->result_array();
+        $items = array();
+        foreach ($res as $row){
+            $items[$row['category_id']] = $row['category_name'];
+        }
+        return $items;
+    }
     function get_hardware_category_dropdown_hcug() {
         $this->db->select('category_id,category_name');
         $this->db->from('hardware_category');
@@ -316,6 +329,23 @@ class Hardware_category_model extends CI_Model{
             $this->db->where('category_id', $category);
         }
         $this->db->where_in('device_id',[41]);
+        $this->db->where('status',1);
+        $this->db->order_by('device_name');
+        $res = $this->db->get();
+        $items = array();
+        $items[222] = "EV Charger";
+        foreach ($res->result_array() as $row) {
+            $items[$row['id']] = $row['name'];
+        }
+        return $items;
+	}
+    function get_devices_unicef_tab($category){
+		$this->db->select('device_id as id,device_name as name');
+        $this->db->from('hardware_device');        
+        if ($category != ''){
+            $this->db->where('category_id', $category);
+        }
+        $this->db->where_in('device_id',[41,25]);
         $this->db->where('status',1);
         $this->db->order_by('device_name');
         $res = $this->db->get();

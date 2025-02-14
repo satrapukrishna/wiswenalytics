@@ -33,9 +33,9 @@
         type: 'line'
     },
     yAxis: {
-        tickInterval: 20,
-        tickAmount: 5,
-        min:5,
+        tickInterval: 5,
+        tickAmount: 1,
+        min:0,
         title: {
             text: 'KL'
         }

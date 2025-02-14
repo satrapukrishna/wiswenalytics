@@ -24,21 +24,7 @@
 	</thead>
 	<tbody>
 		
-	<tr ><td colspan='<?php echo 3+count($energydata['undp'][0][0]['data']) ?>' style="text-align: center; font-weight: bold;">AC Plant Room</td></tr>
-	<?php for($j=0;$j<count($energydata['undp']);$j++){ 
-			for($i=0;$i<count($energydata['undp'][$j]);$i++){?>
-				<tr>
-					<?php if($i==0){ ?>
-					<td rowspan="24"><?php echo $j+1; ?></td>
-					<td rowspan="24"><?php echo $energydata['undp'][$j][$i]['meter']; ?></td>
-					<?php }?>
-					
-					<td ><?php echo $energydata['undp'][$j][$i]['date']; ?></td>
-					<?php for($j1=0;$j1<count($energydata['undp'][$j][$i]['data']);$j1++){
-					echo '<td>'. $energydata['undp'][$j][$i]['data'][$j1]['consumption'].'</td>';}
-					echo '</tr>';
-				}
-			}?>
+	
 		<tr ><td colspan="4" style="text-align: center; font-weight: bold;">UN House Central Wing</td></tr>
 		<?php for($j=0;$j<count($energydata['uncw']);$j++){ 
 			for($i=0;$i<count($energydata['uncw'][$j]);$i++){?>
@@ -81,20 +67,7 @@
 					echo '</tr>';
 				}
 			}?>	
-		<tr ><td colspan="4" style="text-align: center; font-weight: bold;">UN House  West Wing</td></tr>
-		<?php for($j=0;$j<count($energydata['unww']);$j++){ 
-			for($i=0;$i<count($energydata['unww'][$j]);$i++){?>
-				<tr>
-					<?php if($i==0){ ?>
-					<td rowspan="24"><?php echo $j+1; ?></td>
-					<td rowspan="24"><?php echo $energydata['unww'][$j][$i]['meter']; ?></td>
-					<?php }?>
-					<td ><?php echo $energydata['unww'][$j][$i]['date']; ?></td>
-					<?php for($j1=0;$j1<count($energydata['unww'][$j][$i]['data']);$j1++){
-					echo '<td>'. $energydata['unww'][$j][$i]['data'][$j1]['consumption'].'</td>';}
-					echo '</tr>';
-				}
-			}?>
+		
 			<?php if(isset($energydata['unsg'])){ ?>
 				<tr ><td colspan="4" style="text-align: center; font-weight: bold;">Security Gate</td></tr>
 				<?php for($j=0;$j<count($energydata['unsg']);$j++){ 
@@ -126,7 +99,36 @@
 						echo '</tr>';
 					}
 				}?>	
-			<?php } ?>			
+			<?php } ?>
+			<tr ><td colspan='<?php echo 3+count($energydata['undp'][0][0]['data']) ?>' style="text-align: center; font-weight: bold;">AC Plant Room</td></tr>
+	<?php for($j=0;$j<count($energydata['undp']);$j++){ 
+			for($i=0;$i<count($energydata['undp'][$j]);$i++){?>
+				<tr>
+					<?php if($i==0){ ?>
+					<td rowspan="24"><?php echo $j+1; ?></td>
+					<td rowspan="24"><?php echo $energydata['undp'][$j][$i]['meter']; ?></td>
+					<?php }?>
+					
+					<td ><?php echo $energydata['undp'][$j][$i]['date']; ?></td>
+					<?php for($j1=0;$j1<count($energydata['undp'][$j][$i]['data']);$j1++){
+					echo '<td>'. $energydata['undp'][$j][$i]['data'][$j1]['consumption'].'</td>';}
+					echo '</tr>';
+				}
+			}?>
+			<tr ><td colspan="4" style="text-align: center; font-weight: bold;">UN House  West Wing</td></tr>
+		<?php for($j=0;$j<count($energydata['unww']);$j++){ 
+			for($i=0;$i<count($energydata['unww'][$j]);$i++){?>
+				<tr>
+					<?php if($i==0){ ?>
+					<td rowspan="24"><?php echo $j+1; ?></td>
+					<td rowspan="24"><?php echo $energydata['unww'][$j][$i]['meter']; ?></td>
+					<?php }?>
+					<td ><?php echo $energydata['unww'][$j][$i]['date']; ?></td>
+					<?php for($j1=0;$j1<count($energydata['unww'][$j][$i]['data']);$j1++){
+					echo '<td>'. $energydata['unww'][$j][$i]['data'][$j1]['consumption'].'</td>';}
+					echo '</tr>';
+				}
+			}?>
 	</tbody>
 </table>
 	<?php }else{?>
@@ -151,21 +153,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<tr ><td colspan="4" style="text-align: center; font-weight: bold;">AC Plant Room</td></tr>
-	<?php for($j=0;$j<count($energydata['undp']);$j++){ ?>
-		<tr>
-		<?php
-			for($i=0;$i<count($energydata['undp'][$j]);$i++){?>
-				
-					<?php if($i==0){ ?>
-					<td ><?php echo $j+1; ?></td>
-					<td ><?php echo $energydata['undp'][$j][$i]['meter']; ?></td>
-					<?php }?>
-					<td ><?php echo $energydata['undp'][$j][$i]['consumption']; ?></td>
-					<?php }
-					echo '</tr>';
-			
-			}?>	
+	
 	<tr ><td colspan="4" style="text-align: center; font-weight: bold;">UN House Central Wing</td></tr>
 	<?php for($j=0;$j<count($energydata['uncw']);$j++){ ?>
 		<tr>
@@ -211,21 +199,7 @@
 					echo '</tr>';
 			
 			}?>	
-	<tr ><td colspan="4" style="text-align: center; font-weight: bold;">UN House  West Wing</td></tr>
-	<?php for($j=0;$j<count($energydata['unww']);$j++){ ?>
-		<tr>
-		<?php
-			for($i=0;$i<count($energydata['unww'][$j]);$i++){?>
-				
-					<?php if($i==0){ ?>
-					<td ><?php echo $j+1; ?></td>
-					<td ><?php echo $energydata['unww'][$j][$i]['meter']; ?></td>
-					<?php }?>
-					<td ><?php echo $energydata['unww'][$j][$i]['consumption']; ?></td>
-					<?php }
-					echo '</tr>';
-			
-			}?>	
+	
 	<tr ><td colspan="4" style="text-align: center; font-weight: bold;">Security Gate</td></tr>
 	<?php for($j=0;$j<count($energydata['unsg']);$j++){ ?>
 		<tr>
@@ -252,6 +226,36 @@
 					<td ><?php echo $energydata['unab'][$j][$i]['meter']; ?></td>
 					<?php }?>
 					<td ><?php echo $energydata['unab'][$j][$i]['consumption']; ?></td>
+					<?php }
+					echo '</tr>';
+			
+			}?>	
+	<tr ><td colspan="4" style="text-align: center; font-weight: bold;">AC Plant Room</td></tr>
+	<?php for($j=0;$j<count($energydata['undp']);$j++){ ?>
+		<tr>
+		<?php
+			for($i=0;$i<count($energydata['undp'][$j]);$i++){?>
+				
+					<?php if($i==0){ ?>
+					<td ><?php echo $j+1; ?></td>
+					<td ><?php echo $energydata['undp'][$j][$i]['meter']; ?></td>
+					<?php }?>
+					<td ><?php echo $energydata['undp'][$j][$i]['consumption']; ?></td>
+					<?php }
+					echo '</tr>';
+			
+			}?>	
+	<tr ><td colspan="4" style="text-align: center; font-weight: bold;">UN House  West Wing</td></tr>
+	<?php for($j=0;$j<count($energydata['unww']);$j++){ ?>
+		<tr>
+		<?php
+			for($i=0;$i<count($energydata['unww'][$j]);$i++){?>
+				
+					<?php if($i==0){ ?>
+					<td ><?php echo $j+1; ?></td>
+					<td ><?php echo $energydata['unww'][$j][$i]['meter']; ?></td>
+					<?php }?>
+					<td ><?php echo $energydata['unww'][$j][$i]['consumption']; ?></td>
 					<?php }
 					echo '</tr>';
 			

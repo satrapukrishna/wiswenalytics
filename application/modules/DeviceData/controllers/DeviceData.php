@@ -13,6 +13,303 @@ class DeviceData extends MX_Controller
 		
 	}
 
+function getHCUG0036DataLive(){
+
+	$ProtechToken = $this->getAccessToken();
+	$data = [
+		"StoreCode" => '0036',
+		"UserId" => 'Wenalytics',
+		"QueryDate" => date('d/m/Y'),
+		"Type" => "TXN"
+	];
+	$headers =
+		['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+	
+	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+	$data = json_decode($Result);
+	
+	$latestEntryTime=$this->Device_model->getTxnTime(date("Y-m-d"),'hardware_station_consumption_data_hcug_live',2024000073);
+	
+	if(count($latestEntryTime) === 0){
+		$lastTxnTime="00:00:00";
+	}else{
+		$lastTxnTime=$latestEntryTime[0]['TxnTime'];
+	}
+	// print_r($lastTxnTime);die(); 
+	$latestEntries = [];
+	// Loop through the array of objects$AccessToken[0]['expiry_date']
+	foreach ($data as $entry) {
+		
+		// Convert TxnTime to a DateTime object for comparison
+		$txnTime = new DateTime(date('Y-m-d') . ' ' . $entry->TxnTime);
+		// echo $txnTime;die();
+		$existingTxnTime = new DateTime(date('Y-m-d') . ' ' . $lastTxnTime);
+		// echo $existingTxnTime;die();
+			if ($txnTime > $existingTxnTime && $entry->UtilityId==151 && $entry->LineConnected=='Unit Status') {
+				// $latestEntries[] = $entry;
+				$this->Device_model->pushHcugApiData($entry);
+			}
+	
+	}
+		
+}
+function getHCUGDataLive(){
+
+	$ProtechToken = $this->getAccessToken();
+	$data = [
+		"StoreCode" => 'HCUG',
+		"UserId" => 'Wenalytics',
+		"QueryDate" => date('d/m/Y'),
+		"Type" => "TXN"
+	];
+	$headers =
+		['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+	
+	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+	$data = json_decode($Result);
+	
+	$latestEntryTime=$this->Device_model->getTxnTime(date("Y-m-d"),'hardware_station_consumption_data_hcug_live',2024000074);
+	
+	if(count($latestEntryTime) === 0){
+		$lastTxnTime="00:00:00";
+	}else{
+		$lastTxnTime=$latestEntryTime[0]['TxnTime'];
+	}
+	// print_r($lastTxnTime);die(); 
+	$latestEntries = [];
+	// Loop through the array of objects$AccessToken[0]['expiry_date']
+	foreach ($data as $entry) {
+		// Convert TxnTime to a DateTime object for comparison
+		$txnTime = new DateTime(date('Y-m-d') . ' ' . $entry->TxnTime);
+		// echo $txnTime;die();
+		$existingTxnTime = new DateTime(date('Y-m-d') . ' ' . $lastTxnTime);
+		// echo $existingTxnTime;die();
+			if ($txnTime > $existingTxnTime && $entry->UtilityId==144 && $entry->LineConnected=='Unit Status') {
+				// $latestEntries[] = $entry;
+				$this->Device_model->pushHcugApiData($entry);
+			}
+	
+	}
+		
+}
+function getUnichefDataLive(){
+
+	$ProtechToken = $this->getAccessToken();
+	$data = [
+		"StoreCode" => 'UCDL',
+		"UserId" => 'Wenalytics',
+		"QueryDate" => date('d/m/Y'),
+		"Type" => "TXN"
+	];
+	$headers =
+		['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+	
+	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+	$data = json_decode($Result);
+	
+	$latestEntryTime=$this->Device_model->getTxnTime(date("Y-m-d"),'hardware_station_consumption_data__unicef_live',2024000527);
+	
+	if(count($latestEntryTime) === 0){
+		$lastTxnTime="00:00:00";
+	}else{
+		$lastTxnTime=$latestEntryTime[0]['TxnTime'];
+	}
+	// print_r($lastTxnTime);die(); 
+	$latestEntries = [];
+	// Loop through the array of objects$AccessToken[0]['expiry_date']
+	foreach ($data as $entry) {
+		
+		// Convert TxnTime to a DateTime object for comparison
+		$txnTime = new DateTime(date('Y-m-d') . ' ' . $entry->TxnTime);
+		// echo $txnTime;die();
+		$existingTxnTime = new DateTime(date('Y-m-d') . ' ' . $lastTxnTime);
+		// echo $existingTxnTime;die();
+			if ($txnTime > $existingTxnTime) {
+				// $latestEntries[] = $entry;
+				$this->Device_model->pushUnicefDataLive($entry);
+			}
+	
+	}
+		
+}
+function getUnichefData(){
+
+	$ProtechToken = $this->getAccessToken();
+	$yesterDay = date('d/m/Y',strtotime("-1 days"));
+	$data = [
+		"StoreCode" => 'UCDL',
+		"UserId" => 'Wenalytics',
+		"QueryDate" => $yesterDay,
+		"Type" => "TXN"
+	];
+	$headers =
+		['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+	
+	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+	$data = json_decode($Result);
+	
+	// print_r($lastTxnTime);die(); 
+	$latestEntries = [];
+	// Loop through the array of objects$AccessToken[0]['expiry_date']
+	foreach ($data as $entry) {
+		
+				// $latestEntries[] = $entry;
+				$this->Device_model->pushUnicefData($entry);
+			
+	
+	}
+		
+}
+function getCliffDataLive(){
+
+	$ProtechToken = $this->getAccessToken();
+	$data = [
+		"StoreCode" => '0001',
+		"UserId" => 'Wenalytics',
+		"QueryDate" => date('d/m/Y'),
+		"Type" => "TXN"
+	];
+	$headers =
+		['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+	
+	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+	$data = json_decode($Result);
+	
+	$latestEntryTime=$this->Device_model->getTxnTime(date("Y-m-d"),'hardware_station_consumption_data_lonavala_live',2021000046);
+	
+	if(count($latestEntryTime) === 0){
+		$lastTxnTime="00:00:00";
+	}else{
+		$lastTxnTime=$latestEntryTime[0]['TxnTime'];
+	}
+	// print_r($lastTxnTime);die(); 
+	$latestEntries = [];
+	// Loop through the array of objects$AccessToken[0]['expiry_date']
+	foreach ($data as $entry) {
+		
+		// Convert TxnTime to a DateTime object for comparison
+		$txnTime = new DateTime(date('Y-m-d') . ' ' . $entry->TxnTime);
+		// echo $txnTime;die();
+		$existingTxnTime = new DateTime(date('Y-m-d') . ' ' . $lastTxnTime);
+		// echo $existingTxnTime;die();
+			if ($txnTime > $existingTxnTime) {
+				// $latestEntries[] = $entry;
+				$this->Device_model->pushCliffDataLive($entry);
+			}
+	
+	}
+		
+}
+function getCliffData(){
+
+	$ProtechToken = $this->getAccessToken();
+	$yesterDay = date('d/m/Y',strtotime("-1 days"));
+	$data = [
+		"StoreCode" => '0001',
+		"UserId" => 'Wenalytics',
+		"QueryDate" => $yesterDay,
+		"Type" => "TXN"
+	];
+	$headers =
+		['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+	
+	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+	$data = json_decode($Result);
+	
+	// print_r($lastTxnTime);die(); 
+	$latestEntries = [];
+	// Loop through the array of objects$AccessToken[0]['expiry_date']
+	foreach ($data as $entry) {
+		
+				// $latestEntries[] = $entry;
+				$this->Device_model->pushCliffData($entry);
+			
+	
+	}
+		
+}
+function getUndpData(){
+
+	$date_from = strtotime("2024-11-15"); 
+	$date_to = strtotime("2024-11-16"); 
+	$datesarray=array();
+	
+	
+	for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+	{
+	  array_push($datesarray, date("Y-m-d",$i1));  
+	}
+	$ProtechToken = $this->getAccessToken();
+	for ($k=0; $k < count($datesarray); $k++)
+			{
+				$yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
+				$data = [
+					"StoreCode" => 'UNDP',
+					"UserId" => 'Wenalytics',
+					"QueryDate" => $yesterDay,
+					"Type" => "TXN"
+				];
+				$headers =
+					['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+				
+				$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+				$data = json_decode($Result);
+				
+				// print_r($data);die(); 
+				$latestEntries = [];
+				// Loop through the array of objects$AccessToken[0]['expiry_date']
+				foreach ($data as $entry) {
+					
+							// $latestEntries[] = $entry;
+							$this->Device_model->pushUndpData($entry);
+						
+				
+				}
+			}
+	
+		
+}
+function getMumbaiDataDates(){
+
+	$date_from = strtotime("2025-01-01"); 
+	$date_to = strtotime("2025-02-10"); 
+	$datesarray=array();
+	
+	
+	for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+	{
+	  array_push($datesarray, date("Y-m-d",$i1));  
+	}
+	$ProtechToken = $this->getAccessToken();
+	for ($k=0; $k < count($datesarray); $k++)
+			{
+				$yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
+				$data = [
+					"StoreCode" => '0003',
+					"UserId" => 'Wenalytics',
+					"QueryDate" => $yesterDay,
+					"Type" => "TXN"
+				];
+				$headers =
+					['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+				
+				$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+				$data = json_decode($Result);
+				
+				// print_r($data);die(); 
+				$latestEntries = [];
+				// Loop through the array of objects$AccessToken[0]['expiry_date']
+				foreach ($data as $entry) {
+					
+							// $latestEntries[] = $entry;
+							$this->Device_model->pushMumbaiDataDates($entry);
+						
+				
+				}
+			}
+	
+		
+}
 function getChennaiData(){
 
 	$ProtechToken = $this->getAccessToken();
@@ -28,7 +325,7 @@ function getChennaiData(){
 	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
 	$data = json_decode($Result);
 	
-	$latestEntryTime=$this->Device_model->getTxnTime(date("Y-m-d"),'hardware_station_consumption_data_chennai');
+	$latestEntryTime=$this->Device_model->getTxnTime(date("Y-m-d"),'hardware_station_consumption_data_chennai',2021000067);
 	
 	if(count($latestEntryTime) === 0){
 		$lastTxnTime="00:00:00";
@@ -53,9 +350,10 @@ function getChennaiData(){
 	}
 		
 }
-function getMumbaiData(){
-
+function getMumbaiDataLive(){
+	// echo "k";die();
 	$ProtechToken = $this->getAccessToken();
+	// echo $ProtechToken;die();
 	$data = [
 		"StoreCode" => '0003',
 		"UserId" => 'Wenalytics',
@@ -67,15 +365,15 @@ function getMumbaiData(){
 	
 	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
 	$data = json_decode($Result);
-	
-	$latestEntryTime=$this->Device_model->getTxnTime(date("Y-m-d"),'hardware_station_consumption_data_chennai');
+	// print_r($data);die();
+	$latestEntryTime=$this->Device_model->getTxnTime(date("Y-m-d"),'hardware_station_consumption_data_mumbai_live',2021000076);
 	
 	if(count($latestEntryTime) === 0){
 		$lastTxnTime="00:00:00";
 	}else{
 		$lastTxnTime=$latestEntryTime[0]['TxnTime'];
 	}
-	// print_r($lastTxnTime);die(); 
+	// print_r($data);die(); 
 	$latestEntries = [];
 	// Loop through the array of objects$AccessToken[0]['expiry_date']
 	foreach ($data as $entry) {
@@ -86,8 +384,36 @@ function getMumbaiData(){
 		// echo $existingTxnTime;die();
 			if ($txnTime > $existingTxnTime) {
 				// $latestEntries[] = $entry;
-				$this->Device_model->pushApiDataMumbai($entry);
+				$this->Device_model->pushApiDataMumbaiLive($entry);
 			}
+	
+	}
+		
+}
+function getMumbaiData(){
+
+	$ProtechToken = $this->getAccessToken();
+	$yesterDay = date('d/m/Y',strtotime("-1 days"));
+	$data = [
+		"StoreCode" => '0003',
+		"UserId" => 'Wenalytics',
+		"QueryDate" => $yesterDay,
+		"Type" => "TXN"
+	];
+	$headers =
+		['Content-Type: application/json', 'Authorization: Bearer ' . $ProtechToken];
+	
+	$Result = $this->CallProtechAPI('https://protechservice.in/ClientDataService/api/ConsumptionData', $data, $headers);
+	$data = json_decode($Result);
+	
+	// print_r($lastTxnTime);die(); 
+	$latestEntries = [];
+	// Loop through the array of objects$AccessToken[0]['expiry_date']
+	foreach ($data as $entry) {
+		
+				// $latestEntries[] = $entry;
+				$this->Device_model->pushApiDataMumbai($entry);
+			
 	
 	}
 		

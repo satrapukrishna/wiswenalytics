@@ -5686,7 +5686,7 @@ span.TbHldr.Ongoing .VluNmb{
 }
 .GrphTblDv.Ht{
     max-height: 250px !important; 
-    padding: 15px;
+    padding: 0 15px 15px 15px;
 }
 .GrphHldr.Brcht{
     height: 300px !important;

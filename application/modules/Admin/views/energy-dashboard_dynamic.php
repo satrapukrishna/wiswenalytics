@@ -817,7 +817,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<?php }else{ ?>
 							<li><div class="ClLft">EB Supply</div><div class="ClRgt">
                         
-                            <span class="status-off">OFF</span>
+                            <span class="status-off">NA</span>
                                       
                         </div></li>
 							<?php }?>
@@ -831,7 +831,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<?php }else{ ?>
 							<li><div class="ClLft">DG Supply</div><div class="ClRgt">
                         
-                            <span class="status-off">OFF</span>
+                            <span class="status-off">NA</span>
                                       
                         </div></li>
 							<?php }?>

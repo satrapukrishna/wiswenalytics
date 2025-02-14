@@ -12,12 +12,28 @@ class SMSController extends MX_Controller {
 
 	}
 function testsms(){
-	$message="DG:: Fuel Added 56 Liters on 9:7
-	From WISIOT";
 
-							// echo $message;
-							$mobile="9959451265";
-							smssend( $mobile, $message );
+	$message="DG:: Fuel Added 56 Liters on 9:7
+	From WISSPACES";
+	$phone=[9959451265,8096978559];
+	$datachennai = array("Text" => $message, "Numbers" => $phone,"SenderId" => "WISSPACES","DRNotifyHttpMethod" => "POST","Tool" => "API");     
+						  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://restapi.smscountry.com/v0.1/Accounts/authKey/BulkSMSes/');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer bERtSDZrZkFTa2tYQ1EydUFRQ2QgQU5kOmNlRllQcnRScFJHek1qRTVhT2VRdzFQcnNyTHVEbEh5R0NXU2NMTmo='                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	
+var_dump($result_chennai);
+
+
 }
 	function PumpOnOffAlert(){
 		$clients=$this->Sms_model->get_clients();

@@ -1,11 +1,6 @@
 <?php //echo json_encode($energydata);die(); ?>
 <span class="SctnTtl">Energy Consumption Graph Report</span>
-<span class="SctnTtl">AC Plant Room</span>
-<?php for($p=0;$p<count($energydata['undp']);$p++){ ?>
-    <div class="GrphMnHldr EnrgyCnsmptn">
-        <div class="GrphDv" id="energycontainerundp<?php echo $p; ?>" ></div>
-    </div>
-<?php }?>
+
 <span class="SctnTtl">UN House Central Wing</span>
 <?php for($p=0;$p<count($energydata['uncw']);$p++){ ?>
     <div class="GrphMnHldr EnrgyCnsmptn">
@@ -24,12 +19,7 @@
         <div class="GrphDv" id="energycontainerunff<?php echo $p; ?>" ></div>
     </div>
 <?php }?>
-<span class="SctnTtl">UN House  West Wing</span>
-<?php for($p=0;$p<count($energydata['unww']);$p++){ ?>
-    <div class="GrphMnHldr EnrgyCnsmptn">
-        <div class="GrphDv" id="energycontainerunww<?php echo $p; ?>" ></div>
-    </div>
-<?php }?>
+
 <span class="SctnTtl">Security Gate</span>
 <?php for($p=0;$p<count($energydata['unsg']);$p++){ ?>
     <div class="GrphMnHldr EnrgyCnsmptn">
@@ -42,7 +32,18 @@
         <div class="GrphDv" id="energycontainerunab<?php echo $p; ?>" ></div>
     </div>
 <?php }?>
-
+<span class="SctnTtl">AC Plant Room</span>
+<?php for($p=0;$p<count($energydata['undp']);$p++){ ?>
+    <div class="GrphMnHldr EnrgyCnsmptn">
+        <div class="GrphDv" id="energycontainerundp<?php echo $p; ?>" ></div>
+    </div>
+<?php }?>
+<span class="SctnTtl">UN House  West Wing</span>
+<?php for($p=0;$p<count($energydata['unww']);$p++){ ?>
+    <div class="GrphMnHldr EnrgyCnsmptn">
+        <div class="GrphDv" id="energycontainerunww<?php echo $p; ?>" ></div>
+    </div>
+<?php }?>
 
 <script>
     <?php if($energydata['undp'][0][0]['sort']==2){ ?>

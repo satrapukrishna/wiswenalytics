@@ -263,7 +263,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 		</div>
 		
 		
-		<?php if(modules::run('Admin_demo/Site/authlink','water_Water-Level')){ ?>
+		<?php if(modules::run('Admin/Site/authlink','water_Water-Level')){ ?>
 		<!-- Bore Wells code starts -->
             <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="water">
@@ -375,13 +375,14 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 				</div>
             <!-- Bore Wells code ends -->
             <?php } ?>
-            <?php if(modules::run('Admin_demo/Site/authlink','water_linepressure')){ ?>
+            <?php if(modules::run('Admin/Site/authlink','water_Line-Pressure')){ ?>
 			<div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="line">
                     <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/demoforall/Images/line.png" width="40" />LINE PRESSURE</span>
                     <?php /*<span class="SctnVw Cllps" id="fpcollapse"></span>*/?>
                     <span class="SctnVw Cllps dev"onclick="device1(558)" id="device558"></span>                </div>
-                
+                    <?php for ($i=0; $i < count($linepressure_data); $i++) 
+         				 {?>
 				<div class="DshBrdSctnDtls device devicebox558"  style="background-color:#fff;border-bottom: 1px solid #d0cfcf;padding:10px">
 				<h4 class="head-h4">Line Pressure - 1</h4>
                     
@@ -424,185 +425,66 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					
                       
                 </div>
+                <?php }?>
             </div>
 			<!-- BTU code starts -->
 			<?php } ?>
-            <?php if(modules::run('Admin_demo/Site/authlink','water_motorrunninghours')){ ?>
-            <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
-                <div class="DshBrdSctnTtl" id="motor">
-                    <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/demoforall/Images/motor-c.png" width="40" />MOTOR MONITORING</span>
-					
-                    <?php /*<span class="SctnVw Cllps" id="Bwcollapse"></span>*/?>
-					<span class="SctnVw Cllps dev" onclick="device(556)" id="device556"></span>
-					
-					
+            <?php if(modules::run('Admin/Site/authlink','water_Motor-Monitoring')){ ?>
+                <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
+                    <div class="DshBrdSctnTtl" id="fmetr">
+                    <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/images/Flow-Meter-Clr.png" width="40" />MOTOR MONITORING</span>
+                    <span class="SctnVw Cllps dev" onclick="device(556)" id="device556"></span>
+                   </div>
+                   <?php for ($i=0; $i < count($linepressure_data); $i++) 
+         				 {?>
+                   <div class="DshBrdSctnDtls device devicebox556" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;" id="devicebox556">
+                        <div class="bxslider556" id="bxid">
+                            <div class="bxslider556" id="bxid">
+                                <div style="width:320px">
+                                    <div class="SctnDtlsHldr">
+                                        <div class="SldrCntnr">
+                                            <div class="SctnDtls BorewellHldr">
+                                                <span class="SctnTtl">MOTOR 01 </span>
+                                                <ul class="SctnDtlsGrdTbl">
+                                                    <li>
+                                                        <div class="ClLft">Motor Status</div>
+                                                        <div class="ClRgt"><span class="status-on">ON</span></div>
+                                                    </li>
+                                                    <li><div class="ClLft">Today's Running Hours</div><div class="ClRgt">0</div></li>
+                                                    <li><div class="ClLft">Yesterday's Running Hours</div><div class="ClRgt">0</div></li>
+                                                    <li><div class="ClLft">Weekly Average Running Hours</div><div class="ClRgt">0</div></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="width:320px">
+                                    <div class="SctnDtlsHldr">
+                                        <div class="SldrCntnr">
+                                            <div class="SctnDtls BorewellHldr">
+                                                <span class="SctnTtl">MOTOR 02 </span>
+                                                <ul class="SctnDtlsGrdTbl">
+                                                    <li>
+                                                        <div class="ClLft">Motor Status</div>
+                                                        <div class="ClRgt"><span class="status-on">ON</span></div>
+                                                    </li>
+                                                    <li><div class="ClLft">Today's Running Hours</div><div class="ClRgt">0</div></li>
+                                                    <li><div class="ClLft">Yesterday's Running Hours</div><div class="ClRgt">0</div></li>
+                                                    <li><div class="ClLft">Weekly Average Running Hours</div><div class="ClRgt">0</div></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php }?>
                 </div>
-                
-				<div class="DshBrdSctnDtls device devicebox556" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;" id="devicebox556">
-				<div class="bxslider556" id="bxid">
-					
-					<div style="width:320px">
-					<div class="SctnDtlsHldr">
-					<div class="SldrCntnr">
-					<div class="SctnDtls BorewellHldr">
-					<span class="SctnTtl">MOTOR 01 </span>
-					<ul class="SctnDtlsGrdTbl">
-						<li><div class="ClLft">Motor Status</div><div class="ClRgt">
-                        
-                            <span class="status-on">ON</span>
-                                      
-                        </div></li>
-						<li><div class="ClLft">Today's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Yesterday's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Weekly Average Running Hours</div><div class="ClRgt">0</div></li>
-						
-						
-						<?php /*<li class="em1" data-toggle="modal" data-target="#myModal" style="background-color:#eee;cursor:pointer;"><div class="ClLft" >More Details </div><div class="ClRgt"></div></li>
-						<div class="em-disc4" style="display:none">
-						<li><div class="ClLft">CHW Outlet Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">CHW Delta Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">Present Load</div><div class="ClRgt">0.0 Kw</div></li>
-						<li><div class="ClLft">Volume Flow</div><div class="ClRgt">0.0 L/Hr</div></li>
-						</div>*/?>
-						
-					</ul>
-					</div>
-					</div>
-					</div>
-					</div>
-					
-					
-					
-					<div style="width:320px">
-					<div class="SctnDtlsHldr">
-					<div class="SldrCntnr">
-					<div class="SctnDtls BorewellHldr">
-					<span class="SctnTtl">MOTOR 02 </span>
-					<ul class="SctnDtlsGrdTbl">
-						<li><div class="ClLft">Motor Status</div><div class="ClRgt">
-                        
-                                    <span class="status-off">OFF</span>
-                                   
-                        </div></li>
-						<li><div class="ClLft">Today's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Yesterday's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Weekly Average Running Hours</div><div class="ClRgt">0</div></li>
-						
-						<?php /*
-						<li class="em1" data-toggle="modal" data-target="#myModal" style="background-color:#eee;cursor:pointer;"><div class="ClLft" >More Details </div><div class="ClRgt"></div></li>
-						<div class="em-disc4" style="display:none">
-						<li><div class="ClLft">CHW Outlet Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">CHW Delta Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">Present Load</div><div class="ClRgt">0.0 Kw</div></li>
-						<li><div class="ClLft">Volume Flow</div><div class="ClRgt">0.0 L/Hr</div></li>
-						</div>*/?>
-						
-					</ul>
-					</div>
-					</div>
-					</div>
-					</div>
-
-					<div style="width:320px">
-					<div class="SctnDtlsHldr">
-					<div class="SldrCntnr">
-					<div class="SctnDtls BorewellHldr">
-					<span class="SctnTtl">MOTOR 03 </span>
-					<ul class="SctnDtlsGrdTbl">
-						<li><div class="ClLft">Motor Status</div><div class="ClRgt">
-                       
-                                        <span class="status-on">ON</span>
-                                       
-                        </div></li>
-						<li><div class="ClLft">Today's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Yesterday's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Weekly Average Running Hours</div><div class="ClRgt">0</div></li>
-						
-						<?php /*
-						<li class="em1" data-toggle="modal" data-target="#myModal" style="background-color:#eee;cursor:pointer;"><div class="ClLft" >More Details </div><div class="ClRgt"></div></li>
-						<div class="em-disc4" style="display:none">
-						<li><div class="ClLft">CHW Outlet Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">CHW Delta Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">Present Load</div><div class="ClRgt">0.0 Kw</div></li>
-						<li><div class="ClLft">Volume Flow</div><div class="ClRgt">0.0 L/Hr</div></li>
-						</div>*/?>
-						
-					</ul>
-					</div>
-					</div>
-					</div>
-					</div>
-
-					<div style="width:320px">
-					<div class="SctnDtlsHldr">
-					<div class="SldrCntnr">
-					<div class="SctnDtls BorewellHldr">
-					<span class="SctnTtl">MOTOR 04 </span>
-					<ul class="SctnDtlsGrdTbl">
-						<li><div class="ClLft">Motor Status</div><div class="ClRgt">
-                       
-                                    <span class="status-off">OFF</span>
-                                    
-                        </div></li>
-						<li><div class="ClLft">Today's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Yesterday's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Weekly Average Running Hours</div><div class="ClRgt">0</div></li>
-						
-						<?php /*
-						<li class="em1" data-toggle="modal" data-target="#myModal" style="background-color:#eee;cursor:pointer;"><div class="ClLft" >More Details </div><div class="ClRgt"></div></li>
-						<div class="em-disc4" style="display:none">
-						<li><div class="ClLft">CHW Outlet Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">CHW Delta Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">Present Load</div><div class="ClRgt">0.0 Kw</div></li>
-						<li><div class="ClLft">Volume Flow</div><div class="ClRgt">0.0 L/Hr</div></li>
-						</div>*/?>
-						
-					</ul>
-					</div>
-					</div>
-					</div>
-					</div>
-					<div style="width:320px">
-					<div class="SctnDtlsHldr">
-					<div class="SldrCntnr">
-					<div class="SctnDtls BorewellHldr">
-					<span class="SctnTtl">MOTOR 05 </span>
-					<ul class="SctnDtlsGrdTbl">
-						<li><div class="ClLft">Motor Status</div><div class="ClRgt">
-                       
-                                        <span class="status-on">ON</span>
-                                      
-                        </div></li>
-						<li><div class="ClLft">Today's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Yesterday's Running Hours</div><div class="ClRgt">0</div></li>
-						<li><div class="ClLft">Weekly Average Running Hours</div><div class="ClRgt">0</div></li>
-						
-						<?php /*
-						<li class="em1" data-toggle="modal" data-target="#myModal" style="background-color:#eee;cursor:pointer;"><div class="ClLft" >More Details </div><div class="ClRgt"></div></li>
-						<div class="em-disc4" style="display:none">
-						<li><div class="ClLft">CHW Outlet Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">CHW Delta Temperature</div><div class="ClRgt">0.0 &#8451;</div></li>
-						<li><div class="ClLft">Present Load</div><div class="ClRgt">0.0 Kw</div></li>
-						<li><div class="ClLft">Volume Flow</div><div class="ClRgt">0.0 L/Hr</div></li>
-						</div>*/?>
-						
-					</ul>
-					</div>
-					</div>
-					</div>
-					</div>
-					
-				</div>
-                   
-                </div>
-				
-				
-
-            </div>
             <!-- Bore Wells code ends -->
             <?php } ?>
            
-            <?php if(modules::run('Admin_demo/Site/authlink','flow_meter')){ ?>
+            <?php if(modules::run('Admin/Site/authlink','flow_meter')){ ?>
             <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="fmetr">
                     <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/images/Flow-Meter-Clr.png" width="40" />Flow Meter</span>
@@ -660,7 +542,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 
             </div>
             <?php } ?>
-            <?php if(modules::run('Admin_demo/Site/authlink','water_Water-Meter')){ ?>
+            <?php if(modules::run('Admin/Site/authlink','water_Water-Meter')){ ?>
              <!-- water meter -->
             <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="water_meter">
@@ -685,7 +567,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
             </div>
             <!-- water meter ends -->
 			<?php } ?>
-            <?php if(modules::run('Admin_demo/Site/authlink','water_Firepump')){ ?>
+            <?php if(modules::run('Admin/Site/authlink','water_Firepump')){ ?>
 			<!-- Fire pump code starts -->
 			
 			<div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
@@ -849,6 +731,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 							</div>
 							
 							<div class="DGCol-2">
+                                <div><?php echo $firepump_data['Phase-1 Fire Pump System']['dg_data']['filledper'] ?>%</div>
 							<div class="LiquidTank2 Smll">
 							
                             <div class="Liquid2 l-<?php echo $firepump_data['Phase-1 Fire Pump System']['dg_data']['filledper'] ?>" ></div>
@@ -857,6 +740,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 							</div> 
 							
 							<div class="DGCol-3"> 
+                                <div style="margin-bottom:15px;"></div>
                                  <span class="wtTxt"><b>Diesel Tank Level</b></span>
 							<div class="LiquidTank Smll">
 							<div class="Liquid Low"></div>
@@ -1011,7 +895,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
             </div>
             <!-- Fire pump code ends -->
             <?php } ?>
-            <?php if(modules::run('Admin_demo/Site/authlink','water_Firepump1')){ ?>
+            <?php if(modules::run('Admin/Site/authlink','water_Firepump1')){ ?>
 			<!-- Fire pump code starts -->
 			
 			<div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
@@ -1167,6 +1051,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 							</div>
 							
 							<div class="DGCol-2">
+                                <div><?php echo $firepump_data['Phase-2 Fire Pump System']['dg_data']['filledper'] ?>%</div>
 							<div class="LiquidTank2 Smll">
 							
 								<div class="Liquid2 l-<?php echo $firepump_data['Phase-2 Fire Pump System']['dg_data']['filledper'] ?>" ></div>
@@ -1175,6 +1060,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 							</div> 
 							
 							<div class="DGCol-3"> 
+                            <div style="margin-bottom:15px;"></div>
                                 <span class="wtTxt"><b>Diesel Tank Level</b></span>
 							<div class="LiquidTank Smll">
 							<div class="Liquid Low"></div>
@@ -1211,9 +1097,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 						<div class="LiquidTank Smll">
 						<?php 
 							/*$total_level=$rec['Volume'];*/
-							//$total_level=200;
-							//$avial_level=$water_level_sen->Consumption;
-							//$level=($avial_level/$total_level)*100;
+							// $total_level=200;
+							// $avial_level=$water_level_sen->Consumption;
+							// $level=($avial_level/$total_level)*100;
 							// $fuel=40;
 							?>
 								<div class="Liquid Liquidhigh l-80"></div>
@@ -1266,7 +1152,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 										<span class="Txt" id="">14.0CU.M/HR/2925RMP</span>
 									</td>
 									<td class="Col-3">
-										<span class="Txt" id="mhrs">6.0Kg/cm2</span>
+										<span class="Txt" id="mhrs">9Kg/cm2</span>
 									</td>
 									<td class="Col-4">
 										<span class="Txt" id="mhrht">7.0Kg/cm2</span>
@@ -1288,7 +1174,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 										<span class="Txt" id="">270CU.M/HR/2150RMP</span>
 									</td>
 									<td class="Col-3">
-										<span class="Txt" id="mhrs">4.0Kg/cm2</span>
+										<span class="Txt" id="mhrs">9Kg/cm2</span>
 									</td>
 									<td class="Col-4">
 										<span class="Txt" id="mhrht">5Kg/cm2</span>
@@ -1309,7 +1195,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
             </div>
             <!-- Fire pump code ends -->
             <?php } ?>
-			<?php if(modules::run('Admin_demo/Site/authlink','water_Hydro-Pnematic-System')){ ?>
+			<?php if(modules::run('Admin/Site/authlink','water_Hydro-Pnematic-System')){ ?>
 			<!-- Hydero phonematic start -->
 			<div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">          
                 <div class="DshBrdSctnTtl" id="hydro1">
@@ -1540,7 +1426,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
            
 			<!-- Hydro End -->
 			<?php } ?>
-            <?php if(modules::run('Admin_demo/Site/authlink','water_Borewells')){ ?>
+            <?php if(modules::run('Admin/Site/authlink','water_Borewells')){ ?>
             <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="borewell">
                     <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/demoforall/Images/motor-c.png" width="40" />Borewell Running Hours</span>
@@ -1641,7 +1527,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
             </div>
             <!-- Bore Wells code ends -->
             <?php } ?>
-			<?php if(modules::run('Admin_demo/Site/authlink','water_stp')){ ?>
+			<?php if(modules::run('Admin/Site/authlink','savege_plant')){ ?>
 			<!-- Ventilator start -->
              <div class="DshBrdSctn" style="padding: 10px 30px 25px 38px;">
                 <div class="DshBrdSctnTtl" id="stp">
@@ -1699,7 +1585,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
             </div>
             <!-- Ventilation End -->
 			<?php } ?>
-			<?php if(modules::run('Admin_demo/Site/authlink','water_boilers')){ ?>
+			<?php if(modules::run('Admin/Site/authlink','boiler')){ ?>
 			<!-- Boiler meter -->
             <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="boilers">
@@ -1727,8 +1613,8 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<ul class="SctnDtlsGrdTbl">
 						
 						<li><div class="ClLft">Set Temp.</div><div class="ClRgt">90 degree</div></li>
-						<li><div class="ClLft">Avg. Temp.</div><div class="ClRgt">86 degree</div></li>
-						<li><div class="ClLft">Avg.Energy Consum.</div><div class="ClRgt">69.02 kWh</div></li>
+						<li><div class="ClLft">Avg. Temp.</div><div class="ClRgt">90 degree</div></li>
+						<li><div class="ClLft">Avg.Energy Consum.</div><div class="ClRgt">300.02 Watt</div></li>
 
 						
 						
@@ -1750,8 +1636,8 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 						
 						
 						<li><div class="ClLft">Set Temp.</div><div class="ClRgt">-- degree</div></li>
-						<li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">82 degree</div></li>
-						<li><div class="ClLft">Avg.Energy Consum.</div><div class="ClRgt">70 kWh</div></li>
+						<li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">21 degree</div></li>
+						<li><div class="ClLft">Avg.Energy Consum.</div><div class="ClRgt">400 Watt</div></li>
 
 						
 						
@@ -1772,8 +1658,8 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<ul class="SctnDtlsGrdTbl">
 						
 						<li><div class="ClLft">Set Temp.</div><div class="ClRgt">90 degree</div></li>
-						<li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">87 degree</div></li>
-						<li><div class="ClLft">Avg.Energy Consum.</div><div class="ClRgt">65 kWh</div></li>
+						<li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degree</div></li>
+						<li><div class="ClLft">Avg.Energy Consum.</div><div class="ClRgt">800 Watts</div></li>
 
 						
 						
@@ -1794,8 +1680,8 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<ul class="SctnDtlsGrdTbl">
 						
 						<li><div class="ClLft">Set Temp.</div><div class="ClRgt">90 degree</div></li>
-						<li><div class="ClLft">Avg. Temp.</div><div class="ClRgt">83 degree</div></li>
-						<li><div class="ClLft">Avg.Energy Consum.</div><div class="ClRgt">69.02 kWh</div></li>
+						<li><div class="ClLft">Avg. Temp.</div><div class="ClRgt">90 degree</div></li>
+						<li><div class="ClLft">Avg.Energy Consum.</div><div class="ClRgt">300.02 Watt</div></li>
 
 						
 						
@@ -1814,7 +1700,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
             </div>
             <!-- Boiler meter ends -->
             <?php } ?>
-			<?php if(modules::run('Admin_demo/Site/authlink','water_watertankers')){ ?>
+			<?php if(modules::run('Admin/Site/authlink','hotwater')){ ?>
             <!-- Hotwater meter -->
             <div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="hot_water">
@@ -1839,7 +1725,7 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<span class="SctnTtl" style="line-height: 45px;">Tank 01 <img style="float:right"src="<?php echo site_url() ?>asset/admin/images/HotWaterTanks-Clr.png" width="60" /></span>
 					<ul class="SctnDtlsGrdTbl">
 						
-						<li><div class="ClLft">Current Temp</div><div class="ClRgt">88 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">82 degrees</div></li>
+						<li><div class="ClLft">Current Temp</div><div class="ClRgt">92 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degrees</div></li>
 						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3000 Ltrs</div></li>
 						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">800 PSI</div></li>
 
@@ -1859,9 +1745,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<span class="SctnTtl" style="line-height: 45px;">Tank 02 <img style="float:right"src="<?php echo site_url() ?>asset/admin/images/HotWaterTanks-Clr.png" width="60" /></span>
 					<ul class="SctnDtlsGrdTbl">
 						
-						<li><div class="ClLft">Current Temp</div><div class="ClRgt">86 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">80 degrees</div></li>
-						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3270 Ltrs</div></li>
-						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">802 PSI</div></li>
+						<li><div class="ClLft">Current Temp</div><div class="ClRgt">92 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degrees</div></li>
+						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3000 Ltrs</div></li>
+						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">800 PSI</div></li>
 
 						
 						
@@ -1879,9 +1765,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<span class="SctnTtl" style="line-height: 45px;">Tank 03 <img style="float:right"src="<?php echo site_url() ?>asset/admin/images/HotWaterTanks-Clr.png" width="60" /></span>
 					<ul class="SctnDtlsGrdTbl">
 						
-						<li><div class="ClLft">Current Temp</div><div class="ClRgt">85 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">81 degrees</div></li>
-						<li><div class="ClLft">Total Volume</div><div class="ClRgt">2900 Ltrs</div></li>
-						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">790 PSI</div></li>
+						<li><div class="ClLft">Current Temp</div><div class="ClRgt">92 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degrees</div></li>
+						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3000 Ltrs</div></li>
+						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">800 PSI</div></li>
 
 						
 						
@@ -1899,9 +1785,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<span class="SctnTtl" style="line-height: 45px;">Tank 04 <img style="float:right"src="<?php echo site_url() ?>asset/admin/images/HotWaterTanks-Clr.png" width="60" /></span>
 					<ul class="SctnDtlsGrdTbl">
 						
-						<li><div class="ClLft">Current Temp</div><div class="ClRgt">88 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">81 degrees</div></li>
-						<li><div class="ClLft">Total Volume</div><div class="ClRgt">2980 Ltrs</div></li>
-						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">769 PSI</div></li>
+						<li><div class="ClLft">Current Temp</div><div class="ClRgt">92 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degrees</div></li>
+						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3000 Ltrs</div></li>
+						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">800 PSI</div></li>
 
 						
 						
@@ -1930,9 +1816,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<span class="SctnTtl" style="line-height: 45px;">Tank 01 <img style="float:right"src="<?php echo site_url() ?>asset/admin/images/HotWaterTanks-Clr.png" width="60" /></span>
 					<ul class="SctnDtlsGrdTbl">
 						
-						<li><div class="ClLft">Current Temp</div><div class="ClRgt">89 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">86 degrees</div></li>
-						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3600 Ltrs</div></li>
-						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">830 PSI</div></li>
+						<li><div class="ClLft">Current Temp</div><div class="ClRgt">92 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degrees</div></li>
+						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3000 Ltrs</div></li>
+						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">800 PSI</div></li>
 
 						
 						
@@ -1950,9 +1836,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<span class="SctnTtl" style="line-height: 45px;">Tank 02 <img style="float:right"src="<?php echo site_url() ?>asset/admin/images/HotWaterTanks-Clr.png" width="60" /></span>
 					<ul class="SctnDtlsGrdTbl">
 						
-						<li><div class="ClLft">Current Temp</div><div class="ClRgt">84 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">79 degrees</div></li>
-						<li><div class="ClLft">Total Volume</div><div class="ClRgt">2876 Ltrs</div></li>
-						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">765 PSI</div></li>
+						<li><div class="ClLft">Current Temp</div><div class="ClRgt">92 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degrees</div></li>
+						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3000 Ltrs</div></li>
+						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">800 PSI</div></li>
 
 						
 						
@@ -1970,9 +1856,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<span class="SctnTtl" style="line-height: 45px;">Tank 03 <img style="float:right"src="<?php echo site_url() ?>asset/admin/images/HotWaterTanks-Clr.png" width="60" /></span>
 					<ul class="SctnDtlsGrdTbl">
 						
-						<li><div class="ClLft">Current Temp</div><div class="ClRgt">87 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">82 degrees</div></li>
-						<li><div class="ClLft">Total Volume</div><div class="ClRgt">2908 Ltrs</div></li>
-						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">790 PSI</div></li>
+						<li><div class="ClLft">Current Temp</div><div class="ClRgt">92 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degrees</div></li>
+						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3000 Ltrs</div></li>
+						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">800 PSI</div></li>
 
 						
 						
@@ -1990,9 +1876,9 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					<span class="SctnTtl" style="line-height: 45px;">Tank 04 <img style="float:right"src="<?php echo site_url() ?>asset/admin/images/HotWaterTanks-Clr.png" width="60" /></span>
 					<ul class="SctnDtlsGrdTbl">
 						
-						<li><div class="ClLft">Current Temp</div><div class="ClRgt">83 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">77 degrees</div></li>
-						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3242 Ltrs</div></li>
-						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">809 PSI</div></li>
+						<li><div class="ClLft">Current Temp</div><div class="ClRgt">92 degrees</div></li><li><div class="ClLft">Avg.Temp.</div><div class="ClRgt">90 degrees</div></li>
+						<li><div class="ClLft">Total Volume</div><div class="ClRgt">3000 Ltrs</div></li>
+						<li><div class="ClLft">Curr.Pressure</div><div class="ClRgt">800 PSI</div></li>
 
 						
 						
@@ -2206,11 +2092,11 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 <script src="https://code.highcharts.com/highcharts-more.js"></script>
 <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
 <script>
-     <?php if(modules::run('Admin_demo/Site/authlink','water_Water-Meter')){ ?>
+     <?php if(modules::run('Admin/Site/authlink','water_Water-Meter')){ ?>
 
         $.ajax({
         type: 'GET',
-        url: BASE_URL+'Admin_demo/Home/waterMeterData',
+        url: BASE_URL+'Admin/Home/waterMeterData',
         success: function (data){
 			append(data);
         }
@@ -2226,7 +2112,7 @@ content+='<div class="bxslider7">';
 					
 					
 				
-        content+='<div style="width:320px"><div class="SctnDtlsHldr"><div class="SldrCntnr"><div class="SctnDtls BorewellHldr"><span class="SctnTtl">'+json['water_meter_data'][i]["meter"]+' </span>					<ul class="SctnDtlsGrdTbl"><li><div class="ClLft">Todays Inflow</div><div class="ClRgt">'+json['water_meter_data'][i]["todayconsumption"]+'KL</div></li><li><div class="ClLft">Yesterday Inflow</div><div class="ClRgt">'+json['water_meter_data'][i]["yesterdayconsumption"]+'KL</div></li>                        <li><div class="ClLft">This Month`s Inflow</div><div class="ClRgt">'+Math.round(json['water_meter_data'][i]["monthly_consumption"])+'KL</div></li><li><div class="ClLft">Average/day</div><div class="ClRgt">'+json['water_meter_data'][i]["weeklyavg"]+'KL</div></li>						</ul>					</div>					</div>					</div>					</div> ';
+        content+='<div style="width:320px"><div class="SctnDtlsHldr"><div class="SldrCntnr"><div class="SctnDtls BorewellHldr"><span class="SctnTtl">'+json['water_meter_data'][i]["meter"]+' </span>					<ul class="SctnDtlsGrdTbl"><li><div class="ClLft">Todays Inflow</div><div class="ClRgt">'+json['water_meter_data'][i]["todayconsumption"]+'KL</div></li><li><div class="ClLft">Yesterday Inflow</div><div class="ClRgt">'+json['water_meter_data'][i]["yesterdayconsumption"]+'KL</div></li>                        <li><div class="ClLft">This Month`s Inflow</div><div class="ClRgt">'+json['water_meter_data'][i]["monthly_consumption"]+'KL</div></li><li><div class="ClLft">Average/day</div><div class="ClRgt">'+json['water_meter_data'][i]["weeklyavg"]+'KL</div></li>						</ul>					</div>					</div>					</div>					</div> ';
 
         // $("#bxid_data").append('<div style="width:320px"><div class="SctnDtlsHldr"><div class="SldrCntnr">					<div class="SctnDtls BorewellHldr"><span class="SctnTtl">'+json['water_meter_data'][i]["meter"]+' </span>					<ul class="SctnDtlsGrdTbl"><li><div class="ClLft">Todays Inflow</div><div class="ClRgt">'+json['water_meter_data'][i]["todayconsumption"]+'KL</div></li><li><div class="ClLft">Yesterday Inflow</div><div class="ClRgt">'+json['water_meter_data'][i]["yesterdayconsumption"]+'KL</div></li>                        <li><div class="ClLft">This Month`s Inflow</div><div class="ClRgt">'+json['water_meter_data'][i]["monthly_consumption"]+'KL</div></li><li><div class="ClLft">Average/day</div><div class="ClRgt">'+json['water_meter_data'][i]["weeklyavg"]+'KL</div></li>						</ul>					</div>					</div>					</div>					</div>');
     }
@@ -2329,7 +2215,7 @@ Highcharts.chart(pressurecontainer9, {
 }
     
 <?php } ?>
-<?php if(modules::run('Admin_demo/Site/authlink','water_linepressure')){ ?>
+<?php if(modules::run('Admin/Site/authlink','water_Line-Pressure')){ ?>
  var dps1=[];
     var dps2=[];      
     dps1=[9.438, 9.437, 9.436, 9.435, 9.432, 9.431, 9.43, 9.43, 9.427, 9.426, 9.425, 9.424, 9.422, 9.42, 9.419, 9.417, 9.417, 9.415, 9.414, 9.414, 9.413, 9.412, 9.411, 9.411, 9.41, 9.408, 9.408, 9.585, 9.5, 9.546, 9.527, 9.524, 9.522, 9.522, 9.52, 9.519, 9.517, 9.515, 9.514, 9.512, 9.511, 9.51, 9.509, 9.507, 9.506, 9.505, 9.503, 9.502, 8, 8, 9.498, 9.496, 9.496, 9.494, 9.493, 9.491, 9.49, 9.488, 9.487, 9.486, 9.484, 9.484, 9.482, 9.481, 9.479, 9.478, 9.478, 9.477, 9.475, 9.474, 9.473, 9.471, 9.47, 9.468, 9.468, 9.466, 9.465, 9.464, 9.462, 9.461, 9.459, 9.458, 9.457, 9.456, 9.455, 9.454, 9.452, 9.451, 9.45, 9.449, 9.448, 9.446, 9.446, 9.444];
@@ -2401,64 +2287,68 @@ Highcharts.chart(pressurecontainer, {
 
  //speed guage
            //highchart
-           
+var H = Highcharts;
+var each = H.each,
+  merge = H.merge,
+  pInt = H.pInt,
+  pick = H.pick,
+  isNumber = H.isNumber;
 
-(function(H) {
-  H.seriesTypes.gauge.prototype.translate = function() {
-    var series = this,
-      yAxis = series.yAxis,
-      options = series.options,
-      center = yAxis.center,
-      pInt = H.pInt,
-      merge = H.merge,
-      pick = H.pick,
-      isNumber = H.isNumber;
 
-    series.generatePoints();
+Highcharts.seriesTypes.gauge.prototype.translate = function() {
+  var series = this,
+    yAxis = series.yAxis,
+    options = series.options,
+    center = yAxis.center;
 
-    series.points.forEach(function(point) {
+  series.generatePoints();
 
-      var dialOptions = merge(options.dial, point.dial),
-        radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) /
-        200,
-        baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) /
-        100,
-        rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) /
-        100,
-        baseWidth = dialOptions.baseWidth || 3,
-        arrowHeight = dialOptions.arrowHeight || 10,
-        arrowWidth = dialOptions.arrowWidth || 5,
-        topWidth = dialOptions.topWidth || 1,
-        overshoot = options.overshoot,
-        rotation = yAxis.startAngleRad +
-        yAxis.translate(point.y, null, null, null, true);
+  each(series.points, function(point) {
 
-      // Handle the wrap and overshoot options
-      if (isNumber(overshoot)) {
-        overshoot = overshoot / 180 * Math.PI;
-        rotation = Math.max(
-          yAxis.startAngleRad - overshoot,
-          Math.min(yAxis.endAngleRad + overshoot, rotation)
-        );
+    var dialOptions = merge(options.dial, point.dial),
+      isRectanglePoint = point.series.userOptions.isRectanglePoint,
+      radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
+      baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) / 100,
+      rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) / 100,
+      baseWidth = dialOptions.baseWidth || 3,
+      topWidth = dialOptions.topWidth || 1,
+      overshoot = options.overshoot,
+      rotation = yAxis.startAngleRad + yAxis.translate(point.y, null, null, null, true);
 
-      } else if (options.wrap === false) {
-        rotation = Math.max(
-          yAxis.startAngleRad,
-          Math.min(yAxis.endAngleRad, rotation)
-        );
-      }
+    // Handle the wrap and overshoot options
+    if (isNumber(overshoot)) {
+      overshoot = overshoot / 180 * Math.PI;
+      rotation = Math.max(yAxis.startAngleRad - overshoot, Math.min(yAxis.endAngleRad + overshoot, rotation));
 
-      rotation = rotation * 180 / Math.PI;
+    } else if (options.wrap === false) {
+      rotation = Math.max(yAxis.startAngleRad, Math.min(yAxis.endAngleRad, rotation));
+    }
+   
 
+    rotation = rotation * 180 / Math.PI;
+
+    // Checking series to draw dots
+    if (isRectanglePoint) {  //draw new dial
+      point.shapeType = 'path';
+      point.shapeArgs = {
+        d: dialOptions.path || [
+           'M', -rearLength + 6, (-baseWidth / 2), 'L', -rearLength + 12, (-baseWidth / 2) + 6, -rearLength +6, (-baseWidth / 2) + 12, -rearLength, (-baseWidth / 2) + 6, 'z'
+        ],
+        translateX: center[0] - baseWidth - 1,
+        translateY: center[1],
+        rotation: rotation,
+        style: 'stroke: white; stroke-width: 2;'
+      };
+
+    } else {  //draw standard dial
       point.shapeType = 'path';
       point.shapeArgs = {
         d: dialOptions.path || [
           'M', -rearLength, -baseWidth / 2,
           'L',
           baseLength, -baseWidth / 2,
-          baseLength, -arrowWidth,
-          baseLength + arrowHeight, topWidth / 2,
-          baseLength, arrowWidth,
+          radius, -topWidth / 2,
+          radius, topWidth / 2,
           baseLength, baseWidth / 2, -rearLength, baseWidth / 2,
           'z'
         ],
@@ -2467,13 +2357,15 @@ Highcharts.chart(pressurecontainer, {
         rotation: rotation
       };
 
-      // Positions for data label
-      point.plotX = center[0];
-      point.plotY = center[1];
-    });
-  }
-})(Highcharts);
-// end of replaced function
+    }
+
+    // Positions for data label
+    point.plotX = center[0];
+    point.plotY = center[1];
+
+
+  });
+}; // end of replaced function
 
 var gaugeOptions = {
 
@@ -2600,7 +2492,7 @@ var chartSpeed = Highcharts.chart(speedcontainer, Highcharts.merge(gaugeOptions,
 
 }));
 <?php }?>
-<?php if(modules::run('Admin_demo/Site/authlink','water_Firepump')){ ?>
+<?php if(modules::run('Admin/Site/authlink','water_Firepump')){ ?>
 // firepump pressure
     
     
@@ -2684,63 +2576,68 @@ Highcharts.chart(pressurecontainer1, {
 
  //speed guage
            //highchart
+var H = Highcharts;
+var each = H.each,
+  merge = H.merge,
+  pInt = H.pInt,
+  pick = H.pick,
+  isNumber = H.isNumber;
 
-(function(H) {
-  H.seriesTypes.gauge.prototype.translate = function() {
-    var series = this,
-      yAxis = series.yAxis,
-      options = series.options,
-      center = yAxis.center,
-      pInt = H.pInt,
-      merge = H.merge,
-      pick = H.pick,
-      isNumber = H.isNumber;
 
-    series.generatePoints();
+Highcharts.seriesTypes.gauge.prototype.translate = function() {
+  var series = this,
+    yAxis = series.yAxis,
+    options = series.options,
+    center = yAxis.center;
 
-    series.points.forEach(function(point) {
+  series.generatePoints();
 
-      var dialOptions = merge(options.dial, point.dial),
-        radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) /
-        200,
-        baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) /
-        100,
-        rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) /
-        100,
-        baseWidth = dialOptions.baseWidth || 3,
-        arrowHeight = dialOptions.arrowHeight || 10,
-        arrowWidth = dialOptions.arrowWidth || 5,
-        topWidth = dialOptions.topWidth || 1,
-        overshoot = options.overshoot,
-        rotation = yAxis.startAngleRad +
-        yAxis.translate(point.y, null, null, null, true);
+  each(series.points, function(point) {
 
-      // Handle the wrap and overshoot options
-      if (isNumber(overshoot)) {
-        overshoot = overshoot / 180 * Math.PI;
-        rotation = Math.max(
-          yAxis.startAngleRad - overshoot,
-          Math.min(yAxis.endAngleRad + overshoot, rotation)
-        );
+    var dialOptions = merge(options.dial, point.dial),
+      isRectanglePoint = point.series.userOptions.isRectanglePoint,
+      radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
+      baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) / 100,
+      rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) / 100,
+      baseWidth = dialOptions.baseWidth || 3,
+      topWidth = dialOptions.topWidth || 1,
+      overshoot = options.overshoot,
+      rotation = yAxis.startAngleRad + yAxis.translate(point.y, null, null, null, true);
 
-      } else if (options.wrap === false) {
-        rotation = Math.max(
-          yAxis.startAngleRad,
-          Math.min(yAxis.endAngleRad, rotation)
-        );
-      }
+    // Handle the wrap and overshoot options
+    if (isNumber(overshoot)) {
+      overshoot = overshoot / 180 * Math.PI;
+      rotation = Math.max(yAxis.startAngleRad - overshoot, Math.min(yAxis.endAngleRad + overshoot, rotation));
 
-      rotation = rotation * 180 / Math.PI;
+    } else if (options.wrap === false) {
+      rotation = Math.max(yAxis.startAngleRad, Math.min(yAxis.endAngleRad, rotation));
+    }
+   
 
+    rotation = rotation * 180 / Math.PI;
+
+    // Checking series to draw dots
+    if (isRectanglePoint) {  //draw new dial
+      point.shapeType = 'path';
+      point.shapeArgs = {
+        d: dialOptions.path || [
+           'M', -rearLength + 6, (-baseWidth / 2), 'L', -rearLength + 12, (-baseWidth / 2) + 6, -rearLength +6, (-baseWidth / 2) + 12, -rearLength, (-baseWidth / 2) + 6, 'z'
+        ],
+        translateX: center[0] - baseWidth - 1,
+        translateY: center[1],
+        rotation: rotation,
+        style: 'stroke: white; stroke-width: 2;'
+      };
+
+    } else {  //draw standard dial
       point.shapeType = 'path';
       point.shapeArgs = {
         d: dialOptions.path || [
           'M', -rearLength, -baseWidth / 2,
           'L',
           baseLength, -baseWidth / 2,
-          baseLength, -arrowWidth,
-          baseLength + arrowHeight, topWidth / 2,
-          baseLength, arrowWidth,
+          radius, -topWidth / 2,
+          radius, topWidth / 2,
           baseLength, baseWidth / 2, -rearLength, baseWidth / 2,
           'z'
         ],
@@ -2749,13 +2646,15 @@ Highcharts.chart(pressurecontainer1, {
         rotation: rotation
       };
 
-      // Positions for data label
-      point.plotX = center[0];
-      point.plotY = center[1];
-    });
-  }
-})(Highcharts);
-// end of replaced function
+    }
+
+    // Positions for data label
+    point.plotX = center[0];
+    point.plotY = center[1];
+
+
+  });
+}; // end of replaced function
 
 var gaugeOptions = {
 
@@ -2882,7 +2781,7 @@ var chartSpeed = Highcharts.chart(speedcontainer1, Highcharts.merge(gaugeOptions
 
 }));
 <?php }?>
-<?php if(modules::run('Admin_demo/Site/authlink','water_Firepump1')){ ?>
+<?php if(modules::run('Admin/Site/authlink','water_Firepump1')){ ?>
 // firepump pressure
 var pdps1_f2=[];
 var pdps2_f2=[];
@@ -2956,63 +2855,68 @@ Highcharts.chart(pressurecontainer1, {
 
  //speed guage
            //highchart
+var H = Highcharts;
+var each = H.each,
+  merge = H.merge,
+  pInt = H.pInt,
+  pick = H.pick,
+  isNumber = H.isNumber;
 
-(function(H) {
-  H.seriesTypes.gauge.prototype.translate = function() {
-    var series = this,
-      yAxis = series.yAxis,
-      options = series.options,
-      center = yAxis.center,
-      pInt = H.pInt,
-      merge = H.merge,
-      pick = H.pick,
-      isNumber = H.isNumber;
 
-    series.generatePoints();
+Highcharts.seriesTypes.gauge.prototype.translate = function() {
+  var series = this,
+    yAxis = series.yAxis,
+    options = series.options,
+    center = yAxis.center;
 
-    series.points.forEach(function(point) {
+  series.generatePoints();
 
-      var dialOptions = merge(options.dial, point.dial),
-        radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) /
-        200,
-        baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) /
-        100,
-        rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) /
-        100,
-        baseWidth = dialOptions.baseWidth || 3,
-        arrowHeight = dialOptions.arrowHeight || 10,
-        arrowWidth = dialOptions.arrowWidth || 5,
-        topWidth = dialOptions.topWidth || 1,
-        overshoot = options.overshoot,
-        rotation = yAxis.startAngleRad +
-        yAxis.translate(point.y, null, null, null, true);
+  each(series.points, function(point) {
 
-      // Handle the wrap and overshoot options
-      if (isNumber(overshoot)) {
-        overshoot = overshoot / 180 * Math.PI;
-        rotation = Math.max(
-          yAxis.startAngleRad - overshoot,
-          Math.min(yAxis.endAngleRad + overshoot, rotation)
-        );
+    var dialOptions = merge(options.dial, point.dial),
+      isRectanglePoint = point.series.userOptions.isRectanglePoint,
+      radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
+      baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) / 100,
+      rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) / 100,
+      baseWidth = dialOptions.baseWidth || 3,
+      topWidth = dialOptions.topWidth || 1,
+      overshoot = options.overshoot,
+      rotation = yAxis.startAngleRad + yAxis.translate(point.y, null, null, null, true);
 
-      } else if (options.wrap === false) {
-        rotation = Math.max(
-          yAxis.startAngleRad,
-          Math.min(yAxis.endAngleRad, rotation)
-        );
-      }
+    // Handle the wrap and overshoot options
+    if (isNumber(overshoot)) {
+      overshoot = overshoot / 180 * Math.PI;
+      rotation = Math.max(yAxis.startAngleRad - overshoot, Math.min(yAxis.endAngleRad + overshoot, rotation));
 
-      rotation = rotation * 180 / Math.PI;
+    } else if (options.wrap === false) {
+      rotation = Math.max(yAxis.startAngleRad, Math.min(yAxis.endAngleRad, rotation));
+    }
+   
 
+    rotation = rotation * 180 / Math.PI;
+
+    // Checking series to draw dots
+    if (isRectanglePoint) {  //draw new dial
+      point.shapeType = 'path';
+      point.shapeArgs = {
+        d: dialOptions.path || [
+           'M', -rearLength + 6, (-baseWidth / 2), 'L', -rearLength + 12, (-baseWidth / 2) + 6, -rearLength +6, (-baseWidth / 2) + 12, -rearLength, (-baseWidth / 2) + 6, 'z'
+        ],
+        translateX: center[0] - baseWidth - 1,
+        translateY: center[1],
+        rotation: rotation,
+        style: 'stroke: white; stroke-width: 2;'
+      };
+
+    } else {  //draw standard dial
       point.shapeType = 'path';
       point.shapeArgs = {
         d: dialOptions.path || [
           'M', -rearLength, -baseWidth / 2,
           'L',
           baseLength, -baseWidth / 2,
-          baseLength, -arrowWidth,
-          baseLength + arrowHeight, topWidth / 2,
-          baseLength, arrowWidth,
+          radius, -topWidth / 2,
+          radius, topWidth / 2,
           baseLength, baseWidth / 2, -rearLength, baseWidth / 2,
           'z'
         ],
@@ -3021,13 +2925,15 @@ Highcharts.chart(pressurecontainer1, {
         rotation: rotation
       };
 
-      // Positions for data label
-      point.plotX = center[0];
-      point.plotY = center[1];
-    });
-  }
-})(Highcharts);
-// end of replaced function
+    }
+
+    // Positions for data label
+    point.plotX = center[0];
+    point.plotY = center[1];
+
+
+  });
+}; // end of replaced function
 
 var gaugeOptions = {
 
@@ -3154,7 +3060,7 @@ var chartSpeed = Highcharts.chart(speedcontainer1, Highcharts.merge(gaugeOptions
 
 }));
 <?php }?>
-<?php if(modules::run('Admin_demo/Site/authlink','water_Hydro-Pnematic-System')){ ?>
+<?php if(modules::run('Admin/Site/authlink','water_Hydro-Pnematic-System')){ ?>
 // Hydrovar pdps1=[];
 var pdps1=[];
 var pdps2=[];
@@ -3230,63 +3136,68 @@ Highcharts.chart(pressurecontainer2, {
 
  //speed guage
            //highchart
+var H = Highcharts;
+var each = H.each,
+  merge = H.merge,
+  pInt = H.pInt,
+  pick = H.pick,
+  isNumber = H.isNumber;
 
-(function(H) {
-  H.seriesTypes.gauge.prototype.translate = function() {
-    var series = this,
-      yAxis = series.yAxis,
-      options = series.options,
-      center = yAxis.center,
-      pInt = H.pInt,
-      merge = H.merge,
-      pick = H.pick,
-      isNumber = H.isNumber;
 
-    series.generatePoints();
+Highcharts.seriesTypes.gauge.prototype.translate = function() {
+  var series = this,
+    yAxis = series.yAxis,
+    options = series.options,
+    center = yAxis.center;
 
-    series.points.forEach(function(point) {
+  series.generatePoints();
 
-      var dialOptions = merge(options.dial, point.dial),
-        radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) /
-        200,
-        baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) /
-        100,
-        rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) /
-        100,
-        baseWidth = dialOptions.baseWidth || 3,
-        arrowHeight = dialOptions.arrowHeight || 10,
-        arrowWidth = dialOptions.arrowWidth || 5,
-        topWidth = dialOptions.topWidth || 1,
-        overshoot = options.overshoot,
-        rotation = yAxis.startAngleRad +
-        yAxis.translate(point.y, null, null, null, true);
+  each(series.points, function(point) {
 
-      // Handle the wrap and overshoot options
-      if (isNumber(overshoot)) {
-        overshoot = overshoot / 180 * Math.PI;
-        rotation = Math.max(
-          yAxis.startAngleRad - overshoot,
-          Math.min(yAxis.endAngleRad + overshoot, rotation)
-        );
+    var dialOptions = merge(options.dial, point.dial),
+      isRectanglePoint = point.series.userOptions.isRectanglePoint,
+      radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
+      baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) / 100,
+      rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) / 100,
+      baseWidth = dialOptions.baseWidth || 3,
+      topWidth = dialOptions.topWidth || 1,
+      overshoot = options.overshoot,
+      rotation = yAxis.startAngleRad + yAxis.translate(point.y, null, null, null, true);
 
-      } else if (options.wrap === false) {
-        rotation = Math.max(
-          yAxis.startAngleRad,
-          Math.min(yAxis.endAngleRad, rotation)
-        );
-      }
+    // Handle the wrap and overshoot options
+    if (isNumber(overshoot)) {
+      overshoot = overshoot / 180 * Math.PI;
+      rotation = Math.max(yAxis.startAngleRad - overshoot, Math.min(yAxis.endAngleRad + overshoot, rotation));
 
-      rotation = rotation * 180 / Math.PI;
+    } else if (options.wrap === false) {
+      rotation = Math.max(yAxis.startAngleRad, Math.min(yAxis.endAngleRad, rotation));
+    }
+   
 
+    rotation = rotation * 180 / Math.PI;
+
+    // Checking series to draw dots
+    if (isRectanglePoint) {  //draw new dial
+      point.shapeType = 'path';
+      point.shapeArgs = {
+        d: dialOptions.path || [
+           'M', -rearLength + 6, (-baseWidth / 2), 'L', -rearLength + 12, (-baseWidth / 2) + 6, -rearLength +6, (-baseWidth / 2) + 12, -rearLength, (-baseWidth / 2) + 6, 'z'
+        ],
+        translateX: center[0] - baseWidth - 1,
+        translateY: center[1],
+        rotation: rotation,
+        style: 'stroke: white; stroke-width: 2;'
+      };
+
+    } else {  //draw standard dial
       point.shapeType = 'path';
       point.shapeArgs = {
         d: dialOptions.path || [
           'M', -rearLength, -baseWidth / 2,
           'L',
           baseLength, -baseWidth / 2,
-          baseLength, -arrowWidth,
-          baseLength + arrowHeight, topWidth / 2,
-          baseLength, arrowWidth,
+          radius, -topWidth / 2,
+          radius, topWidth / 2,
           baseLength, baseWidth / 2, -rearLength, baseWidth / 2,
           'z'
         ],
@@ -3295,13 +3206,15 @@ Highcharts.chart(pressurecontainer2, {
         rotation: rotation
       };
 
-      // Positions for data label
-      point.plotX = center[0];
-      point.plotY = center[1];
-    });
-  }
-})(Highcharts);
-// end of replaced function
+    }
+
+    // Positions for data label
+    point.plotX = center[0];
+    point.plotY = center[1];
+
+
+  });
+}; // end of replaced function
 
 var gaugeOptions = {
 

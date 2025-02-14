@@ -613,12 +613,16 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                             <?php if($firepump_data['Phase-1 Fire Pump System']['run_data'][$i]['meter']=='Panel Power Supply'){ ?>
                                 <td>
                                 <span class="Txt MblTtl">Running Status</span>
-								
-                                <?php if($firepump_data['Phase-1 Fire Pump System']['run_data'][$i]['switch_status']){ ?>
+								<?php if($firepump_data['Phase-1 Fire Pump System']['run_data'][$i]['datar']=="OFFLINE"){?>
+                                    <span class="status-off1">OFFLINE</span>
+                                    <?php }else{?>
+                                        <?php if($firepump_data['Phase-1 Fire Pump System']['run_data'][$i]['switch_status']){ ?>
 								<span class="status-on">ON</span>
 								<?php }else{ ?>
                                     <span class="status-off1">OFF</span>
                                     <?php } ?>
+                                        <?php }?>
+                               
 								
                                
                             </td>
@@ -629,23 +633,27 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                                 
                             <td>
                                 <span class="Txt MblTtl">Running Status</span>
-								
+								<?php if($firepump_data['Phase-1 Fire Pump System']['run_data'][$i]['datas']=="OFFLINE"){?>
+                                    <span class="status-off1">OFFLINE</span>
+                                <?php }else{?>
                                 <?php if($firepump_data['Phase-1 Fire Pump System']['run_data'][$i]['switch_status']){ ?>
 								<span class="status-on">AUTO</span>
 								<?php }else{ ?>
                                     <span class="status-off1">MANUAL</span>
-                                    <?php } ?>
+                                    <?php }} ?>
 								
                                
                             </td>
                             <td>
                                 <span class="Txt MblTtl">Switch Status</span>
-                               
+                               <?php if($firepump_data['Phase-1 Fire Pump System']['run_data'][$i]['datar']=="OFFLINE"){?>
+                                <span class="status-off1">OFFLINE</span>
+                               <?php }else{?>
 								<?php if($firepump_data['Phase-1 Fire Pump System']['run_data'][$i]['running_status']){ ?>
 								<span class="status-on">ON</span>
 								<?php }else{ ?>
                                     <span class="status-off1">OFF</span>
-                                    <?php } ?>
+                                    <?php }} ?>
                                 
                             </td>
 							<?php }?>
@@ -945,22 +953,28 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                                     ?>
                                    
 								<?php }else{?>
+                                    <?php if($firepump_data['Phase-2 Fire Pump System']['run_data'][$i]['datas']=="OFFLINE"){ ?>
+                                        <span class="status-off1">OFFLINE</span>
+                                    <?php }else{?>
+
                                     <?php if($firepump_data['Phase-2 Fire Pump System']['run_data'][$i]['switch_status']){ ?>
 								<span class="status-on">AUTO</span>
 								<?php }else{ ?>
                                     <span class="status-off1">MANUAL</span>
-                                    <?php } ?>
+                                    <?php }} ?>
                                     <?php }?>
                                
                             </td>
                             <td>
                                 <span class="Txt MblTtl">Switch Status</span>
-                               
+                               <?php if($firepump_data['Phase-2 Fire Pump System']['run_data'][$i]['datar']=="OFFLINE"){ ?>
+                                <span class="status-off1">OFFLINE</span>
+                               <?php }else{?>
 								<?php if($firepump_data['Phase-2 Fire Pump System']['run_data'][$i]['running_status']){ ?>
 								<span class="status-on">ON</span>
 								<?php }else{ ?>
                                     <span class="status-off1">OFF</span>
-                                    <?php } ?>
+                                    <?php }} ?>
                                 
                             </td>
 							
@@ -1237,12 +1251,14 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
                            
                             <td>
                             <span class="Txt MblTtl">Running Status</span>
-                               
+                                <?php if($hydro_data['Hydro Pnematic System 01']['run_data'][$i]['datar']=="OFFLINE"){ ?>
+                                    <span class="status-off1">OFFLINE</span>
+                                <?php }else{ ?>
 								<?php if($hydro_data['Hydro Pnematic System 01']['run_data'][$i]['running_status']){ ?>
 								<span class="status-on">ON</span>
 								<?php }else{ ?>
                                     <span class="status-off1">OFF</span>
-                                    <?php } ?>
+                                    <?php }} ?>
                                 
                             </td>
 							
@@ -2287,68 +2303,63 @@ Highcharts.chart(pressurecontainer, {
 
  //speed guage
            //highchart
-var H = Highcharts;
-var each = H.each,
-  merge = H.merge,
-  pInt = H.pInt,
-  pick = H.pick,
-  isNumber = H.isNumber;
 
+(function(H) {
+  H.seriesTypes.gauge.prototype.translate = function() {
+    var series = this,
+      yAxis = series.yAxis,
+      options = series.options,
+      center = yAxis.center,
+      pInt = H.pInt,
+      merge = H.merge,
+      pick = H.pick,
+      isNumber = H.isNumber;
 
-Highcharts.seriesTypes.gauge.prototype.translate = function() {
-  var series = this,
-    yAxis = series.yAxis,
-    options = series.options,
-    center = yAxis.center;
+    series.generatePoints();
 
-  series.generatePoints();
+    series.points.forEach(function(point) {
 
-  each(series.points, function(point) {
+      var dialOptions = merge(options.dial, point.dial),
+        radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) /
+        200,
+        baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) /
+        100,
+        rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) /
+        100,
+        baseWidth = dialOptions.baseWidth || 3,
+        arrowHeight = dialOptions.arrowHeight || 10,
+        arrowWidth = dialOptions.arrowWidth || 5,
+        topWidth = dialOptions.topWidth || 1,
+        overshoot = options.overshoot,
+        rotation = yAxis.startAngleRad +
+        yAxis.translate(point.y, null, null, null, true);
 
-    var dialOptions = merge(options.dial, point.dial),
-      isRectanglePoint = point.series.userOptions.isRectanglePoint,
-      radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
-      baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) / 100,
-      rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) / 100,
-      baseWidth = dialOptions.baseWidth || 3,
-      topWidth = dialOptions.topWidth || 1,
-      overshoot = options.overshoot,
-      rotation = yAxis.startAngleRad + yAxis.translate(point.y, null, null, null, true);
+      // Handle the wrap and overshoot options
+      if (isNumber(overshoot)) {
+        overshoot = overshoot / 180 * Math.PI;
+        rotation = Math.max(
+          yAxis.startAngleRad - overshoot,
+          Math.min(yAxis.endAngleRad + overshoot, rotation)
+        );
 
-    // Handle the wrap and overshoot options
-    if (isNumber(overshoot)) {
-      overshoot = overshoot / 180 * Math.PI;
-      rotation = Math.max(yAxis.startAngleRad - overshoot, Math.min(yAxis.endAngleRad + overshoot, rotation));
+      } else if (options.wrap === false) {
+        rotation = Math.max(
+          yAxis.startAngleRad,
+          Math.min(yAxis.endAngleRad, rotation)
+        );
+      }
 
-    } else if (options.wrap === false) {
-      rotation = Math.max(yAxis.startAngleRad, Math.min(yAxis.endAngleRad, rotation));
-    }
-   
+      rotation = rotation * 180 / Math.PI;
 
-    rotation = rotation * 180 / Math.PI;
-
-    // Checking series to draw dots
-    if (isRectanglePoint) {  //draw new dial
-      point.shapeType = 'path';
-      point.shapeArgs = {
-        d: dialOptions.path || [
-           'M', -rearLength + 6, (-baseWidth / 2), 'L', -rearLength + 12, (-baseWidth / 2) + 6, -rearLength +6, (-baseWidth / 2) + 12, -rearLength, (-baseWidth / 2) + 6, 'z'
-        ],
-        translateX: center[0] - baseWidth - 1,
-        translateY: center[1],
-        rotation: rotation,
-        style: 'stroke: white; stroke-width: 2;'
-      };
-
-    } else {  //draw standard dial
       point.shapeType = 'path';
       point.shapeArgs = {
         d: dialOptions.path || [
           'M', -rearLength, -baseWidth / 2,
           'L',
           baseLength, -baseWidth / 2,
-          radius, -topWidth / 2,
-          radius, topWidth / 2,
+          baseLength, -arrowWidth,
+          baseLength + arrowHeight, topWidth / 2,
+          baseLength, arrowWidth,
           baseLength, baseWidth / 2, -rearLength, baseWidth / 2,
           'z'
         ],
@@ -2357,15 +2368,13 @@ Highcharts.seriesTypes.gauge.prototype.translate = function() {
         rotation: rotation
       };
 
-    }
-
-    // Positions for data label
-    point.plotX = center[0];
-    point.plotY = center[1];
-
-
-  });
-}; // end of replaced function
+      // Positions for data label
+      point.plotX = center[0];
+      point.plotY = center[1];
+    });
+  }
+})(Highcharts);
+ // end of replaced function
 
 var gaugeOptions = {
 
@@ -2576,68 +2585,63 @@ Highcharts.chart(pressurecontainer1, {
 
  //speed guage
            //highchart
-var H = Highcharts;
-var each = H.each,
-  merge = H.merge,
-  pInt = H.pInt,
-  pick = H.pick,
-  isNumber = H.isNumber;
 
+(function(H) {
+  H.seriesTypes.gauge.prototype.translate = function() {
+    var series = this,
+      yAxis = series.yAxis,
+      options = series.options,
+      center = yAxis.center,
+      pInt = H.pInt,
+      merge = H.merge,
+      pick = H.pick,
+      isNumber = H.isNumber;
 
-Highcharts.seriesTypes.gauge.prototype.translate = function() {
-  var series = this,
-    yAxis = series.yAxis,
-    options = series.options,
-    center = yAxis.center;
+    series.generatePoints();
 
-  series.generatePoints();
+    series.points.forEach(function(point) {
 
-  each(series.points, function(point) {
+      var dialOptions = merge(options.dial, point.dial),
+        radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) /
+        200,
+        baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) /
+        100,
+        rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) /
+        100,
+        baseWidth = dialOptions.baseWidth || 3,
+        arrowHeight = dialOptions.arrowHeight || 10,
+        arrowWidth = dialOptions.arrowWidth || 5,
+        topWidth = dialOptions.topWidth || 1,
+        overshoot = options.overshoot,
+        rotation = yAxis.startAngleRad +
+        yAxis.translate(point.y, null, null, null, true);
 
-    var dialOptions = merge(options.dial, point.dial),
-      isRectanglePoint = point.series.userOptions.isRectanglePoint,
-      radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
-      baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) / 100,
-      rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) / 100,
-      baseWidth = dialOptions.baseWidth || 3,
-      topWidth = dialOptions.topWidth || 1,
-      overshoot = options.overshoot,
-      rotation = yAxis.startAngleRad + yAxis.translate(point.y, null, null, null, true);
+      // Handle the wrap and overshoot options
+      if (isNumber(overshoot)) {
+        overshoot = overshoot / 180 * Math.PI;
+        rotation = Math.max(
+          yAxis.startAngleRad - overshoot,
+          Math.min(yAxis.endAngleRad + overshoot, rotation)
+        );
 
-    // Handle the wrap and overshoot options
-    if (isNumber(overshoot)) {
-      overshoot = overshoot / 180 * Math.PI;
-      rotation = Math.max(yAxis.startAngleRad - overshoot, Math.min(yAxis.endAngleRad + overshoot, rotation));
+      } else if (options.wrap === false) {
+        rotation = Math.max(
+          yAxis.startAngleRad,
+          Math.min(yAxis.endAngleRad, rotation)
+        );
+      }
 
-    } else if (options.wrap === false) {
-      rotation = Math.max(yAxis.startAngleRad, Math.min(yAxis.endAngleRad, rotation));
-    }
-   
+      rotation = rotation * 180 / Math.PI;
 
-    rotation = rotation * 180 / Math.PI;
-
-    // Checking series to draw dots
-    if (isRectanglePoint) {  //draw new dial
-      point.shapeType = 'path';
-      point.shapeArgs = {
-        d: dialOptions.path || [
-           'M', -rearLength + 6, (-baseWidth / 2), 'L', -rearLength + 12, (-baseWidth / 2) + 6, -rearLength +6, (-baseWidth / 2) + 12, -rearLength, (-baseWidth / 2) + 6, 'z'
-        ],
-        translateX: center[0] - baseWidth - 1,
-        translateY: center[1],
-        rotation: rotation,
-        style: 'stroke: white; stroke-width: 2;'
-      };
-
-    } else {  //draw standard dial
       point.shapeType = 'path';
       point.shapeArgs = {
         d: dialOptions.path || [
           'M', -rearLength, -baseWidth / 2,
           'L',
           baseLength, -baseWidth / 2,
-          radius, -topWidth / 2,
-          radius, topWidth / 2,
+          baseLength, -arrowWidth,
+          baseLength + arrowHeight, topWidth / 2,
+          baseLength, arrowWidth,
           baseLength, baseWidth / 2, -rearLength, baseWidth / 2,
           'z'
         ],
@@ -2646,15 +2650,13 @@ Highcharts.seriesTypes.gauge.prototype.translate = function() {
         rotation: rotation
       };
 
-    }
-
-    // Positions for data label
-    point.plotX = center[0];
-    point.plotY = center[1];
-
-
-  });
-}; // end of replaced function
+      // Positions for data label
+      point.plotX = center[0];
+      point.plotY = center[1];
+    });
+  }
+})(Highcharts);
+ // end of replaced function
 
 var gaugeOptions = {
 
@@ -2855,68 +2857,63 @@ Highcharts.chart(pressurecontainer1, {
 
  //speed guage
            //highchart
-var H = Highcharts;
-var each = H.each,
-  merge = H.merge,
-  pInt = H.pInt,
-  pick = H.pick,
-  isNumber = H.isNumber;
 
+(function(H) {
+  H.seriesTypes.gauge.prototype.translate = function() {
+    var series = this,
+      yAxis = series.yAxis,
+      options = series.options,
+      center = yAxis.center,
+      pInt = H.pInt,
+      merge = H.merge,
+      pick = H.pick,
+      isNumber = H.isNumber;
 
-Highcharts.seriesTypes.gauge.prototype.translate = function() {
-  var series = this,
-    yAxis = series.yAxis,
-    options = series.options,
-    center = yAxis.center;
+    series.generatePoints();
 
-  series.generatePoints();
+    series.points.forEach(function(point) {
 
-  each(series.points, function(point) {
+      var dialOptions = merge(options.dial, point.dial),
+        radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) /
+        200,
+        baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) /
+        100,
+        rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) /
+        100,
+        baseWidth = dialOptions.baseWidth || 3,
+        arrowHeight = dialOptions.arrowHeight || 10,
+        arrowWidth = dialOptions.arrowWidth || 5,
+        topWidth = dialOptions.topWidth || 1,
+        overshoot = options.overshoot,
+        rotation = yAxis.startAngleRad +
+        yAxis.translate(point.y, null, null, null, true);
 
-    var dialOptions = merge(options.dial, point.dial),
-      isRectanglePoint = point.series.userOptions.isRectanglePoint,
-      radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
-      baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) / 100,
-      rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) / 100,
-      baseWidth = dialOptions.baseWidth || 3,
-      topWidth = dialOptions.topWidth || 1,
-      overshoot = options.overshoot,
-      rotation = yAxis.startAngleRad + yAxis.translate(point.y, null, null, null, true);
+      // Handle the wrap and overshoot options
+      if (isNumber(overshoot)) {
+        overshoot = overshoot / 180 * Math.PI;
+        rotation = Math.max(
+          yAxis.startAngleRad - overshoot,
+          Math.min(yAxis.endAngleRad + overshoot, rotation)
+        );
 
-    // Handle the wrap and overshoot options
-    if (isNumber(overshoot)) {
-      overshoot = overshoot / 180 * Math.PI;
-      rotation = Math.max(yAxis.startAngleRad - overshoot, Math.min(yAxis.endAngleRad + overshoot, rotation));
+      } else if (options.wrap === false) {
+        rotation = Math.max(
+          yAxis.startAngleRad,
+          Math.min(yAxis.endAngleRad, rotation)
+        );
+      }
 
-    } else if (options.wrap === false) {
-      rotation = Math.max(yAxis.startAngleRad, Math.min(yAxis.endAngleRad, rotation));
-    }
-   
+      rotation = rotation * 180 / Math.PI;
 
-    rotation = rotation * 180 / Math.PI;
-
-    // Checking series to draw dots
-    if (isRectanglePoint) {  //draw new dial
-      point.shapeType = 'path';
-      point.shapeArgs = {
-        d: dialOptions.path || [
-           'M', -rearLength + 6, (-baseWidth / 2), 'L', -rearLength + 12, (-baseWidth / 2) + 6, -rearLength +6, (-baseWidth / 2) + 12, -rearLength, (-baseWidth / 2) + 6, 'z'
-        ],
-        translateX: center[0] - baseWidth - 1,
-        translateY: center[1],
-        rotation: rotation,
-        style: 'stroke: white; stroke-width: 2;'
-      };
-
-    } else {  //draw standard dial
       point.shapeType = 'path';
       point.shapeArgs = {
         d: dialOptions.path || [
           'M', -rearLength, -baseWidth / 2,
           'L',
           baseLength, -baseWidth / 2,
-          radius, -topWidth / 2,
-          radius, topWidth / 2,
+          baseLength, -arrowWidth,
+          baseLength + arrowHeight, topWidth / 2,
+          baseLength, arrowWidth,
           baseLength, baseWidth / 2, -rearLength, baseWidth / 2,
           'z'
         ],
@@ -2925,15 +2922,13 @@ Highcharts.seriesTypes.gauge.prototype.translate = function() {
         rotation: rotation
       };
 
-    }
-
-    // Positions for data label
-    point.plotX = center[0];
-    point.plotY = center[1];
-
-
-  });
-}; // end of replaced function
+      // Positions for data label
+      point.plotX = center[0];
+      point.plotY = center[1];
+    });
+  }
+})(Highcharts);
+// end of replaced function
 
 var gaugeOptions = {
 
@@ -3136,68 +3131,63 @@ Highcharts.chart(pressurecontainer2, {
 
  //speed guage
            //highchart
-var H = Highcharts;
-var each = H.each,
-  merge = H.merge,
-  pInt = H.pInt,
-  pick = H.pick,
-  isNumber = H.isNumber;
 
+(function(H) {
+  H.seriesTypes.gauge.prototype.translate = function() {
+    var series = this,
+      yAxis = series.yAxis,
+      options = series.options,
+      center = yAxis.center,
+      pInt = H.pInt,
+      merge = H.merge,
+      pick = H.pick,
+      isNumber = H.isNumber;
 
-Highcharts.seriesTypes.gauge.prototype.translate = function() {
-  var series = this,
-    yAxis = series.yAxis,
-    options = series.options,
-    center = yAxis.center;
+    series.generatePoints();
 
-  series.generatePoints();
+    series.points.forEach(function(point) {
 
-  each(series.points, function(point) {
+      var dialOptions = merge(options.dial, point.dial),
+        radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) /
+        200,
+        baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) /
+        100,
+        rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) /
+        100,
+        baseWidth = dialOptions.baseWidth || 3,
+        arrowHeight = dialOptions.arrowHeight || 10,
+        arrowWidth = dialOptions.arrowWidth || 5,
+        topWidth = dialOptions.topWidth || 1,
+        overshoot = options.overshoot,
+        rotation = yAxis.startAngleRad +
+        yAxis.translate(point.y, null, null, null, true);
 
-    var dialOptions = merge(options.dial, point.dial),
-      isRectanglePoint = point.series.userOptions.isRectanglePoint,
-      radius = (pInt(pick(dialOptions.radius, 80)) * center[2]) / 200,
-      baseLength = (pInt(pick(dialOptions.baseLength, 70)) * radius) / 100,
-      rearLength = (pInt(pick(dialOptions.rearLength, 10)) * radius) / 100,
-      baseWidth = dialOptions.baseWidth || 3,
-      topWidth = dialOptions.topWidth || 1,
-      overshoot = options.overshoot,
-      rotation = yAxis.startAngleRad + yAxis.translate(point.y, null, null, null, true);
+      // Handle the wrap and overshoot options
+      if (isNumber(overshoot)) {
+        overshoot = overshoot / 180 * Math.PI;
+        rotation = Math.max(
+          yAxis.startAngleRad - overshoot,
+          Math.min(yAxis.endAngleRad + overshoot, rotation)
+        );
 
-    // Handle the wrap and overshoot options
-    if (isNumber(overshoot)) {
-      overshoot = overshoot / 180 * Math.PI;
-      rotation = Math.max(yAxis.startAngleRad - overshoot, Math.min(yAxis.endAngleRad + overshoot, rotation));
+      } else if (options.wrap === false) {
+        rotation = Math.max(
+          yAxis.startAngleRad,
+          Math.min(yAxis.endAngleRad, rotation)
+        );
+      }
 
-    } else if (options.wrap === false) {
-      rotation = Math.max(yAxis.startAngleRad, Math.min(yAxis.endAngleRad, rotation));
-    }
-   
+      rotation = rotation * 180 / Math.PI;
 
-    rotation = rotation * 180 / Math.PI;
-
-    // Checking series to draw dots
-    if (isRectanglePoint) {  //draw new dial
-      point.shapeType = 'path';
-      point.shapeArgs = {
-        d: dialOptions.path || [
-           'M', -rearLength + 6, (-baseWidth / 2), 'L', -rearLength + 12, (-baseWidth / 2) + 6, -rearLength +6, (-baseWidth / 2) + 12, -rearLength, (-baseWidth / 2) + 6, 'z'
-        ],
-        translateX: center[0] - baseWidth - 1,
-        translateY: center[1],
-        rotation: rotation,
-        style: 'stroke: white; stroke-width: 2;'
-      };
-
-    } else {  //draw standard dial
       point.shapeType = 'path';
       point.shapeArgs = {
         d: dialOptions.path || [
           'M', -rearLength, -baseWidth / 2,
           'L',
           baseLength, -baseWidth / 2,
-          radius, -topWidth / 2,
-          radius, topWidth / 2,
+          baseLength, -arrowWidth,
+          baseLength + arrowHeight, topWidth / 2,
+          baseLength, arrowWidth,
           baseLength, baseWidth / 2, -rearLength, baseWidth / 2,
           'z'
         ],
@@ -3206,15 +3196,13 @@ Highcharts.seriesTypes.gauge.prototype.translate = function() {
         rotation: rotation
       };
 
-    }
-
-    // Positions for data label
-    point.plotX = center[0];
-    point.plotY = center[1];
-
-
-  });
-}; // end of replaced function
+      // Positions for data label
+      point.plotX = center[0];
+      point.plotY = center[1];
+    });
+  }
+})(Highcharts);
+ // end of replaced function
 
 var gaugeOptions = {
 

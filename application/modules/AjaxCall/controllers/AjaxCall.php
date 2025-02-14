@@ -673,8 +673,8 @@ function getUNDP_live(){
 }
 function getUNDPDates(){
 
-	$date_from = strtotime("2024-08-09"); 
-	$date_to = strtotime("2024-08-09"); 
+	$date_from = strtotime("2024-04-16"); 
+	$date_to = strtotime("2024-04-30"); 
 	$datesarray=array();
 	
 	
@@ -686,7 +686,7 @@ function getUNDPDates(){
 			{ 
 				$yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
 				// $yesterDay = date("26/05/202");	
-				$datachennai = array("StoreCode" => "UNAB", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+				$datachennai = array("StoreCode" => "UNWW", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
 				$tokenData=  $this->Api_model->getToken("lonavala");
 				
 				$token= $tokenData['token'];  
@@ -705,7 +705,7 @@ function getUNDPDates(){
 				curl_close($ch_chennai);
 				$json_chennai = json_decode($result_chennai, true);
 				// print_r($json_chennai);die();
-				$this->Api_model->pushApiDataUNDP($json_chennai);
+				$this->Api_model->pushApiDataUNDPdates($json_chennai);
 			}
 
 	
@@ -1766,8 +1766,8 @@ function getCyberData(){
 		
 	}
 	function getMumbaiDataFromTo(){
-		$date_from = strtotime("2023-11-05"); 
-        $date_to = strtotime("2023-11-05"); 
+		$date_from = strtotime("2025-01-01"); 
+        $date_to = strtotime("2025-02-10"); 
         $datesarray=array();
 		
 		

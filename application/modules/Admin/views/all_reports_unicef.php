@@ -675,7 +675,7 @@ footer {
         <div id="DshbrdRgtCtnr" class="DshBrdCtnr">
 			<div class="DshBrdSctn">
 				<div class="DshBrdSctnDtls">
-					<form name="reports" id="myForm" action="<?php echo site_url("Admin/Home/all_reports_undp")?>" method="post" onSubmit="return formValidation();">
+					<form name="reports" id="myForm" action="<?php echo site_url("Admin/Home/all_reports_unicef")?>" method="post" onSubmit="return formValidation();">
 						<div class=SrchFullBx>
 							<h2 class="report-text">Reports</h2>
 							<div class="search_box" >
@@ -702,9 +702,7 @@ footer {
 								<div class="form-control1" id="type">							
 									<?php $sorttype = array('1' => 'Day Wise','2' => 'Hourly Wise'); echo form_dropdown('sorttype', $sorttype, $this->input->post('sorttype'), 'class="form-control chosen-select"  name="sorttype" id="sorttype"'); ?>
 								</div>
-								<div class="form-control1" id="yeartype">							
-									<?php $sorttype1 = array('2024' => '2024','2025' => '2025'); echo form_dropdown('sorttype1', $sorttype1, $this->input->post('sorttype1'), 'class="form-control chosen-select"  name="sorttype1" id="sorttype1"'); ?>
-								</div>
+								
 								<div class="form-control1" id="fd">
 									<input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" value="<?php echo set_value('fromdate') ?>"  name="fromdate" id="fromdate" placeholder="From Date">
 								</div>
@@ -718,7 +716,7 @@ footer {
 							<div class="SrchBtnHldr">
 								<span class="show_button hide_button">
 								<button type="submit" id="filter" class="btn  filter-success">Filter</button>
-								<a href="<?php echo site_url('Admin/Home/all_reports_undp') ?>" class="btn btn-info reset">Reset</a></span>
+								<a href="<?php echo site_url('Admin/Home/all_reports_unicef') ?>" class="btn btn-info reset">Reset</a></span>
 								<a class="btn btn-info hide_button search_box" style="background:#fff;color:#3c8dbc;margin-left:3px;">Hide Search Box</a>
 								<a class="btn btn-info change_search show_button hide_button" style="background:#fff;color:#3c8dbc;display:none;margin-left:3px;">Change Search Fields</a>		
 								<input type="button" class="btn btn-info" style="margin-left:3px;" onclick="printDiv('content')" value="Export" />
@@ -739,13 +737,14 @@ footer {
 						
 						
 						if($data['device']==41 && $data['report_type']==0){
-							$this->load->view('reportcommon/energyconsumptionreport_undp');						
+							$this->load->view('reportcommon/energyconsumptionreport_unicef');						
 							
 						}
-						if($data['device']==222 && $data['report_type']==0){
-							$this->load->view('reportcommon/evcharger');						
+						if($data['device']==25 && $data['report_type']==0){
+							$this->load->view('reportcommon/watermeter_unicef');						
 							
 						}
+						
 						
 					?>
 					
@@ -756,20 +755,20 @@ footer {
 						//end water
 						//start energy
 						if($data['device']==41 && $data['report_type']==1){							
-							$this->load->view('graphreportcommon/energyconsumptiongraph_undp');
+							$this->load->view('graphreportcommon/energyconsumptiongraph_unicef');
 							
 							}
 							if($data['device']==57 && $data['report_type']==1){							
 								
-								$this->load->view('graphreportcommon/energy_current_undp');
+								$this->load->view('graphreportcommon/energy_current_unicef');
 								
 								}
 								if($data['device']==58 && $data['report_type']==1){							
 									
-									$this->load->view('graphreportcommon/energy_voltage_undp');
+									$this->load->view('graphreportcommon/energy_voltage_unicef');
 									}
 								if($data['device']==51 && $data['report_type']==1){
-									$this->load->view('graphreportcommon/energypowerfactor_undp');
+									$this->load->view('graphreportcommon/energypowerfactor_unicef');
 									
 								}
 									
@@ -980,7 +979,7 @@ if(!empty($m1)){
 			$('#type').show();
 		$('#fd').show();
 		$('#todatediv').show();
-		$('#yeartype').hide();
+		
 			$('#tabular').hide();
 			$('#graphical').show();
 			$('.graph-data').show();
@@ -1148,7 +1147,7 @@ function getsolutions(){
         data: {
             category:category,type:type
         },
-        url: BASE_URL+'Admin/Home/ajax_hardware_device_dropdown_vega/',
+        url: BASE_URL+'Admin/Home/ajax_hardware_device_dropdown_unicef/',
         success: function (data){
 			
             $("#solution").html(data);
@@ -1170,13 +1169,13 @@ function getdevices(){
 		$('#type').hide();
 		$('#fd').hide();
 		$('#todatediv').hide();
-		$('#yeartype').show();
+		
 		
 	}else{
 		$('#type').show();
 		$('#fd').show();
 		$('#todatediv').show();
-		$('#yeartype').hide();
+		
 	$('.firepump-dropdown').hide();
 	$('.device').show();
     $.ajax({

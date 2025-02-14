@@ -359,8 +359,8 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					
 					
                 </div>
-                <?php for ($i=0; $i < count($smudata); $i++) 
-         				 {?>
+                <?php //for ($i=0; $i < count($smudata); $i++) 
+         				 //{?>
 				<div class="DshBrdSctnDtls device devicebox557" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;" id="devicebox557">
 				<div class="bxslider555" id="bxid">
 					
@@ -372,11 +372,11 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl">
 						<li><div class="ClLft">Status</div><div class="ClRgt">
                         
-                            <span class="status-on">ON</span>
+                            <span class="status-off">NA</span>
                                       
                         </div></li>
-						<li><div class="ClLft">On Hours</div><div class="ClRgt">03:00:40</div></li>
-						<li><div class="ClLft">Off Hours</div><div class="ClRgt">09:40:00</div></li>
+						<li><div class="ClLft">On Hours</div><div class="ClRgt">NA</div></li>
+						<li><div class="ClLft">Off Hours</div><div class="ClRgt">NA</div></li>
 						
 						
 						
@@ -393,11 +393,11 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl">
 						<li><div class="ClLft">Status</div><div class="ClRgt">
                         
-                            <span class="status-on">ON</span>
+						<span class="status-off">NA</span>
                                       
                         </div></li>
-						<li><div class="ClLft">On Hours</div><div class="ClRgt">13:00:40</div></li>
-						<li><div class="ClLft">Off Hours</div><div class="ClRgt">05:40:00</div></li>
+						<li><div class="ClLft">On Hours</div><div class="ClRgt">NA</div></li>
+						<li><div class="ClLft">Off Hours</div><div class="ClRgt">NA</div></li>
 						
 						
 						
@@ -414,7 +414,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 				</div>
                    
                 </div>
-				<?php }?>
+				<?php //}?>
 				
 
             </div>
@@ -431,8 +431,8 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					
 					
                 </div>
-                <?php for ($i=0; $i < count($switdata); $i++) 
-         				 {?>
+                <?php //for ($i=0; $i < count($switdata); $i++) 
+         				 //{?>
 				<div class="DshBrdSctnDtls device devicebox558" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;" id="devicebox556">
 				<div class="bxslider555" id="bxid">
 					
@@ -444,11 +444,11 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl">
 						<li><div class="ClLft">Status</div><div class="ClRgt">
                         
-                        <span class="status-off">OFF</span>
+                        <span class="status-off">NA</span>
                                       
                         </div></li>
-						<li><div class="ClLft">On Hours</div><div class="ClRgt">03:00:40</div></li>
-						<li><div class="ClLft">Off Hours</div><div class="ClRgt">09:40:00</div></li>
+						<li><div class="ClLft">On Hours</div><div class="ClRgt">NA</div></li>
+						<li><div class="ClLft">Off Hours</div><div class="ClRgt">NA</div></li>
 						
 						
 						
@@ -465,11 +465,11 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl">
 						<li><div class="ClLft">Status</div><div class="ClRgt">
                         
-                            <span class="status-on">ON</span>
+						<span class="status-off">NA</span>
                                       
                         </div></li>
-						<li><div class="ClLft">On Hours</div><div class="ClRgt">13:00:40</div></li>
-						<li><div class="ClLft">Off Hours</div><div class="ClRgt">05:40:00</div></li>
+						<li><div class="ClLft">On Hours</div><div class="ClRgt">NA</div></li>
+						<li><div class="ClLft">Off Hours</div><div class="ClRgt">NA</div></li>
 						
 						
 						
@@ -488,7 +488,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                 </div>
 				
 				
-<?php }?>
+<?php //}?>
             </div>
 <!-- dg end -->
 <?php } ?>
@@ -504,8 +504,8 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					
 					
                 </div>
-                <?php for ($i=0; $i < count($litdata); $i++) 
-         				 {?>
+                <?php //for ($i=0; $i < count($litdata); $i++) 
+         				// {?>
 				<div class="DshBrdSctnDtls device devicebox559" style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;" id="devicebox556">
 				<div class="bxslider555" id="bxid">
 					
@@ -517,11 +517,11 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl">
 						<li><div class="ClLft">Status</div><div class="ClRgt">
                         
-                            <span class="status-on">ON</span>
+						<span class="status-off">NA</span>
                                       
                         </div></li>
-						<li><div class="ClLft">On Hours</div><div class="ClRgt">03:00:40</div></li>
-						<li><div class="ClLft">Off Hours</div><div class="ClRgt">09:40:00</div></li>
+						<li><div class="ClLft">On Hours</div><div class="ClRgt">NA</div></li>
+						<li><div class="ClLft">Off Hours</div><div class="ClRgt">NA</div></li>
 						
 						
 						
@@ -538,11 +538,11 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<ul class="SctnDtlsGrdTbl">
 						<li><div class="ClLft">Status</div><div class="ClRgt">
                         
-                        <span class="status-off">OFF</span>
+                        <span class="status-off">NA</span>
                                       
                         </div></li>
-						<li><div class="ClLft">On Hours</div><div class="ClRgt">13:00:40</div></li>
-						<li><div class="ClLft">Off Hours</div><div class="ClRgt">05:40:00</div></li>
+						<li><div class="ClLft">On Hours</div><div class="ClRgt">NA</div></li>
+						<li><div class="ClLft">Off Hours</div><div class="ClRgt">NA</div></li>
 						
 						
 						
@@ -561,7 +561,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                 </div>
 				
 				
-<?php }?>
+<?php //}?>
             </div>
             <!-- UPS End -->
             <?php } ?>

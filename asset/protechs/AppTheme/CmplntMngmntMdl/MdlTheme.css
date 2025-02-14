@@ -16,6 +16,8 @@
 /* Approval Status Colour Theme - End */
 /* AMC Action Status Colour Theme - Starts */
 /* AMC Action Status Colour Theme - End */
+/* PM Internal - Starts */
+/* PM Internal - End */
 /* Maintenance Status Colour Theme - Starts */
 /* Maintenance Status Colour Theme - End */
 /* Rooster Colour Theme - Starts */
@@ -5771,6 +5773,27 @@ div.TableLegends div.Hldr span.CmpltPrty.Theme2-Low {
 div.TableLegends div.Hldr span.CmpltPrty.Theme2-Low:before {
   content: "";
   background: #dde2e4;
+}
+div.TableLegends div.Hldr span.PMIntStts.NotStarted {
+  color: #e65100;
+}
+div.TableLegends div.Hldr span.PMIntStts.NotStarted:before {
+  content: "";
+  background: #e65100;
+}
+div.TableLegends div.Hldr span.PMIntStts.PCompleted {
+  color: #1976d2;
+}
+div.TableLegends div.Hldr span.PMIntStts.PCompleted:before {
+  content: "";
+  background: #1976d2;
+}
+div.TableLegends div.Hldr span.PMIntStts.Completed {
+  color: #2e7d32;
+}
+div.TableLegends div.Hldr span.PMIntStts.Completed:before {
+  content: "";
+  background: #2e7d32;
 }
 div.TableLegends div.Hldr span.InvType.Theme1-HCHV {
   color: #ea383a;

@@ -131,6 +131,37 @@ class Home extends MX_Controller {
 		   // print_r($data['data']);die();
 		 $this->load->view('all_reports',$data);
 	}
+	function waterMeterData_unicef(){
+		$this->load->model('Api_data_model_unicef');
+		
+		$meter_list=$this->Api_data_model_unicef->get_water_meters(2024000527);
+		// echo json_encode($meter_list);die();
+			for ($i=0; $i <count($meter_list) ; $i++) { 
+				$flowmeterdata[$i]=$this->Api_data_model_unicef->get_hardwares_device_data_flowmeter_unicef($meter_list[$i]['MeterName'],2024000527);
+			}
+			$data['water_meter_data']=$flowmeterdata;
+		
+		
+		//echo json_encode($flowmeterdata);die();
+		 $dps1=array();
+		
+		for($k=0;$k<count($flowmeterdata);$k++){
+			$dps1[$k]['meter']=$flowmeterdata[$k]['meter'];
+			
+			$tot=0;
+			for ($i=0; $i < count($flowmeterdata[$k]['monthly_data']); $i++) { 
+				$dps1[$k]['dates'][$i]=$flowmeterdata[$k]['monthly_data'][$i]['date'];				
+				$dps1[$k]['conses'][$i]=(int)$flowmeterdata[$k]['monthly_data'][$i]['con'];						
+				
+			}
+		}
+		$data['water_meter_data_month']=$dps1;
+		//echo json_encode($flowmeterdata);die();
+		//echo json_encode($dps1);die();
+			echo json_encode($data);
+			//$data['water_meter_data']=$flowmeterdata;
+		
+	}
 	function waterMeterData(){
 		$this->load->model('Api_data_model');
 		$device_data=$this->Api_data_model->get_devices_list(5);
@@ -192,7 +223,7 @@ class Home extends MX_Controller {
 		}
 		
 	
-		if($this->session->userdata('created_by')==20){
+		if($this->session->userdata('created_by')==20 || $this->session->userdata('created_by')==23){
 			
 		  if(count($hardwares['Water Level']['hardaware_list'])>0){
 				for ($i=0; $i <count($hardwares['Water Level']['hardaware_list']) ; $i++) { 
@@ -228,21 +259,23 @@ class Home extends MX_Controller {
 		}
 		// echo json_encode($data);die();
 			$this->load->view('water-dashboard-chennai',$data);
+		}else if($this->session->userdata('created_by')==42){
+			$this->load->view('water-dashboard-unicef');
 		}else{
 			 //echo json_encode($hardwares);die();
-					if(isset($hardwares['Flow Meter']['hardaware_list'])){
-						for ($i=0; $i <count($hardwares['Flow Meter']['hardaware_list']) ; $i++) { 
-							$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter($hardwares['Flow Meter']['hardaware_list'][$i]);
-						}
-						$data['flowmeter_data']=$flowmeterdata;
-					}
-					if(isset($hardwares['Water Meter']['hardaware_list'])){
-						for ($i=0; $i <count($hardwares['Water Meter']['hardaware_list']) ; $i++) { 
-							$watermeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_watermeter($hardwares['Water Meter']['hardaware_list'][$i]);
-						}
-						$data['watermeter_data']=$watermeterdata;
-						// echo json_encode($watermeterdata);die();
-					}
+					// if(isset($hardwares['Flow Meter']['hardaware_list'])){
+					// 	for ($i=0; $i <count($hardwares['Flow Meter']['hardaware_list']) ; $i++) { 
+					// 		$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter($hardwares['Flow Meter']['hardaware_list'][$i]);
+					// 	}
+					// 	$data['flowmeter_data']=$flowmeterdata;
+					// }
+					// if(isset($hardwares['Water Meter']['hardaware_list'])){
+					// 	for ($i=0; $i <count($hardwares['Water Meter']['hardaware_list']) ; $i++) { 
+					// 		$watermeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_watermeter($hardwares['Water Meter']['hardaware_list'][$i]);
+					// 	}
+					// 	$data['watermeter_data']=$watermeterdata;
+					// 	// echo json_encode($watermeterdata);die();
+					// }
 					if(isset($hardwares['Water Level']['hardaware_list'])){
 					//if(count($hardwares['Water Level']['hardaware_list'])>0){
 					for ($i=0; $i <count($hardwares['Water Level']['hardaware_list']) ; $i++) { 
@@ -251,13 +284,13 @@ class Home extends MX_Controller {
 					// echo json_encode($waterleveldata);die();
 					$data['waterlevel_data']=$waterleveldata;
 				}
-				if(isset($hardwares['Borewells']['hardaware_list'])){
-					for ($i=0; $i <count($hardwares['Borewells']['hardaware_list']) ; $i++) { 
-						$borewelldata[$i]=$this->Api_data_model->get_hardwares_device_data_borewell($hardwares['Borewells']['hardaware_list'][$i]);
-					}
-					// echo json_encode($waterleveldata);die();
-					$data['borewell_data']=$borewelldata;
-				}
+				// if(isset($hardwares['Borewells']['hardaware_list'])){
+				// 	for ($i=0; $i <count($hardwares['Borewells']['hardaware_list']) ; $i++) { 
+				// 		$borewelldata[$i]=$this->Api_data_model->get_hardwares_device_data_borewell($hardwares['Borewells']['hardaware_list'][$i]);
+				// 	}
+				// 	// echo json_encode($waterleveldata);die();
+				// 	$data['borewell_data']=$borewelldata;
+				// }
 				if(isset($hardwares['Wate Level(Independent)']['hardaware_list'])){
 					for ($i=0; $i <count($hardwares['Wate Level(Independent)']['hardaware_list']) ; $i++) { 
 						$waterlevelinddata[$i]=$this->Api_data_model->get_hardwares_device_data_waterlevelmeter($hardwares['Wate Level(Independent)']['hardaware_list'][$i]);
@@ -267,22 +300,22 @@ class Home extends MX_Controller {
 				}
 				
 				
-				if(isset($hardwares['Firepump']['hardaware_list'])){
-					for ($i=0; $i <count($hardwares['Firepump']['hardaware_list']) ; $i++) { 
-						$firepumpdata[$hardwares['Firepump']['hardaware_list'][$i]['dashboard_name']]=$this->Api_data_model->get_hardwares_device_data_firepump($hardwares['Firepump']['hardaware_list'][$i]);
-					}
+				// if(isset($hardwares['Firepump']['hardaware_list'])){
+				// 	for ($i=0; $i <count($hardwares['Firepump']['hardaware_list']) ; $i++) { 
+				// 		$firepumpdata[$hardwares['Firepump']['hardaware_list'][$i]['dashboard_name']]=$this->Api_data_model->get_hardwares_device_data_firepump($hardwares['Firepump']['hardaware_list'][$i]);
+				// 	}
 					
-					//  echo json_encode($firepumpdata);die();
-					$data['firepump_data']=$firepumpdata;
-				}
-				if(isset($hardwares['Hydro Pnematic System']['hardaware_list'])){
-					for ($i=0; $i <count($hardwares['Hydro Pnematic System']['hardaware_list']) ; $i++) { 
-						$hydrodata[$i]=$this->Api_data_model->get_hardwares_device_data_hydro($hardwares['Hydro Pnematic System']['hardaware_list'][$i]);
-					}
+				// 	//  echo json_encode($firepumpdata);die();
+				// 	$data['firepump_data']=$firepumpdata;
+				// }
+				// if(isset($hardwares['Hydro Pnematic System']['hardaware_list'])){
+				// 	for ($i=0; $i <count($hardwares['Hydro Pnematic System']['hardaware_list']) ; $i++) { 
+				// 		$hydrodata[$i]=$this->Api_data_model->get_hardwares_device_data_hydro($hardwares['Hydro Pnematic System']['hardaware_list'][$i]);
+				// 	}
 					
-					//echo json_encode($hydrodata[0]['pressure_data']);die();
-					$data['hydro_data']=$hydrodata;
-				}
+				// 	//echo json_encode($hydrodata[0]['pressure_data']);die();
+				// 	$data['hydro_data']=$hydrodata;
+				// }
 			$this->load->view('water-dashboard',$data);
 		}
 		
@@ -531,6 +564,32 @@ class Home extends MX_Controller {
 			$this->load->view('energy-dashboard_undp',$data);
 		
 	}
+	public function energy_unicef()
+	{
+		$this->load->model('Api_data_model_unicef');
+		$device_data=$this->Api_data_model_unicef->get_devices_list(6);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_unicef->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list']=$this->Api_data_model_unicef->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list']=array();
+			//echo "No Hardware data";
+		}
+		// echo json_encode($hardwares['Energy Meter']['hardaware_list']);die();
+			if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+				$data['energy_meters_data']=$this->Api_data_model_unicef->get_hardwares_device_data_energy_meters_unicef($hardwares['Energy Meter']['hardaware_list'][0]);
+			}
+			//$data['energy_meters_data']=array();
+			// echo json_encode($data['energy_meters_data']);die();
+			$this->load->view('energy-dashboard_unicef',$data);
+		
+	}
 	public function energy_rsbrother()
 	{
 		$this->load->model('Api_data_model');
@@ -668,14 +727,15 @@ class Home extends MX_Controller {
 		// for ($i=0; $i <count($hardwares['Switch Control']['hardaware_list']) ; $i++) { 
 		// 	$scdata[$i]=$this->Api_data_model->get_hardwares_device_data_switch_control($hardwares['Switch Control']['hardaware_list'][$i]);
 		// }
-		$data['switchcontrol_data']=$this->Api_data_model->get_hardwares_device_data_switch_control($hardwares['Switch Control']['hardaware_list'][0]);
-		// echo json_encode($data['switchcontrol_data']);die();
+		
 		
 		
 		if($this->session->userdata('created_by')==20){
 			$data['switch_status_data']=$this->Api_data_model->get_hardwares_device_data_switch_status($hardwares['Switch Status']['hardaware_list'][0]);
 			$this->load->view('switch_control_chennai',$data);
 		}else{
+			$data['switchcontrol_data']=$this->Api_data_model->get_hardwares_device_data_switch_control($hardwares['Switch Control']['hardaware_list'][0]);
+		// echo json_encode($data['switchcontrol_data']);die();
 			$this->load->view('switch_control',$data);
 		}
 	}
@@ -1369,7 +1429,7 @@ class Home extends MX_Controller {
 			}
 			$data['watergraphdata']=$waterleveldata;
 		}
-		
+		// echo json_encode($data['watergraphdata']);die();
 		if($data['data']['device']==41){
 			if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
 				if($this->input->post('sorttype')==2){
@@ -1523,6 +1583,115 @@ class Home extends MX_Controller {
 		
 		 $this->load->view('all_reports_hcug',$data);
 	}
+	function all_reports_unicef(){
+		
+		$this->load->model('Hardware_model');
+		$this->load->model('Hardware_category_model');
+		$this->load->model('Api_reports_data_model');
+		$data['category'] = array('' => 'Select Category') + $this->Hardware_category_model->get_hardware_category_dropdown_unicef();
+		$device_id=$this->input->post('report');
+		$data['radio']=$this->input->post('report_type');
+		$data['m1']=$device_id;
+		if(!empty($_POST)){
+			$data['data']=$this->input->post();
+		}else{
+			$data['data']=array('solution'=>0);
+		}
+		
+		if ($this->input->post('category') != '')
+			{
+				if($this->input->post('report_type')==0){
+					$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+					get_devices_unicef_tab($this->input->post('category'));
+				}else{
+					$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+				get_devices_vega($this->input->post('category'));
+				}
+				
+			} else
+			{
+				$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+				get_devices_unicef_tab("");
+			}
+			
+		
+			if ($this->input->post('device') != '')
+			{		
+				$rdata=array(
+				'category'=>$this->input->post('category'),
+				'solution'=>$this->input->post('device'),
+				'device'=>"",
+				'report_type'=>$this->input->post('report_type')
+				);
+				//print_r($rdata);exit;
+				$data['report'] =  array('' => 'Select Report') + $this->Api_reports_data_model->get_reports_dropdown($rdata);
+				//echo "<pre>";print_r($data['report']);exit;
+			}
+		$this->load->model('Api_data_model_unicef');
+		$device_data=$this->Api_data_model_unicef->get_devices_list(6);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_unicef->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list']=$this->Api_data_model_unicef->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list']=array();
+			//echo "No Hardware data";
+		}
+		// echo json_encode($hardwares);die();
+		//if(isset($hardwares['DG']['hardaware_list'][0])){
+       
+			if($data['data']['device']==41){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+
+					$energydat=$this->Api_data_model_unicef->get_hardwares_device_data_energymeter_report_unicef($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'),$this->input->post('sorttype'));
+					$data['energydata']=$energydat;
+				}
+				
+			}
+			// echo json_encode($energydat);die();
+			if($data['data']['device']==57){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$energydat=$this->Api_data_model_unicef->get_hardwares_device_data_energymeter_current_report_unicef($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['current']=$energydat;
+				}
+				
+			}
+			
+			if($data['data']['device']==58){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$energydat=$this->Api_data_model_unicef->get_hardwares_device_data_energymeter_voltage_report_unicef($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['voltage']=$energydat;
+				}
+				
+			}
+			// echo json_encode($data['voltage']);die();
+			if($data['data']['device']==51){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$energydat=$this->Api_data_model_unicef->get_hardwares_device_data_power_factor_report_unicef($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['power_factor_data']=$energydat;
+				}
+				
+			}
+			if($data['data']['device']==25){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$flowmeterdata=$this->Api_data_model_unicef->get_hardwares_device_data_flowmeter_report_unicef($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+				}
+		
+				// echo json_encode($flowmeterdata['consolidate']);die();
+		
+				
+				$data['flowdata']=$flowmeterdata;
+			}
+			
+		
+		// echo json_encode($dps1);die();
+		 $this->load->view('all_reports_unicef',$data);
+	}
 	function all_reports_undp(){
 		
 		$this->load->model('Hardware_model');
@@ -1591,6 +1760,14 @@ class Home extends MX_Controller {
 					$energydat=$this->Api_data_model->get_hardwares_device_data_energymeter_report_undp($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'),$this->input->post('sorttype'));
 					$data['energydata']=$energydat;
 				}
+				
+			}
+			// echo json_encode($energydat['unsg']);die();
+			if($data['data']['device']==222){
+				
+					$evch=$this->Api_data_model->get_hardwares_device_data_evch_report_undp($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('sorttype1'));
+					$data['evch']=$evch;
+				
 				
 			}
 			if($data['data']['device']==57){
@@ -2028,15 +2205,36 @@ class Home extends MX_Controller {
 				
 
 			}
-			for ($i=0; $i <count($hardwares['Flow Meter']['hardaware_list']) ; $i++) { 
-				$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter_report($hardwares['Flow Meter']['hardaware_list'][$i],$this->input->post('fromdate'),$this->input->post('todate'),'NA','NA');
+			if($data['data']['device']==25){
+				for ($i=0; $i <count($hardwares['Water Meter']['hardaware_list']) ; $i++) { 
+					$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter_report($hardwares['Water Meter']['hardaware_list'][$i],$this->input->post('fromdate'),$this->input->post('todate'),$this->input->post('fromtime'),$this->input->post('totime'));
+				}
+		
+				
+		
+				$dps1=array();
+				
+				for($k=0;$k<count($flowmeterdata);$k++){		
+				
+					for ($i=0; $i < count($flowmeterdata[$k]['consolidate']); $i++) { 
+						$dps1[$k]['meter']=$flowmeterdata[$k]['consolidate'][$i]['meter'];
+						$dps1[$k]['dates'][$i]=$flowmeterdata[$k]['consolidate'][$i]['date'];				
+						$dps1[$k]['conses'][$i]=(float)$flowmeterdata[$k]['consolidate'][$i]['consumption'];						
+						
+					}
+				}
+				$data['water_meter_data_month']=$dps1;
+				$data['flowdata']=$flowmeterdata;
 			}
-			for ($i=0; $i <count($hardwares['DG']['hardaware_list']) ; $i++) { 
-				$dgdata[$i]=$this->Api_data_model->get_hardwares_device_data_dg_report($hardwares['DG']['hardaware_list'][$i],$this->input->post('fromdate'),$this->input->post('todate'),"NA","NA");
-			}
-			for ($i=0; $i <count($hardwares['Water Level']['hardaware_list']) ; $i++) { 
-				$waterleveldata[$i]=$this->Api_data_model->get_hardwares_device_data_waterlevelmeter_report($hardwares['Water Level']['hardaware_list'][$i],$this->input->post('fromdate'),$this->input->post('todate'),"NA","NA");
-			}
+			// for ($i=0; $i <count($hardwares['DG']['hardaware_list']) ; $i++) { 
+			// 	$dgdata[$i]=$this->Api_data_model->get_hardwares_device_data_dg_report($hardwares['DG']['hardaware_list'][$i],$this->input->post('fromdate'),$this->input->post('todate'),$this->input->post('fromtime'),$this->input->post('totime'));
+			// }
+			// $data['dgdata']=$dgdata;
+
+            // for ($i=0; $i <count($hardwares['Water Level']['hardaware_list']) ; $i++) { 
+			// 	$waterleveldata[$i]=$this->Api_data_model->get_hardwares_device_data_waterlevelmeter_report($hardwares['Water Level']['hardaware_list'][$i],$this->input->post('fromdate'),$this->input->post('todate'),$this->input->post('fromtime'),$this->input->post('totime'));
+			// }
+			$data['watergraphdata']=$waterleveldata;
 			//$data['waterlevel_data']=$waterleveldata;
 
 			$data['flowdata']=$flowmeterdata;
@@ -2873,6 +3071,23 @@ class Home extends MX_Controller {
        // $states = $this->Hardware_category_model->get_devices_chennai($category);  
 		if($this->input->get('type')==0){
 			$states = $this->Hardware_category_model->get_devices_vega_tab($category);  
+			//$content .='<option value="222">EV Charger</option>';
+		}else{
+			$states = $this->Hardware_category_model->get_devices_vega($category);  
+		}          
+        foreach ($states as $sid=>$state){
+          $content .='<option value="'. $sid .'">'. $state .'</option>';
+        }
+        echo $content;
+    }
+	function ajax_hardware_device_dropdown_unicef(){
+        $this->load->model('Hardware_category_model');
+        $category = $this->input->get('category');
+        $content ='<option value=""> Select Solution </option>';
+       // $states = $this->Hardware_category_model->get_devices_chennai($category);  
+		if($this->input->get('type')==0){
+			$states = $this->Hardware_category_model->get_devices_unicef_tab($category);  
+			//$content .='<option value="222">EV Charger</option>';
 		}else{
 			$states = $this->Hardware_category_model->get_devices_vega($category);  
 		}          

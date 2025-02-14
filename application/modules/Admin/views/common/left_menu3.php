@@ -99,7 +99,8 @@
                                     <a href="<?php echo site_url('Admin/Home/energy_vegasschool/')?>#energy" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/Electric-Meter-W.png" width="22px"/> <span class="Txt">Energy Meter</span></a>
                                     <?php }elseif($this->session->userdata('created_by')==38){?>
                                         <a href="<?php echo site_url('Admin/Home/energy_undp/')?>#energy" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/Electric-Meter-W.png" width="22px"/> <span class="Txt">Energy Meter</span></a>
-                                      
+                                        <?php }elseif($this->session->userdata('created_by')==42){?>
+                                            <a href="<?php echo site_url('Admin/Home/energy_unicef/')?>#energy" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/Electric-Meter-W.png" width="22px"/> <span class="Txt">Energy Meter</span></a>
                                         <?php }else{?>
                                         <a href="<?php echo site_url('Admin/Home/energy/')?>#energy" class="Lnk"><img src="<?php echo site_url() ?>asset/demoforall/Images/Electric-Meter-W.png" width="22px"/> <span class="Txt">Energy Meter</span></a>
                                         <?php }?>
@@ -461,6 +462,9 @@
                         <?php } if($this->session->userdata('created_by')==38){?>                       
                     
                         <a href="<?php echo site_url('Admin/Home/all_reports_undp') ?>" class="Lnk Arr" id="reportss"><img src="<?php echo site_url() ?>asset/admin/img/reports-img.png" width="20px"/> <span class="Txt">Reports</span></a>
+                        <?php } if($this->session->userdata('created_by')==42){?>                       
+                    
+                    <a href="<?php echo site_url('Admin/Home/all_reports_unicef') ?>" class="Lnk Arr" id="reportss"><img src="<?php echo site_url() ?>asset/admin/img/reports-img.png" width="20px"/> <span class="Txt">Reports</span></a>
                     <?php } if($this->session->userdata('created_by')==33){?>
                         
                     

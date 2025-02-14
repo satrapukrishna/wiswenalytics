@@ -3,10 +3,12 @@
 //die(); ?>
 <html>
 <head>
-  <?php $this->load->view('common/css3') ?>
+    <?php $this->load->view('common/css3') ?>
+	
+  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet" />
 
 
 	<style>
@@ -176,46 +178,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                 </div>
                 <!-- floor -1---->
 				
-				<div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
-				<h4 class="head-h4">AC Plant Room</h4>
-				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
-				<div class=" devicebox5551">
-				<div class="bxslider555" id="bxid">
-				<?php if(isset($energy_meters_data['undp'])){ ?>
-				<?php for ($i=0; $i < count($energy_meters_data['undp']); $i++) 
-         				 {?>
-					<div style="width:320px">
-					<div class="SctnDtlsHldr">
-					<div class="SldrCntnr">
-					<div class="SctnDtls BorewellHldr">
-					<span class="SctnTtl" style="line-height: 72px;"><?php echo $energy_meters_data['undp'][$i]['meter'] ?> <img style="float:right"src="<?php echo site_url() ?>asset/admin/img/device_icon_20200715211126.png" width="80" /></span>
-					<ul class="SctnDtlsGrdTbl">
-						
-						<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['todaycons'] ?> kWh</div></li>
-						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['kw'] ?> kW</div></li>
-						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['pf'] ?> </div></li>
-						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['voltage1'] ?></div></li>
-						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['voltage2'] ?></div></li>
-						<li><div class="ClLft">Voltage_3</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['voltage3'] ?></div></li>
-						<li><div class="ClLft">Current_1</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['current1'] ?></div></li>
-						<li><div class="ClLft">Current_2</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['current2'] ?></div></li>
-						<li><div class="ClLft">Current_3</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['current3'] ?></div></li>
-					</ul>
-					</div>
-					</div>
-					</div>
-					</div>
-					<?php }}?>
-					
-					
-				</div>
-				</div>
-                   
-                </div>
-				  <!-- floor -1---->
+				
 				  <div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
 				<h4 class="head-h4">UN House Central Wing</h4>
 				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
@@ -339,46 +302,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                    
                 </div>
 				
-				<div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
-				<h4 class="head-h4">UN House  West Wing</h4>
-				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
-				<div class=" devicebox5551">
-				<div class="bxslider555" id="bxid">
-				<?php if(isset($energy_meters_data['unww'])){ ?>	
-				<?php for ($i=0; $i < count($energy_meters_data['unww']); $i++) 
-         				 {?>
-					<div style="width:320px">
-					<div class="SctnDtlsHldr">
-					<div class="SldrCntnr">
-					<div class="SctnDtls BorewellHldr">
-					<span class="SctnTtl" style="line-height: 72px;"><?php echo $energy_meters_data['unww'][$i]['meter'] ?> <img style="float:right"src="<?php echo site_url() ?>asset/admin/img/device_icon_20200715211126.png" width="80" /></span>
-					<ul class="SctnDtlsGrdTbl">
-						
-					<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['todaycons'] ?> kWh</div></li>
-						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['yestcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['monthcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['avgcons'] ?> kWh</div></li>
-						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['kw'] ?> kW</div></li>
-						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['pf'] ?> </div></li>
-						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['voltage1'] ?></div></li>
-						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['voltage2'] ?></div></li>
-						<li><div class="ClLft">Voltage_3</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['voltage3'] ?></div></li>
-						<li><div class="ClLft">Current_1</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['current1'] ?></div></li>
-						<li><div class="ClLft">Current_2</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['current2'] ?></div></li>
-						<li><div class="ClLft">Current_3</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['current3'] ?></div></li>
-						
-					</ul>
-					</div>
-					</div>
-					</div>
-					</div>
-					<?php }}?>
-					
-					
-				</div>
-				</div>
-                   
-                </div>
+				
 
 				<div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
 				<h4 class="head-h4">Security Gate</h4>
@@ -448,6 +372,85 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<li><div class="ClLft">Current_1</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['current1'] ?></div></li>
 						<li><div class="ClLft">Current_2</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['current2'] ?></div></li>
 						<li><div class="ClLft">Current_3</div><div class="ClRgt"><?php echo $energy_meters_data['unab'][$i]['current3'] ?></div></li>
+						
+					</ul>
+					</div>
+					</div>
+					</div>
+					</div>
+					<?php }}?>
+					
+					
+				</div>
+				</div>                   
+                </div>
+				<div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
+				<h4 class="head-h4">AC Plant Room</h4>
+				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
+				<div class=" devicebox5551">
+				<div class="bxslider555" id="bxid">
+				<?php if(isset($energy_meters_data['undp'])){ ?>
+				<?php for ($i=0; $i < count($energy_meters_data['undp']); $i++) 
+         				 {?>
+					<div style="width:320px">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+					<span class="SctnTtl" style="line-height: 72px;"><?php echo $energy_meters_data['undp'][$i]['meter'] ?> <img style="float:right"src="<?php echo site_url() ?>asset/admin/img/device_icon_20200715211126.png" width="80" /></span>
+					<ul class="SctnDtlsGrdTbl">
+						
+						<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['todaycons'] ?> kWh</div></li>
+						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['yestcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['pf'] ?> </div></li>
+						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['voltage1'] ?></div></li>
+						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['voltage2'] ?></div></li>
+						<li><div class="ClLft">Voltage_3</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['voltage3'] ?></div></li>
+						<li><div class="ClLft">Current_1</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['current1'] ?></div></li>
+						<li><div class="ClLft">Current_2</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['current2'] ?></div></li>
+						<li><div class="ClLft">Current_3</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['current3'] ?></div></li>
+					</ul>
+					</div>
+					</div>
+					</div>
+					</div>
+					<?php }}?>
+					
+					
+				</div>
+				</div>
+                   
+                </div>
+				  <!-- floor -1---->
+				  <div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
+				<h4 class="head-h4">UN House  West Wing</h4>
+				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
+				<div class=" devicebox5551">
+				<div class="bxslider555" id="bxid">
+				<?php if(isset($energy_meters_data['unww'])){ ?>	
+				<?php for ($i=0; $i < count($energy_meters_data['unww']); $i++) 
+         				 {?>
+					<div style="width:320px">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+					<span class="SctnTtl" style="line-height: 72px;"><?php echo $energy_meters_data['unww'][$i]['meter'] ?> <img style="float:right"src="<?php echo site_url() ?>asset/admin/img/device_icon_20200715211126.png" width="80" /></span>
+					<ul class="SctnDtlsGrdTbl">
+						
+					<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['todaycons'] ?> kWh</div></li>
+						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['yestcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['monthcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['avgcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['kw'] ?> kW</div></li>
+						<li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['pf'] ?> </div></li>
+						<li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['voltage1'] ?></div></li>
+						<li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['voltage2'] ?></div></li>
+						<li><div class="ClLft">Voltage_3</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['voltage3'] ?></div></li>
+						<li><div class="ClLft">Current_1</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['current1'] ?></div></li>
+						<li><div class="ClLft">Current_2</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['current2'] ?></div></li>
+						<li><div class="ClLft">Current_3</div><div class="ClRgt"><?php echo $energy_meters_data['unww'][$i]['current3'] ?></div></li>
 						
 					</ul>
 					</div>

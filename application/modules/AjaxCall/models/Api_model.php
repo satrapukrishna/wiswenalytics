@@ -85,6 +85,32 @@ class Api_model extends CI_Model{
          
         }
      }
+     function pushApiDataUNDPdates($json_chennai){
+        foreach ($json_chennai as $valueclient) {
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+           
+            $appData2=array(
+                'StationId'=>$valueclient['StationId'],
+                'UtilityName'=>$valueclient['UtilityName'],
+                'LocationName'=>$valueclient['LocationName'],
+                'MeterName'=>$valueclient['MeterName'],
+                'MeterSerial'=>$valueclient['MeterSerial'],
+                'LineConnected'=>$valueclient['LineConnected'],
+                'TxnDate'=>$newDate,
+                'TxnTime'=>$valueclient['TxnTime'],
+                'FromTime'=>$valueclient['FromTime'],
+                'ToTime'=>$valueclient['ToTime'],
+                'PrvReading'=>$valueclient['PrvReading'],
+                'CurReading'=>$valueclient['PrvReading'],
+                'Consumption'=>$valueclient['Consumption'],
+                'Multiplier'=>$valueclient['Multiplier'],
+                'UomScale'=>$valueclient['UomScale'],
+                'update_date'=>date("Y-m-d H:i:s")               
+            );
+             $this->db->insert('hardware_station_consumption_data_undp_april16_30_2024', $appData2);
+         
+        }
+     }
     function pushApiDataUNDPLive($json_client)
     {
         //print_r($json_client);die();
@@ -669,7 +695,7 @@ class Api_model extends CI_Model{
                 'UomName'=>$valueclient['UomName'],
                 'UomScale'=>$valueclient['UomScale'],               
             );
-             $this->db->insert('hardware_station_consumption_data_mumbai8', $appDataMumbai);
+             $this->db->insert('hardware_station_consumption_data_mumbai', $appDataMumbai);
             
         }
      }
@@ -2849,7 +2875,7 @@ function getClientToken($client_id){
 
     }
     function deleteAllLiveData(){
-        $tables = array("hardware_station_consumption_data_district_court_live","hardware_station_consumption_data_gopalaswami_temple_live","hardware_station_consumption_data_radhika_theatre_lane_live","hardware_station_consumption_data_kazipet_railwaystation_live","hardware_station_consumption_data_chintal_bridge_live","hardware_station_consumption_data_lic_office_marketroad_live","hardware_station_consumption_data_mission_hospital_live","hardware_station_consumption_data_police_headquarters_live","hardware_station_consumption_data_wr_jpnagar_live","hardware_station_consumption_data_wr_collector_live","hardware_station_consumption_data_rsbrothers_live","hardware_station_consumption_data_vegaschool_live","hardware_station_consumption_data_undp_live","hardware_station_consumption_data_hcug_day","hardware_station_consumption_data_hcug36_status");
+        $tables = array("hardware_station_consumption_data_rsbrothers_live","hardware_station_consumption_data_vegaschool_live","hardware_station_consumption_data_undp_live","hardware_station_consumption_data_hcug_day","hardware_station_consumption_data_hcug36_status","hardware_station_consumption_data__unicef_live","hardware_station_consumption_data_hcug_live");
         $date = date('Y-m-d');
         foreach($tables as $table) {
             $where="TxnDate < '".$date."'";

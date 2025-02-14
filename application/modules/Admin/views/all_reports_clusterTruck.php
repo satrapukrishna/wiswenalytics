@@ -675,7 +675,7 @@ footer {
         <div id="DshbrdRgtCtnr" class="DshBrdCtnr">
 			<div class="DshBrdSctn">
 				<div class="DshBrdSctnDtls">
-					<form name="reports" id="myForm" action="<?php echo site_url("Admin/Home/all_reports_undp")?>" method="post" onSubmit="return formValidation();">
+					<form name="reports" id="myForm" action="<?php echo site_url("Admin/Home/clusterTruckReport")?>" method="post" onSubmit="return formValidation();">
 						<div class=SrchFullBx>
 							<h2 class="report-text">Reports</h2>
 							<div class="search_box" >
@@ -692,20 +692,8 @@ footer {
 							<input type="hidden" id="page" value="runninggg"/>					
 							<span id="error"></span>
 							<div class="search_box">
-								<div class="form-control1" id="categorydiv">							
-									<?php echo form_dropdown('category', $category, $this->input->post('category'), 'class="form-control chosen-select" onchange="getsolutions()" name="cat" id="category"'); ?>
-								</div>
 								
-								<div class="form-control1" id="solutiondiv">
-									<?php echo form_dropdown('device', $solution, $this->input->post('device'), 'class="form-control chosen-select" id="solution" onchange="getdevices()"'); ?>
-								</div>
-								<div class="form-control1" id="type">							
-									<?php $sorttype = array('1' => 'Day Wise','2' => 'Hourly Wise'); echo form_dropdown('sorttype', $sorttype, $this->input->post('sorttype'), 'class="form-control chosen-select"  name="sorttype" id="sorttype"'); ?>
-								</div>
-								<div class="form-control1" id="yeartype">							
-									<?php $sorttype1 = array('2024' => '2024','2025' => '2025'); echo form_dropdown('sorttype1', $sorttype1, $this->input->post('sorttype1'), 'class="form-control chosen-select"  name="sorttype1" id="sorttype1"'); ?>
-								</div>
-								<div class="form-control1" id="fd">
+								<div class="form-control1">
 									<input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" value="<?php echo set_value('fromdate') ?>"  name="fromdate" id="fromdate" placeholder="From Date">
 								</div>
 								<div class="form-control1" id="todatediv">
@@ -718,7 +706,7 @@ footer {
 							<div class="SrchBtnHldr">
 								<span class="show_button hide_button">
 								<button type="submit" id="filter" class="btn  filter-success">Filter</button>
-								<a href="<?php echo site_url('Admin/Home/all_reports_undp') ?>" class="btn btn-info reset">Reset</a></span>
+								<a href="<?php echo site_url('Admin/Home/clusterTruckReport') ?>" class="btn btn-info reset">Reset</a></span>
 								<a class="btn btn-info hide_button search_box" style="background:#fff;color:#3c8dbc;margin-left:3px;">Hide Search Box</a>
 								<a class="btn btn-info change_search show_button hide_button" style="background:#fff;color:#3c8dbc;display:none;margin-left:3px;">Change Search Fields</a>		
 								<input type="button" class="btn btn-info" style="margin-left:3px;" onclick="printDiv('content')" value="Export" />
@@ -737,15 +725,9 @@ footer {
 						//echo print_r($data['device']);die();
 						//water tabular
 						
+						$this->load->view('reportcommon/clusterTruckTemp1');
+						// $this->load->view('reportcommon/clusterTruckTemp');
 						
-						if($data['device']==41 && $data['report_type']==0){
-							$this->load->view('reportcommon/energyconsumptionreport_undp');						
-							
-						}
-						if($data['device']==222 && $data['report_type']==0){
-							$this->load->view('reportcommon/evcharger');						
-							
-						}
 						
 					?>
 					
@@ -755,23 +737,7 @@ footer {
 						
 						//end water
 						//start energy
-						if($data['device']==41 && $data['report_type']==1){							
-							$this->load->view('graphreportcommon/energyconsumptiongraph_undp');
-							
-							}
-							if($data['device']==57 && $data['report_type']==1){							
-								
-								$this->load->view('graphreportcommon/energy_current_undp');
-								
-								}
-								if($data['device']==58 && $data['report_type']==1){							
-									
-									$this->load->view('graphreportcommon/energy_voltage_undp');
-									}
-								if($data['device']==51 && $data['report_type']==1){
-									$this->load->view('graphreportcommon/energypowerfactor_undp');
-									
-								}
+						
 									
 								?>
 						</div>
@@ -957,8 +923,7 @@ if(!empty($m1)){
 		$("#cat").val('');
 		getsolutions();
 		
-		if (type==0) {
-				 
+		if (type==0) {	 
 			
 			$('#tabular').show();
 			$('#graphical').hide();
@@ -977,10 +942,7 @@ if(!empty($m1)){
 			newPageTitle = 'Tabular Report - '+d.getDate()+"-"+(d.getMonth() + 1)+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
             document.title = newPageTitle;
 		}else if(type==1){
-			$('#type').show();
-		$('#fd').show();
-		$('#todatediv').show();
-		$('#yeartype').hide();
+			
 			$('#tabular').hide();
 			$('#graphical').show();
 			$('.graph-data').show();
@@ -1043,28 +1005,16 @@ if(category==''){
 	$('.change_search').hide();
 	return false;	
 }else if(fromdate==''){
-	if(solution=222){
-
-	}else{
-		$('#error').html("Please Select From Date");
+	$('#error').html("Please Select From Date");
 	$('.search_box').show();
 	$('.show_button').show();
 	$('.change_search').hide();
-	return false;
-	}
-		
+	return false;	
 }else if(todate==''){
 	var solution = $("#solution").val();
 	if(solution==16){
 		
-	}if(solution==222){
-	
-	$('#type').hide();
-	$('#fd').hide();
-	$('#todatediv').hide();
-	
-	
-}else{
+	}else{
 		$('#error').html("Please Select To Date");
 	$('.search_box').show();
 	$('.show_button').show();
@@ -1123,19 +1073,6 @@ var sort = $("#sorttype").val();
 // 	$('.change_search').hide();
 // 	// return false;
 // }
-var solution = $("#solution").val();
-if(solution==222){
-	
-	$('#type').hide();
-	$('#fd').hide();
-	$('#todatediv').hide();
-	
-	
-}else{
-	$('#type').show();
-	$('#fd').show();
-	$('#todatediv').show();
-}
 function getsolutions(){
     $("#solution").html("");
     var category = $("#category").val();
@@ -1164,19 +1101,13 @@ function getdevices(){
     $("#device").html("");
     var category = $("#category").val();
     var solution = $("#solution").val();
-	// alert(solution);
-	if(solution==222){
+	if(solution==16){
 	
-		$('#type').hide();
-		$('#fd').hide();
+		$('.firepump-dropdown').show();
 		$('#todatediv').hide();
-		$('#yeartype').show();
 		
 	}else{
-		$('#type').show();
-		$('#fd').show();
 		$('#todatediv').show();
-		$('#yeartype').hide();
 	$('.firepump-dropdown').hide();
 	$('.device').show();
     $.ajax({

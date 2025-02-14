@@ -143,6 +143,15 @@ $AMCActionStatusTheme: (
 /* AMC Action Status Colour Theme - End */
 
 
+/* PM Internal - Starts */
+$PMIntStatusTheme: (
+    NotStarted: #E65100,
+    PCompleted: #1976D2,
+    Completed: #2E7D32,
+);
+/* PM Internal - End */
+
+
 /* Maintenance Status Colour Theme - Starts */
 $MaintenanceStatusTheme: (
     InHouse: #344DED,
@@ -6510,6 +6519,19 @@ div.TableLegends {
                 }
             }
 
+            &.PMIntStts {
+                @each $PMIntStatusName,
+                $PMIntStatusColour in $PMIntStatusTheme {
+                    &.#{$PMIntStatusName} {
+                        color: rgba($PMIntStatusColour, 1);
+
+                        &:before {
+                            content: '';
+                            background: rgba($PMIntStatusColour, 1);
+                        }
+                    }
+                }
+            }
 
             &.InvType {
 

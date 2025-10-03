@@ -67,17 +67,20 @@ class Api_data_db_table_model extends CI_Model{
 		//echo $this->db->last_query();exit;     
         return $res;
 	}
-	function get_meters_name($table_name) {
+	function get_meters_name() {
         $this->db->select('');
-        $this->db->from('hardware_station_consumption_data_mumbai');     
+        $this->db->from('hardware');     
         $this->db->where('UtilityName','Water Monitor'); 
-		$this->db->group_by('LocationName');
+		$this->db->where('client_id',26); 
+		//$this->db->group_by('LocationName');
         $res = $this->db->get()->result_array(); 
 		//echo json_encode($res[0]); die();
 		//echo $this->db->last_query();exit; SELECT * FROM `hardware_station_consumption_data_mumbai` WHERE `UtilityName`='Water Monitor' GROUP BY `LocationName`
-    
+		// echo $this->db->last_query();exit;
         return $res;
     }
+
+	
 	function getReadingTime(){
 		$query="SELECT `from_reading`,`to_reading` FROM `water_meter_management` LIMIT 1";
 		$data = $this->db->query($query)->result_array();
@@ -121,7 +124,7 @@ class Api_data_db_table_model extends CI_Model{
 						// 	$dashboardName=$meters['LocationName'];
 						// }
 						
-						$querywaterlevel="SELECT round(`CurReading`/1000,2) as level,concat(`TxnDate`,' ',`TxnTime`)as time FROM hardware_station_consumption_data_mumbai WHERE TxnDate = '".$datesarray[$t]."' AND `StationId`='".$meters['StationId']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnDate ASC,TxnTime ASC";
+						$querywaterlevel="SELECT round(`CurReading`/1000,2) as level,concat(`TxnDate`,' ',`TxnTime`)as time FROM hardware_station_consumption_data_mumbai WHERE TxnDate = '".$datesarray[$t]."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnDate ASC,TxnTime ASC";
 							$dashboardName=$meters['LocationName'];
 						//echo $querywaterlevel;
 						$datawaterlevel = $this->db->query($querywaterlevel)->result();
@@ -1538,11 +1541,22 @@ function getDgData2($table_name,$date){
 			if(count($check)==1){
 				
 			}else{
-				
+				if($meter_list[$i]['LocationName']=='Dom. Water Sump'){
+					//less 10 % from value
+					$querywaterlevel="SELECT IF(CurReading*".$meter_list[$i]['multiplier']."/1000>200, round(CurReading*".$meter_list[$i]['multiplier']."/1000-CurReading*0.05*".$meter_list[$i]['multiplier']."/1000,2), round(CurReading*".$meter_list[$i]['multiplier']."/1000-CurReading*0.25*".$meter_list[$i]['multiplier']."/1000,2)) as level,concat(`TxnDate`,' ',`TxnTime`)as time FROM hardware_station_consumption_data_mumbai WHERE TxnDate = '".$datesarray[$k]."' AND `StationId`='".$meter_list[$i]['station_id']."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `LocationName`='".$meter_list[$i]['LocationName']."' ORDER BY TxnDate ASC,TxnTime ASC";
+
 					
-					$querywaterlevel="SELECT round(`CurReading`/1000,2) as level,concat(`TxnDate`,' ',`TxnTime`)as time FROM hardware_station_consumption_data_mumbai WHERE TxnDate = '".$datesarray[$k]."' AND `StationId`='".$meter_list[$i]['StationId']."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `LocationName`='".$meter_list[$i]['LocationName']."' ORDER BY TxnDate ASC,TxnTime ASC";
+					//SELECT round(CurReading*3.03/1000,2) as level,IF(CurReading*3.03/1000>200, round(CurReading*3.03/1000-CurReading*0.05*3.03/1000,2), round(CurReading*3.03/1000-CurReading*0.25*3.03/1000,2)) as level1,concat(`TxnDate`,' ',`TxnTime`)as time FROM hardware_station_consumption_data_mumbai_feb13ToAug1_2925 WHERE TxnDate = '2025-07-23' AND `StationId`='2021000076' AND `UtilityName`='Water Monitor' AND `LocationName`='Dom. Water Sump' ORDER BY TxnDate ASC,TxnTime ASC;
+
+					// $querywaterlevel="SELECT round(CurReading*".$meter_list[$i]['multiplier']."/1000,2) as level,concat(`TxnDate`,' ',`TxnTime`)as time FROM hardware_station_consumption_data_mumbai_feb13ToAug1_2925 WHERE TxnDate = '".$datesarray[$k]."' AND `StationId`='".$meter_list[$i]['station_id']."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `LocationName`='".$meter_list[$i]['LocationName']."' ORDER BY TxnDate ASC,TxnTime ASC";
+// echo $querywaterlevel;die();
+				}else{
+					$querywaterlevel="SELECT round(CurReading*".$meter_list[$i]['multiplier']."/1000,2) as level,concat(`TxnDate`,' ',`TxnTime`)as time FROM hardware_station_consumption_data_mumbai WHERE TxnDate = '".$datesarray[$k]."' AND `StationId`='".$meter_list[$i]['station_id']."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `LocationName`='".$meter_list[$i]['LocationName']."' ORDER BY TxnDate ASC,TxnTime ASC";
+				}
 					
-					//echo $queryconsutoday;die();
+					
+					
+					// echo $querywaterlevel;die();
 					$datawaterlevel = $this->db->query($querywaterlevel)->result();
 					$dashboardName=$meter_list[$i]['LocationName'];
 	
@@ -1580,13 +1594,37 @@ function getDgData2($table_name,$date){
        
         $res = $this->db->get()->result_array();
 		//echo $res[0]['report_date'];die();        
-		 //echo "ll:".$this->db->last_query();die();       
+		 //echo "ll:".$this->db->last_query();die();   energy_consumption_report_tbl_undp_single    
+        return $res;
+	}
+	function chech_energy_consumotion_undp_single($location_name,$date)
+	{
+		$this->db->select('*');
+        $this->db->from('energy_consumption_report_tbl_undp_single');        
+		$this->db->where('location_name',$location_name);
+		$this->db->where('report_date',$date);
+       
+        $res = $this->db->get()->result_array();
+		//echo $res[0]['report_date'];die();        
+		 //echo "ll:".$this->db->last_query();die();   energy_consumption_report_tbl_undp_single    
         return $res;
 	}
 	function chech_energy_consumotion_unicef($location_name,$date)
 	{
 		$this->db->select('*');
         $this->db->from('energy_consumption_report_tbl_unicef');        
+		$this->db->where('location_name',$location_name);
+		$this->db->where('report_date',$date);
+       
+        $res = $this->db->get()->result_array();
+		//echo $res[0]['report_date'];die();        
+		 //echo "ll:".$this->db->last_query();die();       
+        return $res;
+	}
+	function chech_energy_consumotion_terotam($location_name,$date)
+	{
+		$this->db->select('*');
+        $this->db->from('energy_consumption_report_tbl_terotam');        
 		$this->db->where('location_name',$location_name);
 		$this->db->where('report_date',$date);
        
@@ -1661,10 +1699,10 @@ function getDgData2($table_name,$date){
 		 //echo "ll:".$this->db->last_query();die();       
         return $res;
 	}
-	function chech_energy_consumotion_unicef_hourly($location_name,$date)
+	function chech_energy_consumotion_terotam_hourly($location_name,$date)
 	{
 		$this->db->select('*');
-        $this->db->from('energy_consumption_report_tbl_unicef_hourly');        
+        $this->db->from('energy_consumption_report_tbl_terotam_hourly');        
 		$this->db->where('location_name',$location_name);
 		$this->db->where('report_date',$date);
        
@@ -1737,7 +1775,7 @@ function getDgData2($table_name,$date){
 	function get_energymeter_list_unicef($station_id){
 		
 		$this->db->select('');
-        $this->db->from('unicef_devices'); 
+        $this->db->from('unicef_devices_new'); 
 		$this->db->where('StationId',$station_id); 
         $res = $this->db->get()->result_array(); 
 		//echo json_encode($res[0]); die();
@@ -1747,12 +1785,72 @@ function getDgData2($table_name,$date){
 		
 
 	}
+	function get_energymeter_list_unicef_old($station_id){
+		
+		$this->db->select('');
+        $this->db->from('unicef_devices'); 
+		$this->db->where('StationId',$station_id); 
+        $res = $this->db->get()->result_array(); 
+		//echo json_encode($res[0]); die();
+		// echo $this->db->last_query();exit;     
+        return $res;
+
+		
+
+	}
+	function get_energymeter_list_terotam($station_id){
+		
+		$this->db->select('');
+        $this->db->from('terotam_devices'); 
+		$this->db->where('StationId',$station_id);
+        $res = $this->db->get()->result_array(); 
+		//echo json_encode($res[0]); die();
+		//echo $this->db->last_query();exit;     
+        return $res;
+	}
+	function get_energymeter_list_undp_single($station_id){
+		
+		$this->db->select('');
+        $this->db->from('undp_devices_single'); 
+		$this->db->where('StationId',$station_id);
+        $res = $this->db->get()->result_array(); 
+		//echo json_encode($res[0]); die();
+		//echo $this->db->last_query();exit;     
+        return $res;
+	}
 	function get_energymeter_list_cv_unicef($station_id){
 		
 		$this->db->select('');
         $this->db->from('unicef_devices'); 
 		$this->db->where('StationId',$station_id); 
 		$this->db->where_in('ModelNo',array("EM6400NG","EM6436H"));
+        $res = $this->db->get()->result_array(); 
+		//echo json_encode($res[0]); die();
+		// echo $this->db->last_query();exit;     
+        return $res;
+
+		
+
+	}
+	function get_energymeter_list_undp(){
+		
+		$this->db->select('');
+        $this->db->from('undp_devices1'); 
+		//$this->db->where('StationId',$station_id); 
+        $res = $this->db->get()->result_array(); 
+		//echo json_encode($res[0]); die();
+		//echo $this->db->last_query();exit;     
+        return $res;
+
+		
+
+	}
+	function get_energymeter_list_cv_undp(){
+		
+		$this->db->select('');
+        $this->db->from('undp_devices1'); 
+		//$this->db->where('StationId',$station_id); 
+		$this->db->where_in('ModelNo',array("EM6400NG","EM6436H","LG5310"));
         $res = $this->db->get()->result_array(); 
 		//echo json_encode($res[0]); die();
 		// echo $this->db->last_query();exit;     
@@ -1775,9 +1873,95 @@ function getDgData2($table_name,$date){
 		
 
 	}
-	function get_hardwares_device_data_energymeter_report_unicef_hourly($station_id,$fromdate,$todate){
+	function get_hardwares_device_data_energymeter_report_terotam_hourly($station_id,$fromdate,$todate){
 		
 		//echo $station_id;die();
+		$date_from = strtotime($fromdate); 
+        $date_to = strtotime($todate); 
+        $datesarray=array();
+		$table_name=$this->get_table_name(2025000133);
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		$meter_list=$this->get_energymeter_list_terotam(2025000133);
+		
+		
+		
+		for ($i=0; $i < count($meter_list); $i++) 
+		{
+			
+			for ($k=0; $k < count($datesarray); $k++)
+				{ 
+					
+							$check=$this->chech_energy_consumotion_terotam_hourly($meter_list[$i]['UtilityName'],$datesarray[$k]);
+							// echo count($check);die();
+							if(count($check)==1){
+								
+							}else{
+								
+							
+								for ($i1=0; $i1 < 24; $i1++) 
+									{                     
+									
+									if($i1>9)
+									{
+										$from =  $i1.":00:00";
+										$to =  ($i1+1).":00:00";     
+									}
+									else
+									{
+										$from =  "0".$i1.":00:00";
+										$to =  "0".($i1+1).":00:00"; 
+									}
+									
+			
+										
+										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
+										
+										
+										$datacontoday = $this->db->query($queryconsutoday)->result();
+										$resdata1[$i1]['consumption']=(float)$datacontoday[0]->cons;
+						
+										$resdata1[$i1]['date']=$from." To ".$to;
+									
+											
+									}
+									$resdata['unicef'][$i][$k]['data']=$resdata1;
+									$energy_cons_query=array(
+										'location_name'=>$meter_list[$i]['UtilityName'],
+										'meter_serial'=>'',
+										'station_id'=>$meter_list[$i]['StationId'],
+										'report_date'=>$datesarray[$k],
+										'created_date'=>date('Y-m-d H:i:s'),
+										'updated_date'=>date('Y-m-d H:i:s'),
+										'consumption'=>serialize($resdata1),
+										'meter_name'=>$meter_list[$i]['DashboardName']              
+								);
+								$this->db->insert('energy_consumption_report_tbl_terotam_hourly', $energy_cons_query);
+								}
+					
+				} 
+		}
+		
+		return $resdata;
+	}
+	function chech_energy_consumotion_unicef_hourly($location_name,$date)
+	{
+		$this->db->select('*');
+        $this->db->from('energy_consumption_report_tbl_unicef_hourly');        
+		$this->db->where('location_name',$location_name);
+		$this->db->where('report_date',$date);
+       
+        $res = $this->db->get()->result_array();
+		//echo $res[0]['report_date'];die();        
+		//  echo "ll:".$this->db->last_query();die();       
+        return $res;
+	}
+	function get_hardwares_device_data_energymeter_report_unicef_hourly($station_id,$fromdate,$todate){
+		
+		// echo $station_id;die();
 		$date_from = strtotime($fromdate); 
         $date_to = strtotime($todate); 
         $datesarray=array();
@@ -1787,8 +1971,9 @@ function getDgData2($table_name,$date){
         {
           array_push($datesarray, date("Y-m-d",$i1));  
         }
+		// echo json_encode($datesarray);die();
 		$meter_list=$this->get_energymeter_list_unicef(2024000527);
-		
+		// echo json_encode($meter_list);die();
 		
 		
 		for ($i=0; $i < count($meter_list); $i++) 
@@ -1796,6 +1981,7 @@ function getDgData2($table_name,$date){
 			
 			for ($k=0; $k < count($datesarray); $k++)
 				{ 
+					// echo $datesarray[$k];die();
 					
 							$check=$this->chech_energy_consumotion_unicef_hourly($meter_list[$i]['UtilityName'],$datesarray[$k]);
 							// echo count($check);die();
@@ -1841,6 +2027,7 @@ function getDgData2($table_name,$date){
 										'consumption'=>serialize($resdata1),
 										'meter_name'=>$meter_list[$i]['DashboardName']              
 								);
+								// echo json_encode($energy_cons_query);die();
 								$this->db->insert('energy_consumption_report_tbl_unicef_hourly', $energy_cons_query);
 								}
 					
@@ -1864,23 +2051,16 @@ function getDgData2($table_name,$date){
 		
 	
 
-		$meter_list_undp=$this->get_energymeter_list_station($table_name,2023000304,$datesarray[0]);
-		$meter_list_uncw=$this->get_energymeter_list_station($table_name,2023000303,$datesarray[0]);
-		$meter_list_unew=$this->get_energymeter_list_station($table_name,2023000300,$datesarray[0]);
-		$meter_list_unff=$this->get_energymeter_list_station($table_name,2023000302,$datesarray[0]);
-		$meter_list_unww=$this->get_energymeter_list_station($table_name,2023000301,$datesarray[0]);
-		$meter_list_unsg=$this->get_energymeter_list_station($table_name,2024000143,$datesarray[0]);
-		$meter_list_unab=$this->get_energymeter_list_station($table_name,2024000144,$datesarray[0]);
+		$meter_list=$this->get_energymeter_list_undp();
+		// echo json_encode($meter_list);die();
 		
-		
-		
-		for ($i=0; $i < count($meter_list_undp); $i++) 
+		for ($i=0; $i < count($meter_list); $i++) 
 		{
 			
 			for ($k=0; $k < count($datesarray); $k++)
 				{ 
 					
-							$check=$this->chech_energy_consumotion_undp_hourly($meter_list_undp[$i]['UtilityName'],$datesarray[$k]);
+							$check=$this->chech_energy_consumotion_undp_hourly($meter_list[$i]['UtilityName'],$datesarray[$k]);
 							// echo count($check);die();
 							if(count($check)==1){
 								
@@ -1903,7 +2083,7 @@ function getDgData2($table_name,$date){
 									
 			
 										
-										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_undp[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
+										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
 										
 										
 										$datacontoday = $this->db->query($queryconsutoday)->result();
@@ -1913,346 +2093,16 @@ function getDgData2($table_name,$date){
 									
 											
 									}
-									$resdata['undp'][$i][$k]['data']=$resdata1;
+									$resdata['unicef'][$i][$k]['data']=$resdata1;
 									$energy_cons_query=array(
-										'location_name'=>$meter_list_undp[$i]['UtilityName'],
+										'location_name'=>$meter_list[$i]['UtilityName'],
 										'meter_serial'=>'',
-										'station_id'=>$meter_list_undp[$i]['StationId'],
+										'station_id'=>$meter_list[$i]['StationId'],
 										'report_date'=>$datesarray[$k],
 										'created_date'=>date('Y-m-d H:i:s'),
 										'updated_date'=>date('Y-m-d H:i:s'),
 										'consumption'=>serialize($resdata1),
-										'meter_name'=>$meter_list_undp[$i]['UtilityName']              
-								);
-								$this->db->insert('energy_consumption_report_tbl_undp_hourly', $energy_cons_query);
-								}
-					
-				} 
-		}
-		for ($i=0; $i < count($meter_list_uncw); $i++) 
-		{
-			
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					
-							$check=$this->chech_energy_consumotion_undp_hourly($meter_list_uncw[$i]['UtilityName'],$datesarray[$k]);
-							// echo count($check);die();
-							if(count($check)==1){
-								
-							}else{
-								
-							
-								for ($i1=0; $i1 < 24; $i1++) 
-									{                     
-									
-									if($i1>9)
-									{
-										$from =  $i1.":00:00";
-										$to =  ($i1+1).":00:00";     
-									}
-									else
-									{
-										$from =  "0".$i1.":00:00";
-										$to =  "0".($i1+1).":00:00"; 
-									}
-									
-			
-										
-										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
-										
-										
-										$datacontoday = $this->db->query($queryconsutoday)->result();
-										$resdata1[$i1]['consumption']=(float)$datacontoday[0]->cons;
-						
-										$resdata1[$i1]['date']=$from." To ".$to;
-									
-											
-									}
-									$resdata['undp'][$i][$k]['data']=$resdata1;
-									$energy_cons_query=array(
-										'location_name'=>$meter_list_uncw[$i]['UtilityName'],
-										'meter_serial'=>'',
-										'station_id'=>$meter_list_uncw[$i]['StationId'],
-										'report_date'=>$datesarray[$k],
-										'created_date'=>date('Y-m-d H:i:s'),
-										'updated_date'=>date('Y-m-d H:i:s'),
-										'consumption'=>serialize($resdata1),
-										'meter_name'=>$meter_list_uncw[$i]['UtilityName']              
-								);
-								$this->db->insert('energy_consumption_report_tbl_undp_hourly', $energy_cons_query);
-								}
-					
-				} 
-		}
-		for ($i=0; $i < count($meter_list_unew); $i++) 
-		{
-			
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					
-							$check=$this->chech_energy_consumotion_undp_hourly($meter_list_unew[$i]['UtilityName'],$datesarray[$k]);
-							// echo count($check);die();
-							if(count($check)==1){
-								
-							}else{
-								
-							
-								for ($i1=0; $i1 < 24; $i1++) 
-									{                     
-									
-									if($i1>9)
-									{
-										$from =  $i1.":00:00";
-										$to =  ($i1+1).":00:00";     
-									}
-									else
-									{
-										$from =  "0".$i1.":00:00";
-										$to =  "0".($i1+1).":00:00"; 
-									}
-									
-			
-										
-										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unew[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
-										
-										
-										$datacontoday = $this->db->query($queryconsutoday)->result();
-										$resdata1[$i1]['consumption']=(float)$datacontoday[0]->cons;
-						
-										$resdata1[$i1]['date']=$from." To ".$to;
-									
-											
-									}
-									$resdata['undp'][$i][$k]['data']=$resdata1;
-									$energy_cons_query=array(
-										'location_name'=>$meter_list_unew[$i]['UtilityName'],
-										'meter_serial'=>'',
-										'station_id'=>$meter_list_unew[$i]['StationId'],
-										'report_date'=>$datesarray[$k],
-										'created_date'=>date('Y-m-d H:i:s'),
-										'updated_date'=>date('Y-m-d H:i:s'),
-										'consumption'=>serialize($resdata1),
-										'meter_name'=>$meter_list_unew[$i]['UtilityName']              
-								);
-								$this->db->insert('energy_consumption_report_tbl_undp_hourly', $energy_cons_query);
-								}
-					
-				} 
-		}
-		for ($i=0; $i < count($meter_list_unff); $i++) 
-		{
-			
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					
-							$check=$this->chech_energy_consumotion_undp_hourly($meter_list_unff[$i]['UtilityName'],$datesarray[$k]);
-							// echo count($check);die();
-							if(count($check)==1){
-								
-							}else{
-								
-							
-								for ($i1=0; $i1 < 24; $i1++) 
-									{                     
-									
-									if($i1>9)
-									{
-										$from =  $i1.":00:00";
-										$to =  ($i1+1).":00:00";     
-									}
-									else
-									{
-										$from =  "0".$i1.":00:00";
-										$to =  "0".($i1+1).":00:00"; 
-									}
-									
-			
-										
-										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unff[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
-										
-										
-										$datacontoday = $this->db->query($queryconsutoday)->result();
-										$resdata1[$i1]['consumption']=(float)$datacontoday[0]->cons;
-						
-										$resdata1[$i1]['date']=$from." To ".$to;
-									
-											
-									}
-									$resdata['undp'][$i][$k]['data']=$resdata1;
-									$energy_cons_query=array(
-										'location_name'=>$meter_list_unff[$i]['UtilityName'],
-										'meter_serial'=>'',
-										'station_id'=>$meter_list_unff[$i]['StationId'],
-										'report_date'=>$datesarray[$k],
-										'created_date'=>date('Y-m-d H:i:s'),
-										'updated_date'=>date('Y-m-d H:i:s'),
-										'consumption'=>serialize($resdata1),
-										'meter_name'=>$meter_list_unff[$i]['UtilityName']              
-								);
-								$this->db->insert('energy_consumption_report_tbl_undp_hourly', $energy_cons_query);
-								}
-					
-				} 
-		}
-		for ($i=0; $i < count($meter_list_unww); $i++) 
-		{
-			
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					
-							$check=$this->chech_energy_consumotion_undp_hourly($meter_list_unww[$i]['UtilityName'],$datesarray[$k]);
-							// echo count($check);die();
-							if(count($check)==1){
-								
-							}else{
-								
-							
-								for ($i1=0; $i1 < 24; $i1++) 
-									{                     
-									
-									if($i1>9)
-									{
-										$from =  $i1.":00:00";
-										$to =  ($i1+1).":00:00";     
-									}
-									else
-									{
-										$from =  "0".$i1.":00:00";
-										$to =  "0".($i1+1).":00:00"; 
-									}
-									
-			
-										
-										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unww[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
-										
-										
-										$datacontoday = $this->db->query($queryconsutoday)->result();
-										$resdata1[$i1]['consumption']=(float)$datacontoday[0]->cons;
-						
-										$resdata1[$i1]['date']=$from." To ".$to;
-									
-											
-									}
-									$resdata['undp'][$i][$k]['data']=$resdata1;
-									$energy_cons_query=array(
-										'location_name'=>$meter_list_unww[$i]['UtilityName'],
-										'meter_serial'=>'',
-										'station_id'=>$meter_list_unww[$i]['StationId'],
-										'report_date'=>$datesarray[$k],
-										'created_date'=>date('Y-m-d H:i:s'),
-										'updated_date'=>date('Y-m-d H:i:s'),
-										'consumption'=>serialize($resdata1),
-										'meter_name'=>$meter_list_unww[$i]['UtilityName']              
-								);
-								$this->db->insert('energy_consumption_report_tbl_undp_hourly', $energy_cons_query);
-								}
-					
-				} 
-		}
-		for ($i=0; $i < count($meter_list_unsg); $i++) 
-		{
-			
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					
-							$check=$this->chech_energy_consumotion_undp_hourly($meter_list_unsg[$i]['UtilityName'],$datesarray[$k]);
-							// echo count($check);die();
-							if(count($check)==1){
-								
-							}else{
-								
-							
-								for ($i1=0; $i1 < 24; $i1++) 
-									{                     
-									
-									if($i1>9)
-									{
-										$from =  $i1.":00:00";
-										$to =  ($i1+1).":00:00";     
-									}
-									else
-									{
-										$from =  "0".$i1.":00:00";
-										$to =  "0".($i1+1).":00:00"; 
-									}
-									
-			
-										
-										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
-										
-										
-										$datacontoday = $this->db->query($queryconsutoday)->result();
-										$resdata1[$i1]['consumption']=(float)$datacontoday[0]->cons;
-						
-										$resdata1[$i1]['date']=$from." To ".$to;
-									
-											
-									}
-									$resdata['undp'][$i][$k]['data']=$resdata1;
-									$energy_cons_query=array(
-										'location_name'=>$meter_list_unsg[$i]['UtilityName'],
-										'meter_serial'=>'',
-										'station_id'=>$meter_list_unsg[$i]['StationId'],
-										'report_date'=>$datesarray[$k],
-										'created_date'=>date('Y-m-d H:i:s'),
-										'updated_date'=>date('Y-m-d H:i:s'),
-										'consumption'=>serialize($resdata1),
-										'meter_name'=>$meter_list_unsg[$i]['UtilityName']              
-								);
-								$this->db->insert('energy_consumption_report_tbl_undp_hourly', $energy_cons_query);
-								}
-					
-				} 
-		}
-		for ($i=0; $i < count($meter_list_unab); $i++) 
-		{
-			
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					
-							$check=$this->chech_energy_consumotion_undp_hourly($meter_list_unab[$i]['UtilityName'],$datesarray[$k]);
-							// echo count($check);die();
-							if(count($check)==1){
-								
-							}else{
-								
-							
-								for ($i1=0; $i1 < 24; $i1++) 
-									{                     
-									
-									if($i1>9)
-									{
-										$from =  $i1.":00:00";
-										$to =  ($i1+1).":00:00";     
-									}
-									else
-									{
-										$from =  "0".$i1.":00:00";
-										$to =  "0".($i1+1).":00:00"; 
-									}
-									
-			
-										
-										$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unab[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND TxnTime BETWEEN '".$from."' AND '".$to."' AND LineConnected='kWh'	ORDER BY TxnTime";
-										
-										
-										$datacontoday = $this->db->query($queryconsutoday)->result();
-										$resdata1[$i1]['consumption']=(float)$datacontoday[0]->cons;
-						
-										$resdata1[$i1]['date']=$from." To ".$to;
-									
-											
-									}
-									$resdata['undp'][$i][$k]['data']=$resdata1;
-									$energy_cons_query=array(
-										'location_name'=>$meter_list_unab[$i]['UtilityName'],
-										'meter_serial'=>'',
-										'station_id'=>$meter_list_unab[$i]['StationId'],
-										'report_date'=>$datesarray[$k],
-										'created_date'=>date('Y-m-d H:i:s'),
-										'updated_date'=>date('Y-m-d H:i:s'),
-										'consumption'=>serialize($resdata1),
-										'meter_name'=>$meter_list_unab[$i]['UtilityName']              
+										'meter_name'=>$meter_list[$i]['UtilityName']              
 								);
 								$this->db->insert('energy_consumption_report_tbl_undp_hourly', $energy_cons_query);
 								}
@@ -2264,7 +2114,7 @@ function getDgData2($table_name,$date){
 		
 					
 
-		return $resdata;
+		//return $resdata;
 	}
 	function get_hardwares_device_data_energymeter_report_undp_hourly_bkp($station_id,$fromdate,$todate,$table_name){
 		
@@ -2696,41 +2546,42 @@ function getDgData2($table_name,$date){
           array_push($datesarray, date("Y-m-d",$i1));  
         }
 		
-		$meter_list_undp=$this->get_energymeter_list_station($table_name,2023000304,$datesarray[0]);
-		$meter_list_uncw=$this->get_energymeter_list_station($table_name,2023000303,$datesarray[0]);
-		$meter_list_unew=$this->get_energymeter_list_station($table_name,2023000300,$datesarray[0]);
-		$meter_list_unff=$this->get_energymeter_list_station($table_name,2023000302,$datesarray[0]);
-		$meter_list_unww=$this->get_energymeter_list_station($table_name,2023000301,$datesarray[0]);
-		$meter_list_unsg=$this->get_energymeter_list_station($table_name,2024000143,$datesarray[0]);
-		$meter_list_unab=$this->get_energymeter_list_station($table_name,2024000144,$datesarray[0]);
+		$meter_list=$this->get_energymeter_list_undp();
+		// echo json_encode($meter_list);die();
 		
-		for ($i=0; $i < count($meter_list_unab); $i++) {
+		for ($i=0; $i < count($meter_list); $i++) {
 			
 			for ($k=0; $k < count($datesarray); $k++)
 				{ 
-					$check=$this->chech_energy_consumotion_undp($meter_list_unab[$i]['UtilityName'],$datesarray[$k]);
-			if(count($check)==1){
+					$check=$this->chech_energy_consumotion_undp($meter_list[$i]['UtilityName'],$datesarray[$k]);
+			if(count($check)>=1){
 				
 			}else{
 				
 					
-					$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unab[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
+					$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
 					
 					//echo $queryconsutoday;die();
 					$datacontoday = $this->db->query($queryconsutoday)->result();
-					$resdata['undp'][$i][$k]['consumption']=(float)$datacontoday[0]->cons;
-
+					$dayquery="SELECT round(SUM(Consumption),2) as day_consumption FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '09:30:00' AND '22:59:59'";
 					
+					$nightquery="SELECT round(SUM(t.cons),2) AS night_consumption FROM (SELECT SUM(Consumption) as cons FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '00:00:00' AND '09:29:59' UNION ALL SELECT SUM(Consumption) as cons FROM $table_name where TxnDate = '".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '23:00:00' AND '24:00:00') t";
+					// echo $nightquery;die();
+					
+					$dataday = $this->db->query($dayquery)->result();
+					$datanight = $this->db->query($nightquery)->result();
 
 					$energy_cons_query=array(
-						'location_name'=>$meter_list_unab[$i]['UtilityName'],
+						'location_name'=>$meter_list[$i]['UtilityName'],
 						'meter_serial'=>'',
-						'station_id'=>$meter_list_unab[$i]['StationId'],
+						'station_id'=>$meter_list[$i]['StationId'],
 						'report_date'=>$datesarray[$k],
 						'created_date'=>date('Y-m-d H:i:s'),
 						'updated_date'=>date('Y-m-d H:i:s'),
-						'consumption'=>$resdata['undp'][$i][$k]['consumption'],
-						'meter_name'=>$meter_list_unab[$i]['UtilityName']              
+						'consumption'=>(float)$datacontoday[0]->cons,
+						'day_consumption'=>(float)$dataday[0]->day_consumption,
+						'night_consumption'=>(float)$datanight[0]->night_consumption,
+						'meter_name'=>$meter_list[$i]['UtilityName']              
 					);
 					$this->db->insert('energy_consumption_report_tbl_undp', $energy_cons_query);
 				
@@ -2739,223 +2590,12 @@ function getDgData2($table_name,$date){
 					
 				} 
 		}
-		for ($i=0; $i < count($meter_list_unsg); $i++) {
-			
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					$check=$this->chech_energy_consumotion_undp($meter_list_unsg[$i]['UtilityName'],$datesarray[$k]);
-			if(count($check)==1){
-				
-			}else{
-				
-					
-					$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
-					
-					//echo $queryconsutoday;die();
-					$datacontoday = $this->db->query($queryconsutoday)->result();
-					$resdata['undp'][$i][$k]['consumption']=(float)$datacontoday[0]->cons;
-
-					
-
-					$energy_cons_query=array(
-						'location_name'=>$meter_list_unsg[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_unsg[$i]['StationId'],
-						'report_date'=>$datesarray[$k],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'consumption'=>$resdata['undp'][$i][$k]['consumption'],
-						'meter_name'=>$meter_list_unsg[$i]['UtilityName']              
-					);
-					$this->db->insert('energy_consumption_report_tbl_undp', $energy_cons_query);
-				
-			}
-					
-					
-				} 
-			}
-		for ($i=0; $i < count($meter_list_undp); $i++) {
-			
-				for ($k=0; $k < count($datesarray); $k++)
-					{ 
-						$check=$this->chech_energy_consumotion_undp($meter_list_undp[$i]['UtilityName'],$datesarray[$k]);
-                if(count($check)==1){
-                    
-                }else{
-					
-						//$resdata['undp'][$i][$k]['meter']=$meter_list_undp[$i]['UtilityName'];
-						$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_undp[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
-						
-						//echo $queryconsutoday;die();
-						$datacontoday = $this->db->query($queryconsutoday)->result();
-						$resdata['undp'][$i][$k]['consumption']=(float)$datacontoday[0]->cons;
-
-						//$resdata['undp'][$i][$k]['date']=$datesarray[$k];
-
-						$energy_cons_query=array(
-							'location_name'=>$meter_list_undp[$i]['UtilityName'],
-							'meter_serial'=>'',
-							'station_id'=>$meter_list_undp[$i]['StationId'],
-							'report_date'=>$datesarray[$k],
-							'created_date'=>date('Y-m-d H:i:s'),
-							'updated_date'=>date('Y-m-d H:i:s'),
-							'consumption'=>$resdata['undp'][$i][$k]['consumption'],
-							'meter_name'=>$meter_list_undp[$i]['UtilityName']              
-						);
-						$this->db->insert('energy_consumption_report_tbl_undp', $energy_cons_query);
-					
-				}
-						
-						
-					} 
-		}
-
-		for ($i=0; $i < count($meter_list_uncw); $i++) {
-				
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					$check=$this->chech_energy_consumotion_undp($meter_list_uncw[$i]['UtilityName'],$datesarray[$k]);
-			if(count($check)==1){
-				
-			}else{
-				
-					//$resdata['uncw'][$i][$k]['meter']=$meter_list_uncw[$i]['UtilityName'];
-					$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
-					
-					//echo $queryconsutoday;die();
-					$datacontoday = $this->db->query($queryconsutoday)->result();
-					$resdata['uncw'][$i][$k]['consumption']=(float)$datacontoday[0]->cons;
-
-					//$resdata['uncw'][$i][$k]['date']=$datesarray[$k];
-
-					$energy_cons_query=array(
-						'location_name'=>$meter_list_uncw[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_uncw[$i]['StationId'],
-						'report_date'=>$datesarray[$k],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'consumption'=>$resdata['uncw'][$i][$k]['consumption'],
-						'meter_name'=>$meter_list_uncw[$i]['UtilityName']              
-					);
-					$this->db->insert('energy_consumption_report_tbl_undp', $energy_cons_query);
-				
-			}
-					
-					
-				} 
-			}
-		for ($i=0; $i < count($meter_list_unew); $i++) {
-					
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					$check=$this->chech_energy_consumotion_undp($meter_list_unew[$i]['UtilityName'],$datesarray[$k]);
-			if(count($check)==1){
-				
-			}else{
-				
-					//$resdata['unew'][$i][$k]['meter']=$meter_list_unew[$i]['UtilityName'];
-					$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unew[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
-					
-					//echo $queryconsutoday;die();
-					$datacontoday = $this->db->query($queryconsutoday)->result();
-					$resdata['unew'][$i][$k]['consumption']=(float)$datacontoday[0]->cons;
-
-					//$resdata['unew'][$i][$k]['date']=$datesarray[$k];
-
-					$energy_cons_query=array(
-						'location_name'=>$meter_list_unew[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_unew[$i]['StationId'],
-						'report_date'=>$datesarray[$k],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'consumption'=>$resdata['unew'][$i][$k]['consumption'],
-						'meter_name'=>$meter_list_unew[$i]['UtilityName']              
-					);
-					$this->db->insert('energy_consumption_report_tbl_undp', $energy_cons_query);
-				
-			}
-					
-					
-				} 
-	}
-		for ($i=0; $i < count($meter_list_unff); $i++) {
-					
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					$check=$this->chech_energy_consumotion_undp($meter_list_unff[$i]['UtilityName'],$datesarray[$k]);
-			if(count($check)==1){
-				
-			}else{
-				
-					//$resdata['unff'][$i][$k]['meter']=$meter_list_unff[$i]['UtilityName'];
-					$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unff[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
-					
-					//echo $queryconsutoday;die();
-					$datacontoday = $this->db->query($queryconsutoday)->result();
-					$resdata['unff'][$i][$k]['consumption']=(float)$datacontoday[0]->cons;
-
-					//$resdata['unff'][$i][$k]['date']=$datesarray[$k];
-
-					$energy_cons_query=array(
-						'location_name'=>$meter_list_unff[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_unff[$i]['StationId'],
-						'report_date'=>$datesarray[$k],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'consumption'=>$resdata['unff'][$i][$k]['consumption'],
-						'meter_name'=>$meter_list_unff[$i]['UtilityName']              
-					);
-					$this->db->insert('energy_consumption_report_tbl_undp', $energy_cons_query);
-				
-			}
-					
-					
-				} 
-	}
-		for ($i=0; $i < count($meter_list_unww); $i++) {
-					
-			for ($k=0; $k < count($datesarray); $k++)
-				{ 
-					$check=$this->chech_energy_consumotion_undp($meter_list_unww[$i]['UtilityName'],$datesarray[$k]);
-			if(count($check)==1){
-				
-			}else{
-				
-					//$resdata['unww'][$i][$k]['meter']=$meter_list_unww[$i]['UtilityName'];
-					$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list_unww[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
-					
-					//echo $queryconsutoday;die();
-					$datacontoday = $this->db->query($queryconsutoday)->result();
-					$resdata['unww'][$i][$k]['consumption']=(float)$datacontoday[0]->cons;
-
-					//$resdata['unww'][$i][$k]['date']=$datesarray[$k];
-
-					$energy_cons_query=array(
-						'location_name'=>$meter_list_unww[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_unww[$i]['StationId'],
-						'report_date'=>$datesarray[$k],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'consumption'=>$resdata['unww'][$i][$k]['consumption'],
-						'meter_name'=>$meter_list_unww[$i]['UtilityName']              
-					);
-					$this->db->insert('energy_consumption_report_tbl_undp', $energy_cons_query);
-				
-			}
-					
-					
-				} 
-	}
 	
 
 		
 					
 
-		return $resdata;
+		//return $resdata;
 	}
 	function get_hardwares_device_data_energymeter_report_undp_bkp($station_id,$fromdate,$todate,$table_name){
 		
@@ -3178,6 +2818,140 @@ function getDgData2($table_name,$date){
 	}
 		
 	return $resdata;
+	}
+	function get_hardwares_device_data_energymeter_report_undp_single($station_id,$fromdate,$todate){
+		
+		
+		$date_from = strtotime($fromdate); 
+        $date_to = strtotime($todate); 
+        $datesarray=array();
+		$table_name=$this->get_table_name($station_id);
+		// echo $table_name;die();
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		
+		$meter_list=$this->get_energymeter_list_undp_single(2023000302);
+		// echo json_encode($meter_list);die();
+		
+		for ($i=0; $i < count($meter_list); $i++) {
+			
+			for ($k=0; $k < count($datesarray); $k++)
+				{ 
+					$check=$this->chech_energy_consumotion_undp_single($meter_list[$i]['UtilityName'],$datesarray[$k]);
+			if(count($check)>=1){
+				
+			}else{
+				
+					
+					$queryconsutoday="SELECT SUM(Consumption) as cons FROM $table_name WHERE `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
+					
+					// echo $queryconsutoday;die();
+					$datacontoday = $this->db->query($queryconsutoday)->result();
+					$dayquery="SELECT round(SUM(Consumption),2) as day_consumption FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '09:30:00' AND '22:59:59'";
+					
+					$nightquery="SELECT round(SUM(t.cons),2) AS night_consumption FROM (SELECT SUM(Consumption) as cons FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '00:00:00' AND '09:29:59' UNION ALL SELECT SUM(Consumption) as cons FROM $table_name where TxnDate = '".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '23:00:00' AND '24:00:00') t";
+					// echo $nightquery;die();
+					
+					$dataday = $this->db->query($dayquery)->result();
+					$datanight = $this->db->query($nightquery)->result();
+
+					$energy_cons_query=array(
+						'location_name'=>$meter_list[$i]['UtilityName'],
+						'meter_serial'=>'',
+						'station_id'=>$meter_list[$i]['StationId'],
+						'report_date'=>$datesarray[$k],
+						'created_date'=>date('Y-m-d H:i:s'),
+						'updated_date'=>date('Y-m-d H:i:s'),
+						'consumption'=>(float)$datacontoday[0]->cons,
+						'day_consumption'=>(float)$dataday[0]->day_consumption,
+						'night_consumption'=>(float)$datanight[0]->night_consumption,
+						'meter_name'=>$meter_list[$i]['UtilityName']              
+					);
+					$this->db->insert('energy_consumption_report_tbl_undp_single', $energy_cons_query);
+				
+			}
+					
+					
+				} 
+		}
+	
+
+		
+					
+
+		//return $resdata;
+	}
+	
+	function get_hardwares_device_data_energymeter_report_terotam($station_id,$fromdate,$todate){
+		
+		
+		$date_from = strtotime($fromdate); 
+        $date_to = strtotime($todate); 
+        $datesarray=array();
+		$table_name=$this->get_table_name($station_id);
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		
+		$meter_list=$this->get_energymeter_list_terotam(2025000133);
+		// echo json_encode($meter_list);die();
+		
+		for ($i=0; $i < count($meter_list); $i++) {
+			
+			for ($k=0; $k < count($datesarray); $k++)
+				{ 
+					$check=$this->chech_energy_consumotion_terotam($meter_list[$i]['UtilityName'],$datesarray[$k]);
+			if(count($check)==1){
+				
+			}else{
+				
+					
+					$queryconsutoday="SELECT round(SUM(Consumption),2) as cons FROM $table_name WHERE `UtilityName`='".$meter_list[$i]['UtilityName']."' AND `TxnDate`='".$datesarray[$k]."' AND LineConnected='kWh'	ORDER BY TxnTime";
+					
+					// echo $queryconsutoday;die();
+					$datacontoday = $this->db->query($queryconsutoday)->result();
+
+					$dayquery="SELECT round(SUM(Consumption),2) as day_consumption FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '06:00:00' AND '18:59:59'";
+					
+					$nightquery="SELECT round(SUM(t.cons),2) AS night_consumption FROM (SELECT SUM(Consumption) as cons FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '00:00:00' AND '05:59:59' UNION ALL SELECT SUM(Consumption) as cons FROM $table_name where TxnDate = '".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '19:00:00' AND '24:00:00') t";
+					// echo $nightquery;die();
+					
+					$dataday = $this->db->query($dayquery)->result();
+					$datanight = $this->db->query($nightquery)->result();
+					
+
+					$energy_cons_query=array(
+						'location_name'=>$meter_list[$i]['UtilityName'],
+						'meter_serial'=>'',
+						'station_id'=>$meter_list[$i]['StationId'],
+						'report_date'=>$datesarray[$k],
+						'created_date'=>date('Y-m-d H:i:s'),
+						'updated_date'=>date('Y-m-d H:i:s'),
+						'consumption'=>(float)$datacontoday[0]->cons,
+						'day_consumption'=>(float)$dataday[0]->day_consumption,
+						'night_consumption'=>(float)$datanight[0]->night_consumption,
+						'meter_name'=>$meter_list[$i]['DashboardName']              
+					);
+					// echo json_encode($energy_cons_query);die();
+					$this->db->insert('energy_consumption_report_tbl_terotam', $energy_cons_query);
+				
+			}
+					
+					
+				} 
+		}
+		
+	
+
+		
+					
+
+		return $resdata;
 	}
 	function get_hardwares_device_data_energymeter_report_unicef($station_id,$fromdate,$todate){
 		
@@ -3409,6 +3183,19 @@ function getDgData2($table_name,$date){
 		 //echo "ll:".$this->db->last_query();die();       
         return $res;
 	}
+	function check_current_data_terotam($type,$location_name,$date)
+	{
+		$this->db->select('*');
+        $this->db->from('current_report_tbl_terotam');
+		// $this->db->where('type',$type);  
+		$this->db->where('location_name',$location_name);
+		$this->db->where('report_date',$date);
+		      
+        $res = $this->db->get()->result_array();
+		//echo $res[0]['report_date'];die();        
+		 //echo "ll:".$this->db->last_query();die();       
+        return $res;
+	}
 	function check_current_data_vegas($type,$location_name,$date)
 	{
 		$this->db->select('*');
@@ -3508,693 +3295,51 @@ function getDgData2($table_name,$date){
           array_push($datesarray, date("Y-m-d",$i1));  
         }
 
-		$meter_list_undp=$this->get_energymeter_list_station($table_name,2023000304,$datesarray[0]);
-		$meter_list_uncw=$this->get_energymeter_list_station($table_name,2023000303,$datesarray[0]);
-		$meter_list_unew=$this->get_energymeter_list_station($table_name,2023000300,$datesarray[0]);
-		$meter_list_unff=$this->get_energymeter_list_station($table_name,2023000302,$datesarray[0]);
-		$meter_list_unww=$this->get_energymeter_list_station($table_name,2023000301,$datesarray[0]);
-		$meter_list_unsg=$this->get_energymeter_list_station($table_name,2024000143,$datesarray[0]);
-		$meter_list_unab=$this->get_energymeter_list_station($table_name,2024000144,$datesarray[0]);
+		$meter_list=$this->get_energymeter_list_cv_undp();
 
-		
-		
-		for ($i=0; $i < count($meter_list_undp); $i++) {
+		for ($i=0; $i < count($meter_list); $i++) {
 			
-			$current1_data=[];
-			$current2_data=[];
-			$current3_data=[];
-			
-			$resdata['undp'][$i]['meter']=$meter_list_undp[$i]['UtilityName'];
-			
-		
-
 			for($t=0;$t<count($datesarray);$t++){
-				$check=$this->check_current_data_undp('current',$meter_list_undp[$i]['UtilityName'],$datesarray[$t]);
+				$check=$this->check_current_data_undp('current',$meter_list[$i]['UtilityName'],$datesarray[$t]);
 				if(count($check)==1){				
-					$current1_data=array_merge($current1_data,unserialize($check[0]['c1_data']));
-					$current2_data=array_merge($current2_data,unserialize($check[0]['c2_data']));
-					$current3_data=array_merge($current3_data,unserialize($check[0]['c3_data']));
+					
 				}else{
 					
-					if($datesarray[$t]>=date('Y-m-d')){
-
-						if($meter_list_undp[$i]['UtilityName'] == 'AC Plant Incomer' || $meter_list_undp[$i]['UtilityName'] == 'Chiller _2' || $meter_list_undp[$i]['UtilityName'] == 'Chiller _1' || $meter_list_undp[$i]['UtilityName'] == 'East Wing AHU' || $meter_list_undp[$i]['UtilityName'] == 'VFD Secondary Pump 2'){
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_1' AND  `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
+						
+							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_1' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+		// echo $querycurrent1;die();
 							$c1 = $this->db->query($querycurrent1)->result();
-							$current1_data=array_merge($current1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_2' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_2' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 						
 							$c2 = $this->db->query($querycurrent2)->result();
-							$current2_data=array_merge($current2_data,$c2);
 	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_3' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_3' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 						
 							$c3 = $this->db->query($querycurrent3)->result();
-							$current3_data=array_merge($current3_data,$c3);
-						}else{
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND  `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$current1_data=array_merge($current1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$current2_data=array_merge($current2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$current3_data=array_merge($current3_data,$c3);
-						}
-						
-						
-						
-					}else{
-						if($meter_list_undp[$i]['UtilityName'] == 'AC Plant Incomer' || $meter_list_undp[$i]['UtilityName'] == 'Chiller _2' || $meter_list_undp[$i]['UtilityName'] == 'Chiller _1' || $meter_list_undp[$i]['UtilityName'] == 'East Wing AHU' || $meter_list_undp[$i]['UtilityName'] == 'VFD Secondary Pump 2'){
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_1' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$current1_data=array_merge($current1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_2' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$current2_data=array_merge($current2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_3' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$current3_data=array_merge($current3_data,$c3);
 							$current_array=array(
-								'location_name'=>$meter_list_undp[$i]['UtilityName'],
+								'location_name'=>$meter_list[$i]['UtilityName'],
 								'meter_serial'=>'',
-								'station_id'=>$meter_list_undp[$i]['StationId'],
 								'report_date'=>$datesarray[$t],
 								'created_date'=>date('Y-m-d H:i:s'),
 								'updated_date'=>date('Y-m-d H:i:s'),
 								'c1_data'=>serialize($c1),
 								'c2_data'=>serialize($c2),
 								'c3_data'=>serialize($c3),
-								'meter_name'=>$resdata['undp'][$i]['meter']              
+								'meter_name'=>$meter_list[$i]['meter']              
 							);
+							
 							//echo json_encode($current_array);die();
 							$this->db->insert('current_report_tbl_undp', $current_array);
-						}else{
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$current1_data=array_merge($current1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$current2_data=array_merge($current2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$current3_data=array_merge($current3_data,$c3);
-							$current_array=array(
-								'location_name'=>$meter_list_undp[$i]['UtilityName'],
-								'meter_serial'=>'',
-								'station_id'=>$meter_list_undp[$i]['StationId'],
-								'report_date'=>$datesarray[$t],
-								'created_date'=>date('Y-m-d H:i:s'),
-								'updated_date'=>date('Y-m-d H:i:s'),
-								'c1_data'=>serialize($c1),
-								'c2_data'=>serialize($c2),
-								'c3_data'=>serialize($c3),
-								'meter_name'=>$resdata['undp'][$i]['meter']              
-							);
-							//echo json_encode($pressure_array);die();
-							$this->db->insert('current_report_tbl_undp', $current_array);
-						}
-						
-					}
-				}
-			}
-			$resdata['undp'][$i]['c1_data']=$current1_data;
-			$resdata['undp'][$i]['c2_data']=$current2_data;
-			$resdata['undp'][$i]['c3_data']=$current3_data;
-
-			
-			
-			 
-		}
-
-		//
-		for ($i=0; $i < count($meter_list_uncw); $i++) {
-			
-			$current1_data=[];
-			$current2_data=[];
-			$current3_data=[];
-			
-			$resdata['uncw'][$i]['meter']=$meter_list_uncw[$i]['UtilityName'];
-			
-		
-
-			for($t=0;$t<count($datesarray);$t++){
-				$check=$this->check_current_data_undp('current',$meter_list_uncw[$i]['UtilityName'],$datesarray[$t]);
-				if(count($check)==1){				
-					$current1_data=array_merge($current1_data,unserialize($check[0]['c1_data']));
-					$current2_data=array_merge($current2_data,unserialize($check[0]['c2_data']));
-					$current3_data=array_merge($current3_data,unserialize($check[0]['c3_data']));
-				}else{
 					
-					if($datesarray[$t]>=date('Y-m-d')){
-
-						
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND  `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$current1_data=array_merge($current1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$current2_data=array_merge($current2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$current3_data=array_merge($current3_data,$c3);
-						
-						
-						
-						
-					}else{
-						
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$current1_data=array_merge($current1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$current2_data=array_merge($current2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$current3_data=array_merge($current3_data,$c3);
-							$current_array=array(
-								'location_name'=>$meter_list_uncw[$i]['UtilityName'],
-								'meter_serial'=>'',
-								'station_id'=>$meter_list_uncw[$i]['StationId'],
-								'report_date'=>$datesarray[$t],
-								'created_date'=>date('Y-m-d H:i:s'),
-								'updated_date'=>date('Y-m-d H:i:s'),
-								'c1_data'=>serialize($c1),
-								'c2_data'=>serialize($c2),
-								'c3_data'=>serialize($c3),
-								'meter_name'=>$resdata['uncw'][$i]['meter']              
-							);
-							//echo json_encode($pressure_array);die();
-							$this->db->insert('current_report_tbl_undp', $current_array);
-						
-						
-					}
 				}
 			}
-			$resdata['uncw'][$i]['c1_data']=$current1_data;
-			$resdata['uncw'][$i]['c2_data']=$current2_data;
-			$resdata['uncw'][$i]['c3_data']=$current3_data;
-
-			
 			
 			 
 		}
-		//
-			//
-			for ($i=0; $i < count($meter_list_unew); $i++) {
-			
-				$current1_data=[];
-				$current2_data=[];
-				$current3_data=[];
-				
-				$resdata['unew'][$i]['meter']=$meter_list_unew[$i]['UtilityName'];
-				
-			
-	
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->check_current_data_undp('current',$meter_list_unew[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$current1_data=array_merge($current1_data,unserialize($check[0]['c1_data']));
-						$current2_data=array_merge($current2_data,unserialize($check[0]['c2_data']));
-						$current3_data=array_merge($current3_data,unserialize($check[0]['c3_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-	
-							
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND  `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$current1_data=array_merge($current1_data,$c1);
 		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$current2_data=array_merge($current2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$current3_data=array_merge($current3_data,$c3);
-							
-							
-							
-							
-						}else{
-							
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$current1_data=array_merge($current1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$current2_data=array_merge($current2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$current3_data=array_merge($current3_data,$c3);
-								$current_array=array(
-									'location_name'=>$meter_list_unew[$i]['UtilityName'],
-									'meter_serial'=>'',
-									'station_id'=>$meter_list_unew[$i]['StationId'],
-									'report_date'=>$datesarray[$t],
-									'created_date'=>date('Y-m-d H:i:s'),
-									'updated_date'=>date('Y-m-d H:i:s'),
-									'c1_data'=>serialize($c1),
-									'c2_data'=>serialize($c2),
-									'c3_data'=>serialize($c3),
-									'meter_name'=>$resdata['unew'][$i]['meter']              
-								);
-								//echo json_encode($pressure_array);die();
-								$this->db->insert('current_report_tbl_undp', $current_array);
-							
-							
-						}
-					}
-				}
-				$resdata['unew'][$i]['c1_data']=$current1_data;
-				$resdata['unew'][$i]['c2_data']=$current2_data;
-				$resdata['unew'][$i]['c3_data']=$current3_data;
-	
-				
-				
-				 
-			}
-			//	
-			//
-			for ($i=0; $i < count($meter_list_unff); $i++) {
-			
-				$current1_data=[];
-				$current2_data=[];
-				$current3_data=[];
-				
-				$resdata['unff'][$i]['meter']=$meter_list_unff[$i]['UtilityName'];
-				
-			
-	
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->check_current_data_undp('current',$meter_list_unff[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$current1_data=array_merge($current1_data,unserialize($check[0]['c1_data']));
-						$current2_data=array_merge($current2_data,unserialize($check[0]['c2_data']));
-						$current3_data=array_merge($current3_data,unserialize($check[0]['c3_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-	
-							if($meter_list_unff[$i]['UtilityName'] != 'Solar Meter'){
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_1' AND  `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$current1_data=array_merge($current1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_2' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$current2_data=array_merge($current2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_3' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$current3_data=array_merge($current3_data,$c3);
-							}else{
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND  `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$current1_data=array_merge($current1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$current2_data=array_merge($current2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$current3_data=array_merge($current3_data,$c3);
-							}
-							
-							
-							
-						}else{
-							if($meter_list_unff[$i]['UtilityName'] != 'Solar Meter'){
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_1' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$current1_data=array_merge($current1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_2' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$current2_data=array_merge($current2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_3' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$current3_data=array_merge($current3_data,$c3);
-								$current_array=array(
-									'location_name'=>$meter_list_unff[$i]['UtilityName'],
-									'meter_serial'=>'',
-									'station_id'=>$meter_list_unff[$i]['StationId'],
-									'report_date'=>$datesarray[$t],
-									'created_date'=>date('Y-m-d H:i:s'),
-									'updated_date'=>date('Y-m-d H:i:s'),
-									'c1_data'=>serialize($c1),
-									'c2_data'=>serialize($c2),
-									'c3_data'=>serialize($c3),
-									'meter_name'=>$resdata['unff'][$i]['meter']              
-								);
-								//echo json_encode($pressure_array);die();
-								$this->db->insert('current_report_tbl_undp', $current_array);
-							}else{
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$current1_data=array_merge($current1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$current2_data=array_merge($current2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$current3_data=array_merge($current3_data,$c3);
-								$current_array=array(
-									'location_name'=>$meter_list_unff[$i]['UtilityName'],
-									'meter_serial'=>'',
-									'station_id'=>$meter_list_unff[$i]['StationId'],
-									'report_date'=>$datesarray[$t],
-									'created_date'=>date('Y-m-d H:i:s'),
-									'updated_date'=>date('Y-m-d H:i:s'),
-									'c1_data'=>serialize($c1),
-									'c2_data'=>serialize($c2),
-									'c3_data'=>serialize($c3),
-									'meter_name'=>$resdata['unff'][$i]['meter']              
-								);
-								//echo json_encode($pressure_array);die();
-								$this->db->insert('current_report_tbl_undp', $current_array);
-							}
-							
-						}
-					}
-				}
-				$resdata['unff'][$i]['c1_data']=$current1_data;
-				$resdata['unff'][$i]['c2_data']=$current2_data;
-				$resdata['unff'][$i]['c3_data']=$current3_data;
-	
-				
-				
-				 
-			}
-			//	
-			//
-			for ($i=0; $i < count($meter_list_unww); $i++) {
-			
-				$current1_data=[];
-				$current2_data=[];
-				$current3_data=[];
-				
-				$resdata['unww'][$i]['meter']=$meter_list_unww[$i]['UtilityName'];
-				
-			
-	
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->check_current_data_undp('current',$meter_list_unww[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$current1_data=array_merge($current1_data,unserialize($check[0]['c1_data']));
-						$current2_data=array_merge($current2_data,unserialize($check[0]['c2_data']));
-						$current3_data=array_merge($current3_data,unserialize($check[0]['c3_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-	
-							
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND  `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$current1_data=array_merge($current1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$current2_data=array_merge($current2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$current3_data=array_merge($current3_data,$c3);
-							
-							
-							
-							
-						}else{
-							
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$current1_data=array_merge($current1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$current2_data=array_merge($current2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$current3_data=array_merge($current3_data,$c3);
-								$current_array=array(
-									'location_name'=>$meter_list_unww[$i]['UtilityName'],
-									'meter_serial'=>'',
-									'station_id'=>$meter_list_unww[$i]['StationId'],
-									'report_date'=>$datesarray[$t],
-									'created_date'=>date('Y-m-d H:i:s'),
-									'updated_date'=>date('Y-m-d H:i:s'),
-									'c1_data'=>serialize($c1),
-									'c2_data'=>serialize($c2),
-									'c3_data'=>serialize($c3),
-									'meter_name'=>$resdata['unww'][$i]['meter']              
-								);
-								//echo json_encode($pressure_array);die();
-								$this->db->insert('current_report_tbl_undp', $current_array);
-							
-							
-						}
-					}
-				}
-				$resdata['unww'][$i]['c1_data']=$current1_data;
-				$resdata['unww'][$i]['c2_data']=$current2_data;
-				$resdata['unww'][$i]['c3_data']=$current3_data;
-	
-				
-				
-				 
-			}
-			//
-			//
-	for ($i=0; $i < count($meter_list_unsg); $i++) {
-			
-			$current1_data=[];
-			$current2_data=[];
-			$current3_data=[];
-			
-			$resdata['unsg'][$i]['meter']=$meter_list_unsg[$i]['UtilityName'];
-			
-
-
-		for($t=0;$t<count($datesarray);$t++){
-		$check=$this->check_current_data_undp('current',$meter_list_unsg[$i]['UtilityName'],$datesarray[$t]);
-		if(count($check)==1){				
-			$current1_data=array_merge($current1_data,unserialize($check[0]['c1_data']));
-			$current2_data=array_merge($current2_data,unserialize($check[0]['c2_data']));
-			$current3_data=array_merge($current3_data,unserialize($check[0]['c3_data']));
-		}else{
-			
-			if($datesarray[$t]>=date('Y-m-d')){
-
-				
-					$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND  `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-					$c1 = $this->db->query($querycurrent1)->result();
-					$current1_data=array_merge($current1_data,$c1);
-
-					$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c2 = $this->db->query($querycurrent2)->result();
-					$current2_data=array_merge($current2_data,$c2);
-
-					$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c3 = $this->db->query($querycurrent3)->result();
-					$current3_data=array_merge($current3_data,$c3);
-				
-				
-				
-				
-			}else{
-				
-					$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-					$c1 = $this->db->query($querycurrent1)->result();
-					$current1_data=array_merge($current1_data,$c1);
-
-					$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c2 = $this->db->query($querycurrent2)->result();
-					$current2_data=array_merge($current2_data,$c2);
-
-					$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c3 = $this->db->query($querycurrent3)->result();
-					$current3_data=array_merge($current3_data,$c3);
-					$current_array=array(
-						'location_name'=>$meter_list_unsg[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_unsg[$i]['StationId'],
-						'report_date'=>$datesarray[$t],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'c1_data'=>serialize($c1),
-						'c2_data'=>serialize($c2),
-						'c3_data'=>serialize($c3),
-						'meter_name'=>$resdata['unsg'][$i]['meter']              
-					);
-					//echo json_encode($pressure_array);die();
-					$this->db->insert('current_report_tbl_undp', $current_array);
-				
-				
-			}
-		}
-		}
-		$resdata['unsg'][$i]['c1_data']=$current1_data;
-		$resdata['unsg'][$i]['c2_data']=$current2_data;
-		$resdata['unsg'][$i]['c3_data']=$current3_data;
-
-	
-	
-	 
-}
-//
-//
-for ($i=0; $i < count($meter_list_unab); $i++) {
-			
-	$current1_data=[];
-	$current2_data=[];
-	$current3_data=[];
-	
-	$resdata['unab'][$i]['meter']=$meter_list_unab[$i]['UtilityName'];
-	
-
-
-	for($t=0;$t<count($datesarray);$t++){
-		$check=$this->check_current_data_undp('current',$meter_list_unab[$i]['UtilityName'],$datesarray[$t]);
-		if(count($check)==1){				
-			$current1_data=array_merge($current1_data,unserialize($check[0]['c1_data']));
-			$current2_data=array_merge($current2_data,unserialize($check[0]['c2_data']));
-			$current3_data=array_merge($current3_data,unserialize($check[0]['c3_data']));
-		}else{
-			
-			if($datesarray[$t]>=date('Y-m-d')){
-
-				
-					$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND  `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-					$c1 = $this->db->query($querycurrent1)->result();
-					$current1_data=array_merge($current1_data,$c1);
-
-					$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c2 = $this->db->query($querycurrent2)->result();
-					$current2_data=array_merge($current2_data,$c2);
-
-					$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c3 = $this->db->query($querycurrent3)->result();
-					$current3_data=array_merge($current3_data,$c3);
-				
-				
-				
-				
-			}else{
-				
-					$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_R' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-					$c1 = $this->db->query($querycurrent1)->result();
-					$current1_data=array_merge($current1_data,$c1);
-
-					$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_Y' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c2 = $this->db->query($querycurrent2)->result();
-					$current2_data=array_merge($current2_data,$c2);
-
-					$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_B' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c3 = $this->db->query($querycurrent3)->result();
-					$current3_data=array_merge($current3_data,$c3);
-					$current_array=array(
-						'location_name'=>$meter_list_unab[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_unab[$i]['StationId'],
-						'report_date'=>$datesarray[$t],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'c1_data'=>serialize($c1),
-						'c2_data'=>serialize($c2),
-						'c3_data'=>serialize($c3),
-						'meter_name'=>$resdata['unab'][$i]['meter']              
-					);
-					//echo json_encode($pressure_array);die();
-					$this->db->insert('current_report_tbl_undp', $current_array);
-				
-				
-			}
-		}
-	}
-	$resdata['unab'][$i]['c1_data']=$current1_data;
-	$resdata['unab'][$i]['c2_data']=$current2_data;
-	$resdata['unab'][$i]['c3_data']=$current3_data;
-
-	
-	
-	 
-}
-//
-
-		return $resdata;
+		//return $resdata;
 	}
 	function get_hardwares_device_data_energymeter_current_report_undp_bkp($station_id,$fromdate,$todate,$table_name){
 		
@@ -4725,6 +3870,68 @@ for ($i=0; $i < count($meter_list_unab); $i++) {
 
 		return $resdata;
 	}
+	function get_hardwares_device_data_energymeter_current_report_terotam($station_id,$fromdate,$todate){
+		
+		$date_from = strtotime($fromdate); 
+        $date_to = strtotime($todate); 
+        $datesarray=array();
+		$table_name=$this->get_table_name($station_id);
+		// echo $table_name;die();
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+
+		$meter_list=$this->get_energymeter_list_terotam(2025000133);
+		// echo json_encode($meter_list);die();
+		
+		for ($i=0; $i < count($meter_list); $i++) {
+			
+			for($t=0;$t<count($datesarray);$t++){
+				$check=$this->check_current_data_terotam('current',$meter_list[$i]['UtilityName'],$datesarray[$t]);
+				if(count($check)==1){				
+					
+				}else{
+					
+						
+							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_1' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+		// echo $querycurrent1;die();
+							$c1 = $this->db->query($querycurrent1)->result();
+							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_2' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+						
+							$c2 = $this->db->query($querycurrent2)->result();
+	
+							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Current_3' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+						
+							$c3 = $this->db->query($querycurrent3)->result();
+							$current_array=array(
+								'location_name'=>$meter_list[$i]['UtilityName'],
+								'meter_serial'=>'',
+								'report_date'=>$datesarray[$t],
+								'created_date'=>date('Y-m-d H:i:s'),
+								'updated_date'=>date('Y-m-d H:i:s'),
+								'c1_data'=>serialize($c1),
+								'c2_data'=>serialize($c2),
+								'c3_data'=>serialize($c3),
+								'meter_name'=>$meter_list[$i]['DashboardName']              
+							);
+							//echo json_encode($current_array);die();
+							$this->db->insert('current_report_tbl_terotam', $current_array);
+						
+						
+					
+				}
+			}
+			
+			 
+		}
+
+		//
+		
+
+		return $resdata;
+	}
 	function get_hardwares_device_data_energymeter_voltage_report_unicef($station_id,$fromdate,$todate){
 		
 		$date_from = strtotime($fromdate); 
@@ -4930,691 +4137,52 @@ for ($i=0; $i < count($meter_list_unab); $i++) {
           array_push($datesarray, date("Y-m-d",$i1));  
         }
 		
-		$meter_list_undp=$this->get_energymeter_list_station($table_name,2023000304,$datesarray[0]);
-		$meter_list_uncw=$this->get_energymeter_list_station($table_name,2023000303,$datesarray[0]);
-		$meter_list_unew=$this->get_energymeter_list_station($table_name,2023000300,$datesarray[0]);
-		$meter_list_unff=$this->get_energymeter_list_station($table_name,2023000302,$datesarray[0]);
-		$meter_list_unww=$this->get_energymeter_list_station($table_name,2023000301,$datesarray[0]);
-		$meter_list_unsg=$this->get_energymeter_list_station($table_name,2024000143,$datesarray[0]);
-		$meter_list_unab=$this->get_energymeter_list_station($table_name,2024000144,$datesarray[0]);
+		$meter_list=$this->get_energymeter_list_cv_undp();
+		// echo json_encode($meter_list);die();
 		
-		for ($i=0; $i < count($meter_list_undp); $i++) {
+		for ($i=0; $i < count($meter_list); $i++) {
 			
-			$voltage1_data=[];
-			$voltage2_data=[];
-			$voltage3_data=[];
-			
-			$resdata['undp'][$i]['meter']=$meter_list_undp[$i]['UtilityName'];
-			
-		
-
 			for($t=0;$t<count($datesarray);$t++){
-				$check=$this->check_voltage_data_undp('voltage',$meter_list_undp[$i]['UtilityName'],$datesarray[$t]);
+				$check=$this->check_voltage_data_undp('voltage',$meter_list[$i]['UtilityName'],$datesarray[$t]);
 				if(count($check)==1){				
-					$voltage1_data=array_merge($voltage1_data,unserialize($check[0]['v1_data']));
-					$voltage2_data=array_merge($voltage2_data,unserialize($check[0]['v2_data']));
-					$voltage3_data=array_merge($voltage3_data,unserialize($check[0]['v3_data']));
+					
 				}else{
 					
-					if($datesarray[$t]>=date('Y-m-d')){
-
-						if($meter_list_undp[$i]['UtilityName'] == 'AC Plant Incomer' || $meter_list_undp[$i]['UtilityName'] == 'Chiller _2' || $meter_list_undp[$i]['UtilityName'] == 'Chiller _1' || $meter_list_undp[$i]['UtilityName'] == 'East Wing AHU' || $meter_list_undp[$i]['UtilityName'] == 'VFD Secondary Pump 2'){
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_1' AND  `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
+						
+							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_1' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+		// echo $querycurrent1;die();
 							$c1 = $this->db->query($querycurrent1)->result();
-							$voltage1_data=array_merge($voltage1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_2' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_2' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 						
 							$c2 = $this->db->query($querycurrent2)->result();
-							$voltage2_data=array_merge($voltage2_data,$c2);
 	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_3' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_3' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 						
 							$c3 = $this->db->query($querycurrent3)->result();
-							$voltage3_data=array_merge($voltage3_data,$c3);
-						}else{
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND  `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$voltage1_data=array_merge($voltage1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$voltage2_data=array_merge($voltage2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$voltage3_data=array_merge($voltage3_data,$c3);
-						}
-						
-						
-						
-					}else{
-						if($meter_list_undp[$i]['UtilityName'] == 'AC Plant Incomer' || $meter_list_undp[$i]['UtilityName'] == 'Chiller _2' || $meter_list_undp[$i]['UtilityName'] == 'Chiller _1' || $meter_list_undp[$i]['UtilityName'] == 'East Wing AHU' || $meter_list_undp[$i]['UtilityName'] == 'VFD Secondary Pump 2'){
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_1' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$voltage1_data=array_merge($voltage1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_2' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$voltage2_data=array_merge($voltage2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_3' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$voltage3_data=array_merge($voltage3_data,$c3);
 							$current_array=array(
-								'location_name'=>$meter_list_undp[$i]['UtilityName'],
+								'location_name'=>$meter_list[$i]['UtilityName'],
 								'meter_serial'=>'',
-								'station_id'=>$meter_list_undp[$i]['StationId'],
+								'station_id'=>$meter_list[$i]['StationId'],
 								'report_date'=>$datesarray[$t],
 								'created_date'=>date('Y-m-d H:i:s'),
 								'updated_date'=>date('Y-m-d H:i:s'),
 								'v1_data'=>serialize($c1),
 								'v2_data'=>serialize($c2),
 								'v3_data'=>serialize($c3),
-								'meter_name'=>$resdata['undp'][$i]['meter']              
+								'meter_name'=>$meter_list[$i]['meter']              
 							);
 							// echo json_encode($current_array);die();
 							$this->db->insert('voltage_report_tbl_undp', $current_array);
-						}else{
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$voltage1_data=array_merge($voltage1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$voltage2_data=array_merge($voltage2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$voltage3_data=array_merge($voltage3_data,$c3);
-							$current_array=array(
-								'location_name'=>$meter_list_undp[$i]['UtilityName'],
-								'meter_serial'=>'',
-								'station_id'=>$meter_list_undp[$i]['StationId'],
-								'report_date'=>$datesarray[$t],
-								'created_date'=>date('Y-m-d H:i:s'),
-								'updated_date'=>date('Y-m-d H:i:s'),
-								'v1_data'=>serialize($c1),
-								'v2_data'=>serialize($c2),
-								'v3_data'=>serialize($c3),
-								'meter_name'=>$resdata['undp'][$i]['meter']              
-							);
-							// echo json_encode($current_array);die();
-							$this->db->insert('voltage_report_tbl_undp', $current_array);
-						}
-						
-					}
-				}
-			}
-			$resdata['undp'][$i]['v1_data']=$voltage1_data;
-			$resdata['undp'][$i]['v2_data']=$voltage2_data;
-			$resdata['undp'][$i]['v3_data']=$voltage3_data;
-
-			
-			
-			 
-		}
-
-		//
-		for ($i=0; $i < count($meter_list_uncw); $i++) {
-			
-			$voltage1_data=[];
-			$voltage2_data=[];
-			$voltage3_data=[];
-			
-			$resdata['uncw'][$i]['meter']=$meter_list_uncw[$i]['UtilityName'];
-			
-		
-
-			for($t=0;$t<count($datesarray);$t++){
-				$check=$this->check_voltage_data_undp('voltage',$meter_list_uncw[$i]['UtilityName'],$datesarray[$t]);
-				if(count($check)==1){				
-					$voltage1_data=array_merge($voltage1_data,unserialize($check[0]['v1_data']));
-					$voltage2_data=array_merge($voltage2_data,unserialize($check[0]['v2_data']));
-					$voltage3_data=array_merge($voltage3_data,unserialize($check[0]['v3_data']));
-				}else{
 					
-					if($datesarray[$t]>=date('Y-m-d')){
-
-						
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND  `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$voltage1_data=array_merge($voltage1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$voltage2_data=array_merge($voltage2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$voltage3_data=array_merge($voltage3_data,$c3);
-						
-						
-						
-						
-					}else{
-						
-							$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-							$c1 = $this->db->query($querycurrent1)->result();
-							$voltage1_data=array_merge($voltage1_data,$c1);
-	
-							$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c2 = $this->db->query($querycurrent2)->result();
-							$voltage2_data=array_merge($voltage2_data,$c2);
-	
-							$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-						
-							$c3 = $this->db->query($querycurrent3)->result();
-							$voltage3_data=array_merge($voltage3_data,$c3);
-							$current_array=array(
-								'location_name'=>$meter_list_uncw[$i]['UtilityName'],
-								'meter_serial'=>'',
-								'station_id'=>$meter_list_uncw[$i]['StationId'],
-								'report_date'=>$datesarray[$t],
-								'created_date'=>date('Y-m-d H:i:s'),
-								'updated_date'=>date('Y-m-d H:i:s'),
-								'v1_data'=>serialize($c1),
-								'v2_data'=>serialize($c2),
-								'v3_data'=>serialize($c3),
-								'meter_name'=>$resdata['uncw'][$i]['meter']              
-							);
-							//echo json_encode($pressure_array);die();
-							$this->db->insert('voltage_report_tbl_undp', $current_array);
-						
-						
-					}
 				}
 			}
-			$resdata['uncw'][$i]['v1_data']=$voltage1_data;
-			$resdata['uncw'][$i]['v2_data']=$voltage2_data;
-			$resdata['uncw'][$i]['v3_data']=$voltage3_data;
-
-			
 			
 			 
-		}
-		//
-			//
-			for ($i=0; $i < count($meter_list_unew); $i++) {
-			
-				$voltage1_data=[];
-				$voltage2_data=[];
-				$voltage3_data=[];
-				
-				$resdata['unew'][$i]['meter']=$meter_list_unew[$i]['UtilityName'];
-				
-			
-	
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->check_voltage_data_undp('voltage',$meter_list_unew[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$voltage1_data=array_merge($voltage1_data,unserialize($check[0]['v1_data']));
-						$voltage2_data=array_merge($voltage2_data,unserialize($check[0]['v2_data']));
-						$voltage3_data=array_merge($voltage3_data,unserialize($check[0]['v3_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-	
-							
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND  `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$voltage1_data=array_merge($voltage1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$voltage2_data=array_merge($voltage2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$voltage3_data=array_merge($voltage3_data,$c3);
-							
-							
-							
-							
-						}else{
-							
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$voltage1_data=array_merge($voltage1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$voltage2_data=array_merge($voltage2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$voltage3_data=array_merge($voltage3_data,$c3);
-								$current_array=array(
-									'location_name'=>$meter_list_unew[$i]['UtilityName'],
-									'meter_serial'=>'',
-									'station_id'=>$meter_list_unew[$i]['StationId'],
-									'report_date'=>$datesarray[$t],
-									'created_date'=>date('Y-m-d H:i:s'),
-									'updated_date'=>date('Y-m-d H:i:s'),
-									'v1_data'=>serialize($c1),
-									'v2_data'=>serialize($c2),
-									'v3_data'=>serialize($c3),
-									'meter_name'=>$resdata['unew'][$i]['meter']              
-								);
-								//echo json_encode($pressure_array);die();
-								$this->db->insert('voltage_report_tbl_undp', $current_array);
-							
-							
-						}
-					}
-				}
-				$resdata['unew'][$i]['v1_data']=$voltage1_data;
-				$resdata['unew'][$i]['v2_data']=$voltage2_data;
-				$resdata['unew'][$i]['v3_data']=$voltage3_data;
-	
-				
-				
-				 
-			}
-			//	
-			//
-			for ($i=0; $i < count($meter_list_unff); $i++) {
-			
-				$voltage1_data=[];
-				$voltage2_data=[];
-				$voltage3_data=[];
-				
-				$resdata['unff'][$i]['meter']=$meter_list_unff[$i]['UtilityName'];
-				
-			
-	
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->check_voltage_data_undp('voltage',$meter_list_unff[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$voltage1_data=array_merge($voltage1_data,unserialize($check[0]['v1_data']));
-						$voltage2_data=array_merge($voltage2_data,unserialize($check[0]['v2_data']));
-						$voltage3_data=array_merge($voltage3_data,unserialize($check[0]['v3_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-	
-							if($meter_list_unff[$i]['UtilityName'] != 'Solar Meter'){
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_1' AND  `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$voltage1_data=array_merge($voltage1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_2' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$voltage2_data=array_merge($voltage2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_3' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$voltage3_data=array_merge($voltage3_data,$c3);
-							}else{
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND  `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$voltage1_data=array_merge($voltage1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$voltage2_data=array_merge($voltage2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$voltage3_data=array_merge($voltage3_data,$c3);
-							}
-							
-							
-							
-						}else{
-							if($meter_list_unff[$i]['UtilityName'] != 'Solar Meter'){
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_1' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$voltage1_data=array_merge($voltage1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_2' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$voltage2_data=array_merge($voltage2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_3' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$voltage3_data=array_merge($voltage3_data,$c3);
-								$current_array=array(
-									'location_name'=>$meter_list_unff[$i]['UtilityName'],
-									'meter_serial'=>'',
-									'station_id'=>$meter_list_unff[$i]['StationId'],
-									'report_date'=>$datesarray[$t],
-									'created_date'=>date('Y-m-d H:i:s'),
-									'updated_date'=>date('Y-m-d H:i:s'),
-									'v1_data'=>serialize($c1),
-									'v2_data'=>serialize($c2),
-									'v3_data'=>serialize($c3),
-									'meter_name'=>$resdata['unff'][$i]['meter']              
-								);
-								//echo json_encode($pressure_array);die();
-								$this->db->insert('voltage_report_tbl_undp', $current_array);
-							}else{
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$voltage1_data=array_merge($voltage1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$voltage2_data=array_merge($voltage2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$voltage3_data=array_merge($voltage3_data,$c3);
-								$current_array=array(
-									'location_name'=>$meter_list_unff[$i]['UtilityName'],
-									'meter_serial'=>'',
-									'station_id'=>$meter_list_unff[$i]['StationId'],
-									'report_date'=>$datesarray[$t],
-									'created_date'=>date('Y-m-d H:i:s'),
-									'updated_date'=>date('Y-m-d H:i:s'),
-									'v1_data'=>serialize($c1),
-									'v2_data'=>serialize($c2),
-									'v3_data'=>serialize($c3),
-									'meter_name'=>$resdata['unff'][$i]['meter']              
-								);
-								//echo json_encode($pressure_array);die();
-								$this->db->insert('voltage_report_tbl_undp', $current_array);
-							}
-							
-						}
-					}
-				}
-				$resdata['unff'][$i]['v1_data']=$voltage1_data;
-				$resdata['unff'][$i]['v2_data']=$voltage2_data;
-				$resdata['unff'][$i]['v3_data']=$voltage3_data;
-	
-				
-				
-				 
-			}
-			//	
-			//
-			for ($i=0; $i < count($meter_list_unww); $i++) {
-			
-				$voltage1_data=[];
-				$voltage2_data=[];
-				$voltage3_data=[];
-				
-				$resdata['unww'][$i]['meter']=$meter_list_unww[$i]['UtilityName'];
-				
-			
-	
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->check_voltage_data_undp('voltage',$meter_list_unww[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$voltage1_data=array_merge($voltage1_data,unserialize($check[0]['v1_data']));
-						$voltage2_data=array_merge($voltage2_data,unserialize($check[0]['v2_data']));
-						$voltage3_data=array_merge($voltage3_data,unserialize($check[0]['v3_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-	
-							
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND  `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$voltage1_data=array_merge($voltage1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$voltage2_data=array_merge($voltage2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$voltage3_data=array_merge($voltage3_data,$c3);
-							
-							
-							
-							
-						}else{
-							
-								$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-								$c1 = $this->db->query($querycurrent1)->result();
-								$voltage1_data=array_merge($voltage1_data,$c1);
-		
-								$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c2 = $this->db->query($querycurrent2)->result();
-								$voltage2_data=array_merge($voltage2_data,$c2);
-		
-								$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-							
-								$c3 = $this->db->query($querycurrent3)->result();
-								$voltage3_data=array_merge($voltage3_data,$c3);
-								$current_array=array(
-									'location_name'=>$meter_list_unww[$i]['UtilityName'],
-									'meter_serial'=>'',
-									'station_id'=>$meter_list_unww[$i]['StationId'],
-									'report_date'=>$datesarray[$t],
-									'created_date'=>date('Y-m-d H:i:s'),
-									'updated_date'=>date('Y-m-d H:i:s'),
-									'v1_data'=>serialize($c1),
-									'v2_data'=>serialize($c2),
-									'v3_data'=>serialize($c3),
-									'meter_name'=>$resdata['unww'][$i]['meter']              
-								);
-								//echo json_encode($pressure_array);die();
-								$this->db->insert('voltage_report_tbl_undp', $current_array);
-							
-							
-						}
-					}
-				}
-				$resdata['unww'][$i]['v1_data']=$voltage1_data;
-				$resdata['unww'][$i]['v2_data']=$voltage2_data;
-				$resdata['unww'][$i]['v3_data']=$voltage3_data;
-	
-				
-				
-				 
-			}
-			//
-			//
-for ($i=0; $i < count($meter_list_unsg); $i++) {
-			
-	$voltage1_data=[];
-	$voltage2_data=[];
-	$voltage3_data=[];
-	
-	$resdata['unsg'][$i]['meter']=$meter_list_unsg[$i]['UtilityName'];
-	
+		}		
 
-
-	for($t=0;$t<count($datesarray);$t++){
-		$check=$this->check_voltage_data_undp('voltage',$meter_list_unsg[$i]['UtilityName'],$datesarray[$t]);
-		if(count($check)==1){				
-			$voltage1_data=array_merge($voltage1_data,unserialize($check[0]['v1_data']));
-			$voltage2_data=array_merge($voltage2_data,unserialize($check[0]['v2_data']));
-			$voltage3_data=array_merge($voltage3_data,unserialize($check[0]['v3_data']));
-		}else{
-			
-			if($datesarray[$t]>=date('Y-m-d')){
-
-				
-					$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND  `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-					$c1 = $this->db->query($querycurrent1)->result();
-					$voltage1_data=array_merge($voltage1_data,$c1);
-
-					$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c2 = $this->db->query($querycurrent2)->result();
-					$voltage2_data=array_merge($voltage2_data,$c2);
-
-					$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c3 = $this->db->query($querycurrent3)->result();
-					$voltage3_data=array_merge($voltage3_data,$c3);
-				
-				
-				
-				
-			}else{
-				
-					$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-					$c1 = $this->db->query($querycurrent1)->result();
-					$voltage1_data=array_merge($voltage1_data,$c1);
-
-					$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c2 = $this->db->query($querycurrent2)->result();
-					$voltage2_data=array_merge($voltage2_data,$c2);
-
-					$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c3 = $this->db->query($querycurrent3)->result();
-					$voltage3_data=array_merge($voltage3_data,$c3);
-					$current_array=array(
-						'location_name'=>$meter_list_unsg[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_unsg[$i]['StationId'],
-						'report_date'=>$datesarray[$t],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'v1_data'=>serialize($c1),
-						'v2_data'=>serialize($c2),
-						'v3_data'=>serialize($c3),
-						'meter_name'=>$resdata['unsg'][$i]['meter']              
-					);
-					//echo json_encode($pressure_array);die();
-					$this->db->insert('voltage_report_tbl_undp', $current_array);
-				
-				
-			}
-		}
-	}
-	$resdata['unsg'][$i]['v1_data']=$voltage1_data;
-	$resdata['unsg'][$i]['v2_data']=$voltage2_data;
-	$resdata['unsg'][$i]['v3_data']=$voltage3_data;
-
-	
-	
-	 
-}
-//
-//
-for ($i=0; $i < count($meter_list_unab); $i++) {
-			
-	$voltage1_data=[];
-	$voltage2_data=[];
-	$voltage3_data=[];
-	
-	$resdata['unab'][$i]['meter']=$meter_list_unab[$i]['UtilityName'];
-	
-
-
-	for($t=0;$t<count($datesarray);$t++){
-		$check=$this->check_voltage_data_undp('voltage',$meter_list_unab[$i]['UtilityName'],$datesarray[$t]);
-		if(count($check)==1){				
-			$voltage1_data=array_merge($voltage1_data,unserialize($check[0]['v1_data']));
-			$voltage2_data=array_merge($voltage2_data,unserialize($check[0]['v2_data']));
-			$voltage3_data=array_merge($voltage3_data,unserialize($check[0]['v3_data']));
-		}else{
-			
-			if($datesarray[$t]>=date('Y-m-d')){
-
-				
-					$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND  `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-					$c1 = $this->db->query($querycurrent1)->result();
-					$voltage1_data=array_merge($voltage1_data,$c1);
-
-					$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c2 = $this->db->query($querycurrent2)->result();
-					$voltage2_data=array_merge($voltage2_data,$c2);
-
-					$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c3 = $this->db->query($querycurrent3)->result();
-					$voltage3_data=array_merge($voltage3_data,$c3);
-				
-				
-				
-				
-			}else{
-				
-					$querycurrent1="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_R' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-					$c1 = $this->db->query($querycurrent1)->result();
-					$voltage1_data=array_merge($voltage1_data,$c1);
-
-					$querycurrent2="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_Y' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c2 = $this->db->query($querycurrent2)->result();
-					$voltage2_data=array_merge($voltage2_data,$c2);
-
-					$querycurrent3="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='Voltage_B' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-				
-					$c3 = $this->db->query($querycurrent3)->result();
-					$voltage3_data=array_merge($voltage3_data,$c3);
-					$current_array=array(
-						'location_name'=>$meter_list_unab[$i]['UtilityName'],
-						'meter_serial'=>'',
-						'station_id'=>$meter_list_unab[$i]['StationId'],
-						'report_date'=>$datesarray[$t],
-						'created_date'=>date('Y-m-d H:i:s'),
-						'updated_date'=>date('Y-m-d H:i:s'),
-						'v1_data'=>serialize($c1),
-						'v2_data'=>serialize($c2),
-						'v3_data'=>serialize($c3),
-						'meter_name'=>$resdata['unab'][$i]['meter']              
-					);
-					//echo json_encode($pressure_array);die();
-					$this->db->insert('voltage_report_tbl_undp', $current_array);
-				
-				
-			}
-		}
-	}
-	$resdata['unab'][$i]['v1_data']=$voltage1_data;
-	$resdata['unab'][$i]['v2_data']=$voltage2_data;
-	$resdata['unab'][$i]['v3_data']=$voltage3_data;
-
-	
-	
-	 
-}
-//			
-
-		return $resdata;
+		//return $resdata;
 	}
 	function get_hardwares_device_data_energymeter_voltage_report_undp_bkp($station_id,$fromdate,$todate,$table_name){
 		
@@ -6136,373 +4704,41 @@ for ($i=0; $i < count($meter_list_unab); $i++) {
         {
           array_push($datesarray, date("Y-m-d",$i1));  
         }
-		$meter_list_undp=$this->get_energymeter_list_station($table_name,2023000304,$datesarray[0]);
-		$meter_list_uncw=$this->get_energymeter_list_station($table_name,2023000303,$datesarray[0]);
-		$meter_list_unew=$this->get_energymeter_list_station($table_name,2023000300,$datesarray[0]);
-		$meter_list_unff=$this->get_energymeter_list_station($table_name,2023000302,$datesarray[0]);
-		$meter_list_unww=$this->get_energymeter_list_station($table_name,2023000301,$datesarray[0]);
-		$meter_list_unsg=$this->get_energymeter_list_station($table_name,2024000143,$datesarray[0]);
-		$meter_list_unab=$this->get_energymeter_list_station($table_name,2024000144,$datesarray[0]);
-		
-		for ($i=0; $i < count($meter_list_undp); $i++) {
+		$meter_list=$this->get_energymeter_list_cv_undp();
+		for ($i=0; $i < count($meter_list); $i++) {
 			
-			$powerfactor_data=[];
-			
-			$resdata['undp'][$i]['meter']=$meter_list_undp[$i]['UtilityName'];
-			
-		
-
 			for($t=0;$t<count($datesarray);$t++){
-				$check=$this->chech_pf_data_undp('PF',$meter_list_undp[$i]['UtilityName'],$datesarray[$t]);
+				$check=$this->chech_pf_data_undp('pf',$meter_list[$i]['UtilityName'],$datesarray[$t]);
 				if(count($check)==1){				
-					$powerfactor_data=array_merge($powerfactor_data,unserialize($check[0]['pf_data']));
+					
 				}else{
 					
-					if($datesarray[$t]>=date('Y-m-d')){
-
-						$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
+						
+					$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
 		
-						$pf = $this->db->query($querypowerfactor)->result();						
-						$powerfactor_data=array_merge($powerfactor_data,$pf);
-					}else{
-						
-						$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_undp[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-						$pf = $this->db->query($querypowerfactor)->result();						
-						$powerfactor_data=array_merge($powerfactor_data,$pf);
-						$pf_array=array(
-							'location_name'=>$meter_list_undp[$i]['UtilityName'],
-							'meter_serial'=>'',
-							'station_id'=>$meter_list_uncw[$i]['StationId'],
-							'report_date'=>$datesarray[$t],
-							'created_date'=>date('Y-m-d H:i:s'),
-							'updated_date'=>date('Y-m-d H:i:s'),
-							'pf_data'=>serialize($pf),
-							'meter_name'=>$resdata['undp'][$i]['meter']              
-						);
-						 //echo json_encode($pf_array);die();
-						$this->db->insert('pf_report_tbl_undp', $pf_array);
+					$pf = $this->db->query($querypowerfactor)->result();
+					$pf_array=array(
+						'location_name'=>$meter_list[$i]['UtilityName'],
+						'meter_serial'=>'',
+						'station_id'=>$meter_list[$i]['StationId'],
+						'report_date'=>$datesarray[$t],
+						'created_date'=>date('Y-m-d H:i:s'),
+						'updated_date'=>date('Y-m-d H:i:s'),
+						'pf_data'=>serialize($pf),
+						'meter_name'=>$meter_list[$i]['meter']              
+					);
+					 //echo json_encode($pf_array);die();
+					$this->db->insert('pf_report_tbl_undp', $pf_array);
 						
 						
-					}
+					
 				}
 			}
-			$resdata['undp'][$i]['pf_data']=$powerfactor_data;
-
-			
 			
 			 
 		}
 
-		//
-		for ($i=0; $i < count($meter_list_uncw); $i++) {
-			
-			$powerfactor_data=[];
-			
-			$resdata['uncw'][$i]['meter']=$meter_list_uncw[$i]['UtilityName'];
-			
-		
-		
-			for($t=0;$t<count($datesarray);$t++){
-				$check=$this->chech_pf_data_undp('PF',$meter_list_uncw[$i]['UtilityName'],$datesarray[$t]);
-				if(count($check)==1){				
-					$powerfactor_data=array_merge($powerfactor_data,unserialize($check[0]['pf_data']));
-				}else{
-					
-					if($datesarray[$t]>=date('Y-m-d')){
-		
-						$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-						$pf = $this->db->query($querypowerfactor)->result();						
-						$powerfactor_data=array_merge($powerfactor_data,$pf);
-					}else{
-						
-						$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_uncw[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-		
-						$pf = $this->db->query($querypowerfactor)->result();						
-						$powerfactor_data=array_merge($powerfactor_data,$pf);
-						$pf_array=array(
-							'location_name'=>$meter_list_uncw[$i]['UtilityName'],
-							'meter_serial'=>'',
-							'station_id'=>$meter_list_uncw[$i]['StationId'],
-							'report_date'=>$datesarray[$t],
-							'created_date'=>date('Y-m-d H:i:s'),
-							'updated_date'=>date('Y-m-d H:i:s'),
-							'pf_data'=>serialize($pf),
-							'meter_name'=>$resdata['uncw'][$i]['meter']              
-						);
-						 //echo json_encode($pf_array);die();
-						$this->db->insert('pf_report_tbl_undp', $pf_array);
-						
-						
-					}
-				}
-			}
-			$resdata['uncw'][$i]['pf_data']=$powerfactor_data;
-		
-			
-			
-			 
-		}
-		//
-			//
-			for ($i=0; $i < count($meter_list_unew); $i++) {
-			
-				$powerfactor_data=[];
-				
-				$resdata['unew'][$i]['meter']=$meter_list_unew[$i]['UtilityName'];
-				
-			
-			
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->chech_pf_data_undp('PF',$meter_list_unew[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$powerfactor_data=array_merge($powerfactor_data,unserialize($check[0]['pf_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-			
-							$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-							$pf = $this->db->query($querypowerfactor)->result();						
-							$powerfactor_data=array_merge($powerfactor_data,$pf);
-						}else{
-							
-							$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unew[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-							$pf = $this->db->query($querypowerfactor)->result();						
-							$powerfactor_data=array_merge($powerfactor_data,$pf);
-							$pf_array=array(
-								'location_name'=>$meter_list_unew[$i]['UtilityName'],
-								'meter_serial'=>'',
-								'station_id'=>$meter_list_unew[$i]['StationId'],
-								'report_date'=>$datesarray[$t],
-								'created_date'=>date('Y-m-d H:i:s'),
-								'updated_date'=>date('Y-m-d H:i:s'),
-								'pf_data'=>serialize($pf),
-								'meter_name'=>$resdata['unew'][$i]['meter']              
-							);
-							 //echo json_encode($pf_array);die();
-							$this->db->insert('pf_report_tbl_undp', $pf_array);
-							
-							
-						}
-					}
-				}
-				$resdata['unew'][$i]['pf_data']=$powerfactor_data;
-			
-				
-				
-				 
-			}
-			//	
-			//
-			for ($i=0; $i < count($meter_list_unff); $i++) {
-			
-				$powerfactor_data=[];
-				
-				$resdata['unff'][$i]['meter']=$meter_list_unff[$i]['UtilityName'];
-				
-			
-			
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->chech_pf_data_undp('PF',$meter_list_unff[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$powerfactor_data=array_merge($powerfactor_data,unserialize($check[0]['pf_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-			
-							$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-							$pf = $this->db->query($querypowerfactor)->result();						
-							$powerfactor_data=array_merge($powerfactor_data,$pf);
-						}else{
-							
-							$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unff[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-							$pf = $this->db->query($querypowerfactor)->result();						
-							$powerfactor_data=array_merge($powerfactor_data,$pf);
-							$pf_array=array(
-								'location_name'=>$meter_list_unff[$i]['UtilityName'],
-								'meter_serial'=>'',
-								'station_id'=>$meter_list_unff[$i]['StationId'],
-								'report_date'=>$datesarray[$t],
-								'created_date'=>date('Y-m-d H:i:s'),
-								'updated_date'=>date('Y-m-d H:i:s'),
-								'pf_data'=>serialize($pf),
-								'meter_name'=>$resdata['unff'][$i]['meter']              
-							);
-							 //echo json_encode($pf_array);die();
-							$this->db->insert('pf_report_tbl_undp', $pf_array);
-							
-							
-						}
-					}
-				}
-				$resdata['unff'][$i]['pf_data']=$powerfactor_data;
-			
-				
-				
-				 
-			}
-			//	
-			//
-			for ($i=0; $i < count($meter_list_unww); $i++) {
-			
-				$powerfactor_data=[];
-				
-				$resdata['unww'][$i]['meter']=$meter_list_unww[$i]['UtilityName'];
-				
-			
-			
-				for($t=0;$t<count($datesarray);$t++){
-					$check=$this->chech_pf_data_undp('PF',$meter_list_unww[$i]['UtilityName'],$datesarray[$t]);
-					if(count($check)==1){				
-						$powerfactor_data=array_merge($powerfactor_data,unserialize($check[0]['pf_data']));
-					}else{
-						
-						if($datesarray[$t]>=date('Y-m-d')){
-			
-							$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-							$pf = $this->db->query($querypowerfactor)->result();						
-							$powerfactor_data=array_merge($powerfactor_data,$pf);
-						}else{
-							
-							$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unww[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-			
-							$pf = $this->db->query($querypowerfactor)->result();						
-							$powerfactor_data=array_merge($powerfactor_data,$pf);
-							$pf_array=array(
-								'location_name'=>$meter_list_unww[$i]['UtilityName'],
-								'meter_serial'=>'',
-								'station_id'=>$meter_list_unww[$i]['StationId'],
-								'report_date'=>$datesarray[$t],
-								'created_date'=>date('Y-m-d H:i:s'),
-								'updated_date'=>date('Y-m-d H:i:s'),
-								'pf_data'=>serialize($pf),
-								'meter_name'=>$resdata['unww'][$i]['meter']              
-							);
-							 //echo json_encode($pf_array);die();
-							$this->db->insert('pf_report_tbl_undp', $pf_array);
-							
-							
-						}
-					}
-				}
-				$resdata['unww'][$i]['pf_data']=$powerfactor_data;
-			
-				
-				
-				 
-			}
-			//
-			//
-for ($i=0; $i < count($meter_list_unsg); $i++) {
-			
-	$powerfactor_data=[];
-	
-	$resdata['unsg'][$i]['meter']=$meter_list_unsg[$i]['UtilityName'];
-	
-
-
-	for($t=0;$t<count($datesarray);$t++){
-		$check=$this->chech_pf_data_undp('PF',$meter_list_unsg[$i]['UtilityName'],$datesarray[$t]);
-		if(count($check)==1){				
-			$powerfactor_data=array_merge($powerfactor_data,unserialize($check[0]['pf_data']));
-		}else{
-			
-			if($datesarray[$t]>=date('Y-m-d')){
-
-				$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-				$pf = $this->db->query($querypowerfactor)->result();						
-				$powerfactor_data=array_merge($powerfactor_data,$pf);
-			}else{
-				
-				$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unsg[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-				$pf = $this->db->query($querypowerfactor)->result();						
-				$powerfactor_data=array_merge($powerfactor_data,$pf);
-				$pf_array=array(
-					'location_name'=>$meter_list_unsg[$i]['UtilityName'],
-					'meter_serial'=>'',
-					'station_id'=>$meter_list_unsg[$i]['StationId'],
-					'report_date'=>$datesarray[$t],
-					'created_date'=>date('Y-m-d H:i:s'),
-					'updated_date'=>date('Y-m-d H:i:s'),
-					'pf_data'=>serialize($pf),
-					'meter_name'=>$resdata['unsg'][$i]['meter']              
-				);
-				 //echo json_encode($pf_array);die();
-				$this->db->insert('pf_report_tbl_undp', $pf_array);
-				
-				
-			}
-		}
-	}
-	$resdata['unsg'][$i]['pf_data']=$powerfactor_data;
-
-	
-	
-	 
-}
-//
-
-//
-for ($i=0; $i < count($meter_list_unab); $i++) {
-			
-	$powerfactor_data=[];
-	
-	$resdata['unab'][$i]['meter']=$meter_list_unab[$i]['UtilityName'];
-	
-
-
-	for($t=0;$t<count($datesarray);$t++){
-		$check=$this->chech_pf_data_undp('PF',$meter_list_unab[$i]['UtilityName'],$datesarray[$t]);
-		if(count($check)==1){				
-			$powerfactor_data=array_merge($powerfactor_data,unserialize($check[0]['pf_data']));
-		}else{
-			
-			if($datesarray[$t]>=date('Y-m-d')){
-
-				$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name_live WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-				$pf = $this->db->query($querypowerfactor)->result();						
-				$powerfactor_data=array_merge($powerfactor_data,$pf);
-			}else{
-				
-				$querypowerfactor="SELECT round(CurReading,2) as CurReading ,concat(`TxnDate`,' ',`TxnTime`)as time FROM $table_name WHERE TxnDate = '".$datesarray[$t]."'  AND `LineConnected`='PF' AND `UtilityName`='".$meter_list_unab[$i]['UtilityName']."'  ORDER BY TxnDate ASC,TxnTime ASC";
-
-				$pf = $this->db->query($querypowerfactor)->result();						
-				$powerfactor_data=array_merge($powerfactor_data,$pf);
-				$pf_array=array(
-					'location_name'=>$meter_list_unab[$i]['UtilityName'],
-					'meter_serial'=>'',
-					'station_id'=>$meter_list_unab[$i]['StationId'],
-					'report_date'=>$datesarray[$t],
-					'created_date'=>date('Y-m-d H:i:s'),
-					'updated_date'=>date('Y-m-d H:i:s'),
-					'pf_data'=>serialize($pf),
-					'meter_name'=>$resdata['unab'][$i]['meter']              
-				);
-				 //echo json_encode($pf_array);die();
-				$this->db->insert('pf_report_tbl_undp', $pf_array);
-				
-				
-			}
-		}
-	}
-	$resdata['unab'][$i]['pf_data']=$powerfactor_data;
-
-	
-	
-	 
-}
-//
-
-		return $resdata;
+		//return $resdata;
 	}
 	function get_hardwares_device_data_power_factor_report_undp_bkp($station_id,$fromdate,$todate,$table_name){
 		

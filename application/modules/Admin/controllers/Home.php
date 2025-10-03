@@ -131,6 +131,17 @@ class Home extends MX_Controller {
 		   // print_r($data['data']);die();
 		 $this->load->view('all_reports',$data);
 	}
+	function waterMeterData_unicef_all(){
+			$this->load->model('Api_data_model_unicef');
+		
+			$flowmeterdata_all=$this->Api_data_model_unicef->get_hardwares_device_data_flowmeter_unicef_all($meter_list[$i]['MeterName'],2024000527);
+			
+			$data['water_meter_data_all']=$flowmeterdata_all;
+		
+			return $data;
+			//$data['water_meter_data']=$flowmeterdata;
+		
+	}
 	function waterMeterData_unicef(){
 		$this->load->model('Api_data_model_unicef');
 		
@@ -151,7 +162,7 @@ class Home extends MX_Controller {
 			$tot=0;
 			for ($i=0; $i < count($flowmeterdata[$k]['monthly_data']); $i++) { 
 				$dps1[$k]['dates'][$i]=$flowmeterdata[$k]['monthly_data'][$i]['date'];				
-				$dps1[$k]['conses'][$i]=(int)$flowmeterdata[$k]['monthly_data'][$i]['con'];						
+				$dps1[$k]['conses'][$i]=(float)$flowmeterdata[$k]['monthly_data'][$i]['con'];						
 				
 			}
 		}
@@ -203,6 +214,9 @@ class Home extends MX_Controller {
 			echo json_encode($data);
 			//$data['water_meter_data']=$flowmeterdata;
 		
+	}
+	function mail_tero(){
+		$this->load->view('terotam_mail');
 	}
 	function water(){
 		
@@ -260,7 +274,12 @@ class Home extends MX_Controller {
 		// echo json_encode($data);die();
 			$this->load->view('water-dashboard-chennai',$data);
 		}else if($this->session->userdata('created_by')==42){
-			$this->load->view('water-dashboard-unicef');
+			$this->load->model('Api_data_model_unicef');
+		
+			$flowmeterdata_all=$this->Api_data_model_unicef->get_hardwares_device_data_flowmeter_unicef_all(2024000527);
+			
+			$data['water_meter_data_all']=$flowmeterdata_all;
+			$this->load->view('water-dashboard-unicef' ,$data);
 		}else{
 			 //echo json_encode($hardwares);die();
 					// if(isset($hardwares['Flow Meter']['hardaware_list'])){
@@ -561,8 +580,25 @@ class Home extends MX_Controller {
 			}
 			//$data['energy_meters_data']=array();
 			// echo json_encode($data['energy_meters_data']);die();
-			$this->load->view('energy-dashboard_undp',$data);
+			if($this->session->userdata('user_id')==56){
+				$this->load->view('energy-dashboard_undp_ff',$data);
+			}else{
+				$this->load->view('energy-dashboard_undp',$data);
+			}
+			
 		
+	}
+	public function calender_view(){
+		$this->load->view('energy_cal');
+	}
+	public function calender_view_undp(){
+		$this->load->view('energy_cal_undp');
+	}
+	public function calender_view1(){
+		$this->load->view('energy_cal');
+	}
+	public function graph2(){
+		$this->load->view('multi_graph');
 	}
 	public function energy_unicef()
 	{
@@ -584,10 +620,129 @@ class Home extends MX_Controller {
 		// echo json_encode($hardwares['Energy Meter']['hardaware_list']);die();
 			if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
 				$data['energy_meters_data']=$this->Api_data_model_unicef->get_hardwares_device_data_energy_meters_unicef($hardwares['Energy Meter']['hardaware_list'][0]);
+				$data['energy_meters_data_all']=$this->Api_data_model_unicef->get_hardwares_device_data_energy_meters_unicef_all($hardwares['Energy Meter']['hardaware_list'][0]);
 			}
 			//$data['energy_meters_data']=array();
 			// echo json_encode($data['energy_meters_data']);die();
 			$this->load->view('energy-dashboard_unicef',$data);
+		
+	}
+	public function energy_terotam()
+	{
+		$this->load->model('Api_data_model_tero');
+		$device_data=$this->Api_data_model_tero->get_devices_list(6);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_tero->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list']=$this->Api_data_model_tero->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list']=array();
+			//echo "No Hardware data";
+		}
+		// echo json_encode($hardwares['Energy Meter']['hardaware_list']);die();
+			if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+				$data['energy_meters_data']=$this->Api_data_model_tero->get_hardwares_device_data_energy_meters_tero($hardwares['Energy Meter']['hardaware_list'][0]);
+				//$data['energy_meters_data_all']=$this->Api_data_model_tero->get_hardwares_device_data_energy_meters_unicef_all($hardwares['Energy Meter']['hardaware_list'][0]);
+				$energydat=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_day_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydata']=$energydat;
+				$data['energydat_quarterly_weekday_wise_consumption']=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_quarter_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydat_monthly_weekday_wise_consumption']=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_monthly_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydat_weekday_wise_consumption']=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_weekday_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydat_day_night_consumption']=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_report_terotam_daynight_dashboard($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydat_day_night_consumption_monthly']=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_report_terotam_daynight_dashboard_monthly($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydat_monthly_year_to_year_consumption']=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_monthly__year_to_year_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+			}
+			//$data['energy_meters_data']=array();get_hardwares_device_data_energymeter_report_terotam_daynight_dashboard_monthly
+			// echo json_encode($data['energydat_monthly_year_to_year_consumption']);die();
+			$this->load->view('energy-dashboard_terotam',$data);
+		
+	}
+	public function energy_undp_single()
+	{
+		$this->load->model('Api_data_model_undp_single');
+		$device_data=$this->Api_data_model_undp_single->get_devices_list(6);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_undp_single->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list']=$this->Api_data_model_undp_single->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list']=array();
+			//echo "No Hardware data";
+		}
+		// echo json_encode($hardwares['Energy Meter']['hardaware_list']);die();
+			if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+				$data['energy_meters_data']=$this->Api_data_model_undp_single->get_hardwares_device_data_energy_meters_tero($hardwares['Energy Meter']['hardaware_list'][0]);
+				
+				//$data['energy_meters_data_all']=$this->Api_data_model_undp_single->get_hardwares_device_data_energy_meters_unicef_all($hardwares['Energy Meter']['hardaware_list'][0]);
+				$energydat=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_day_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				
+				$data['energydata']=$energydat;
+				$data['energydat_quarterly_weekday_wise_consumption']=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_quarter_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				
+				$data['energydat_monthly_weekday_wise_consumption']=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_monthly_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydat_weekday_wise_consumption']=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_weekday_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydat_day_night_consumption']=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_report_terotam_daynight_dashboard($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				// echo json_encode($hardwares['Energy Meter']['hardaware_list']);die();
+				$data['energydat_day_night_consumption_monthly']=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_report_terotam_daynight_dashboard_monthly($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydat_monthly_year_to_year_consumption']=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_monthly__year_to_year_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+			}
+			//$data['energy_meters_data']=array();get_hardwares_device_data_energymeter_report_terotam_daynight_dashboard_monthly
+			// echo json_encode($data['energy_meters_data']);die();
+			$this->load->view('energy-dashboard_undp_single',$data);
+		
+	}
+	public function energy_undp_test()
+	{
+		
+		$this->load->model('Api_data_model_undp');
+		$device_data=$this->Api_data_model_undp->get_devices_list(6);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_undp->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list']=$this->Api_data_model_undp->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list']=array();
+			//echo "No Hardware data";
+		}
+		// echo json_encode($hardwares['Energy Meter']['hardaware_list']);die();
+			if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+				$data['energy_meters_data']=$this->Api_data_model_undp->get_hardwares_device_data_energy_meters_tero($hardwares['Energy Meter']['hardaware_list'][0]);
+				// echo json_encode($data['energy_meters_data']);die();
+				$data['energydat_hourly_wise_consumption']=$this->Api_data_model_undp->get_hardwares_device_data_energymeter_day_report_hourly($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"));
+				// echo json_encode($data['energydat_hourly_wise_consumption']);die();
+				$energydat=$this->Api_data_model_undp->get_hardwares_device_data_energymeter_day_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				$data['energydata']=$energydat;
+				// echo json_encode($data['energydata']);die();
+				$data['energydat_quarterly_weekday_wise_consumption']=$this->Api_data_model_undp->get_hardwares_device_data_energymeter_quarter_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				
+				$data['energydat_monthly_weekday_wise_consumption']=$this->Api_data_model_undp->get_hardwares_device_data_energymeter_monthly_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				
+				$data['energydat_weekday_wise_consumption']=$this->Api_data_model_undp->get_hardwares_device_data_energymeter_weekday_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				//
+				// echo json_encode($data['energydat_weekday_wise_consumption']);die();
+				$data['energydat_day_night_consumption']=$this->Api_data_model_undp->get_hardwares_device_data_energymeter_report_terotam_daynight_dashboard($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				// echo json_encode($data['energydat_day_night_consumption']);die();
+				$data['energydat_monthly_year_to_year_consumption']=$this->Api_data_model_undp->get_hardwares_device_data_energymeter_monthly__year_to_year_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],date("Y-m-d"),date("Y-m-d"));
+				
+			}
+			//$data['energy_meters_data']=array();
+			// echo json_encode($data['energydat_monthly_year_to_year_consumption']);die();
+			$this->load->view('energy-dashboard_undp_test',$data);
 		
 	}
 	public function energy_rsbrother()
@@ -1583,6 +1738,115 @@ class Home extends MX_Controller {
 		
 		 $this->load->view('all_reports_hcug',$data);
 	}
+	function all_reports_unicef_old(){
+		
+		$this->load->model('Hardware_model');
+		$this->load->model('Hardware_category_model');
+		$this->load->model('Api_reports_data_model');
+		$data['category'] = array('' => 'Select Category') + $this->Hardware_category_model->get_hardware_category_dropdown_unicef();
+		$device_id=$this->input->post('report');
+		$data['radio']=$this->input->post('report_type');
+		$data['m1']=$device_id;
+		if(!empty($_POST)){
+			$data['data']=$this->input->post();
+		}else{
+			$data['data']=array('solution'=>0);
+		}
+		
+		if ($this->input->post('category') != '')
+			{
+				if($this->input->post('report_type')==0){
+					$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+					get_devices_unicef_tab($this->input->post('category'));
+				}else{
+					$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+				get_devices_vega($this->input->post('category'));
+				}
+				
+			} else
+			{
+				$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+				get_devices_unicef_tab("");
+			}
+			
+		
+			if ($this->input->post('device') != '')
+			{		
+				$rdata=array(
+				'category'=>$this->input->post('category'),
+				'solution'=>$this->input->post('device'),
+				'device'=>"",
+				'report_type'=>$this->input->post('report_type')
+				);
+				//print_r($rdata);exit;
+				$data['report'] =  array('' => 'Select Report') + $this->Api_reports_data_model->get_reports_dropdown($rdata);
+				//echo "<pre>";print_r($data['report']);exit;
+			}
+		$this->load->model('Api_data_model_unicef');
+		$device_data=$this->Api_data_model_unicef->get_devices_list(6);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_unicef->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list']=$this->Api_data_model_unicef->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list']=array();
+			//echo "No Hardware data";
+		}
+		// echo json_encode($hardwares);die();
+		//if(isset($hardwares['DG']['hardaware_list'][0])){
+       
+			if($data['data']['device']==41){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+
+					$energydat=$this->Api_data_model_unicef->get_hardwares_device_data_energymeter_report_unicef_old($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'),$this->input->post('sorttype'));
+					$data['energydata']=$energydat;
+				}
+				
+			}
+			// echo json_encode($energydat);die();
+			if($data['data']['device']==57){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$energydat=$this->Api_data_model_unicef->get_hardwares_device_data_energymeter_current_report_unicef_old($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['current']=$energydat;
+				}
+				
+			}
+			
+			if($data['data']['device']==58){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$energydat=$this->Api_data_model_unicef->get_hardwares_device_data_energymeter_voltage_report_unicef_old($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['voltage']=$energydat;
+				}
+				
+			}
+			// echo json_encode($data['voltage']);die();
+			if($data['data']['device']==51){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$energydat=$this->Api_data_model_unicef->get_hardwares_device_data_power_factor_report_unicef_old($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['power_factor_data']=$energydat;
+				}
+				
+			}
+			if($data['data']['device']==25){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$flowmeterdata=$this->Api_data_model_unicef->get_hardwares_device_data_flowmeter_report_unicef($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+				}
+		
+				// echo json_encode($flowmeterdata['consolidate']);die();
+		
+				
+				$data['flowdata']=$flowmeterdata;
+			}
+			
+		
+		// echo json_encode($dps1);die();
+		 $this->load->view('all_reports_unicef_old',$data);
+	}
 	function all_reports_unicef(){
 		
 		$this->load->model('Hardware_model');
@@ -1691,6 +1955,193 @@ class Home extends MX_Controller {
 		
 		// echo json_encode($dps1);die();
 		 $this->load->view('all_reports_unicef',$data);
+	}function all_reports_undp_single(){
+		
+		$this->load->model('Hardware_model');
+		$this->load->model('Hardware_category_model');
+		$this->load->model('Api_reports_data_model');
+		$data['category'] = array('' => 'Select Category') + $this->Hardware_category_model->get_hardware_category_dropdown_terotam();
+		$device_id=$this->input->post('report');
+		$data['radio']=$this->input->post('report_type');
+		$data['m1']=$device_id;
+		if(!empty($_POST)){
+			$data['data']=$this->input->post();
+		}else{
+			$data['data']=array('solution'=>0);
+		}
+		
+		if ($this->input->post('category') != '')
+			{
+				if($this->input->post('report_type')==0){
+					$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+					get_devices_terotam_tab($this->input->post('category'));
+				}else{
+					$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+					get_devices_terotam($this->input->post('category'));
+				}
+				
+			} else
+			{
+				$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+				get_devices_terotam_tab("");
+			}
+			
+		
+			if ($this->input->post('device') != '')
+			{		
+				$rdata=array(
+				'category'=>$this->input->post('category'),
+				'solution'=>$this->input->post('device'),
+				'device'=>"",
+				'report_type'=>$this->input->post('report_type')
+				);
+				//print_r($rdata);exit;
+				$data['report'] =  array('' => 'Select Report') + $this->Api_reports_data_model->get_reports_dropdown($rdata);
+				//echo "<pre>";print_r($data['report']);exit;
+			}
+		$this->load->model('Api_data_model_undp_single');
+		$device_data=$this->Api_data_model_undp_single->get_devices_list(6);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_undp_single->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list']=$this->Api_data_model_undp_single->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list']=array();
+			//echo "No Hardware data";
+		}
+		// echo json_encode($hardwares);die();
+		//if(isset($hardwares['DG']['hardaware_list'][0])){
+       
+			if($data['data']['device']==41){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+
+					$energydat=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'),$this->input->post('sorttype'));
+					$avgdata=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_report_terotam_week($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+				    $daynightdata=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_report_terotam_daynight($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+				// echo $energydat['tero']['hourly'][0][0]['sort'];die();
+				   $daynightdata_monthly=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_report_terotam_daynight_monthly($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+
+				// echo json_encode($energydat['hourly']['tero']);die();
+					$data['energydata']=$energydat;
+					$data['avgdata']=$avgdata;
+					$data['daynightdata']=$daynightdata;
+					$data['daynightdatamonthly']=$daynightdata_monthly;
+				}
+				
+			}
+			// echo json_encode($energydat['unicef'][0][0]);die();
+			if($data['data']['device']==57){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$energydat=$this->Api_data_model_undp_single->get_hardwares_device_data_energymeter_current_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['current']=$energydat;
+				}
+				
+			}
+			
+			
+			
+		
+		// echo json_encode($dps1);die();
+		 $this->load->view('all_reports_undp_single',$data);
+	}
+	function all_reports_terotam(){
+		
+		$this->load->model('Hardware_model');
+		$this->load->model('Hardware_category_model');
+		$this->load->model('Api_reports_data_model');
+		$data['category'] = array('' => 'Select Category') + $this->Hardware_category_model->get_hardware_category_dropdown_terotam();
+		$device_id=$this->input->post('report');
+		$data['radio']=$this->input->post('report_type');
+		$data['m1']=$device_id;
+		if(!empty($_POST)){
+			$data['data']=$this->input->post();
+		}else{
+			$data['data']=array('solution'=>0);
+		}
+		
+		if ($this->input->post('category') != '')
+			{
+				if($this->input->post('report_type')==0){
+					$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+					get_devices_terotam_tab($this->input->post('category'));
+				}else{
+					$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+					get_devices_terotam($this->input->post('category'));
+				}
+				
+			} else
+			{
+				$data['solution'] = array('' => 'Select Solution') + $this->Hardware_category_model->
+				get_devices_terotam_tab("");
+			}
+			
+		
+			if ($this->input->post('device') != '')
+			{		
+				$rdata=array(
+				'category'=>$this->input->post('category'),
+				'solution'=>$this->input->post('device'),
+				'device'=>"",
+				'report_type'=>$this->input->post('report_type')
+				);
+				//print_r($rdata);exit;
+				$data['report'] =  array('' => 'Select Report') + $this->Api_reports_data_model->get_reports_dropdown($rdata);
+				//echo "<pre>";print_r($data['report']);exit;
+			}
+		$this->load->model('Api_data_model_tero');
+		$device_data=$this->Api_data_model_tero->get_devices_list(6);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_tero->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list']=$this->Api_data_model_tero->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list']=array();
+			//echo "No Hardware data";
+		}
+		// echo json_encode($hardwares);die();
+		//if(isset($hardwares['DG']['hardaware_list'][0])){
+       
+			if($data['data']['device']==41){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+
+					$energydat=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'),$this->input->post('sorttype'));
+					$avgdata=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_report_terotam_week($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+				    $daynightdata=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_report_terotam_daynight($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+				// echo $energydat['tero']['hourly'][0][0]['sort'];die();
+				   $daynightdata_monthly=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_report_terotam_daynight_monthly($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+
+				// echo json_encode($energydat['hourly']['tero']);die();
+					$data['energydata']=$energydat;
+					$data['avgdata']=$avgdata;
+					$data['daynightdata']=$daynightdata;
+					$data['daynightdatamonthly']=$daynightdata_monthly;
+				}
+				
+			}
+			// echo json_encode($energydat['unicef'][0][0]);die();
+			if($data['data']['device']==57){
+				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
+					$energydat=$this->Api_data_model_tero->get_hardwares_device_data_energymeter_current_report_terotam($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['current']=$energydat;
+				}
+				
+			}
+			
+			
+			
+		
+		// echo json_encode($dps1);die();
+		 $this->load->view('all_reports_terotam',$data);
 	}
 	function all_reports_undp(){
 		
@@ -1762,7 +2213,7 @@ class Home extends MX_Controller {
 				}
 				
 			}
-			// echo json_encode($energydat['unsg']);die();
+			// echo json_encode($energydat);die();
 			if($data['data']['device']==222){
 				
 					$evch=$this->Api_data_model->get_hardwares_device_data_evch_report_undp($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('sorttype1'));
@@ -1772,8 +2223,9 @@ class Home extends MX_Controller {
 			}
 			if($data['data']['device']==57){
 				if(isset($hardwares['Energy Meter']['hardaware_list'][0])){
-					$energydat=$this->Api_data_model->get_hardwares_device_data_energymeter_current_report_undp($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
-					$data['current']=$energydat;
+					$energydata_curent=$this->Api_data_model->get_hardwares_device_data_energymeter_current_report_undp($hardwares['Energy Meter']['hardaware_list'][0],$this->input->post('fromdate'),$this->input->post('todate'));
+					$data['current']=$energydata_curent;
+					// echo json_encode($data['current']);die();
 				}
 				
 			}
@@ -1796,7 +2248,12 @@ class Home extends MX_Controller {
 			
 		
 		// echo json_encode($data);die();
-		 $this->load->view('all_reports_undp',$data);
+		if($this->session->userdata('user_id')==56){
+			$this->load->view('all_reports_undp_ff',$data);
+		}else{
+			$this->load->view('all_reports_undp',$data);
+		}
+		
 	}
 	function all_reports_vega(){
 		$this->load->model('Hardware_model');
@@ -3090,6 +3547,22 @@ class Home extends MX_Controller {
 			//$content .='<option value="222">EV Charger</option>';
 		}else{
 			$states = $this->Hardware_category_model->get_devices_vega($category);  
+		}          
+        foreach ($states as $sid=>$state){
+          $content .='<option value="'. $sid .'">'. $state .'</option>';
+        }
+        echo $content;
+    }
+	function ajax_hardware_device_dropdown_terotam(){
+        $this->load->model('Hardware_category_model');
+        $category = $this->input->get('category');
+        $content ='<option value=""> Select Solution </option>';
+       // $states = $this->Hardware_category_model->get_devices_chennai($category);  
+		if($this->input->get('type')==0){
+			$states = $this->Hardware_category_model->get_devices_terotam_tab($category);  
+			//$content .='<option value="222">EV Charger</option>';
+		}else{
+			$states = $this->Hardware_category_model->get_devices_terotam($category);  
 		}          
         foreach ($states as $sid=>$state){
           $content .='<option value="'. $sid .'">'. $state .'</option>';

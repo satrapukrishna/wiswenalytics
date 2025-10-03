@@ -18,7 +18,7 @@
     //echo "<pre>";print_r($res);
     ?>   
 					  <span class="notification-msg"><?php echo ($res['total']==0?'':$res['total'])?></span>
-                      <a href="<?php echo base_url('Admin/Alerts')?>"><span class="glyphicon glyphicon-bell " style=" color:#fff;FONT-SIZE: 22PX;" aria-hidden="true"></span></a>
+                      <a href="<?php //echo base_url('Admin/Alerts')?>"><span class="glyphicon glyphicon-bell " style=" color:#fff;FONT-SIZE: 22PX;" aria-hidden="true"></span></a>
 				<?php } ?>
                 </li>
                 <?php }?>

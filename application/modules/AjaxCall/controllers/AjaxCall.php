@@ -183,7 +183,9 @@ function getHCUGDataLiveStatus(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -207,7 +209,9 @@ function getHCUG36DataLiveStatus(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -231,7 +235,9 @@ function getHCUGDataLiveStatus_day(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -255,7 +261,9 @@ function getHCUG36DataLiveStatus_day(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -293,7 +301,9 @@ function getIITA7thFloor(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -318,7 +328,9 @@ function getIITBShaft1(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -343,7 +355,9 @@ function getIITA4thFloor(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -368,7 +382,9 @@ function getIITA1stFloor(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -393,7 +409,9 @@ function getIITBShaft2(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -418,7 +436,9 @@ function getIITBShaft3(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -443,7 +463,9 @@ function getIITCShaft1(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -469,7 +491,9 @@ function getIITCShaft2(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -494,7 +518,9 @@ function getIITMSME(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -568,7 +594,9 @@ function getVegaschoolData(){
 																						
 					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-					curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+					curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 					curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 						'Content-Type: application/json',                                                                                
 						'Authorization: Bearer '.$token.''                                                                       
@@ -585,8 +613,8 @@ function getVegaschoolData(){
 function getVegaschoolData_dates(){
 	
 	// $yesterDay = date('d/m/Y',strtotime("-1 days"));
-	   $date_from = strtotime("2024-08-31"); 
-        $date_to = strtotime("2024-08-31"); 
+	   $date_from = strtotime("2025-03-26"); 
+        $date_to = strtotime("2025-03-31"); 
         $datesarray=array();
 		
 		
@@ -607,7 +635,9 @@ function getVegaschoolData_dates(){
 																						
 					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-					curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+					curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 					curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 						'Content-Type: application/json',                                                                                
 						'Authorization: Bearer '.$token.''                                                                       
@@ -615,7 +645,7 @@ function getVegaschoolData_dates(){
 					$result_chennai = curl_exec($ch_chennai);
 					curl_close($ch_chennai);
 					$json_chennai = json_decode($result_chennai, true);
-					$this->Api_model->pushApiDataVegaschoolDevices($json_chennai);
+					$this->Api_model->pushApiDataVegaschool($json_chennai);
 				}
 	//$yesterDay=date("03/01/2023");	
 	
@@ -634,7 +664,9 @@ function getVegaschoolData_live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -659,7 +691,9 @@ function getUNDP_live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -671,10 +705,37 @@ function getUNDP_live(){
 	$this->Api_model->pushApiDataUNDPLive($json_chennai);
 	
 }
+function getTerotamDataLive(){
+	
+	$today=date("d/m/Y");
+	$datachennai = array("StoreCode" => "GMAG", "QueryDate" => $today,"UserId" => "Wenalytics","Type" => "TXN");     
+	$tokenData=  $this->Api_model->getToken("lonavala");
+	 
+	$token= $tokenData['token'];  
+														  
+	$data_string_chennai = json_encode($datachennai);                                                                                                              
+	$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																		  
+	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
+	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+		 'Content-Type: application/json',                                                                                
+		 'Authorization: Bearer '.$token.''                                                                       
+	));  
+	$result_chennai = curl_exec($ch_chennai);
+	curl_close($ch_chennai);
+	$json_chennai = json_decode($result_chennai, true);
+	// echo json_encode($json_chennai);die();
+	$this->Api_model->pushTerotamDataLive($json_chennai);
+	
+}
 function getUNDPDates(){
 
-	$date_from = strtotime("2024-04-16"); 
-	$date_to = strtotime("2024-04-30"); 
+	$date_from = strtotime("2025-03-27"); 
+	$date_to = strtotime("2025-03-31"); 
 	$datesarray=array();
 	
 	
@@ -686,7 +747,7 @@ function getUNDPDates(){
 			{ 
 				$yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
 				// $yesterDay = date("26/05/202");	
-				$datachennai = array("StoreCode" => "UNWW", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
+				$datachennai = array("StoreCode" => "UNSG", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN");     
 				$tokenData=  $this->Api_model->getToken("lonavala");
 				
 				$token= $tokenData['token'];  
@@ -696,7 +757,9 @@ function getUNDPDates(){
 																					
 				curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 				curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-				curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+				curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 				curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 					'Content-Type: application/json',                                                                                
 					'Authorization: Bearer '.$token.''                                                                       
@@ -724,7 +787,9 @@ function getUNDP(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -749,7 +814,9 @@ function getUNCW_live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -774,7 +841,9 @@ function getUNCW(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -799,7 +868,9 @@ function getUNEW_live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -824,7 +895,9 @@ function getUNEW(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -849,7 +922,9 @@ function getUNFF_live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -874,7 +949,9 @@ function getUNFF(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -899,7 +976,9 @@ function getUNWW_live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -924,7 +1003,9 @@ function getUNWW(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -949,7 +1030,9 @@ function getUNSG_live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -974,7 +1057,9 @@ function getUNSG(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -999,7 +1084,9 @@ function getUNAB_live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1024,7 +1111,9 @@ function getUNAB(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1050,7 +1139,9 @@ function getChennaiData(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1085,7 +1176,9 @@ function getChennaiDataDates(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1112,7 +1205,9 @@ function getChennaiDataLive(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1182,7 +1277,9 @@ function getRainbowVikrampuriData(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1207,7 +1304,9 @@ function getRainbowKondapurData(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1233,7 +1332,9 @@ function getWrlCollectorData_day(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1259,7 +1360,9 @@ function getJntu_day(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1285,7 +1388,9 @@ function getJntu_Live(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1310,7 +1415,9 @@ function getWrlJpnagarData_day(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1336,7 +1443,9 @@ function getChennaiData_watermeter(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1361,7 +1470,9 @@ function getChennaiData_day(){
 																		  
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1386,7 +1497,9 @@ function getChennaiData_ssl(){
 	curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 	curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);   
 	curl_setopt($ch_chennai,CURLOPT_SSL_VERIFYPEER, false);                                                               
-	curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+	curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 	curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 		 'Content-Type: application/json',                                                                                
 		 'Authorization: Bearer '.$token.''                                                                       
@@ -1716,7 +1829,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -1752,7 +1867,9 @@ function getCyberData(){
 																						  
 					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-					curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+					curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 					curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 						 'Content-Type: application/json',                                                                                
 						 'Authorization: Bearer '.$token.''                                                                       
@@ -1788,7 +1905,9 @@ function getCyberData(){
 																						  
 					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-					curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+					curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 					curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 						 'Content-Type: application/json',                                                                                
 						 'Authorization: Bearer '.$token.''                                                                       
@@ -1818,7 +1937,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -1854,7 +1975,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -1880,7 +2003,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -1915,7 +2040,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -1940,7 +2067,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -1965,7 +2094,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2000,7 +2131,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2025,7 +2158,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2050,7 +2185,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2086,7 +2223,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2111,7 +2250,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2136,7 +2277,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2171,7 +2314,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2197,7 +2342,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2221,7 +2368,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2256,7 +2405,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2281,7 +2432,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2306,7 +2459,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2341,7 +2496,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2366,7 +2523,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2391,7 +2550,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2426,7 +2587,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2451,7 +2614,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2476,7 +2641,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2511,7 +2678,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2536,7 +2705,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2561,7 +2732,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2598,7 +2771,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2624,7 +2799,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2649,7 +2826,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2673,7 +2852,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2697,7 +2878,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2721,7 +2904,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2745,7 +2930,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2769,7 +2956,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2779,6 +2968,49 @@ function getCyberData(){
 		$json_chennai = json_decode($result_chennai, true);
 		// print_r($json_chennai);die();
 		$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+		
+	}
+	function getRSBrothersDates(){
+
+		$date_from = strtotime("2025-03-27"); 
+		$date_to = strtotime("2025-04-01"); 
+		$datesarray=array();
+		
+		
+		for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+		{
+		  array_push($datesarray, date("Y-m-d",$i1));  
+		}
+		for ($k=0; $k < count($datesarray); $k++)
+				{ 
+					$yesterDay = date('d/m/Y',strtotime($datesarray[$k])); 
+					// $yesterDay = date("26/05/202");	
+					$datachennai = array("StoreCode" => "0023", "QueryDate" => $yesterDay,"UserId" => "Wenalytics","Type" => "TXN"); 
+					//Store Codes: 0023 0026 0027 0028 0029 0030 0031 0032 0033    
+					$tokenData=  $this->Api_model->getToken("lonavala");
+					
+					$token= $tokenData['token'];  
+																		
+					$data_string_chennai = json_encode($datachennai);                                                                                                              
+					$ch_chennai = curl_init('https://protechservice.in/ClientDataService/api/ConsumptionData');
+																						
+					curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
+					curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
+					curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
+					curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
+						'Content-Type: application/json',                                                                                
+						'Authorization: Bearer '.$token.''                                                                       
+					));  
+					$result_chennai = curl_exec($ch_chennai);
+					curl_close($ch_chennai);
+					$json_chennai = json_decode($result_chennai, true);
+					// print_r($json_chennai);die();
+					$this->Api_model->pushRsbroGeneratorsData($json_chennai);
+				}
+	
+		
 		
 	}
 	function getSismallData(){
@@ -2793,7 +3025,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2817,7 +3051,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2841,7 +3077,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2865,7 +3103,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2889,7 +3129,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2913,7 +3155,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2937,7 +3181,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2961,7 +3207,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -2985,7 +3233,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3009,7 +3259,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3033,7 +3285,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3057,7 +3311,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3081,7 +3337,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3106,7 +3364,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3131,7 +3391,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3156,7 +3418,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3181,7 +3445,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3206,7 +3472,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3231,7 +3499,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3256,7 +3526,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3281,7 +3553,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3306,7 +3580,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3331,7 +3607,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3356,7 +3634,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3381,7 +3661,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3406,7 +3688,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3431,7 +3715,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3456,7 +3742,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3481,7 +3769,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3506,7 +3796,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3531,7 +3823,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       
@@ -3556,7 +3850,9 @@ function getCyberData(){
 																			  
 		curl_setopt($ch_chennai, CURLOPT_CUSTOMREQUEST, "POST");                                                                     
 		curl_setopt($ch_chennai, CURLOPT_POSTFIELDS, $data_string_chennai);                                                                  
-		curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                      
+		curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYHOST, 0);
+                curl_setopt($ch_chennai, CURLOPT_SSL_VERIFYPEER, 0);
+                curl_setopt($ch_chennai, CURLOPT_RETURNTRANSFER, true);                                                                    
 		curl_setopt($ch_chennai, CURLOPT_HTTPHEADER, array(                                                                          
 			 'Content-Type: application/json',                                                                                
 			 'Authorization: Bearer '.$token.''                                                                       

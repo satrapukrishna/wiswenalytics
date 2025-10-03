@@ -17,6 +17,9 @@ class Admin extends MX_Controller {
     function rainbow_login(){
 		$this->load->view('Rainbow-Login');
 	}
+    function test(){
+		$this->load->view('test');
+	}
 	function login_user(){
         $this->load->model('Login_model');
         $this->load->library('form_validation');
@@ -191,6 +194,11 @@ class Admin extends MX_Controller {
                     //$go_to = 'Admin_feb21/Home/water';
                      redirect($go_to);
 
+                }if($this->session->userdata('user_id')==43) {
+                    $go_to = 'Admin/Home/energy_undp_single';
+                    //$go_to = 'Admin_feb21/Home/water';
+                     redirect($go_to);
+
                 }if($this->session->userdata('created_by')==34) {
                     $go_to = 'Admin/Home/switchcontrol';
                     //$go_to = 'Admin_feb21/Home/water';
@@ -223,6 +231,11 @@ class Admin extends MX_Controller {
 
                 }if($this->session->userdata('created_by')==41) {
                     $go_to = 'Admin/Home/airquality';
+                    //$go_to = 'Admin_feb21/Home/water';
+                     redirect($go_to);
+
+                }if($this->session->userdata('created_by')==43) {
+                    $go_to = 'Admin/Home/energy_terotam';
                     //$go_to = 'Admin_feb21/Home/water';
                      redirect($go_to);
 

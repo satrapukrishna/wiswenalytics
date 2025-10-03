@@ -127,7 +127,7 @@ div.DshMnCtnr {
                         display: block;
                         padding: 21px 40px 18px 40px;
                         font: 600 12px 'Open Sans';
-                        color: #fff;
+                        color: #fff !important;
                         text-decoration: none;
                         position: relative;
                     }

@@ -123,7 +123,6 @@ class Services extends REST_Controller  {
         }
         
     }
-    
     function getHardwareData_get(){
         $client_id = $this->get('client_id');
         $device_id = $this->get('device_id');
@@ -147,7 +146,12 @@ class Services extends REST_Controller  {
                     $hardware_data[]=$this->Services_model->get_hardwares_device_data_flowmeter($data_hardware_list[$i]);
                 }
                 if($device_id==25){ //Water Meter
-                    $hardware_data[]=$this->Services_model->get_hardwares_device_data_flowmeter($data_hardware_list[$i]);
+                    if($client_id==20){
+                        $hardware_data[]=$this->Services_model->get_hardwares_device_data_flowmeter_ars($data_hardware_list[$i]);
+                    }else{
+                        $hardware_data[]=$this->Services_model->get_hardwares_device_data_flowmeter($data_hardware_list[$i]);
+                    }
+                    
                 }
 
                 if($device_id==28){ //DG
@@ -163,8 +167,12 @@ class Services extends REST_Controller  {
                     $hardware_data[]=$this->Services_model->get_hardwares_device_data_power($data_hardware_list[$i]);
                 }
                 if($device_id==41){ //energy meter
-                    if($client_id==33){
+                    if($client_id==38){
                         $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_undp($data_hardware_list[$i]);
+                    }else if($client_id==42){
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_unicef($data_hardware_list[$i]);
+                    }else if($client_id==20){
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_rs($data_hardware_list[$i]);
                     }else{
                         $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters($data_hardware_list[$i]);
                     }
@@ -187,6 +195,121 @@ class Services extends REST_Controller  {
             if($device_id==26){ //hydro pnematic
                 $hardware_data=$this->Services_model->get_hardwares_device_data_hydro($data_hardware_list[0]);
             }
+            $data['hardware_data']=$hardware_data;
+            $this->response([
+                'status' => TRUE,
+               // 'message' => 'Hardware Lists.',
+                'data' => $data
+            ], REST_Controller::HTTP_OK);
+            }else{
+                $this->response([
+                    'status' => FALSE,
+                    'message' => 'Client or Device Id does not exist.'
+                ], REST_Controller::HTTP_BAD_REQUEST);
+            }
+            //echo count($data_hardware_list);die();
+            
+        }else{
+            $this->response([
+                'status' => FALSE,
+                'message' => 'Provide Client And Device ID.'
+            ], REST_Controller::HTTP_BAD_REQUEST);
+        }
+
+
+    }
+    function getHardwareDataEnergyGraph_get(){
+        $client_id = $this->get('client_id');
+        // echo $client_id;die();
+        $device_id = $this->get('device_id');
+        $date = $this->get('date');
+        $filter = $this->get('filter');
+        if(($client_id != 26  || $client_id != NULL) &&  ($device_id != '' || $device_id != NULL) ){
+            $data_hardware_list=$this->Services_model->get_hardwares_device_list($client_id,$device_id);
+            if(count($data_hardware_list)>0){
+                $hardware_data=array();
+            $data['device_name']=$data_hardware_list[0]['device_name'];
+           
+               
+                if($device_id==41){ //energy meter
+                    // if($client_id==38){
+                    //     $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_undp($data_hardware_list[0]);
+                    // }else if($client_id==42){
+                    //     $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_unicef($data_hardware_list[0]);
+                    // }else{
+                    //     $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters($data_hardware_list[0]);
+                    // }
+                    if($client_id == 38){
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_graph_undp($data_hardware_list[0],$date,$filter);
+
+                    }else{
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_graph($data_hardware_list[0],$date,$filter);
+
+                    }
+                    
+                }
+               
+                
+            
+            
+            $data['hardware_data']=$hardware_data;
+            $this->response([
+                'status' => TRUE,
+               // 'message' => 'Hardware Lists.',
+                'data' => $data
+            ], REST_Controller::HTTP_OK);
+            }else{
+                $this->response([
+                    'status' => FALSE,
+                    'message' => 'Client or Device Id does not exist.'
+                ], REST_Controller::HTTP_BAD_REQUEST);
+            }
+            //echo count($data_hardware_list);die();
+            
+        }else{
+            $this->response([
+                'status' => FALSE,
+                'message' => 'Provide Client And Device ID.'
+            ], REST_Controller::HTTP_BAD_REQUEST);
+        }
+
+
+    }
+    function getHardwareDataEnergy_get(){
+        $client_id = $this->get('client_id');
+        $device_id = $this->get('device_id');
+        $filter = $this->get('filter');
+        
+        if(($client_id != 26  || $client_id != NULL) &&  ($device_id != '' || $device_id != NULL) ){
+            $data_hardware_list=$this->Services_model->get_hardwares_device_list($client_id,$device_id);
+            if(count($data_hardware_list)>0){
+                $hardware_data=array();
+            $data['device_name']=$data_hardware_list[0]['device_name'];
+           
+               
+                if($device_id==41){ //energy meter
+                    // if($client_id==38){
+                    //     $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_undp($data_hardware_list[0]);
+                    // }else if($client_id==42){
+                    //     $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_unicef($data_hardware_list[0]);
+                    // }else{
+                    //     $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters($data_hardware_list[0]);
+                    // }
+                    if($client_id==38){
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_undp_single($data_hardware_list[0],$filter);
+
+                    }else if($client_id==43){
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters_tero($data_hardware_list[0],$filter);
+                    }else{
+                        $hardware_data=$this->Services_model->get_hardwares_device_data_energy_meters($data_hardware_list[0],$filter);
+
+                    }
+                    
+                }
+               
+                
+            
+            
             $data['hardware_data']=$hardware_data;
             $this->response([
                 'status' => TRUE,

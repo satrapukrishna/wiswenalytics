@@ -720,9 +720,9 @@ footer {
 								<div class="form-control1" id="solutiondiv">
 									<?php echo form_dropdown('device', $solution, $this->input->post('device'), 'class="form-control chosen-select" id="solution" onchange="getdevices()"'); ?>
 								</div>
-								<div class="form-control1" id="type">							
-									<?php $sorttype = array('1' => 'Day Wise','2' => 'Hourly Wise'); echo form_dropdown('sorttype', $sorttype, $this->input->post('sorttype'), 'class="form-control chosen-select"  name="sorttype" id="sorttype"'); ?>
-								</div>
+								<!-- <div class="form-control1" id="type">							
+									<?php //$sorttype = array('1' => 'Day Wise','2' => 'Hourly Wise'); echo form_dropdown('sorttype', $sorttype, $this->input->post('sorttype'), 'class="form-control chosen-select"  name="sorttype" id="sorttype"'); ?>
+								</div> -->
 								<div class="form-control1">
 									<input class="form-control" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" value="<?php echo set_value('fromdate') ?>"  name="fromdate" id="fromdate" placeholder="From Date">
 								</div>
@@ -746,9 +746,9 @@ footer {
 								<span class="show_button hide_button">
 								<button type="submit" id="filter" class="btn  filter-success">Filter</button>
 								<a href="<?php echo site_url('Admin/Home/all_reports_chennai') ?>" class="btn btn-info reset">Reset</a></span>
-								<a class="btn btn-info hide_button search_box" style="background:#fff;color:#3c8dbc">Hide Search Box</a>
-								<a class="btn btn-info change_search show_button hide_button" style="background:#fff;color:#3c8dbc;display:none">Change Search Fields</a>		
-								<input type="button" class="btn btn-info" onclick="printDiv('content')" value="Export" />
+								<a class="btn btn-info hide_button search_box" style="background:#fff;color:#3c8dbc ; margin-left:5px">Hide Search Box</a>
+								<a class="btn btn-info change_search show_button hide_button" style="background:#fff;color:#3c8dbc;display:none;margin-left:5px">Change Search Fields</a>		
+								<input type="button" class="btn btn-info" style="margin-left:5px" onclick="printDiv('content')" value="Export" />
 								<input type="button" class="btn btn-info" onclick="exportTableToExcel('list','')" value="Export TO Excel" id="tblexport" name="tblexport" />
 							</div>
 						</div>

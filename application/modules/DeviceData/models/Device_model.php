@@ -15,7 +15,8 @@ class Device_model extends CI_Model{
 
     }
     function getTxnTime($date,$tbl,$stnid){
-        $this->db->select('(TxnTime - INTERVAL 1 HOUR) as TxnTime');
+        $this->db->select('TxnTime');
+        // $this->db->select('(TxnTime - INTERVAL 1 HOUR) as TxnTime');
         $this->db->from($tbl);
         $this->db->where('TxnDate', $date);
         $this->db->where('StationId', $stnid);
@@ -46,7 +47,7 @@ class Device_model extends CI_Model{
                  'TxnTime'=>$data->TxnTime,
                  'FromTime'=>$data->FromTime,
                  'ToTime'=>$data->ToTime,
-                 'CurReading'=>$data->PrvReading             
+                 'CurReading'=>$data->CurReading             
              );
              
             //  echo json_encode($apiData);die();
@@ -56,6 +57,72 @@ class Device_model extends CI_Model{
           if ($chk === 0) 
             {
             $this->db->insert('hardware_station_consumption_data_hcug_live', $apiData);
+            }
+         
+        
+     }
+     function pushApiDataDate($data){
+        // echo json_encode($data->TxnDate);die();
+            $newDate = date("Y-m-d", strtotime($data->TxnDate));
+                          
+           $apiData=array(
+                 'StationId'=>$data->StationId,
+                 'UtilityName'=>$data->UtilityName,
+                 'LocationName'=>$data->LocationName,
+                 'LocationGroup'=>$data->LocationGroup,
+                 'MeterName'=>$data->MeterName,
+                 'MeterSerial'=>$data->MeterSerial,
+                 'LineConnected'=>$data->LineConnected,
+                 'TxnDate'=>$newDate,
+                 'TxnTime'=>$data->TxnTime,
+                 'FromTime'=>$data->FromTime,
+                 'ToTime'=>$data->ToTime,
+                 'PrvReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
+                 'Consumption'=>$data->Consumption,
+                 'Multiplier'=>$data->Multiplier,
+                 'UomName'=>$data->UomName,
+                 'UomScale'=>$data->UomScale,
+                 'update_date'=>date("Y-m-d H:i:s")               
+             );
+           
+            $this->db->insert('hardware_station_consumption_data_chennai', $apiData);
+            
+         
+        
+     }
+     
+     function pushApiDataChennaiLive($data){
+        // echo json_encode($data->TxnDate);die();
+            $newDate = date("Y-m-d", strtotime($data->TxnDate));
+                          
+           $apiData=array(
+                 'StationId'=>$data->StationId,
+                 'UtilityName'=>$data->UtilityName,
+                 'LocationName'=>$data->LocationName,
+                 'LocationGroup'=>$data->LocationGroup,
+                 'MeterName'=>$data->MeterName,
+                 'MeterSerial'=>$data->MeterSerial,
+                 'LineConnected'=>$data->LineConnected,
+                 'TxnDate'=>$newDate,
+                 'TxnTime'=>$data->TxnTime,
+                 'FromTime'=>'',
+                 'ToTime'=>'',
+                 'PrvReading'=>'',
+                 'CurReading'=>'',
+                 'Consumption'=>$data->Consumption,
+                 'Multiplier'=>'',
+                 'UomName'=>'',
+                 'UomScale'=>'',
+                 'update_date'=>date("Y-m-d H:i:s")               
+             );
+            //  echo json_encode($apiData);die();
+             $checkData = $this->db->get_where('hardware_station_consumption_data_chennai_live', array('TxnTime'=>$apiData['TxnTime'],'LineConnected'=>$apiData['LineConnected'],'UtilityName'=>$apiData['UtilityName'],'LocationName'=>$apiData['LocationName'],'MeterSerial'=>$apiData['MeterSerial'],'TxnDate'=>$newDate
+         ));
+          $chk = $checkData->num_rows();
+          if ($chk === 0) 
+            {
+            $this->db->insert('hardware_station_consumption_data_chennai_live', $apiData);
             }
          
         
@@ -77,7 +144,7 @@ class Device_model extends CI_Model{
                  'FromTime'=>$data->FromTime,
                  'ToTime'=>$data->ToTime,
                  'PrvReading'=>$data->PrvReading,
-                 'CurReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
                  'Consumption'=>$data->Consumption,
                  'Multiplier'=>$data->Multiplier,
                  'UomName'=>$data->UomName,
@@ -85,12 +152,12 @@ class Device_model extends CI_Model{
                  'update_date'=>date("Y-m-d H:i:s")               
              );
             //  echo json_encode($apiData);die();
-             $checkData = $this->db->get_where('hardware_station_consumption_data_chennai', array('TxnTime'=>$apiData['TxnTime'],'LineConnected'=>$apiData['LineConnected'],'UtilityName'=>$apiData['UtilityName'],'LocationName'=>$apiData['LocationName'],'MeterSerial'=>$apiData['MeterSerial'],'TxnDate'=>$newDate
+             $checkData = $this->db->get_where('hardware_station_consumption_data_chennai_live', array('TxnTime'=>$apiData['TxnTime'],'LineConnected'=>$apiData['LineConnected'],'UtilityName'=>$apiData['UtilityName'],'LocationName'=>$apiData['LocationName'],'MeterSerial'=>$apiData['MeterSerial'],'TxnDate'=>$newDate
          ));
           $chk = $checkData->num_rows();
           if ($chk === 0) 
             {
-            $this->db->insert('hardware_station_consumption_data_chennai', $apiData);
+            $this->db->insert('hardware_station_consumption_data_chennai_live', $apiData);
             }
          
         
@@ -117,7 +184,7 @@ class Device_model extends CI_Model{
                 'FromTime'=>$data->FromTime,
                 'ToTime'=>$data->ToTime,
                 'PrvReading'=>$data->PrvReading,
-                'CurReading'=>$data->PrvReading,
+                'CurReading'=>$data->CurReading,
                 'Consumption'=>$data->Consumption,
                 'Multiplier'=>$data->Multiplier,
                 'UomName'=>$data->UomName,
@@ -128,6 +195,62 @@ class Device_model extends CI_Model{
             //  echo json_encode($apiData);die();
             
             $this->db->insert('hardware_station_consumption_data_lonavala', $apiData);
+            
+         
+        
+     }
+     function pushRSbroData($data){
+        // echo json_encode($data->TxnDate);die();
+            $newDate = date("Y-m-d", strtotime($data->TxnDate));
+                          
+           $apiData=array(
+                 'StationId'=>$data->StationId,
+                 'UtilityName'=>$data->UtilityName,
+                 'LocationName'=>$data->LocationName,
+                 'MeterSerial'=>$data->MeterSerial,
+                 'LineConnected'=>$data->LineConnected,
+                 'TxnDate'=>$newDate,
+                 'TxnTime'=>$data->TxnTime,
+                 'PrvReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
+                 'Consumption'=>$data->Consumption,
+                 'Multiplier'=>$data->Multiplier  ,
+                 'UomScale'=>$data->UomScale,           
+             );
+            //  echo json_encode($apiData);die();
+            
+            $this->db->insert('hardware_station_consumption_data_rsbrothers', $apiData);
+
+           
+            
+         
+        
+     }
+    function pushVegasData($data){
+        // echo json_encode($data->TxnDate);die();
+            $newDate = date("Y-m-d", strtotime($data->TxnDate));
+                          
+           $apiData=array(
+                 'StationId'=>$data->StationId,
+                 'UtilityName'=>$data->UtilityName,
+                 'LocationName'=>$data->LocationName,
+                 'MeterName'=>$data->MeterName,
+                 'MeterSerial'=>$data->MeterSerial,
+                 'LineConnected'=>$data->LineConnected,
+                 'TxnDate'=>$newDate,
+                 'TxnTime'=>$data->TxnTime,
+                 'FromTime'=>$data->FromTime,
+                 'ToTime'=>$data->ToTime,
+                 'PrvReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
+                 'Consumption'=>$data->Consumption,
+                 'Multiplier'=>$data->Multiplier,
+                 'UomScale'=>$data->UomScale,
+                 'update_date'=>date("Y-m-d H:i:s")               
+             );
+            //  echo json_encode($apiData);die();
+            
+            $this->db->insert('hardware_station_consumption_data_vegaschool', $apiData);
             
          
         
@@ -149,7 +272,7 @@ class Device_model extends CI_Model{
                  'FromTime'=>$data->FromTime,
                  'ToTime'=>$data->ToTime,
                  'PrvReading'=>$data->PrvReading,
-                 'CurReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
                  'Consumption'=>$data->Consumption,
                  'Multiplier'=>$data->Multiplier,
                  'UomName'=>$data->UomName,
@@ -159,6 +282,37 @@ class Device_model extends CI_Model{
             //  echo json_encode($apiData);die();
             
             $this->db->insert('hardware_station_consumption_data__unicef', $apiData);
+            
+         
+        
+     }
+     function pushTerotamData($data){
+        // echo json_encode($data->TxnDate);die();
+            $newDate = date("Y-m-d", strtotime($data->TxnDate));
+                          
+           $apiData=array(
+                 'StationId'=>$data->StationId,
+                 'UtilityName'=>$data->UtilityName,
+                 'LocationName'=>$data->LocationName,
+                 'LocationGroup'=>$data->LocationGroup,
+                 'MeterName'=>$data->MeterName,
+                 'MeterSerial'=>$data->MeterSerial,
+                 'LineConnected'=>$data->LineConnected,
+                 'TxnDate'=>$newDate,
+                 'TxnTime'=>$data->TxnTime,
+                 'FromTime'=>$data->FromTime,
+                 'ToTime'=>$data->ToTime,
+                 'PrvReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
+                 'Consumption'=>$data->Consumption,
+                 'Multiplier'=>$data->Multiplier,
+                 'UomName'=>$data->UomName,
+                 'UomScale'=>$data->UomScale,
+                 'update_date'=>date("Y-m-d H:i:s")               
+             );
+            //  echo json_encode($apiData);die();
+            
+            $this->db->insert('hardware_station_consumption_data_terotam', $apiData);
             
          
         
@@ -179,7 +333,7 @@ class Device_model extends CI_Model{
                  'FromTime'=>$data->FromTime,
                  'ToTime'=>$data->ToTime,
                  'PrvReading'=>$data->PrvReading,
-                 'CurReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
                  'Consumption'=>$data->Consumption,
                  'Multiplier'=>$data->Multiplier,
                  'UomScale'=>$data->UomScale,
@@ -187,7 +341,7 @@ class Device_model extends CI_Model{
              );
             
             
-            $this->db->insert('hardware_station_consumption_data_undp_missing_2024', $apiData);
+            $this->db->insert('hardware_station_consumption_data_undp', $apiData);
          
         
      }
@@ -208,7 +362,7 @@ class Device_model extends CI_Model{
                  'FromTime'=>$data->FromTime,
                  'ToTime'=>$data->ToTime,
                  'PrvReading'=>$data->PrvReading,
-                 'CurReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
                  'Consumption'=>$data->Consumption,
                  'Multiplier'=>$data->Multiplier,
                  'UomName'=>$data->UomName,
@@ -222,6 +376,41 @@ class Device_model extends CI_Model{
           if ($chk === 0) 
             {
             $this->db->insert('hardware_station_consumption_data__unicef_live', $apiData);
+            }
+         
+        
+     }
+     function pushTerotamDataLive($data){
+        // echo json_encode($data->TxnDate);die();
+            $newDate = date("Y-m-d", strtotime($data->TxnDate));
+                          
+           $apiData=array(
+                 'StationId'=>$data->StationId,
+                 'UtilityName'=>$data->UtilityName,
+                 'LocationName'=>$data->LocationName,
+                 'LocationGroup'=>$data->LocationGroup,
+                 'MeterName'=>$data->MeterName,
+                 'MeterSerial'=>$data->MeterSerial,
+                 'LineConnected'=>$data->LineConnected,
+                 'TxnDate'=>$newDate,
+                 'TxnTime'=>$data->TxnTime,
+                 'FromTime'=>$data->FromTime,
+                 'ToTime'=>$data->ToTime,
+                 'PrvReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
+                 'Consumption'=>$data->Consumption,
+                 'Multiplier'=>$data->Multiplier,
+                 'UomName'=>$data->UomName,
+                 'UomScale'=>$data->UomScale,
+                 'update_date'=>date("Y-m-d H:i:s")               
+             );
+            //  echo json_encode($apiData);die();
+             $checkData = $this->db->get_where('hardware_station_consumption_data_terotam_live', array('TxnTime'=>$apiData['TxnTime'],'LineConnected'=>$apiData['LineConnected'],'UtilityName'=>$apiData['UtilityName'],'LocationName'=>$apiData['LocationName'],'MeterSerial'=>$apiData['MeterSerial'],'TxnDate'=>$newDate
+         ));
+          $chk = $checkData->num_rows();
+          if ($chk === 0) 
+            {
+            $this->db->insert('hardware_station_consumption_data_terotam_live', $apiData);
             }
          
         
@@ -248,7 +437,7 @@ class Device_model extends CI_Model{
                 'FromTime'=>$data->FromTime,
                 'ToTime'=>$data->ToTime,
                 'PrvReading'=>$data->PrvReading,
-                'CurReading'=>$data->PrvReading,
+                'CurReading'=>$data->CurReading,
                 'Consumption'=>$data->Consumption,
                 'Multiplier'=>$data->Multiplier,
                 'UomName'=>$data->UomName,
@@ -283,11 +472,12 @@ class Device_model extends CI_Model{
                  'FromTime'=>$data->FromTime,
                  'ToTime'=>$data->ToTime,
                  'PrvReading'=>$data->PrvReading,
-                 'CurReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
                  'Consumption'=>$data->Consumption,
                  'Multiplier'=>$data->Multiplier,
                  'UomName'=>$data->UomName,
-                 'UomScale'=>$data->UomScale           
+                 'UomScale'=>$data->UomScale ,
+                 'updatedTime'=>date('Y-m-d h:i:sa')           
              );
             //  echo json_encode($apiData);die();
              $checkData = $this->db->get_where('hardware_station_consumption_data_mumbai_live', array('TxnTime'=>$apiData['TxnTime'],'LineConnected'=>$apiData['LineConnected'],'UtilityName'=>$apiData['UtilityName'],'LocationName'=>$apiData['LocationName'],'TxnDate'=>$newDate
@@ -317,7 +507,7 @@ class Device_model extends CI_Model{
                  'FromTime'=>$data->FromTime,
                  'ToTime'=>$data->ToTime,
                  'PrvReading'=>$data->PrvReading,
-                 'CurReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
                  'Consumption'=>$data->Consumption,
                  'Multiplier'=>$data->Multiplier,
                  'UomName'=>$data->UomName,
@@ -347,7 +537,7 @@ class Device_model extends CI_Model{
                  'FromTime'=>$data->FromTime,
                  'ToTime'=>$data->ToTime,
                  'PrvReading'=>$data->PrvReading,
-                 'CurReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
                  'Consumption'=>$data->Consumption,
                  'Multiplier'=>$data->Multiplier,
                  'UomName'=>$data->UomName,
@@ -377,7 +567,7 @@ class Device_model extends CI_Model{
                 'FromTime'=>$data->FromTime,
                 'ToTime'=>$data->ToTime,
                 'PrvReading'=>$data->PrvReading,
-                'CurReading'=>$data->PrvReading,
+                'CurReading'=>$data->CurReading,
                 'Consumption'=>$data->Consumption,
                 'Multiplier'=>$data->Multiplier,
                 'UomName'=>$data->UomName,

@@ -554,8 +554,41 @@ div.DshMnCtnr div.DshBrdLnk div.DshBrdLnkCntr ul.LnkHldr li a.Lnk{
 					
                 </div>
                 <!-- floor -1---->
-				<div class="DshBrdSctnDtls device devicebox557"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;" >
-				<!-- <h4 class="head-h4">IN</h4> -->
+                <div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
+                 
+                 <h4 class="head-h4">Water Meters</h4>
+               <!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
+               <div class=" devicebox5551">
+               <div class="bxslider55" id="bxid">
+               <?php if(isset($water_meter_data_all['uncf_water'])){ ?>
+               <?php for ($i=0; $i < 1; $i++) 
+                         {?>
+                   <div style="width:320px">
+                   <div class="SctnDtlsHldr">
+                   <div class="SldrCntnr">
+                   <div class="SctnDtls BorewellHldr">
+                   <span class="SctnTtl" style="line-height: 41px;">All Water Meters</span>
+                   <ul class="SctnDtlsGrdTbl">
+                       
+                       <li><div class="ClLft">Today`s Inflow</div><div class="ClRgt"><?php echo $water_meter_data_all['uncf_water'][$i]['todaycons'] ?> KL</div></li>
+                       <li><div class="ClLft">Yesterday`s Inflow </div><div class="ClRgt"><?php echo $water_meter_data_all['uncf_water'][$i]['yestcons'] ?> KL</div></li>
+                       <li><div class="ClLft">Last 30 Days Inflow </div><div class="ClRgt"><?php echo $water_meter_data_all['uncf_water'][$i]['monthcons'] ?> KL</div></li>
+                       
+                   </ul>
+                   </div>
+                   </div>
+                   </div>
+                   </div>
+                   <?php }}?>
+                   
+                   
+               </div>
+               </div>
+                  
+               </div>
+               <div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
+                 
+                 <h4 class="head-h4">Water Meters</h4>
 				
 				<div class=" devicebox91" id="bxid_data" name="bxid_data">
 				

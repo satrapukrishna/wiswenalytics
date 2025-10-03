@@ -877,96 +877,66 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					
                 </div>
                 <div class="DshBrdSctnDtls"  style="background-color:#fff">
-                <?php /*<div class="DshBrdSctnDtls" id="Bwmeter">*/?>
-				<h4 class="head-h4">Wenalytics</h4>
-				<div class="DshBrdSctnDtls device devicebox600" style="padding:10px" id="devicebox600">
-				<div class="bxslider600" id="bxid">
-					
-				<?php for ($i=0; $i < count($dg_data['wis']); $i++) 
-         				 {
-							  ?>
-
-
-						 
-					<div>
-					<div class="SctnDtlsHldr">
-					<div class="SldrCntnr">
-						<div class="SctnDtls DGGnrtrHldr">
+                	<?php /*<div class="DshBrdSctnDtls" id="Bwmeter">*/?>
+					<h4 class="head-h4">Wenalytics</h4>
+					<div class="DshBrdSctnDtls device devicebox600" style="padding:10px" id="devicebox600">
+						<div class="bxslider600" id="bxid">
 							
-							<div class="DGCol-1">
-							<div class="SctnTtl_main">
-							<span class="SctnTtl"><?php echo $dg_data['wis'][$i]['dgname']."(".$dg_data['wis'][$i]['location'].")"; ?></span><br>
-							<span style="font-size:12px;color:#ab9f9f;padding:10px">Diesel Generator
-							<span class="SctnTtl_buttn">
-							<button>AUTO</button>
-														
-							<button class="button_red"><?php echo $dg_data['wis'][$i]['status']; ?></button>
-							
-							
-							
-							</span>
-							
-							
-							
-							</div> 
-							<ul class="SctnDtlsGrdTbl">
-							<li><div class="ClLft">Running Hours</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['run']; ?></div></li>
-							<li><div class="ClLft">Fuel Consumption</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['fconsume']; ?></div></li>
-							<li><div class="ClLft">Available Fuel </div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['availableFuel']; ?></div></li>
-							<li><div class="ClLft">Filled % </div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['filledper']; ?></div></li>
-							<li><div class="ClLft">Fuel Added</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['fadd']; ?></div></li>
-							<li><div class="ClLft">Fuel Removed</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['fremove']; ?></div></li>
-							 <li><div class="ClLft">Economy</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['economy']; ?></div></li>
-							 <li><div class="ClLft">Voltage</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['voltage']; ?></div></li>
-							</ul>
-							</div>
-							
-
-							<div class="DGCol-2" style="margin-top:22%">
-							<div class="LiquidTank Smll">
-							
-								<div class="Liquid l-<?php echo round($dg_data['wis'][$i]['filledper']); ?>"></div>
-							
-							
-							</div>
-							</div> 
-							
-							<div class="DGCol-3" style="margin-top:22%"> 
-							<div class="LiquidTank Smll">
-							<div class="Liquid Low"></div>
-							<div class="Liquid Medium">
-								
-							</div>
-							<div class="Liquid High"></div>
-							<span class="LowTxt">Low</span>
-							<span class="MedTxt">Medium</span>
-							<span class="HghTxt">High</span>
-							</div>
-							</div>
+							<?php for ($i=0; $i < count($dg_data['wis']); $i++) 
+								{
+									?>	 
 							<div>
-							<div id="wisdg<?php echo $i; ?>" style="width:400px"></div>
-							</div>
-					
-					</div>
-					</div>
-					</div>
-					</div>
-					
-					<?php   } ?> 
-					
-					
+								<div class="SctnDtlsHldr">
+									<div class="SldrCntnr">
+										<div class="SctnDtls DGGnrtrHldr">									
+											<div class="DGCol-1">
+												<div class="SctnTtl_main">
+													<span class="SctnTtl"><?php echo $dg_data['wis'][$i]['dgname']."(".$dg_data['wis'][$i]['location'].")"; ?></span><br>
+													<span style="font-size:12px;color:#ab9f9f;padding:10px">Diesel Generator
+													<span class="SctnTtl_buttn">
+													<button>AUTO</button>														
+													<button class="button_red"><?php echo $dg_data['wis'][$i]['status']; ?></button>
+													</span>
+												</div> 
+													<ul class="SctnDtlsGrdTbl">
+														<li><div class="ClLft">Running Hours</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['run']; ?></div></li>
+														<li><div class="ClLft">Fuel Consumption</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['fconsume']; ?></div></li>
+														<li><div class="ClLft">Available Fuel </div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['availableFuel']; ?></div></li>
+														<li><div class="ClLft">Filled % </div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['filledper']; ?></div></li>
+														<li><div class="ClLft">Fuel Added</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['fadd']; ?></div></li>
+														<li><div class="ClLft">Fuel Removed</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['fremove']; ?></div></li>
+														<li><div class="ClLft">Economy</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['economy']; ?></div></li>
+														<li><div class="ClLft">Voltage</div><div class="ClRgt"><?php echo $dg_data['wis'][$i]['voltage']; ?></div></li>
+													</ul>
+											</div>
+											<div class="DGCol-2" style="margin-top:22%">
+												<div class="LiquidTank Smll">
+													<div class="Liquid l-<?php echo round($dg_data['wis'][$i]['filledper']); ?>"></div>
+												</div>
+											</div>
+											<div class="DGCol-3" style="margin-top:22%"> 
+												<div class="LiquidTank Smll">
+													<div class="Liquid Low"></div>
+													<div class="Liquid Medium">	</div>
+													<div class="Liquid High">
 
-					
-					
-					
-					
-					
-				</div>
-                   
-                </div>
-				
-				
-				
+													</div>
+													<span class="LowTxt">Low</span>
+													<span class="MedTxt">Medium</span>
+													<span class="HghTxt">High</span>
+												</div>
+											</div>
+											<div>
+												<div id="wisdg<?php echo $i; ?>" style="width:400px"></div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+							<?php   } ?> 
+						</div>
+					</div>
 				</div>
 
             </div>

@@ -107,7 +107,7 @@ class Api_model extends CI_Model{
                 'UomScale'=>$valueclient['UomScale'],
                 'update_date'=>date("Y-m-d H:i:s")               
             );
-             $this->db->insert('hardware_station_consumption_data_undp_april16_30_2024', $appData2);
+             $this->db->insert('hardware_station_consumption_data_undp', $appData2);
          
         }
      }
@@ -425,8 +425,8 @@ class Api_model extends CI_Model{
     }
     function pushApiDataChennaiLive($json_chennai){
         foreach ($json_chennai as $valueclient) {
-            //$newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
-            $newDate = "2022-10-01";
+            $newDate = date("Y-m-d", strtotime($valueclient['TxnDate']));
+            // $newDate = "2022-10-01";
             $appDataChennai=array(
                 'StationId'=>$valueclient['StationId'],
                 'UtilityName'=>$valueclient['UtilityName'],
@@ -447,7 +447,7 @@ class Api_model extends CI_Model{
                 'UomScale'=>$valueclient['UomScale'],
                 'update_date'=>date("Y-m-d H:i:s")               
             );
-             $this->db->insert('hardware_station_consumption_data_chennai_live', $appDataChennai);
+             $this->db->insert('hardware_station_consumption_data_chennai', $appDataChennai);
          
         }
      }
@@ -2874,8 +2874,43 @@ function getClientToken($client_id){
         }
 
     }
+    function pushTerotamDataLive($data){
+        // echo json_encode($data->TxnDate);die();
+            $newDate = date("Y-m-d", strtotime($data->TxnDate));
+                          
+           $apiData=array(
+                 'StationId'=>$data->StationId,
+                 'UtilityName'=>$data->UtilityName,
+                 'LocationName'=>$data->LocationName,
+                 'LocationGroup'=>$data->LocationGroup,
+                 'MeterName'=>$data->MeterName,
+                 'MeterSerial'=>$data->MeterSerial,
+                 'LineConnected'=>$data->LineConnected,
+                 'TxnDate'=>$newDate,
+                 'TxnTime'=>$data->TxnTime,
+                 'FromTime'=>$data->FromTime,
+                 'ToTime'=>$data->ToTime,
+                 'PrvReading'=>$data->PrvReading,
+                 'CurReading'=>$data->CurReading,
+                 'Consumption'=>$data->Consumption,
+                 'Multiplier'=>$data->Multiplier,
+                 'UomName'=>$data->UomName,
+                 'UomScale'=>$data->UomScale,
+                 'update_date'=>date("Y-m-d H:i:s")               
+             );
+            //  echo json_encode($apiData);die();
+             $checkData = $this->db->get_where('hardware_station_consumption_data_terotam_live', array('TxnTime'=>$apiData['TxnTime'],'LineConnected'=>$apiData['LineConnected'],'UtilityName'=>$apiData['UtilityName'],'LocationName'=>$apiData['LocationName'],'MeterSerial'=>$apiData['MeterSerial'],'TxnDate'=>$newDate
+         ));
+          $chk = $checkData->num_rows();
+          if ($chk === 0) 
+            {
+            $this->db->insert('hardware_station_consumption_data_terotam_live', $apiData);
+            }
+         
+        
+     }
     function deleteAllLiveData(){
-        $tables = array("hardware_station_consumption_data_rsbrothers_live","hardware_station_consumption_data_vegaschool_live","hardware_station_consumption_data_undp_live","hardware_station_consumption_data_hcug_day","hardware_station_consumption_data_hcug36_status","hardware_station_consumption_data__unicef_live","hardware_station_consumption_data_hcug_live");
+        $tables = array("hardware_station_consumption_data_rsbrothers_live","hardware_station_consumption_data_vegaschool_live","hardware_station_consumption_data_undp_live","hardware_station_consumption_data_hcug_day","hardware_station_consumption_data_hcug36_status","hardware_station_consumption_data__unicef_live","hardware_station_consumption_data_hcug_live","hardware_station_consumption_data_chennai_live","hardware_station_consumption_data_mumbai_live","hardware_station_consumption_data_terotam_live");
         $date = date('Y-m-d');
         foreach($tables as $table) {
             $where="TxnDate < '".$date."'";

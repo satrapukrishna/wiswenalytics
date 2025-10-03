@@ -177,10 +177,42 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					<span class="Cllps FA SctnVwAll deviceall col" onclick="deviceall()"></span>
                 </div>
                 <!-- floor -1---->
-				
+				<div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
+                 
+				  <h4 class="head-h4">Energy Meters</h4>
+				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
+				<div class=" devicebox5551">
+				<div class="bxslider55" id="bxid">
+				<?php if(isset($energy_meters_data_all['uncf_all'])){ ?>
+				<?php for ($i=0; $i < 1; $i++) 
+         				 {?>
+					<div style="width:320px">
+					<div class="SctnDtlsHldr">
+					<div class="SldrCntnr">
+					<div class="SctnDtls BorewellHldr">
+					<span class="SctnTtl" style="line-height: 41px;">All Energy Meters</span>
+					<ul class="SctnDtlsGrdTbl">
+						
+						<li><div class="ClLft">Today`s Consumption</div><div class="ClRgt"><?php echo $energy_meters_data_all['uncf_all'][$i]['todaycons'] ?> kWh</div></li>
+						<li><div class="ClLft">Yesterday`s Consumption </div><div class="ClRgt"><?php echo $energy_meters_data_all['uncf_all'][$i]['yestcons'] ?> kWh</div></li>
+						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data_all['uncf_all'][$i]['monthcons'] ?> kWh</div></li>
+						
+					</ul>
+					</div>
+					</div>
+					</div>
+					</div>
+					<?php }}?>
+					
+					
+				</div>
+				</div>
+                   
+                </div>
 				
 				  <div class="DshBrdSctnDtls device devicebox555"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
-                  <h4 class="head-h4">Power Supply</h4>
+                
+				  <h4 class="head-h4">Power Supply</h4>
 				<!-- <span class="inner_collaps" onclick="device1(5551)" id="device5551"></span> -->
 				<div class=" devicebox5551">
 				<div class="bxslider555" id="bxid">
@@ -409,6 +441,14 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 
 	
 $('.bxslider555').bxSlider({
+        slideWidth: 400,
+        minSlides: 2,
+        maxSlides: 30,
+		touchEnabled: false,
+        slideMargin: 0,
+        infiniteLoop:false
+    });
+	$('.bxslider55').bxSlider({
         slideWidth: 400,
         minSlides: 2,
         maxSlides: 30,

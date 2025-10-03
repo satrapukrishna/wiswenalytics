@@ -231,8 +231,8 @@ strong {
   transition: 0.3s;
 }
 .AppBtn:active {
-  border-bottom: 1px solid #003a59;
-  background: #003a59;
+  border-bottom: 1px solid rgb(0, 58.3230769231, 89.2);
+  background: rgb(0, 58.3230769231, 89.2);
   transition: 0.3s;
 }
 .AppBtn.Scndry {
@@ -381,7 +381,7 @@ input.Input {
   color: #000;
   padding: 10px 7px;
   border-radius: 5px;
-  border: 1px solid #4d4d4d;
+  border: 1px solid rgb(76.5, 76.5, 76.5);
 }
 input.Input:focus-visible {
   outline-color: #003550;
@@ -393,7 +393,7 @@ select.Input {
   color: #000;
   padding: 10px 7px;
   border-radius: 5px;
-  border: 1px solid #4d4d4d;
+  border: 1px solid rgb(76.5, 76.5, 76.5);
 }
 select.Input:focus-visible {
   outline-color: #003550;
@@ -409,7 +409,7 @@ textarea.Input {
   color: #000;
   padding: 10px 7px;
   border-radius: 5px;
-  border: 1px solid #4d4d4d;
+  border: 1px solid rgb(76.5, 76.5, 76.5);
 }
 textarea.Input:focus-visible {
   outline-color: #003550;
@@ -494,7 +494,7 @@ div.AppCmpctTbHldr .TabLnk {
   padding: 6px 18px;
   margin: 1px;
   border-radius: 20px;
-  color: #00413b;
+  color: rgb(0, 65, 59.3965517241);
   border: 1px solid rgba(0, 116, 106, 0);
   text-align: center;
   font-size: 16px;
@@ -534,7 +534,7 @@ div.AppFllTbHldr .TabLnk {
   padding: 10px 25px;
   margin: 1px 2px;
   border-radius: 30px;
-  color: #005b53;
+  color: rgb(0, 90.5, 82.6982758621);
   font-size: 15px;
   font-weight: 600;
   border: 1px solid #00746a;
@@ -824,7 +824,7 @@ table.AppGenTable td span.CmpltPrty.ReOpened:after {
   height: 20px;
   right: 0;
   top: calc(50% - 10px);
-  color: #e9f8ff;
+  color: rgb(233, 247.575, 255);
   text-align: center;
   border-radius: 5px;
   line-height: 100%;
@@ -934,20 +934,20 @@ table.AppGenTable td .AppBtn.CmpltStts.Icn:before {
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-Ongoing {
   /*background: rgba(lighten($ComplaintStatusColour, 80%), 1);*/
   background: #c7cde9;
-  color: #070911;
+  color: rgb(6.7692307692, 8.6153846154, 17.2307692308);
   border-color: #c7cde9;
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-Ongoing:before {
-  color: #070911;
+  color: rgb(6.7692307692, 8.6153846154, 17.2307692308);
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-AssignComplaint {
   /*background: rgba(lighten($ComplaintStatusColour, 80%), 1);*/
   background: #c3def5;
-  color: #05111b;
+  color: rgb(4.5714285714, 16.9142857143, 27.4285714286);
   border-color: #c3def5;
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-AssignComplaint:before {
-  color: #05111b;
+  color: rgb(4.5714285714, 16.9142857143, 27.4285714286);
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-PendingApproval {
   /*background: rgba(lighten($ComplaintStatusColour, 80%), 1);*/
@@ -961,11 +961,11 @@ table.AppGenTable td .AppBtn.CmpltStts.Theme1-PendingApproval:before {
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-Delayed {
   /*background: rgba(lighten($ComplaintStatusColour, 80%), 1);*/
   background: #ffa8b1;
-  color: #0f0002;
+  color: rgb(15, 0, 1.5517241379);
   border-color: #ffa8b1;
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-Delayed:before {
-  color: #0f0002;
+  color: rgb(15, 0, 1.5517241379);
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-Completed {
   /*background: rgba(lighten($ComplaintStatusColour, 80%), 1);*/
@@ -979,11 +979,11 @@ table.AppGenTable td .AppBtn.CmpltStts.Theme1-Completed:before {
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-ReOpened {
   /*background: rgba(lighten($ComplaintStatusColour, 80%), 1);*/
   background: #ffa3d4;
-  color: #0a0005;
+  color: rgb(10, 0, 5.3260869565);
   border-color: #ffa3d4;
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme1-ReOpened:before {
-  color: #0a0005;
+  color: rgb(10, 0, 5.3260869565);
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme2-Ongoing {
   /*background: rgba(lighten($ComplaintStatusColour, 80%), 1);*/
@@ -1033,11 +1033,11 @@ table.AppGenTable td .AppBtn.CmpltStts.Theme2-Completed:before {
 table.AppGenTable td .AppBtn.CmpltStts.Theme2-ReOpened {
   /*background: rgba(lighten($ComplaintStatusColour, 80%), 1);*/
   background: #e0bce3;
-  color: #050205;
+  color: rgb(4.7157894737, 2.0631578947, 4.9368421053);
   border-color: #e0bce3;
 }
 table.AppGenTable td .AppBtn.CmpltStts.Theme2-ReOpened:before {
-  color: #050205;
+  color: rgb(4.7157894737, 2.0631578947, 4.9368421053);
 }
 table.AppGenTable td div.ActnBtnsHldr {
   display: flex;
@@ -1132,19 +1132,19 @@ table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td {
   border-bottom: 1px solid #eee;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td:first-of-type:before {
-  background: #8b50ff;
+  background: rgb(139.0625, 80, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td:first-of-type:after {
   display: none;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
-  background: #8b50ff;
+  background: rgb(139.0625, 80, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
   background: #003550;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
-  background-color: #8b50ff;
+  background-color: rgb(139.0625, 80, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.FormHldr div.row {
   position: relative;
@@ -1176,7 +1176,7 @@ table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.FormHldr div
   position: absolute;
   width: 11px;
   height: 11px;
-  background: #8b50ff;
+  background: rgb(139.0625, 80, 255);
   border-radius: 6px;
   left: -20px;
   top: calc(50% - 10px);
@@ -1203,124 +1203,124 @@ table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td div.FormHldr div
   display: none;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
-  background: #ff50c4;
+  background: rgb(255, 80, 195.9375);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
-  background: #ff50c4;
+  background: rgb(255, 80, 195.9375);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
-  background: #8b50ff;
+  background: rgb(139.0625, 80, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
-  background-color: #ff50c4;
+  background-color: rgb(255, 80, 195.9375);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row:after {
-  background: #8b50ff;
+  background: rgb(139.0625, 80, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type {
   position: relative;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:before {
-  background: #ff50c4;
+  background: rgb(255, 80, 195.9375);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:after {
-  background: #8b50ff;
+  background: rgb(139.0625, 80, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
-  background: #ff8b50;
+  background: rgb(255, 139.0625, 80);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
-  background: #ff8b50;
+  background: rgb(255, 139.0625, 80);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
-  background: #ff50c4;
+  background: rgb(255, 80, 195.9375);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
-  background-color: #ff8b50;
+  background-color: rgb(255, 139.0625, 80);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row:after {
-  background: #ff50c4;
+  background: rgb(255, 80, 195.9375);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type {
   position: relative;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:before {
-  background: #ff8b50;
+  background: rgb(255, 139.0625, 80);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:after {
-  background: #ff50c4;
+  background: rgb(255, 80, 195.9375);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
-  background: #578300;
+  background: rgb(86.7875, 131, 0);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
-  background: #578300;
+  background: rgb(86.7875, 131, 0);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
-  background: #ff8b50;
+  background: rgb(255, 139.0625, 80);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
-  background-color: #578300;
+  background-color: rgb(86.7875, 131, 0);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row:after {
-  background: #ff8b50;
+  background: rgb(255, 139.0625, 80);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type {
   position: relative;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:before {
-  background: #578300;
+  background: rgb(86.7875, 131, 0);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:after {
-  background: #ff8b50;
+  background: rgb(255, 139.0625, 80);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
-  background: #50c4ff;
+  background: rgb(80, 195.9375, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
-  background: #50c4ff;
+  background: rgb(80, 195.9375, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
-  background: #578300;
+  background: rgb(86.7875, 131, 0);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
-  background-color: #50c4ff;
+  background-color: rgb(80, 195.9375, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row:after {
-  background: #578300;
+  background: rgb(86.7875, 131, 0);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type {
   position: relative;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:before {
-  background: #50c4ff;
+  background: rgb(80, 195.9375, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:after {
-  background: #578300;
+  background: rgb(86.7875, 131, 0);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td:first-of-type:before {
-  background: #005783;
+  background: rgb(0, 86.7875, 131);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:before {
-  background: #005783;
+  background: rgb(0, 86.7875, 131);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.BranchName span.Name:after {
-  background: #008358;
+  background: rgb(0, 131, 87.8791666667);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.BranchDetails div.AddButton a.AppBtn {
-  background-color: #005783;
+  background-color: rgb(0, 86.7875, 131);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row:after {
-  background: #50feff;
+  background: rgb(80, 254.2708333333, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type {
   position: relative;
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:before {
-  background: #50c4ff;
+  background: rgb(80, 195.9375, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td table.AppGenTable tr td div.FormHldr div.row > div:first-of-type:after {
-  background: #50feff;
+  background: rgb(80, 254.2708333333, 255);
 }
 table.AppGenTable.MastersTreeView tr td table.AppGenTable tbody > tr:last-of-type::after {
   content: "";
@@ -1453,16 +1453,16 @@ table.AppGenTable.MastersTreeView tr td div.BranchDetails div.UpdBranchName {
 table.AppGenTable.MastersTreeView tr td .SubLevelMastersDv {
   position: relative;
   margin: 10px 10px 10px -14px;
-  background: #e9f8ff;
+  background: rgb(233, 247.575, 255);
 }
 table.AppGenTable.MastersTreeView tr td .SubLevelMastersDv table.AppGenTable {
   background: transparent;
 }
 table.AppGenTable.MastersTreeView tr td .SubLevelMastersDv table.AppGenTable tbody > tr:last-of-type::after {
-  background: #e9f8ff;
+  background: rgb(233, 247.575, 255);
 }
 table.AppGenTable.MastersTreeView tr td .SubLevelMastersDv table.AppGenTable div.FormHldr div.row:before {
-  background: #e9f8ff;
+  background: rgb(233, 247.575, 255);
 }
 table.AppGenTable.MastersTreeView tr td div.BranchAccess {
   display: flex;
@@ -2046,7 +2046,7 @@ div.FormHldr.EmployeeProfile div.EmpAccessLst span.AccssLst {
   padding: 10px 10px 10px 35px;
   margin: 0 5px 0 0;
   background: white;
-  border: 1px solid #4d4d4d;
+  border: 1px solid rgb(76.5, 76.5, 76.5);
   opacity: 1;
   transition: 0.3s;
   border-radius: 5px;
@@ -2106,7 +2106,7 @@ div.PopUpHldr div.PopUpHedr {
   align-content: center;
   width: 100%;
   height: 80px;
-  background: linear-gradient(92deg, #003550 0%, #001a27 52%);
+  background: linear-gradient(92deg, #003550 0%, rgb(0, 25.97, 39.2) 52%);
   position: relative;
   z-index: 1;
 }
@@ -2804,7 +2804,7 @@ div.AppMnuHldr div.MnuLstHldr ul.MnuLst li > span.Lnk {
   align-content: flex-start;
   align-content: center;
   text-decoration: none;
-  border-bottom: 1px solid #005783;
+  border-bottom: 1px solid rgb(0, 86.7875, 131);
   transition: 0.3s;
   padding: 5px;
   margin: 0;
@@ -2996,19 +2996,11 @@ div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover ul.SbMnu {
 div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:hover ul.SbMnu li:hover > ul {
   display: block;
 }
-div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:nth-last-child(-n+3) > ul {
+> div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:nth-last-child(-n+3) > ul {
   top: inherit;
   bottom: -5px;
 }
-div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:nth-last-child(-n+3) > ul:before {
-  top: inherit;
-  bottom: 20px;
-}
-div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:nth-last-child(-n+3) > ul li:nth-last-child(-n+3) > ul {
-  top: inherit;
-  bottom: -5px;
-}
-div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:nth-last-child(-n+3) > ul li:nth-last-child(-n+3) > ul:before {
+> div.AppMnuHldr:hover div.MnuLstHldr ul.MnuLst li:nth-last-child(-n+3) > ul:before {
   top: inherit;
   bottom: 20px;
 }
@@ -3230,7 +3222,7 @@ div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv:hover {
   transition: 0.3;
 }
 div.LocationInnrDshbrd div.LocationList div.LocationDtlsDv div.LocTypDv {
-  background: #00466a;
+  background: rgb(0, 69.89375, 105.5);
   padding: 10px;
   border-radius: 8px;
   width: 100%;
@@ -3426,7 +3418,7 @@ div.LocationFullDetails div.DtlsHldrDv {
   padding: 10px 0;
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv {
-  border: 1px solid rgba(104, 147, 169, 0.3);
+  border: 1px solid rgba(103.9298245614, 146.8947368421, 169.0701754386, 0.3);
   border-radius: 8px;
   margin: 0 0 20px 0;
 }
@@ -3438,8 +3430,8 @@ div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader {
   flex-wrap: wrap;
   align-content: flex-start;
   align-content: center;
-  background: rgba(104, 147, 169, 0.1);
-  border-bottom: 1px solid rgba(104, 147, 169, 0.1);
+  background: rgba(103.9298245614, 146.8947368421, 169.0701754386, 0.1);
+  border-bottom: 1px solid rgba(103.9298245614, 146.8947368421, 169.0701754386, 0.1);
   border-radius: 7px 7px 0 0;
   padding: 10px 10px;
 }
@@ -3455,7 +3447,7 @@ div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnNam
   padding: 5px 5px 5px 0;
   font-size: 16px;
   font-weight: 700;
-  color: #10181c;
+  color: rgb(15.7719298246, 23.6578947368, 27.7280701754);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnNameHldr span.Type {
   display: block;
@@ -3464,7 +3456,7 @@ div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnNam
   margin: 0 3px;
   font-size: 13px;
   background: rgba(62, 93, 109, 0.08);
-  color: #10181c;
+  color: rgb(15.7719298246, 23.6578947368, 27.7280701754);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnHeader div.SctnArrdnBtnHldr {
   display: flex;
@@ -3527,43 +3519,43 @@ div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnH
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type1 {
   background: rgba(255, 171, 64, 0.5);
-  border-color: rgba(243, 136, 0, 0.9);
+  border-color: rgba(242.5, 135.8507853403, 0, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type2 {
   background: rgba(144, 202, 249, 0.5);
-  border-color: rgba(71, 167, 245, 0.9);
+  border-color: rgba(71.4230769231, 167.3461538462, 245.0769230769, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type3 {
   background: rgba(244, 143, 177, 0.5);
-  border-color: rgba(237, 73, 128, 0.9);
+  border-color: rgba(237.1585365854, 73.3414634146, 128.487804878, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type4 {
   background: rgba(161, 136, 127, 0.5);
-  border-color: rgba(122, 98, 90, 0.9);
+  border-color: rgba(121.9459459459, 98.1283783784, 89.5540540541, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme1-Type5 {
   background: rgba(128, 203, 196, 0.5);
-  border-color: rgba(74, 181, 171, 0.9);
+  border-color: rgba(73.9329608939, 180.5670391061, 170.6145251397, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type1 {
   background: rgba(255, 171, 64, 0.5);
-  border-color: rgba(243, 136, 0, 0.9);
+  border-color: rgba(242.5, 135.8507853403, 0, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type2 {
   background: rgba(144, 202, 249, 0.5);
-  border-color: rgba(71, 167, 245, 0.9);
+  border-color: rgba(71.4230769231, 167.3461538462, 245.0769230769, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type3 {
   background: rgba(244, 143, 177, 0.5);
-  border-color: rgba(237, 73, 128, 0.9);
+  border-color: rgba(237.1585365854, 73.3414634146, 128.487804878, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type4 {
   background: rgba(161, 136, 127, 0.5);
-  border-color: rgba(122, 98, 90, 0.9);
+  border-color: rgba(121.9459459459, 98.1283783784, 89.5540540541, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn.Theme2-Type5 {
   background: rgba(128, 203, 196, 0.5);
-  border-color: rgba(74, 181, 171, 0.9);
+  border-color: rgba(73.9329608939, 180.5670391061, 170.6145251397, 0.9);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnHldr div.InnrSctn div.InnSctnNameHldr {
   display: flex;
@@ -3600,19 +3592,19 @@ div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.InnrSctnH
   color: #3E5D6D;
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.SctnHldrDv {
-  border-color: rgba(169, 193, 206, 0.6);
+  border-color: rgba(168.9473684211, 193.4210526316, 206.0526315789, 0.6);
   margin: 0 0 10px 0;
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.SctnHldrDv div.SctnHeader {
-  background: rgba(169, 193, 206, 0.09);
-  border-bottom-color: rgba(169, 193, 206, 0.6);
+  background: rgba(168.9473684211, 193.4210526316, 206.0526315789, 0.09);
+  border-bottom-color: rgba(168.9473684211, 193.4210526316, 206.0526315789, 0.6);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.SctnHldrDv div.SctnDtls div.SctnHldrDv {
-  border-color: rgba(136, 170, 188, 0.7);
+  border-color: rgba(136.4385964912, 170.1578947368, 187.5614035088, 0.7);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv div.SctnDtls div.SctnHldrDv div.SctnDtls div.SctnHldrDv div.SctnHeader {
-  background: rgba(136, 170, 188, 0.12);
-  border-bottom-color: rgba(136, 170, 188, 0.7);
+  background: rgba(136.4385964912, 170.1578947368, 187.5614035088, 0.12);
+  border-bottom-color: rgba(136.4385964912, 170.1578947368, 187.5614035088, 0.7);
 }
 div.LocationFullDetails div.DtlsHldrDv div.SctnHldrDv.Closed div.SctnHeader {
   border-radius: 7px;
@@ -3681,51 +3673,51 @@ div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-Ongoing {
   background: rgba(199, 205, 233, 0.08);
-  color: #a2acdb;
+  color: rgb(162.3846153846, 172.3076923077, 218.6153846154);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-AssignComplaint {
   background: rgba(195, 222, 245, 0.08);
-  color: #97c6ee;
+  color: rgb(151.2857142857, 197.9571428571, 237.7142857143);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-PendingApproval {
   background: rgba(255, 174, 141, 0.08);
-  color: #ff8a5a;
+  color: rgb(255, 137.7631578947, 90);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-Delayed {
   background: rgba(255, 168, 177, 0.08);
-  color: #ff7583;
+  color: rgb(255, 117, 131.275862069);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-Completed {
   background: rgba(158, 213, 158, 0.08);
-  color: #7ac67a;
+  color: rgb(122.4100719424, 197.5899280576, 122.4100719424);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme1-ReOpened {
   background: rgba(255, 163, 212, 0.08);
-  color: #ff70bc;
+  color: rgb(255, 112, 188.1630434783);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-Ongoing {
   background: rgba(15, 200, 163, 0.08);
-  color: #0b997c;
+  color: rgb(11.4418604651, 152.5581395349, 124.3348837209);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-AssignComplaint {
   background: rgba(34, 139, 230, 0.08);
-  color: #1671bf;
+  color: rgb(21.6463414634, 112.5609756098, 191.3536585366);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-PendingApproval {
   background: rgba(253, 112, 54, 0.08);
-  color: #fc4c04;
+  color: rgb(252.4975369458, 76.0738916256, 3.5024630542);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-Delayed {
   background: rgba(223, 17, 37, 0.08);
-  color: #b00d1d;
+  color: rgb(175.6125, 13.3875, 29.1375);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-Completed {
   background: rgba(158, 213, 158, 0.08);
-  color: #7ac67a;
+  color: rgb(122.4100719424, 197.5899280576, 122.4100719424);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltStts.Theme2-ReOpened {
   background: rgba(224, 188, 227, 0.08);
-  color: #cf98d4;
+  color: rgb(207.3578947368, 152.0315789474, 211.9684210526);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty {
   display: block;
@@ -3740,15 +3732,15 @@ div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme1-Medium {
   background: rgba(220, 82, 0, 0.08);
-  color: #a93f00;
+  color: rgb(169, 62.9909090909, 0);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme1-Low {
   background: rgba(78, 141, 5, 0.08);
-  color: #335c03;
+  color: rgb(50.7534246575, 91.7465753425, 3.2534246575);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme2-High {
   background: rgba(212, 228, 255, 0.08);
-  color: #a1c4ff;
+  color: rgb(161, 195.976744186, 255);
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme2-Medium {
   background: rgba(255, 238, 204, 0.08);
@@ -3756,7 +3748,7 @@ div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty
 }
 div.ComplaintPrccHldr div.PrcssHdr div.CmpltBscDtls div.TxtHghlts span.CmpltPrty.Theme2-Low {
   background: rgba(221, 226, 228, 0.08);
-  color: #c1cacd;
+  color: rgb(192.5737704918, 201.7540983607, 205.4262295082);
 }
 div.ComplaintPrccHldr div.CmpltPrcssTimeline {
   width: calc(100% + 20px);
@@ -4378,7 +4370,7 @@ div.Loading span.Ttl {
   text-align: center;
   font-size: 21px;
   font-weight: 700;
-  color: #e9f8ff;
+  color: rgb(233, 247.575, 255);
 }
 div.Loading span.Txt {
   display: block;
@@ -4387,7 +4379,7 @@ div.Loading span.Txt {
   font-size: 16px;
   font-weight: 600;
   padding: 10px 0 0 0;
-  color: #e9f8ff;
+  color: rgb(233, 247.575, 255);
 }
 div.Loading.FullView {
   position: fixed;
@@ -5468,7 +5460,7 @@ div.MapLocationDtlsHldr div.HeaderHldr div.DtDv {
 }
 div.MapLocationDtlsHldr div.HeaderHldr div.DtDv span.DtSlctn {
   padding: 0 10px 0 0;
-  color: #1a1a1a;
+  color: rgb(25.5, 25.5, 25.5);
 }
 div.MapLocationDtlsHldr div.HeaderHldr div.DtDv span.DateVlue {
   font-size: 18px;

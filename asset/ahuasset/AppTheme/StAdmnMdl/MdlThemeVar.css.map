@@ -1,9 +1,1 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "MdlThemeVar.scss"
-    ],
-    "names": [],
-    "file": "MdlThemeVar.css"
-}
+{"version":3,"sources":[],"names":[],"mappings":"","file":"MdlThemeVar.css"}

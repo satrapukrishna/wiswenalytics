@@ -921,7 +921,7 @@ if(!empty($m1)){
 			$('#to').show();
 			$('#categorydiv').show();
 			$('#solutiondiv').show();
-			$('#sorttype').hide();
+			$('#sorttype').show();
 			$("#tblexport").hide();
 			var d = new Date($.now());
 			newPageTitle = 'Graphical Report - '+d.getDate()+"-"+(d.getMonth() + 1)+"-"+d.getFullYear()+" "+d.getHours()+":"+d.getMinutes()+":"+d.getSeconds();
@@ -989,7 +989,7 @@ if(!empty($m1)){
 			$('#to').show();
 			$('#categorydiv').show();
 			$('#solutiondiv').show();
-			$('#sorttype').hide();
+			$('#sorttype').show();
 			$('#loader').hide();
 			$("#tblexport").hide();
 			var d = new Date($.now());

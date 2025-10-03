@@ -8,6 +8,10 @@
   
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.js"></script>
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bxslider/4.2.5/jquery.bxslider.min.css" rel="stylesheet" />
 
 
@@ -18,6 +22,9 @@
     border:none;
 	color:#3c8dbc!important
 	}
+	.bx-viewport{
+			/* overflow: visible !important; */
+		}
 	.green-button{letter-spacing: 1px;
 	border-radius: 25px!important;
     padding: 5px 5px!important;
@@ -207,8 +214,14 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<li><div class="ClLft">Current_2</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['current2'] ?></div></li>
 						<li><div class="ClLft">Current_3</div><div class="ClRgt"><?php echo $energy_meters_data['uncw'][$i]['current3'] ?></div></li>
 					</ul>
+					
 					</div>
+					<div>
+					<div id="energycontaineruncw<?php echo $i; ?>" style="width:400px"></div> 
+				</div>
+					 
 					</div>
+					
 					</div>
 					</div>
 					<?php }}?>
@@ -249,6 +262,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					</ul>
 					</div>
+					<div id="energycontainerunew<?php echo $i; ?>" style="width:400px"></div>
 					</div>
 					</div>
 					</div>
@@ -291,6 +305,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					</ul>
 					</div>
+					<div id="energycontainerunff<?php echo $i; ?>" style="width:400px"></div>
 					</div>
 					</div>
 					</div>
@@ -334,6 +349,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					</ul>
 					</div>
+					<div id="energycontainerunsg<?php echo $i; ?>" style="width:400px"></div>
 					</div>
 					</div>
 					</div>
@@ -375,6 +391,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					</ul>
 					</div>
+					<div id="energycontainerunab<?php echo $i; ?>" style="width:400px"></div>
 					</div>
 					</div>
 					</div>
@@ -413,6 +430,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<li><div class="ClLft">Current_3</div><div class="ClRgt"><?php echo $energy_meters_data['undp'][$i]['current3'] ?></div></li>
 					</ul>
 					</div>
+					<div id="energycontainerundp<?php echo $i; ?>" style="width:400px"></div>
 					</div>
 					</div>
 					</div>
@@ -454,6 +472,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						
 					</ul>
 					</div>
+					<div id="energycontainerunww<?php echo $i; ?>" style="width:400px"></div>
 					</div>
 					</div>
 					</div>
@@ -490,7 +509,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 
 	
 $('.bxslider555').bxSlider({
-        slideWidth: 310,
+        slideWidth: 400,
         minSlides: 2,
         maxSlides: 30,
 		touchEnabled: false,
@@ -558,8 +577,399 @@ $('.bxslider701').bxSlider({
 
 //speed guage
            //highchart
- 
+	var energy_data_c1=<?php echo json_encode($energy_meters_data['uncw']);?>;
+    
+    for(var k=0;k<energy_data_c1.length;k++){
+        var meter=energy_data_c1[k]["meter"];
+         var contain="energycontaineruncw"+k;
+         var xdata=[];
+        
+         var time=[];
+        
+        for(var i=0;i<energy_data_c1[k]["live"].length;i++){
+		//time.push([parseFloat(energy_data_c1[k]["live"][i]["date"])]);
+        xdata.push([parseFloat(energy_data_c1[k]["live"][i]["consumption"])]);
+        }
+        
 
+        Highcharts.chart(contain, {
+    
+
+    credits: {
+        enabled: false
+    },
+    title: {
+        text: ''
+    },
+    chart: {
+        type: 'line'
+    },
+    yAxis: {
+       
+        title: {
+            text: 'Kwh'
+        }
+    },xAxis: {
+        categories: [
+            '00', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12','13','14'
+        ],
+        accessibility: {
+            description: 'Months of the year'
+        }
+    },
+   tooltip: {
+        headerFormat: '<span style="font-size:10px"><b>{point.key}</b></span><table>',
+        pointFormat: '<tr><td style="color:{series.color};font-size:8px">{series.name}: </td>' +
+            '<td style="font-size:8px"><b>{point.y} Kwh</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    series: [{
+      name: meter,
+      data: xdata,
+    }]
+  
+});
+    }
+	var energy_data_unew=<?php echo json_encode($energy_meters_data['unew']);?>;
+    
+    for(var k=0;k<energy_data_unew.length;k++){
+        var meter=energy_data_unew[k]["meter"];
+         var contain="energycontainerunew"+k;
+         var xdata=[];
+        
+         var time=[];
+        
+        for(var i=0;i<energy_data_unew[k]["live"].length;i++){
+		//time.push([parseFloat(energy_data_c1[k]["live"][i]["date"])]);
+        xdata.push([parseFloat(energy_data_unew[k]["live"][i]["consumption"])]);
+        }
+        
+
+        Highcharts.chart(contain, {
+    
+
+    credits: {
+        enabled: false
+    },
+    title: {
+        text: ''
+    },
+    chart: {
+        type: 'line'
+    },
+    yAxis: {
+       
+        title: {
+            text: 'Kwh'
+        }
+    },xAxis: {
+        categories: [
+            '00', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12','13','14'
+        ],
+        accessibility: {
+            description: 'Months of the year'
+        }
+    },
+   tooltip: {
+        headerFormat: '<span style="font-size:10px"><b>{point.key}</b></span><table>',
+        pointFormat: '<tr><td style="color:{series.color};font-size:8px">{series.name}: </td>' +
+            '<td style="font-size:8px"><b>{point.y} Kwh</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    series: [{
+      name: meter,
+      data: xdata,
+    }]
+  
+});
+    }
+	var energy_data_unff=<?php echo json_encode($energy_meters_data['unff']);?>;
+    
+    for(var k=0;k<energy_data_unff.length;k++){
+        var meter=energy_data_unff[k]["meter"];
+         var contain="energycontainerunff"+k;
+         var xdata=[];
+        
+         var time=[];
+        
+        for(var i=0;i<energy_data_unff[k]["live"].length;i++){
+		//time.push([parseFloat(energy_data_c1[k]["live"][i]["date"])]);
+        xdata.push([parseFloat(energy_data_unff[k]["live"][i]["consumption"])]);
+        }
+        
+
+        Highcharts.chart(contain, {
+    
+
+    credits: {
+        enabled: false
+    },
+    title: {
+        text: ''
+    },
+    chart: {
+        type: 'line'
+    },
+    yAxis: {
+       
+        title: {
+            text: 'Kwh'
+        }
+    },xAxis: {
+        categories: [
+            '00', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12','13','14'
+        ],
+        accessibility: {
+            description: 'Months of the year'
+        }
+    },
+   tooltip: {
+        headerFormat: '<span style="font-size:10px"><b>{point.key}</b></span><table>',
+        pointFormat: '<tr><td style="color:{series.color};font-size:8px">{series.name}: </td>' +
+            '<td style="font-size:8px"><b>{point.y} Kwh</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    series: [{
+      name: meter,
+      data: xdata,
+    }]
+  
+});
+    }
+	var energy_data_unsg=<?php echo json_encode($energy_meters_data['unsg']);?>;
+    
+    for(var k=0;k<energy_data_unsg.length;k++){
+        var meter=energy_data_unsg[k]["meter"];
+         var contain="energycontainerunsg"+k;
+         var xdata=[];
+        
+         var time=[];
+        
+        for(var i=0;i<energy_data_unsg[k]["live"].length;i++){
+		//time.push([parseFloat(energy_data_c1[k]["live"][i]["date"])]);
+        xdata.push([parseFloat(energy_data_unsg[k]["live"][i]["consumption"])]);
+        }
+        
+
+        Highcharts.chart(contain, {
+    
+
+    credits: {
+        enabled: false
+    },
+    title: {
+        text: ''
+    },
+    chart: {
+        type: 'line'
+    },
+    yAxis: {
+       
+        title: {
+            text: 'Kwh'
+        }
+    },xAxis: {
+        categories: [
+            '00', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12','13','14'
+        ],
+        accessibility: {
+            description: 'Months of the year'
+        }
+    },
+   tooltip: {
+        headerFormat: '<span style="font-size:10px"><b>{point.key}</b></span><table>',
+        pointFormat: '<tr><td style="color:{series.color};font-size:8px">{series.name}: </td>' +
+            '<td style="font-size:8px"><b>{point.y} Kwh</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    series: [{
+      name: meter,
+      data: xdata,
+    }]
+  
+});
+    }
+	var energy_data_unab=<?php echo json_encode($energy_meters_data['unab']);?>;
+    
+    for(var k=0;k<energy_data_unab.length;k++){
+        var meter=energy_data_unab[k]["meter"];
+         var contain="energycontainerunab"+k;
+         var xdata=[];
+        
+         var time=[];
+        
+        for(var i=0;i<energy_data_unab[k]["live"].length;i++){
+		//time.push([parseFloat(energy_data_c1[k]["live"][i]["date"])]);
+        xdata.push([parseFloat(energy_data_unab[k]["live"][i]["consumption"])]);
+        }
+        
+
+        Highcharts.chart(contain, {
+    
+
+    credits: {
+        enabled: false
+    },
+    title: {
+        text: ''
+    },
+    chart: {
+        type: 'line'
+    },
+    yAxis: {
+       
+        title: {
+            text: 'Kwh'
+        }
+    },xAxis: {
+        categories: [
+            '00', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12','13','14'
+        ],
+        accessibility: {
+            description: 'Months of the year'
+        }
+    },
+   tooltip: {
+        headerFormat: '<span style="font-size:10px"><b>{point.key}</b></span><table>',
+        pointFormat: '<tr><td style="color:{series.color};font-size:8px">{series.name}: </td>' +
+            '<td style="font-size:8px"><b>{point.y} Kwh</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    series: [{
+      name: meter,
+      data: xdata,
+    }]
+  
+});
+    }
+	
+	var energy_data_undp=<?php echo json_encode($energy_meters_data['undp']);?>;
+    
+    for(var k=0;k<energy_data_undp.length;k++){
+        var meter=energy_data_undp[k]["meter"];
+         var contain="energycontainerundp"+k;
+         var xdata=[];
+        
+         var time=[];
+        
+        for(var i=0;i<energy_data_undp[k]["live"].length;i++){
+		//time.push([parseFloat(energy_data_c1[k]["live"][i]["date"])]);
+        xdata.push([parseFloat(energy_data_undp[k]["live"][i]["consumption"])]);
+        }
+        
+
+        Highcharts.chart(contain, {
+    
+
+    credits: {
+        enabled: false
+    },
+    title: {
+        text: ''
+    },
+    chart: {
+        type: 'line'
+    },
+    yAxis: {
+       
+        title: {
+            text: 'Kwh'
+        }
+    },xAxis: {
+        categories: [
+            '00', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12','13','14'
+        ],
+        accessibility: {
+            description: 'Months of the year'
+        }
+    },
+   tooltip: {
+        headerFormat: '<span style="font-size:10px"><b>{point.key}</b></span><table>',
+        pointFormat: '<tr><td style="color:{series.color};font-size:8px">{series.name}: </td>' +
+            '<td style="font-size:8px"><b>{point.y} Kwh</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    series: [{
+      name: meter,
+      data: xdata,
+    }]
+  
+});
+    }
+	var energy_data_unww=<?php echo json_encode($energy_meters_data['unww']);?>;
+    
+    for(var k=0;k<energy_data_unww.length;k++){
+        var meter=energy_data_unww[k]["meter"];
+         var contain="energycontainerunww"+k;
+         var xdata=[];
+        
+         var time=[];
+        
+        for(var i=0;i<energy_data_unww[k]["live"].length;i++){
+		//time.push([parseFloat(energy_data_c1[k]["live"][i]["date"])]);
+        xdata.push([parseFloat(energy_data_unww[k]["live"][i]["consumption"])]);
+        }
+        
+
+        Highcharts.chart(contain, {
+    
+
+    credits: {
+        enabled: false
+    },
+    title: {
+        text: ''
+    },
+    chart: {
+        type: 'line'
+    },
+    yAxis: {
+       
+        title: {
+            text: 'Kwh'
+        }
+    },xAxis: {
+        categories: [
+            '00', '02', '03', '04', '05', '06',
+            '07', '08', '09', '10', '11', '12','13','14'
+        ],
+        accessibility: {
+            description: 'Months of the year'
+        }
+    },
+   tooltip: {
+        headerFormat: '<span style="font-size:10px"><b>{point.key}</b></span><table>',
+        pointFormat: '<tr><td style="color:{series.color};font-size:8px">{series.name}: </td>' +
+            '<td style="font-size:8px"><b>{point.y} Kwh</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    series: [{
+      name: meter,
+      data: xdata,
+    }]
+  
+});
+    }
  function em(id){ 	
 	$('.em-disc'+id).toggle('slow'); 
 	$('.em'+id).hide();

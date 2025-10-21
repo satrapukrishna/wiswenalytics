@@ -270,7 +270,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                 <div id="container_energy3" style="width:100%"></div>	</div>
 
                 <div class="DshBrdSctnDtls device devicebox9"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
-				<h4 class="head-h4">Day Time: 6AM To 7PM  &&  Night Time:7PM To 6 AM </h4>
+				<h4 class="head-h4">Day Time: 9AM To 11PM  &&  Night Time:11PM To 8AM </h4>
                 <h4 class="head-h4">Day vs Night Consumption(This Month)</h4>
                 <div id="container_energy_monthly" style="width:100%"></div></div>
 
@@ -532,7 +532,7 @@ var energy_data_c1=<?php echo json_encode($energydata['unicef']);?>;
         text: ''
     },
     xAxis: {
-        categories: ['<b>Quarter2(April 1st To June 30th)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Quarter3(July 1st To Sept 30th)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        categories: ['<b>Quarter2(April 1st To June 30th)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Quarter3(July 1st To Sept 30th)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Quarter4(Oct 1st To Dec 31st)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         crosshair: true,
         accessibility: {
             description: 'Countries'
@@ -589,7 +589,7 @@ var energy_monthly_data=<?php echo json_encode($energydat_monthly_weekday_wise_c
   },
     xAxis: {
        // categories: ['<b>Jan</b>','Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Feb</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>March</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>April</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>May</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>June</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>July</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Aug</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],       
-    categories: ['<b>June</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>July</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Aug</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    categories: ['<b>June</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>July</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Aug</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Sept</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Oct</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 
        crosshair: true,
         accessibility: {

@@ -215,8 +215,8 @@ function getUnichefDataDates(){
 }
 function getVegasDataDates(){
 
-	$date_from = strtotime("2025-09-12"); 
-	$date_to = strtotime("2025-10-02"); 
+	$date_from = strtotime("2025-10-03"); 
+	$date_to = strtotime("2025-10-05"); 
 	$datesarray=array();
 	
 	

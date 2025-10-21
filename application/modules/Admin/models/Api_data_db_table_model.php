@@ -2916,9 +2916,9 @@ function getDgData2($table_name,$date){
 					// echo $queryconsutoday;die();
 					$datacontoday = $this->db->query($queryconsutoday)->result();
 
-					$dayquery="SELECT round(SUM(Consumption),2) as day_consumption FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '06:00:00' AND '18:59:59'";
+					$dayquery="SELECT round(SUM(Consumption),2) as day_consumption FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '09:00:00' AND '23:00:00'";
 					
-					$nightquery="SELECT round(SUM(t.cons),2) AS night_consumption FROM (SELECT SUM(Consumption) as cons FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '00:00:00' AND '05:59:59' UNION ALL SELECT SUM(Consumption) as cons FROM $table_name where TxnDate = '".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '19:00:00' AND '24:00:00') t";
+					$nightquery="SELECT round(SUM(t.cons),2) AS night_consumption FROM (SELECT SUM(Consumption) as cons FROM $table_name where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '00:00:00' AND '08:59:59' UNION ALL SELECT SUM(Consumption) as cons FROM $table_name where TxnDate = '".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '23:00:01' AND '24:00:00') t";
 					// echo $nightquery;die();
 					
 					$dataday = $this->db->query($dayquery)->result();

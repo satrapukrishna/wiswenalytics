@@ -177,8 +177,8 @@ function push_undp_cons_data_single(){
     $first = date('Y-m-d',strtotime("-1 days"));
     $last = date('Y-m-d',strtotime("-1 days"));
 
-    // $first = '2025-04-03';
-    // $last = '2025-04-13';
+    // $first = '2025-10-03';
+    // $last = '2025-10-06';
     $energydat=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_report_vegas(2022000313,$first,$last);
     //echo json_encode($energydat);
    $current_data=$this->Api_data_db_table_model->get_hardwares_device_data_energymeter_current_report_vegas(2022000313,$first,$last);
@@ -193,8 +193,8 @@ function push_undp_cons_data_single(){
     // $data['power_factor_data']=$energydat;
 }
   function vegas_ahu(){
-      //  $fromdate='2025-04-03';
-      //  $todate='2025-04-13';
+      //  $fromdate='2025-10-03';
+      //  $todate='2025-10-06';
 
        $fromdate = date('Y-m-d',strtotime("-1 days"));
        $todate = date('Y-m-d',strtotime("-1 days"));

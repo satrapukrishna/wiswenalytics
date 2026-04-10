@@ -324,6 +324,16 @@ class Api_data_model extends CI_Model{
 		 $res = $this->db->get();             
         return $res->num_rows();
 	}
+	function convertMinutesToHoursMins($totalMinutes) {
+		// Calculate the number of hours (integer part)
+		$hours = floor($totalMinutes / 60); 
+		// Calculate the remaining minutes
+		$minutes = $totalMinutes % 60; 
+		
+		// Return formatted string, ensuring minutes have leading zeros if needed
+		return sprintf('%d hours %02d minutes', $hours, $minutes); 
+	}
+	
 	function secondsToTime($seconds) {
 		$dtF = new \DateTime('@0');
 		$dtT = new \DateTime("@$seconds");
@@ -5162,7 +5172,23 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 	return $resdata;
 
 }
+function testtime(){
+	date_default_timezone_set('Asia/Kolkata');
 
+	$time = date('H:i:s', time());
+	if($time >'20:00:00' && $time<'21:00:00'){
+		echo "50%";
+	}else if($time >'21:00:00' && $time<'22:00:00'){
+		echo "40%";
+	}else if($time >'22:00:00' && $time<'23:00:00'){
+		echo "40%";
+	}else if($time >'05:45:00' && $time<'06:45:00'){
+		echo "65%";
+	}else{
+		echo "test%";
+	}
+	//echo $time ;
+}
 	function get_hardwares_device_data_waterlevelmeter($data){
 		
 		$station_id=$data['station_id'];
@@ -5181,13 +5207,39 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 			//Fire Tank-1,Fire-2,Fire-3,Raw Water
 			
 			if($locationName=='Dom. Water Sump'){
+				// date_default_timezone_set('Asia/Kolkata');
+
+				// $time = date('H:i:s', time());
+				// if($time >'20:00:00' && $time<'21:00:00'){
+				// 	//echo "50%";
+				// 	$querywaterlevel="SELECT IF(CurReading*".$multiplier."/1000<320, 269.87, 269.87) as CurReading FROM $table_name WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnTime DESC LIMIT 1";
+
+				// }else if($time >'21:00:00' && $time<'22:00:00'){
+				// 	//echo "40%";
+				// 	$querywaterlevel="SELECT IF(CurReading*".$multiplier."/1000<320, 210.72, 210.72) as CurReading FROM $table_name WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnTime DESC LIMIT 1";
+
+				// }else if($time >'22:00:00' && $time<'23:00:00'){
+				// 	//echo "40%";
+				// 	$querywaterlevel="SELECT IF(CurReading*".$multiplier."/1000<320, 160, 160) as CurReading FROM $table_name WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnTime DESC LIMIT 1";
+
+				// }else if($time >'05:45:00' && $time<'06:45:00'){
+				// 	$querywaterlevel="SELECT IF(CurReading*".$multiplier."/1000<320, 320, 320) as CurReading FROM $table_name WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnTime DESC LIMIT 1";
+				// }else{
+				// 	//echo "test%";
+				// 	$querywaterlevel="SELECT IF(CurReading*".$multiplier."/1000<320, 330, round(CurReading*".$multiplier."/1000,2)) as CurReading FROM $table_name WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnTime DESC LIMIT 1";
+
+				// }
+				$querywaterlevel="SELECT CurReading*".$multiplier."/1000 as CurReading FROM $table_name WHERE  `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnDate,TxnTime DESC LIMIT 1";
+
 				//lesss 10%
-				$querywaterlevel="SELECT IF(CurReading*".$multiplier."/1000>200, round(CurReading*".$multiplier."/1000-CurReading*0.05*".$multiplier."/1000,2), round(CurReading*".$multiplier."/1000-CurReading*0.25*".$multiplier."/1000,2)) as CurReading FROM $table_name WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnTime DESC LIMIT 1";
+				// $querywaterlevel="SELECT IF(CurReading*".$multiplier."/1000>200, round(CurReading*".$multiplier."/1000-CurReading*0.05*".$multiplier."/1000,2), round(CurReading*".$multiplier."/1000-CurReading*0.25*".$multiplier."/1000,2)) as CurReading FROM $table_name WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnTime DESC LIMIT 1";
+
 				// echo $querywaterlevel;die();
 				$datawaterlevel = $this->db->query($querywaterlevel)->result_array();
 				//$waterlevel=$datawaterlevel[0]['CurReading']*$multiplier-$datawaterlevel[0]['CurReading']*$multiplier*0.1;	
 			}else{
-				$querywaterlevel="SELECT round(CurReading*".$multiplier."/1000,2) as CurReading FROM $table_name WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnTime DESC LIMIT 1";
+				$querywaterlevel="SELECT round(CurReading*".$multiplier."/1000,2) as CurReading FROM $table_name WHERE  `StationId`='".$station_id."' AND `UtilityName`='".$utilityName."' AND `LocationName`='".$locationName."' ORDER BY TxnDate, TxnTime DESC LIMIT 1";
+				// echo $querywaterlevel;die();
 				$datawaterlevel = $this->db->query($querywaterlevel)->result_array();
 				//$waterlevel=$datawaterlevel[0]['CurReading']*$multiplier;	
 			}
@@ -5317,7 +5369,7 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 				if($list['fire_pump_name']=='Panel Power Supply'){
 					
 
-					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Mains On' and MeterSerial='0071' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Mains On' and MeterSerial='0071' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
 					$switch_status_data = $this->db->query($switch_status_query)->result_array();
 
@@ -5350,9 +5402,9 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 
 
 				}else if($list['fire_pump_name']=='Jockey Pump'){
-					$runn_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Jockey Pump On' and MeterSerial='0071' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$runn_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Jockey Pump On' and MeterSerial='0071' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
-					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Jockey Pump Auto' and MeterSerial='0071' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Jockey Pump Auto' and MeterSerial='0071' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
 					
 
@@ -5428,18 +5480,18 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 					}
 					
 					
-					$resultArray['run_data'][$i]['today_running_hours']=$this->secondsToTime($today_runn*60);
-					$resultArray['run_data'][$i]['yesterday_running_hours']=$this->secondsToTime($yesterday_runn*60);
-					$resultArray['run_data'][$i]['lastweek_running_hours']=$this->secondsToTime($weekly_runn*60);
+					$resultArray['run_data'][$i]['today_running_hours']=$this->convertMinutesToHoursMins($today_runn);
+					$resultArray['run_data'][$i]['yesterday_running_hours']=$this->convertMinutesToHoursMins($yesterday_runn);
+					$resultArray['run_data'][$i]['lastweek_running_hours']=$this->secondsToTime_month($weekly_runn*60);
 					$resultArray['run_data'][$i]['monthly_running_hours']=$this->secondsToTime_month($monthly_runn_with_today*60);
 					$i++;
 
 
 
 				}else if($list['fire_pump_name']=='Main Pump'){
-					$runn_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Main Pump On' and MeterSerial='0071' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$runn_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Main Pump On' and MeterSerial='0071' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
-					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Auto Mode' and MeterSerial='0071' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='Auto Mode' and MeterSerial='0071' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
 					
 
@@ -5522,9 +5574,9 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 					$resultArray['run_data'][$i]['monthly_running_hours']=$this->secondsToTime_month($monthly_runn_with_today*60);
 					$i++;
 				}else{
-					$runn_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='DG ON' and MeterSerial='0071' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$runn_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='DG ON' and MeterSerial='0071' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
-					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='DG Auto' and MeterSerial='0071' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='Old Fire Pump' and LineConnected='DG Auto' and MeterSerial='0071' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
 					
 
@@ -5620,7 +5672,7 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 			$i=0;
 			foreach($firepumpList2 as $list){
 				if($list['fire_pump_name']=='Jockey Pump'){
-					$runn_status_query="SELECT Consumption as CurReading	FROM $table_name_live where UtilityName='New Fire Pump' and LineConnected='Jockey Pump RHT' and MeterSerial='0069' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$runn_status_query="SELECT Consumption as CurReading	FROM $table_name_live where UtilityName='New Fire Pump' and LineConnected='Jockey Pump RHT' and MeterSerial='0069' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
 
 					$today_runn_query="SELECT SUM(Consumption) as cons FROM $table_name_live where UtilityName='New Fire Pump' and LineConnected='Jockey Pump RHT' and MeterSerial='0069' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ";
@@ -5661,9 +5713,9 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 
 
 				}else{
-					$runn_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='New Fire Pump' and LineConnected='Engine Run' and MeterSerial='0070' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$runn_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='New Fire Pump' and LineConnected='Engine Run' and MeterSerial='0070' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
-					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='New Fire Pump' and LineConnected='Off/Manual Auto' and MeterSerial='0070' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ORDER BY TxnTime desc limit 1";
+					$switch_status_query="SELECT CurReading	FROM $table_name_live where UtilityName='New Fire Pump' and LineConnected='Off/Manual Auto' and MeterSerial='0070' and StationId='".$station_id."'   ORDER BY TxnTime desc limit 1";
 
 					// $today_runn_query="SELECT SUM(Consumption) as cons FROM $table_name where UtilityName='New Fire Pump' and LineConnected='Jockey Pump RHT' and MeterSerial='0069' and StationId='".$station_id."' and TxnDate='".$todayDate."'  ";
 					// $yesterday_runn_query="SELECT SUM(Consumption) as cons FROM $table_name where UtilityName='New Fire Pump' and LineConnected='Jockey Pump RHT' and MeterSerial='0069' and StationId='".$station_id."' and TxnDate='".$yesterDay."'  ";
@@ -11066,31 +11118,31 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 			foreach($meter_list as $meters){
 
 				if($meters['LocationName']=='2nd Floor'){
-					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='9th Floor' AND TxnDate='".$todayDate."' AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='9th Floor'  AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else if($meters['LocationName']=='P4 Floor'){
-					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='7th Floor' AND TxnDate='".$todayDate."' AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='7th Floor'  AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else if($meters['LocationName']=='35th Floor'){
-					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='42th Floor' AND TxnDate='".$todayDate."' AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='42th Floor'  AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else if($meters['LocationName']=='37th Floor' || $meters['LocationName']=='30th Floor' || $meters['LocationName']=='23th Floor' ){
-					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='16th Floor' AND TxnDate='".$todayDate."' AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='16th Floor'  AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else{
-					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='".$meters['LocationName']."' AND TxnDate='".$todayDate."' AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='".$meters['LocationName']."'  AND UtilityName='Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}
 				
 				//echo $emergency; die();
 				$emergencydata = $this->db->query($emergency)->result_array();
 				if($meters['LocationName']=='5th Floor'){
-					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='Lobby' AND TxnDate='".$todayDate."' AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='Lobby'  AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else if($meters['LocationName']=='40th Floor'){
-					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='12th Floor' AND TxnDate='".$todayDate."' AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='12th Floor'  AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else if($meters['LocationName']=='2nd Floor'){
-					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='9th Floor' AND TxnDate='".$todayDate."' AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='9th Floor'  AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else if($meters['LocationName']=='14th Floor'){
-					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='21th Floor' AND TxnDate='".$todayDate."' AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='21th Floor'  AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else if($meters['LocationName']=='37th Floor' || $meters['LocationName']=='30th Floor' || $meters['LocationName']=='23th Floor' || $meters['LocationName']=='16th Floor'){
-					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='16th Floor' AND TxnDate='".$todayDate."' AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='16th Floor'  AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}else{
-					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='".$meters['LocationName']."' AND TxnDate='".$todayDate."' AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
+					$non_emergency="SELECT `CurReading` FROM $table_name WHERE LocationGroup='".$tower."' AND LocationName='".$meters['LocationName']."'  AND UtilityName='Non-Emergency' AND UomName='Status'  ORDER BY TxnTime desc LIMIT 1";
 				}
 
 				
@@ -11603,9 +11655,10 @@ function get_hardwares_device_data_energy_meters($data,$data2){
 		
 		$resdata['economy']=0;
 		// $resdata['economy']=$finaleco;
-		$resdata['availableFuel']=45;
+		$resdata['availableFuel']=152;
+		$resdata['capacity']=300;
 		// $resdata['availableFuel']=$dataStartEndFuel[0]->end;
-		$resdata['filledper']=30;
+		$resdata['filledper']=54;
 		// $resdata['filledper']=round(($dataStartEndFuel[0]->end/250)*100);
 		// $resdata['filledper']=round(($dataStartEndFuel[0]->end/230)*100);
 

@@ -13,7 +13,31 @@ class Home extends MX_Controller {
 	{
 		//echo "aaaa";exit;
 		$this->load->model('Api_data_model');
-		$this->load->view('dashboard');
+		$data['categories']=$this->Api_data_model->get_categories();
+		echo "<pre>";print_r($data['categories']);exit;
+		$data['devices']=$this->Api_data_model->get_devices('');
+		$data['device_list']=$this->Api_data_model->get_hardwares_device_list();
+		$data['firepump_id']=$this->Api_data_model->get_devices(3);
+		
+		// echo "<pre>";print_r($data['firepump_id']);exit;
+		// $line_pressure=$this->Api_data_model->get_firepumpdata(9,'Pressure Sensor');
+		// $line_pressure=$this->Api_data_model->get_firepumpdata(10,'Pressure Sensor');
+		// $data['line_pressure']=$line_pressure;
+		// $j=0;
+		// foreach($line_pressure->result() as $rec){
+			// $data1[]=$this->Api_data_model->getPressureToday($rec->LineConnected);			
+			// for($i=0;count($data1[$j])>$i;$i++){
+				// $data['pdata'][$rec->LineConnected]['readings'][$i]=$data1[$j][$i]->CurReading;
+				// $data['pdata'][$rec->LineConnected]['timings'][$i]=$data1[$j][$i]->ToTime;				
+			// }			
+		// $j++;
+		// }
+
+		
+		// echo "<pre>";print_r($data['dgdata']);exit;
+		
+		
+		$this->load->view('dashboard',$data);
 	}
 	public function waterQuality(){
 		$this->load->view('water-quality');
@@ -21,8 +45,48 @@ class Home extends MX_Controller {
 	public function getdata(){
 		echo "string";
 	}
-	
-	
+	function rainbow_dashboard() {
+		$date=$this->input->post('d_date');
+		//echo $date;die();
+		$this->load->model('Api_data_model_rainbow');
+		
+		if(!empty($_POST)){
+			//$this->load->model('Api_data_model');
+			$data['rainbow_main_data']=$this->Api_data_model_rainbow->rainbow_main_data($date);
+			//echo json_encode($data['water_meter_data']);die();
+			$this->load->view('Rainbow-Dashboard',$data);
+
+		}else{
+			$yesterDay = "2022-02-28";
+			// $yesterDay = date('Y-m-d',strtotime("-1 days"));
+
+			//$this->load->model('Api_data_model');
+			$data['rainbow_main_data']=$this->Api_data_model_rainbow->rainbow_main_data($yesterDay);
+			//echo json_encode($data['water_meter_data']);die();
+			$this->load->view('Rainbow-Dashboard',$data);
+		}
+	}
+	function rainbow_dashboard_usa() {
+		$date=$this->input->post('d_date');
+		//echo $date;die();
+		$this->load->model('Api_data_model_rainbow');
+		
+		if(!empty($_POST)){
+			//$this->load->model('Api_data_model');
+			$data['rainbow_main_data']=$this->Api_data_model_rainbow->rainbow_main_data($date);
+			//echo json_encode($data['water_meter_data']);die();
+			$this->load->view('Rainbow-Dashboard_usa',$data);
+
+		}else{
+			$yesterDay = "2022-02-28";
+			// $yesterDay = date('Y-m-d',strtotime("-1 days"));
+
+			//$this->load->model('Api_data_model');
+			$data['rainbow_main_data']=$this->Api_data_model_rainbow->rainbow_main_data($yesterDay);
+			//echo json_encode($data['water_meter_data']);die();
+			$this->load->view('Rainbow-Dashboard_usa',$data);
+		}
+	}
 	function all_reports_dynamic(){
 		//echo "<pre>";print_r($_POST);exit();
 		$this->load->model('Hardware_model');
@@ -217,7 +281,20 @@ class Home extends MX_Controller {
 			$data['water_meter_data_all']=$flowmeterdata_all;
 			$this->load->view('water-dashboard-unicef' ,$data);
 		}else{
-			 
+			 //echo json_encode($hardwares);die();
+					// if(isset($hardwares['Flow Meter']['hardaware_list'])){
+					// 	for ($i=0; $i <count($hardwares['Flow Meter']['hardaware_list']) ; $i++) { 
+					// 		$flowmeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_flowmeter($hardwares['Flow Meter']['hardaware_list'][$i]);
+					// 	}
+					// 	$data['flowmeter_data']=$flowmeterdata;
+					// }
+					// if(isset($hardwares['Water Meter']['hardaware_list'])){
+					// 	for ($i=0; $i <count($hardwares['Water Meter']['hardaware_list']) ; $i++) { 
+					// 		$watermeterdata[$i]=$this->Api_data_model->get_hardwares_device_data_watermeter($hardwares['Water Meter']['hardaware_list'][$i]);
+					// 	}
+					// 	$data['watermeter_data']=$watermeterdata;
+					// 	// echo json_encode($watermeterdata);die();
+					// }
 					if(isset($hardwares['Water Level']['hardaware_list'])){
 					//if(count($hardwares['Water Level']['hardaware_list'])>0){
 					for ($i=0; $i <count($hardwares['Water Level']['hardaware_list']) ; $i++) { 
@@ -226,7 +303,13 @@ class Home extends MX_Controller {
 					// echo json_encode($waterleveldata);die();
 					$data['waterlevel_data']=$waterleveldata;
 				}
-				
+				// if(isset($hardwares['Borewells']['hardaware_list'])){
+				// 	for ($i=0; $i <count($hardwares['Borewells']['hardaware_list']) ; $i++) { 
+				// 		$borewelldata[$i]=$this->Api_data_model->get_hardwares_device_data_borewell($hardwares['Borewells']['hardaware_list'][$i]);
+				// 	}
+				// 	// echo json_encode($waterleveldata);die();
+				// 	$data['borewell_data']=$borewelldata;
+				// }
 				if(isset($hardwares['Wate Level(Independent)']['hardaware_list'])){
 					for ($i=0; $i <count($hardwares['Wate Level(Independent)']['hardaware_list']) ; $i++) { 
 						$waterlevelinddata[$i]=$this->Api_data_model->get_hardwares_device_data_waterlevelmeter($hardwares['Wate Level(Independent)']['hardaware_list'][$i]);
@@ -236,16 +319,132 @@ class Home extends MX_Controller {
 				}
 				
 				
-				
+				// if(isset($hardwares['Firepump']['hardaware_list'])){
+				// 	for ($i=0; $i <count($hardwares['Firepump']['hardaware_list']) ; $i++) { 
+				// 		$firepumpdata[$hardwares['Firepump']['hardaware_list'][$i]['dashboard_name']]=$this->Api_data_model->get_hardwares_device_data_firepump($hardwares['Firepump']['hardaware_list'][$i]);
+				// 	}
+					
+				// 	//  echo json_encode($firepumpdata);die();
+				// 	$data['firepump_data']=$firepumpdata;
+				// }
+				// if(isset($hardwares['Hydro Pnematic System']['hardaware_list'])){
+				// 	for ($i=0; $i <count($hardwares['Hydro Pnematic System']['hardaware_list']) ; $i++) { 
+				// 		$hydrodata[$i]=$this->Api_data_model->get_hardwares_device_data_hydro($hardwares['Hydro Pnematic System']['hardaware_list'][$i]);
+				// 	}
+					
+				// 	//echo json_encode($hydrodata[0]['pressure_data']);die();
+				// 	$data['hydro_data']=$hydrodata;
+				// }
 			$this->load->view('water-dashboard',$data);
 		}
 		
 	}
-	public function test8(){
-		$this->load->model('Api_data_model');
-		$device_data=$this->Api_data_model->testtime();
-	}
+	function rainbow_water(){
+		$id=$this->input->get('id');
+		$loc=$this->input->get('loc');
+		$data['id']=$id;
+		$data['loc']=$loc;
+		//print_r($_GET);
+		//echo $id."--".$loc;die();
+		$this->load->model('Api_data_model_rainbow');
+		$device_data=$this->Api_data_model_rainbow->get_devices_list(5);
+		$device_data_konda=$this->Api_data_model_rainbow->get_devices_list_konda(5);
+		//print_r($device_data_konda);die();
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_rainbow->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list_vikram']=$this->Api_data_model_rainbow->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}if(count($device_data_konda)>0){
+			for ($i=0; $i < count($device_data_konda) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_rainbow->get_device_name($device_data_konda[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list_konda']=$this->Api_data_model_rainbow->get_hardwares_device_list1_konda($device_data_konda[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list_vikram']=array();
+			//echo "No Hardware data";
+		}
+		//echo json_encode($hardwares);die();
 	
+		  if(count($hardwares['Water Level']['hardaware_list_vikram'])>0){
+				for ($i=0; $i <count($hardwares['Water Level']['hardaware_list_vikram']) ; $i++) { 
+					$waterleveldata[$i]=$this->Api_data_model_rainbow->get_hardwares_device_data_waterlevelmeter($hardwares['Water Level']['hardaware_list_vikram'][$i]);
+				}		
+			$data['waterlevel_data']=$waterleveldata;
+			}
+			if(count($hardwares['Water Level']['hardaware_list_konda'])>0){
+				for ($i=0; $i <count($hardwares['Water Level']['hardaware_list_konda']) ; $i++) { 
+					$waterleveldata_konda[$i]=$this->Api_data_model_rainbow->get_hardwares_device_data_waterlevelmeter($hardwares['Water Level']['hardaware_list_konda'][$i]);
+				}		
+			$data['waterlevel_data_konda']=$waterleveldata_konda;
+			}
+			// die();
+			// echo json_encode($hardwares['Water Level']['hardaware_list_konda']);die();
+		    
+			$this->load->view('water-dashboard-rainbow',$data);
+		
+		
+	}
+	function rainbow_kondapur_water(){
+		
+		$this->load->model('Api_data_model_rainbow');
+		$device_data=$this->Api_data_model_rainbow->get_devices_list(5);
+		$device_data_konda=$this->Api_data_model_rainbow->get_devices_list(5);
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_rainbow->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list_vikram']=$this->Api_data_model_rainbow->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}if(count($device_data_konda)>0){
+			for ($i=0; $i < count($device_data_konda) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_rainbow->get_device_name($device_data_konda[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list_konda']=$this->Api_data_model_rainbow->get_devices_list_konda($device_data_konda[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list_vikram']=array();
+			//echo "No Hardware data";
+		}
+		
+	
+		  if(count($hardwares['Water Level']['hardaware_list_vikram'])>0){
+				for ($i=0; $i <count($hardwares['Water Level']['hardaware_list_vikram']) ; $i++) { 
+					$waterleveldata[$i]=$this->Api_data_model_rainbow->get_hardwares_device_data_waterlevelmeter($hardwares['Water Level']['hardaware_list_vikram'][$i]);
+				}		
+			$data['waterlevel_data']=$waterleveldata;
+			}
+			if(count($hardwares['Water Level']['hardaware_list_konda'])>0){
+				for ($i=0; $i <count($hardwares['Water Level']['hardaware_list_konda']) ; $i++) { 
+					$waterleveldata_konda[$i]=$this->Api_data_model_rainbow->get_hardwares_device_data_waterlevelmeter($hardwares['Water Level']['hardaware_list_konda'][$i]);
+				}		
+			$data['waterlevel_data_konda']=$waterleveldata_konda;
+			}
+		
+			$this->load->view('water-dashboard-rainbow',$data);
+		
+		
+	}
+	function firepump(){
+		$this->load->view('firepump_dashboard');
+	}
+	function essential(){
+		$this->load->view('essential_dashboard');
+	}
 	public function energy()
 	{
 		$this->load->model('Api_data_model');
@@ -576,7 +775,54 @@ class Home extends MX_Controller {
 		
 		
 	}
-	
+	public function rainbow_energy()
+	{
+		$id=$this->input->get('id');
+		$loc=$this->input->get('loc');
+		$data['id']=$id;
+		$data['loc']=$loc;
+		$this->load->model('Api_data_model_rainbow');
+		$device_data=$this->Api_data_model_rainbow->get_devices_list(6);
+		$device_data_konda=$this->Api_data_model_rainbow->get_devices_list_konda(6);
+		//print_r($device_data_konda);die();
+		if(count($device_data)>0){
+			for ($i=0; $i < count($device_data) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_rainbow->get_device_name($device_data[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list_vikram']=$this->Api_data_model_rainbow->get_hardwares_device_list1($device_data[$i]['hardware_device']);
+				
+
+			}
+		}if(count($device_data_konda)>0){
+			for ($i=0; $i < count($device_data_konda) ; $i++) { 
+				
+				$device_name=$this->Api_data_model_rainbow->get_device_name($device_data_konda[$i]['hardware_device']);
+				
+				$hardwares[$device_name[0]->device_name]['hardaware_list_konda']=$this->Api_data_model_rainbow->get_hardwares_device_list1_konda($device_data_konda[$i]['hardware_device']);
+				
+
+			}
+		}else{
+			$hardwares[0]['hardaware_list_vikram']=array();
+			//echo "No Hardware data";
+		}
+		
+		
+		
+			if(isset($hardwares['Energy Meter']['hardaware_list_vikram'][0])){
+				$data['energy_meters_data']=$this->Api_data_model_rainbow->get_hardwares_device_data_energy_meters($hardwares['Energy Meter']['hardaware_list_vikram'][0]);
+			}
+			if(isset($hardwares['Energy Meter']['hardaware_list_konda'][0])){
+				$data['energy_meters_data_konda']=$this->Api_data_model_rainbow->get_hardwares_device_data_energy_meters_kondapur($hardwares['Energy Meter']['hardaware_list_konda'][0]);
+			}
+			//$data['energy_meters_data']=array();
+			// $data['id']=$id;
+			$this->load->view('energy-dashboard_rainbow',$data);
+		
+		
+		
+	}
 	function switchcontrol(){
 		$this->load->model('Api_data_model');
 		$device_data=$this->Api_data_model->get_devices_list(11);
@@ -796,7 +1042,40 @@ class Home extends MX_Controller {
 		$this->load->view('WaterManagementApp/WaterManagement1');
    }
 	
-	
+	// function firepump_reports($status=''){
+		
+	// 	// echo "sdsd";exit;
+	// 	$this->load->model('Api_reports_data_model');
+	// 	$this->load->model('Api_data_model');
+	// 	$data['device_id']=$device_id;
+	// 	$data['status']=$status;
+		
+	// 	// $data['cat']=$this->Api_data_model->get_fire_categories(3);
+	// 	// $data['device']=$this->Api_reports_data_model->get_device($device_id);
+	// 	$data['devices']=$this->Api_data_model->get_devices(3);
+	// 	$item[]="Select Firepump";
+	// 	foreach($data['devices'] as $rec){
+	// 		// echo $rec['device_name'];
+	// 		$item[$rec['device_id']]=$rec['device_name'];
+	// 	}
+	// 	$data['devices']=$item;
+	// 	// echo "<pre>";print_r($data['devices']);exit;
+	// 	if($status=='Running_hours'){
+    //     $this->load->view('firepump_running_report1',$data);
+	// 	}elseif($status=='PressureGraph'){
+	// 		$this->load->view('firepump_pressure_graph',$data);
+	// 	}elseif($status=='Tabular'){
+	// 		$this->load->view('firepump_running_report1',$data);
+	// 	}
+	// 	elseif($status=='Graphical'){
+	// 		$this->load->view('firepump_graphical_report',$data);
+	// 	}
+	// 	else{
+    //     $this->load->view('firepump_graph_report',$data);
+	// 	}
+       
+		
+	// }
 	
 	function firepump_reports_search($pump=''){
 		
@@ -954,6 +1233,96 @@ class Home extends MX_Controller {
 		
 	}
 	
+	// function energy_reports(){
+		
+	// 	// echo "sdsd";exit;
+	// 	$this->load->model('Api_reports_data_model');
+	// 	$this->load->model('Api_data_model');
+	// 	$data['device_id']=$device_id;
+	// 	// $data['status']=$status;
+		
+	// 	// $data['cat']=$this->Api_data_model->get_fire_categories(3);
+	// 	// $data['device']=$this->Api_reports_data_model->get_device($device_id);
+	// 	$data['devices']=$this->Api_data_model->get_devices(3);
+	// 	$item[]="Select Firepump";
+	// 	foreach($data['devices'] as $rec){
+	// 		// echo $rec['device_name'];
+	// 		$item[$rec['device_id']]=$rec['device_name'];
+	// 	}
+	// 	$data['devices']=$item;
+	// 	//echo "<pre>";print_r($data['devices']);exit;
+		
+    //     $this->load->view('em_running_report',$data);
+		
+		
+	// }
+	// function energy_graph_reports(){
+		
+	// 	// echo "sdsd";exit;
+	// 	$this->load->model('Api_reports_data_model');
+	// 	$this->load->model('Api_data_model');
+	// 	$data['device_id']=$device_id;
+	// 	// $data['status']=$status;
+		
+	// 	// $data['cat']=$this->Api_data_model->get_fire_categories(3);
+	// 	// $data['device']=$this->Api_reports_data_model->get_device($device_id);
+	// 	$data['devices']=$this->Api_data_model->get_devices(3);
+	// 	$item[]="Select Firepump";
+	// 	foreach($data['devices'] as $rec){
+	// 		// echo $rec['device_name'];
+	// 		$item[$rec['device_id']]=$rec['device_name'];
+	// 	}
+	// 	$data['devices']=$item;
+	// 	//echo "<pre>";print_r($data['devices']);exit;
+		
+    //     $this->load->view('em_graph_report',$data);
+		
+		
+	// }
+	// function energy_powerfctr_reports(){
+	// 	// echo "sdsd";exit;
+	// 	$this->load->model('Api_reports_data_model');
+	// 	$this->load->model('Api_data_model');
+	// 	$data['device_id']=$device_id;
+	// 	// $data['status']=$status;
+		
+	// 	// $data['cat']=$this->Api_data_model->get_fire_categories(3);
+	// 	// $data['device']=$this->Api_reports_data_model->get_device($device_id);
+	// 	$data['devices']=$this->Api_data_model->get_devices(3);
+	// 	$item[]="Select Firepump";
+	// 	foreach($data['devices'] as $rec){
+	// 		// echo $rec['device_name'];
+	// 		$item[$rec['device_id']]=$rec['device_name'];
+	// 	}
+	// 	$data['devices']=$item;
+	// 	//echo "<pre>";print_r($data['devices']);exit;
+		
+    //     $this->load->view('em_pf_graph',$data);
+
+	// }
+	// function btu_reports(){
+		
+	// 	// echo "sdsd";exit;
+	// 	$this->load->model('Api_reports_data_model');
+	// 	$this->load->model('Api_data_model');
+	// 	$data['device_id']=$device_id;
+	// 	//$data['status']=$status;
+		
+	// 	// $data['cat']=$this->Api_data_model->get_fire_categories(3);
+	// 	// $data['device']=$this->Api_reports_data_model->get_device($device_id);
+	// 	$data['devices']=$this->Api_data_model->get_devices(3);
+	// 	$item[]="Select Firepump";
+	// 	foreach($data['devices'] as $rec){
+	// 		// echo $rec['device_name'];
+	// 		$item[$rec['device_id']]=$rec['device_name'];
+	// 	}
+	// 	$data['devices']=$item;
+	// 	//echo "<pre>";print_r($data['devices']);exit;
+		
+    //     $this->load->view('btu_running_report',$data);
+		
+		
+	// }
 	function all_reports(){
 		//echo "<pre>";print_r($_POST);exit();
 		$this->load->model('Hardware_model');

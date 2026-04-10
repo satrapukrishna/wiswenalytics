@@ -2910,7 +2910,7 @@ function getClientToken($client_id){
         
      }
     function deleteAllLiveData(){
-        $tables = array("hardware_station_consumption_data_rsbrothers_live","hardware_station_consumption_data_vegaschool_live","hardware_station_consumption_data_undp_live","hardware_station_consumption_data_hcug_day","hardware_station_consumption_data_hcug36_status","hardware_station_consumption_data__unicef_live","hardware_station_consumption_data_hcug_live","hardware_station_consumption_data_chennai_live","hardware_station_consumption_data_mumbai_live","hardware_station_consumption_data_terotam_live");
+        $tables = array("hardware_station_consumption_data_vegaschool_live","hardware_station_consumption_data_undp_live","hardware_station_consumption_data__unicef_live","hardware_station_consumption_data_chennai_live","hardware_station_consumption_data_mumbai_live","hardware_station_consumption_data_terotam_live");
         $date = date('Y-m-d');
         foreach($tables as $table) {
             $where="TxnDate < '".$date."'";

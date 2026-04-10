@@ -1570,7 +1570,31 @@ class Services_model extends CI_Model
 	   $i=0;
 		foreach($meter_list as $meters){
 	   if($meters['LocationName']=='Dom. Water Sump'){
-		$querywaterlevel="SELECT IF(CurReading*".$meters['multiplier']."/1000>200, round(CurReading*".$meters['multiplier']."/1000-CurReading*0.05*".$meters['multiplier']."/1000,2), round(CurReading*".$meters['multiplier']."/1000-CurReading*0.25*".$meters['multiplier']."/1000,2)) as CurReading FROM $table_name_live WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnTime DESC LIMIT 1";
+		// $querywaterlevel="SELECT IF(CurReading*".$meters['multiplier']."/1000>200, round(CurReading*".$meters['multiplier']."/1000-CurReading*0.05*".$meters['multiplier']."/1000,2), round(CurReading*".$meters['multiplier']."/1000-CurReading*0.25*".$meters['multiplier']."/1000,2)) as CurReading FROM $table_name_live WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnTime DESC LIMIT 1";
+		// date_default_timezone_set('Asia/Kolkata');
+
+		// 		$time = date('H:i:s', time());
+		// 		if($time >'20:00:00' && $time<'21:00:00'){
+		// 			//echo "50%";
+		// 			$querywaterlevel="SELECT IF(CurReading*".$meters['multiplier']."/1000<320, 269.87, 269.87) as CurReading FROM $table_name_live WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnTime DESC LIMIT 1";
+
+		// 		}else if($time >'21:00:00' && $time<'22:00:00'){
+		// 			//echo "40%";
+		// 			$querywaterlevel="SELECT IF(CurReading*".$meters['multiplier']."/1000<320, 210.72, 210.72) as CurReading FROM $table_name_live WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnTime DESC LIMIT 1";
+
+		// 		}else if($time >'22:00:00' && $time<'23:00:00'){
+		// 			//echo "40%";
+		// 			$querywaterlevel="SELECT IF(CurReading*".$meters['multiplier']."/1000<320, 160, 160) as CurReading FROM $table_name_live WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnTime DESC LIMIT 1";
+
+		// 		}else if($time >'05:45:00' && $time<'06:45:00'){
+		// 			$querywaterlevel="SELECT IF(CurReading*".$meters['multiplier']."/1000<320, 320, 320) as CurReading FROM $table_name_live WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnTime DESC LIMIT 1";
+		// 		}else{
+		// 			//echo "test%";
+		// 			$querywaterlevel="SELECT IF(CurReading*".$meters['multiplier']."/1000<320, 330, round(CurReading*".$meters['multiplier']."/1000,2)) as CurReading FROM $table_name_live WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnTime DESC LIMIT 1";
+
+		// 		}
+		$querywaterlevel="SELECT round(CurReading*".$meters['multiplier']."/1000,2) as CurReading FROM $table_name_live WHERE `TxnDate` ='".$todayDate."' AND `StationId`='".$meters['station_id']."' AND `UtilityName`='".$meters['UtilityName']."' AND `LocationName`='".$meters['LocationName']."' ORDER BY TxnTime DESC LIMIT 1";
+
 		// echo $querywaterlevel;die();
 	    $datawaterlevel = $this->db->query($querywaterlevel)->result_array();
 
@@ -2430,9 +2454,10 @@ function check_water_data_unicef_all($location_name,$from,$to)
 			$meter_list=$this->get_energymeter_list($meters_table);
 			if(count($meter_list)>0){
 				$yesterDay = date('Y-m-d',strtotime("-1 days"));
-				//$yesterDay = "2021-10-18";
+				// $stdate = "2025-06-18";
 				$weekday = date('Y-m-d',strtotime("-7 days"));
-				$firstday= date('Y-m-d', strtotime("-35 days"));
+				//$firstday= date('Y-m-d', strtotime("-35 days"));
+				$firstday=  "2025-06-18";
 				$earlier = new DateTime($firstday);
 				$later = new DateTime($todayDate);
 				$date_from_month = strtotime($firstday); 

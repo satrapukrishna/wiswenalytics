@@ -174,8 +174,8 @@ function getTerotamDataLive(){
 }
 function getUnichefDataDates(){
 
-	$date_from = strtotime("2025-06-05"); 
-	$date_to = strtotime("2025-06-05"); 
+	$date_from = strtotime("2026-03-14"); 
+	$date_to = strtotime("2026-03-17"); 
 	$datesarray=array();
 	
 	
@@ -215,8 +215,8 @@ function getUnichefDataDates(){
 }
 function getVegasDataDates(){
 
-	$date_from = strtotime("2025-10-03"); 
-	$date_to = strtotime("2025-10-05"); 
+	$date_from = strtotime("2026-03-14"); 
+	$date_to = strtotime("2026-03-17"); 
 	$datesarray=array();
 	
 	
@@ -422,8 +422,8 @@ function getCliffData(){
 }
 function getUndpData(){
 
-	$date_from = strtotime("2025-04-15"); 
-	$date_to = strtotime("2025-04-16"); 
+	$date_from = strtotime("2026-03-14"); 
+	$date_to = strtotime("2026-03-17"); 
 	$datesarray=array();
 	
 	
@@ -464,8 +464,8 @@ function getUndpData(){
 }
 function getMumbaiDataDates(){
 
-	$date_from = strtotime("2025-01-01"); 
-	$date_to = strtotime("2025-02-10"); 
+	$date_from = strtotime("2026-03-16"); 
+	$date_to = strtotime("2026-03-16"); 
 	$datesarray=array();
 	
 	
@@ -505,8 +505,8 @@ function getMumbaiDataDates(){
 }
 function getChennaiDataDates(){
 
-	$date_from = strtotime("2025-04-01"); 
-	$date_to = strtotime("2025-04-13"); 
+	$date_from = strtotime("2026-03-13"); 
+	$date_to = strtotime("2026-03-16"); 
 	$datesarray=array();
 	
 	

@@ -407,75 +407,74 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                     // if (dayNumEl) {
                     //     dayNumEl.textContent = String(info.date.getDate()).padStart(2, '0');
                     // }
-                    updateDayStyles(kwhData,fval);
 
-        //             const val = kwhData[dateStr];
-        //             let displayVal = '-';
-        //             let bucketClass = 'none';
-        //             if(fval==0){
-        //                 document.getElementById("kwh").innerText = "512 kWh";
-        //                 // document.getElementById("bartxt").innerText = "";
-        //                 if (typeof val === 'number') {
-        //                 displayVal = val;
-        //                 if(val >= 486.4 && val <= 537.5){
-        //                     bucketClass ='light_green';
-        //                 }else if(val < 486.4){
-        //                     bucketClass ='dark_green';
-        //                 }else if(val > 537.5 && val <= 563.2){
-        //                     bucketClass ='yellow';
-        //                 }else if(val > 563.2){
-        //                     bucketClass ='red';
-        //                 }
-        //                 //bucketClass = (val <= 488 && val >= 540) ? 'light_green' : ((val <= 541 && val >= 565) ? 'dark_green' : 'yellow');
-        //             }
+                    const val = kwhData[dateStr];
+                    let displayVal = '-';
+                    let bucketClass = 'none';
+                    if(fval==0){
+                        document.getElementById("kwh").innerText = "512 kWh";
+                        // document.getElementById("bartxt").innerText = "";
+                        if (typeof val === 'number') {
+                        displayVal = val;
+                        if(val >= 486.4 && val <= 537.5){
+                            bucketClass ='light_green';
+                        }else if(val < 486.4){
+                            bucketClass ='dark_green';
+                        }else if(val > 537.5 && val <= 563.2){
+                            bucketClass ='yellow';
+                        }else if(val > 563.2){
+                            bucketClass ='red';
+                        }
+                        //bucketClass = (val <= 488 && val >= 540) ? 'light_green' : ((val <= 541 && val >= 565) ? 'dark_green' : 'yellow');
+                    }
 
-        //             }else if(fval==1){
-        //                 document.getElementById("kwh").innerText = "338 kWh";
-        //                 if (typeof val === 'number') {
-        //                 displayVal = val;
-        //                 if(val >= 321.1 && val <= 354.9){
-        //                     bucketClass ='light_green';
-        //                 }else if(val < 321.1){
-        //                     bucketClass ='dark_green';
-        //                 }else if(val > 354.9 && val <= 371.8){
-        //                     bucketClass ='yellow';
-        //                 }else if(val > 371.8){
-        //                     bucketClass ='red';
-        //                 }
-        //                 //bucketClass = (val <= 488 && val >= 540) ? 'light_green' : ((val <= 541 && val >= 565) ? 'dark_green' : 'yellow');
-        //             }
+                    }else if(fval==1){
+                        document.getElementById("kwh").innerText = "338 kWh";
+                        if (typeof val === 'number') {
+                        displayVal = val;
+                        if(val >= 321.1 && val <= 354.9){
+                            bucketClass ='light_green';
+                        }else if(val < 321.1){
+                            bucketClass ='dark_green';
+                        }else if(val > 354.9 && val <= 371.8){
+                            bucketClass ='yellow';
+                        }else if(val > 371.8){
+                            bucketClass ='red';
+                        }
+                        //bucketClass = (val <= 488 && val >= 540) ? 'light_green' : ((val <= 541 && val >= 565) ? 'dark_green' : 'yellow');
+                    }
 
-        //             }else{
-        //                 document.getElementById("kwh").innerText = "173 kWh";
-        //                 if (typeof val === 'number') {
-        //                 displayVal = val;
-        //                 if(val >= 164.3 && val <= 181.6){
-        //                     bucketClass ='light_green';
-        //                 }else if(val < 164.3){
-        //                     bucketClass ='dark_green';
-        //                 }else if(val > 181.6 && val <= 190.3){
-        //                     bucketClass ='yellow';
-        //                 }else if(val > 190.3){
-        //                     bucketClass ='red';
-        //                 }
-        //                 //bucketClass = (val <= 488 && val >= 540) ? 'light_green' : ((val <= 541 && val >= 565) ? 'dark_green' : 'yellow');
-        //             }
-        //             }
+                    }else{
+                        document.getElementById("kwh").innerText = "173 kWh";
+                        if (typeof val === 'number') {
+                        displayVal = val;
+                        if(val >= 164.3 && val <= 181.6){
+                            bucketClass ='light_green';
+                        }else if(val < 164.3){
+                            bucketClass ='dark_green';
+                        }else if(val > 181.6 && val <= 190.3){
+                            bucketClass ='yellow';
+                        }else if(val > 190.3){
+                            bucketClass ='red';
+                        }
+                        //bucketClass = (val <= 488 && val >= 540) ? 'light_green' : ((val <= 541 && val >= 565) ? 'dark_green' : 'yellow');
+                    }
+                    }
                     
 
-        //             info.el.classList.add(bucketClass);
+                    info.el.classList.add(bucketClass);
 
-        //             const box = document.createElement('div');
-        //             if (box) {
-        //                 box.innerHTML = '';
-        //                 }
-        //             box.className = 'kwh-box';
-        //             box.innerHTML = `
-        //     <div class="kwh-value">${displayVal}</div>
-        //     <div class="kwh-unit">kWh</div>
-        //   `;
-        //            // 
-        //             frame.appendChild(box);
+                    const box = document.createElement('div');
+                    if (box) {
+                        box.innerHTML = '';
+                        }
+                    box.className = 'kwh-box';
+                    box.innerHTML = `
+            <div class="kwh-value">${displayVal}</div>
+            <div class="kwh-unit">kWh</div>
+          `;
+                   // 
+                    frame.appendChild(box);
                     
                     // box.innerHTML = '';
                 },
@@ -504,49 +503,6 @@ calendar.refetchEvents(); // reloads events dynamically
 // addgraph(data);
 return calendar;
     }
-    function updateDayStyles(kwhData,fval) {
-        if(fval==0){
-            document.getElementById("kwh").innerText = "512 kWh";
-        }else if(fval==1){
-            document.getElementById("kwh").innerText = "338 kWh";
-        }else{
-            document.getElementById("kwh").innerText = "173 kWh";
-        }
-  // Loop through all day cells
-  document.querySelectorAll('.fc-daygrid-day').forEach((cell) => {
-    const dateStr = cell.getAttribute('data-date');
-    const val = kwhData[dateStr];
-
-    let bucketClass = 'none';
-    if (typeof val === 'number') {
-      if (val >= 486.4 && val <= 537.5) bucketClass = 'light_green';
-      else if (val < 486.4) bucketClass = 'dark_green';
-      else if (val > 537.5 && val <= 563.2) bucketClass = 'yellow';
-      else if (val > 563.2) bucketClass = 'red';
-    }
-
-    // 🔹 Remove previous color classes
-    cell.classList.remove('light_green', 'dark_green', 'yellow', 'red', 'none');
-    // 🔹 Add new class
-    cell.classList.add(bucketClass);
-
-    // 🔹 Update content inside the cell
-    const frame = cell.querySelector('.fc-daygrid-day-frame');
-    if (frame) {
-      let box = frame.querySelector('.kwh-box');
-      if (!box) {
-        box = document.createElement('div');
-        box.className = 'kwh-box';
-        frame.appendChild(box);
-      }
-      box.innerHTML = `
-        <div class="kwh-value">${val ?? '-'}</div>
-        <div class="kwh-unit">kWh</div>
-      `;
-    }
-  });
-}
-
     function graph_data(date_data){
         var client_id=43;
     var device_id=41;

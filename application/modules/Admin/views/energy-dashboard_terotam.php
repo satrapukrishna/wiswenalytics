@@ -238,13 +238,16 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 						<li><div class="ClLft">Last 30 Days Consumption </div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['monthcons'] ?> kWh</div></li>
 						<li><div class="ClLft">Average Last 30 days</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['avgcons'] ?> kWh</div></li>
 						<li><div class="ClLft">Live kW</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['kw'] ?> kW</div></li>
-						<!-- <li><div class="ClLft">PF</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['pf'] ?> </div></li> -->
-						<!-- <li><div class="ClLft">Voltage_1</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['voltage1'] ?></div></li> -->
-						<!-- <li><div class="ClLft">Voltage_2</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['voltage2'] ?></div></li> -->
-						<!-- <li><div class="ClLft">Voltage_3</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['voltage3'] ?></div></li> -->
+						
 						<li><div class="ClLft">Current_1</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['current1'] ?></div></li>
 						<li><div class="ClLft">Current_2</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['current2'] ?></div></li>
 						<li><div class="ClLft">Current_3</div><div class="ClRgt"><?php echo $energy_meters_data['uncf'][$i]['current3'] ?></div></li>
+                        <li><div class="ClLft">PF</div><div class="ClRgt">NA </div></li>
+						<li><div class="ClLft">Voltage_1</div><div class="ClRgt">NA</div></li>
+						<li><div class="ClLft">Voltage_2</div><div class="ClRgt">NA</div></li>
+						<li><div class="ClLft">Voltage_3</div><div class="ClRgt">NA</div></li>
+                        <li><div class="ClLft">KVA</div><div class="ClRgt">NA</div></li>
+                        <li><div class="ClLft">KVAH</div><div class="ClRgt">NA</div></li>
 					</ul>
                      
 					</div>
@@ -268,6 +271,10 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
                 <div class="DshBrdSctnDtls device devicebox9"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
 				<h4 class="head-h4">Weekday wise Consumption(Cumulative)</h4>
                 <div id="container_energy3" style="width:100%"></div>	</div>
+
+                <div class="DshBrdSctnDtls device devicebox9"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
+				<h4 class="head-h4">Over Consumption(Monthly)</h4>
+                <div id="container_energy_overconsumption_monthly" style="width:100%"></div>	</div>
 
                 <div class="DshBrdSctnDtls device devicebox9"  style="background-color:#fff;padding:10px;border-bottom: 1px solid #d0cfcf;">
 				<h4 class="head-h4">Day Time: 9AM To 11PM  &&  Night Time:11PM To 8AM </h4>
@@ -532,7 +539,7 @@ var energy_data_c1=<?php echo json_encode($energydata['unicef']);?>;
         text: ''
     },
     xAxis: {
-        categories: ['<b>Quarter2(April 1st To June 30th)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Quarter3(July 1st To Sept 30th)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Quarter4(Oct 1st To Dec 31st)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+        categories: ['<b>Quarter2(April 1st To June 30th)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Quarter3(July 1st To Sept 30th)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Quarter4(Oct 1st To Dec 31st)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Quarter5(Jan 1st To March 31st 2026)</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         crosshair: true,
         accessibility: {
             description: 'Countries'
@@ -589,7 +596,7 @@ var energy_monthly_data=<?php echo json_encode($energydat_monthly_weekday_wise_c
   },
     xAxis: {
        // categories: ['<b>Jan</b>','Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Feb</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>March</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>April</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>May</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>June</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>July</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Aug</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],       
-    categories: ['<b>June</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>July</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Aug</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Sept</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Oct</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    categories: ['<b>June</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>July</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Aug</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Sept</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Oct</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Oct</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Nov</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat','<b>Dec</b>', 'Sun','Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
 
        crosshair: true,
         accessibility: {
@@ -778,6 +785,46 @@ Highcharts.chart('container_energy_monthly', {
         {
             name: 'night',
             data: energy_day_night_data_monthly['night']
+        }
+    ]
+});
+var energydat_over_consumption_monthly=<?php echo json_encode($energydat_over_consumption_monthly);?>;
+
+Highcharts.chart('container_energy_overconsumption_monthly', {
+    chart: {
+        type: 'column',
+        custom: {}
+    },
+    title: {
+        text: ''
+    },
+    yAxis: {
+        title: {
+            text: 'Kwh'
+        }
+    },tooltip: {
+        pointFormat: '{series.name}: <b>{point.y:.0f}Kwh</b>'
+    },
+    legend: {
+        enabled: false
+    },credits: {
+    enabled: false
+  },xAxis: {
+        categories: energydat_over_consumption_monthly['date'],
+        accessibility: {
+            description: 'This Month'
+        }
+    },
+    accessibility: {
+        point: {
+            valueSuffix: ' Kwh'
+        }
+    },
+    series: [
+        {
+            name: 'day',
+            data: energydat_over_consumption_monthly['day'],
+            color: '#f00010',
         }
     ]
 });

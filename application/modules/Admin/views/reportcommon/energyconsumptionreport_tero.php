@@ -25,7 +25,7 @@
 	<tbody>
 		
 	
-		<tr ><td colspan="4" style="text-align: center; font-weight: bold;">UN House Central Wing</td></tr>
+		<!-- <tr ><td colspan="4" style="text-align: center; font-weight: bold;">UN House Central Wing</td></tr> -->
 		<?php for($j=0;$j<count($energydata['hourly']['tero']);$j++){ 
 			for($i=0;$i<count($energydata['hourly']['tero'][$j]);$i++){?>
 				<tr>

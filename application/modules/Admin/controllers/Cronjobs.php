@@ -235,13 +235,32 @@ function push_undp_cons_data_single(){
 
       
 	}
-  function terotam_mail(){
+  function terotam_mail_day(){
 		//echo "<pre>";print_r($_POST);exit();
-		$yesterDay = date('Y-m-d',strtotime("-1 days"));
+		// $today = date('Y-m-d');
+    $today = date('Y-m-d',strtotime("-1 days"));
 		//flowmeter start	
 		$this->load->model('Api_data_model_tero');
-		  $hardware_data=$this->Api_data_model_tero->get_hardwares_device_data_energy_meters_tero_mail($yesterDay);
-      if($hardware_data['cons']>400){
+		  $hardware_data=$this->Api_data_model_tero->get_hardwares_device_data_energy_meters_tero_mail_day($today,'hardware_station_consumption_data_terotam',"EB");
+      if($hardware_data['cons']>320){
+        $this->sendMailTero($hardware_data);
+      }
+      
+			//echo json_encode($hardware_data);die();
+
+
+
+      
+	}
+  function terotam_mail_night(){
+		//echo "<pre>";print_r($_POST);exit();
+		// $today = date('Y-m-d');
+    $today = date('Y-m-d',strtotime("-1 days"));
+
+		//flowmeter start	
+		$this->load->model('Api_data_model_tero');
+		  $hardware_data=$this->Api_data_model_tero->get_hardwares_device_data_energy_meters_tero_mail_night($today,'hardware_station_consumption_data_terotam',"EB");
+      if($hardware_data['cons']>5){
         $this->sendMailTero($hardware_data);
       }
       
@@ -253,21 +272,7 @@ function push_undp_cons_data_single(){
 	}
   function sendMailTero($Result){
     
-    //$sdate=date('Y-m-d',strtotime("-1 days"));
-   
-    // $msg_data = '<b>Hi </b> ,<br /> Client Name :<b> RSBroGenerators</b><br />Your Generator Details on ' . $sdate . ' are as below :<br />No of Generators :'.count($message).'<br/><b>Vehicles Details are :</b><br />
-    //             <br/><table border="1" bgcolor="#fffff0"><tr><th style=" background-color: #4CAF50; color: white; ">S.No</th><th style=" background-color: #4CAF50; color: white; ">Generator</th><th style=" background-color: #4CAF50; color: white; ">Running Hours</th><th style=" background-color: #4CAF50; color: white; ">Fuel Consumed(In Ltrs)</th><th style=" background-color: #4CAF50; color: white; ">Economy(Ltrs/Hr)</th><th style=" background-color: #4CAF50; color: white; ">Fuel Added(In Ltrs)</th><th style=" background-color: #4CAF50; color: white; ">Fuel Removed(In Ltrs)</th><th style=" background-color: #4CAF50; color: white; ">Fuel Left(In Ltrs)</th></tr>'; // Set email format to HTML;
-    //  for($i = 0;$i<sizeof($message);$i++){
-    //    $j = $i+1;
-    //    if($message[$i]['from']=='wis'){
-    //     $msg_data .='<tr><td align="center">'.$j.'</td><td>'.$message[$i]['dgname']."(".$message[$i]['location'].")".'</td><td>'.$message[$i]['run'].'</td><td align="center">'.$message[$i]['fconsume'].'</td><td align="center">'.$message[$i]['economy'].'</td><td align="center">'.$message[$i]['fadd'].'</td><td align="center">0</td><td align="center">'.$message[$i]['availableFuel'].'</td></tr>'; 
-    //    }else{
-    //     $msg_data .='<tr><td align="center">'.$j.'</td><td>'.$message[$i]['dgname'].'</td><td>'.$message[$i]['run'].'</td><td align="center">'.$message[$i]['fconsume'].'</td><td align="center">'.$message[$i]['economy'].'</td><td align="center">'.$message[$i]['fadd'].'</td><td align="center">0</td><td align="center">'.$message[$i]['availableFuel'].'</td></tr>'; 
-    //    }
-       
-  
-    //  } 				
-    // $msg_data.=  '</table><br />Thanks and Regards,<br />Wenalytics Team<br />   ';
+    
     $Body = '<!DOCTYPE html>
                 <html lang="en">
                     <head>
@@ -298,7 +303,7 @@ function push_undp_cons_data_single(){
                                                             <table cellpadding="0" cellspacing="0" border="0" width="100%">
                                                                 <tr>
                                                                     <td style="font-family: \'Nunito\', Arial; font-size: 15px; font-weight: bold; color: #263238; padding-bottom: 10px; border-bottom: 1px solid #E7ECEE;">
-                                                                    High Consumption Alert
+                                                                    ' . $Result['type'] . '
                                                                     </td>
                                                                 </tr>
                                                                 <tr>
@@ -313,7 +318,7 @@ function push_undp_cons_data_single(){
                                                                                 </td>
                                                                                 <td style="width: 20%; font-family: \'Nunito\', Arial; font-size: 13px; color: #263238; vertical-align: top; text-align: left;">Consumption<br /><strong>' . $Result['cons'] . 'kWh</strong>
                                                                                 <br />
-                                                                                <small>(Threshold: Greater Than 400)</small>
+                                                                                <small>(Threshold: Greater Than ' . $Result['thresold'] . ')</small>
                                                                                 </td>
                                                                             </tr>
                                                                         </table>
@@ -349,16 +354,16 @@ function push_undp_cons_data_single(){
       'wordwrap' => TRUE
  
     );
-    // echo $Body;die();
+    echo $Body;
     $this->load->library('email');
     $this->email->initialize($config);   
     $this->email->set_newline("\r\n"); 
     $this->email->set_mailtype("html");   
-    $this->email->from('Wenalytics@gmail.com', 'Wenalytics');
-    
-    $list = array('krishna@wenalytics.com');
+    $this->email->from('Wenalytics@gmail.com', 'No Reply - Wis Spaces');
     
     // $list = array('krishna@wenalytics.com');
+    
+     $list = array('krishna@wenalytics.com','sunilmanohar@wenalytics.com ','vipul.chaudhary@terotam.com','shubham.sah@terotam.com','contact@terotam.com');
     $this->email->to($list);
     $this->email->subject('High Consumption Alert');
     $this->email->message($Body);

@@ -95,16 +95,42 @@ class Api_data_model_tero extends CI_Model{
         $page = $this->db->get()->row_array();
         return $page['db_table_live'];
     }
-	function get_hardwares_device_data_energy_meters_tero_mail($date){
-				$enquery="SELECT SUM(Consumption) as cons FROM hardware_station_consumption_data_terotam WHERE `UtilityName`='EB' AND `TxnDate`='".$date."' AND LineConnected='kWh'	ORDER BY TxnTime";
+	function get_hardwares_device_data_energy_meters_tero_mail_day($date,$table,$meter){
+
+			$dayquery="SELECT round(SUM(Consumption),2) as day_consumption FROM $table where TxnDate='".$date."' AND `UtilityName`='".$meter."' AND LineConnected='kWh' AND TxnTime BETWEEN '09:00:00' AND '23:00:00'";
+			//$nightquery="SELECT round(SUM(t.cons),2) AS night_consumption FROM (SELECT SUM(Consumption) as cons FROM $table where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '00:00:00' AND '08:59:59' UNION ALL SELECT SUM(Consumption) as cons FROM $table_name_live where TxnDate = '".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '23:00:01' AND '24:00:00') t";
+			// echo $queryconsutoday;die();
 			
-				$consdata = $this->db->query($enquery)->result_array();
-				$today_cons=round($consdata[0]['cons'],2);
+			$dataday = $this->db->query($dayquery)->result_array();
+			//$datanight = $this->db->query($nightquery)->result_array();
+			
+			
+				$today_cons=round($dataday[0]['day_consumption'],2);
 				$resdata['date']=$date;
+				$resdata['thresold']="320";
+				$resdata['type']="High Consumption Alert for the Day";
 				$resdata['cons']=round($today_cons,2);
 		return $resdata;
 
 	}
+	function get_hardwares_device_data_energy_meters_tero_mail_night($date,$table,$meter){
+
+		// $dayquery="SELECT round(SUM(Consumption),2) as day_consumption FROM $table where TxnDate='".$date."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' AND TxnTime BETWEEN '09:00:00' AND '23:00:00'";
+		$nightquery="SELECT round(SUM(t.cons),2) AS night_consumption FROM (SELECT SUM(Consumption) as cons FROM $table where TxnDate='".$date."' AND `UtilityName`='".$meter."' AND LineConnected='kWh' AND TxnTime BETWEEN '00:00:00' AND '08:59:59' UNION ALL SELECT SUM(Consumption) as cons FROM $table where TxnDate = '".$date."' AND `UtilityName`='".$meter."' AND LineConnected='kWh' AND TxnTime BETWEEN '23:00:01' AND '24:00:00') t";
+		// echo $nightquery;die();
+		
+		// $dataday = $this->db->query($dayquery)->result_array();
+		$datanight = $this->db->query($nightquery)->result_array();
+		
+		
+			$today_cons=round($datanight[0]['night_consumption'],2);
+			$resdata['date']=$date;
+			$resdata['thresold']="5";
+			$resdata['type']="High Consumption Alert for the Night";
+			$resdata['cons']=round($today_cons,2);
+	return $resdata;
+
+}
 	function get_hardwares_device_data_energy_meters_tero($data){
 		// echo json_encode($data);die();
 		$station_id=$data['station_id'];
@@ -370,6 +396,106 @@ class Api_data_model_tero extends CI_Model{
 			}
 			$res3['day']=$day_con;
 			$res3['night']=$night_con;	
+			$res3['date']=$time;	
+			
+	// echo json_encode($resdata);die();
+		return $res3;
+	
+		
+	}
+	function get_hardwares_device_data_energymeter_report_terotam_overconsumption_dashboard_monthly($data,$fromdate,$todate){
+		//echo $sort;die();
+		$station_id=$data['station_id'];
+		$hardware_name=$data['api_name'];
+		$lineconnected=$data['LineConnected'];
+		
+		//$firstday= date('Y-m-01', strtotime(date('Y-m-d')));
+		$firstday = date('Y-m-d', strtotime('-30 days'));
+		$date_from = strtotime($firstday); 
+        $date_to = strtotime(date('Y-m-d')); 
+		// echo $date_to;die();
+        $datesarray=array();
+		
+		$table_name=$this->get_table_name($station_id);
+		$table_name_live=$this->get_table_name_live($station_id);
+		
+		
+        for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
+        {
+          array_push($datesarray, date("Y-m-d",$i1));  
+        }
+		$meter_list=$this->get_energymeter_list_terotam(2025000133);
+		$threshold=325;
+		
+		//echo date('l', strtotime($datesarray[0]));die();
+		//SELECT SUM(t.cons) AS night_consumption FROM (SELECT SUM(Consumption) as cons FROM hardware_station_consumption_data_terotam where TxnDate='2025-06-19' AND LineConnected='kWh' AND TxnTime BETWEEN '19:00:00' AND '24:00:00' UNION ALL SELECT SUM(Consumption) as cons FROM hardware_station_consumption_data_terotam where TxnDate='2025-06-20' AND LineConnected='kWh' AND TxnTime BETWEEN '00:00:00' AND '06:00:00') t;
+		
+		for ($i=0; $i < count($meter_list); $i++) {
+			
+			for ($k=0; $k < count($datesarray); $k++)
+				{ 
+						$res[$k]['date']=$datesarray[$k];
+						$check=$this->chech_energy_consumotion_terotam($meter_list[$i]['UtilityName'],$datesarray[$k]);
+
+						if(count($check)==1){
+							
+								$t_result=round($check[0]['consumption']-$threshold,2);
+								if ($t_result >= 0) {
+									$res[$k]['day']=$t_result;
+								}else {
+									$res[$k]['day']=0;
+								}
+								
+								// if (filter_var($t_result, FILTER_VALIDATE_INT, ["options" => ["min_range" => 1]]) !== false) {
+								// 	$res[$k]['day']=$t_result;
+								// } else {
+								// 	$res[$k]['day']=0;
+								// }
+								
+								
+								
+						}else{
+							if($datesarray[$k]>=date('Y-m-d')){								
+								$dayquery="SELECT round(SUM(Consumption),2) as consumption FROM $table_name_live where TxnDate='".$datesarray[$k]."' AND `UtilityName`='".$meter_list[$i]['UtilityName']."' AND LineConnected='kWh' ";
+								
+								$dataday = $this->db->query($dayquery)->result();
+								$t_result=round((float)$dataday[0]->day_consumption-$threshold,2);
+								if ($t_result >= 0) {
+									$res[$k]['day']=$t_result;
+								} else {
+									$res[$k]['day']=0;
+								}
+							}else{
+								
+								
+								$res[$k]['day']=0;
+							}
+						}
+						
+						
+						
+						
+						
+					
+					
+					
+				} 
+				$resdata['tero']['meter']=$meter_list[$i]['DashboardName'];
+				
+				$resdata['tero']['data']=$res;
+				
+				
+
+		}
+			//$p=0;
+			$day_con=[];
+			$time=[];
+			foreach ($res as $key => $value) {
+				array_push($day_con, (float)$value['day']);
+				array_push($time, $value['date']);
+				//echo json_encode($value);die();
+			}
+			$res3['day']=$day_con;
 			$res3['date']=$time;	
 			
 	// echo json_encode($resdata);die();
@@ -1031,6 +1157,12 @@ class Api_data_model_tero extends CI_Model{
 		$m12_fdate='2025-12-01';
 		$m12_tdate='2025-12-31';
 
+		$dm1_fdate='2025-01-01';
+		$dm1_tdate='2025-01-31';
+
+		$dm2_fdate='2025-02-01';
+		$dm2_tdate='2025-02-28';
+
 		//echo json_encode($days);die();
         // for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
         // {
@@ -1216,25 +1348,25 @@ class Api_data_model_tero extends CI_Model{
 						$m10_friday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m10_fdate,$m10_tdate,6);
 						$m10_saturday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m10_fdate,$m10_tdate,7);
 
-						// $m11_sunday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,1);
-						// $m11_monday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,2);
-						// $m11_tusday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,3);
-						// $m11_wednesday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,4);
-						// $m11_thursday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,5);
-						// $m11_friday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,6);
-						// $m11_saturday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,7);
+						$m11_sunday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,1);
+						$m11_monday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,2);
+						$m11_tusday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,3);
+						$m11_wednesday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,4);
+						$m11_thursday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,5);
+						$m11_friday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,6);
+						$m11_saturday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m11_fdate,$m11_tdate,7);
 
-						// $m12_sunday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,1);
-						// $m12_monday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,2);
-						// $m12_tusday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,3);
-						// $m12_wednesday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,4);
-						// $m12_thursday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,5);
-						// $m12_friday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,6);
-						// $m12_saturday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,7);
+						$m12_sunday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,1);
+						$m12_monday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,2);
+						$m12_tusday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,3);
+						$m12_wednesday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,4);
+						$m12_thursday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,5);
+						$m12_friday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,6);
+						$m12_saturday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$m12_fdate,$m12_tdate,7);
 
 						
 						//$data=[0,(float)$m1_sunday,(float)$m1_monday,(float)$m1_tusday,(float)$m1_wednesday,(float)$m1_thursday,(float)$m1_friday,(float)$m1_saturday,0,(float)$m2_sunday,(float)$m2_monday,(float)$m2_tusday,(float)$m2_wednesday,(float)$m2_thursday,(float)$m2_friday,(float)$m2_saturday,0,(float)$m3_sunday,(float)$m3_monday,(float)$m3_tusday,(float)$m3_wednesday,(float)$m3_thursday,(float)$m3_friday,(float)$m3_saturday,0,(float)$m4_sunday,(float)$m4_monday,(float)$m4_tusday,(float)$m4_wednesday,(float)$m4_thursday,(float)$m4_friday,(float)$m4_saturday,0,(float)$m5_sunday,(float)$m5_monday,(float)$m5_tusday,(float)$m5_wednesday,(float)$m5_thursday,(float)$m5_friday,(float)$m5_saturday,0,(float)$m6_sunday,(float)$m6_monday,(float)$m6_tusday,(float)$m6_wednesday,(float)$m6_thursday,(float)$m6_friday,(float)$m6_saturday,0,(float)$m7_sunday,(float)$m7_monday,(float)$m7_tusday,(float)$m7_wednesday,(float)$m7_thursday,(float)$m7_friday,(float)$m7_saturday,(float)$m8_sunday,(float)$m8_monday,(float)$m8_tusday,(float)$m8_wednesday,(float)$m8_thursday,(float)$m8_friday,(float)$m8_saturday];
-						$data=[0,(float)$m6_sunday,(float)$m6_monday,(float)$m6_tusday,(float)$m6_wednesday,(float)$m6_thursday,(float)$m6_friday,(float)$m6_saturday,0,(float)$m7_sunday,(float)$m7_monday,(float)$m7_tusday,(float)$m7_wednesday,(float)$m7_thursday,(float)$m7_friday,(float)$m7_saturday,0,(float)$m8_sunday,(float)$m8_monday,(float)$m8_tusday,(float)$m8_wednesday,(float)$m8_thursday,(float)$m8_friday,(float)$m8_saturday,0,(float)$m9_sunday,(float)$m9_monday,(float)$m9_tusday,(float)$m9_wednesday,(float)$m9_thursday,(float)$m9_friday,(float)$m9_saturday,0,(float)$m10_sunday,(float)$m10_monday,(float)$m10_tusday,(float)$m10_wednesday,(float)$m10_thursday,(float)$m10_friday,(float)$m10_saturday];
+						$data=[0,(float)$m6_sunday,(float)$m6_monday,(float)$m6_tusday,(float)$m6_wednesday,(float)$m6_thursday,(float)$m6_friday,(float)$m6_saturday,0,(float)$m7_sunday,(float)$m7_monday,(float)$m7_tusday,(float)$m7_wednesday,(float)$m7_thursday,(float)$m7_friday,(float)$m7_saturday,0,(float)$m8_sunday,(float)$m8_monday,(float)$m8_tusday,(float)$m8_wednesday,(float)$m8_thursday,(float)$m8_friday,(float)$m8_saturday,0,(float)$m9_sunday,(float)$m9_monday,(float)$m9_tusday,(float)$m9_wednesday,(float)$m9_thursday,(float)$m9_friday,(float)$m9_saturday,0,(float)$m10_sunday,(float)$m10_monday,(float)$m10_tusday,(float)$m10_wednesday,(float)$m10_thursday,(float)$m10_friday,(float)$m10_saturday,0,(float)$m11_sunday,(float)$m11_monday,(float)$m11_tusday,(float)$m11_wednesday,(float)$m11_thursday,(float)$m11_friday,(float)$m11_saturday,0,(float)$m12_sunday,(float)$m12_monday,(float)$m12_tusday,(float)$m12_wednesday,(float)$m12_thursday,(float)$m12_friday,(float)$m12_saturday];
 						
 						
 						
@@ -1333,6 +1465,9 @@ class Api_data_model_tero extends CI_Model{
 
 		$q4_fdate='2025-10-01';
 		$q4_tdate='2025-12-31';
+
+		$q5_fdate='2026-01-01';
+		$q5_tdate='2026-03-31';
 		
 
 		//echo json_encode($days);die();
@@ -1376,8 +1511,16 @@ class Api_data_model_tero extends CI_Model{
 						$q4_friday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q4_fdate,$q4_tdate,6);
 						$q4_saturday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q4_fdate,$q4_tdate,7);
 
+						$q5_sunday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q5_fdate,$q5_tdate,1);
+						$q5_monday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q5_fdate,$q5_tdate,2);
+						$q5_tusday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q5_fdate,$q5_tdate,3);
+						$q5_wednesday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q5_fdate,$q5_tdate,4);
+						$q5_thursday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q5_fdate,$q5_tdate,5);
+						$q5_friday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q5_fdate,$q5_tdate,6);
+						$q5_saturday=$this->get_energy_consumption_weekday($meter_list[$i]['UtilityName'],$q5_fdate,$q5_tdate,7);
+
 						
-						$data=[0,(float)$q2_sunday,(float)$q2_monday,(float)$q2_tusday,(float)$q2_wednesday,(float)$q2_thursday,(float)$q2_friday,(float)$q2_saturday,0,(float)$q3_sunday,(float)$q3_monday,(float)$q3_tusday,(float)$q3_wednesday,(float)$q3_thursday,(float)$q3_friday,(float)$q3_saturday,0,(float)$q4_sunday,(float)$q4_monday,(float)$q4_tusday,(float)$q4_wednesday,(float)$q4_thursday,(float)$q4_friday,(float)$q4_saturday];
+						$data=[0,(float)$q2_sunday,(float)$q2_monday,(float)$q2_tusday,(float)$q2_wednesday,(float)$q2_thursday,(float)$q2_friday,(float)$q2_saturday,0,(float)$q3_sunday,(float)$q3_monday,(float)$q3_tusday,(float)$q3_wednesday,(float)$q3_thursday,(float)$q3_friday,(float)$q3_saturday,0,(float)$q4_sunday,(float)$q4_monday,(float)$q4_tusday,(float)$q4_wednesday,(float)$q4_thursday,(float)$q4_friday,(float)$q4_saturday,0,(float)$q5_sunday,(float)$q5_monday,(float)$q5_tusday,(float)$q5_wednesday,(float)$q5_thursday,(float)$q5_friday,(float)$q5_saturday];
 						
 						
 						

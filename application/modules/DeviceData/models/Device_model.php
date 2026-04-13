@@ -70,8 +70,11 @@ function insertLiveData($data, $tableName)
 
         //  Ignore duplicates automatically
             // $this->db->ignore(true)->insert($tableName, $apiData);
+            $sql = $this->db->set($apiData)->get_compiled_insert($tableName);
+            $sql = str_replace('INSERT INTO', 'INSERT IGNORE INTO', $sql);
+            $this->db->query($sql);
 
-        $this->db->insert($tableName, $apiData);
+        // $this->db->insert($tableName, $apiData);
     }
     function pushHcugApiData($data){
         // echo json_encode($data->TxnDate);die();

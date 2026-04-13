@@ -21,7 +21,15 @@ function getUnichefDataLive()
         'insertLiveData'
     );
 }
-
+function getUnichefDataPre()
+{
+    $this->fetchPreData(
+        'UCDL',
+        'hardware_station_consumption_data__unicef',
+        2024000527,
+        'insertLiveData'
+    );
+}
 function getChennaiDataLive()
 {
     $this->fetchLiveData(
@@ -49,6 +57,15 @@ function getTerotamDataLive()
         'insertLiveData'
     );
 }
+function getTerotamDataPre()
+{
+    $this->fetchPreData(
+        'GMAG',
+        'hardware_station_consumption_data_terotam',
+        2025000133,
+        'insertLiveData'
+    );
+}
 function getMumbaiDataLive()
 {
     $this->fetchLiveData(
@@ -57,6 +74,37 @@ function getMumbaiDataLive()
         2021000076,
         'insertLiveData'
     );
+}
+function getMumbaiDataPre()
+{
+    $this->fetchLiveData(
+        '0003',
+        'hardware_station_consumption_data_mumbai',
+        2021000076,
+        'insertLiveData'
+    );
+}
+function getUNDPDataLive()
+{
+	$stationMap = [
+    'UNDP' => 2023000304,
+    'UNCW' => 2023000303,
+	'UNEW' => 2023000300,
+	'UNFF' => 2023000302,
+	'UNWW' => 2023000301,
+	'UNAB' => 2024000143,
+	'UNSG' => 2024000144,
+];
+	foreach ($stationMap as $storeCode => $stationId) {
+		//echo $storeCode . ' - ' . $stationId . "<br>";
+		$this->fetchLiveData(
+			$storeCode,
+			'hardware_station_consumption_data_undp_live',
+			$stationId,
+			'insertLiveData'
+		);
+	}
+    
 }
 function fetchPreData($storeCode, $tableName, $stationId, $insertFunction)
 {
@@ -161,12 +209,13 @@ function fetchLiveData($storeCode, $tableName, $stationId, $insertFunction)
         if (empty($entry->TxnTime)) {
             continue;
         }
+		$this->Device_model->$insertFunction($entry,$tableName);
 
-        $txnTime = new DateTime(date('Y-m-d') . ' ' . $entry->TxnTime);
+        // $txnTime = new DateTime(date('Y-m-d') . ' ' . $entry->TxnTime);
 
-        if ($txnTime > $existingTxnTime) {
-            $this->Device_model->$insertFunction($entry,$tableName);
-        }
+        // if ($txnTime > $existingTxnTime) {
+        //     $this->Device_model->$insertFunction($entry,$tableName);
+        // }
     }
 }
 function getAccessToken()

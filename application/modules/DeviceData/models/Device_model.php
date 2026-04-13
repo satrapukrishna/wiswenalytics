@@ -35,6 +35,44 @@ class Device_model extends CI_Model{
         $result = $query->result_array();
         return $result;
     }
+function insertLiveData($data, $tableName)
+    {
+        if (empty($data)) {
+            return;
+        }
+
+        // Convert date safely
+        $newDate = !empty($data->TxnDate)
+            ? date("Y-m-d", strtotime($data->TxnDate))
+            : null;
+
+        // Prepare insert data
+        $apiData = [
+            'StationId'      => $data->StationId ?? null,
+            'UtilityName'    => $data->UtilityName ?? null,
+            'LocationName'   => $data->LocationName ?? null,
+            'LocationGroup'  => $data->LocationGroup ?? null,
+            'MeterName'      => $data->MeterName ?? null,
+            'MeterSerial'    => $data->MeterSerial ?? null,
+            'LineConnected'  => $data->LineConnected ?? null,
+            'TxnDate'        => $newDate,
+            'TxnTime'        => $data->TxnTime ?? null,
+            'FromTime'       => $data->FromTime ?? null,
+            'ToTime'         => $data->ToTime ?? null,
+            'PrvReading'     => $data->PrvReading ?? null,
+            'CurReading'     => $data->CurReading ?? null,
+            'Consumption'    => $data->Consumption ?? null,
+            'Multiplier'     => $data->Multiplier ?? null,
+            'UomName'        => $data->UomName ?? null,
+            'UomScale'       => $data->UomScale ?? null,
+            'update_date'    => date("Y-m-d H:i:s")
+        ];
+
+        //  Ignore duplicates automatically
+            // $this->db->ignore(true)->insert($tableName, $apiData);
+
+        $this->db->insert($tableName, $apiData);
+    }
     function pushHcugApiData($data){
         // echo json_encode($data->TxnDate);die();
             $newDate = date("Y-m-d", strtotime($data->TxnDate));

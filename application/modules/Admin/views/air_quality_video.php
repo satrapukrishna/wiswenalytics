@@ -23,9 +23,7 @@
                 maxSlides: 2,
                 moveSlides: 1,
                 hideControlOnEnd: true,
-                infiniteLoop: false,
-                auto: true,
-                
+                infiniteLoop: false
             });
             window.onresize = function (event) {
                 document.location.reload(true);

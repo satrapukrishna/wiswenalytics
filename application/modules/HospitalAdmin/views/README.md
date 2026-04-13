@@ -1,2 +1,0 @@
-# firstmed
-Hospital automation

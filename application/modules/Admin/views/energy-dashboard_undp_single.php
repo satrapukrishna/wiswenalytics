@@ -206,7 +206,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 		<?php if(modules::run('Admin/Site/authlink','energy_Energy-Meter')){ ?>
 			<div class="DshBrdSctn" style="padding: 10px 30px 10px 38px;">
                 <div class="DshBrdSctnTtl" id="energy">
-                    <span class="TxtTtl imageadd"><img src="<?php //echo site_url() ?>asset/admin/img/device_icon_20200715211126.png" width="40" />Energy Meter</span>
+                    <span class="TxtTtl imageadd"><img src="<?php echo site_url() ?>asset/admin/img/device_icon_20200715211126.png" width="40" />Energy Meter</span>
 					
                     <?php /*<span class="SctnVw Cllps" id="Bwcollapse"></span>*/?>
 					

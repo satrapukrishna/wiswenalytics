@@ -81,6 +81,8 @@ class Hardware_template extends MX_Controller {
         }else{
 			
 			// echo "<pre>";print_r($_POST);
+			//echo $this->input->post('Dynamicdropdownname');exit;
+			$dropdowndata = '';
 			if($this->input->post('Dynamicdropdownname')!=''){
 				
 				$control_type="dropdown";
@@ -94,7 +96,8 @@ class Hardware_template extends MX_Controller {
 					'control_name' => str_replace(' ','_',$this->input->post('Dynamicdropdownname')),    
 					'control_value' => $dropdowndata,
 					'created_by' => $this->session->userdata('user_id'),     
-					'created_time'=>date('Y-m-d H:i:s')			
+					'created_time'=>date('Y-m-d H:i:s'),
+					'updated_time'=>date('Y-m-d H:i:s')							
 					);
 					$res=$this->Hardware_template_model->insert_hardware_template($website_data1);
 				
@@ -111,8 +114,10 @@ class Hardware_template extends MX_Controller {
 					'hardware_device' => $this->input->post('hardware_device'),               
 					'control_type' => $control_type,               
 					'control_name' => $textdata[$i],
+					'control_value' => '',
 					'created_by' => $this->session->userdata('user_id'),     
-					'created_time'=>date('Y-m-d H:i:s')			
+					'created_time'=>date('Y-m-d H:i:s'),
+					'updated_time'=>date('Y-m-d H:i:s')					
 					);
 					$res=$this->Hardware_template_model->insert_hardware_template($website_data);
 				}
@@ -129,14 +134,16 @@ class Hardware_template extends MX_Controller {
 					'hardware_device' => $this->input->post('hardware_device'),               
 					'control_type' => $control_type,               
 					'control_name' => str_replace(' ','_',$this->input->post('DynamicRadio')),
+					'control_value' => '',
 					'created_by' => $this->session->userdata('user_id'),  
-					'created_time'=>date('Y-m-d H:i:s')			
+					'created_time'=>date('Y-m-d H:i:s'),
+					'updated_time'=>date('Y-m-d H:i:s')				
 					);
 					$res=$this->Hardware_template_model->insert_hardware_template($website_data);
 				
 			}
 			
-			// echo $row;exit;
+			//echo $res;exit;
 
            
             // $category_id = $this->db->insert_id();

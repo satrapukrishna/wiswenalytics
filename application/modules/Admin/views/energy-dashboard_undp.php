@@ -216,10 +216,7 @@ div.DshMnCtnr div.DshBrdCtnr div.DshBrdSctn div.DshBrdSctnDtls ul.SctnDtlsGrdTbl
 					</ul>
 					
 					</div>
-					<div>
-					<div id="energycontaineruncw<?php echo $i; ?>" style="width:400px"></div> 
-				</div>
-					 
+					<div id="energycontaineruncw<?php echo $i; ?>" style="width:400px"></div>
 					</div>
 					
 					</div>

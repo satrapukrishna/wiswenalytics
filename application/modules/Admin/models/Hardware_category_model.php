@@ -26,7 +26,26 @@ class Hardware_category_model extends CI_Model{
         return false;
     }
 	
-	
+	function get_hardware_category_dropdown_all() {
+        
+        $client_id = $this->session->userdata('created_by');
+        $sql = "
+        SELECT DISTINCT
+            hc.category_id,
+            hc.category_name
+        FROM clients c
+        JOIN hardware_category hc
+            ON c.permissions LIKE CONCAT('%', hc.category_name, '_%')
+        WHERE c.client_id = ?
+        ORDER BY hc.category_name
+    ";
+        $res = $this->db->query($sql, array($client_id))->result_array();
+        $items = array();
+        foreach ($res as $row){
+            $items[$row['category_id']] = $row['category_name'];
+        }
+        return $items;
+    }
 	function get_hardware_category_dropdown() {
         $this->db->select('category_id,category_name');
         $this->db->from('hardware_category');
@@ -53,175 +72,8 @@ class Hardware_category_model extends CI_Model{
         }
         return $items;
     }
-    function get_hardware_category_dropdown_chennai() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[5,6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_vega() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[4,6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_undp() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_unicef() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[5,6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_terotam() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_hcug() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[10]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_rsbro() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_rainbow() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[4,5,6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_rainbow_tab() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_rainbow_graph() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[4,5,6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_lona() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[5,6]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_mumbai() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[5,10]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
-    function get_hardware_category_dropdown_iit() {
-        $this->db->select('category_id,category_name');
-        $this->db->from('hardware_category');
-        $this->db->where_in('category_id',[11]);
-        $this->db->where('status',1);
-        $this->db->order_by('category_id');
-        $res = $this->db->get()->result_array();
-        $items = array();
-        foreach ($res as $row){
-            $items[$row['category_id']] = $row['category_name'];
-        }
-        return $items;
-    }
+    
+   
 	
 	function get_hardware_device_dropdown($category) {
         $this->db->select('device_id,device_name');
@@ -512,6 +364,22 @@ class Hardware_category_model extends CI_Model{
         }
         return $items;
 	}
+    public function get_devices_by_category($category_id)
+        {
+            $this->db->select('device_id, device_name');
+            $this->db->from('hardware_device');
+            $this->db->where('category_id', $category_id);
+            $this->db->where('status', 1);
+            $this->db->order_by('device_name', 'ASC');
+
+            $res =$this->db->get()->result_array();
+            $items = array();
+                foreach ($res as $row) {
+                    $items[$row['id']] = $row['name'];
+                }
+                return $items;
+        }
+
     function get_devices_mumbai_tab($category){
 		$this->db->select('device_id as id,device_name as name');
         $this->db->from('hardware_device');        

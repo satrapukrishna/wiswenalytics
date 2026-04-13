@@ -1,8 +1,0 @@
-1)UPDATE  protech_bms.hardware_station_consumption_data_wr_collector set Consumption=4 where
-UomName="Count" and Consumption > 50 or Consumption<0;
-UPDATE  protech_bms.hardware_station_consumption_data_wr_collector set Consumption=4 where
-UomName="Count" and LineConnected='Footfall Female' and Consumption > 20 or Consumption<0;
-2)UPDATE  protech_bms.hardware_station_consumption_data_district_court set Consumption=10 where
-UomName="Count"  and Consumption > 30 or Consumption<0;
-3)UPDATE  protech_bms.hardware_station_consumption_data_mission_hospital set Consumption=10 where
-UomName="Count"  and Consumption > 30 or Consumption<0;

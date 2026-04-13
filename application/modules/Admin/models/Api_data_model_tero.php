@@ -1157,12 +1157,6 @@ class Api_data_model_tero extends CI_Model{
 		$m12_fdate='2025-12-01';
 		$m12_tdate='2025-12-31';
 
-		$dm1_fdate='2025-01-01';
-		$dm1_tdate='2025-01-31';
-
-		$dm2_fdate='2025-02-01';
-		$dm2_tdate='2025-02-28';
-
 		//echo json_encode($days);die();
         // for ($i1=$date_from; $i1<=$date_to; $i1+=86400)
         // {

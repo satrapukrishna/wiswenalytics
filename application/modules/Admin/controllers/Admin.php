@@ -171,83 +171,82 @@ class Admin extends MX_Controller {
                 $this->load->view('login', $data);
             } elseif ($res['status'] == 'success' && $this->session->userdata('user_id') != '') {   
 				// echo "<pre>";print_r($this->session->userdata());exit;   
-                if($this->session->userdata('user_id')==28) {
-                    $go_to = 'Admin/Home/essential';
-                     redirect($go_to);
 
+                $user_id = $this->session->userdata('user_id');
+                $created_by = $this->session->userdata('created_by');
+
+                switch ($user_id) {
+                    case 28:
+                        redirect('Admin/Home/essential');
+                        break;
+
+                    case 15:
+                        redirect('Admin/Home/aircondition_apollo');
+                        break;
+
+                    case 3:
+                        redirect('Admin_feb21/Home/water');
+                        break;
+
+                    case 19:
+                        redirect('Admin_demo/Home/water');
+                        break;
+
+                    case 44:
+                        redirect('Admin/Home/energy_rsbrother');
+                        break;
+
+                    case 43:
+                        redirect('Admin/Home/energy_undp_single');
+                        break;
+
+                    default:
+                        // If no user_id match, check created_by
+                        switch ($created_by) {
+
+                            case 34:
+                                redirect('Admin/Home/switchcontrol');
+                                break;
+
+                            case 35:
+                                redirect('Admin/Home/energy_vegasschool');
+                                break;
+
+                            case 38:
+                                redirect('Admin/Home/energy_undp');
+                                break;
+
+                            case 30:
+                                redirect('Admin/Home/energy');
+                                break;
+
+                            case 39:
+                                redirect('Admin/Home/switchcontrol');
+                                break;
+
+                            case 37:
+                                redirect('Admin/HomeNew/energy');
+                                break;
+
+                            case 41:
+                                redirect('Admin/Home/airquality');
+                                break;
+
+                            case 43:
+                                redirect('Admin/Home/energy_terotam');
+                                break;
+
+                            case 42:
+                                redirect('Admin/Home/energy_unicef');
+                                break;
+
+                            default:
+                                redirect('Admin/Home/water');
+                                break;
+                        }
+                        break;
                 }
-                if($this->session->userdata('user_id')==15) {
-                    $go_to = 'Admin/Home/aircondition_apollo';
-                     redirect($go_to);
-
-                }if($this->session->userdata('user_id')==3) {
-                    $go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('user_id')==19) {
-                    $go_to = 'Admin_demo/Home/water';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('user_id')==44) {
-                    $go_to = 'Admin/Home/energy_rsbrother';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('user_id')==43) {
-                    $go_to = 'Admin/Home/energy_undp_single';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==34) {
-                    $go_to = 'Admin/Home/switchcontrol';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==35) {
-                    $go_to = 'Admin/Home/energy_vegasschool';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==38) {
-                    $go_to = 'Admin/Home/energy_undp';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==30) {
-                    $go_to = 'Admin/Home/energy';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==39) {
-                    $go_to = 'Admin/Home/switchcontrol';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==37) {
-                    $go_to = 'Admin/HomeNew/energy';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==41) {
-                    $go_to = 'Admin/Home/airquality';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==43) {
-                    $go_to = 'Admin/Home/energy_terotam';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }if($this->session->userdata('created_by')==42) {
-                    $go_to = 'Admin/Home/energy_unicef';
-                    //$go_to = 'Admin_feb21/Home/water';
-                     redirect($go_to);
-
-                }else{
-                    $go_to = 'Admin/Home/water';
-                   redirect($go_to);
-                }
+                
             } else {
                 $data['info_msg'] = 'Please Login below';
                 $data['go_to_url'] = '';
@@ -255,34 +254,7 @@ class Admin extends MX_Controller {
             }
         }
     }
-	/*public function autenticate(){
-		$uname = $this->input->post('uname');
-		$pwd = $this->input->post('pwd');
-		$result = $this->admin_model->validate_user($uname,$pwd);
-		// print_r($result );die();
-		if($result){
-			//echo "<pre>";print_r($result);exit;
-			$this->setSession($result);
-			/*if($result['user']->first_name == "test"){
-				redirect('SpInfocityClient/FirepumpReqNewDashboard');
-			} else{
-				redirect(base_url('SpInfocityLogin'));
-			}
-			redirect('SpInfocityClient/FirepumpReqNewDashboard');
-		}else{
-			redirect(base_url('Admin'));
-		}	
-	}
-	private function setSession($result){
-		//print_r($result);die();
-		$this->session->set_userdata( array(
-		'client_name' => $result['client_name'],
-		'user_name' => $result['email_id'],
-		'password' => $result['password'],
-		'role' => $result['role'],
-		'login' => true
-		));
-	}*/
+	
 	function logout() {
        $array_items = array('is_logged_in' => '','user_id' => '','password' => '','logintype' => '','user_name' => '','StationCode' => '','permissions' => '','client_name' => '','__ci_last_regenerate' => '', 'role' => '');
         $this->session->unset_userdata($array_items);

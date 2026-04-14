@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 13, 2026 at 02:52 PM
+-- Generation Time: Apr 14, 2026 at 06:23 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.1.25
 
@@ -1323,48 +1323,6 @@ INSERT INTO `all_reports` (`report_id`, `category_id`, `device_id`, `hardware_id
 -- --------------------------------------------------------
 
 --
--- Table structure for table `api_data`
---
-
-CREATE TABLE `api_data` (
-  `Id` int(11) NOT NULL,
-  `StationId` int(11) DEFAULT NULL,
-  `StationName` varchar(111) DEFAULT NULL,
-  `UtilityName` varchar(111) DEFAULT NULL,
-  `LocationId` int(11) DEFAULT NULL,
-  `UtilityGroup` varchar(111) DEFAULT NULL,
-  `UomScale` varchar(111) DEFAULT NULL,
-  `UomGraph` varchar(111) DEFAULT NULL,
-  `LineId` int(11) DEFAULT NULL,
-  `MeterName` varchar(111) DEFAULT NULL,
-  `MeterType` int(11) DEFAULT NULL,
-  `TxnDate` date DEFAULT NULL,
-  `FromTime` time DEFAULT NULL,
-  `ToTime` time DEFAULT NULL,
-  `Multiplier` decimal(2,1) DEFAULT NULL,
-  `PrvReading` varchar(333) DEFAULT NULL,
-  `CurReading` varchar(333) DEFAULT NULL,
-  `Consumption` varchar(333) DEFAULT NULL,
-  `PlanDayCons` varchar(333) DEFAULT NULL,
-  `DayMin` varchar(333) DEFAULT NULL,
-  `DayMax` varchar(333) DEFAULT NULL,
-  `DayAvg` varchar(333) DEFAULT NULL,
-  `ValueMax` varchar(333) DEFAULT NULL,
-  `ValueMin` varchar(333) DEFAULT NULL,
-  `ValueAvg` varchar(333) DEFAULT NULL,
-  `UtilityId` int(11) DEFAULT NULL,
-  `UomId` int(11) DEFAULT NULL,
-  `SerialId` int(11) DEFAULT NULL,
-  `MeterSerial` int(11) DEFAULT NULL,
-  `LocationName` varchar(111) DEFAULT NULL,
-  `UomName` varchar(111) DEFAULT NULL,
-  `LocationWithUtility` varchar(333) DEFAULT NULL,
-  `currentTime` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `borewell_running_report_tbl`
 --
 
@@ -1477,16 +1435,16 @@ INSERT INTO `clients` (`client_id`, `client_name`, `station_id`, `email_id`, `pa
 --
 
 CREATE TABLE `current_report_tbl` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `c1_data` longtext DEFAULT NULL,
-  `c2_data` longtext DEFAULT NULL,
-  `c3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Record created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Record last updated date',
+  `c1_data` longtext DEFAULT NULL COMMENT 'Current phase 1 data',
+  `c2_data` longtext DEFAULT NULL COMMENT 'Current phase 2 data',
+  `c3_data` longtext DEFAULT NULL COMMENT 'Current phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1496,16 +1454,16 @@ CREATE TABLE `current_report_tbl` (
 --
 
 CREATE TABLE `current_report_tbl_terotam` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `c1_data` longtext DEFAULT NULL,
-  `c2_data` longtext DEFAULT NULL,
-  `c3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Record created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Record last updated date',
+  `c1_data` longtext DEFAULT NULL COMMENT 'Current phase 1 data',
+  `c2_data` longtext DEFAULT NULL COMMENT 'Current phase 2 data',
+  `c3_data` longtext DEFAULT NULL COMMENT 'Current phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1515,17 +1473,17 @@ CREATE TABLE `current_report_tbl_terotam` (
 --
 
 CREATE TABLE `current_report_tbl_undp` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL COMMENT 'Primary key',
   `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `c1_data` longtext DEFAULT NULL,
-  `c2_data` longtext DEFAULT NULL,
-  `c3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Record created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Record last updated date',
+  `c1_data` longtext DEFAULT NULL COMMENT 'Current phase 1 data',
+  `c2_data` longtext DEFAULT NULL COMMENT 'Current phase 2 data',
+  `c3_data` longtext DEFAULT NULL COMMENT 'Current phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1535,16 +1493,16 @@ CREATE TABLE `current_report_tbl_undp` (
 --
 
 CREATE TABLE `current_report_tbl_unicef` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `c1_data` longtext DEFAULT NULL,
-  `c2_data` longtext DEFAULT NULL,
-  `c3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Record created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Record last updated date',
+  `c1_data` longtext DEFAULT NULL COMMENT 'Current phase 1 data',
+  `c2_data` longtext DEFAULT NULL COMMENT 'Current phase 2 data',
+  `c3_data` longtext DEFAULT NULL COMMENT 'Current phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1554,16 +1512,16 @@ CREATE TABLE `current_report_tbl_unicef` (
 --
 
 CREATE TABLE `current_report_tbl_unicef_old` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `c1_data` longtext DEFAULT NULL,
-  `c2_data` longtext DEFAULT NULL,
-  `c3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Record created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Record last updated date',
+  `c1_data` longtext DEFAULT NULL COMMENT 'Current phase 1 data',
+  `c2_data` longtext DEFAULT NULL COMMENT 'Current phase 2 data',
+  `c3_data` longtext DEFAULT NULL COMMENT 'Current phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1573,16 +1531,16 @@ CREATE TABLE `current_report_tbl_unicef_old` (
 --
 
 CREATE TABLE `current_report_tbl_vegas` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `c1_data` longtext DEFAULT NULL,
-  `c2_data` longtext DEFAULT NULL,
-  `c3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Record created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Record last updated date',
+  `c1_data` longtext DEFAULT NULL COMMENT 'Current phase 1 data',
+  `c2_data` longtext DEFAULT NULL COMMENT 'Current phase 2 data',
+  `c3_data` longtext DEFAULT NULL COMMENT 'Current phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1683,14 +1641,14 @@ INSERT INTO `demo_washroom_branches11` (`id`, `location`, `branch`, `stationid`,
 --
 
 CREATE TABLE `dg_fuel_level_report_tbl` (
-  `id` int(11) NOT NULL,
-  `utility_name` varchar(45) DEFAULT NULL,
-  `line_connected` varchar(45) DEFAULT NULL,
-  `fuel_level_data` longtext DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `utility_name` varchar(45) DEFAULT NULL COMMENT 'Utility type (DG)',
+  `line_connected` varchar(45) DEFAULT NULL COMMENT 'Line connection',
+  `fuel_level_data` longtext DEFAULT NULL COMMENT 'Fuel level readings data',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1700,14 +1658,14 @@ CREATE TABLE `dg_fuel_level_report_tbl` (
 --
 
 CREATE TABLE `dg_fuel_level_report_tbl_rs` (
-  `id` int(11) NOT NULL,
-  `utility_name` varchar(45) DEFAULT NULL,
-  `line_connected` varchar(45) DEFAULT NULL,
-  `fuel_level_data` longtext DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `utility_name` varchar(45) DEFAULT NULL COMMENT 'Utility type (DG)',
+  `line_connected` varchar(45) DEFAULT NULL COMMENT 'Line connection',
+  `fuel_level_data` longtext DEFAULT NULL COMMENT 'Fuel level readings data',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
   `station_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -1861,15 +1819,15 @@ INSERT INTO `employees` (`emp_id`, `firstname`, `lastname`, `designation`, `emai
 --
 
 CREATE TABLE `energy_consumption_report_tbl` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `kw` varchar(45) DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` varchar(45) DEFAULT NULL COMMENT 'Total energy consumption',
+  `kw` varchar(45) DEFAULT NULL COMMENT 'Kilowatt value',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1879,15 +1837,15 @@ CREATE TABLE `energy_consumption_report_tbl` (
 --
 
 CREATE TABLE `energy_consumption_report_tbl_chennai_hourly` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` text DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` text DEFAULT NULL COMMENT 'Hourly consumption data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1897,60 +1855,18 @@ CREATE TABLE `energy_consumption_report_tbl_chennai_hourly` (
 --
 
 CREATE TABLE `energy_consumption_report_tbl_terotam` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `day_consumption` varchar(55) DEFAULT NULL,
-  `night_consumption` varchar(55) DEFAULT NULL,
-  `kw` varchar(45) DEFAULT '0',
-  `meter_name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `energy_consumption_report_tbl_terotam_bkp`
---
-
-CREATE TABLE `energy_consumption_report_tbl_terotam_bkp` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `day_consumption` varchar(55) DEFAULT NULL,
-  `night_consumption` varchar(55) DEFAULT NULL,
-  `kw` varchar(45) DEFAULT '0',
-  `meter_name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `energy_consumption_report_tbl_terotam_bkp_timediff`
---
-
-CREATE TABLE `energy_consumption_report_tbl_terotam_bkp_timediff` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `day_consumption` varchar(55) DEFAULT NULL,
-  `night_consumption` varchar(55) DEFAULT NULL,
-  `kw` varchar(45) DEFAULT '0',
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` varchar(45) DEFAULT NULL COMMENT 'Total energy consumption',
+  `day_consumption` varchar(55) DEFAULT NULL COMMENT 'Daytime consumption',
+  `night_consumption` varchar(55) DEFAULT NULL COMMENT 'Nighttime consumption',
+  `kw` varchar(45) DEFAULT NULL COMMENT 'Kilowatt value',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1960,15 +1876,15 @@ CREATE TABLE `energy_consumption_report_tbl_terotam_bkp_timediff` (
 --
 
 CREATE TABLE `energy_consumption_report_tbl_terotam_hourly` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` text DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` text DEFAULT NULL COMMENT 'Hourly consumption data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1978,18 +1894,18 @@ CREATE TABLE `energy_consumption_report_tbl_terotam_hourly` (
 --
 
 CREATE TABLE `energy_consumption_report_tbl_undp` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `day_consumption` varchar(50) DEFAULT NULL,
-  `night_consumption` varchar(40) DEFAULT '0',
-  `kw` varchar(45) DEFAULT '0',
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` varchar(45) DEFAULT NULL COMMENT 'Total energy consumption',
+  `day_consumption` varchar(55) DEFAULT NULL COMMENT 'Daytime consumption',
+  `night_consumption` varchar(55) DEFAULT NULL COMMENT 'Nighttime consumption',
+  `kw` varchar(45) DEFAULT NULL COMMENT 'Kilowatt value',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -1999,15 +1915,15 @@ CREATE TABLE `energy_consumption_report_tbl_undp` (
 --
 
 CREATE TABLE `energy_consumption_report_tbl_undp_hourly` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` text DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` text DEFAULT NULL COMMENT 'Hourly consumption data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -2038,16 +1954,16 @@ CREATE TABLE `energy_consumption_report_tbl_undp_single` (
 --
 
 CREATE TABLE `energy_consumption_report_tbl_unicef` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL COMMENT 'Primary key',
   `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `kw` varchar(45) DEFAULT '0',
-  `meter_name` varchar(45) DEFAULT NULL
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` varchar(45) DEFAULT NULL COMMENT 'Total energy consumption',
+  `kw` varchar(45) DEFAULT NULL COMMENT 'Kilowatt value',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -2057,15 +1973,15 @@ CREATE TABLE `energy_consumption_report_tbl_unicef` (
 --
 
 CREATE TABLE `energy_consumption_report_tbl_unicef_hourly` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` text DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` text DEFAULT NULL COMMENT 'Hourly consumption data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -2108,52 +2024,19 @@ CREATE TABLE `energy_consumption_report_tbl_unicef_old` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `energy_consumption_report_tbl_usa`
---
-
-CREATE TABLE `energy_consumption_report_tbl_usa` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `energy_consumption_report_tbl_vegas`
 --
 
 CREATE TABLE `energy_consumption_report_tbl_vegas` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `kw` varchar(45) DEFAULT '0',
-  `meter_name` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `energy_consumption_report_tbl_vegas_2023`
---
-
-CREATE TABLE `energy_consumption_report_tbl_vegas_2023` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `consumption` varchar(45) DEFAULT NULL,
-  `running_min2` varchar(45) DEFAULT '0',
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `consumption` varchar(45) DEFAULT NULL COMMENT 'Total energy consumption',
+  `kw` varchar(45) DEFAULT NULL COMMENT 'Kilowatt value',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -2411,15 +2294,15 @@ INSERT INTO `firepump_fuel_level_report_tbl` (`id`, `utility_name`, `line_connec
 --
 
 CREATE TABLE `firepump_pressure_report_tbl` (
-  `id` int(11) NOT NULL,
-  `utility_name` varchar(45) DEFAULT NULL,
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `utility_name` varchar(45) DEFAULT NULL COMMENT 'Utility name',
   `line_connected` varchar(45) DEFAULT NULL,
-  `pressure_data` longtext DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL
+  `pressure_data` longtext DEFAULT NULL COMMENT 'Pressure sensor data',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -2439,17 +2322,17 @@ INSERT INTO `firepump_pressure_report_tbl` (`id`, `utility_name`, `line_connecte
 --
 
 CREATE TABLE `firepump_running_report_tbl` (
-  `id` int(11) NOT NULL,
-  `utility_name` varchar(45) DEFAULT NULL,
-  `line_connected` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `running_min1` varchar(45) DEFAULT NULL,
-  `running_min2` varchar(45) DEFAULT NULL,
-  `station_id` varchar(45) DEFAULT NULL,
-  `pump_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `utility_name` varchar(45) DEFAULT NULL COMMENT 'Utility name',
+  `line_connected` varchar(45) DEFAULT NULL COMMENT 'Line connection',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `running_min1` varchar(45) DEFAULT NULL COMMENT 'Running minutes (first)',
+  `running_min2` varchar(45) DEFAULT NULL COMMENT 'Running minutes (second)',
+  `station_id` varchar(45) DEFAULT NULL COMMENT 'Station ID',
+  `pump_name` varchar(45) DEFAULT NULL COMMENT 'Pump name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
@@ -53156,14 +53039,14 @@ INSERT INTO `hospital_employees` (`id`, `emp_id`, `name`, `department`, `sub_dep
 --
 
 CREATE TABLE `hydro_pressure_report_tbl` (
-  `id` int(11) NOT NULL,
-  `utility_name` varchar(45) DEFAULT NULL,
-  `pressure_data` longtext DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `utility_name` varchar(45) DEFAULT NULL COMMENT 'Utility name',
+  `pressure_data` longtext DEFAULT NULL COMMENT 'Pressure sensor data',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -53173,17 +53056,17 @@ CREATE TABLE `hydro_pressure_report_tbl` (
 --
 
 CREATE TABLE `hydro_running_report_tbl` (
-  `id` int(11) NOT NULL,
-  `utility_name` varchar(45) DEFAULT NULL,
-  `line_connected` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `running_min1` varchar(45) DEFAULT NULL,
-  `running_min2` varchar(45) DEFAULT NULL,
-  `station_id` varchar(45) DEFAULT NULL,
-  `pump_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `utility_name` varchar(45) DEFAULT NULL COMMENT 'Utility name',
+  `line_connected` varchar(45) DEFAULT NULL COMMENT 'Line connection',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `running_min1` varchar(45) DEFAULT NULL COMMENT 'Running minutes (first)',
+  `running_min2` varchar(45) DEFAULT NULL COMMENT 'Running minutes (second)',
+  `station_id` varchar(45) DEFAULT NULL COMMENT 'Station ID',
+  `pump_name` varchar(45) DEFAULT NULL COMMENT 'Pump name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -53534,6 +53417,7 @@ INSERT INTO `permission_inner` (`per_in_id`, `per_key`, `per_description`, `per_
 CREATE TABLE `pf_report_tbl` (
   `id` int(11) NOT NULL,
   `location_name` varchar(45) DEFAULT NULL,
+  `station_id` int(11) NOT NULL,
   `meter_serial` varchar(45) DEFAULT NULL,
   `report_date` date DEFAULT NULL,
   `created_date` datetime DEFAULT NULL,
@@ -53549,15 +53433,15 @@ CREATE TABLE `pf_report_tbl` (
 --
 
 CREATE TABLE `pf_report_tbl_undp` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `pf_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `pf_data` longtext DEFAULT NULL COMMENT 'Power factor data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -53567,14 +53451,15 @@ CREATE TABLE `pf_report_tbl_undp` (
 --
 
 CREATE TABLE `pf_report_tbl_unicef` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `pf_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `pf_data` longtext DEFAULT NULL COMMENT 'Power factor data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -53601,14 +53486,15 @@ CREATE TABLE `pf_report_tbl_unicef_old` (
 --
 
 CREATE TABLE `pf_report_tbl_vegas` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `pf_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `pf_data` longtext DEFAULT NULL COMMENT 'Power factor data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -57291,16 +57177,17 @@ INSERT INTO `version_data` (`id`, `app_id`, `version`, `created_date`, `operator
 --
 
 CREATE TABLE `voltage_report_tbl` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `v1_data` longtext DEFAULT NULL,
-  `v2_data` longtext DEFAULT NULL,
-  `v3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `v1_data` longtext DEFAULT NULL COMMENT 'Voltage phase 1 data',
+  `v2_data` longtext DEFAULT NULL COMMENT 'Voltage phase 2 data',
+  `v3_data` longtext DEFAULT NULL COMMENT 'Voltage phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -57310,17 +57197,17 @@ CREATE TABLE `voltage_report_tbl` (
 --
 
 CREATE TABLE `voltage_report_tbl_undp` (
-  `id` int(11) NOT NULL,
-  `station_id` int(11) DEFAULT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `v1_data` longtext DEFAULT NULL,
-  `v2_data` longtext DEFAULT NULL,
-  `v3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `v1_data` longtext DEFAULT NULL COMMENT 'Voltage phase 1 data',
+  `v2_data` longtext DEFAULT NULL COMMENT 'Voltage phase 2 data',
+  `v3_data` longtext DEFAULT NULL COMMENT 'Voltage phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -57332,6 +57219,7 @@ CREATE TABLE `voltage_report_tbl_undp` (
 CREATE TABLE `voltage_report_tbl_unicef` (
   `id` int(11) NOT NULL,
   `location_name` varchar(45) DEFAULT NULL,
+  `station_id` int(11) NOT NULL,
   `meter_serial` varchar(45) DEFAULT NULL,
   `report_date` date DEFAULT NULL,
   `created_date` datetime DEFAULT NULL,
@@ -57368,16 +57256,17 @@ CREATE TABLE `voltage_report_tbl_unicef_old` (
 --
 
 CREATE TABLE `voltage_report_tbl_vegas` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `meter_serial` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `v1_data` longtext DEFAULT NULL,
-  `v2_data` longtext DEFAULT NULL,
-  `v3_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `station_id` int(11) DEFAULT NULL COMMENT 'Station ID',
+  `meter_serial` varchar(45) DEFAULT NULL COMMENT 'Meter serial number',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `v1_data` longtext DEFAULT NULL COMMENT 'Voltage phase 1 data',
+  `v2_data` longtext DEFAULT NULL COMMENT 'Voltage phase 2 data',
+  `v3_data` longtext DEFAULT NULL COMMENT 'Voltage phase 3 data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -57387,14 +57276,14 @@ CREATE TABLE `voltage_report_tbl_vegas` (
 --
 
 CREATE TABLE `water_level_report_tbl_mumbai` (
-  `id` int(11) NOT NULL,
-  `location_name` varchar(45) DEFAULT NULL,
-  `utility_name` varchar(45) DEFAULT NULL,
-  `report_date` date DEFAULT NULL,
-  `created_date` datetime DEFAULT NULL,
-  `updated_date` datetime DEFAULT NULL,
-  `water_level_data` longtext DEFAULT NULL,
-  `meter_name` varchar(45) DEFAULT NULL
+  `id` int(11) NOT NULL COMMENT 'Primary key',
+  `location_name` varchar(45) DEFAULT NULL COMMENT 'Location name',
+  `utility_name` varchar(45) DEFAULT NULL COMMENT 'Utility name',
+  `report_date` date DEFAULT NULL COMMENT 'Report date',
+  `created_date` datetime DEFAULT NULL COMMENT 'Created date',
+  `updated_date` datetime DEFAULT NULL COMMENT 'Updated date',
+  `water_level_data` longtext DEFAULT NULL COMMENT 'Water level sensor data',
+  `meter_name` varchar(45) DEFAULT NULL COMMENT 'Meter name'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -57633,12 +57522,6 @@ ALTER TABLE `all_reports`
   ADD PRIMARY KEY (`report_id`);
 
 --
--- Indexes for table `api_data`
---
-ALTER TABLE `api_data`
-  ADD PRIMARY KEY (`Id`);
-
---
 -- Indexes for table `borewell_running_report_tbl`
 --
 ALTER TABLE `borewell_running_report_tbl`
@@ -57759,18 +57642,6 @@ ALTER TABLE `energy_consumption_report_tbl_terotam`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `energy_consumption_report_tbl_terotam_bkp`
---
-ALTER TABLE `energy_consumption_report_tbl_terotam_bkp`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `energy_consumption_report_tbl_terotam_bkp_timediff`
---
-ALTER TABLE `energy_consumption_report_tbl_terotam_bkp_timediff`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `energy_consumption_report_tbl_terotam_hourly`
 --
 ALTER TABLE `energy_consumption_report_tbl_terotam_hourly`
@@ -57819,21 +57690,9 @@ ALTER TABLE `energy_consumption_report_tbl_unicef_old`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `energy_consumption_report_tbl_usa`
---
-ALTER TABLE `energy_consumption_report_tbl_usa`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `energy_consumption_report_tbl_vegas`
 --
 ALTER TABLE `energy_consumption_report_tbl_vegas`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `energy_consumption_report_tbl_vegas_2023`
---
-ALTER TABLE `energy_consumption_report_tbl_vegas_2023`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -58320,12 +58179,6 @@ ALTER TABLE `all_reports`
   MODIFY `report_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
--- AUTO_INCREMENT for table `api_data`
---
-ALTER TABLE `api_data`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `borewell_running_report_tbl`
 --
 ALTER TABLE `borewell_running_report_tbl`
@@ -58347,37 +58200,37 @@ ALTER TABLE `clients`
 -- AUTO_INCREMENT for table `current_report_tbl`
 --
 ALTER TABLE `current_report_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `current_report_tbl_terotam`
 --
 ALTER TABLE `current_report_tbl_terotam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `current_report_tbl_undp`
 --
 ALTER TABLE `current_report_tbl_undp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `current_report_tbl_unicef`
 --
 ALTER TABLE `current_report_tbl_unicef`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `current_report_tbl_unicef_old`
 --
 ALTER TABLE `current_report_tbl_unicef_old`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `current_report_tbl_vegas`
 --
 ALTER TABLE `current_report_tbl_vegas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `demo_washroom_branches`
@@ -58395,13 +58248,13 @@ ALTER TABLE `demo_washroom_branches11`
 -- AUTO_INCREMENT for table `dg_fuel_level_report_tbl`
 --
 ALTER TABLE `dg_fuel_level_report_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `dg_fuel_level_report_tbl_rs`
 --
 ALTER TABLE `dg_fuel_level_report_tbl_rs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `dg_running_report_tbl`
@@ -58431,49 +58284,37 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl`
 --
 ALTER TABLE `energy_consumption_report_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_chennai_hourly`
 --
 ALTER TABLE `energy_consumption_report_tbl_chennai_hourly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_terotam`
 --
 ALTER TABLE `energy_consumption_report_tbl_terotam`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `energy_consumption_report_tbl_terotam_bkp`
---
-ALTER TABLE `energy_consumption_report_tbl_terotam_bkp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `energy_consumption_report_tbl_terotam_bkp_timediff`
---
-ALTER TABLE `energy_consumption_report_tbl_terotam_bkp_timediff`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_terotam_hourly`
 --
 ALTER TABLE `energy_consumption_report_tbl_terotam_hourly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_undp`
 --
 ALTER TABLE `energy_consumption_report_tbl_undp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_undp_hourly`
 --
 ALTER TABLE `energy_consumption_report_tbl_undp_hourly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_undp_single`
@@ -58485,13 +58326,13 @@ ALTER TABLE `energy_consumption_report_tbl_undp_single`
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_unicef`
 --
 ALTER TABLE `energy_consumption_report_tbl_unicef`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_unicef_hourly`
 --
 ALTER TABLE `energy_consumption_report_tbl_unicef_hourly`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_unicef_hourly_old`
@@ -58506,22 +58347,10 @@ ALTER TABLE `energy_consumption_report_tbl_unicef_old`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `energy_consumption_report_tbl_usa`
---
-ALTER TABLE `energy_consumption_report_tbl_usa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_vegas`
 --
 ALTER TABLE `energy_consumption_report_tbl_vegas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `energy_consumption_report_tbl_vegas_2023`
---
-ALTER TABLE `energy_consumption_report_tbl_vegas_2023`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `energy_consumption_report_tbl_vegas_hourly`
@@ -58563,13 +58392,13 @@ ALTER TABLE `firepump_fuel_level_report_tbl`
 -- AUTO_INCREMENT for table `firepump_pressure_report_tbl`
 --
 ALTER TABLE `firepump_pressure_report_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key', AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `firepump_running_report_tbl`
 --
 ALTER TABLE `firepump_running_report_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key', AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `fire_pump_run`
@@ -58737,13 +58566,13 @@ ALTER TABLE `hospital_employees`
 -- AUTO_INCREMENT for table `hydro_pressure_report_tbl`
 --
 ALTER TABLE `hydro_pressure_report_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `hydro_running_report_tbl`
 --
 ALTER TABLE `hydro_running_report_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `mumbai_sensor`
@@ -58779,13 +58608,13 @@ ALTER TABLE `pf_report_tbl`
 -- AUTO_INCREMENT for table `pf_report_tbl_undp`
 --
 ALTER TABLE `pf_report_tbl_undp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `pf_report_tbl_unicef`
 --
 ALTER TABLE `pf_report_tbl_unicef`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `pf_report_tbl_unicef_old`
@@ -58797,7 +58626,7 @@ ALTER TABLE `pf_report_tbl_unicef_old`
 -- AUTO_INCREMENT for table `pf_report_tbl_vegas`
 --
 ALTER TABLE `pf_report_tbl_vegas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `rainbow_dashbord_data`
@@ -58875,13 +58704,13 @@ ALTER TABLE `version_data`
 -- AUTO_INCREMENT for table `voltage_report_tbl`
 --
 ALTER TABLE `voltage_report_tbl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `voltage_report_tbl_undp`
 --
 ALTER TABLE `voltage_report_tbl_undp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `voltage_report_tbl_unicef`
@@ -58899,13 +58728,13 @@ ALTER TABLE `voltage_report_tbl_unicef_old`
 -- AUTO_INCREMENT for table `voltage_report_tbl_vegas`
 --
 ALTER TABLE `voltage_report_tbl_vegas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `water_level_report_tbl_mumbai`
 --
 ALTER TABLE `water_level_report_tbl_mumbai`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Primary key';
 
 --
 -- AUTO_INCREMENT for table `water_level_report_with_time_tbl`
